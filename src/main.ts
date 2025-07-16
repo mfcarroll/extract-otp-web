@@ -3,13 +3,18 @@ import protobuf from 'protobufjs';
 import { encode } from 'thirty-two';
 import { Buffer } from 'buffer';
 import QRCode from 'qrcode';
+import type { OtpData } from './types';
 
 window.Buffer = Buffer;  // Make Buffer globally available
-let extractedOtps = []; // To store data for CSV export
+let extractedOtps: OtpData[] = []; // To store data for CSV export
 
-async function processImage(file) {
-  const canvas = document.getElementById('qr-canvas');
+async function processImage(file: File): Promise<void> {
+  const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
+  if (!canvas) return;
+
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
   const img = new Image();
 
   img.onload = async () => {
@@ -32,10 +37,10 @@ async function processImage(file) {
 }
 
 document.querySelectorAll('.accordion-button').forEach((button) => {
-  button.addEventListener('click', () => button.parentNode.classList.toggle('active'));
+  button.addEventListener('click', () => button.parentElement?.classList.toggle('active'));
 });
 
-async function processOtpUrl(otpUrl) {
+async function processOtpUrl(otpUrl: string): Promise<void> {
   try {
     const url = new URL(otpUrl);
     const dataBase64 = url.searchParams.get('data');
@@ -49,15 +54,16 @@ async function processOtpUrl(otpUrl) {
     const root = await protobuf.load('google_auth.proto');
     const MigrationPayload = root.lookupType('MigrationPayload');
 
-    const payload = MigrationPayload.decode(data);
+    // Casting to `any` because the decoded payload structure is dynamic.
+    const payload: any = MigrationPayload.decode(data);
     displayResults(payload.otpParameters);
 
-  } catch (error) {
+  } catch (error: any) {
     displayError(`Error processing OTP URL: ${error.message}`);
   }
 }
 
-function base64ToUint8Array(base64) {
+function base64ToUint8Array(base64: string): Uint8Array {
   const base64Fixed = base64.replace(/ /g, '+');
   const binaryString = atob(base64Fixed);
   const len = binaryString.length;
@@ -68,9 +74,9 @@ function base64ToUint8Array(base64) {
   return bytes;
 }
 
-function displayResults(otpParameters) {
-  const resultsContainer = document.getElementById('results-container');
-  const exportContainer = document.getElementById('export-container');
+function displayResults(otpParameters: any[]): void {
+  const resultsContainer = document.getElementById('results-container') as HTMLDivElement;
+  const exportContainer = document.getElementById('export-container') as HTMLDivElement;
   resultsContainer.innerHTML = ''; // Clear previous results
   extractedOtps = []; // Clear previous extracted data
 
@@ -82,76 +88,60 @@ function displayResults(otpParameters) {
 
   exportContainer.style.display = 'block';
 
-  otpParameters.forEach((otp, index) => {
+  otpParameters.forEach((otp: any, index: number) => {
     const otpCard = document.createElement('div');
     otpCard.className = 'otp-card';
 
-    // Use textContent to prevent XSS, although the source is trusted here, it's good practice.
-    const name = document.createTextNode(otp.name);
-    const secret = document.createTextNode(encode(otp.secret));
-    const issuer = document.createTextNode(otp.issuer || 'N/A');
-    const type = document.createTextNode(otp.type === 2 ? 'totp' : 'hotp');
+    const secretText = encode(otp.secret);
+    const issuerText = otp.issuer || 'N/A';
+    const nameText = otp.name || 'N/A';
+    const typeText = otp.type === 2 ? 'totp' : 'hotp';
 
-    // Construct the otpauth URL label and parameters according to spec.
-    // The label should be 'Issuer:Account' if an issuer is present.
-    let label = otp.name;
+    let label = nameText;
     if (otp.issuer) {
-      label = `${otp.issuer}:${otp.name}`;
+      label = `${otp.issuer}:${nameText}`;
     }
     const encodedLabel = encodeURIComponent(label);
 
-    const otpType = otp.type === 2 ? 'totp' : 'hotp';
-    let otpAuthUrl = `otpauth://${otpType}/${encodedLabel}?secret=${secret.textContent}`;
+    let otpAuthUrl = `otpauth://${typeText}/${encodedLabel}?secret=${secretText}`;
     if (otp.issuer) {
       otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
     }
-    if (otpType === 'hotp') {
-        // HOTP requires an initial counter value.  If not provided in the protobuf, default to 0.
-        // You might need to adjust this default based on your application's needs.
-        otpAuthUrl += `&counter=${otp.counter || 0}`;
+    if (typeText === 'hotp') {
+      otpAuthUrl += `&counter=${otp.counter || 0}`;
     }
 
-    const otpForExport = {
-      name: otp.name,
-      secret: secret.textContent,
+    const otpForExport: OtpData = {
+      name: nameText,
+      secret: secretText,
       issuer: otp.issuer || '',
-      type: otpType,
-      counter: otpType === 'hotp' ? (otp.counter || 0) : '',
+      type: typeText,
+      counter: typeText === 'hotp' ? (otp.counter || 0) : '',
       url: otpAuthUrl,
     };
     extractedOtps.push(otpForExport);
 
-    // Create a decoded version for display, but keep the original for QR/copy.
     const displayOtpAuthUrl = decodeURIComponent(otpAuthUrl);
-
     const qrCodeCanvas = document.createElement('canvas');
 
-    // Generate QR code with transparent background, larger size,
-    // and a quiet zone.
-    const qrSize = 220; // Increased size
+    const qrSize = 220;
     QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, {
       width: qrSize,
       margin: 1,
-      // Setting the background color to transparent
-      // Using a 4-digit hex code which represents #RGBA.
-      // #0000 is fully transparent.
-      // This makes the styling and visual appearance a bit nicer.
-      // See https://www.npmjs.com/package/qrcode#options
       color: {
-        light: '#0000' // Sets the background to be transparent (#RGBA).
+        light: '#0000' // Transparent background
       }
     });
 
     const otpDetails = document.createElement('div');
     otpDetails.innerHTML = `
-        <p><span class="label">Name:</span> ${name.textContent}</p>
-        <p><span class="label">Issuer:</span> ${issuer.textContent}</p>
-        <p><span class="label">Type:</span> ${type.textContent}</p>
+        <p><span class="label">Name:</span> ${nameText}</p>
+        <p><span class="label">Issuer:</span> ${issuerText}</p>
+        <p><span class="label">Type:</span> ${typeText}</p>
         <p class="secret-row"><span class="label">Secret:</span>
             <span class="secret-container">
-
-                <input type="text" class="text-input secret-input" value="${secret.textContent}" readonly>
-                <button class="copy-button" data-copy-text="${secret.textContent}">
+                <input type="text" class="text-input secret-input" value="${secretText}" readonly>
+                <button class="copy-button" data-copy-text="${secretText}">
                     <i class="fa fa-copy"></i>
                 </button>
             </span>
@@ -168,86 +158,79 @@ function displayResults(otpParameters) {
 
     const qrCodeContainer = document.createElement('div');
     qrCodeContainer.appendChild(qrCodeCanvas);
-    // Float the QR code to the right
     qrCodeContainer.style.float = 'right';
     qrCodeContainer.style.marginLeft = '20px';
 
     otpCard.classList.add('otp-card-layout');
-
     otpCard.appendChild(qrCodeContainer);
     otpCard.appendChild(otpDetails);
 
     const heading = document.createElement('h3');
-    heading.textContent = `${index + 1}. ${issuer.textContent}: ${name.textContent}`;
+    heading.textContent = `${index + 1}. ${issuerText}: ${nameText}`;
     otpDetails.prepend(heading);
 
     resultsContainer.appendChild(otpCard);
   });
-  // Attach event listeners to all copy buttons
-  document.querySelectorAll('#results-container .copy-button').forEach(button => {
+
+  document.querySelectorAll<HTMLButtonElement>('#results-container .copy-button').forEach(button => {
     button.addEventListener('click', () => {
       const textToCopy = button.dataset.copyText;
-      copyToClipboard(textToCopy);
+      if (textToCopy) {
+        copyToClipboard(textToCopy);
+      }
     });
   });
-
 }
 
-function displayError(message) {
-  const resultsContainer = document.getElementById('results-container');
-  const exportContainer = document.getElementById('export-container');
+function displayError(message: string): void {
+  const resultsContainer = document.getElementById('results-container') as HTMLDivElement;
+  const exportContainer = document.getElementById('export-container') as HTMLDivElement;
   exportContainer.style.display = 'none';
   resultsContainer.innerHTML = `<p class="error-message">${message}</p>`;
 }
 
-
-document.getElementById('qr-input').addEventListener('change', (event) => {
-  const file = event.target.files[0];
+document.getElementById('qr-input')?.addEventListener('change', (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const file = target.files?.[0];
   if (file) {
     processImage(file);
   }
 });
 
-function copyToClipboard(text) {
+function copyToClipboard(text: string): void {
   navigator.clipboard.writeText(text)
     .then(() => {
-      // Find the button that was clicked (it's the active element)
-      const button = document.activeElement;
-      button.classList.add('copied');
-      setTimeout(() => button.classList.remove('copied'), 1500); // Remove after 1.5 seconds
+      const button = document.activeElement as HTMLElement;
+      if (button?.classList.contains('copy-button')) {
+        button.classList.add('copied');
+        setTimeout(() => button.classList.remove('copied'), 1500);
+      }
     })
     .catch(err => {
       console.error('Could not copy text: ', err);
     });
 }
 
-document.getElementById('download-csv-button').addEventListener('click', downloadAsCsv);
+document.getElementById('download-csv-button')?.addEventListener('click', downloadAsCsv);
 
-/**
- * Creates and triggers a download for a CSV file containing the extracted OTP data.
- */
-function downloadAsCsv() {
+function downloadAsCsv(): void {
   if (extractedOtps.length === 0) {
     alert('No data to export.');
     return;
   }
 
-  const headers = ['name', 'secret', 'issuer', 'type', 'counter', 'url'];
+  const headers: (keyof OtpData)[] = ['name', 'secret', 'issuer', 'type', 'counter', 'url'];
 
-  // Function to properly escape a field for CSV.
-  // Handles fields containing commas, double quotes, or newlines.
-  const escapeCsvField = (field) => {
-    const str = String(field === null || field === undefined ? '' : field);
+  const escapeCsvField = (field: any): string => {
+    const str = String(field ?? '');
     if (str.includes(',') || str.includes('"') || str.includes('\n')) {
-      // Enclose in double quotes and escape existing double quotes by doubling them.
       return `"${str.replace(/"/g, '""')}"`;
     }
     return str;
   };
 
-  // Combine headers and rows
   const csvRows = [
-    headers.join(','), // header row
+    headers.join(','),
     ...extractedOtps.map(otp =>
       headers.map(header => escapeCsvField(otp[header])).join(',')
     )
@@ -256,7 +239,6 @@ function downloadAsCsv() {
   const csvString = csvRows.join('\n');
   const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
 
-  // Create a link and trigger the download
   const link = document.createElement('a');
   const url = URL.createObjectURL(blob);
   link.setAttribute('href', url);
