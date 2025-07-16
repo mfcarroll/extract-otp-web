@@ -45,7 +45,7 @@ async function processOtpUrl(otpUrl) {
 
     const data = base64ToUint8Array(dataBase64);
 
-    const root = await protobuf.load('/google_auth.proto'); // Assuming proto file in public directory
+    const root = await protobuf.load('google_auth.proto');
     const MigrationPayload = root.lookupType('MigrationPayload');
 
     const payload = MigrationPayload.decode(data);
