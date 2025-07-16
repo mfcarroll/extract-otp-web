@@ -4,5 +4,5 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   // This is the base path of your site.
   // It should be the name of your GitHub repository.
-  base: '/otp-extractor-web/',
+  base: '/extract-otp-web/',
 });
