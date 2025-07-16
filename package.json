@@ -1,5 +1,5 @@
 {
-  "name": "otp-extractor-web",
+  "name": "extract-otp-web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
