@@ -15,6 +15,7 @@
     "buffer": "^6.0.3",
     "jsqr": "^1.4.0",
     "protobufjs": "^7.5.3",
+    "qrcode": "^1.5.4",
     "thirty-two": "^1.0.2"
   }
 }

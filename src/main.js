@@ -2,6 +2,8 @@ import jsQR from 'jsqr';
 import protobuf from 'protobufjs';
 import { encode } from 'thirty-two';
 import { Buffer } from 'buffer';
+import QRCode from 'qrcode';
+
 window.Buffer = Buffer;  // Make Buffer globally available
 
 async function processImage(file) {
@@ -43,7 +45,7 @@ async function processOtpUrl(otpUrl) {
 
     const data = base64ToUint8Array(dataBase64);
 
-    const root = await protobuf.load('google_auth.proto');
+    const root = await protobuf.load('/google_auth.proto'); // Assuming proto file in public directory
     const MigrationPayload = root.lookupType('MigrationPayload');
 
     const payload = MigrationPayload.decode(data);
@@ -84,15 +86,89 @@ function displayResults(otpParameters) {
     const issuer = document.createTextNode(otp.issuer || 'N/A');
     const type = document.createTextNode(otp.type === 2 ? 'totp' : 'hotp');
 
-    otpCard.innerHTML = `
-      <h3>Secret ${index + 1}</h3>
-      <p><span class="label">Name:</span> ${name.textContent}</p>
-      <p><span class="label">Issuer:</span> ${issuer.textContent}</p>
-      <p><span class="label">Secret:</span> <span class="secret">${secret.textContent}</span></p>
-      <p><span class="label">Type:</span> ${type.textContent}</p>
+    // Construct the otpauth URL label and parameters according to spec.
+    // The label should be 'Issuer:Account' if an issuer is present.
+    let label = otp.name;
+    if (otp.issuer) {
+      label = `${otp.issuer}:${otp.name}`;
+    }
+    const encodedLabel = encodeURIComponent(label);
+
+    const otpType = otp.type === 2 ? 'totp' : 'hotp';
+    let otpAuthUrl = `otpauth://${otpType}/${encodedLabel}?secret=${secret.textContent}`;
+    if (otp.issuer) {
+      otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
+    }
+    if (otpType === 'hotp') {
+        // HOTP requires an initial counter value.  If not provided in the protobuf, default to 0.
+        // You might need to adjust this default based on your application's needs.
+        otpAuthUrl += `&counter=${otp.counter || 0}`;
+    }
+
+    // Create a decoded version for display, but keep the original for QR/copy.
+    const displayOtpAuthUrl = decodeURIComponent(otpAuthUrl);
+
+    const qrCodeCanvas = document.createElement('canvas');
+
+    // Generate QR code with transparent background, larger size,
+    // and a quiet zone.
+    const qrSize = 220; // Increased size
+    QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, {
+      width: qrSize,
+      margin: 1,
+      // Setting the background color to transparent
+      // Using a 4-digit hex code which represents #RGBA.
+      // #0000 is fully transparent.
+      // This makes the styling and visual appearance a bit nicer.
+      // See https://www.npmjs.com/package/qrcode#options
+      color: {
+        light: '#0000' // Sets the background to be transparent (#RGBA).
+      }
+    });
+
+    const otpDetails = document.createElement('div');
+    otpDetails.innerHTML = `
+        <p><span class="label">Name:</span> ${name.textContent}</p>
+        <p><span class="label">Issuer:</span> ${issuer.textContent}</p>
+        <p><span class="label">Type:</span> ${type.textContent}</p>
+        <p class="secret-row"><span class="label">Secret:</span>
+            <span class="secret-container">
+
+                <input type="text" class="text-input secret-input" value="${secret.textContent}" readonly>
+                <button class="copy-button" onclick="copyToClipboard('${secret.textContent}')">                
+                    <i class="fa fa-copy"></i>
+                </button>
+            </span>
+        </p>
+        <p class="otp-url-row"><span class="label">URL:</span>
+            <span class="otp-url-container">
+                <input type="text" class="text-input url-input" value="${displayOtpAuthUrl}" readonly>
+                <button class="copy-button" onclick="copyToClipboard('${otpAuthUrl}')">
+                    <i class="fa fa-copy"></i>
+                </button>
+            </span>
+        </p>
     `;
+
+    const qrCodeContainer = document.createElement('div');
+    qrCodeContainer.appendChild(qrCodeCanvas);
+    // Float the QR code to the right
+    qrCodeContainer.style.float = 'right';
+    qrCodeContainer.style.marginLeft = '20px';
+
+    otpCard.classList.add('otp-card-layout');
+
+    otpCard.appendChild(qrCodeContainer);
+    otpCard.appendChild(otpDetails);
+
+    const heading = document.createElement('h3');
+    heading.textContent = `${index + 1}. ${issuer.textContent}: ${name.textContent}`;
+    otpDetails.prepend(heading);
+
     resultsContainer.appendChild(otpCard);
   });
+  window.copyToClipboard = copyToClipboard;
+
 }
 
 function displayError(message) {
@@ -101,10 +177,22 @@ function displayError(message) {
 }
 
 
-
 document.getElementById('qr-input').addEventListener('change', (event) => {
   const file = event.target.files[0];
   if (file) {
     processImage(file);
   }
 });
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      // Find the button that was clicked (it's the active element)
+      const button = document.activeElement;
+      button.classList.add('copied');
+      setTimeout(() => button.classList.remove('copied'), 1500); // Remove after 1.5 seconds
+    })
+    .catch(err => {
+      console.error('Could not copy text: ', err);
+    });
+}

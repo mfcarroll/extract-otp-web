@@ -30,7 +30,6 @@ body {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
 }
 
 h1 {
@@ -83,44 +82,116 @@ h1 {
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-
-.otp-card h3 {
-  margin-top: 0;
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
+.otp-card-layout {
+    width: 600px; /* Adjust to your preferred width */
+    margin: 10px auto; /* Center and add vertical spacing */
+    padding: 20px;
+    border: 1px solid #ccc;
+    overflow: hidden; /* Helps contain floated elements */
+    width: 100%; /* Ensure cards take full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
 }
-
-.otp-card p {
-  margin: 0.5rem 0;
+.otp-card-layout h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+.otp-card-layout p {
+  margin: 0.2rem 0;
   word-wrap: break-word;
 }
 
-.otp-card .label {
+.otp-card-layout .label {
   font-weight: 600;
   color: #555;
   display: inline-block;
   width: 80px;
 }
 
-.otp-card .secret {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    color: var(--success-color);
+.otp-card-layout .secret-container,
+.otp-card-layout .otp-url-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Allow the container to grow and fill the space */
 }
+.otp-card-layout .secret-container button,
+.otp-card-layout .otp-url-container button {
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.otp-card-layout .secret-row,
+.otp-card-layout .otp-url-row {
+  display: flex;
+  align-items: center;
+}
+
+.otp-card-layout .text-input {
+  flex: 1; /* Allow input to grow and shrink to fill available space */
+  min-width: 0; /* Allow input to shrink below its default minimum size */
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  font-family: 'Courier New', Courier, monospace; /* Fixed-width font */
+  color: var(--text-color); /* Consistent text color */
+  box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+}
+
+.otp-card-layout .secret-row .text-input {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.otp-card-layout .otp-url-row .text-input {
+  font-size: 0.8rem;
+}
+
 
 .error-message {
   color: var(--error-color);
   font-weight: bold;
-  text-align: center;
   padding: 1rem;
   background-color: #fdd;
-  border: 1px solid var(--error-color);
-  border-radius: 4px;
+  border: 1px solid var(--error-color);  border-radius: 4px;
 }
 
+.copy-button {
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0; /* reset inherited padding from button */
+  position: relative; /* Needed for the 'Copied!' tooltip */
+}
+
+/*
+ * 'Copied!' tooltip that appears on click.
+ * This is designed to be triggered by adding a 'copied' class
+ * to the button via JavaScript, and removing it after a short delay.
+ */
+.copy-button::after {
+  content: 'Copied!';
+  position: absolute;
+  bottom: 125%; /* Position it above the button icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--success-color);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+  pointer-events: none; /* So it doesn't interfere with mouse events */
+}
+
+.copy-button.copied::after {
+  opacity: 1;
+  visibility: visible;
+}
 
 #export-instructions {
   display: none;
@@ -143,7 +214,8 @@ h1 {
 }
 
 .accordion-button {
-  background-color: var(--card-background);
+  /* Slightly lighter than card background */
+  background-color: #f0f0f0;
   color: var(--text-color);
   cursor: pointer;
   padding: 1rem;
@@ -154,6 +226,17 @@ h1 {
   transition: 0.4s;
   font-size: 1rem;
   font-weight: 600;
+  position: relative; /* Needed for positioning the plus/minus */
+}
+
+.accordion-button::after {
+  content: '\ff0b'; /* Fullwidth plus sign */
+  font-size: 1rem;
+  color: #777;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .accordion-button:hover {
@@ -169,34 +252,11 @@ h1 {
   transition: max-height 0.2s ease-out;
 }
 
+.accordion.active .accordion-button::after {
+  content: "\ff0d"; /* Fullwidth minus sign */
+}
+
 .accordion.active .accordion-content {
   max-height: 500px; /* A more dynamic max-height */
   padding: 1rem;
-}
-
-.help-button {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 50%;
-
-  /* Centering the '?' */
-  text-align: center;
-  line-height: 24px; /* Match height for vertical centering */
-  font-size: 16px;
-  font-weight: bold;
-
-  /* Positioning */
-  vertical-align: middle;
-
-  cursor: pointer;
-  user-select: none;
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.help-button:hover {
-  background-color: #357abd;
 }
