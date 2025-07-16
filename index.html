@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Secret Extractor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Google Authenticator OTP Secret Extractor</h1>
+
+    <div class="accordion active">
+      <button class="accordion-button">What is this?</button>
+      <div class="accordion-content">
+        <p>This tool extracts One-Time Password secrets from the Google Authenticator app. It runs <strong>entirely locally in your browser</strong>, and no data is ever sent to any server.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-button">
+        Why is this needed?
+      </button>
+      <div class="accordion-content">
+        <p>Google Authenticator provides a way to transfer your data onto a different device, but it does <em>not</em> provide any way to view the original secrets. This makes it challenging to migrate from Google Authenticator to alternative apps such as 1Password, without reconfiguring the OTP for each account one by one, which can be a huge pain. This tool provides a simple browser-based workaround to that problem.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-button">
+        How does it work?
+      </button>
+      <div class="accordion-content">
+        <p>You provide the export QR code from the Google Authenticator app, which typically contains multiple OTP secrets within each QR code. This tool extracts the original secrets and provides them to you in a standard format (hex code) that you can then scan or input into your OTP app of choice.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-button">How to get the QR code from Google Authenticator</button>
+
+      <div class="accordion-content">
+        <ol>
+          <li>In Google Authenticator, click the hamburger menu at top left.</li>
+          <li>Choose “Transfer Accounts”.</li>
+          <li>Click “Export Accounts”.</li>
+          <li>Select the accounts to export (it defaults to all). Click “Next”.</li>
+          <li>You’ll be shown one or more screenshots, depending on how many codes you have. Take a screenshot of each QR code.</li>
+          <li>Add each screenshot here to extract your OTP secrets.</li>
+        </ol>
+      </div>
+    </div>
+
+
+    <div class="file-input-wrapper">
+      <label for="qr-input" class="file-input-label">Select QR Code Image</label>
+      <input type="file" id="qr-input" accept="image/*">
+    </div>
+
+    <canvas id="qr-canvas" style="display: none;"></canvas>
+    <div id="results-container"></div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

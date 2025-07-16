@@ -1,0 +1,202 @@
+:root {
+  --primary-color: #4a90e2;
+  --background-color: #f4f7f6;
+  --text-color: #2c3e50;
+  --card-background: #ffffff;
+  --border-color: #e0e0e0;
+  --error-color: #d9534f;
+  --info-color: #3498db;
+  --success-color: #5cb85c;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+#app {
+  max-width: 800px;
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: 0;
+}
+
+/* File Input Styling */
+.file-input-wrapper {
+  margin: 2rem 2rem 0;
+  text-align: center;
+}
+
+#qr-input {
+  display: none;
+}
+
+.file-input-label {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+.file-input-label:hover {
+  background-color: #357abd;
+}
+
+.file-input-label i {
+  margin-right: 0.5em;
+}
+
+/* Results Container */
+#results-container {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.otp-card {
+  background-color: #f9f9f9;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.otp-card h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.otp-card p {
+  margin: 0.5rem 0;
+  word-wrap: break-word;
+}
+
+.otp-card .label {
+  font-weight: 600;
+  color: #555;
+  display: inline-block;
+  width: 80px;
+}
+
+.otp-card .secret {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: var(--success-color);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  background-color: #fdd;
+  border: 1px solid var(--error-color);
+  border-radius: 4px;
+}
+
+
+#export-instructions {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  background-color: #f9f9f9;
+}
+
+#export-instructions ol {
+  padding-left: 20px;
+}
+
+/* Accordion Styling */
+.accordion {
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.accordion-button {
+  background-color: var(--card-background);
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.accordion-button:hover {
+  background-color: #ddd;
+}
+
+.accordion-content {
+  padding: 0 1rem;
+  background-color: var(--card-background);
+  border-top: 1px solid var(--border-color);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion.active .accordion-content {
+  max-height: 500px; /* A more dynamic max-height */
+  padding: 1rem;
+}
+
+.help-button {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+
+  /* Centering the '?' */
+  text-align: center;
+  line-height: 24px; /* Match height for vertical centering */
+  font-size: 16px;
+  font-weight: bold;
+
+  /* Positioning */
+  vertical-align: middle;
+
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.help-button:hover {
+  background-color: #357abd;
+}
