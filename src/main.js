@@ -151,15 +151,15 @@ function displayResults(otpParameters) {
             <span class="secret-container">
 
                 <input type="text" class="text-input secret-input" value="${secret.textContent}" readonly>
-                <button class="copy-button" onclick="copyToClipboard('${secret.textContent}')">                
+                <button class="copy-button" data-copy-text="${secret.textContent}">
                     <i class="fa fa-copy"></i>
                 </button>
             </span>
         </p>
-        <p class="otp-url-row"><span class="label">URL:</span>
+        <p class="otp-url-row"><span class="label">URL: </span>
             <span class="otp-url-container">
                 <input type="text" class="text-input url-input" value="${displayOtpAuthUrl}" readonly>
-                <button class="copy-button" onclick="copyToClipboard('${otpAuthUrl}')">
+                <button class="copy-button" data-copy-text="${otpAuthUrl}">
                     <i class="fa fa-copy"></i>
                 </button>
             </span>
@@ -183,7 +183,13 @@ function displayResults(otpParameters) {
 
     resultsContainer.appendChild(otpCard);
   });
-  window.copyToClipboard = copyToClipboard;
+  // Attach event listeners to all copy buttons
+  document.querySelectorAll('#results-container .copy-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const textToCopy = button.dataset.copyText;
+      copyToClipboard(textToCopy);
+    });
+  });
 
 }
 

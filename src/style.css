@@ -113,8 +113,7 @@ h1 {
   align-items: center;
   flex-grow: 1; /* Allow the container to grow and fill the space */
 }
-.otp-card-layout .secret-container button,
-.otp-card-layout .otp-url-container button {
+#results-container .otp-card-layout button {
   margin-left: 0.5rem;
   background: none;
   border: none;
