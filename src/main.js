@@ -5,6 +5,7 @@ import { Buffer } from 'buffer';
 import QRCode from 'qrcode';
 
 window.Buffer = Buffer;  // Make Buffer globally available
+let extractedOtps = []; // To store data for CSV export
 
 async function processImage(file) {
   const canvas = document.getElementById('qr-canvas');
@@ -69,12 +70,17 @@ function base64ToUint8Array(base64) {
 
 function displayResults(otpParameters) {
   const resultsContainer = document.getElementById('results-container');
+  const exportContainer = document.getElementById('export-container');
   resultsContainer.innerHTML = ''; // Clear previous results
+  extractedOtps = []; // Clear previous extracted data
 
   if (!otpParameters || otpParameters.length === 0) {
     resultsContainer.textContent = 'No OTP secrets found.';
+    exportContainer.style.display = 'none';
     return;
   }
+
+  exportContainer.style.display = 'block';
 
   otpParameters.forEach((otp, index) => {
     const otpCard = document.createElement('div');
@@ -104,6 +110,16 @@ function displayResults(otpParameters) {
         // You might need to adjust this default based on your application's needs.
         otpAuthUrl += `&counter=${otp.counter || 0}`;
     }
+
+    const otpForExport = {
+      name: otp.name,
+      secret: secret.textContent,
+      issuer: otp.issuer || '',
+      type: otpType,
+      counter: otpType === 'hotp' ? (otp.counter || 0) : '',
+      url: otpAuthUrl,
+    };
+    extractedOtps.push(otpForExport);
 
     // Create a decoded version for display, but keep the original for QR/copy.
     const displayOtpAuthUrl = decodeURIComponent(otpAuthUrl);
@@ -173,6 +189,8 @@ function displayResults(otpParameters) {
 
 function displayError(message) {
   const resultsContainer = document.getElementById('results-container');
+  const exportContainer = document.getElementById('export-container');
+  exportContainer.style.display = 'none';
   resultsContainer.innerHTML = `<p class="error-message">${message}</p>`;
 }
 
@@ -195,4 +213,51 @@ function copyToClipboard(text) {
     .catch(err => {
       console.error('Could not copy text: ', err);
     });
+}
+
+document.getElementById('download-csv-button').addEventListener('click', downloadAsCsv);
+
+/**
+ * Creates and triggers a download for a CSV file containing the extracted OTP data.
+ */
+function downloadAsCsv() {
+  if (extractedOtps.length === 0) {
+    alert('No data to export.');
+    return;
+  }
+
+  const headers = ['name', 'secret', 'issuer', 'type', 'counter', 'url'];
+
+  // Function to properly escape a field for CSV.
+  // Handles fields containing commas, double quotes, or newlines.
+  const escapeCsvField = (field) => {
+    const str = String(field === null || field === undefined ? '' : field);
+    if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+      // Enclose in double quotes and escape existing double quotes by doubling them.
+      return `"${str.replace(/"/g, '""')}"`;
+    }
+    return str;
+  };
+
+  // Combine headers and rows
+  const csvRows = [
+    headers.join(','), // header row
+    ...extractedOtps.map(otp =>
+      headers.map(header => escapeCsvField(otp[header])).join(',')
+    )
+  ];
+
+  const csvString = csvRows.join('\n');
+  const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+
+  // Create a link and trigger the download
+  const link = document.createElement('a');
+  const url = URL.createObjectURL(blob);
+  link.setAttribute('href', url);
+  link.setAttribute('download', 'otp_secrets.csv');
+  link.style.visibility = 'hidden';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 }

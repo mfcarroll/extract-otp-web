@@ -193,6 +193,30 @@ h1 {
   visibility: visible;
 }
 
+#export-container {
+  display: none; /* Initially hidden */
+  margin-top: 2rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid  var(--border-color);
+}
+
+#download-csv-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--success-color);
+  color: white;
+   border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+#download-csv-button:hover {
+  background-color: #4cae4c; /* A darker shade of success-color */
+}
+
 #export-instructions {
   display: none;
   margin-top: 10px;
