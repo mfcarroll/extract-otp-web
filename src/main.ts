@@ -226,10 +226,10 @@ function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement
 }
 
 function displayError(message: string, duration = 5000): void {
-  const resultsContainer = $<HTMLDivElement>('#results-container');
+  const errorContainer = $<HTMLDivElement>('#error-message-container');
 
   // To prevent multiple error messages from stacking, remove any existing one.
-  const existingError = resultsContainer.querySelector('.error-message');
+  const existingError = errorContainer.querySelector('.error-message');
   if (existingError) {
     existingError.remove();
   }
@@ -239,7 +239,7 @@ function displayError(message: string, duration = 5000): void {
   errorElement.textContent = message;
 
   // Prepend the error message so it appears at the top.
-  resultsContainer.prepend(errorElement);
+  errorContainer.prepend(errorElement);
 
   // Set a timeout to make the error message disappear.
   setTimeout(() => {
@@ -250,47 +250,94 @@ function displayError(message: string, duration = 5000): void {
   }, duration);
 }
 
-async function processFiles(files: FileList | null): Promise<void> {
-    if (!files || files.length === 0) return;
-
-    // Get the number of existing OTPs to know where the new list starts.
-    const firstNewIndex = extractedOtps.length;
-
-    const fileArray = Array.from(files);
-
-    try {
-        const otpParamPromises = fileArray.map(file => 
-            processImage(file).catch(error => {
-                console.error(`Error processing file ${file.name}:`, error);
-                // Return null to indicate a failed file, so Promise.all doesn't reject entirely.
-                return null;
-            })
-        );
-
-        const allOtpParametersNested = await Promise.all(otpParamPromises);
-
-        // Filter out any nulls from failed promises and flatten the array of arrays.
-        const newOtpParameters = allOtpParametersNested.filter(p => p !== null).flat();
-
-        if (newOtpParameters.length > 0) {
-            // Append new results to existing extractedOtps and display all results
-            extractedOtps = extractedOtps.concat(newOtpParameters);
-            displayResults(extractedOtps);
-
-            // Scroll to the first newly added card
-            const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
-            if (firstNewCard) {
-              firstNewCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        } else {
-            // New file(s) are invalid, but don't clear existing results. Just show an error.
-            displayError('No valid QR codes with OTP secrets found in the selected file(s).');
-        }
-    } catch (error: any) {
-        // This will catch any unexpected errors in the processFiles logic itself.
-        displayError(error.message || 'An unexpected error occurred while processing files.');
-    }
+/** Create a unique key for an OTP parameter to check for duplicates. */
+function getOtpUniqueKey(otp: MigrationOtpParameter): string {
+  const secretText = encode(otp.secret);
+  // A combination of issuer, name, and secret should be unique enough.
+  // Type is included for safety, though it's unlikely to differ for the same secret.
+  return `${otp.issuer}:${otp.name}:${otp.type}:${secretText}`;
 }
+
+async function processFiles(files: FileList | null): Promise<void> {
+  if (!files || files.length === 0) return;
+
+  const fileArray = Array.from(files);
+
+  try {
+    const otpParamPromises = fileArray.map(file =>
+      processImage(file).catch(error => {
+        console.error(`Error processing file ${file.name}:`, error);
+        displayError(`Failed to process image: ${file.name}. It might not be a valid QR code image.`);
+        return null;
+      })
+    );
+
+    const allOtpParametersNested = await Promise.all(otpParamPromises);
+    const newOtpParametersRaw = allOtpParametersNested.filter((p): p is MigrationOtpParameter[] => p !== null).flat();
+
+    if (newOtpParametersRaw.length === 0) {
+      // An error for a specific file might have been already shown.
+      // If not, we show a generic one.
+      if (allOtpParametersNested.every(p => p !== null)) {
+        displayError('No QR codes with OTP secrets found in the selected file(s).');
+      }
+      return;
+    }
+
+    const existingOtpKeys = new Set(extractedOtps.map(getOtpUniqueKey));
+    
+    // New Set to track keys in the current batch.
+    const uniqueNewParams = new Map<string, MigrationOtpParameter>();
+
+    let currentDuplicateCount = 0;
+    for (const otp of newOtpParametersRaw) {
+        const key = getOtpUniqueKey(otp);
+        // Add to map if it's not a duplicate from existing list or from this new batch
+        if (!existingOtpKeys.has(key) && !uniqueNewParams.has(key)) {
+            uniqueNewParams.set(key, otp);
+        } else {
+            currentDuplicateCount++;
+        }
+    }
+
+    const nonDuplicateOtpParameters = Array.from(uniqueNewParams.values());
+    const duplicateCount = currentDuplicateCount;
+
+    if (duplicateCount > 0) {
+      // If there were duplicates in the current batch, display an error.
+      // If no unique non duplicate params were extracted, and no other errors were displayed, then show the "all duplicates" message.
+      // Otherwise show that some entries were ignored.
+      // This works since we display the error *after* the error relating to file processing, if any.
+
+      if (nonDuplicateOtpParameters.length === 0) {
+        displayError('All OTP secrets from the image(s) are already in the list.');
+        console.log('No new OTP secrets to add.')
+      } else {
+        const plural = duplicateCount > 1 ? 's' : '';
+        displayError(`Ignored ${duplicateCount} duplicate OTP secret${plural}.`);
+        console.log(`Ignored duplicate(s).`)
+      }
+    }
+
+
+    if (nonDuplicateOtpParameters.length > 0) {
+      const firstNewIndex = extractedOtps.length;
+      extractedOtps.push(...nonDuplicateOtpParameters);
+      displayResults(extractedOtps);
+
+      const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
+      if (currentDuplicateCount > 0) {
+        return; // don't scroll down if duplicates occured.
+      }
+      if (firstNewCard) {
+        firstNewCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+  } catch (error: any) {
+    displayError(error.message || 'An unexpected error occurred while processing files.');
+    }
+  }
 
 const handleCopy = (event: MouseEvent) => {
   const triggerElement = event.target as HTMLElement;
