@@ -6,7 +6,7 @@
   --border-color: #e0e0e0;
   --error-color: #d9534f;
   --info-color: #3498db;
-  --success-color: #5cb85c;  /* Updated font-family */
+  --success-color: #5cb85c;
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -26,10 +26,12 @@ body {
 
 #app {
   max-width: 800px;
+  width: 100%;
   background-color: var(--card-background);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 h1 {
@@ -40,8 +42,20 @@ h1 {
 
 /* File Input Styling */
 .file-input-wrapper {
-  margin: 2rem 2rem 0;
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.file-input-wrapper.active {
+    background-color: #e8f0fe;
 }
 
 #qr-input {
@@ -52,11 +66,12 @@ h1 {
   display: inline-block;
   padding: 12px 24px;
   background-color: var(--primary-color);
-  color: white;
+  color: #fff;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   font-weight: 500;
+  border: none;
 }
 
 .file-input-label:hover {
@@ -65,6 +80,12 @@ h1 {
 
 .file-input-label i {
   margin-right: 0.5em;
+}
+
+.drop-text {
+  margin-top: 1rem;
+  color: #777;
+  font-size: 0.9rem;
 }
 
 /* Results Container */
@@ -107,7 +128,7 @@ h1 {
 .otp-card-layout .otp-url-container {
   display: flex;
   align-items: center;
-  flex-grow: 1; /* Allow the container to grow and fill the space */
+  flex-grow: 1;
 }
 
 .otp-card-layout .secret-row,
@@ -117,20 +138,19 @@ h1 {
 }
 
 .otp-card-layout .text-input {
-  flex: 1; /* Allow input to grow and shrink to fill available space */
-  min-width: 0; /* Allow input to shrink below its default minimum size */
+  flex: 1;
+  min-width: 0;
   padding: 8px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
   background-color: #f7f7f7;
-  font-family: 'JetBrains Mono', Consolas, 'SF Mono', 'Courier New', Courier, monospace; /* Fixed-width font */
-  color: var(--text-color); /* Consistent text color */
-  box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+  font-family: 'JetBrains Mono', Consolas, 'SF Mono', 'Courier New', Courier, monospace;
+  color: var(--text-color);
+  box-sizing: border-box;
 }
 
 .otp-card-layout .secret-row .text-input {
   font-size: 1.2rem;
-  /* font-weight: bold; */
   letter-spacing: 2px;
 }
 
@@ -144,7 +164,8 @@ h1 {
   font-weight: bold;
   padding: 1rem;
   background-color: #fdd;
-  border: 1px solid var(--error-color);  border-radius: 4px;
+  border: 1px solid var(--error-color);
+  border-radius: 4px;
 }
 
 .copy-button {
@@ -152,19 +173,14 @@ h1 {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0; /* reset inherited padding from button */
-  position: relative; /* Needed for the 'Copied!' tooltip */
+  padding: 0;
+  position: relative;
 }
 
-/*
- * 'Copied!' tooltip that appears on click.
- * This is designed to be triggered by adding a 'copied' class
- * to the button via JavaScript, and removing it after a short delay.
- */
 .copy-button::after {
   content: 'Copied!';
   position: absolute;
-  bottom: 125%; /* Position it above the button icon */
+  bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--success-color);
@@ -175,7 +191,7 @@ h1 {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
-  pointer-events: none; /* So it doesn't interfere with mouse events */
+  pointer-events: none;
 }
 
 .copy-button.copied::after {
@@ -184,7 +200,7 @@ h1 {
 }
 
 #export-container {
-  display: none; /* Initially hidden */
+  display: none;
   margin-top: 2rem;
   text-align: center;
   padding-top: 1.5rem;
@@ -195,7 +211,7 @@ h1 {
   display: inline-block;
   padding: 12px 24px;
   background-color: var(--success-color);
-  color: white;
+  color: #fff;
    border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -204,15 +220,31 @@ h1 {
 }
 
 #download-csv-button:hover {
-  background-color: #4cae4c; /* A darker shade of success-color */
+  background-color: #4cae4c;
+}
+
+#clear-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--error-color);
+  color: #fff;
+   border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+#clear-button:hover {
+  background-color: #c9302c;
 }
 
 .otp-details .styled-secret .number {
-  color: #0056b3; /* A darker shade of blue for numbers, for better accessibility */
+  color: #0056b3;
 }
 
 .otp-details .styled-secret .alpha {
-  color: #198754; /* A darker shade of green for alphabetical chars, for better accessibility */
+  color: #198754;
 }
 
 #export-instructions {
@@ -236,7 +268,6 @@ h1 {
 }
 
 .accordion-button {
-  /* Slightly lighter than card background */
   background-color: #f0f0f0;
   color: var(--text-color);
   cursor: pointer;
@@ -248,7 +279,7 @@ h1 {
   transition: 0.4s;
   font-size: 1rem;
   font-weight: 600;
-  position: relative; /* Needed for positioning the plus/minus */
+  position: relative;
 }
 
 .accordion-button::after {
@@ -284,10 +315,10 @@ h1 {
 }
 
 .otp-details {
-  flex: 1; /* Allows the details to take up the remaining space */
-  min-width: 0; /* Important for flex items to allow them to shrink */
+  flex: 1;
+  min-width: 0;
 }
 
 .qr-code-container {
-  flex-shrink: 0; /* Prevents the QR code container from shrinking */
+  flex-shrink: 0;
 }
