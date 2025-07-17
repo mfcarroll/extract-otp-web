@@ -120,7 +120,7 @@ function displayResults(otpParameters: MigrationOtpParameter[]): void {
   const resultsContainer = $<HTMLDivElement>('#results-container');
   const exportContainer = $<HTMLDivElement>('#export-container');
   
-  // Clear any previous results (like the "Processing..." message) before rendering.
+  // Clear any previous results (including error messages) before rendering.
   resultsContainer.innerHTML = '';
   if (!otpParameters || otpParameters.length === 0) {
     resultsContainer.textContent = 'No OTP secrets found in the provided images.';
@@ -132,7 +132,7 @@ function displayResults(otpParameters: MigrationOtpParameter[]): void {
 
   const fragment = document.createDocumentFragment();
   otpParameters.forEach((otp, index) => {
-    const { cardElement, exportData } = createOtpCard(otp, index);
+    const { cardElement } = createOtpCard(otp, index);
     fragment.appendChild(cardElement);
   });
   resultsContainer.appendChild(fragment);
@@ -176,6 +176,7 @@ function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement
 
   const cardElement = document.createElement('div');
   cardElement.className = 'otp-card otp-card-layout';
+  cardElement.id = `otp-card-${index}`;
 
   const qrCodeCanvas = document.createElement('canvas');
   QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, { width: 220, margin: 1, color: { light: '#0000' } });
@@ -224,30 +225,42 @@ function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement
   return { cardElement, exportData };
 }
 
-function displayError(message: string): void {
+function displayError(message: string, duration = 5000): void {
   const resultsContainer = $<HTMLDivElement>('#results-container');
-  const exportContainer = $<HTMLDivElement>('#export-container');
-  exportContainer.style.display = 'none';
-  resultsContainer.innerHTML = `<p class="error-message">${message}</p>`;
+
+  // To prevent multiple error messages from stacking, remove any existing one.
+  const existingError = resultsContainer.querySelector('.error-message');
+  if (existingError) {
+    existingError.remove();
+  }
+
+  const errorElement = document.createElement('div');
+  errorElement.className = 'error-message';
+  errorElement.textContent = message;
+
+  // Prepend the error message so it appears at the top.
+  resultsContainer.prepend(errorElement);
+
+  // Set a timeout to make the error message disappear.
+  setTimeout(() => {
+    // Add a class to trigger the fade-out animation.
+    errorElement.classList.add('fade-out');
+    // After the animation, remove the element from the DOM.
+    errorElement.addEventListener('transitionend', () => errorElement.remove());
+  }, duration);
 }
 
 async function processFiles(files: FileList | null): Promise<void> {
     if (!files || files.length === 0) return;
 
-    let resultsContainer = $<HTMLDivElement>('#results-container');    
-    let exportContainer = $<HTMLDivElement>('#export-container');
-    // Display processing message and ensure the container is visible
-    resultsContainer.style.display = 'block';
-    exportContainer.style.display = 'none';
+    // Get the number of existing OTPs to know where the new list starts.
+    const firstNewIndex = extractedOtps.length;
 
     const fileArray = Array.from(files);
 
     try {
-
         const otpParamPromises = fileArray.map(file => 
             processImage(file).catch(error => {
-
-
                 console.error(`Error processing file ${file.name}:`, error);
                 // Return null to indicate a failed file, so Promise.all doesn't reject entirely.
                 return null;
@@ -257,15 +270,21 @@ async function processFiles(files: FileList | null): Promise<void> {
         const allOtpParametersNested = await Promise.all(otpParamPromises);
 
         // Filter out any nulls from failed promises and flatten the array of arrays.
-        const allOtpParameters = allOtpParametersNested.filter(p => p !== null).flat();
+        const newOtpParameters = allOtpParametersNested.filter(p => p !== null).flat();
 
-        if (allOtpParameters.length > 0) {
-            // Append new results to existing extractedOtps and display
-              extractedOtps = extractedOtps.concat(allOtpParameters);
-              displayResults(extractedOtps);
+        if (newOtpParameters.length > 0) {
+            // Append new results to existing extractedOtps and display all results
+            extractedOtps = extractedOtps.concat(newOtpParameters);
+            displayResults(extractedOtps);
 
+            // Scroll to the first newly added card
+            const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
+            if (firstNewCard) {
+              firstNewCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         } else {
-            displayError('No valid QR codes with OTP secrets were found in the selected file(s).');
+            // New file(s) are invalid, but don't clear existing results. Just show an error.
+            displayError('No valid QR codes with OTP secrets found in the selected file(s).');
         }
     } catch (error: any) {
         // This will catch any unexpected errors in the processFiles logic itself.
@@ -347,7 +366,7 @@ function downloadAsCsv(): void {
 }
 
 function convertToOtpData(otp: MigrationOtpParameter): OtpData {
-  const { exportData } = createOtpCard(otp, 0); // We don't need the card element here
+  const { exportData } = createOtpCard(otp, 0); // index doesn't matter here
   return exportData;
 }
 
@@ -362,7 +381,7 @@ $<HTMLButtonElement>('#download-csv-button').addEventListener('click', downloadA
 
 // Listen for Clear All button clicks
 $<HTMLButtonElement>('#clear-button').addEventListener('click', () => {
-  const resultsContainer = $<HTMLDivElement>('#results-container');
+    const resultsContainer = $<HTMLDivElement>('#results-container');
   const exportContainer = $<HTMLDivElement>('#export-container');
   const qrInput = $<HTMLInputElement>('#qr-input');
   resultsContainer.innerHTML = '';
