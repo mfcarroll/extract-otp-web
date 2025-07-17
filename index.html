@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OTP Secret Extractor</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
@@ -14,7 +17,7 @@
     <div class="accordion active">
       <button class="accordion-button">What is this?</button>
       <div class="accordion-content">
-        <p>This tool extracts One-Time Password secrets from the Google Authenticator app. It runs <strong>entirely locally, here in your browser</strong>. No data is ever sent to any server, and there is no software to install.</p>
+        <p>This tool extracts One-Time Password secrets from the Google Authenticator app. No data is ever sent to any server, and there is no software to install. <strong>It runs entirely locally, here in your browser</strong>.</p>
       </div>
     </div>
 
@@ -32,7 +35,7 @@
         How does it work?
       </button>
       <div class="accordion-content">
-        <p>You provide a screenshot of the export QR code(s) from the Google Authenticator app, which typically contain multiple OTP secrets within each QR code. This tool extracts the original secrets and provides them to you in a standard format (hex code / QR code) that you can then scan or input into your OTP app of choice.</p>
+        <p>You provide screenshots of the export QR codes from your Google Authenticator app. Each QR code typically contain multiple OTP secrets within each QR code. This tool extracts the original secrets and provides them to you in a standard format (individual QR code or hex code) that you can then scan or input into your OTP app of choice.</p>
       </div>
     </div>
 
@@ -62,7 +65,7 @@
 
     <div id="export-container">
       <button id="download-csv-button"><i class="fa fa-download"></i> Download as CSV</button>
-    </div>
+     </div>
   </div>
   <script type="module" src="/src/main.ts"></script>
 </body>

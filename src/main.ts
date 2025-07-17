@@ -1,19 +1,37 @@
 import jsQR from 'jsqr';
 import protobuf from 'protobufjs';
 import { encode } from 'thirty-two';
-import { Buffer } from 'buffer';
+import { Buffer } from 'buffer'; // Keep for browser environment polyfill
 import QRCode from 'qrcode';
-import type { OtpData } from './types';
+import { OtpData } from './types';
 
-window.Buffer = Buffer;  // Make Buffer globally available
+// Define a more specific type for the raw OTP data from the protobuf payload.
+interface MigrationOtpParameter {
+  secret: Uint8Array;
+  name: string;
+  issuer: string;
+  algorithm: number; // ALGORITHM_UNSPECIFIED (0), SHA1 (1)
+  digits: number;    // DIGITS_UNSPECIFIED (0), SIX (1), EIGHT (2)
+  type: number;      // TYPE_UNSPECIFIED (0), HOTP (1), TOTP (2)
+  counter: number;
+}
+
+window.Buffer = Buffer; // Make Buffer globally available for libraries that might need it.
 let extractedOtps: OtpData[] = []; // To store data for CSV export
 
-async function processImage(file: File): Promise<void> {
-  const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
-  if (!canvas) return;
+/** Generic helper to query the DOM and throw an error if the element is not found. */
+function $<T extends HTMLElement>(selector: string): T {
+  const element = document.querySelector<T>(selector);
+  if (!element) {
+    throw new Error(`Element with selector "${selector}" not found.`);
+  }
+  return element;
+}
 
+async function processImage(file: File): Promise<void> {
+  const canvas = $<HTMLCanvasElement>('#qr-canvas');
   const ctx = canvas.getContext('2d');
-  if (!ctx) return;
+  if (!ctx) return; // The context can still be null
 
   const img = new Image();
 
@@ -51,11 +69,12 @@ async function processOtpUrl(otpUrl: string): Promise<void> {
 
     const data = base64ToUint8Array(dataBase64);
 
+    // It's often better to load the protobuf definition once and reuse it.
     const root = await protobuf.load('google_auth.proto');
     const MigrationPayload = root.lookupType('MigrationPayload');
 
-    // Casting to `any` because the decoded payload structure is dynamic.
-    const payload: any = MigrationPayload.decode(data);
+    // Decode the payload and assert its type for type safety.
+    const payload = MigrationPayload.decode(data) as unknown as { otpParameters: MigrationOtpParameter[] };
     displayResults(payload.otpParameters);
 
   } catch (error: any) {
@@ -74,11 +93,11 @@ function base64ToUint8Array(base64: string): Uint8Array {
   return bytes;
 }
 
-function displayResults(otpParameters: any[]): void {
-  const resultsContainer = document.getElementById('results-container') as HTMLDivElement;
-  const exportContainer = document.getElementById('export-container') as HTMLDivElement;
+function displayResults(otpParameters: MigrationOtpParameter[]): void {
+  const resultsContainer = $<HTMLDivElement>('#results-container');
+  const exportContainer = $<HTMLDivElement>('#export-container');
   resultsContainer.innerHTML = ''; // Clear previous results
-  extractedOtps = []; // Clear previous extracted data
+  extractedOtps = [];
 
   if (!otpParameters || otpParameters.length === 0) {
     resultsContainer.textContent = 'No OTP secrets found.';
@@ -88,108 +107,109 @@ function displayResults(otpParameters: any[]): void {
 
   exportContainer.style.display = 'block';
 
-  otpParameters.forEach((otp: any, index: number) => {
-    const otpCard = document.createElement('div');
-    otpCard.className = 'otp-card';
-
-    const secretText = encode(otp.secret);
-    const issuerText = otp.issuer || 'N/A';
-    const nameText = otp.name || 'N/A';
-    const typeText = otp.type === 2 ? 'totp' : 'hotp';
-
-    let label = nameText;
-    if (otp.issuer) {
-      label = `${otp.issuer}:${nameText}`;
-    }
-    const encodedLabel = encodeURIComponent(label);
-
-    let otpAuthUrl = `otpauth://${typeText}/${encodedLabel}?secret=${secretText}`;
-    if (otp.issuer) {
-      otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
-    }
-    if (typeText === 'hotp') {
-      otpAuthUrl += `&counter=${otp.counter || 0}`;
-    }
-
-    const otpForExport: OtpData = {
-      name: nameText,
-      secret: secretText,
-      issuer: otp.issuer || '',
-      type: typeText,
-      counter: typeText === 'hotp' ? (otp.counter || 0) : '',
-      url: otpAuthUrl,
-    };
-    extractedOtps.push(otpForExport);
-
-    const displayOtpAuthUrl = decodeURIComponent(otpAuthUrl);
-    const qrCodeCanvas = document.createElement('canvas');
-
-    const qrSize = 220;
-    QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, {
-      width: qrSize,
-      margin: 1,
-      color: {
-        light: '#0000' // Transparent background
-      }
-    });
-
-    const otpDetails = document.createElement('div');
-    otpDetails.innerHTML = `
-        <p><span class="label">Name:</span> ${nameText}</p>
-        <p><span class="label">Issuer:</span> ${issuerText}</p>
-        <p><span class="label">Type:</span> ${typeText}</p>
-        <p class="secret-row"><span class="label">Secret:</span>
-            <span class="secret-container">
-                <input type="text" class="text-input secret-input" value="${secretText}" readonly>
-                <button class="copy-button" data-copy-text="${secretText}">
-                    <i class="fa fa-copy"></i>
-                </button>
-            </span>
-        </p>
-        <p class="otp-url-row"><span class="label">URL: </span>
-            <span class="otp-url-container">
-                <input type="text" class="text-input url-input" value="${displayOtpAuthUrl}" readonly>
-                <button class="copy-button" data-copy-text="${otpAuthUrl}">
-                    <i class="fa fa-copy"></i>
-                </button>
-            </span>
-        </p>
-    `;
-
-    const qrCodeContainer = document.createElement('div');
-    qrCodeContainer.appendChild(qrCodeCanvas);
-    qrCodeContainer.style.float = 'right';
-    qrCodeContainer.style.marginLeft = '20px';
-
-    otpCard.classList.add('otp-card-layout');
-    otpCard.appendChild(qrCodeContainer);
-    otpCard.appendChild(otpDetails);
-
-    const heading = document.createElement('h3');
-    heading.textContent = `${index + 1}. ${issuerText}: ${nameText}`;
-    otpDetails.prepend(heading);
-
-    resultsContainer.appendChild(otpCard);
+  const fragment = document.createDocumentFragment();
+  otpParameters.forEach((otp, index) => {
+    const { cardElement, exportData } = createOtpCard(otp, index);
+    extractedOtps.push(exportData);
+    fragment.appendChild(cardElement);
   });
+  resultsContainer.appendChild(fragment);
+}
 
-  document.querySelectorAll<HTMLButtonElement>('#results-container .copy-button').forEach(button => {
-    button.addEventListener('click', () => {
-      const textToCopy = button.dataset.copyText;
-      if (textToCopy) {
-        copyToClipboard(textToCopy);
-      }
-    });
+/**
+ * Creates an HTML element for a single OTP entry.
+ * This acts like a component, encapsulating the logic and structure for a card.
+ */
+function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement: HTMLDivElement, exportData: OtpData } {
+  const secretText = encode(otp.secret);
+  const issuerText = otp.issuer || 'N/A';
+  const nameText = otp.name || 'N/A';
+  const typeText = otp.type === 2 ? 'totp' : 'hotp';
+
+  let label = nameText;
+  if (otp.issuer) {
+    label = `${otp.issuer}:${nameText}`;
+  }
+  const encodedLabel = encodeURIComponent(label);
+
+  let otpAuthUrl = `otpauth://${typeText}/${encodedLabel}?secret=${secretText}`;
+  if (otp.issuer) {
+    otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
+  }
+  if (typeText === 'hotp') {
+    otpAuthUrl += `&counter=${otp.counter || 0}`;
+  }
+
+  const exportData: OtpData = {
+    name: nameText,
+    secret: secretText,
+    issuer: otp.issuer || '',
+    type: typeText,
+    counter: typeText === 'hotp' ? (otp.counter || 0) : '',
+    url: otpAuthUrl,
+  };
+
+  const cardElement = document.createElement('div');
+  cardElement.className = 'otp-card otp-card-layout';
+
+  const qrCodeCanvas = document.createElement('canvas');
+  QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, { width: 220, margin: 1, color: { light: '#0000' } });
+
+  const qrCodeContainer = document.createElement('div');
+  qrCodeContainer.className = 'qr-code-container';
+  qrCodeContainer.appendChild(qrCodeCanvas);
+
+  const otpDetails = document.createElement('div');
+  otpDetails.className = 'otp-details';
+  otpDetails.innerHTML = `
+      <h3>${index + 1}. ${issuerText}: ${nameText}</h3>
+      <p><span class="label">Name:</span> ${nameText}</p>
+      <p><span class="label">Issuer:</span> ${issuerText}</p>
+      <p><span class="label">Type:</span> ${typeText}</p>
+      <p class="secret-row">
+          <span class="label">Secret:</span>
+          <span class="secret-container">
+              <input type="text" class="text-input secret-input" value="${secretText}" readonly>
+              
+              
+              <button class="copy-button" aria-label="Copy secret">
+                  <i class="fa fa-copy"></i>
+              </button>
+          </span>
+      </p>
+      <p class="otp-url-row">
+          <span class="label">URL: </span>
+          <span class="otp-url-container">
+              <input type="text" class="text-input url-input" value="${decodeURIComponent(otpAuthUrl)}" readonly>
+              <button class="copy-button" data-copy-text="${otpAuthUrl}" aria-label="Copy URL">
+                  <i class="fa fa-copy"></i>
+              </button>
+          </span>
+      </p>
+  `;
+
+
+  // Use a single event listener on the otpDetails element and use event delegation
+  otpDetails.addEventListener('click', (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (target.matches('.text-input, .copy-button, .copy-button i')) {
+        handleCopy(event);
+    }
   });
+  cardElement.appendChild(otpDetails);
+  cardElement.appendChild(qrCodeContainer);
+
+  return { cardElement, exportData };
 }
 
 function displayError(message: string): void {
-  const resultsContainer = document.getElementById('results-container') as HTMLDivElement;
-  const exportContainer = document.getElementById('export-container') as HTMLDivElement;
+  const resultsContainer = $<HTMLDivElement>('#results-container');
+  const exportContainer = $<HTMLDivElement>('#export-container');
   exportContainer.style.display = 'none';
   resultsContainer.innerHTML = `<p class="error-message">${message}</p>`;
 }
 
-document.getElementById('qr-input')?.addEventListener('change', (event: Event) => {
+$<HTMLInputElement>('#qr-input').addEventListener('change', (event: Event) => {
   const target = event.target as HTMLInputElement;
   const file = target.files?.[0];
   if (file) {
@@ -197,21 +217,47 @@ document.getElementById('qr-input')?.addEventListener('change', (event: Event) =
   }
 });
 
-function copyToClipboard(text: string): void {
+const handleCopy = (event: MouseEvent) => {
+  const triggerElement = event.target as HTMLElement;
+
+  // Find the container for the input and button
+  const container = triggerElement.closest('.secret-container, .otp-url-container');
+  if (!container) {
+    return;
+  }
+
+  const input = container.querySelector<HTMLInputElement>('.text-input');
+  const button = container.querySelector<HTMLButtonElement>('.copy-button');
+  if (!input || !button) {
+    return;
+  }
+
+  // Get text to copy. Prefer data-attribute on button, fallback to input value.
+  // This handles the case where the decoded URL in the input is different from the raw URL in data-copy-text.
+  const textToCopy = triggerElement.matches('.copy-button, .copy-button i')
+    ? button.dataset.copyText || input.value
+    : input.value;
+
+  // Select the text in the input field, fulfilling the unification requirement.
+  input.select();
+
+  // Copy to clipboard and show tooltip on the button.
+  copyToClipboard(textToCopy, button);
+};
+
+const copyToClipboard = (text: string, buttonElement: HTMLElement): void => {
   navigator.clipboard.writeText(text)
     .then(() => {
-      const button = document.activeElement as HTMLElement;
-      if (button?.classList.contains('copy-button')) {
-        button.classList.add('copied');
-        setTimeout(() => button.classList.remove('copied'), 1500);
-      }
+      // Add 'copied' class to the button to show the tooltip
+      buttonElement.classList.add('copied');
+      setTimeout(() => buttonElement.classList.remove('copied'), 1500);
     })
     .catch(err => {
       console.error('Could not copy text: ', err);
     });
-}
+};
 
-document.getElementById('download-csv-button')?.addEventListener('click', downloadAsCsv);
+$<HTMLButtonElement>('#download-csv-button').addEventListener('click', downloadAsCsv);
 
 function downloadAsCsv(): void {
   if (extractedOtps.length === 0) {

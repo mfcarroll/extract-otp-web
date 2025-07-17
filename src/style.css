@@ -6,7 +6,7 @@
   --border-color: #e0e0e0;
   --error-color: #d9534f;
   --info-color: #3498db;
-  --success-color: #5cb85c;
+  --success-color: #5cb85c;  /* Updated font-family */
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -83,17 +83,13 @@ h1 {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 .otp-card-layout {
-    width: 600px; /* Adjust to your preferred width */
-    margin: 10px auto; /* Center and add vertical spacing */
-    padding: 20px;
-    border: 1px solid #ccc;
-    overflow: hidden; /* Helps contain floated elements */
-    width: 100%; /* Ensure cards take full width */
-    box-sizing: border-box; /* Include padding and border in the element's total width */
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 }
 .otp-card-layout h3 {
-    color: var(--primary-color);
-    margin-top: 0;
+  color: var(--primary-color);
+  margin-top: 0;
 }
 .otp-card-layout p {
   margin: 0.2rem 0;
@@ -113,12 +109,6 @@ h1 {
   align-items: center;
   flex-grow: 1; /* Allow the container to grow and fill the space */
 }
-#results-container .otp-card-layout button {
-  margin-left: 0.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
 
 .otp-card-layout .secret-row,
 .otp-card-layout .otp-url-row {
@@ -133,14 +123,15 @@ h1 {
   border: 1px solid var(--border-color);
   border-radius: 4px;
   background-color: #f7f7f7;
-  font-family: 'Courier New', Courier, monospace; /* Fixed-width font */
+  font-family: 'JetBrains Mono', Consolas, 'SF Mono', 'Courier New', Courier, monospace; /* Fixed-width font */
   color: var(--text-color); /* Consistent text color */
   box-sizing: border-box; /* Ensure padding doesn't affect overall width */
 }
 
 .otp-card-layout .secret-row .text-input {
   font-size: 1.2rem;
-  font-weight: bold;
+  /* font-weight: bold; */
+  letter-spacing: 2px;
 }
 
 .otp-card-layout .otp-url-row .text-input {
@@ -216,6 +207,14 @@ h1 {
   background-color: #4cae4c; /* A darker shade of success-color */
 }
 
+.otp-details .styled-secret .number {
+  color: #0056b3; /* A darker shade of blue for numbers, for better accessibility */
+}
+
+.otp-details .styled-secret .alpha {
+  color: #198754; /* A darker shade of green for alphabetical chars, for better accessibility */
+}
+
 #export-instructions {
   display: none;
   margin-top: 10px;
@@ -282,4 +281,13 @@ h1 {
 .accordion.active .accordion-content {
   max-height: 500px; /* A more dynamic max-height */
   padding: 1rem;
+}
+
+.otp-details {
+  flex: 1; /* Allows the details to take up the remaining space */
+  min-width: 0; /* Important for flex items to allow them to shrink */
+}
+
+.qr-code-container {
+  flex-shrink: 0; /* Prevents the QR code container from shrinking */
 }
