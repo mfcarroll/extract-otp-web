@@ -100,7 +100,7 @@ function processImage(file: File): Promise<MigrationOtpParameter[] | null> {
 
     img.onerror = () => {
       URL.revokeObjectURL(img.src); // Clean up memory
-      reject(new Error("File does not appear to be an image."));
+      reject(new Error("File is not an image."));
     };
 
     img.src = URL.createObjectURL(file);
@@ -254,14 +254,20 @@ function createOtpCard(
   const qrCodeContainer = document.createElement("div");
   qrCodeContainer.className = "qr-code-container";
   qrCodeContainer.addEventListener("click", () => {
-    showQrModal(otpAuthUrl, `${issuerText}: ${accountName}`);
+    const modalTitle = otp.issuer
+      ? `${issuerText}: ${accountName}`
+      : accountName;
+    showQrModal(otpAuthUrl, modalTitle);
   });
   qrCodeContainer.appendChild(qrCodeCanvas);
 
   const otpDetails = document.createElement("div");
   otpDetails.className = "otp-details";
+
+  const titleText = otp.issuer ? `${issuerText}: ${accountName}` : accountName;
+
   otpDetails.innerHTML = `
-      <h3>${index + 1}. ${issuerText}: ${accountName}</h3>
+      <h3>${index + 1}. ${titleText}</h3>
       <p><span class="label">Name:</span> ${accountName}</p>
       <p><span class="label">Issuer:</span> ${issuerText}</p>
       <p><span class="label">Type:</span> ${typeText}</p>
@@ -368,7 +374,6 @@ function addUploadLog(
   )}</span><span class="log-filler"></span><span class="log-message">${message}</span>`;
 
   logList.appendChild(logItem);
-  logItem.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 function displayError(message: string, duration = 5000): void {
@@ -484,6 +489,12 @@ async function processFiles(files: FileList | null): Promise<void> {
       if (!anyDuplicatesOrErrors && firstNewCard) {
         firstNewCard.scrollIntoView({ behavior: "smooth", block: "start" });
       }
+    }
+
+    // If there were any issues, scroll to the log/drop area to make them visible.
+    if (anyDuplicatesOrErrors) {
+      const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
+      fileDropZone.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   } catch (error: any) {
     displayError(
@@ -619,34 +630,40 @@ function initializeApp(): void {
 
   // --- Drag and Drop Event Listeners ---
   const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
+  const dragOverlay = $<HTMLDivElement>("#drag-overlay");
+  let dragCounter = 0;
 
   function preventDefaults(e: Event): void {
     e.preventDefault();
     e.stopPropagation();
   }
 
-  // Prevent default drag behaviors on the drop zone and the body.
+  // Prevent default drag behaviors for the entire page.
   ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-    fileDropZone.addEventListener(eventName, preventDefaults);
     document.body.addEventListener(eventName, preventDefaults);
   });
 
-  // Add a visual indicator when a file is dragged over the drop zone.
-  ["dragenter", "dragover"].forEach((eventName) => {
-    fileDropZone.addEventListener(eventName, () =>
-      fileDropZone.classList.add("active")
-    );
+  // Add a visual indicator when a file is dragged over the page.
+  document.body.addEventListener("dragenter", () => {
+    dragCounter++;
+    fileDropZone.classList.add("active");
+    dragOverlay.classList.add("active");
   });
 
-  // Remove the visual indicator when the file leaves the drop zone.
-  ["dragleave", "drop"].forEach((eventName) => {
-    fileDropZone.addEventListener(eventName, () =>
-      fileDropZone.classList.remove("active")
-    );
+  // Remove the visual indicator when the file leaves the page.
+  document.body.addEventListener("dragleave", () => {
+    dragCounter--;
+    if (dragCounter === 0) {
+      fileDropZone.classList.remove("active");
+      dragOverlay.classList.remove("active");
+    }
   });
 
-  // Handle the dropped files.
-  fileDropZone.addEventListener("drop", (event: DragEvent) => {
+  // Handle the dropped files anywhere on the page.
+  document.body.addEventListener("drop", (event: DragEvent) => {
+    dragCounter = 0;
+    fileDropZone.classList.remove("active");
+    dragOverlay.classList.remove("active");
     processFiles(event.dataTransfer?.files ?? null);
   });
 

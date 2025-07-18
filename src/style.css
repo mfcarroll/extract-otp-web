@@ -54,11 +54,14 @@ h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  position: relative; /* For z-index stacking */
 }
 
 .file-input-wrapper.active {
   background-color: #e8f0fe;
+  border-color: var(--primary-color);
+  z-index: 991; /* To appear above the drag overlay */
 }
 
 #qr-input {
@@ -160,8 +163,6 @@ h1 {
 /* Results Container */
 #results-container {
   margin-top: 2rem;
-  border-top: 1px solid var(--border-color);
-  padding-top: 1rem;
 }
 
 .otp-card {
@@ -292,8 +293,6 @@ h1 {
   display: none;
   margin-top: 2rem;
   text-align: center;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
 }
 
 #download-csv-button {
@@ -619,4 +618,24 @@ footer a:hover {
   font-weight: 600;
   color: var(--text-color);
   text-align: center;
+}
+
+/* --- Drag and Drop Overlay --- */
+#drag-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(44, 62, 80, 0.5); /* Using --text-color with alpha */
+  z-index: 990; /* Below the dropzone highlight */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none; /* So it doesn't block clicks */
+}
+
+#drag-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }

@@ -92,6 +92,6 @@ The user interface and QR code processing are powered by these excellent open-so
 - [qrcode](https://github.com/soldair/node-qrcode) for generating new QR codes for each account.
 - [thirty-two](https://github.com/wzrdtales/thirty-two) for Base32 encoding the OTP secrets.
 
-[Google Code Assist](https://codeassist.google/) was used during the development of this tool. All AI-generated code has been carefully manually reviewed.
+[Gemini Code Assist](https://codeassist.google/) was used during the development of this tool. All AI-generated code has been carefully manually reviewed.
 
 The development of this tool was made possible in part through the support of [Stand.earth](https://stand.earth/). If you found this useful, and want to help protect the people and places you love, please [consider making a donation](https://stand.earth/donate/) to support Stand's work.
