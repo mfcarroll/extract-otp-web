@@ -21,285 +21,312 @@
   </head>
 
   <body>
-    <div id="app">
-      <h1>Google Authenticator OTP Secret Extractor</h1>
+    <div class="page-container">
+      <div id="app">
+        <h1>Google Authenticator OTP Secret Extractor</h1>
 
-      <div id="info-tabs">
-        <h2 class="tab-button active" data-tab="what">What is this?</h2>
-        <div id="tab-what" class="tab-content active">
-          <p>
-            This tool extracts One-Time Password secrets from the Google
-            Authenticator app. There is no software to install, and no data ever
-            leaves your computer.
-            <strong
-              >All of the processing of your QR codes and secrets happens
-              entirely locally, right here in your browser.</strong
-            >
-          </p>
+        <div id="info-tabs">
+          <h2 class="tab-button active" data-tab="what">What is this?</h2>
+          <div id="tab-what" class="tab-content active">
+            <p>
+              This tool extracts One-Time Password secrets from the Google
+              Authenticator app. There is no software to install, and no data
+              ever leaves your computer.
+              <strong
+                >All of the processing of your QR codes and secrets happens
+                entirely locally, right here in your browser.</strong
+              >
+            </p>
+          </div>
+
+          <h2 class="tab-button" data-tab="use">How do I use it?</h2>
+          <div id="tab-use" class="tab-content">
+            <h3>Export from Google Authenticator</h3>
+            <ul>
+              <li>
+                In Google Authenticator, click the hamburger menu at the top
+                left.
+              </li>
+              <li>Choose “Transfer Accounts”.</li>
+              <li>Click “Export Accounts”.</li>
+              <li>
+                Select the accounts to export (by default, all accounts are
+                included). Click “Next”.
+              </li>
+              <li>
+                You&lsquo;ll be shown one or more QR codes, depending on how
+                many One-Time Passwords you have. Take a screenshot of each QR
+                code.
+              </li>
+            </ul>
+            <h3>Upload Screenshots</h3>
+            <ul>
+              <li>Add each screenshot below to extract your OTP secrets.</li>
+            </ul>
+            <h3>Use your OTP Secrets</h3>
+            <ul>
+              <li>
+                Scan the provided QR code(s) or enter the hex code into your OTP
+                app of choice.
+              </li>
+            </ul>
+          </div>
+
+          <h2 class="tab-button" data-tab="faq">FAQ</h2>
+          <div id="tab-faq" class="tab-content">
+            <div class="faq-item">
+              <h3>
+                <button
+                  class="faq-button"
+                  aria-expanded="false"
+                  aria-controls="faq-1-answer"
+                >
+                  <span class="faq-title">Why is this needed?</span>
+                </button>
+              </h3>
+              <div id="faq-1-answer" class="faq-answer">
+                <p>
+                  Google Authenticator provides a way to transfer your One-Time
+                  Passwords (also known as 2-Factor Authentication or 2FA Codes)
+                  from one copy of Google Authenticator to another, but it does
+                  <em>not</em> provide any way to view the original, individual
+                  secrets. The secret is the original QR code (or string of
+                  hexdecimal characters) that you used to add the OTP into
+                  Google Authenticator in the first place.
+                </p>
+                <p>
+                  That makes it challenging to migrate from Google Authenticator
+                  to other apps that can store One-Time Passwords, such as
+                  1Password, Bitwarden, or Apple Passwords. Without the secrets,
+                  you have to log into each account one by one to either get the
+                  setup QR code again or reconfigure the OTP completely, which
+                  is time-consuming and a huge pain.
+                </p>
+                <p>
+                  There are other existing solutions to this problem that work
+                  well, but those require multiple technical steps like decoding
+                  QR codes, installing software, or running python scripts. This
+                  tool is built to make the process as simple as possible for
+                  non-technical users, while remaining secure.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <h3>
+                <button
+                  class="faq-button"
+                  aria-expanded="false"
+                  aria-controls="faq-2-answer"
+                >
+                  <span class="faq-title">How does it work?</span>
+                </button>
+              </h3>
+              <div id="faq-2-answer" class="faq-answer">
+                <p>
+                  You take screenshots of the export QR codes from your Google
+                  Authenticator app. This tool extracts the original secrets and
+                  provides them to you in a standard format (individual QR code
+                  or hex code) that you can then scan or input into your OTP app
+                  of choice. Processing takes place directly in your browser.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <h3>
+                <button
+                  class="faq-button"
+                  aria-expanded="false"
+                  aria-controls="faq-3-answer"
+                >
+                  <span class="faq-title"
+                    >Is it safe to &ldquo;upload&rdquo; my QR codes?</span
+                  >
+                </button>
+              </h3>
+              <div id="faq-3-answer" class="faq-answer">
+                <p>
+                  Yes. This tool is designed with security and privacy as the
+                  top priority. All processing happens entirely within your
+                  browser on your local computer or device. Your QR code images
+                  and the secrets they contain are never sent to any server and
+                  never leave your computer.
+                </p>
+                <p>
+                  This tool is open-source and
+                  <a
+                    href="https://github.com/mfcarroll/extract-otp-web"
+                    target="_blank"
+                    >the code can be inspected by anyone</a
+                  >
+                  to verify the methodology and security. It is hosted on GitHub
+                  pages, providing a secure and transparent deployment process.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <h3>
+                <button
+                  class="faq-button"
+                  aria-expanded="false"
+                  aria-controls="faq-4-answer"
+                >
+                  <span class="faq-title"
+                    >Why doesn't 1Password import Google Authenticator codes
+                    directly?</span
+                  >
+                </button>
+              </h3>
+              <div id="faq-4-answer" class="faq-answer">
+                <p>
+                  That's a very good question. I asked them,
+                  <a
+                    href="https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418"
+                    target="_blank"
+                  >
+                    as have</a
+                  >
+                  <a
+                    href="https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/"
+                    target="_blank"
+                    >others</a
+                  >. They said it was because the format google uses for exports
+                  might change. That doesn't make sense to me at all, because
+                  &ndash; well &ndash; it won't, and even if it did, it would be
+                  still be better to provide support for everyone who wants to
+                  import OTPs from Google Authenticator into 1Password
+                  <em>for now</em>, and fix it in the extremely unlikely event
+                  of a change occurring. Other apps such as Aegis do support
+                  importing, using the same simple methodology as this tool.
+                  1Password could easily support imports directly, if they
+                  wanted to. I think they should.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <h3>
+                <button
+                  class="faq-button"
+                  aria-expanded="false"
+                  aria-controls="faq-5-answer"
+                >
+                  <span class="faq-title">Who made this?</span>
+                </button>
+              </h3>
+              <div id="faq-5-answer" class="faq-answer">
+                <p>
+                  This tool was created by
+                  <a
+                    href="https://www.linkedin.com/in/matthewfcarroll/"
+                    target="_blank"
+                    >Matthew Carroll</a
+                  >, a developer who was frustrated with the process of helping
+                  colleagues migrate OTP codes from Google Authenticator into
+                  1Password.
+                </p>
+                <p>
+                  Many thanks to the contributors to the projects on which this
+                  tool builds, including:
+                </p>
+                <ul>
+                  <li>
+                    <a
+                      href="https://github.com/scito/extract_otp_secrets/#readme"
+                      target="_blank"
+                      >Extract OTP Secrets</a
+                    >, the python script by
+                    <a href="https://scito.ch/">Roland Kurmann</a>, on which
+                    this tool is based.
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/beemdevelopment/Aegis/#readme"
+                      target="_blank"
+                      >Aegis Authenticator</a
+                    >, for the Google Authenticator export protobuf
+                    specification.
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/krissrex/google-authenticator-exporter/#readme"
+                      target="_blank"
+                      >Google Authenticator Exporter</a
+                    >, another python script solution to the same problem.
+                  </li>
+                </ul>
+                <p>
+                  The development of this tool was made possible in part through
+                  the support of
+                  <a href="https://stand.earth/" target="_blank">Stand.earth</a
+                  >. If you found this useful, and want to help protect the
+                  people and places you love, please consider
+                  <a href="https://stand.earth/donate/" target="_blank"
+                    >making a donation</a
+                  >
+                  to Stand.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h2 class="tab-button" data-tab="use">How do I use it?</h2>
-        <div id="tab-use" class="tab-content">
-          <h3>Export from Google Authenticator</h3>
-          <ul>
-            <li>
-              In Google Authenticator, click the hamburger menu at the top left.
-            </li>
-            <li>Choose “Transfer Accounts”.</li>
-            <li>Click “Export Accounts”.</li>
-            <li>
-              Select the accounts to export (by default, all accounts are
-              included). Click “Next”.
-            </li>
-            <li>
-              You&lsquo;ll be shown one or more QR codes, depending on how many
-              One-Time Passwords you have. Take a screenshot of each QR code.
-            </li>
-          </ul>
-          <h3>Upload Screenshots</h3>
-          <ul>
-            <li>Add each screenshot below to extract your OTP secrets.</li>
-          </ul>
-          <h3>Use your OTP Secrets</h3>
-          <ul>
-            <li>
-              Scan the provided QR code(s) or enter the hex code into your OTP
-              app of choice.
-            </li>
-          </ul>
+        <div class="file-input-wrapper">
+          <label
+            for="qr-input"
+            class="file-input-label"
+            aria-label="Select QR Code Images"
+          >
+            <i class="fa fa-upload"></i> Select QR Code Image(s)
+          </label>
+          <div class="drop-text">or drag and drop files here</div>
+          <div id="upload-log-container" style="display: none">
+            <ul id="upload-log-list"></ul>
+          </div>
+          <input
+            type="file"
+            id="qr-input"
+            accept="image/*"
+            multiple
+            @change="handleFileChange"
+          />
         </div>
 
-        <h2 class="tab-button" data-tab="faq">FAQ</h2>
-        <div id="tab-faq" class="tab-content">
-          <div class="faq-item">
-            <h3>
-              <button
-                class="faq-button"
-                aria-expanded="false"
-                aria-controls="faq-1-answer"
-              >
-                <span class="faq-title">Why is this needed?</span>
-              </button>
-            </h3>
-            <div id="faq-1-answer" class="faq-answer">
-              <p>
-                Google Authenticator provides a way to transfer your One-Time
-                Passwords (also known as 2-Factor Authentication or 2FA Codes)
-                from one copy of Google Authenticator to another, but it does
-                <em>not</em> provide any way to view the original, individual
-                secrets. The secret is the original QR code (or string of
-                hexdecimal characters) that you used to add the OTP into Google
-                Authenticator in the first place.
-              </p>
-              <p>
-                That makes it challenging to migrate from Google Authenticator
-                to other apps that can store One-Time Passwords, such as
-                1Password or Apple Passwords. Without the secrets, you have to
-                log into each account one by one to either get the setup QR code
-                again or reconfigure the OTP completely, which is time-consuming
-                and a huge pain.
-              </p>
-              <p>
-                There are other existing solutions to this problem that work
-                well, but those require multiple technical steps like decoding
-                QR codes, installing software, or running python scripts. This
-                tool is built to make the process as simple as possible for
-                non-technical users, while remaining secure.
-              </p>
-            </div>
-          </div>
+        <div id="error-message-container"></div>
 
-          <div class="faq-item">
-            <h3>
-              <button
-                class="faq-button"
-                aria-expanded="false"
-                aria-controls="faq-2-answer"
-              >
-                <span class="faq-title">How does it work?</span>
-              </button>
-            </h3>
-            <div id="faq-2-answer" class="faq-answer">
-              <p>
-                You take screenshots of the export QR codes from your Google
-                Authenticator app. This tool extracts the original secrets and
-                provides them to you in a standard format (individual QR code or
-                hex code) that you can then scan or input into your OTP app of
-                choice. Processing takes place directly in your browser.
-              </p>
-            </div>
-          </div>
+        <canvas id="qr-canvas" style="display: none"></canvas>
+        <div id="results-container"></div>
 
-          <div class="faq-item">
-            <h3>
-              <button
-                class="faq-button"
-                aria-expanded="false"
-                aria-controls="faq-3-answer"
-              >
-                <span class="faq-title"
-                  >Is it safe to &ldquo;upload&rdquo; my QR codes?</span
-                >
-              </button>
-            </h3>
-            <div id="faq-3-answer" class="faq-answer">
-              <p>
-                Yes. This tool is designed with security and privacy as the top
-                priority. All processing happens entirely within your browser on
-                your local computer or device. Your QR code images and the
-                secrets they contain are never sent to any server and never
-                leave your computer.
-              </p>
-              <p>
-                This tool is open-source and
-                <a
-                  href="https://github.com/mfcarroll/extract-otp-web"
-                  target="_blank"
-                  >the code can be inspected by anyone</a
-                >
-                to verify the methodology and security.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3>
-              <button
-                class="faq-button"
-                aria-expanded="false"
-                aria-controls="faq-4-answer"
-              >
-                <span class="faq-title"
-                  >Why doesn't 1Password import Google Authenticator codes
-                  directly?</span
-                >
-              </button>
-            </h3>
-            <div id="faq-4-answer" class="faq-answer">
-              <p>
-                That's a very good question. I asked them,
-                <a
-                  href="https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418"
-                  target="_blank"
-                >
-                  as have</a
-                >
-                <a
-                  href="https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/"
-                  target="_blank"
-                  >others</a
-                >. They said it was because the format google uses for exports
-                might change. That doesn't make sense to me at all, because
-                &ndash; well &ndash; it won't, and even if it did, it would be
-                still be better to provide support for everyone who wants to
-                import OTPs from Google Authenticator into 1Password
-                <em>for now</em>, and fix it in the extremely unlikely event of
-                a change occurring. Other apps such as Aegis do support
-                importing, using the same simple methodology as this tool.
-                1Password could easily support imports directly, if they wanted
-                to. I think they should.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3>
-              <button
-                class="faq-button"
-                aria-expanded="false"
-                aria-controls="faq-5-answer"
-              >
-                <span class="faq-title">Who made this?</span>
-              </button>
-            </h3>
-            <div id="faq-5-answer" class="faq-answer">
-              <p>
-                This tool was created by
-                <a
-                  href="https://www.linkedin.com/in/matthewfcarroll/"
-                  target="_blank"
-                  >Matthew Carroll</a
-                >, a developer who was frustrated with the process of helping
-                colleagues migrate OTP codes from Google Authenticator into
-                1Password.
-              </p>
-              <p>
-                Many thanks to the contributors to the projects on which this
-                tool builds, including:
-              </p>
-              <ul>
-                <li>
-                  <a
-                    href="https://github.com/scito/extract_otp_secrets/#readme"
-                    target="_blank"
-                    >Extract OTP Secrets</a
-                  >, the python script by
-                  <a href="https://scito.ch/">Roland Kurmann</a>, on which this
-                  tool is based.
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/beemdevelopment/Aegis/#readme"
-                    target="_blank"
-                    >Aegis Authenticator</a
-                  >, for the Google Authenticator export protobuf specification.
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/krissrex/google-authenticator-exporter/#readme"
-                    target="_blank"
-                    >Google Authenticator Exporter</a
-                  >, another python script solution to the same problem.
-                </li>
-              </ul>
-              <p>
-                The development of this tool was made possible in part through
-                the support of
-                <a href="https://stand.earth/" target="_blank">Stand.earth</a>.
-                If you found this useful, and want to help protect the people
-                and places you love, please consider
-                <a href="https://stand.earth/donate/" target="_blank"
-                  >making a donation</a
-                >
-                to Stand.
-              </p>
-            </div>
-          </div>
+        <div id="export-container" style="display: none">
+          <button id="download-csv-button">
+            <i class="fa fa-download"></i> Save as CSV
+          </button>
+          <button id="clear-button">
+            <i class="fa fa-trash"></i> Clear All
+          </button>
         </div>
       </div>
 
-      <div class="file-input-wrapper">
-        <label
-          for="qr-input"
-          class="file-input-label"
-          aria-label="Select QR Code Images"
-        >
-          <i class="fa fa-upload"></i> Select QR Code Image(s)
-        </label>
-        <div class="drop-text">or drag and drop files here</div>
-        <div id="upload-log-container" style="display: none">
-          <ul id="upload-log-list"></ul>
-        </div>
-        <input
-          type="file"
-          id="qr-input"
-          accept="image/*"
-          multiple
-          @change="handleFileChange"
-        />
-      </div>
-
-      <div id="error-message-container"></div>
-
-      <canvas id="qr-canvas" style="display: none"></canvas>
-      <div id="results-container"></div>
-
-      <div id="export-container" style="display: none">
-        <button id="download-csv-button">
-          <i class="fa fa-download"></i> Save as CSV
-        </button>
-        <button id="clear-button"><i class="fa fa-trash"></i> Clear All</button>
-      </div>
+      <footer>
+        <p>
+          &copy; 2025
+          <a
+            href="https://www.linkedin.com/in/matthewfcarroll/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Matthew Carroll</a
+          >
+          |
+          <a
+            href="https://github.com/mfcarroll/extract-otp-web"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Source Code</a
+          >
+        </p>
+      </footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

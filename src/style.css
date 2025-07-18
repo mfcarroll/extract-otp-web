@@ -19,16 +19,17 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-#app {
+.page-container {
   max-width: 800px;
   width: 100%;
+  margin: 0 auto;
+}
+
+#app {
   background-color: var(--card-background);
   padding: 2rem;
   border-radius: 8px;
@@ -527,4 +528,27 @@ h1 {
   /* A large enough max-height to accommodate any answer content */
   max-height: 1000px;
   padding-bottom: 1.5rem;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  font-size: 0.85rem;
+  color: #777; /* A subtle, less prominent text color */
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--primary-color-dark);
 }
