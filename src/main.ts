@@ -137,6 +137,32 @@ function setupTabs(): void {
   });
 }
 
+/**
+ * Sets up the event listeners for the accordion-style FAQ.
+ * Uses event delegation for efficiency.
+ */
+function setupAccordion(): void {
+  const faqContainer = document.getElementById("tab-faq");
+  if (!faqContainer) return;
+
+  faqContainer.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    const button = target.closest<HTMLButtonElement>(".faq-button");
+
+    if (!button) return;
+
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const answerId = button.getAttribute("aria-controls");
+    if (!answerId) return;
+
+    const answerPanel = document.getElementById(answerId);
+    if (!answerPanel) return;
+
+    button.setAttribute("aria-expanded", String(!isExpanded));
+    answerPanel.hidden = isExpanded;
+  });
+}
+
 function base64ToUint8Array(base64: string): Uint8Array {
   const base64Fixed = base64.replace(/ /g, "+");
   const binaryString = atob(base64Fixed);
@@ -515,6 +541,7 @@ function convertToOtpData(otp: MigrationOtpParameter): OtpData {
  */
 function initializeApp(): void {
   setupTabs();
+  setupAccordion();
 
   // Listen for file input changes
   $<HTMLInputElement>("#qr-input").addEventListener(

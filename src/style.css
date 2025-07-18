@@ -402,8 +402,6 @@ h1 {
   color: var(--primary-color);
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
 }
 
 .tab-content h3:first-child {
@@ -432,7 +430,7 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-.tab-content li::before {
+.tab-content ul li::before {
   content: "–"; /* Using an en-dash for a clean look */
   position: absolute;
   left: 0;
@@ -447,4 +445,64 @@ h1 {
 
 .qr-code-container {
   flex-shrink: 0;
+}
+
+/* FAQ Accordion Styling */
+.faq-item {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.faq-item:last-of-type {
+  border-bottom: none;
+}
+
+.faq-item h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.faq-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--primary-color);
+  transition: color 0.2s ease-in-out;
+}
+
+.faq-button:hover,
+.faq-button:focus-visible {
+  color: #357abd; /* Darker blue */
+  outline: none;
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  transition: transform 0.2s ease-in-out;
+}
+
+.faq-button[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  /* Add some space when the answer is revealed */
+  padding: 0.5rem 0 1.5rem 0;
+}
+
+.faq-answer > *:first-child {
+  margin-top: 0;
+}
+
+.faq-answer > *:last-child {
+  margin-bottom: 0;
 }
