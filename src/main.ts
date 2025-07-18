@@ -154,30 +154,12 @@ function setupAccordion(): void {
     const faqItem = button.closest<HTMLDivElement>(".faq-item");
     if (!faqItem) return;
 
-    const isCurrentlyExpanded = faqItem.classList.contains("open");
+    // Toggle the 'open' class on the clicked item. This will show/hide the answer.
+    faqItem.classList.toggle("open");
 
-    // Close all other open items
-    faqContainer
-      .querySelectorAll<HTMLDivElement>(".faq-item.open")
-      .forEach((openItem) => {
-        if (openItem !== faqItem) {
-          openItem.classList.remove("open");
-          const otherButton =
-            openItem.querySelector<HTMLButtonElement>(".faq-button");
-          if (otherButton) {
-            otherButton.setAttribute("aria-expanded", "false");
-          }
-        }
-      });
-
-    // Toggle the clicked item's state
-    if (isCurrentlyExpanded) {
-      faqItem.classList.remove("open");
-      button.setAttribute("aria-expanded", "false");
-    } else {
-      faqItem.classList.add("open");
-      button.setAttribute("aria-expanded", "true");
-    }
+    // Update the aria-expanded attribute for accessibility.
+    const isExpanded = faqItem.classList.contains("open");
+    button.setAttribute("aria-expanded", String(isExpanded));
   });
 }
 

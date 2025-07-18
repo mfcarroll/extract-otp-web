@@ -1,5 +1,6 @@
 :root {
   --primary-color: #4a90e2;
+  --primary-color-dark: #2a6ead;
   --background-color: #f4f7f6;
   --text-color: #2c3e50;
   --card-background: #ffffff;
@@ -409,13 +410,14 @@ h1 {
 }
 
 .tab-content a {
-  color: #357abd; /* A blue that complements the primary color */
-  text-decoration: none;
+  color: var(--primary-color);
+  text-decoration: underline;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 .tab-content a:hover {
-  text-decoration: underline;
+  color: var(--primary-color-dark);
 }
 
 .tab-content ul {
@@ -474,13 +476,14 @@ h1 {
   text-align: left;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--text-color);
-  transition: background-color 0.2s ease;
+  color: var(--primary-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #tab-faq .faq-button:hover,
 #tab-faq .faq-button:focus-visible {
   background-color: #f9f9f9;
+  color: var(--primary-color-dark);
   outline: none;
 }
 
@@ -514,10 +517,6 @@ h1 {
 }
 
 /* --- Open State --- */
-
-#tab-faq .faq-item.open .faq-button {
-  color: var(--primary-color);
-}
 
 #tab-faq .faq-item.open .faq-icon {
   transform: rotate(45deg);
