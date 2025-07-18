@@ -33,13 +33,15 @@
       </button>
       <div class="accordion-content">
         <p>Google Authenticator provides a way to transfer your One-Time Passwords (also known as 2-Factor
-          Authentication Codes) from one copy of Google Authenticator, to another copy on a different device, but it
-          does <em>not</em> provide any way to view the original secrets. The secret is the QR code (or string of
-          hexdecimal characters) that was initially used to add the OTP into Google Authenticator in the first place.
-          This makes it challenging to migrate from Google Authenticator to other apps that can store One-Time
-          Passwords, such as 1Password. Without the original secrets you have to log into each account one by one to
-          either get the setup QR code again, or reconfigure the OTP completely, which is time-consuming and a huge
-          pain. This tool provides a simple browser-based solution to that problem.</p>
+          Authentication or 2FA Codes) from one copy of Google Authenticator, to another copy on a different device, but
+          it does <em>not</em> provide any way to view the original, individual secrets. The secret is the original QR
+          code (or string of hexdecimal characters) that you used to add the OTP into Google Authenticator in
+          the first place.</p>
+        <p>That makes it challenging to migrate from Google Authenticator to other apps that can store
+          One-Time Passwords, such as 1Password, or Apple Passwords. Without the secrets you have to log into each
+          account one by one to either get the setup QR code again, or reconfigure the OTP completely, which is
+          time-consuming and a huge pain.</p>
+        <p>This tool provides a simple, safe, browser-based solution to the problem.</p>
       </div>
     </div>
 
@@ -48,15 +50,16 @@
         How does it work?
       </button>
       <div class="accordion-content">
-        <p>You provide screenshots of the export QR codes from your Google Authenticator app. Each QR code typically
-          contain multiple OTP secrets within each QR code. This tool extracts the original secrets and provides them to
-          you in a standard format (individual QR code or hex code) that you can then scan or input into your OTP app of
-          choice.</p>
+        <p>You provide screenshots of the export QR codes from your Google Authenticator app. There are usually multiple
+          OTP secrets within each QR code.</p>
+        <p>This tool extracts the original secrets and provides them to you in a
+          standard format (individual QR code or hex code) that you can then scan or input into your OTP app of choice.
+        </p>
       </div>
     </div>
 
     <div class="accordion">
-      <button class="accordion-button">How to get the QR code from Google Authenticator</button>
+      <button class="accordion-button">How do I get my QR code(s) from Google Authenticator?</button>
 
       <div class="accordion-content">
         <ol>
@@ -66,7 +69,7 @@
           <li>Select the accounts to export (by default, all accounts are included). Click “Next”.</li>
           <li>You’ll be shown one or more QR codes, depending on how many One-Time Passwords you have. Take a screenshot
             of each QR code.</li>
-          <li>Add each screenshot here to extract your OTP secrets.</li>
+          <li>Add each screenshot below to extract your OTP secrets.</li>
         </ol>
       </div>
     </div>
@@ -78,7 +81,6 @@
       </label>
       <div class="drop-text">or drag and drop files here</div>
       <div id="upload-log-container" style="display: none;">
-        <hr class="log-divider">
         <ul id="upload-log-list"></ul>
       </div>
       <input type="file" id="qr-input" accept="image/*" multiple @change="handleFileChange">

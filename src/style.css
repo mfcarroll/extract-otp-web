@@ -96,13 +96,6 @@ h1 {
   text-align: left;
 }
 
-.log-divider {
-  border: 0;
-  border-top: 1px solid var(--border-color);
-  width: 90%;
-  margin: 0 auto 1rem auto;
-}
-
 #upload-log-list {
   list-style: none;
   padding: 0;
@@ -111,9 +104,8 @@ h1 {
 
 .log-item {
   display: flex;
-  align-items: center;
+  align-items: baseline; /* Align icon, text, and message to their baseline */
   padding: 0 5%;
-  /* Match divider width */
   border-radius: 4px;
 }
 
@@ -126,8 +118,17 @@ h1 {
   color: #777;
 }
 
+.log-message {
+  text-align: right;
+  flex-shrink: 0; /* Prevent the message from shrinking */
+}
+
 .log-file-name {
   font-weight: 500;
+  /* Prevent long filenames from breaking the layout */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .log-item--success .log-message {
@@ -145,6 +146,12 @@ h1 {
 .log-item--info .log-message {
   color: #555;
   /* A more neutral color for info */
+}
+
+.log-filler {
+  flex-grow: 1;
+  border-bottom: 1px dotted #ccc;
+  margin: 0 1em; /* Add space around the dotted line */
 }
 
 /* Results Container */

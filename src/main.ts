@@ -61,7 +61,7 @@ async function getOtpParametersFromUrl(otpUrl: string): Promise<MigrationOtpPara
 function processImage(file: File): Promise<MigrationOtpParameter[]> {
   return new Promise((resolve, reject) => {
     const canvas = $<HTMLCanvasElement>('#qr-canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) {
       return reject(new Error('Could not get canvas context'));
     }
@@ -94,7 +94,7 @@ function processImage(file: File): Promise<MigrationOtpParameter[]> {
 
     img.onerror = () => {
       URL.revokeObjectURL(img.src); // Clean up memory
-      reject(new Error('File could not be loaded as an image.'));
+      reject(new Error('File does not appear to be an image.'));
     };
 
     img.src = URL.createObjectURL(file);
@@ -250,7 +250,8 @@ function addUploadLog(fileName: string, status: 'success' | 'info' | 'warning' |
   const logList = $<HTMLUListElement>('#upload-log-list');
   const logItem = document.createElement('li');
   logItem.className = `log-item log-item--${status}`;
-  logItem.innerHTML = `<i class="fa fa-file"></i> <span class="log-file-name">${escapeHtml(fileName)}</span> - <span class="log-message">${message}</span>`;
+  // Use a filler span to create the dotted line between filename and message
+  logItem.innerHTML = `<i class="fa fa-file"></i><span class="log-file-name">${escapeHtml(fileName)}</span><span class="log-filler"></span><span class="log-message">${message}</span>`;
 
   logList.appendChild(logItem);
   logItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -344,7 +345,6 @@ async function processFiles(files: FileList | null): Promise<void> {
         anyDuplicatesOrErrors = true;
         const message = (error instanceof Error ? error.message : String(error)) || 'An unknown error occurred.';
         console.error(`Error processing file ${file.name}:`, error);
-        displayError(`Error with '${file.name}': ${message}`);
         addUploadLog(file.name, 'error', message);
       }
     }
@@ -356,14 +356,6 @@ async function processFiles(files: FileList | null): Promise<void> {
       const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
       if (!anyDuplicatesOrErrors && firstNewCard) {
         firstNewCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    } else if (fileArray.length > 0 && !anyDuplicatesOrErrors) {
-      const logList = $<HTMLUListElement>('#upload-log-list');
-      const children = Array.from(logList.children);
-      const lastBatchLogs = children.length >= fileArray.length ? children.slice(-fileArray.length) : children;
-      const allInfoLogs = lastBatchLogs.every(li => li.classList.contains('log-item--info'));
-      if (allInfoLogs) {
-        displayError('No new OTP secrets found in any of the selected files.');
       }
     }
 
