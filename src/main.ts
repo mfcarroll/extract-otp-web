@@ -253,6 +253,9 @@ function createOtpCard(
 
   const qrCodeContainer = document.createElement("div");
   qrCodeContainer.className = "qr-code-container";
+  qrCodeContainer.addEventListener("click", () => {
+    showQrModal(otpAuthUrl, `${issuerText}: ${accountName}`);
+  });
   qrCodeContainer.appendChild(qrCodeCanvas);
 
   const otpDetails = document.createElement("div");
@@ -294,6 +297,41 @@ function createOtpCard(
   cardElement.appendChild(qrCodeContainer);
 
   return { cardElement, exportData };
+}
+
+function showQrModal(otpAuthUrl: string, title: string): void {
+  const modal = $<HTMLDivElement>("#qr-modal");
+  const modalContent = $<HTMLDivElement>("#modal-content");
+
+  // Clear previous content
+  modalContent.innerHTML = "";
+
+  const modalCanvas = document.createElement("canvas");
+
+  // Calculate size to be responsive. 80% of the smaller viewport dimension.
+  const viewportSize = Math.min(window.innerWidth, window.innerHeight);
+  const canvasSize = Math.floor(viewportSize * 0.8);
+
+  QRCode.toCanvas(modalCanvas, otpAuthUrl, {
+    width: canvasSize,
+    margin: 2, // A bit of margin inside the canvas
+    color: { light: "#fff" }, // White background for the modal QR
+  });
+
+  modalContent.appendChild(modalCanvas);
+
+  const titleElement = document.createElement("p");
+  titleElement.className = "modal-title";
+  titleElement.textContent = title;
+  modalContent.appendChild(titleElement);
+  modal.style.display = "flex";
+}
+
+function hideQrModal(): void {
+  const modal = $<HTMLDivElement>("#qr-modal");
+  modal.style.display = "none";
+  // Clear content to free up memory
+  $<HTMLDivElement>("#modal-content").innerHTML = "";
 }
 
 function escapeHtml(unsafe: string): string {
@@ -610,6 +648,18 @@ function initializeApp(): void {
   // Handle the dropped files.
   fileDropZone.addEventListener("drop", (event: DragEvent) => {
     processFiles(event.dataTransfer?.files ?? null);
+  });
+
+  // --- Modal Listeners ---
+  const modal = $<HTMLDivElement>("#qr-modal");
+  // Close if the modal is clicked anywhere
+  modal.addEventListener("click", hideQrModal);
+
+  // Close on Escape key press
+  document.addEventListener("keydown", (event) => {
+    if (modal.style.display !== "none") {
+      hideQrModal();
+    }
   });
 }
 

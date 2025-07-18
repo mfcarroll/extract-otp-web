@@ -201,6 +201,7 @@ h1 {
   display: flex;
   align-items: center;
   flex-grow: 1;
+  position: relative; /* For positioning the copy button */
 }
 
 .otp-card-layout .secret-row,
@@ -212,7 +213,7 @@ h1 {
 .otp-card-layout .text-input {
   flex: 1;
   min-width: 0;
-  padding: 8px;
+  padding: 8px 40px 8px 12px; /* Add space on the right for the button */
   border: 1px solid var(--border-color);
   border-radius: 4px;
   background-color: #f7f7f7;
@@ -248,12 +249,21 @@ h1 {
 }
 
 .copy-button {
-  margin-left: 0.5rem;
-  background: none;
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
-  position: relative;
+  padding: 8px;
+  color: #999;
+  transition: color 0.2s ease;
+}
+
+.copy-button.copied,
+.copy-button:hover {
+  color: var(--primary-color);
 }
 
 .copy-button::after {
@@ -448,6 +458,12 @@ h1 {
 
 .qr-code-container {
   flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.qr-code-container:hover {
+  transform: scale(1.02);
 }
 
 /* --- FAQ Accordion Styling --- */
@@ -554,4 +570,53 @@ footer a {
 
 footer a:hover {
   color: var(--primary-color-dark);
+}
+
+/* --- QR Code Modal --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#modal-content {
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 300;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #ccc;
+}
+
+.modal-title {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: center;
 }
