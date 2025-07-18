@@ -492,7 +492,8 @@ h1 {
   padding-right: 1rem;
 }
 
-#tab-faq .faq-icon {
+#tab-faq .faq-button::after {
+  content: "+";
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1;
@@ -518,8 +519,8 @@ h1 {
 
 /* --- Open State --- */
 
-#tab-faq .faq-item.open .faq-icon {
-  transform: rotate(45deg);
+#tab-faq .faq-item.open .faq-button::after {
+  content: "\2212";
 }
 
 #tab-faq .faq-item.open .faq-answer {

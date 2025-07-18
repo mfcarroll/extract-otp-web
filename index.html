@@ -40,7 +40,8 @@
 
         <h2 class="tab-button" data-tab="use">How do I use it?</h2>
         <div id="tab-use" class="tab-content">
-          <ol>
+          <h3>Export from Google Authenticator</h3>
+          <ul>
             <li>
               In Google Authenticator, click the hamburger menu at the top left.
             </li>
@@ -51,11 +52,21 @@
               included). Click “Next”.
             </li>
             <li>
-              You’ll be shown one or more QR codes, depending on how many
+              You&lsquo;ll be shown one or more QR codes, depending on how many
               One-Time Passwords you have. Take a screenshot of each QR code.
             </li>
+          </ul>
+          <h3>Upload Screenshots</h3>
+          <ul>
             <li>Add each screenshot below to extract your OTP secrets.</li>
-          </ol>
+          </ul>
+          <h3>Use your OTP Secrets</h3>
+          <ul>
+            <li>
+              Scan the provided QR code(s) or enter the hex code into your OTP
+              app of choice.
+            </li>
+          </ul>
         </div>
 
         <h2 class="tab-button" data-tab="faq">FAQ</h2>
@@ -68,7 +79,6 @@
                 aria-controls="faq-1-answer"
               >
                 <span class="faq-title">Why is this needed?</span>
-                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
             </h3>
             <div id="faq-1-answer" class="faq-answer">
@@ -92,9 +102,9 @@
               <p>
                 There are other existing solutions to this problem that work
                 well, but those require multiple technical steps like decoding
-                QR codes, or running python scripts. This tool is built to make
-                the process as simple as possible for non-technical users, while
-                remaining secure.
+                QR codes, installing software, or running python scripts. This
+                tool is built to make the process as simple as possible for
+                non-technical users, while remaining secure.
               </p>
             </div>
           </div>
@@ -107,7 +117,6 @@
                 aria-controls="faq-2-answer"
               >
                 <span class="faq-title">How does it work?</span>
-                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
             </h3>
             <div id="faq-2-answer" class="faq-answer">
@@ -116,7 +125,7 @@
                 Authenticator app. This tool extracts the original secrets and
                 provides them to you in a standard format (individual QR code or
                 hex code) that you can then scan or input into your OTP app of
-                choice.
+                choice. Processing takes place directly in your browser.
               </p>
             </div>
           </div>
@@ -131,7 +140,6 @@
                 <span class="faq-title"
                   >Is it safe to &ldquo;upload&rdquo; my QR codes?</span
                 >
-                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
             </h3>
             <div id="faq-3-answer" class="faq-answer">
@@ -165,7 +173,6 @@
                   >Why doesn't 1Password import Google Authenticator codes
                   directly?</span
                 >
-                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
             </h3>
             <div id="faq-4-answer" class="faq-answer">
@@ -177,7 +184,6 @@
                 >
                   as have</a
                 >
-                many
                 <a
                   href="https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/"
                   target="_blank"
@@ -204,7 +210,6 @@
                 aria-controls="faq-5-answer"
               >
                 <span class="faq-title">Who made this?</span>
-                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
             </h3>
             <div id="faq-5-answer" class="faq-answer">
@@ -218,21 +223,6 @@
                 colleagues migrate OTP codes from Google Authenticator into
                 1Password.
               </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3>
-              <button
-                class="faq-button"
-                aria-expanded="false"
-                aria-controls="faq-6-answer"
-              >
-                <span class="faq-title">Credits</span>
-                <span class="faq-icon" aria-hidden="true">+</span>
-              </button>
-            </h3>
-            <div id="faq-6-answer" class="faq-answer">
               <p>
                 Many thanks to the contributors to the projects on which this
                 tool builds, including:
@@ -262,6 +252,17 @@
                   >, another python script solution to the same problem.
                 </li>
               </ul>
+              <p>
+                The development of this tool was made possible in part through
+                the support of
+                <a href="https://stand.earth/" target="_blank">Stand.earth</a>.
+                If you found this useful, and want to help protect the people
+                and places you love, please consider
+                <a href="https://stand.earth/donate/" target="_blank"
+                  >making a donation</a
+                >
+                to Stand.
+              </p>
             </div>
           </div>
         </div>
