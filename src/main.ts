@@ -655,9 +655,10 @@ function initializeApp(): void {
   // Close if the modal is clicked anywhere
   modal.addEventListener("click", hideQrModal);
 
-  // Close on Escape key press
+  // Close on any key press
   document.addEventListener("keydown", (event) => {
     if (modal.style.display !== "none") {
+      event.preventDefault(); // Prevent default browser action (e.g., scrolling)
       hideQrModal();
     }
   });
