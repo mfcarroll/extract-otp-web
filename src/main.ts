@@ -1,10 +1,9 @@
-import jsQR from 'jsqr';
-import protobuf from 'protobufjs';
-import { encode } from 'thirty-two';
-import { Buffer } from 'buffer'; // Keep for browser environment polyfill
-import QRCode from 'qrcode';
-import { OtpData } from './types';
-
+import jsQR from "jsqr";
+import protobuf from "protobufjs";
+import { encode } from "thirty-two";
+import { Buffer } from "buffer"; // Keep for browser environment polyfill
+import QRCode from "qrcode";
+import { OtpData } from "./types";
 
 // Define a more specific type for the raw OTP data from the protobuf payload.
 interface MigrationOtpParameter {
@@ -12,8 +11,8 @@ interface MigrationOtpParameter {
   name: string;
   issuer: string;
   algorithm: number; // ALGORITHM_UNSPECIFIED (0), SHA1 (1)
-  digits: number;    // DIGITS_UNSPECIFIED (0), SIX (1), EIGHT (2)
-  type: number;      // TYPE_UNSPECIFIED (0), HOTP (1), TOTP (2)
+  digits: number; // DIGITS_UNSPECIFIED (0), SIX (1), EIGHT (2)
+  type: number; // TYPE_UNSPECIFIED (0), HOTP (1), TOTP (2)
   counter: number;
 }
 
@@ -21,7 +20,7 @@ window.Buffer = Buffer; // Make Buffer globally available for libraries that mig
 let extractedOtps: MigrationOtpParameter[] = []; // To store data for CSV export
 
 // Pre-load the protobuf definition once for better performance.
-const protobufRoot = protobuf.load('google_auth.proto');
+const protobufRoot = protobuf.load("google_auth.proto");
 
 /** Generic helper to query the DOM and throw an error if the element is not found. */
 function $<T extends HTMLElement>(selector: string): T {
@@ -37,9 +36,11 @@ function $<T extends HTMLElement>(selector: string): T {
  * @param otpUrl The full otpauth-migration URL from the QR code.
  * @returns A promise that resolves to an array of OTP parameters.
  */
-async function getOtpParametersFromUrl(otpUrl: string): Promise<MigrationOtpParameter[]> {
+async function getOtpParametersFromUrl(
+  otpUrl: string
+): Promise<MigrationOtpParameter[]> {
   const url = new URL(otpUrl);
-  const dataBase64 = url.searchParams.get('data');
+  const dataBase64 = url.searchParams.get("data");
   if (!dataBase64) {
     throw new Error('Invalid OTP URL: Missing "data" parameter.');
   }
@@ -47,9 +48,11 @@ async function getOtpParametersFromUrl(otpUrl: string): Promise<MigrationOtpPara
   const data = base64ToUint8Array(dataBase64);
 
   const root = await protobufRoot;
-  const MigrationPayload = root.lookupType('MigrationPayload');
+  const MigrationPayload = root.lookupType("MigrationPayload");
 
-  const payload = MigrationPayload.decode(data) as unknown as { otpParameters: MigrationOtpParameter[] };
+  const payload = MigrationPayload.decode(data) as unknown as {
+    otpParameters: MigrationOtpParameter[];
+  };
   return payload.otpParameters;
 }
 
@@ -58,12 +61,12 @@ async function getOtpParametersFromUrl(otpUrl: string): Promise<MigrationOtpPara
  * @param file The image file to process.
  * @returns A promise that resolves with an array of OTP parameters, or an empty array if no QR code is found.
  */
-function processImage(file: File): Promise<MigrationOtpParameter[]> {
+function processImage(file: File): Promise<MigrationOtpParameter[] | null> {
   return new Promise((resolve, reject) => {
-    const canvas = $<HTMLCanvasElement>('#qr-canvas');
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const canvas = $<HTMLCanvasElement>("#qr-canvas");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) {
-      return reject(new Error('Could not get canvas context'));
+      return reject(new Error("Could not get canvas context"));
     }
 
     const img = new Image();
@@ -83,31 +86,35 @@ function processImage(file: File): Promise<MigrationOtpParameter[]> {
           resolve(otpParameters);
         } catch (error) {
           console.error("Error decoding QR code data:", error);
-          reject(new Error('QR code content is invalid or not a Google Authenticator export.'));
+          reject(
+            new Error(
+              "QR code is invalid or not a Google Authenticator export."
+            )
+          );
         }
       } else {
-        // Resolve with an empty array if no QR code is found in this image.
-        // This prevents a single failed image from stopping the entire batch.
-        resolve([]);
+        // Resolve with null if no QR code is found in this image.
+        resolve(null);
       }
     };
 
     img.onerror = () => {
       URL.revokeObjectURL(img.src); // Clean up memory
-      reject(new Error('File does not appear to be an image.'));
+      reject(new Error("File does not appear to be an image."));
     };
 
     img.src = URL.createObjectURL(file);
   });
 }
 
-document.querySelectorAll('.accordion-button').forEach((button) => {
-  button.addEventListener('click', () => button.parentElement?.classList.toggle('active'));
+document.querySelectorAll(".accordion-button").forEach((button) => {
+  button.addEventListener("click", () =>
+    button.parentElement?.classList.toggle("active")
+  );
 });
 
-
 function base64ToUint8Array(base64: string): Uint8Array {
-  const base64Fixed = base64.replace(/ /g, '+');
+  const base64Fixed = base64.replace(/ /g, "+");
   const binaryString = atob(base64Fixed);
   const len = binaryString.length;
   const bytes = new Uint8Array(len);
@@ -118,18 +125,19 @@ function base64ToUint8Array(base64: string): Uint8Array {
 }
 
 function displayResults(otpParameters: MigrationOtpParameter[]): void {
-  const resultsContainer = $<HTMLDivElement>('#results-container');
-  const exportContainer = $<HTMLDivElement>('#export-container');
+  const resultsContainer = $<HTMLDivElement>("#results-container");
+  const exportContainer = $<HTMLDivElement>("#export-container");
 
   // Clear any previous results (including error messages) before rendering.
-  resultsContainer.innerHTML = '';
+  resultsContainer.innerHTML = "";
   if (!otpParameters || otpParameters.length === 0) {
-    resultsContainer.textContent = 'No OTP secrets found in the provided images.';
-    exportContainer.style.display = 'none';
+    resultsContainer.textContent =
+      "No OTP secrets found in the provided images.";
+    exportContainer.style.display = "none";
     return;
   }
 
-  exportContainer.style.display = 'block';
+  exportContainer.style.display = "block";
 
   const fragment = document.createDocumentFragment();
   otpParameters.forEach((otp, index) => {
@@ -139,17 +147,18 @@ function displayResults(otpParameters: MigrationOtpParameter[]): void {
   resultsContainer.appendChild(fragment);
 }
 
-
-
 /**
  * Creates an HTML element for a single OTP entry.
  * This acts like a component, encapsulating the logic and structure for a card.
  */
-function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement: HTMLDivElement, exportData: OtpData } {
+function createOtpCard(
+  otp: MigrationOtpParameter,
+  index: number
+): { cardElement: HTMLDivElement; exportData: OtpData } {
   const secretText = encode(otp.secret);
-  const issuerText = otp.issuer || 'N/A';
-  const accountName = otp.name || 'N/A';
-  const typeText = otp.type === 2 ? 'totp' : 'hotp'; // Convert type code to string
+  const issuerText = otp.issuer || "N/A";
+  const accountName = otp.name || "N/A";
+  const typeText = otp.type === 2 ? "totp" : "hotp"; // Convert type code to string
 
   // Construct the label for display and the otpauth URL.
   let label = accountName;
@@ -162,32 +171,36 @@ function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement
   if (otp.issuer) {
     otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
   }
-  if (typeText === 'hotp') {
+  if (typeText === "hotp") {
     otpAuthUrl += `&counter=${otp.counter || 0}`;
   }
 
   const exportData: OtpData = {
     name: accountName,
     secret: secretText,
-    issuer: otp.issuer || '',
+    issuer: otp.issuer || "",
     type: typeText,
-    counter: typeText === 'hotp' ? (otp.counter || 0) : '',
+    counter: typeText === "hotp" ? otp.counter || 0 : "",
     url: decodeURIComponent(otpAuthUrl), // Store the human-readable URL
   };
 
-  const cardElement = document.createElement('div');
-  cardElement.className = 'otp-card otp-card-layout';
+  const cardElement = document.createElement("div");
+  cardElement.className = "otp-card otp-card-layout";
   cardElement.id = `otp-card-${index}`;
 
-  const qrCodeCanvas = document.createElement('canvas');
-  QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, { width: 220, margin: 1, color: { light: '#0000' } });
+  const qrCodeCanvas = document.createElement("canvas");
+  QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, {
+    width: 220,
+    margin: 1,
+    color: { light: "#0000" },
+  });
 
-  const qrCodeContainer = document.createElement('div');
-  qrCodeContainer.className = 'qr-code-container';
+  const qrCodeContainer = document.createElement("div");
+  qrCodeContainer.className = "qr-code-container";
   qrCodeContainer.appendChild(qrCodeCanvas);
 
-  const otpDetails = document.createElement('div');
-  otpDetails.className = 'otp-details';
+  const otpDetails = document.createElement("div");
+  otpDetails.className = "otp-details";
   otpDetails.innerHTML = `
       <h3>${index + 1}. ${issuerText}: ${accountName}</h3>
       <p><span class="label">Name:</span> ${accountName}</p>
@@ -205,7 +218,9 @@ function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement
       <p class="otp-url-row">
           <span class="label">URL: </span>
           <span class="otp-url-container">
-              <input type="text" class="text-input url-input" value="${decodeURIComponent(otpAuthUrl)}" readonly>
+              <input type="text" class="text-input url-input" value="${decodeURIComponent(
+                otpAuthUrl
+              )}" readonly>
               <button class="copy-button" data-copy-text="${otpAuthUrl}" aria-label="Copy URL">
                   <i class="fa fa-copy"></i>
               </button>
@@ -213,10 +228,9 @@ function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement
       </p>
   `;
 
-
-  otpDetails.addEventListener('click', (event: MouseEvent) => {
+  otpDetails.addEventListener("click", (event: MouseEvent) => {
     const target = event.target as HTMLElement;
-    if (target.matches('.text-input, .copy-button, .copy-button i')) {
+    if (target.matches(".text-input, .copy-button, .copy-button i")) {
       handleCopy(event);
     }
   });
@@ -241,33 +255,39 @@ function escapeHtml(unsafe: string): string {
  * @param status The status of the processing (e.g., 'success', 'error', 'info', 'warning').
  * @param message The message to display.
  */
-function addUploadLog(fileName: string, status: 'success' | 'info' | 'warning' | 'error', message: string): void {
-  const logContainer = $<HTMLDivElement>('#upload-log-container');
-  if (logContainer.style.display === 'none') {
-    logContainer.style.display = 'block';
+function addUploadLog(
+  fileName: string,
+  status: "success" | "info" | "warning" | "error",
+  message: string
+): void {
+  const logContainer = $<HTMLDivElement>("#upload-log-container");
+  if (logContainer.style.display === "none") {
+    logContainer.style.display = "block";
   }
 
-  const logList = $<HTMLUListElement>('#upload-log-list');
-  const logItem = document.createElement('li');
+  const logList = $<HTMLUListElement>("#upload-log-list");
+  const logItem = document.createElement("li");
   logItem.className = `log-item log-item--${status}`;
   // Use a filler span to create the dotted line between filename and message
-  logItem.innerHTML = `<i class="fa fa-file"></i><span class="log-file-name">${escapeHtml(fileName)}</span><span class="log-filler"></span><span class="log-message">${message}</span>`;
+  logItem.innerHTML = `<i class="fa fa-file"></i><span class="log-file-name">${escapeHtml(
+    fileName
+  )}</span><span class="log-filler"></span><span class="log-message">${message}</span>`;
 
   logList.appendChild(logItem);
-  logItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  logItem.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 function displayError(message: string, duration = 5000): void {
-  const errorContainer = $<HTMLDivElement>('#error-message-container');
+  const errorContainer = $<HTMLDivElement>("#error-message-container");
 
   // To prevent multiple error messages from stacking, remove any existing one.
-  const existingError = errorContainer.querySelector('.error-message');
+  const existingError = errorContainer.querySelector(".error-message");
   if (existingError) {
     existingError.remove();
   }
 
-  const errorElement = document.createElement('div');
-  errorElement.className = 'error-message';
+  const errorElement = document.createElement("div");
+  errorElement.className = "error-message";
   errorElement.textContent = message;
 
   // Prepend the error message so it appears at the top.
@@ -276,9 +296,9 @@ function displayError(message: string, duration = 5000): void {
   // Set a timeout to make the error message disappear.
   setTimeout(() => {
     // Add a class to trigger the fade-out animation.
-    errorElement.classList.add('fade-out');
+    errorElement.classList.add("fade-out");
     // After the animation, remove the element from the DOM.
-    errorElement.addEventListener('transitionend', () => errorElement.remove());
+    errorElement.addEventListener("transitionend", () => errorElement.remove());
   }, duration);
 }
 
@@ -296,10 +316,10 @@ async function processFiles(files: FileList | null): Promise<void> {
   const fileArray = Array.from(files);
 
   try {
-    const logContainer = $<HTMLDivElement>('#upload-log-container');
+    const logContainer = $<HTMLDivElement>("#upload-log-container");
 
-    if (logContainer.style.display === 'none') {
-      logContainer.style.display = 'block';
+    if (logContainer.style.display === "none") {
+      logContainer.style.display = "block";
     }
 
     const firstNewIndex = extractedOtps.length;
@@ -313,7 +333,7 @@ async function processFiles(files: FileList | null): Promise<void> {
       try {
         const otpParameters = await processImage(file);
 
-        if (otpParameters.length > 0) {
+        if (otpParameters && otpParameters.length > 0) {
           let extractedInFile = 0;
           let duplicatesInFile = 0;
 
@@ -329,23 +349,36 @@ async function processFiles(files: FileList | null): Promise<void> {
           }
 
           if (extractedInFile > 0) {
-            const plural = extractedInFile > 1 ? 's' : '';
-            addUploadLog(file.name, 'success', `${extractedInFile} secret${plural} extracted.`);
+            const plural = extractedInFile > 1 ? "s" : "";
+            addUploadLog(
+              file.name,
+              "success",
+              `${extractedInFile} secret${plural} extracted.`
+            );
           }
           if (duplicatesInFile > 0) {
             anyDuplicatesOrErrors = true;
-            const plural = duplicatesInFile > 1 ? 's' : '';
-            addUploadLog(file.name, 'warning', `${duplicatesInFile} duplicate secret${plural} skipped.`);
+            const plural = duplicatesInFile > 1 ? "s" : "";
+            addUploadLog(
+              file.name,
+              "warning",
+              `${duplicatesInFile} duplicate secret${plural} skipped.`
+            );
           }
         } else {
-          addUploadLog(file.name, 'info', 'No OTP secrets found.');
+          if (otpParameters === null) {
+            addUploadLog(file.name, "warning", "No QR code found.");
+          } else {
+            addUploadLog(file.name, "info", "No OTP secrets found.");
+          }
         }
-
       } catch (error: any) {
         anyDuplicatesOrErrors = true;
-        const message = (error instanceof Error ? error.message : String(error)) || 'An unknown error occurred.';
+        const message =
+          (error instanceof Error ? error.message : String(error)) ||
+          "An unknown error occurred.";
         console.error(`Error processing file ${file.name}:`, error);
-        addUploadLog(file.name, 'error', message);
+        addUploadLog(file.name, "error", message);
       }
     }
 
@@ -355,33 +388,35 @@ async function processFiles(files: FileList | null): Promise<void> {
 
       const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
       if (!anyDuplicatesOrErrors && firstNewCard) {
-        firstNewCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        firstNewCard.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
-
   } catch (error: any) {
-    displayError(error.message || 'An unexpected error occurred while processing files.');
+    displayError(
+      error.message || "An unexpected error occurred while processing files."
+    );
   }
 }
 
 const handleCopy = (event: MouseEvent) => {
   const triggerElement = event.target as HTMLElement;
 
-  const container = triggerElement.closest('.secret-container, .otp-url-container');
+  const container = triggerElement.closest(
+    ".secret-container, .otp-url-container"
+  );
   if (!container) {
     return;
   }
 
-  const input = container.querySelector<HTMLInputElement>('.text-input');
-  const button = container.querySelector<HTMLButtonElement>('.copy-button');
+  const input = container.querySelector<HTMLInputElement>(".text-input");
+  const button = container.querySelector<HTMLButtonElement>(".copy-button");
   if (!input || !button) {
     return;
   }
 
-  const textToCopy = triggerElement.matches('.copy-button, .copy-button i')
+  const textToCopy = triggerElement.matches(".copy-button, .copy-button i")
     ? button.dataset.copyText || input.value
     : input.value;
-
 
   input.select();
 
@@ -389,27 +424,35 @@ const handleCopy = (event: MouseEvent) => {
 };
 
 const copyToClipboard = (text: string, buttonElement: HTMLElement): void => {
-  navigator.clipboard.writeText(text)
+  navigator.clipboard
+    .writeText(text)
     .then(() => {
-      buttonElement.classList.add('copied');
-      setTimeout(() => buttonElement.classList.remove('copied'), 1500);
+      buttonElement.classList.add("copied");
+      setTimeout(() => buttonElement.classList.remove("copied"), 1500);
     })
-    .catch(err => {
-      console.error('Could not copy text: ', err);
+    .catch((err) => {
+      console.error("Could not copy text: ", err);
     });
 };
 
 function downloadAsCsv(): void {
   if (extractedOtps.length === 0) {
-    alert('No data to export.');
+    alert("No data to export.");
     return;
   }
 
-  const headers: (keyof OtpData)[] = ['name', 'secret', 'issuer', 'type', 'counter', 'url'];
+  const headers: (keyof OtpData)[] = [
+    "name",
+    "secret",
+    "issuer",
+    "type",
+    "counter",
+    "url",
+  ];
 
   const escapeCsvField = (field: any): string => {
-    const str = String(field ?? '');
-    if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+    const str = String(field ?? "");
+    if (str.includes(",") || str.includes('"') || str.includes("\n")) {
       return `"${str.replace(/"/g, '""')}"`;
     }
     return str;
@@ -417,20 +460,20 @@ function downloadAsCsv(): void {
 
   const otpDataForCsv = extractedOtps.map(convertToOtpData);
   const csvRows = [
-    headers.join(','),
-    ...otpDataForCsv.map(otp =>
-      headers.map(header => escapeCsvField(otp[header])).join(',')
-    )
+    headers.join(","),
+    ...otpDataForCsv.map((otp) =>
+      headers.map((header) => escapeCsvField(otp[header])).join(",")
+    ),
   ];
 
-  const csvString = csvRows.join('\n');
-  const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+  const csvString = csvRows.join("\n");
+  const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
 
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   const url = URL.createObjectURL(blob);
-  link.setAttribute('href', url);
-  link.setAttribute('download', 'otp_secrets.csv');
-  link.style.visibility = 'hidden';
+  link.setAttribute("href", url);
+  link.setAttribute("download", "otp_secrets.csv");
+  link.style.visibility = "hidden";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -442,30 +485,31 @@ function convertToOtpData(otp: MigrationOtpParameter): OtpData {
   return exportData;
 }
 
-
-
 // --- Event Listeners ---
 
 // Listen for file input changes
-$<HTMLInputElement>('#qr-input').addEventListener('change', (event: Event) => {
+$<HTMLInputElement>("#qr-input").addEventListener("change", (event: Event) => {
   processFiles((event.target as HTMLInputElement).files);
 });
 // Listen for CSV download button clicks
-$<HTMLButtonElement>('#download-csv-button').addEventListener('click', downloadAsCsv);
+$<HTMLButtonElement>("#download-csv-button").addEventListener(
+  "click",
+  downloadAsCsv
+);
 
 // Listen for Clear All button clicks
-$<HTMLButtonElement>('#clear-button').addEventListener('click', () => {
-  const resultsContainer = $<HTMLDivElement>('#results-container');
-  const exportContainer = $<HTMLDivElement>('#export-container');
-  const qrInput = $<HTMLInputElement>('#qr-input');
-  resultsContainer.innerHTML = '';
-  exportContainer.style.display = 'none';
+$<HTMLButtonElement>("#clear-button").addEventListener("click", () => {
+  const resultsContainer = $<HTMLDivElement>("#results-container");
+  const exportContainer = $<HTMLDivElement>("#export-container");
+  const qrInput = $<HTMLInputElement>("#qr-input");
+  resultsContainer.innerHTML = "";
+  exportContainer.style.display = "none";
   extractedOtps = [];
-  qrInput.value = ''; // Reset file input so the same files can be re-selected
+  qrInput.value = ""; // Reset file input so the same files can be re-selected
 });
 
 // --- Drag and Drop Event Listeners ---
-const fileDropZone = $<HTMLDivElement>('.file-input-wrapper');
+const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
 
 function preventDefaults(e: Event): void {
   e.preventDefault();
@@ -474,22 +518,34 @@ function preventDefaults(e: Event): void {
 
 // Prevent default drag behaviors on the drop zone and the body.
 // This is necessary to allow for a drop.
-['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
   fileDropZone.addEventListener(eventName, preventDefaults, false);
   document.body.addEventListener(eventName, preventDefaults, false);
 });
 
 // Add a visual indicator when a file is dragged over the drop zone.
-['dragenter', 'dragover'].forEach(eventName => {
-  fileDropZone.addEventListener(eventName, () => fileDropZone.classList.add('active'), false);
+["dragenter", "dragover"].forEach((eventName) => {
+  fileDropZone.addEventListener(
+    eventName,
+    () => fileDropZone.classList.add("active"),
+    false
+  );
 });
 
 // Remove the visual indicator when the file leaves the drop zone.
-['dragleave', 'drop'].forEach(eventName => {
-  fileDropZone.addEventListener(eventName, () => fileDropZone.classList.remove('active'), false);
+["dragleave", "drop"].forEach((eventName) => {
+  fileDropZone.addEventListener(
+    eventName,
+    () => fileDropZone.classList.remove("active"),
+    false
+  );
 });
 
 // Handle the dropped files.
-fileDropZone.addEventListener('drop', (event: DragEvent) => {
-  processFiles(event.dataTransfer?.files ?? null);
-}, false);
+fileDropZone.addEventListener(
+  "drop",
+  (event: DragEvent) => {
+    processFiles(event.dataTransfer?.files ?? null);
+  },
+  false
+);

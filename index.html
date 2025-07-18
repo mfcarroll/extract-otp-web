@@ -1,102 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP Secret Extractor</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OTP Secret Extractor</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/style.css">
-</head>
+  <body>
+    <div id="app">
+      <h1>Google Authenticator OTP Secret Extractor</h1>
 
-<body>
-  <div id="app">
-    <h1>Google Authenticator OTP Secret Extractor</h1>
+      <div class="accordion active">
+        <button class="accordion-button">What is this?</button>
+        <div class="accordion-content">
+          <p>
+            This tool extracts One-Time Password secrets from the Google
+            Authenticator app. There is no software to install, and no data ever
+            leaves your computer.
+            <strong
+              >All of the processing of your QR codes and secrets happens
+              entirely locally, right here in your browser.</strong
+            >
+          </p>
+        </div>
+      </div>
 
-    <div class="accordion active">
-      <button class="accordion-button">What is this?</button>
-      <div class="accordion-content">
-        <p>This tool extracts One-Time Password secrets from the Google Authenticator app. There is no software to
-          install, and no data ever leaves your computer. <strong>All of the processing of your QR codes and secrets
-            happens entirely locally, right here in your browser.</strong></p>
+      <div class="accordion">
+        <button class="accordion-button">Why is this needed?</button>
+        <div class="accordion-content">
+          <p>
+            Google Authenticator provides a way to transfer your One-Time
+            Passwords (also known as 2-Factor Authentication or 2FA Codes) from
+            one copy of Google Authenticator, to another copy on a different
+            device, but it does <em>not</em> provide any way to view the
+            original, individual secrets. The secret is the original QR code (or
+            string of hexdecimal characters) that you used to add the OTP into
+            Google Authenticator in the first place.
+          </p>
+          <p>
+            That makes it challenging to migrate from Google Authenticator to
+            other apps that can store One-Time Passwords, such as 1Password, or
+            Apple Passwords. Without the secrets you have to log into each
+            account one by one to either get the setup QR code again, or
+            reconfigure the OTP completely, which is time-consuming and a huge
+            pain.
+          </p>
+          <p>
+            This tool provides a simple, safe, browser-based solution to the
+            problem.
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-button">How does it work?</button>
+        <div class="accordion-content">
+          <p>
+            You take screenshots of the export QR codes from your Google
+            Authenticator app. There are usually multiple OTP secrets within
+            each QR code.
+          </p>
+          <p>
+            This tool extracts the original secrets and provides them to you in
+            a standard format (individual QR code or hex code) that you can then
+            scan or input into your OTP app of choice.
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-button">
+          How do I get my QR code(s) from Google Authenticator?
+        </button>
+
+        <div class="accordion-content">
+          <ol>
+            <li>
+              In Google Authenticator, click the hamburger menu at the top left.
+            </li>
+            <li>Choose “Transfer Accounts”.</li>
+            <li>Click “Export Accounts”.</li>
+            <li>
+              Select the accounts to export (by default, all accounts are
+              included). Click “Next”.
+            </li>
+            <li>
+              You’ll be shown one or more QR codes, depending on how many
+              One-Time Passwords you have. Take a screenshot of each QR code.
+            </li>
+            <li>Add each screenshot below to extract your OTP secrets.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="file-input-wrapper">
+        <label
+          for="qr-input"
+          class="file-input-label"
+          aria-label="Select QR Code Images"
+        >
+          <i class="fa fa-upload"></i> Select QR Code Image(s)
+        </label>
+        <div class="drop-text">or drag and drop files here</div>
+        <div id="upload-log-container" style="display: none">
+          <ul id="upload-log-list"></ul>
+        </div>
+        <input
+          type="file"
+          id="qr-input"
+          accept="image/*"
+          multiple
+          @change="handleFileChange"
+        />
+      </div>
+
+      <div id="error-message-container"></div>
+
+      <canvas id="qr-canvas" style="display: none"></canvas>
+      <div id="results-container"></div>
+
+      <div id="export-container" style="display: none">
+        <button id="download-csv-button">
+          <i class="fa fa-download"></i> Save as CSV
+        </button>
+        <button id="clear-button"><i class="fa fa-trash"></i> Clear All</button>
       </div>
     </div>
-
-    <div class="accordion">
-      <button class="accordion-button">
-        Why is this needed?
-      </button>
-      <div class="accordion-content">
-        <p>Google Authenticator provides a way to transfer your One-Time Passwords (also known as 2-Factor
-          Authentication or 2FA Codes) from one copy of Google Authenticator, to another copy on a different device, but
-          it does <em>not</em> provide any way to view the original, individual secrets. The secret is the original QR
-          code (or string of hexdecimal characters) that you used to add the OTP into Google Authenticator in
-          the first place.</p>
-        <p>That makes it challenging to migrate from Google Authenticator to other apps that can store
-          One-Time Passwords, such as 1Password, or Apple Passwords. Without the secrets you have to log into each
-          account one by one to either get the setup QR code again, or reconfigure the OTP completely, which is
-          time-consuming and a huge pain.</p>
-        <p>This tool provides a simple, safe, browser-based solution to the problem.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <button class="accordion-button">
-        How does it work?
-      </button>
-      <div class="accordion-content">
-        <p>You provide screenshots of the export QR codes from your Google Authenticator app. There are usually multiple
-          OTP secrets within each QR code.</p>
-        <p>This tool extracts the original secrets and provides them to you in a
-          standard format (individual QR code or hex code) that you can then scan or input into your OTP app of choice.
-        </p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <button class="accordion-button">How do I get my QR code(s) from Google Authenticator?</button>
-
-      <div class="accordion-content">
-        <ol>
-          <li>In Google Authenticator, click the hamburger menu at the top left.</li>
-          <li>Choose “Transfer Accounts”.</li>
-          <li>Click “Export Accounts”.</li>
-          <li>Select the accounts to export (by default, all accounts are included). Click “Next”.</li>
-          <li>You’ll be shown one or more QR codes, depending on how many One-Time Passwords you have. Take a screenshot
-            of each QR code.</li>
-          <li>Add each screenshot below to extract your OTP secrets.</li>
-        </ol>
-      </div>
-    </div>
-
-
-    <div class="file-input-wrapper">
-      <label for="qr-input" class="file-input-label" aria-label="Select QR Code Images">
-        <i class="fa fa-upload"></i> Select QR Code Image(s)
-      </label>
-      <div class="drop-text">or drag and drop files here</div>
-      <div id="upload-log-container" style="display: none;">
-        <ul id="upload-log-list"></ul>
-      </div>
-      <input type="file" id="qr-input" accept="image/*" multiple @change="handleFileChange">
-    </div>
-
-    <div id="error-message-container"></div>
-
-    <canvas id="qr-canvas" style="display: none;"></canvas>
-    <div id="results-container"></div>
-
-    <div id="export-container" style="display: none;">
-      <button id="download-csv-button"><i class="fa fa-download"></i> Save as CSV</button>
-      <button id="clear-button"><i class="fa fa-trash"></i> Clear All</button>
-    </div>
-  </div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
