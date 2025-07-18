@@ -151,15 +151,33 @@ function setupAccordion(): void {
 
     if (!button) return;
 
-    const isExpanded = button.getAttribute("aria-expanded") === "true";
-    const answerId = button.getAttribute("aria-controls");
-    if (!answerId) return;
+    const faqItem = button.closest<HTMLDivElement>(".faq-item");
+    if (!faqItem) return;
 
-    const answerPanel = document.getElementById(answerId);
-    if (!answerPanel) return;
+    const isCurrentlyExpanded = faqItem.classList.contains("open");
 
-    button.setAttribute("aria-expanded", String(!isExpanded));
-    answerPanel.hidden = isExpanded;
+    // Close all other open items
+    faqContainer
+      .querySelectorAll<HTMLDivElement>(".faq-item.open")
+      .forEach((openItem) => {
+        if (openItem !== faqItem) {
+          openItem.classList.remove("open");
+          const otherButton =
+            openItem.querySelector<HTMLButtonElement>(".faq-button");
+          if (otherButton) {
+            otherButton.setAttribute("aria-expanded", "false");
+          }
+        }
+      });
+
+    // Toggle the clicked item's state
+    if (isCurrentlyExpanded) {
+      faqItem.classList.remove("open");
+      button.setAttribute("aria-expanded", "false");
+    } else {
+      faqItem.classList.add("open");
+      button.setAttribute("aria-expanded", "true");
+    }
   });
 }
 

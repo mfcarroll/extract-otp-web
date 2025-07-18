@@ -447,62 +447,84 @@ h1 {
   flex-shrink: 0;
 }
 
-/* FAQ Accordion Styling */
-.faq-item {
+/* --- FAQ Accordion Styling --- */
+
+#tab-faq .faq-item {
   border-bottom: 1px solid var(--border-color);
 }
 
-.faq-item:last-of-type {
+#tab-faq .faq-item:last-child {
   border-bottom: none;
 }
 
-.faq-item h3 {
+#tab-faq .faq-item h3 {
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1rem; /* Reset h3 size to be controlled by button */
 }
 
-.faq-button {
+#tab-faq .faq-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1rem 0;
-  background: none;
+  padding: 1.25rem 0.5rem;
+  background-color: transparent;
   border: none;
-  text-align: left;
   cursor: pointer;
-  font-size: inherit;
-  font-weight: inherit;
-  color: var(--primary-color);
-  transition: color 0.2s ease-in-out;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  transition: background-color 0.2s ease;
 }
 
-.faq-button:hover,
-.faq-button:focus-visible {
-  color: #357abd; /* Darker blue */
+#tab-faq .faq-button:hover,
+#tab-faq .faq-button:focus-visible {
+  background-color: #f9f9f9;
   outline: none;
 }
 
-.faq-icon {
-  font-size: 1.5rem;
-  font-weight: 300;
-  transition: transform 0.2s ease-in-out;
+#tab-faq .faq-title {
+  flex-grow: 1;
+  padding-right: 1rem;
 }
 
-.faq-button[aria-expanded="true"] .faq-icon {
+#tab-faq .faq-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.3s ease-in-out;
+  flex-shrink: 0;
+}
+
+#tab-faq .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding-bottom 0.4s ease-in-out;
+  padding: 0 0.5rem; /* Horizontal padding only when closed */
+}
+
+#tab-faq .faq-answer p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+#tab-faq .faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Open State --- */
+
+#tab-faq .faq-item.open .faq-button {
+  color: var(--primary-color);
+}
+
+#tab-faq .faq-item.open .faq-icon {
   transform: rotate(45deg);
 }
 
-.faq-answer {
-  /* Add some space when the answer is revealed */
-  padding: 0.5rem 0 1.5rem 0;
-}
-
-.faq-answer > *:first-child {
-  margin-top: 0;
-}
-
-.faq-answer > *:last-child {
-  margin-bottom: 0;
+#tab-faq .faq-item.open .faq-answer {
+  /* A large enough max-height to accommodate any answer content */
+  max-height: 1000px;
+  padding-bottom: 1.5rem;
 }
