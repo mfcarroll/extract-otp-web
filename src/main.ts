@@ -38,19 +38,19 @@ function $<T extends HTMLElement>(selector: string): T {
  * @returns A promise that resolves to an array of OTP parameters.
  */
 async function getOtpParametersFromUrl(otpUrl: string): Promise<MigrationOtpParameter[]> {
-    const url = new URL(otpUrl);
-    const dataBase64 = url.searchParams.get('data');
-    if (!dataBase64) {
-        throw new Error('Invalid OTP URL: Missing "data" parameter.');
-    }
+  const url = new URL(otpUrl);
+  const dataBase64 = url.searchParams.get('data');
+  if (!dataBase64) {
+    throw new Error('Invalid OTP URL: Missing "data" parameter.');
+  }
 
-    const data = base64ToUint8Array(dataBase64);
+  const data = base64ToUint8Array(dataBase64);
 
-    const root = await protobufRoot;
-    const MigrationPayload = root.lookupType('MigrationPayload');
+  const root = await protobufRoot;
+  const MigrationPayload = root.lookupType('MigrationPayload');
 
-    const payload = MigrationPayload.decode(data) as unknown as { otpParameters: MigrationOtpParameter[] };
-    return payload.otpParameters;
+  const payload = MigrationPayload.decode(data) as unknown as { otpParameters: MigrationOtpParameter[] };
+  return payload.otpParameters;
 }
 
 /**
@@ -59,45 +59,46 @@ async function getOtpParametersFromUrl(otpUrl: string): Promise<MigrationOtpPara
  * @returns A promise that resolves with an array of OTP parameters, or an empty array if no QR code is found.
  */
 function processImage(file: File): Promise<MigrationOtpParameter[]> {
-    return new Promise((resolve, reject) => {
-        const canvas = $<HTMLCanvasElement>('#qr-canvas');
-        const ctx = canvas.getContext('2d');
-        if (!ctx) {
-            return reject(new Error('Could not get canvas context'));
+  return new Promise((resolve, reject) => {
+    const canvas = $<HTMLCanvasElement>('#qr-canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      return reject(new Error('Could not get canvas context'));
+    }
+
+    const img = new Image();
+
+    img.onload = async () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      URL.revokeObjectURL(img.src); // Clean up memory
+
+      const imageData = ctx.getImageData(0, 0, img.width, img.height);
+      const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+      if (code) {
+        try {
+          const otpParameters = await getOtpParametersFromUrl(code.data);
+          resolve(otpParameters);
+        } catch (error) {
+          console.error("Error decoding QR code data:", error);
+          reject(new Error('QR code content is invalid or not a Google Authenticator export.'));
         }
+      } else {
+        // Resolve with an empty array if no QR code is found in this image.
+        // This prevents a single failed image from stopping the entire batch.
+        resolve([]);
+      }
+    };
 
-        const img = new Image();
+    img.onerror = () => {
+      URL.revokeObjectURL(img.src); // Clean up memory
+      reject(new Error('File could not be loaded as an image.'));
+    };
 
-        img.onload = async () => {
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
-            URL.revokeObjectURL(img.src); // Clean up memory
-
-            const imageData = ctx.getImageData(0, 0, img.width, img.height);
-            const code = jsQR(imageData.data, imageData.width, imageData.height);
-
-            if (code) {
-                try {
-                    const otpParameters = await getOtpParametersFromUrl(code.data);
-                    resolve(otpParameters);
-                } catch (error) {
-                    reject(error);
-                }
-            } else {
-                // Resolve with an empty array if no QR code is found in this image.
-                // This prevents a single failed image from stopping the entire batch.
-                resolve([]);
-            }
-        };
-
-        img.onerror = () => {
-            URL.revokeObjectURL(img.src); // Clean up memory
-            reject(new Error(`Failed to load image: ${file.name}`));
-        };
-
-        img.src = URL.createObjectURL(file);
-    });
+    img.src = URL.createObjectURL(file);
+  });
 }
 
 document.querySelectorAll('.accordion-button').forEach((button) => {
@@ -119,7 +120,7 @@ function base64ToUint8Array(base64: string): Uint8Array {
 function displayResults(otpParameters: MigrationOtpParameter[]): void {
   const resultsContainer = $<HTMLDivElement>('#results-container');
   const exportContainer = $<HTMLDivElement>('#export-container');
-  
+
   // Clear any previous results (including error messages) before rendering.
   resultsContainer.innerHTML = '';
   if (!otpParameters || otpParameters.length === 0) {
@@ -147,7 +148,7 @@ function displayResults(otpParameters: MigrationOtpParameter[]): void {
 function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement: HTMLDivElement, exportData: OtpData } {
   const secretText = encode(otp.secret);
   const issuerText = otp.issuer || 'N/A';
-  const accountName = otp.name || 'N/A'; // More descriptive name
+  const accountName = otp.name || 'N/A';
   const typeText = otp.type === 2 ? 'totp' : 'hotp'; // Convert type code to string
 
   // Construct the label for display and the otpauth URL.
@@ -216,13 +217,43 @@ function createOtpCard(otp: MigrationOtpParameter, index: number): { cardElement
   otpDetails.addEventListener('click', (event: MouseEvent) => {
     const target = event.target as HTMLElement;
     if (target.matches('.text-input, .copy-button, .copy-button i')) {
-        handleCopy(event);
+      handleCopy(event);
     }
   });
   cardElement.appendChild(otpDetails);
   cardElement.appendChild(qrCodeContainer);
 
   return { cardElement, exportData };
+}
+
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+/**
+ * Adds an entry to the upload log in the UI.
+ * @param fileName The name of the file processed.
+ * @param status The status of the processing (e.g., 'success', 'error', 'info', 'warning').
+ * @param message The message to display.
+ */
+function addUploadLog(fileName: string, status: 'success' | 'info' | 'warning' | 'error', message: string): void {
+  const logContainer = $<HTMLDivElement>('#upload-log-container');
+  if (logContainer.style.display === 'none') {
+    logContainer.style.display = 'block';
+  }
+
+  const logList = $<HTMLUListElement>('#upload-log-list');
+  const logItem = document.createElement('li');
+  logItem.className = `log-item log-item--${status}`;
+  logItem.innerHTML = `<i class="fa fa-file"></i> <span class="log-file-name">${escapeHtml(fileName)}</span> - <span class="log-message">${message}</span>`;
+
+  logList.appendChild(logItem);
+  logItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function displayError(message: string, duration = 5000): void {
@@ -264,80 +295,82 @@ async function processFiles(files: FileList | null): Promise<void> {
   const fileArray = Array.from(files);
 
   try {
-    const otpParamPromises = fileArray.map(file =>
-      processImage(file).catch(error => {
-        console.error(`Error processing file ${file.name}:`, error);
-        displayError(`Failed to process image: ${file.name}. It might not be a valid QR code image.`);
-        return null;
-      })
-    );
+    const logContainer = $<HTMLDivElement>('#upload-log-container');
 
-    const allOtpParametersNested = await Promise.all(otpParamPromises);
-    const newOtpParametersRaw = allOtpParametersNested.filter((p): p is MigrationOtpParameter[] => p !== null).flat();
-
-    if (newOtpParametersRaw.length === 0) {
-      // An error for a specific file might have been already shown.
-      // If not, we show a generic one.
-      if (allOtpParametersNested.every(p => p !== null)) {
-        displayError('No QR codes with OTP secrets found in the selected file(s).');
-      }
-      return;
+    if (logContainer.style.display === 'none') {
+      logContainer.style.display = 'block';
     }
 
-    const existingOtpKeys = new Set(extractedOtps.map(getOtpUniqueKey));
-    
-    // New Set to track keys in the current batch.
-    const uniqueNewParams = new Map<string, MigrationOtpParameter>();
+    const firstNewIndex = extractedOtps.length;
+    const newlyAddedOtps: MigrationOtpParameter[] = [];
+    let anyDuplicatesOrErrors = false;
 
-    let currentDuplicateCount = 0;
-    for (const otp of newOtpParametersRaw) {
-        const key = getOtpUniqueKey(otp);
-        // Add to map if it's not a duplicate from existing list or from this new batch
-        if (!existingOtpKeys.has(key) && !uniqueNewParams.has(key)) {
-            uniqueNewParams.set(key, otp);
+    // This set will contain keys from previously extracted OTPs AND OTPs from the current batch.
+    const existingAndBatchKeys = new Set(extractedOtps.map(getOtpUniqueKey));
+
+    for (const file of fileArray) {
+      try {
+        const otpParameters = await processImage(file);
+
+        if (otpParameters.length > 0) {
+          let extractedInFile = 0;
+          let duplicatesInFile = 0;
+
+          for (const otp of otpParameters) {
+            const key = getOtpUniqueKey(otp);
+            if (existingAndBatchKeys.has(key)) {
+              duplicatesInFile++;
+            } else {
+              newlyAddedOtps.push(otp);
+              existingAndBatchKeys.add(key);
+              extractedInFile++;
+            }
+          }
+
+          if (extractedInFile > 0) {
+            const plural = extractedInFile > 1 ? 's' : '';
+            addUploadLog(file.name, 'success', `${extractedInFile} secret${plural} extracted.`);
+          }
+          if (duplicatesInFile > 0) {
+            anyDuplicatesOrErrors = true;
+            const plural = duplicatesInFile > 1 ? 's' : '';
+            addUploadLog(file.name, 'warning', `${duplicatesInFile} duplicate secret${plural} skipped.`);
+          }
         } else {
-            currentDuplicateCount++;
+          addUploadLog(file.name, 'info', 'No OTP secrets found.');
         }
-    }
 
-    const nonDuplicateOtpParameters = Array.from(uniqueNewParams.values());
-    const duplicateCount = currentDuplicateCount;
-
-    if (duplicateCount > 0) {
-      // If there were duplicates in the current batch, display an error.
-      // If no unique non duplicate params were extracted, and no other errors were displayed, then show the "all duplicates" message.
-      // Otherwise show that some entries were ignored.
-      // This works since we display the error *after* the error relating to file processing, if any.
-
-      if (nonDuplicateOtpParameters.length === 0) {
-        displayError('All OTP secrets from the image(s) are already in the list.');
-        console.log('No new OTP secrets to add.')
-      } else {
-        const plural = duplicateCount > 1 ? 's' : '';
-        displayError(`Ignored ${duplicateCount} duplicate OTP secret${plural}.`);
-        console.log(`Ignored duplicate(s).`)
+      } catch (error: any) {
+        anyDuplicatesOrErrors = true;
+        const message = (error instanceof Error ? error.message : String(error)) || 'An unknown error occurred.';
+        console.error(`Error processing file ${file.name}:`, error);
+        displayError(`Error with '${file.name}': ${message}`);
+        addUploadLog(file.name, 'error', message);
       }
     }
 
-
-    if (nonDuplicateOtpParameters.length > 0) {
-      const firstNewIndex = extractedOtps.length;
-      extractedOtps.push(...nonDuplicateOtpParameters);
+    if (newlyAddedOtps.length > 0) {
+      extractedOtps.push(...newlyAddedOtps);
       displayResults(extractedOtps);
 
       const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
-      if (currentDuplicateCount > 0) {
-        return; // don't scroll down if duplicates occured.
-      }
-      if (firstNewCard) {
+      if (!anyDuplicatesOrErrors && firstNewCard) {
         firstNewCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else if (fileArray.length > 0 && !anyDuplicatesOrErrors) {
+      const logList = $<HTMLUListElement>('#upload-log-list');
+      const children = Array.from(logList.children);
+      const lastBatchLogs = children.length >= fileArray.length ? children.slice(-fileArray.length) : children;
+      const allInfoLogs = lastBatchLogs.every(li => li.classList.contains('log-item--info'));
+      if (allInfoLogs) {
+        displayError('No new OTP secrets found in any of the selected files.');
       }
     }
 
   } catch (error: any) {
     displayError(error.message || 'An unexpected error occurred while processing files.');
-    }
   }
+}
 
 const handleCopy = (event: MouseEvent) => {
   const triggerElement = event.target as HTMLElement;
@@ -350,7 +383,7 @@ const handleCopy = (event: MouseEvent) => {
   const input = container.querySelector<HTMLInputElement>('.text-input');
   const button = container.querySelector<HTMLButtonElement>('.copy-button');
   if (!input || !button) {
-        return;
+    return;
   }
 
   const textToCopy = triggerElement.matches('.copy-button, .copy-button i')
@@ -417,6 +450,8 @@ function convertToOtpData(otp: MigrationOtpParameter): OtpData {
   return exportData;
 }
 
+
+
 // --- Event Listeners ---
 
 // Listen for file input changes
@@ -428,7 +463,7 @@ $<HTMLButtonElement>('#download-csv-button').addEventListener('click', downloadA
 
 // Listen for Clear All button clicks
 $<HTMLButtonElement>('#clear-button').addEventListener('click', () => {
-    const resultsContainer = $<HTMLDivElement>('#results-container');
+  const resultsContainer = $<HTMLDivElement>('#results-container');
   const exportContainer = $<HTMLDivElement>('#export-container');
   const qrInput = $<HTMLInputElement>('#qr-input');
   resultsContainer.innerHTML = '';
