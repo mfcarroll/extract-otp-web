@@ -2,7 +2,9 @@
 
 A simple, secure, and purely client-side web tool to extract One-Time Password (OTP) secrets from Google Authenticator QR code exports.
 
-**[➡️ Open the tool](https://mfcarroll.github.io/extract-otp-web/)**
+## [Open the tool →](https://mfcarroll.github.io/extract-otp-web/)
+
+[https://mfcarroll.github.io/extract-otp-web/](https://mfcarroll.github.io/extract-otp-web/)
 
 ## Why is this needed?
 
