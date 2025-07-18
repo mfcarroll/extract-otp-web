@@ -41,33 +41,38 @@
 
           <h2 class="tab-button" data-tab="use">How do I use it?</h2>
           <div id="tab-use" class="tab-content">
-            <h3>Export from Google Authenticator</h3>
+            <p>
+              This tool reads the QR code screenshots from Google
+              Authenticator's export feature and gives you back the original
+              secret for each account. You can then use these secrets to import
+              your accounts into any other authenticator app.
+            </p>
+            <h3>1. Export from Google Authenticator</h3>
+            <ul>
+              <li>Open the Google Authenticator app on your phone.</li>
+              <li>
+                Go to the menu and select "Transfer accounts" > "Export
+                accounts".
+              </li>
+              <li>Select the accounts you wish to export.</li>
+              <li>Take a screenshot of each QR code that is displayed.</li>
+            </ul>
+            <h3>2. Extract Secrets</h3>
             <ul>
               <li>
-                In Google Authenticator, click the hamburger menu at the top
-                left.
-              </li>
-              <li>Choose “Transfer Accounts”.</li>
-              <li>Click “Export Accounts”.</li>
-              <li>
-                Select the accounts to export (by default, all accounts are
-                included). Click “Next”.
-              </li>
-              <li>
-                You&lsquo;ll be shown one or more QR codes, depending on how
-                many One-Time Passwords you have. Take a screenshot of each QR
-                code.
+                Click "Select QR Code Image(s)" or drag and drop your
+                screenshot(s) onto the page.
               </li>
             </ul>
-            <h3>Upload Screenshots</h3>
-            <ul>
-              <li>Add each screenshot below to extract your OTP secrets.</li>
-            </ul>
-            <h3>Use your OTP Secrets</h3>
+            <h3>3. Use Your Secrets</h3>
             <ul>
               <li>
-                Scan the provided QR code(s) or enter the hex code into your OTP
-                app of choice.
+                The tool will display the extracted OTP secrets, each with its
+                own QR code and secret key.
+              </li>
+              <li>
+                You can now import these secrets into your preferred
+                authenticator app or password manager.
               </li>
             </ul>
           </div>
