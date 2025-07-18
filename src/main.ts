@@ -147,12 +147,18 @@ function setupAccordion(): void {
 
   faqContainer.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
-    const button = target.closest<HTMLButtonElement>(".faq-button");
 
-    if (!button) return;
-
-    const faqItem = button.closest<HTMLDivElement>(".faq-item");
+    // If a link inside the answer is clicked, do nothing.
+    // This allows links to be opened without toggling the accordion.
+    if (target.closest("a")) {
+      return;
+    }
+    // Find the closest faq-item from the click
+    const faqItem = target.closest<HTMLDivElement>(".faq-item");
     if (!faqItem) return;
+
+    const button = faqItem.querySelector<HTMLButtonElement>(".faq-button");
+    if (!button) return;
 
     // Toggle the 'open' class on the clicked item. This will show/hide the answer.
     faqItem.classList.toggle("open");

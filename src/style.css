@@ -473,16 +473,18 @@ h1 {
   padding: 1.25rem 0.5rem;
   background-color: transparent;
   border: none;
-  cursor: pointer;
   text-align: left;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-color);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 #tab-faq .faq-button:hover,
-#tab-faq .faq-button:focus-visible {
+#tab-faq .faq-button:focus-visible,
+#tab-faq .faq-item:hover .faq-button {
   background-color: #f9f9f9;
   color: var(--primary-color-dark);
   outline: none;
@@ -507,6 +509,7 @@ h1 {
   overflow: hidden;
   transition: max-height 0.4s ease-in-out, padding-bottom 0.4s ease-in-out;
   padding: 0 0.5rem; /* Horizontal padding only when closed */
+  cursor: pointer;
 }
 
 #tab-faq .faq-answer p {

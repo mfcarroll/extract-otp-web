@@ -5,7 +5,7 @@ A simple, secure, and purely client-side web tool to extract One-Time Password (
 ## Features
 
 - **Purely Local**: No data ever leaves your computer. All processing happens directly in your browser.
-- **No Installation**: It's just a [web page](https://mfcarroll.github.io/extract-otp-web/); no software to install.
+- **No Installation**: It's just a [web page](https://mfcarroll.github.io/extract-otp-web/).
 - **Secure & Private**: Your OTP secrets are sensitive, and this tool is designed with privacy as the top priority.
 - **Open Source**: The code is available for inspection to verify its security and methodology.
 
