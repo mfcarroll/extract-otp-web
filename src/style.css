@@ -336,62 +336,108 @@ h1 {
   padding-left: 20px;
 }
 
-/* Accordion Styling */
-.accordion {
-  margin-bottom: 1rem;
+/* Tabbed Info Section Styling */
+#info-tabs {
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 6px 6px 0 0;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  overflow: hidden;
+  border-bottom: none;
 }
 
-.accordion-button {
-  background-color: #f0f0f0;
-  color: var(--text-color);
-  cursor: pointer;
+.tab-button {
+  grid-row: 1;
+  margin: 0;
   padding: 1rem;
-  width: 100%;
-  text-align: left;
   border: none;
-  outline: none;
-  transition: 0.4s;
-  font-size: 1rem;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  text-align: center;
   font-weight: 600;
-  position: relative;
+  font-size: 1rem; /* Match paragraph font size */
+  color: var(--text-color);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  border-bottom: 3px solid transparent;
 }
 
-.accordion-button::after {
-  content: "\ff0b";
-  /* Fullwidth plus sign */
-  font-size: 1rem;
-  color: #777;
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+.tab-button:not(:last-child) {
+  border-right: 1px solid var(--border-color);
 }
 
-.accordion-button:hover {
-  background-color: #ddd;
+.tab-button:first-of-type {
+  border-top-left-radius: 5px;
 }
 
-.accordion-content {
-  padding: 0 1rem;
+.tab-button:last-of-type {
+  border-top-right-radius: 5px;
+}
+
+.tab-button:hover {
+  background-color: #e0e0e0;
+}
+
+.tab-button.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
   background-color: var(--card-background);
-  border-top: 1px solid var(--border-color);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
 }
 
-.accordion.active .accordion-button::after {
-  content: "\ff0d";
-  /* Fullwidth minus sign */
+.tab-content {
+  display: none;
+  grid-row: 2;
+  grid-column: 1 / -1; /* Span all columns */
+  padding: 1.5rem;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
 }
 
-.accordion.active .accordion-content {
-  max-height: 500px;
-  /* A more dynamic max-height */
-  padding: 1rem;
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h3 {
+  color: var(--primary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.tab-content h3:first-child {
+  margin-top: 0;
+}
+
+.tab-content a {
+  color: #357abd; /* A blue that complements the primary color */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.tab-content a:hover {
+  text-decoration: underline;
+}
+
+.tab-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.tab-content li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.5rem;
+}
+
+.tab-content li::before {
+  content: "–"; /* Using an en-dash for a clean look */
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
 .otp-details {

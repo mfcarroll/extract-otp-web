@@ -107,11 +107,35 @@ function processImage(file: File): Promise<MigrationOtpParameter[] | null> {
   });
 }
 
-document.querySelectorAll(".accordion-button").forEach((button) => {
-  button.addEventListener("click", () =>
-    button.parentElement?.classList.toggle("active")
-  );
-});
+/**
+ * Sets up the event listeners for the tabbed informational interface.
+ * Uses event delegation for efficiency.
+ */
+function setupTabs(): void {
+  const tabsContainer = document.getElementById("info-tabs");
+  if (!tabsContainer) return;
+
+  const tabButtons =
+    tabsContainer.querySelectorAll<HTMLHeadingElement>(".tab-button");
+  const tabContents =
+    tabsContainer.querySelectorAll<HTMLDivElement>(".tab-content");
+
+  tabsContainer.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (!target.matches(".tab-button")) return;
+
+    const tabId = target.dataset.tab;
+    if (!tabId) return;
+
+    // Deactivate all buttons and content panels
+    tabButtons.forEach((button) => button.classList.remove("active"));
+    tabContents.forEach((content) => content.classList.remove("active"));
+
+    // Activate the clicked button and its corresponding content panel
+    target.classList.add("active");
+    $(`#tab-${tabId}`).classList.add("active");
+  });
+}
 
 function base64ToUint8Array(base64: string): Uint8Array {
   const base64Fixed = base64.replace(/ /g, "+");
@@ -485,67 +509,76 @@ function convertToOtpData(otp: MigrationOtpParameter): OtpData {
   return exportData;
 }
 
-// --- Event Listeners ---
+/**
+ * Initializes the application by setting up all event listeners.
+ * This function is called once the DOM is fully loaded.
+ */
+function initializeApp(): void {
+  setupTabs();
 
-// Listen for file input changes
-$<HTMLInputElement>("#qr-input").addEventListener("change", (event: Event) => {
-  processFiles((event.target as HTMLInputElement).files);
-});
-// Listen for CSV download button clicks
-$<HTMLButtonElement>("#download-csv-button").addEventListener(
-  "click",
-  downloadAsCsv
-);
+  // Listen for file input changes
+  $<HTMLInputElement>("#qr-input").addEventListener(
+    "change",
+    (event: Event) => {
+      processFiles((event.target as HTMLInputElement).files);
+    }
+  );
 
-// Listen for Clear All button clicks
-$<HTMLButtonElement>("#clear-button").addEventListener("click", () => {
-  const resultsContainer = $<HTMLDivElement>("#results-container");
-  const exportContainer = $<HTMLDivElement>("#export-container");
-  const qrInput = $<HTMLInputElement>("#qr-input");
-  resultsContainer.innerHTML = "";
-  exportContainer.style.display = "none";
-  extractedOtps = [];
-  qrInput.value = ""; // Reset file input so the same files can be re-selected
-});
+  // Listen for CSV download button clicks
+  $<HTMLButtonElement>("#download-csv-button").addEventListener(
+    "click",
+    downloadAsCsv
+  );
 
-// --- Drag and Drop Event Listeners ---
-const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
+  // Listen for Clear All button clicks
+  $<HTMLButtonElement>("#clear-button").addEventListener("click", () => {
+    const resultsContainer = $<HTMLDivElement>("#results-container");
+    const exportContainer = $<HTMLDivElement>("#export-container");
+    const qrInput = $<HTMLInputElement>("#qr-input");
+    const logContainer = $<HTMLDivElement>("#upload-log-container");
+    const logList = $<HTMLUListElement>("#upload-log-list");
 
-function preventDefaults(e: Event): void {
-  e.preventDefault();
-  e.stopPropagation();
+    resultsContainer.innerHTML = "";
+    logList.innerHTML = "";
+    exportContainer.style.display = "none";
+    logContainer.style.display = "none";
+    extractedOtps = [];
+    qrInput.value = ""; // Reset file input so the same files can be re-selected
+  });
+
+  // --- Drag and Drop Event Listeners ---
+  const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
+
+  function preventDefaults(e: Event): void {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  // Prevent default drag behaviors on the drop zone and the body.
+  ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+    fileDropZone.addEventListener(eventName, preventDefaults);
+    document.body.addEventListener(eventName, preventDefaults);
+  });
+
+  // Add a visual indicator when a file is dragged over the drop zone.
+  ["dragenter", "dragover"].forEach((eventName) => {
+    fileDropZone.addEventListener(eventName, () =>
+      fileDropZone.classList.add("active")
+    );
+  });
+
+  // Remove the visual indicator when the file leaves the drop zone.
+  ["dragleave", "drop"].forEach((eventName) => {
+    fileDropZone.addEventListener(eventName, () =>
+      fileDropZone.classList.remove("active")
+    );
+  });
+
+  // Handle the dropped files.
+  fileDropZone.addEventListener("drop", (event: DragEvent) => {
+    processFiles(event.dataTransfer?.files ?? null);
+  });
 }
 
-// Prevent default drag behaviors on the drop zone and the body.
-// This is necessary to allow for a drop.
-["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-  fileDropZone.addEventListener(eventName, preventDefaults, false);
-  document.body.addEventListener(eventName, preventDefaults, false);
-});
-
-// Add a visual indicator when a file is dragged over the drop zone.
-["dragenter", "dragover"].forEach((eventName) => {
-  fileDropZone.addEventListener(
-    eventName,
-    () => fileDropZone.classList.add("active"),
-    false
-  );
-});
-
-// Remove the visual indicator when the file leaves the drop zone.
-["dragleave", "drop"].forEach((eventName) => {
-  fileDropZone.addEventListener(
-    eventName,
-    () => fileDropZone.classList.remove("active"),
-    false
-  );
-});
-
-// Handle the dropped files.
-fileDropZone.addEventListener(
-  "drop",
-  (event: DragEvent) => {
-    processFiles(event.dataTransfer?.files ?? null);
-  },
-  false
-);
+// Initialize the application once the DOM is ready.
+document.addEventListener("DOMContentLoaded", initializeApp);
