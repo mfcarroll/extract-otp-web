@@ -600,12 +600,102 @@ function convertToOtpData(otp: MigrationOtpParameter): OtpData {
 }
 
 /**
+ * Manages the theme switcher UI and applies the selected theme.
+ */
+function setupThemeSwitcher(): void {
+  const themeSwitcherWrapper = document.querySelector<HTMLDivElement>(
+    ".theme-switcher-wrapper"
+  );
+  if (!themeSwitcherWrapper) return;
+
+  const themeSwitcher =
+    themeSwitcherWrapper.querySelector<HTMLDivElement>(".theme-switcher");
+  if (!themeSwitcher) return;
+
+  const buttons = themeSwitcher.querySelectorAll<HTMLButtonElement>("button");
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const applyTheme = (theme: "light" | "dark" | "system") => {
+    let isDark: boolean;
+    if (theme === "system") {
+      isDark = mediaQuery.matches;
+    } else {
+      isDark = theme === "dark";
+    }
+
+    document.documentElement.classList.toggle("dark-mode", isDark);
+
+    // Update button active state
+    buttons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.theme === theme);
+    });
+
+    // Redraw QR codes if they exist to match the new theme
+    if (extractedOtps.length > 0) {
+      displayResults(extractedOtps);
+    }
+  };
+
+  const updateThemeFromSystem = () => {
+    const currentTheme = localStorage.getItem("theme") as
+      | "light"
+      | "dark"
+      | "system"
+      | null;
+    if (currentTheme === "system" || !currentTheme) {
+      applyTheme("system");
+    }
+  };
+
+  // --- New Interaction Logic ---
+
+  // Handle clicks within the switcher wrapper
+  themeSwitcherWrapper.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    const button = target.closest("button");
+
+    if (button) {
+      // A theme button was clicked
+      const theme = button.dataset.theme as "light" | "dark" | "system";
+      localStorage.setItem("theme", theme);
+      applyTheme(theme);
+      themeSwitcherWrapper.classList.remove("open"); // Ensure it closes
+    } else {
+      // The container was clicked (for touch devices)
+      themeSwitcherWrapper.classList.toggle("open");
+    }
+  });
+
+  // Close when the mouse leaves the switcher area
+  themeSwitcherWrapper.addEventListener("mouseleave", () => {
+    themeSwitcherWrapper.classList.remove("open");
+  });
+
+  // Close if user clicks anywhere outside the switcher
+  document.addEventListener("click", (event) => {
+    if (!themeSwitcherWrapper.contains(event.target as Node)) {
+      themeSwitcherWrapper.classList.remove("open");
+    }
+  });
+
+  // --- Initial Setup ---
+  mediaQuery.addEventListener("change", updateThemeFromSystem);
+  const savedTheme = localStorage.getItem("theme") as
+    | "light"
+    | "dark"
+    | "system"
+    | null;
+  applyTheme(savedTheme || "system");
+}
+
+/**
  * Initializes the application by setting up all event listeners.
  * This function is called once the DOM is fully loaded.
  */
 function initializeApp(): void {
   setupTabs();
   setupAccordion();
+  setupThemeSwitcher();
 
   // Listen for file input changes
   $<HTMLInputElement>("#qr-input").addEventListener(
@@ -686,16 +776,6 @@ function initializeApp(): void {
     if (modal.style.display !== "none") {
       event.preventDefault(); // Prevent default browser action (e.g., scrolling)
       hideQrModal();
-    }
-  });
-
-  // --- Theme Change Listener ---
-  // Listen for changes in the color scheme and re-render the results
-  // to update the QR code colors to match the new theme.
-  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  mediaQuery.addEventListener("change", () => {
-    if (extractedOtps.length > 0) {
-      displayResults(extractedOtps);
     }
   });
 }

@@ -23,27 +23,26 @@
   --shadow-elevation-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: #4a90e2;
-    --primary-color-dark: #5aa1f2;
-    --background-color: #1a202c;
-    --text-color: #e2e8f0;
-    --card-background: #2d3748;
-    --border-color: #4a5568;
-    --error-color: #e57373;
-    --info-color: #64b5f6;
-    --success-color: #81c784;
+/* Dark theme overrides */
+html.dark-mode {
+  --primary-color: #4a90e2;
+  --primary-color-dark: #5aa1f2;
+  --background-color: #1a202c;
+  --text-color: #e2e8f0;
+  --card-background: #2d3748;
+  --border-color: #4a5568;
+  --error-color: #e57373;
+  --info-color: #64b5f6;
+  --success-color: #81c784;
 
-    --subtle-text-color: #a0aec0;
-    --active-background-color: #2c3a50;
-    --input-background-color: #1a202c;
-    --log-filler-color: #555;
-    --faq-hover-background: #384357;
-    --modal-overlay-background: rgba(0, 0, 0, 0.85);
-    --drag-overlay-background: rgba(200, 220, 255, 0.2);
-    --shadow-elevation-medium: 0 6px 15px rgba(0, 0, 0, 0.2);
-  }
+  --subtle-text-color: #a0aec0;
+  --active-background-color: #2c3a50;
+  --input-background-color: #1a202c;
+  --log-filler-color: #555;
+  --faq-hover-background: #384357;
+  --modal-overlay-background: rgba(0, 0, 0, 0.85);
+  --drag-overlay-background: rgba(200, 220, 255, 0.2);
+  --shadow-elevation-medium: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -69,12 +68,14 @@ body {
   border-radius: 8px;
   box-shadow: var(--shadow-elevation-medium);
   box-sizing: border-box;
+  position: relative;
 }
 
 h1 {
   color: var(--primary-color);
   text-align: center;
   margin-top: 0;
+  padding: 0 1rem;
 }
 
 /* File Input Styling */
@@ -561,16 +562,20 @@ h1 {
 
 /* --- Footer --- */
 footer {
-  text-align: center;
-  margin-top: 1rem;
+  text-align: center; /* Center the inner container */
+  margin-top: 2rem;
   padding-top: 1rem;
-  font-size: 0.85rem;
-  color: var(--subtle-text-color);
-  /* border-top: 1px solid var(--border-color); */
+  border-top: 1px solid var(--border-color);
 }
 
-footer p {
-  margin: 0;
+.footer-content {
+  /* This container holds all footer items and is centered */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--subtle-text-color);
 }
 
 footer a {
@@ -581,6 +586,10 @@ footer a {
 
 footer a:hover {
   color: var(--primary-color-dark);
+}
+
+.footer-separator {
+  color: var(--border-color);
 }
 
 /* --- QR Code Modal --- */
@@ -657,4 +666,91 @@ footer a:hover {
 #drag-overlay.active {
   opacity: 1;
   visibility: visible;
+}
+
+/* --- Theme Switcher --- */
+.theme-switcher-wrapper {
+  position: relative;
+  /* Set a fixed size to hold the space in the layout.
+     This should match the size of the collapsed switcher. */
+  width: 40px;
+  height: 40px;
+}
+
+.theme-switcher {
+  /* Position absolutely inside the wrapper so it can expand out of flow */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 2rem;
+  padding: 0.25rem;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Individual buttons inside the switcher */
+.theme-switcher button {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0;
+  color: var(--subtle-text-color);
+  transition: all 0.2s ease-in-out;
+
+  /* Collapse non-active buttons by default */
+  max-width: 0;
+  opacity: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Style for the currently active button to ensure it's always visible */
+.theme-switcher button.active {
+  max-width: 32px; /* Adjust size as needed */
+  opacity: 1;
+  padding: 0.5rem;
+  color: var(--primary-color);
+}
+
+/* Expanded state on hover or when .open class is present (for touch) */
+.theme-switcher-wrapper:hover .theme-switcher,
+.theme-switcher-wrapper.open .theme-switcher {
+  background-color: var(--input-background-color);
+  border-color: var(--border-color);
+  padding: 0.5rem;
+}
+
+/* When expanded, show all buttons */
+.theme-switcher-wrapper:hover .theme-switcher button,
+.theme-switcher-wrapper.open .theme-switcher button {
+  max-width: 32px;
+  opacity: 1;
+  padding: 0.5rem;
+  margin: 0 0.25rem;
+}
+
+.theme-switcher-wrapper:hover .theme-switcher button:hover,
+.theme-switcher-wrapper.open .theme-switcher button:hover {
+  color: var(--text-color);
+  background-color: var(--active-background-color);
+}
+
+/* Keep the active button highlighted even when the switcher is open/hovered */
+.theme-switcher-wrapper:hover .theme-switcher button.active,
+.theme-switcher-wrapper.open .theme-switcher button.active {
+  color: var(--primary-color);
+  background-color: var(--active-background-color);
 }

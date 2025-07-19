@@ -105,8 +105,8 @@
                 <p>
                   While other tools exist to solve this, they often require
                   technical steps like running scripts or installing software.
-                  This tool is designed to be a simple, secure, one-click
-                  solution.
+                  This tool is designed to be a simple, secure solution that
+                  anyone can use.
                 </p>
               </div>
             </div>
@@ -327,22 +327,38 @@
       </div>
 
       <footer>
-        <p>
-          &copy; 2025
-          <a
-            href="https://www.linkedin.com/in/matthewfcarroll/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Matthew Carroll</a
+        <div class="footer-content">
+          <span
+            >&copy; 2025
+            <a
+              href="https://www.linkedin.com/in/matthewfcarroll/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Matthew Carroll</a
+            ></span
           >
-          |
+          <span class="footer-separator">|</span>
           <a
             href="https://github.com/mfcarroll/extract-otp-web"
             target="_blank"
             rel="noopener noreferrer"
             >Source Code</a
           >
-        </p>
+          <span class="footer-separator">|</span>
+          <div class="theme-switcher-wrapper">
+            <div class="theme-switcher">
+              <button data-theme="system" aria-label="Switch to system theme">
+                <i class="fa fa-desktop"></i>
+              </button>
+              <button data-theme="light" aria-label="Switch to light theme">
+                <i class="fa fa-sun"></i>
+              </button>
+              <button data-theme="dark" aria-label="Switch to dark theme">
+                <i class="fa fa-moon"></i>
+              </button>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
     <div id="qr-modal" class="modal-overlay" style="display: none">
