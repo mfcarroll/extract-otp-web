@@ -1,0 +1,82 @@
+/* --- FAQ Accordion Styling --- */
+
+.faq-item {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item h3 {
+  margin: 0;
+  font-size: 1rem; /* Reset h3 size to be controlled by button */
+}
+
+.faq-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.25rem 0.5rem;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.faq-button:hover,
+.faq-button:focus-visible,
+.faq-item:hover .faq-button {
+  background-color: var(--faq-hover-background);
+  color: var(--primary-color-dark);
+  outline: none;
+}
+
+.faq-title {
+  flex-grow: 1;
+  padding-right: 1rem;
+}
+
+.faq-button::after {
+  content: "+";
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.3s ease-in-out;
+  flex-shrink: 0;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding-bottom 0.4s ease-in-out;
+  padding: 0 0.5rem; /* Horizontal padding only when closed */
+  cursor: pointer;
+}
+
+.faq-answer p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Open State --- */
+.faq-item.open .faq-button::after {
+  content: "\2212"; /* minus sign */
+  transform: rotate(180deg);
+}
+
+.faq-item.open .faq-answer {
+  /* A large enough max-height to accommodate any answer content */
+  max-height: 1000px;
+  padding-bottom: 1.5rem;
+}

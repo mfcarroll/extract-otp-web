@@ -1,0 +1,50 @@
+/* File Input & Drag/Drop Styling */
+.file-input-wrapper {
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  position: relative; /* For z-index stacking */
+}
+
+.file-input-wrapper.active {
+  background-color: var(--active-background-color);
+  border-color: var(--primary-color);
+  z-index: 991; /* To appear above the drag overlay */
+}
+
+.drop-text {
+  margin-top: 1rem;
+  color: var(--subtle-text-color);
+  font-size: 0.9rem;
+}
+
+#qr-input {
+  display: none;
+}
+
+/* --- Drag and Drop Overlay --- */
+#drag-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--drag-overlay-background);
+  z-index: 990; /* Below the dropzone highlight */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  pointer-events: none; /* So it doesn't block clicks */
+}
+
+#drag-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}

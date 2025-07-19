@@ -1,0 +1,102 @@
+/* --- Tabbed Info Section Styling --- */
+#info-tabs {
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 6px 6px 0 0;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+}
+
+.tab-button {
+  grid-row: 1;
+  margin: 0;
+  padding: 1rem;
+  border: none;
+  background-color: var(--input-background-color);
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  border-bottom: 3px solid transparent;
+}
+
+.tab-button:not(:last-child) {
+  border-right: 1px solid var(--border-color);
+}
+
+.tab-button:first-of-type {
+  border-top-left-radius: 5px;
+}
+
+.tab-button:last-of-type {
+  border-top-right-radius: 5px;
+}
+
+.tab-button:hover {
+  background-color: var(--active-background-color);
+}
+
+.tab-button.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  background-color: var(--card-background);
+}
+
+.tab-content {
+  display: none;
+  grid-row: 2;
+  grid-column: 1 / -1; /* Span all columns */
+  padding: 1.5rem;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h3 {
+  color: var(--primary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tab-content h3:first-child {
+  margin-top: 0;
+}
+
+.tab-content a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.tab-content a:hover {
+  color: var(--primary-color-dark);
+}
+
+.tab-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.tab-content li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.5rem;
+}
+
+.tab-content ul li::before {
+  content: "–"; /* Using an en-dash for a clean look */
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}

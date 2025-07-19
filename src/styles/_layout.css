@@ -1,0 +1,52 @@
+.page-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#app {
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-elevation-medium);
+  box-sizing: border-box;
+  position: relative;
+}
+
+h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: 0;
+  padding: 0 1rem;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center; /* Center the inner container */
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.footer-content {
+  /* This container holds all footer items and is centered */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--subtle-text-color);
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--primary-color-dark);
+}
+
+.footer-separator {
+  color: var(--border-color);
+}

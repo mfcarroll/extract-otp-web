@@ -1,0 +1,126 @@
+/* --- Results Container --- */
+#results-container {
+  margin-top: 2rem;
+}
+
+.otp-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.otp-card-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.otp-card-layout h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+.otp-card-layout p {
+  margin: 0.2rem 0;
+  word-wrap: break-word;
+}
+
+.otp-card-layout .label {
+  font-weight: 600;
+  color: var(--subtle-text-color);
+  display: inline-block;
+  width: 80px;
+}
+
+.otp-card-layout .secret-container,
+.otp-card-layout .otp-url-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  position: relative; /* For positioning the copy button */
+}
+
+.otp-card-layout .secret-row,
+.otp-card-layout .otp-url-row {
+  display: flex;
+  align-items: center;
+}
+
+.otp-card-layout .text-input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 40px 8px 12px; /* Add space on the right for the button */
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--input-background-color);
+  font-family: "JetBrains Mono", Consolas, "SF Mono", "Courier New", Courier,
+    monospace;
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+.otp-card-layout .secret-row .text-input {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.otp-card-layout .otp-url-row .text-input {
+  font-size: 0.8rem;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-weight: bold;
+  padding: 1rem;
+  background-color: rgba(217, 83, 79, 0.1); /* --error-color with alpha */
+  border: 1px solid var(--error-color);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.error-message.fade-out {
+  opacity: 0;
+}
+
+.copy-button {
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--subtle-text-color);
+  transition: color 0.2s ease;
+}
+
+.copy-button.copied,
+.copy-button:hover {
+  color: var(--primary-color);
+}
+
+.copy-button.copied::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.otp-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.qr-code-container {
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.qr-code-container:hover {
+  transform: scale(1.02);
+}
