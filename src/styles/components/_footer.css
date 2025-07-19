@@ -1,0 +1,25 @@
+/* --- Footer Component --- */
+
+.footer-content {
+  /* This container holds all footer items and is centered */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--subtle-text-color);
+}
+
+.footer-content a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.footer-content a:hover {
+  color: var(--primary-color-dark);
+}
+
+.footer-separator {
+  color: var(--border-color);
+}

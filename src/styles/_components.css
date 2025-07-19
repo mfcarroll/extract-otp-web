@@ -2,7 +2,9 @@
 @import url("./components/_file-input.css");
 @import url("./components/_upload-log.css");
 @import url("./components/_otp-card.css");
+@import url("./components/_alerts.css");
 @import url("./components/_tabs.css");
 @import url("./components/_accordion.css");
 @import url("./components/_modal.css");
 @import url("./components/_theme-switcher.css");
+@import url("./components/_footer.css");

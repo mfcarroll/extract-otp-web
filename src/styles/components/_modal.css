@@ -16,9 +16,9 @@
   position: relative;
   padding: 20px;
   /* Override theme to always be light for scannability */
-  background-color: #ffffff;
+  background-color: var(--modal-background);
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--modal-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +32,7 @@
   font-size: 1.2rem;
   font-weight: 600;
   /* Override theme to always be light for scannability */
-  color: #2c3e50;
+  color: var(--modal-text-color);
   text-align: center;
 }
 
@@ -40,7 +40,7 @@
   position: absolute;
   top: 15px;
   right: 25px;
-  color: #fff;
+  color: var(--modal-close-color);
   opacity: 0.8;
   font-size: 3rem;
   font-weight: 300;

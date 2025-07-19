@@ -1,55 +1,47 @@
-/* --- Results Container --- */
-#results-container {
-  margin-top: 2rem;
-}
-
 .otp-card {
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.otp-card-layout {
+  box-shadow: var(--shadow-elevation-low);
   display: flex;
   gap: 20px;
   align-items: flex-start;
 }
 
-.otp-card-layout h3 {
+.otp-card h3 {
   color: var(--primary-color);
   margin-top: 0;
 }
 
-.otp-card-layout p {
+.otp-card p {
   margin: 0.2rem 0;
   word-wrap: break-word;
 }
 
-.otp-card-layout .label {
+.otp-card .label {
   font-weight: 600;
   color: var(--subtle-text-color);
   display: inline-block;
   width: 80px;
 }
 
-.otp-card-layout .secret-container,
-.otp-card-layout .otp-url-container {
+.otp-card .secret-container,
+.otp-card .otp-url-container {
   display: flex;
   align-items: center;
   flex-grow: 1;
   position: relative; /* For positioning the copy button */
 }
 
-.otp-card-layout .secret-row,
-.otp-card-layout .otp-url-row {
+.otp-card .secret-row,
+.otp-card .otp-url-row {
   display: flex;
   align-items: center;
 }
 
-.otp-card-layout .text-input {
+.otp-card .text-input {
   flex: 1;
   min-width: 0;
   padding: 8px 40px 8px 12px; /* Add space on the right for the button */
@@ -62,29 +54,13 @@
   box-sizing: border-box;
 }
 
-.otp-card-layout .secret-row .text-input {
+.otp-card .secret-input {
   font-size: 1.2rem;
   letter-spacing: 2px;
 }
 
-.otp-card-layout .otp-url-row .text-input {
+.otp-card .url-input {
   font-size: 0.8rem;
-}
-
-.error-message {
-  color: var(--error-color);
-  font-weight: bold;
-  padding: 1rem;
-  background-color: rgba(217, 83, 79, 0.1); /* --error-color with alpha */
-  border: 1px solid var(--error-color);
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.error-message.fade-out {
-  opacity: 0;
 }
 
 .copy-button {
@@ -103,6 +79,23 @@
 .copy-button.copied,
 .copy-button:hover {
   color: var(--primary-color);
+}
+
+.copy-button::after {
+  content: "Copied!";
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--success-color);
+  color: var(--card-background);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+  pointer-events: none;
 }
 
 .copy-button.copied::after {

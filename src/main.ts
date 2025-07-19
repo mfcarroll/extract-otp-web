@@ -237,7 +237,7 @@ function createOtpCard(
   };
 
   const cardElement = document.createElement("div");
-  cardElement.className = "otp-card otp-card-layout";
+  cardElement.className = "otp-card";
   cardElement.id = `otp-card-${index}`;
 
   const qrCodeCanvas = document.createElement("canvas");

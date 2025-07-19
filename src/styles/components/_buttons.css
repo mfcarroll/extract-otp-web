@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 12px 24px;
-  color: #fff;
+  color: var(--btn-text-color);
   border: none;
   border-radius: 4px;
   cursor: pointer;
