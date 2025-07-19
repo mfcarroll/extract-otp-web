@@ -616,6 +616,17 @@ function setupThemeSwitcher(): void {
   const buttons = themeSwitcher.querySelectorAll<HTMLButtonElement>("button");
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
+  // This flag helps solve a tricky focus bug. When the user focuses another
+  // window and then clicks back into this one, the browser might automatically
+  // re-focus the last active element (a button in our switcher). This would
+  // trigger a 'focusin' event and incorrectly open the switcher.
+  // We track when the window loses focus so we can ignore the next 'focusin'.
+  let isWindowLosingFocus = false;
+  window.addEventListener("blur", () => {
+    // 'blur' fires when the user switches to another window/tab.
+    isWindowLosingFocus = true;
+  });
+
   /**
    * Applies the selected theme to the document and updates UI elements.
    * @param theme - The theme to apply ('light', 'dark', or 'system').
@@ -757,7 +768,17 @@ function setupThemeSwitcher(): void {
 
   // Open on hover
   themeSwitcherWrapper.addEventListener("mouseenter", openSwitcher);
-  themeSwitcherWrapper.addEventListener("focusin", openSwitcher);
+  themeSwitcherWrapper.addEventListener("focusin", () => {
+    // If the 'focusin' event is the result of the browser restoring focus
+    // after the window was re-activated, we want to ignore it.
+    if (isWindowLosingFocus) {
+      // Reset the flag and do nothing.
+      isWindowLosingFocus = false;
+      return;
+    }
+    // Otherwise, it's a normal focus event (e.g., from tabbing).
+    openSwitcher();
+  });
 
   // Close when focus leaves the component
   themeSwitcherWrapper.addEventListener("mouseleave", closeSwitcher);
