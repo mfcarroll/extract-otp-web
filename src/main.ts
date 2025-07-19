@@ -685,49 +685,39 @@ function setupThemeSwitcher(): void {
    * Specification points: 2, 3, 6
    */
   const positionSwitcher = () => {
-    return; // Disabled for now.
     const activeButton =
       themeSwitcher.querySelector<HTMLButtonElement>("button.active");
     if (!activeButton) return;
 
-    // --- Read Geometry from Computed Styles for robustness ---
-    const switcherStyle = window.getComputedStyle(themeSwitcher);
-    const buttonStyle = window.getComputedStyle(activeButton);
+    const allButtons = Array.from(buttons);
+    const activeIndex = allButtons.indexOf(activeButton);
 
-    // Parse pixel values from computed styles.
-    // parseFloat is robust enough for "16px", "0.5rem", etc.
-    const containerPaddingLeft = parseFloat(switcherStyle.paddingLeft);
-    const buttonWidth = parseFloat(buttonStyle.width);
-    const buttonMarginLeft = parseFloat(buttonStyle.marginLeft);
-    const buttonMarginRight = parseFloat(buttonStyle.marginRight);
-
-    // The total horizontal space one button occupies (width + margins).
-    const buttonPitch = buttonWidth + buttonMarginLeft + buttonMarginRight;
-
-    // --- Calculation ---
-
-    // Find the 0-based index of the active button to calculate its position.
-    const activeIndex = Array.from(buttons).findIndex(
-      (btn) => btn === activeButton
-    );
     if (activeIndex === -1) return;
 
-    // The switcher element is positioned with `left: 50%` inside its wrapper.
-    // The transform must counteract this to align the active button's center
-    // with the wrapper's center. The formula is `translateX = -activeButtonCenter`.
-    // See full explanation in previous analysis.
+    // The middle button has index 1. This is our anchor point.
+    const centerIndex = 1;
+    const indexOffset = activeIndex - centerIndex;
 
-    // Calculate the center of the active button relative to the switcher's left edge.
-    // Position = left_padding + (index * space_per_button) + half_button_width
-    const activeButtonCenterInSwitcher =
-      containerPaddingLeft + activeIndex * buttonPitch + buttonWidth / 2;
+    // If the middle button is active, no offset is needed, so we can
+    // remove the custom property and rely on the CSS default.
+    if (indexOffset === 0) {
+      themeSwitcher.style.removeProperty("--switcher-transform-x");
+      return;
+    }
 
-    const translateX = -activeButtonCenterInSwitcher;
+    // In the open state, each button is 32px wide with a 0.125rem (2px)
+    // margin on each side. The "pitch" is the center-to-center distance.
+    const buttonPitch = 32 + 2 * 2; // width + margin-left + margin-right
 
-    // Apply this offset via a CSS custom property.
+    // The offset is the distance from the center button.
+    const horizontalOffset = indexOffset * buttonPitch;
+
+    // The CSS transform is `translateX(var(--switcher-transform-x, -50%))`.
+    // We need to adjust this from the default -50% to keep the active
+    // icon in place. The adjustment is the negative of the horizontal offset.
     themeSwitcher.style.setProperty(
       "--switcher-transform-x",
-      `${translateX}px`
+      `calc(-50% - ${horizontalOffset}px)`
     );
   };
 
@@ -737,6 +727,14 @@ function setupThemeSwitcher(): void {
    */
   const openSwitcher = (): void => {
     if (themeSwitcherWrapper.classList.contains("open")) return;
+
+    // Before opening, lock the wrapper's size to its current computed size.
+    // This prevents the page layout from shifting when the inner container
+    // is switched to absolute positioning.
+    const rect = themeSwitcherWrapper.getBoundingClientRect();
+    themeSwitcherWrapper.style.width = `${rect.width}px`;
+    themeSwitcherWrapper.style.height = `${rect.height}px`;
+
     positionSwitcher();
     themeSwitcherWrapper.classList.add("open");
   };
@@ -749,6 +747,10 @@ function setupThemeSwitcher(): void {
     themeSwitcherWrapper.classList.remove("open");
     // Reset the transform so the active icon collapses to the center.
     themeSwitcher.style.removeProperty("--switcher-transform-x");
+
+    // Remove the inline size so the wrapper can shrink-to-fit its content again.
+    themeSwitcherWrapper.style.removeProperty("width");
+    themeSwitcherWrapper.style.removeProperty("height");
   };
 
   // --- Event Listeners ---

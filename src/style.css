@@ -712,6 +712,8 @@ footer a:hover {
   padding: 0;
   margin: 0;
   display: none;
+  width: 18px;
+  height: 16px;
 }
 
 /* The active button is the only one visible when closed.
