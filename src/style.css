@@ -1,15 +1,49 @@
 :root {
   --primary-color: #4a90e2;
-  --primary-color-dark: #2a6ead;
+  --primary-color-dark: #357abd;
   --background-color: #f4f7f6;
   --text-color: #2c3e50;
   --card-background: #ffffff;
   --border-color: #e0e0e0;
   --error-color: #d9534f;
-  --info-color: #3498db;
+  --error-color-dark: #c9302c;
   --success-color: #5cb85c;
+  --success-color-dark: #4cae4c;
+  --info-color: #3498db;
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
+
+  --subtle-text-color: #777;
+  --active-background-color: #e8f0fe;
+  --input-background-color: #f7f7f7;
+  --log-filler-color: #ccc;
+  --faq-hover-background: #f9f9f9;
+  --modal-overlay-background: rgba(0, 0, 0, 0.85);
+  --drag-overlay-background: rgba(44, 62, 80, 0.5);
+  --shadow-elevation-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #4a90e2;
+    --primary-color-dark: #5aa1f2;
+    --background-color: #1a202c;
+    --text-color: #e2e8f0;
+    --card-background: #2d3748;
+    --border-color: #4a5568;
+    --error-color: #e57373;
+    --info-color: #64b5f6;
+    --success-color: #81c784;
+
+    --subtle-text-color: #a0aec0;
+    --active-background-color: #2c3a50;
+    --input-background-color: #1a202c;
+    --log-filler-color: #555;
+    --faq-hover-background: #384357;
+    --modal-overlay-background: rgba(0, 0, 0, 0.85);
+    --drag-overlay-background: rgba(200, 220, 255, 0.2);
+    --shadow-elevation-medium: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
 }
 
 body {
@@ -33,7 +67,7 @@ body {
   background-color: var(--card-background);
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-elevation-medium);
   box-sizing: border-box;
 }
 
@@ -59,7 +93,7 @@ h1 {
 }
 
 .file-input-wrapper.active {
-  background-color: #e8f0fe;
+  background-color: var(--active-background-color);
   border-color: var(--primary-color);
   z-index: 991; /* To appear above the drag overlay */
 }
@@ -81,7 +115,7 @@ h1 {
 }
 
 .file-input-label:hover {
-  background-color: #357abd;
+  background-color: var(--primary-color-dark);
 }
 
 .file-input-label i {
@@ -90,7 +124,7 @@ h1 {
 
 .drop-text {
   margin-top: 1rem;
-  color: #777;
+  color: var(--subtle-text-color);
   font-size: 0.9rem;
 }
 
@@ -121,7 +155,7 @@ h1 {
 
 .log-item i {
   margin-right: 0.75em;
-  color: #777;
+  color: var(--subtle-text-color);
 }
 
 .log-message {
@@ -150,13 +184,12 @@ h1 {
 }
 
 .log-item--info .log-message {
-  color: #555;
-  /* A more neutral color for info */
+  color: var(--subtle-text-color);
 }
 
 .log-filler {
   flex-grow: 1;
-  border-bottom: 1px dotted #ccc;
+  border-bottom: 1px dotted var(--log-filler-color);
   margin: 0 1em; /* Add space around the dotted line */
 }
 
@@ -166,7 +199,7 @@ h1 {
 }
 
 .otp-card {
-  background-color: #f9f9f9;
+  background-color: var(--card-background);
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 1.5rem;
@@ -192,7 +225,7 @@ h1 {
 
 .otp-card-layout .label {
   font-weight: 600;
-  color: #555;
+  color: var(--subtle-text-color);
   display: inline-block;
   width: 80px;
 }
@@ -217,7 +250,7 @@ h1 {
   padding: 8px 40px 8px 12px; /* Add space on the right for the button */
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  background-color: #f7f7f7;
+  background-color: var(--input-background-color);
   font-family: "JetBrains Mono", Consolas, "SF Mono", "Courier New", Courier,
     monospace;
   color: var(--text-color);
@@ -237,7 +270,7 @@ h1 {
   color: var(--error-color);
   font-weight: bold;
   padding: 1rem;
-  background-color: #fdd;
+  background-color: rgba(217, 83, 79, 0.1); /* --error-color with alpha */
   border: 1px solid var(--error-color);
   border-radius: 4px;
   margin-bottom: 1rem;
@@ -258,7 +291,7 @@ h1 {
   border: none;
   cursor: pointer;
   padding: 8px;
-  color: #999;
+  color: var(--subtle-text-color);
   transition: color 0.2s ease;
 }
 
@@ -274,7 +307,7 @@ h1 {
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--success-color);
-  color: #fff;
+  color: var(--card-background);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -289,32 +322,35 @@ h1 {
   visibility: visible;
 }
 
+.otp-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.qr-code-container {
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.qr-code-container:hover {
+  transform: scale(1.02);
+}
+
+/* --- Export Buttons --- */
 #export-container {
   display: none;
   margin-top: 2rem;
   text-align: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }
 
-#download-csv-button {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: var(--success-color);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-  font-weight: 500;
-}
-
-#download-csv-button:hover {
-  background-color: #4cae4c;
-}
-
+#download-csv-button,
 #clear-button {
   display: inline-block;
   padding: 12px 24px;
-  background-color: var(--error-color);
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -323,31 +359,21 @@ h1 {
   font-weight: 500;
 }
 
+#download-csv-button {
+  background-color: var(--success-color);
+}
+#download-csv-button:hover {
+  background-color: var(--success-color-dark);
+}
+
+#clear-button {
+  background-color: var(--error-color);
+}
 #clear-button:hover {
-  background-color: #c9302c;
+  background-color: var(--error-color-dark);
 }
 
-.otp-details .styled-secret .number {
-  color: #0056b3;
-}
-
-.otp-details .styled-secret .alpha {
-  color: #198754;
-}
-
-#export-instructions {
-  display: none;
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid var(--border-color);
-  background-color: #f9f9f9;
-}
-
-#export-instructions ol {
-  padding-left: 20px;
-}
-
-/* Tabbed Info Section Styling */
+/* --- Tabbed Info Section Styling --- */
 #info-tabs {
   margin-bottom: 2rem;
   display: grid;
@@ -362,11 +388,11 @@ h1 {
   margin: 0;
   padding: 1rem;
   border: none;
-  background-color: #f0f0f0;
+  background-color: var(--input-background-color);
   cursor: pointer;
   text-align: center;
   font-weight: 600;
-  font-size: 1rem; /* Match paragraph font size */
+  font-size: 1rem;
   color: var(--text-color);
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
   border-bottom: 3px solid transparent;
@@ -385,7 +411,7 @@ h1 {
 }
 
 .tab-button:hover {
-  background-color: #e0e0e0;
+  background-color: var(--active-background-color);
 }
 
 .tab-button.active {
@@ -450,21 +476,6 @@ h1 {
   font-weight: bold;
 }
 
-.otp-details {
-  flex: 1;
-  min-width: 0;
-}
-
-.qr-code-container {
-  flex-shrink: 0;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-
-.qr-code-container:hover {
-  transform: scale(1.02);
-}
-
 /* --- FAQ Accordion Styling --- */
 
 #tab-faq .faq-item {
@@ -500,7 +511,7 @@ h1 {
 #tab-faq .faq-button:hover,
 #tab-faq .faq-button:focus-visible,
 #tab-faq .faq-item:hover .faq-button {
-  background-color: #f9f9f9;
+  background-color: var(--faq-hover-background);
   color: var(--primary-color-dark);
   outline: none;
 }
@@ -537,9 +548,9 @@ h1 {
 }
 
 /* --- Open State --- */
-
 #tab-faq .faq-item.open .faq-button::after {
-  content: "\2212";
+  content: "\2212"; /* minus sign */
+  transform: rotate(180deg);
 }
 
 #tab-faq .faq-item.open .faq-answer {
@@ -554,7 +565,8 @@ footer {
   margin-top: 1rem;
   padding-top: 1rem;
   font-size: 0.85rem;
-  color: #777; /* A subtle, less prominent text color */
+  color: var(--subtle-text-color);
+  /* border-top: 1px solid var(--border-color); */
 }
 
 footer p {
@@ -572,14 +584,14 @@ footer a:hover {
 }
 
 /* --- QR Code Modal --- */
-.modal-overlay {
+#qr-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
-  display: flex;
+  background-color: var(--modal-overlay-background);
+  display: none; /* Hidden by default */
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -588,36 +600,43 @@ footer a:hover {
 #modal-content {
   position: relative;
   padding: 20px;
-  background-color: #fff;
+  /* Override theme to always be light for scannability */
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.modal-close {
-  position: absolute;
-  top: 15px;
-  right: 30px;
-  color: #fff;
-  font-size: 3rem;
-  font-weight: 300;
-  cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s ease;
-}
-
-.modal-close:hover {
-  color: #ccc;
+  /* Ensure modal content doesn't overflow viewport */
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
 .modal-title {
   margin-top: 1rem;
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-color);
+  /* Override theme to always be light for scannability */
+  color: #2c3e50;
   text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: #fff;
+  opacity: 0.8;
+  font-size: 3rem;
+  font-weight: 300;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  z-index: 1001; /* Above modal content */
+}
+
+.modal-close:hover {
+  opacity: 1;
 }
 
 /* --- Drag and Drop Overlay --- */
@@ -627,11 +646,11 @@ footer a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(44, 62, 80, 0.5); /* Using --text-color with alpha */
+  background-color: var(--drag-overlay-background);
   z-index: 990; /* Below the dropzone highlight */
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
   pointer-events: none; /* So it doesn't block clicks */
 }
 

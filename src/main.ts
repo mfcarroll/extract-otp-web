@@ -86,11 +86,7 @@ function processImage(file: File): Promise<MigrationOtpParameter[] | null> {
           resolve(otpParameters);
         } catch (error) {
           console.error("Error decoding QR code data:", error);
-          reject(
-            new Error(
-              "QR code is invalid or not a Google Authenticator export."
-            )
-          );
+          reject(new Error("Invalid QR code format."));
         }
       } else {
         // Resolve with null if no QR code is found in this image.
@@ -245,10 +241,20 @@ function createOtpCard(
   cardElement.id = `otp-card-${index}`;
 
   const qrCodeCanvas = document.createElement("canvas");
+  // Get theme colors from CSS variables to make QR codes theme-aware
+  const computedStyles = getComputedStyle(document.documentElement);
+  const qrDarkColor = computedStyles.getPropertyValue("--text-color").trim();
+  const qrLightColor = computedStyles
+    .getPropertyValue("--card-background")
+    .trim();
+
   QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, {
     width: 220,
     margin: 1,
-    color: { light: "#0000" },
+    color: {
+      dark: qrDarkColor,
+      light: qrLightColor,
+    },
   });
 
   const qrCodeContainer = document.createElement("div");
@@ -321,7 +327,10 @@ function showQrModal(otpAuthUrl: string, title: string): void {
   QRCode.toCanvas(modalCanvas, otpAuthUrl, {
     width: canvasSize,
     margin: 2, // A bit of margin inside the canvas
-    color: { light: "#fff" }, // White background for the modal QR
+    color: {
+      dark: "#000000", // Always use black for the dark modules in the modal
+      light: "#ffffff", // Always use white for the light modules in the modal
+    },
   });
 
   modalContent.appendChild(modalCanvas);
@@ -677,6 +686,16 @@ function initializeApp(): void {
     if (modal.style.display !== "none") {
       event.preventDefault(); // Prevent default browser action (e.g., scrolling)
       hideQrModal();
+    }
+  });
+
+  // --- Theme Change Listener ---
+  // Listen for changes in the color scheme and re-render the results
+  // to update the QR code colors to match the new theme.
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  mediaQuery.addEventListener("change", () => {
+    if (extractedOtps.length > 0) {
+      displayResults(extractedOtps);
     }
   });
 }
