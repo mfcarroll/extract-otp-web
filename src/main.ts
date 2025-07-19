@@ -1,10 +1,10 @@
 import { encode } from "thirty-two";
 import { Buffer } from "buffer"; // Keep for browser environment polyfill
-import QRCode from "qrcode";
 import { OtpData, MigrationOtpParameter } from "./types";
 import { setState, getState } from "./state/store";
 import { $ } from "./ui/dom";
 import { processImage, getOtpUniqueKey } from "./services/qrProcessor";
+import { initResults } from "./ui/results";
 
 window.Buffer = Buffer; // Make Buffer globally available for libraries that might need it.
 
@@ -68,179 +68,6 @@ function setupAccordion(): void {
     const isExpanded = faqItem.classList.contains("open");
     button.setAttribute("aria-expanded", String(isExpanded));
   });
-}
-
-function displayResults(otpParameters: MigrationOtpParameter[]): void {
-  const resultsContainer = $<HTMLDivElement>("#results-container");
-  const exportContainer = $<HTMLDivElement>("#export-container");
-
-  // Clear any previous results (including error messages) before rendering.
-  resultsContainer.innerHTML = "";
-  if (!otpParameters || otpParameters.length === 0) {
-    resultsContainer.textContent =
-      "No OTP secrets found in the provided images.";
-    exportContainer.style.display = "none";
-    return;
-  }
-
-  exportContainer.style.display = "block";
-
-  const fragment = document.createDocumentFragment();
-  otpParameters.forEach((otp, index) => {
-    const { cardElement } = createOtpCard(otp, index);
-    fragment.appendChild(cardElement);
-  });
-  resultsContainer.appendChild(fragment);
-}
-
-/**
- * Creates an HTML element for a single OTP entry.
- * This acts like a component, encapsulating the logic and structure for a card.
- */
-function createOtpCard(
-  otp: MigrationOtpParameter,
-  index: number
-): { cardElement: HTMLDivElement; exportData: OtpData } {
-  const secretText = encode(otp.secret);
-  const issuerText = otp.issuer || "N/A";
-  const accountName = otp.name || "N/A";
-  const typeText = otp.type === 2 ? "totp" : "hotp"; // Convert type code to string
-
-  // Construct the label for display and the otpauth URL.
-  let label = accountName;
-  if (otp.issuer) {
-    label = `${otp.issuer}:${accountName}`;
-  }
-  const encodedLabel = encodeURIComponent(label);
-
-  let otpAuthUrl = `otpauth://${typeText}/${encodedLabel}?secret=${secretText}`;
-  if (otp.issuer) {
-    otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
-  }
-  if (typeText === "hotp") {
-    otpAuthUrl += `&counter=${otp.counter || 0}`;
-  }
-
-  const exportData: OtpData = {
-    name: accountName,
-    secret: secretText,
-    issuer: otp.issuer || "",
-    type: typeText,
-    counter: typeText === "hotp" ? otp.counter || 0 : "",
-    url: decodeURIComponent(otpAuthUrl), // Store the human-readable URL
-  };
-
-  const cardElement = document.createElement("div");
-  cardElement.className = "otp-card";
-  cardElement.id = `otp-card-${index}`;
-
-  const qrCodeCanvas = document.createElement("canvas");
-  // Get theme colors from CSS variables to make QR codes theme-aware
-  const computedStyles = getComputedStyle(document.documentElement);
-  const qrDarkColor = computedStyles.getPropertyValue("--text-color").trim();
-  const qrLightColor = computedStyles
-    .getPropertyValue("--card-background")
-    .trim();
-
-  QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, {
-    width: 220,
-    margin: 1,
-    color: {
-      dark: qrDarkColor,
-      light: qrLightColor,
-    },
-  });
-
-  const qrCodeContainer = document.createElement("div");
-  qrCodeContainer.className = "qr-code-container";
-  qrCodeContainer.addEventListener("click", () => {
-    const modalTitle = otp.issuer
-      ? `${issuerText}: ${accountName}`
-      : accountName;
-    showQrModal(otpAuthUrl, modalTitle);
-  });
-  qrCodeContainer.appendChild(qrCodeCanvas);
-
-  const otpDetails = document.createElement("div");
-  otpDetails.className = "otp-details";
-
-  const titleText = otp.issuer ? `${issuerText}: ${accountName}` : accountName;
-
-  otpDetails.innerHTML = `
-      <h3>${index + 1}. ${titleText}</h3>
-      <p><span class="label">Name:</span> ${accountName}</p>
-      <p><span class="label">Issuer:</span> ${issuerText}</p>
-      <p><span class="label">Type:</span> ${typeText}</p>
-      <p class="secret-row">
-          <span class="label">Secret:</span>
-          <span class="secret-container">
-              <input type="text" class="text-input secret-input" value="${secretText}" readonly>
-              <button class="copy-button" aria-label="Copy secret">
-                  <i class="fa fa-copy"></i>
-              </button>
-          </span>
-      </p>
-      <p class="otp-url-row">
-          <span class="label">URL: </span>
-          <span class="otp-url-container">
-              <input type="text" class="text-input url-input" value="${decodeURIComponent(
-                otpAuthUrl
-              )}" readonly>
-              <button class="copy-button" data-copy-text="${otpAuthUrl}" aria-label="Copy URL">
-                  <i class="fa fa-copy"></i>
-              </button>
-          </span>
-      </p>
-  `;
-
-  otpDetails.addEventListener("click", (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
-    if (target.matches(".text-input, .copy-button, .copy-button i")) {
-      handleCopy(event);
-    }
-  });
-  cardElement.appendChild(otpDetails);
-  cardElement.appendChild(qrCodeContainer);
-
-  return { cardElement, exportData };
-}
-
-function showQrModal(otpAuthUrl: string, title: string): void {
-  const modal = $<HTMLDivElement>("#qr-modal");
-  const modalContent = $<HTMLDivElement>("#modal-content");
-
-  // Clear previous content
-  modalContent.innerHTML = "";
-
-  const modalCanvas = document.createElement("canvas");
-
-  // Calculate size to be responsive. 80% of the smaller viewport dimension.
-  const viewportSize = Math.min(window.innerWidth, window.innerHeight);
-  const canvasSize = Math.floor(viewportSize * 0.8);
-
-  QRCode.toCanvas(modalCanvas, otpAuthUrl, {
-    width: canvasSize,
-    margin: 2, // A bit of margin inside the canvas
-    color: {
-      dark: "#000000", // Always use black for the dark modules in the modal
-      light: "#ffffff", // Always use white for the light modules in the modal
-    },
-  });
-
-  modalContent.appendChild(modalCanvas);
-
-  const titleElement = document.createElement("p");
-  titleElement.className = "modal-title";
-  titleElement.textContent = title;
-  modalContent.appendChild(titleElement);
-  modal.style.display = "flex";
-}
-
-function hideQrModal(): void {
-  const modal = $<HTMLDivElement>("#qr-modal");
-  modal.style.display = "none";
-  // Clear content to free up memory
-  $<HTMLDivElement>("#modal-content").innerHTML = "";
 }
 
 function escapeHtml(unsafe: string): string {
@@ -381,7 +208,6 @@ async function processFiles(files: FileList | null): Promise<void> {
       setState((currentState) => ({
         otps: [...currentState.otps, ...newlyAddedOtps],
       }));
-      displayResults(getState().otps);
 
       const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
       if (!anyDuplicatesOrErrors && firstNewCard) {
@@ -400,43 +226,6 @@ async function processFiles(files: FileList | null): Promise<void> {
     );
   }
 }
-
-const handleCopy = (event: MouseEvent) => {
-  const triggerElement = event.target as HTMLElement;
-
-  const container = triggerElement.closest(
-    ".secret-container, .otp-url-container"
-  );
-  if (!container) {
-    return;
-  }
-
-  const input = container.querySelector<HTMLInputElement>(".text-input");
-  const button = container.querySelector<HTMLButtonElement>(".copy-button");
-  if (!input || !button) {
-    return;
-  }
-
-  const textToCopy = triggerElement.matches(".copy-button, .copy-button i")
-    ? button.dataset.copyText || input.value
-    : input.value;
-
-  input.select();
-
-  copyToClipboard(textToCopy, button);
-};
-
-const copyToClipboard = (text: string, buttonElement: HTMLElement): void => {
-  navigator.clipboard
-    .writeText(text)
-    .then(() => {
-      buttonElement.classList.add("copied");
-      setTimeout(() => buttonElement.classList.remove("copied"), 1500);
-    })
-    .catch((err) => {
-      console.error("Could not copy text: ", err);
-    });
-};
 
 function downloadAsCsv(): void {
   const { otps } = getState();
@@ -485,8 +274,32 @@ function downloadAsCsv(): void {
 }
 
 function convertToOtpData(otp: MigrationOtpParameter): OtpData {
-  const { exportData } = createOtpCard(otp, 0); // index doesn't matter here
-  return exportData;
+  const secretText = encode(otp.secret);
+  const accountName = otp.name || "N/A";
+  const typeText = otp.type === 2 ? "totp" : "hotp";
+
+  let label = accountName;
+  if (otp.issuer) {
+    label = `${otp.issuer}:${accountName}`;
+  }
+  const encodedLabel = encodeURIComponent(label);
+
+  let otpAuthUrl = `otpauth://${typeText}/${encodedLabel}?secret=${secretText}`;
+  if (otp.issuer) {
+    otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
+  }
+  if (typeText === "hotp") {
+    otpAuthUrl += `&counter=${otp.counter || 0}`;
+  }
+
+  return {
+    name: accountName,
+    secret: secretText,
+    issuer: otp.issuer || "",
+    type: typeText,
+    counter: typeText === "hotp" ? otp.counter || 0 : "",
+    url: decodeURIComponent(otpAuthUrl),
+  };
 }
 
 /**
@@ -545,38 +358,9 @@ function setupThemeSwitcher(): void {
     localStorage.setItem("theme", theme);
 
     // Redraw QR codes with new theme colors
-    const resultsContainer = document.getElementById("results-container");
-    if (resultsContainer) {
-      const qrCodeCanvases =
-        resultsContainer.querySelectorAll<HTMLCanvasElement>(
-          ".qr-code-container canvas"
-        );
-      qrCodeCanvases.forEach((canvas) => {
-        const card = canvas.closest(".otp-card");
-        if (card) {
-          const urlInput = card.querySelector<HTMLInputElement>(".url-input");
-          if (urlInput) {
-            const otpAuthUrl = urlInput.value;
-            const computedStyles = getComputedStyle(document.documentElement);
-            const qrDarkColor = computedStyles
-              .getPropertyValue("--text-color")
-              .trim();
-            const qrLightColor = computedStyles
-              .getPropertyValue("--card-background")
-              .trim();
-
-            QRCode.toCanvas(canvas, otpAuthUrl, {
-              width: 220,
-              margin: 1,
-              color: {
-                dark: qrDarkColor,
-                light: qrLightColor,
-              },
-            });
-          }
-        }
-      });
-    }
+    // The results module will re-render itself on theme change if needed.
+    // For now, we can force a re-render by re-setting the otps.
+    setState((s) => ({ otps: s.otps }));
   };
 
   /**
@@ -713,6 +497,7 @@ function setupThemeSwitcher(): void {
  */
 function initializeApp(): void {
   setupTabs();
+  initResults();
   setupAccordion();
   setupThemeSwitcher();
 
@@ -785,19 +570,6 @@ function initializeApp(): void {
     fileDropZone.classList.remove("active");
     dragOverlay.classList.remove("active");
     processFiles(event.dataTransfer?.files ?? null);
-  });
-
-  // --- Modal Listeners ---
-  const modal = $<HTMLDivElement>("#qr-modal");
-  // Close if the modal is clicked anywhere
-  modal.addEventListener("click", hideQrModal);
-
-  // Close on any key press
-  document.addEventListener("keydown", (event) => {
-    if (modal.style.display !== "none") {
-      event.preventDefault(); // Prevent default browser action (e.g., scrolling)
-      hideQrModal();
-    }
   });
 }
 
