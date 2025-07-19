@@ -91,6 +91,7 @@ The user interface and QR code processing are powered by these excellent open-so
 - [protobuf.js](https://github.com/protobufjs/protobuf.js) for decoding the Google Authenticator data payload.
 - [qrcode](https://github.com/soldair/node-qrcode) for generating new QR codes for each account.
 - [thirty-two](https://github.com/wzrdtales/thirty-two) for Base32 encoding the OTP secrets.
+- [Font Awesome](https://github.com/FortAwesome/Font-Awesome) for the icons used in the UI.
 
 [Gemini Code Assist](https://codeassist.google/) was used during the development of this tool. All AI-generated code has been carefully manually reviewed.
 
