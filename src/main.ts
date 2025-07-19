@@ -1,107 +1,12 @@
-import jsQR from "jsqr";
-import protobuf from "protobufjs";
 import { encode } from "thirty-two";
 import { Buffer } from "buffer"; // Keep for browser environment polyfill
 import QRCode from "qrcode";
-import { OtpData } from "./types";
-
-// Define a more specific type for the raw OTP data from the protobuf payload.
-interface MigrationOtpParameter {
-  secret: Uint8Array;
-  name: string;
-  issuer: string;
-  algorithm: number; // ALGORITHM_UNSPECIFIED (0), SHA1 (1)
-  digits: number; // DIGITS_UNSPECIFIED (0), SIX (1), EIGHT (2)
-  type: number; // TYPE_UNSPECIFIED (0), HOTP (1), TOTP (2)
-  counter: number;
-}
+import { OtpData, MigrationOtpParameter } from "./types";
+import { setState, getState } from "./state/store";
+import { $ } from "./ui/dom";
+import { processImage, getOtpUniqueKey } from "./services/qrProcessor";
 
 window.Buffer = Buffer; // Make Buffer globally available for libraries that might need it.
-let extractedOtps: MigrationOtpParameter[] = []; // To store data for CSV export
-
-// Pre-load the protobuf definition once for better performance.
-const protobufRoot = protobuf.load("google_auth.proto");
-
-/** Generic helper to query the DOM and throw an error if the element is not found. */
-function $<T extends HTMLElement>(selector: string): T {
-  const element = document.querySelector<T>(selector);
-  if (!element) {
-    throw new Error(`Element with selector "${selector}" not found.`);
-  }
-  return element;
-}
-
-/**
- * Extracts OTP parameters from a Google Authenticator export URL.
- * @param otpUrl The full otpauth-migration URL from the QR code.
- * @returns A promise that resolves to an array of OTP parameters.
- */
-async function getOtpParametersFromUrl(
-  otpUrl: string
-): Promise<MigrationOtpParameter[]> {
-  const url = new URL(otpUrl);
-  const dataBase64 = url.searchParams.get("data");
-  if (!dataBase64) {
-    throw new Error('Invalid OTP URL: Missing "data" parameter.');
-  }
-
-  const data = base64ToUint8Array(dataBase64);
-
-  const root = await protobufRoot;
-  const MigrationPayload = root.lookupType("MigrationPayload");
-
-  const payload = MigrationPayload.decode(data) as unknown as {
-    otpParameters: MigrationOtpParameter[];
-  };
-  return payload.otpParameters;
-}
-
-/**
- * Processes a single image file, extracts QR code data, and returns OTP parameters.
- * @param file The image file to process.
- * @returns A promise that resolves with an array of OTP parameters, or an empty array if no QR code is found.
- */
-function processImage(file: File): Promise<MigrationOtpParameter[] | null> {
-  return new Promise((resolve, reject) => {
-    const canvas = $<HTMLCanvasElement>("#qr-canvas");
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    if (!ctx) {
-      return reject(new Error("Could not get canvas context"));
-    }
-
-    const img = new Image();
-
-    img.onload = async () => {
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-      URL.revokeObjectURL(img.src); // Clean up memory
-
-      const imageData = ctx.getImageData(0, 0, img.width, img.height);
-      const code = jsQR(imageData.data, imageData.width, imageData.height);
-
-      if (code) {
-        try {
-          const otpParameters = await getOtpParametersFromUrl(code.data);
-          resolve(otpParameters);
-        } catch (error) {
-          console.error("Error decoding QR code data:", error);
-          reject(new Error("Invalid QR code format."));
-        }
-      } else {
-        // Resolve with null if no QR code is found in this image.
-        resolve(null);
-      }
-    };
-
-    img.onerror = () => {
-      URL.revokeObjectURL(img.src); // Clean up memory
-      reject(new Error("File is not an image."));
-    };
-
-    img.src = URL.createObjectURL(file);
-  });
-}
 
 /**
  * Sets up the event listeners for the tabbed informational interface.
@@ -163,17 +68,6 @@ function setupAccordion(): void {
     const isExpanded = faqItem.classList.contains("open");
     button.setAttribute("aria-expanded", String(isExpanded));
   });
-}
-
-function base64ToUint8Array(base64: string): Uint8Array {
-  const base64Fixed = base64.replace(/ /g, "+");
-  const binaryString = atob(base64Fixed);
-  const len = binaryString.length;
-  const bytes = new Uint8Array(len);
-  for (let i = 0; i < len; i++) {
-    bytes[i] = binaryString.charCodeAt(i);
-  }
-  return bytes;
 }
 
 function displayResults(otpParameters: MigrationOtpParameter[]): void {
@@ -410,14 +304,6 @@ function displayError(message: string, duration = 5000): void {
   }, duration);
 }
 
-/** Create a unique key for an OTP parameter to check for duplicates. */
-function getOtpUniqueKey(otp: MigrationOtpParameter): string {
-  const secretText = encode(otp.secret);
-  // A combination of issuer, name, and secret should be unique enough.
-  // Type is included for safety, though it's unlikely to differ for the same secret.
-  return `${otp.issuer}:${otp.name}:${otp.type}:${secretText}`;
-}
-
 async function processFiles(files: FileList | null): Promise<void> {
   if (!files || files.length === 0) return;
 
@@ -430,12 +316,13 @@ async function processFiles(files: FileList | null): Promise<void> {
       logContainer.style.display = "block";
     }
 
-    const firstNewIndex = extractedOtps.length;
+    const currentOtps = getState().otps;
+    const firstNewIndex = currentOtps.length;
     const newlyAddedOtps: MigrationOtpParameter[] = [];
     let anyDuplicatesOrErrors = false;
 
     // This set will contain keys from previously extracted OTPs AND OTPs from the current batch.
-    const existingAndBatchKeys = new Set(extractedOtps.map(getOtpUniqueKey));
+    const existingAndBatchKeys = new Set(currentOtps.map(getOtpUniqueKey));
 
     for (const file of fileArray) {
       try {
@@ -491,8 +378,10 @@ async function processFiles(files: FileList | null): Promise<void> {
     }
 
     if (newlyAddedOtps.length > 0) {
-      extractedOtps.push(...newlyAddedOtps);
-      displayResults(extractedOtps);
+      setState((currentState) => ({
+        otps: [...currentState.otps, ...newlyAddedOtps],
+      }));
+      displayResults(getState().otps);
 
       const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
       if (!anyDuplicatesOrErrors && firstNewCard) {
@@ -550,7 +439,8 @@ const copyToClipboard = (text: string, buttonElement: HTMLElement): void => {
 };
 
 function downloadAsCsv(): void {
-  if (extractedOtps.length === 0) {
+  const { otps } = getState();
+  if (otps.length === 0) {
     alert("No data to export.");
     return;
   }
@@ -572,7 +462,7 @@ function downloadAsCsv(): void {
     return str;
   };
 
-  const otpDataForCsv = extractedOtps.map(convertToOtpData);
+  const otpDataForCsv = otps.map(convertToOtpData);
   const csvRows = [
     headers.join(","),
     ...otpDataForCsv.map((otp) =>
@@ -852,7 +742,9 @@ function initializeApp(): void {
     logList.innerHTML = "";
     exportContainer.style.display = "none";
     logContainer.style.display = "none";
-    extractedOtps = [];
+    setState(() => ({
+      otps: [],
+    }));
     qrInput.value = ""; // Reset file input so the same files can be re-selected
   });
 
