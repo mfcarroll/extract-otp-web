@@ -669,87 +669,94 @@ footer a:hover {
 }
 
 /* --- Theme Switcher --- */
+
+/* This wrapper creates a container that the absolutely positioned switcher
+   can be centered and transformed within when open. In its closed state,
+   its size is determined by the single visible icon. */
 .theme-switcher-wrapper {
   position: relative;
-  /* Set a fixed size to hold the space in the layout.
-     This should match the size of the collapsed switcher. */
-  width: 40px;
-  height: 40px;
-}
-
-.theme-switcher {
-  /* Position absolutely inside the wrapper so it can expand out of flow */
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
   display: flex;
   align-items: center;
-  background-color: transparent;
-  border: 1px solid transparent;
-  border-radius: 2rem;
-  padding: 0.25rem;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-  cursor: pointer;
-  z-index: 10;
+  justify-content: center;
 }
 
-/* Individual buttons inside the switcher */
+/* This is the element that expands and collapses. */
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  border-radius: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  box-sizing: border-box;
+
+  /* --- CLOSED STATE (Default) --- */
+  /* When closed, the container is transparent and has no padding. */
+  padding: 0;
+  background-color: transparent;
+  /* border: 1px solid transparent; */
+}
+
+/* --- BUTTONS --- */
 .theme-switcher button {
   background-color: transparent;
   border: none;
-  border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-  padding: 0.5rem;
-  margin: 0;
   color: var(--subtle-text-color);
-  transition: all 0.2s ease-in-out;
-
-  /* Collapse non-active buttons by default */
-  max-width: 0;
-  opacity: 0;
-  padding: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
   overflow: hidden;
+  padding: 0;
+  margin: 0;
+  display: none;
 }
 
-/* Style for the currently active button to ensure it's always visible */
+/* The active button is the only one visible when closed.
+   It overrides the default hidden state. */
 .theme-switcher button.active {
-  max-width: 32px; /* Adjust size as needed */
-  opacity: 1;
-  padding: 0.5rem;
+  display: flex;
   color: var(--primary-color);
 }
 
-/* Expanded state on hover or when .open class is present (for touch) */
-.theme-switcher-wrapper:hover .theme-switcher,
+/* --- OPEN STATE --- */
+/* When the wrapper is open, make the switcher container visible... */
 .theme-switcher-wrapper.open .theme-switcher {
   background-color: var(--input-background-color);
-  border-color: var(--border-color);
-  padding: 0.5rem;
+  padding: 0.25rem;
+  border: 1px solid var(--border-color);
+
+  /* --- OPEN STATE POSITIONING --- */
+  /* Position absolutely within the wrapper so it doesn't affect layout */
+  position: absolute;
+  justify-content: center;
+  /* The transform is for positioning. The default centers the switcher.
+     The JS will override --switcher-transform-x to anchor the active icon. */
+  transform: translateY(-50%) translateX(var(--switcher-transform-x, -50%));
+  top: 50%;
+  left: 50%;
 }
 
-/* When expanded, show all buttons */
-.theme-switcher-wrapper:hover .theme-switcher button,
+/* ...and reveal all the buttons inside. */
 .theme-switcher-wrapper.open .theme-switcher button {
-  max-width: 32px;
-  opacity: 1;
+  display: flex;
+  margin: 0 0.125rem;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
   padding: 0.5rem;
-  margin: 0 0.25rem;
 }
 
-.theme-switcher-wrapper:hover .theme-switcher button:hover,
+/* --- HOVER & ACTIVE STATES (WHEN OPEN) --- */
+/* Hover effect for individual buttons when the switcher is open. */
 .theme-switcher-wrapper.open .theme-switcher button:hover {
   color: var(--text-color);
   background-color: var(--active-background-color);
 }
 
-/* Keep the active button highlighted even when the switcher is open/hovered */
-.theme-switcher-wrapper:hover .theme-switcher button.active,
+/* Keep the active button highlighted when the switcher is open. */
 .theme-switcher-wrapper.open .theme-switcher button.active {
   color: var(--primary-color);
   background-color: var(--active-background-color);

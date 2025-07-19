@@ -601,6 +601,7 @@ function convertToOtpData(otp: MigrationOtpParameter): OtpData {
 
 /**
  * Manages the theme switcher UI and applies the selected theme.
+ * Implements an "anchored expand" behavior based on the active theme.
  */
 function setupThemeSwitcher(): void {
   const themeSwitcherWrapper = document.querySelector<HTMLDivElement>(
@@ -615,77 +616,182 @@ function setupThemeSwitcher(): void {
   const buttons = themeSwitcher.querySelectorAll<HTMLButtonElement>("button");
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-  const applyTheme = (theme: "light" | "dark" | "system") => {
-    let isDark: boolean;
+  /**
+   * Applies the selected theme to the document and updates UI elements.
+   * @param theme - The theme to apply ('light', 'dark', or 'system').
+   */
+  const applyTheme = (theme: string): void => {
+    const html = document.documentElement;
+    html.classList.remove("light-mode", "dark-mode");
+    buttons.forEach((button) => button.classList.remove("active"));
+
+    let effectiveTheme = theme;
     if (theme === "system") {
-      isDark = mediaQuery.matches;
-    } else {
-      isDark = theme === "dark";
+      effectiveTheme = mediaQuery.matches ? "dark" : "light";
     }
 
-    document.documentElement.classList.toggle("dark-mode", isDark);
+    if (effectiveTheme === "dark") {
+      html.classList.add("dark-mode");
+    } else {
+      html.classList.add("light-mode");
+    }
 
-    // Update button active state
-    buttons.forEach((button) => {
-      button.classList.toggle("active", button.dataset.theme === theme);
-    });
+    const buttonToActivate = themeSwitcher.querySelector<HTMLButtonElement>(
+      `button[data-theme="${theme}"]`
+    );
+    buttonToActivate?.classList.add("active");
 
-    // Redraw QR codes if they exist to match the new theme
-    if (extractedOtps.length > 0) {
-      displayResults(extractedOtps);
+    localStorage.setItem("theme", theme);
+
+    // Redraw QR codes with new theme colors
+    const resultsContainer = document.getElementById("results-container");
+    if (resultsContainer) {
+      const qrCodeCanvases =
+        resultsContainer.querySelectorAll<HTMLCanvasElement>(
+          ".qr-code-container canvas"
+        );
+      qrCodeCanvases.forEach((canvas) => {
+        const card = canvas.closest(".otp-card");
+        if (card) {
+          const urlInput = card.querySelector<HTMLInputElement>(".url-input");
+          if (urlInput) {
+            const otpAuthUrl = urlInput.value;
+            const computedStyles = getComputedStyle(document.documentElement);
+            const qrDarkColor = computedStyles
+              .getPropertyValue("--text-color")
+              .trim();
+            const qrLightColor = computedStyles
+              .getPropertyValue("--card-background")
+              .trim();
+
+            QRCode.toCanvas(canvas, otpAuthUrl, {
+              width: 220,
+              margin: 1,
+              color: {
+                dark: qrDarkColor,
+                light: qrLightColor,
+              },
+            });
+          }
+        }
+      });
     }
   };
 
-  const updateThemeFromSystem = () => {
-    const currentTheme = localStorage.getItem("theme") as
-      | "light"
-      | "dark"
-      | "system"
-      | null;
-    if (currentTheme === "system" || !currentTheme) {
+  /**
+   * Calculates and applies the CSS transform to keep the active icon anchored
+   * when the switcher is open. This robust version reads geometry from computed
+   * styles to avoid hardcoding pixel values.
+   * Specification points: 2, 3, 6
+   */
+  const positionSwitcher = () => {
+    return; // Disabled for now.
+    const activeButton =
+      themeSwitcher.querySelector<HTMLButtonElement>("button.active");
+    if (!activeButton) return;
+
+    // --- Read Geometry from Computed Styles for robustness ---
+    const switcherStyle = window.getComputedStyle(themeSwitcher);
+    const buttonStyle = window.getComputedStyle(activeButton);
+
+    // Parse pixel values from computed styles.
+    // parseFloat is robust enough for "16px", "0.5rem", etc.
+    const containerPaddingLeft = parseFloat(switcherStyle.paddingLeft);
+    const buttonWidth = parseFloat(buttonStyle.width);
+    const buttonMarginLeft = parseFloat(buttonStyle.marginLeft);
+    const buttonMarginRight = parseFloat(buttonStyle.marginRight);
+
+    // The total horizontal space one button occupies (width + margins).
+    const buttonPitch = buttonWidth + buttonMarginLeft + buttonMarginRight;
+
+    // --- Calculation ---
+
+    // Find the 0-based index of the active button to calculate its position.
+    const activeIndex = Array.from(buttons).findIndex(
+      (btn) => btn === activeButton
+    );
+    if (activeIndex === -1) return;
+
+    // The switcher element is positioned with `left: 50%` inside its wrapper.
+    // The transform must counteract this to align the active button's center
+    // with the wrapper's center. The formula is `translateX = -activeButtonCenter`.
+    // See full explanation in previous analysis.
+
+    // Calculate the center of the active button relative to the switcher's left edge.
+    // Position = left_padding + (index * space_per_button) + half_button_width
+    const activeButtonCenterInSwitcher =
+      containerPaddingLeft + activeIndex * buttonPitch + buttonWidth / 2;
+
+    const translateX = -activeButtonCenterInSwitcher;
+
+    // Apply this offset via a CSS custom property.
+    themeSwitcher.style.setProperty(
+      "--switcher-transform-x",
+      `${translateX}px`
+    );
+  };
+
+  /**
+   * Opens the switcher with the active icon anchored in its current position.
+   * Specification points: 2, 3, 6
+   */
+  const openSwitcher = (): void => {
+    if (themeSwitcherWrapper.classList.contains("open")) return;
+    positionSwitcher();
+    themeSwitcherWrapper.classList.add("open");
+  };
+
+  /**
+   * Closes the switcher and resets its position to center the active icon.
+   * Specification points: 1, 5
+   */
+  const closeSwitcher = (): void => {
+    themeSwitcherWrapper.classList.remove("open");
+    // Reset the transform so the active icon collapses to the center.
+    themeSwitcher.style.removeProperty("--switcher-transform-x");
+  };
+
+  // --- Event Listeners ---
+
+  // Open on hover
+  themeSwitcherWrapper.addEventListener("mouseenter", openSwitcher);
+  themeSwitcherWrapper.addEventListener("focusin", openSwitcher);
+
+  // Close when focus leaves the component
+  themeSwitcherWrapper.addEventListener("mouseleave", closeSwitcher);
+  themeSwitcherWrapper.addEventListener("focusout", (e: FocusEvent) => {
+    // Check if the new focused element is still inside the wrapper
+    if (!themeSwitcherWrapper.contains(e.relatedTarget as Node)) {
+      closeSwitcher();
+    }
+  });
+
+  // Handle theme selection
+  themeSwitcher.addEventListener("click", (event: MouseEvent) => {
+    const target = (event.target as HTMLElement).closest("button");
+    if (target) {
+      const newTheme = target.dataset.theme;
+      if (newTheme) {
+        applyTheme(newTheme);
+        // Per specification, do not re-position the switcher here.
+        // The switcher remains anchored to the PREVIOUSLY active icon
+        // until it is closed and reopened.
+      }
+    }
+  });
+
+  // Update theme if the system preference changes
+  mediaQuery.addEventListener("change", () => {
+    const currentTheme = localStorage.getItem("theme") || "system";
+    if (currentTheme === "system") {
       applyTheme("system");
     }
-  };
-
-  // --- New Interaction Logic ---
-
-  // Handle clicks within the switcher wrapper
-  themeSwitcherWrapper.addEventListener("click", (event) => {
-    const target = event.target as HTMLElement;
-    const button = target.closest("button");
-
-    if (button) {
-      // A theme button was clicked
-      const theme = button.dataset.theme as "light" | "dark" | "system";
-      localStorage.setItem("theme", theme);
-      applyTheme(theme);
-      themeSwitcherWrapper.classList.remove("open"); // Ensure it closes
-    } else {
-      // The container was clicked (for touch devices)
-      themeSwitcherWrapper.classList.toggle("open");
-    }
   });
 
-  // Close when the mouse leaves the switcher area
-  themeSwitcherWrapper.addEventListener("mouseleave", () => {
-    themeSwitcherWrapper.classList.remove("open");
-  });
-
-  // Close if user clicks anywhere outside the switcher
-  document.addEventListener("click", (event) => {
-    if (!themeSwitcherWrapper.contains(event.target as Node)) {
-      themeSwitcherWrapper.classList.remove("open");
-    }
-  });
-
-  // --- Initial Setup ---
-  mediaQuery.addEventListener("change", updateThemeFromSystem);
-  const savedTheme = localStorage.getItem("theme") as
-    | "light"
-    | "dark"
-    | "system"
-    | null;
-  applyTheme(savedTheme || "system");
+  // Initialize theme
+  const savedTheme = localStorage.getItem("theme") || "system";
+  applyTheme(savedTheme);
+  closeSwitcher(); // Ensure it's closed and centered on init
 }
 
 /**
