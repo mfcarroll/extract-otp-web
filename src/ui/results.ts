@@ -5,6 +5,9 @@ import { $ } from "./dom";
 import { getOtpTypeInfo, OtpType } from "./otp";
 import { subscribe } from "../state/store";
 
+// --- Accessibility Enhancement: Store focus before modal opens ---
+let elementThatOpenedModal: HTMLElement | null = null;
+
 function getQrCodeColors() {
   const computedStyles = getComputedStyle(document.documentElement);
   return {
@@ -14,8 +17,12 @@ function getQrCodeColors() {
 }
 
 function showQrModal(otpAuthUrl: string, title: string): void {
+  // --- Accessibility Enhancement: Store the element that had focus ---
+  elementThatOpenedModal = document.activeElement as HTMLElement;
+
   const modal = $<HTMLDivElement>("#qr-modal");
   const modalContent = $<HTMLDivElement>("#modal-content");
+  const modalCloseButton = $<HTMLButtonElement>(".modal-close");
 
   modalContent.innerHTML = "";
 
@@ -26,7 +33,7 @@ function showQrModal(otpAuthUrl: string, title: string): void {
   QRCode.toCanvas(modalCanvas, otpAuthUrl, {
     width: canvasSize,
     margin: 2,
-    // modal QR is always white on black for ease of scanning regardles of theme
+    // modal QR is always white on black for ease of scanning regardless of theme
     color: { dark: "#000000", light: "#ffffff" },
   });
 
@@ -38,14 +45,23 @@ function showQrModal(otpAuthUrl: string, title: string): void {
   modalContent.appendChild(titleElement);
 
   modal.style.display = "flex";
-  document.addEventListener("keydown", handleModalKeydown);
+  // --- Accessibility Enhancement: Add keydown listener to the modal itself ---
+  modal.addEventListener("keydown", handleModalKeydown);
+  // --- Accessibility Enhancement: Focus the close button for keyboard users ---
+  modalCloseButton.focus();
 }
 
 function hideQrModal(): void {
   const modal = $<HTMLDivElement>("#qr-modal");
   modal.style.display = "none";
   $<HTMLDivElement>("#modal-content").innerHTML = "";
-  document.removeEventListener("keydown", handleModalKeydown);
+  modal.removeEventListener("keydown", handleModalKeydown);
+
+  // --- Accessibility Enhancement: Restore focus to the element that opened the modal ---
+  if (elementThatOpenedModal) {
+    elementThatOpenedModal.focus();
+    elementThatOpenedModal = null;
+  }
 }
 
 function handleModalKeydown(event: KeyboardEvent): void {
@@ -196,5 +212,80 @@ export function initResults() {
 
   // Setup modal listeners
   const modal = $<HTMLDivElement>("#qr-modal");
-  modal.addEventListener("click", hideQrModal);
+  const modalCloseButton = $<HTMLButtonElement>(".modal-close");
+
+  // Close modal on overlay click
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      hideQrModal();
+    }
+  });
+
+  // Close modal on button click
+  modalCloseButton.addEventListener("click", hideQrModal);
+
+  // --- Accessibility Enhancement: Close modal with Enter or Space on the close button ---
+  modalCloseButton.addEventListener("keydown", (event: KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      hideQrModal();
+    }
+  });
+
+  // Add keyboard navigation for the results list
+  const resultsContainer = $<HTMLDivElement>("#results-container");
+  resultsContainer.addEventListener("keydown", (event: KeyboardEvent) => {
+    const target = event.target as HTMLElement;
+
+    // We only care about events on the focusable elements within a card
+    const focusableSelector = ".secret-input, .url-input, .qr-code-container";
+    if (!target.matches(focusableSelector)) {
+      return;
+    }
+
+    const allFocusable = Array.from(
+      resultsContainer.querySelectorAll<HTMLElement>(focusableSelector)
+    );
+    const currentIndex = allFocusable.indexOf(target);
+
+    if (currentIndex === -1) return;
+
+    let nextElement: HTMLElement | undefined;
+
+    // Handle arrow navigation
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (currentIndex < allFocusable.length - 1) {
+        nextElement = allFocusable[currentIndex + 1];
+      } else {
+        // --- Accessibility Enhancement: Move to export buttons ---
+        nextElement = $<HTMLButtonElement>("#download-csv-button");
+      }
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (currentIndex > 0) {
+        nextElement = allFocusable[currentIndex - 1];
+      } else {
+        // --- Accessibility Enhancement: Move to export buttons ---
+        nextElement = $<HTMLButtonElement>("#clear-button");
+      }
+    }
+
+    if (nextElement) {
+      nextElement.focus();
+      return;
+    }
+
+    // Handle activation with Enter or Space
+    if (event.key === "Enter" || event.key === " ") {
+      if (target.matches(".secret-input, .url-input")) {
+        event.preventDefault();
+        // The copy handler is on a parent element, so simulate a click on the input's container.
+        target.parentElement?.click();
+      } else if (target.matches(".qr-code-container")) {
+        event.preventDefault();
+        target.click();
+      }
+    }
+  });
 }

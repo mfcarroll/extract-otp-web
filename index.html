@@ -244,13 +244,19 @@
               <h3>
                 <button
                   class="faq-button"
+                  id="faq-6-button"
                   aria-expanded="false"
                   aria-controls="faq-6-answer"
                 >
                   <span class="faq-title">Acknowledgements</span>
                 </button>
               </h3>
-              <div id="faq-6-answer" class="faq-answer">
+              <div
+                id="faq-6-answer"
+                class="faq-answer"
+                role="region"
+                aria-labelledby="faq-6-button"
+              >
                 <p>
                   This tool builds on the work of several open-source projects,
                   including:
@@ -396,6 +402,8 @@
             for="qr-input"
             class="file-input-label btn btn-primary"
             aria-label="Select QR Code Images"
+            role="button"
+            tabindex="0"
           >
             <i class="fa fa-upload"></i> Select QR Code Image(s)
           </label>
@@ -443,7 +451,12 @@
                 </span>
               </p>
             </div>
-            <div class="qr-code-container">
+            <div
+              class="qr-code-container"
+              role="button"
+              tabindex="0"
+              aria-label="Show larger QR code"
+            >
               <canvas width="220" height="220"></canvas>
             </div>
           </div>
@@ -495,7 +508,7 @@
       </footer>
     </div>
     <div id="qr-modal" class="modal-overlay" style="display: none">
-      <span class="modal-close" role="button" aria-label="Close">&times;</span>
+      <button class="modal-close" aria-label="Close">&times;</button>
       <div id="modal-content"></div>
     </div>
     <div id="drag-overlay"></div>

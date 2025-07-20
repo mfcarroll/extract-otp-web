@@ -99,12 +99,39 @@ async function processFiles(files: FileList | null): Promise<void> {
 
 export function initFileInput(): void {
   const qrInput = $<HTMLInputElement>("#qr-input");
+  const fileInputLabel = $<HTMLLabelElement>(".file-input-label");
   const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
   const dragOverlay = $<HTMLDivElement>("#drag-overlay");
   let dragCounter = 0;
 
   qrInput.addEventListener("change", (event: Event) => {
     processFiles((event.target as HTMLInputElement).files);
+  });
+
+  // Add keyboard navigation to move focus from the "Select" button back up.
+  fileInputLabel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      const activeTab =
+        document.querySelector<HTMLButtonElement>(".tab-button.active");
+
+      if (activeTab?.dataset.tab === "faq") {
+        // If on FAQ tab, focus the last FAQ item
+        const faqButtons = document.querySelectorAll<HTMLButtonElement>(
+          "#tab-faq .faq-button"
+        );
+        faqButtons[faqButtons.length - 1]?.focus();
+      } else if (activeTab) {
+        // Otherwise, focus the active tab button
+        activeTab.focus();
+      }
+    } else if (event.key === " " || event.key === "Enter") {
+      // Allow activation with Space and Enter keys, like a native button.
+      // This is necessary because the "button" is a <label> element.
+      event.preventDefault();
+      // Directly click the hidden file input to open the file dialog.
+      qrInput.click();
+    }
   });
 
   // Subscribe to the store to react to state changes.
