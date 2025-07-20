@@ -5,6 +5,7 @@ import { initFileInput } from "./ui/fileInput";
 import { initThemeSwitcher } from "./ui/theme";
 import { initInfoTabs } from "./ui/infoTabs";
 import { initExportControls } from "./ui/exportControls";
+import { initFooter } from "./ui/footer";
 
 window.Buffer = Buffer; // Make Buffer globally available for libraries that might need it.
 
@@ -18,6 +19,7 @@ function initializeApp(): void {
   initFileInput();
   initThemeSwitcher();
   initExportControls();
+  initFooter();
 }
 
 // Initialize the application once the DOM is ready.

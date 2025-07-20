@@ -317,6 +317,45 @@
 
         <div id="results-container"></div>
 
+        <template id="otp-card-template">
+          <div class="otp-card">
+            <div class="otp-details">
+              <h3 class="otp-title"></h3>
+              <p>
+                <span class="label">Name:</span> <span data-value="name"></span>
+              </p>
+              <p>
+                <span class="label">Issuer:</span>
+                <span data-value="issuer"></span>
+              </p>
+              <p>
+                <span class="label">Type:</span> <span data-value="type"></span>
+              </p>
+              <p class="secret-row">
+                <span class="label">Secret:</span>
+                <span class="secret-container">
+                  <input type="text" class="text-input secret-input" readonly />
+                  <button class="copy-button" aria-label="Copy secret">
+                    <i class="fa fa-copy"></i>
+                  </button>
+                </span>
+              </p>
+              <p class="otp-url-row">
+                <span class="label">URL: </span>
+                <span class="otp-url-container">
+                  <input type="text" class="text-input url-input" readonly />
+                  <button class="copy-button" aria-label="Copy URL">
+                    <i class="fa fa-copy"></i>
+                  </button>
+                </span>
+              </p>
+            </div>
+            <div class="qr-code-container">
+              <canvas width="220" height="220"></canvas>
+            </div>
+          </div>
+        </template>
+
         <div id="export-container" style="display: none">
           <button id="download-csv-button" class="btn btn-success">
             <i class="fa fa-download"></i> Save as CSV
@@ -330,7 +369,7 @@
       <footer>
         <div class="footer-content">
           <span
-            >&copy; 2025
+            >&copy; <span id="copyright-year">2025</span>
             <a
               href="https://www.linkedin.com/in/matthewfcarroll/"
               target="_blank"

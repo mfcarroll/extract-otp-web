@@ -1,8 +1,16 @@
 import QRCode from "qrcode";
 import { encode } from "thirty-two";
-import { MigrationOtpParameter, OtpData } from "../types";
+import { MigrationOtpParameter } from "../types";
 import { $ } from "./dom";
 import { subscribe } from "../state/store";
+
+function getQrCodeColors() {
+  const computedStyles = getComputedStyle(document.documentElement);
+  return {
+    dark: computedStyles.getPropertyValue("--text-color").trim(),
+    light: computedStyles.getPropertyValue("--card-background").trim(),
+  };
+}
 
 function showQrModal(otpAuthUrl: string, title: string): void {
   const modal = $<HTMLDivElement>("#qr-modal");
@@ -66,8 +74,10 @@ const handleCopy = (event: MouseEvent) => {
   copyToClipboard(textToCopy, button);
 };
 
+const cardTemplate = $<HTMLTemplateElement>("#otp-card-template");
+
 /**
- * Creates an HTML element for a single OTP entry.
+ * Creates an HTML element for a single OTP entry by cloning a template.
  */
 function createOtpCard(
   otp: MigrationOtpParameter,
@@ -86,63 +96,53 @@ function createOtpCard(
   if (otp.issuer) otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
   if (typeText === "hotp") otpAuthUrl += `&counter=${otp.counter || 0}`;
 
-  const cardElement = document.createElement("div");
-  cardElement.className = "otp-card";
+  const cardFragment = cardTemplate.content.cloneNode(true) as DocumentFragment;
+  const cardElement = cardFragment.querySelector<HTMLDivElement>(".otp-card")!;
   cardElement.id = `otp-card-${index}`;
 
-  const qrCodeCanvas = document.createElement("canvas");
-  const computedStyles = getComputedStyle(document.documentElement);
-  const qrDarkColor = computedStyles.getPropertyValue("--text-color").trim();
-  const qrLightColor = computedStyles
-    .getPropertyValue("--card-background")
-    .trim();
+  // Populate the details from the template
+  const titleText = otp.issuer ? `${issuerText}: ${accountName}` : accountName;
+  cardElement.querySelector<HTMLHeadingElement>(".otp-title")!.textContent = `${
+    index + 1
+  }. ${titleText}`;
+  cardElement.querySelector<HTMLSpanElement>(
+    '[data-value="name"]'
+  )!.textContent = accountName;
+  cardElement.querySelector<HTMLSpanElement>(
+    '[data-value="issuer"]'
+  )!.textContent = issuerText;
+  cardElement.querySelector<HTMLSpanElement>(
+    '[data-value="type"]'
+  )!.textContent = typeText;
+
+  cardElement.querySelector<HTMLInputElement>(".secret-input")!.value =
+    secretText;
+
+  const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
+  urlInput.value = decodeURIComponent(otpAuthUrl);
+  urlInput.nextElementSibling!.setAttribute("data-copy-text", otpAuthUrl);
+
+  // Generate the QR code
+  const qrCodeCanvas = cardElement.querySelector<HTMLCanvasElement>("canvas")!;
 
   QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, {
     width: 220,
     margin: 1,
-    color: { dark: qrDarkColor, light: qrLightColor },
+    color: getQrCodeColors(),
   });
 
-  const qrCodeContainer = document.createElement("div");
-  qrCodeContainer.className = "qr-code-container";
+  // Add event listeners
+  const qrCodeContainer =
+    cardElement.querySelector<HTMLDivElement>(".qr-code-container")!;
   qrCodeContainer.addEventListener("click", () => {
     const modalTitle = otp.issuer
       ? `${issuerText}: ${accountName}`
       : accountName;
     showQrModal(otpAuthUrl, modalTitle);
   });
-  qrCodeContainer.appendChild(qrCodeCanvas);
 
-  const otpDetails = document.createElement("div");
-  otpDetails.className = "otp-details";
-  const titleText = otp.issuer ? `${issuerText}: ${accountName}` : accountName;
-
-  otpDetails.innerHTML = `
-      <h3>${index + 1}. ${titleText}</h3>
-      <p><span class="label">Name:</span> ${accountName}</p>
-      <p><span class="label">Issuer:</span> ${issuerText}</p>
-      <p><span class="label">Type:</span> ${typeText}</p>
-      <p class="secret-row">
-          <span class="label">Secret:</span>
-          <span class="secret-container">
-              <input type="text" class="text-input secret-input" value="${secretText}" readonly>
-              <button class="copy-button" aria-label="Copy secret"><i class="fa fa-copy"></i></button>
-          </span>
-      </p>
-      <p class="otp-url-row">
-          <span class="label">URL: </span>
-          <span class="otp-url-container">
-              <input type="text" class="text-input url-input" value="${decodeURIComponent(
-                otpAuthUrl
-              )}" readonly>
-              <button class="copy-button" data-copy-text="${otpAuthUrl}" aria-label="Copy URL"><i class="fa fa-copy"></i></button>
-          </span>
-      </p>
-  `;
-
+  const otpDetails = cardElement.querySelector<HTMLDivElement>(".otp-details")!;
   otpDetails.addEventListener("click", handleCopy);
-  cardElement.appendChild(otpDetails);
-  cardElement.appendChild(qrCodeContainer);
 
   return cardElement;
 }
@@ -164,9 +164,6 @@ function render(otps: MigrationOtpParameter[]): void {
 }
 
 export function initResults() {
-  // Initial render
-  // render([]);
-
   // Re-render whenever the otps in the store change
   subscribe((state) => {
     render(state.otps);
