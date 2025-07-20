@@ -97,18 +97,112 @@ async function processFiles(files: FileList | null): Promise<void> {
   }
 }
 
+/**
+ * Handles keyboard navigation within the results container for a grid-like experience.
+ * @param event The keyboard event.
+ */
+function handleResultsKeydown(event: KeyboardEvent): void {
+  const target = event.target as HTMLElement;
+  if (
+    !["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
+  ) {
+    return;
+  }
+
+  const card = target.closest<HTMLElement>(".otp-card");
+  if (!card) return;
+
+  // Only prevent default if we are sure we're handling the key inside a card.
+  event.preventDefault();
+
+  const cardIndex = parseInt(card.id.replace("otp-card-", ""), 10);
+  const allCards = document.querySelectorAll<HTMLElement>(".otp-card");
+  const fileInputLabel = $<HTMLLabelElement>(".file-input-label");
+
+  let row = -1,
+    col = -1;
+  if (target.classList.contains("secret-input")) {
+    [row, col] = [0, 0];
+  } else if (target.classList.contains("copy-button")) {
+    col = 1;
+    if (target.closest(".secret-row")) {
+      row = 0;
+    } else if (target.closest(".otp-url-row")) {
+      row = 1;
+    }
+  } else if (target.classList.contains("url-input")) {
+    [row, col] = [1, 0];
+  } else if (target.classList.contains("qr-code-container")) {
+    col = 2;
+  }
+
+  switch (event.key) {
+    case "ArrowUp":
+      if (row === 1) {
+        // From URL row to Secret row in the same card
+        const selector =
+          col === 0 ? ".secret-input" : ".secret-row .copy-button";
+        card.querySelector<HTMLElement>(selector)?.focus();
+      } else {
+        // From Secret row or QR code up to previous card's QR or select button
+        if (cardIndex > 0) {
+          allCards[cardIndex - 1]
+            .querySelector<HTMLElement>(".qr-code-container")
+            ?.focus();
+        } else {
+          fileInputLabel.focus();
+        }
+      }
+      break;
+
+    case "ArrowDown":
+      if (row === 0) {
+        // From Secret row to URL row in the same card
+        const selector = col === 0 ? ".url-input" : ".otp-url-row .copy-button";
+        card.querySelector<HTMLElement>(selector)?.focus();
+      } else {
+        // From URL row or QR code down to next card's secret input
+        if (cardIndex < allCards.length - 1) {
+          allCards[cardIndex + 1]
+            .querySelector<HTMLElement>(".secret-input")
+            ?.focus();
+        }
+      }
+      break;
+
+    case "ArrowLeft":
+      if (col === 2) {
+        card.querySelector<HTMLElement>(".otp-url-row .copy-button")?.focus();
+      } else if (col === 1) {
+        const selector = row === 0 ? ".secret-input" : ".url-input";
+        card.querySelector<HTMLElement>(selector)?.focus();
+      }
+      break;
+
+    case "ArrowRight":
+      if (col === 0) {
+        const selector =
+          row === 0 ? ".secret-row .copy-button" : ".otp-url-row .copy-button";
+        card.querySelector<HTMLElement>(selector)?.focus();
+      } else if (col === 1) {
+        card.querySelector<HTMLElement>(".qr-code-container")?.focus();
+      }
+      break;
+  }
+}
+
 export function initFileInput(): void {
   const qrInput = $<HTMLInputElement>("#qr-input");
   const fileInputLabel = $<HTMLLabelElement>(".file-input-label");
   const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
   const dragOverlay = $<HTMLDivElement>("#drag-overlay");
+  const resultsContainer = $<HTMLDivElement>("#results-container");
   let dragCounter = 0;
 
   qrInput.addEventListener("change", (event: Event) => {
     processFiles((event.target as HTMLInputElement).files);
   });
 
-  // Add keyboard navigation to move focus from the "Select" button back up.
   fileInputLabel.addEventListener("keydown", (event) => {
     if (event.key === "ArrowUp") {
       event.preventDefault();
@@ -116,39 +210,35 @@ export function initFileInput(): void {
         document.querySelector<HTMLButtonElement>(".tab-button.active");
 
       if (activeTab?.dataset.tab === "faq") {
-        // If on FAQ tab, try to focus the last FAQ item.
         const faqButtons = document.querySelectorAll<HTMLButtonElement>(
           "#tab-faq .faq-button"
         );
         if (faqButtons.length > 0) {
           faqButtons[faqButtons.length - 1].focus();
         } else {
-          // If no FAQ items, focus the FAQ tab itself.
           activeTab.focus();
         }
       } else if (activeTab) {
-        // Otherwise, for any other tab, focus the active tab button.
         activeTab.focus();
       }
     } else if (event.key === "ArrowDown") {
       event.preventDefault();
-      // Try to focus the first button in the first OTP card.
-      const firstOtpCardButton =
-        document.querySelector<HTMLButtonElement>(".otp-card button");
-      firstOtpCardButton?.focus();
+      // Focus the first secret input in the first OTP card.
+      const firstSecretInput = document.querySelector<HTMLInputElement>(
+        ".otp-card .secret-input"
+      );
+      firstSecretInput?.focus();
     } else if (event.key === " " || event.key === "Enter") {
-      // Allow activation with Space and Enter keys, like a native button.
-      // This is necessary because the "button" is a <label> element.
       event.preventDefault();
-      // Directly click the hidden file input to open the file dialog.
       qrInput.click();
     }
   });
 
-  // Subscribe to the store to react to state changes.
-  // When OTPs are cleared, reset the file input so the same files can be re-selected.
+  resultsContainer.addEventListener("keydown", handleResultsKeydown);
+
   subscribe((state) => {
     if (state.otps.length === 0) {
+      clearLogs();
       qrInput.value = "";
     }
   });
