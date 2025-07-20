@@ -126,7 +126,7 @@ function createOtpCard(
     : otp.name || "Untitled Account";
   const encodedLabel = encodeURIComponent(urlLabel);
 
-  let otpAuthUrl = `otpauth://${typeInfo.short}/${encodedLabel}?secret=${secretText}`;
+  let otpAuthUrl = `otpauth://${typeInfo.key}/${encodedLabel}?secret=${secretText}`;
   if (otp.issuer) otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
   if (otp.type === OtpType.HOTP) otpAuthUrl += `&counter=${otp.counter || 0}`;
 
@@ -140,7 +140,7 @@ function createOtpCard(
   }. ${titleText}`;
   populateDetail(cardElement, "name", otp.name);
   populateDetail(cardElement, "issuer", otp.issuer);
-  populateDetail(cardElement, "type", typeInfo.full);
+  populateDetail(cardElement, "type", typeInfo.description);
 
   cardElement.querySelector<HTMLInputElement>(".secret-input")!.value =
     secretText;
