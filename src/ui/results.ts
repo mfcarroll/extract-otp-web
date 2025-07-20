@@ -266,8 +266,8 @@ export function initResults() {
       if (currentIndex > 0) {
         nextElement = allFocusable[currentIndex - 1];
       } else {
-        // --- Accessibility Enhancement: Move to export buttons ---
-        nextElement = $<HTMLButtonElement>("#clear-button");
+        // --- Accessibility Enhancement: Move to the "Select QR Code" button ---
+        nextElement = $<HTMLLabelElement>(".file-input-label");
       }
     }
 

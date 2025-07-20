@@ -116,15 +116,26 @@ export function initFileInput(): void {
         document.querySelector<HTMLButtonElement>(".tab-button.active");
 
       if (activeTab?.dataset.tab === "faq") {
-        // If on FAQ tab, focus the last FAQ item
+        // If on FAQ tab, try to focus the last FAQ item.
         const faqButtons = document.querySelectorAll<HTMLButtonElement>(
           "#tab-faq .faq-button"
         );
-        faqButtons[faqButtons.length - 1]?.focus();
+        if (faqButtons.length > 0) {
+          faqButtons[faqButtons.length - 1].focus();
+        } else {
+          // If no FAQ items, focus the FAQ tab itself.
+          activeTab.focus();
+        }
       } else if (activeTab) {
-        // Otherwise, focus the active tab button
+        // Otherwise, for any other tab, focus the active tab button.
         activeTab.focus();
       }
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      // Try to focus the first button in the first OTP card.
+      const firstOtpCardButton =
+        document.querySelector<HTMLButtonElement>(".otp-card button");
+      firstOtpCardButton?.focus();
     } else if (event.key === " " || event.key === "Enter") {
       // Allow activation with Space and Enter keys, like a native button.
       // This is necessary because the "button" is a <label> element.

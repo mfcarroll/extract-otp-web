@@ -11,23 +11,30 @@ function setupTabs(): void {
   const tabButtons = Array.from(
     tabsContainer.querySelectorAll<HTMLButtonElement>(".tab-button")
   );
-  const tabContents =
-    tabsContainer.querySelectorAll<HTMLDivElement>(".tab-content");
+  const tabContents = Array.from(
+    tabsContainer.querySelectorAll<HTMLDivElement>(".tab-content")
+  );
 
-  tabsContainer.addEventListener("click", (event) => {
-    const target = event.target as HTMLElement;
-    if (!target.matches(".tab-button")) return;
-
-    const tabId = target.dataset.tab;
+  function activateTab(tabToActivate: HTMLButtonElement) {
+    const tabId = tabToActivate.dataset.tab;
     if (!tabId) return;
 
     // Deactivate all buttons and content panels
     tabButtons.forEach((button) => button.classList.remove("active"));
     tabContents.forEach((content) => content.classList.remove("active"));
 
-    // Activate the clicked button and its corresponding content panel
-    target.classList.add("active");
-    $(`#tab-${tabId}`).classList.add("active");
+    // Activate the new button and its corresponding content panel
+    tabToActivate.classList.add("active");
+    $(`#tab-${tabId}`)?.classList.add("active");
+  }
+
+  tabsContainer.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
+      ".tab-button"
+    );
+    if (button) {
+      activateTab(button);
+    }
   });
 
   tabsContainer.addEventListener("keydown", (event) => {
@@ -46,10 +53,23 @@ function setupTabs(): void {
         tabButtons[(currentIndex - 1 + tabButtons.length) % tabButtons.length];
     } else if (event.key === "ArrowDown") {
       event.preventDefault();
-      const activeTabId = target.dataset.tab;
+      // Find the currently active tab button to determine which panel is open.
+      // This is more robust than checking the focused tab.
+      const activeTabButton =
+        tabsContainer.querySelector<HTMLButtonElement>(".tab-button.active");
+      const activeTabId = activeTabButton?.dataset.tab;
+
       if (activeTabId === "faq") {
-        $("#tab-faq .faq-button")?.focus();
+        // Try to focus the first FAQ button.
+        const firstFaqButton = $<HTMLButtonElement>("#tab-faq .faq-button");
+        if (firstFaqButton) {
+          firstFaqButton.focus();
+        } else {
+          // If FAQ tab is active but has no items, fall back to the file input.
+          $<HTMLLabelElement>(".file-input-label")?.focus();
+        }
       } else {
+        // For any other active tab, move focus down to the file input area.
         $<HTMLLabelElement>(".file-input-label")?.focus();
       }
       return;
@@ -58,8 +78,8 @@ function setupTabs(): void {
     if (nextButton) {
       event.preventDefault();
       nextButton.focus();
-      // Per ARIA spec for tabs, moving focus should also activate the tab
-      nextButton.click();
+      // Directly activate the tab instead of relying on a programmatic click
+      activateTab(nextButton);
     }
   });
 }
@@ -107,6 +127,11 @@ function setupAccordion(): void {
       link.setAttribute("tabindex", isExpanded ? "0" : "-1");
     });
   });
+
+  // Only set up keyboard navigation if there are FAQ buttons to navigate.
+  if (buttons.length === 0) {
+    return;
+  }
 
   // Keydown handler for keyboard navigation (roving tabindex)
   faqContainer.addEventListener("keydown", (event) => {
