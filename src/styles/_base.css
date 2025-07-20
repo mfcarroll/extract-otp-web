@@ -3,6 +3,8 @@
   --primary-color-dark: #357abd;
   --background-color: #f4f7f6;
   --text-color: #2c3e50;
+  --text-color-secondary: #555;
+  --text-color-muted: #888;
   --card-background: #ffffff;
   --border-color: #e0e0e0;
   --error-color: #d9534f;
@@ -32,6 +34,8 @@ html.dark-mode {
   --primary-color-dark: #5aa1f2;
   --background-color: #1a202c;
   --text-color: #e2e8f0;
+  --text-color-secondary: #bbb;
+  --text-color-muted: #999;
   --card-background: #2d3748;
   --border-color: #4a5568;
   --error-color: #e57373;
@@ -69,4 +73,15 @@ body {
   padding: 2rem;
   min-height: 100vh;
   box-sizing: border-box;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-color-dark);
+  text-decoration: underline;
 }

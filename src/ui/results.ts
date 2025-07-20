@@ -2,6 +2,7 @@ import QRCode from "qrcode";
 import { encode } from "thirty-two";
 import { MigrationOtpParameter } from "../types";
 import { $ } from "./dom";
+import { getOtpTypeInfo, OtpType } from "./otp";
 import { subscribe } from "../state/store";
 
 function getQrCodeColors() {
@@ -25,6 +26,7 @@ function showQrModal(otpAuthUrl: string, title: string): void {
   QRCode.toCanvas(modalCanvas, otpAuthUrl, {
     width: canvasSize,
     margin: 2,
+    // modal QR is always white on black for ease of scanning regardles of theme
     color: { dark: "#000000", light: "#ffffff" },
   });
 
@@ -34,13 +36,22 @@ function showQrModal(otpAuthUrl: string, title: string): void {
   titleElement.className = "modal-title";
   titleElement.textContent = title;
   modalContent.appendChild(titleElement);
+
   modal.style.display = "flex";
+  document.addEventListener("keydown", handleModalKeydown);
 }
 
 function hideQrModal(): void {
   const modal = $<HTMLDivElement>("#qr-modal");
   modal.style.display = "none";
   $<HTMLDivElement>("#modal-content").innerHTML = "";
+  document.removeEventListener("keydown", handleModalKeydown);
+}
+
+function handleModalKeydown(event: KeyboardEvent): void {
+  if (event.key === "Escape") {
+    hideQrModal();
+  }
 }
 
 const copyToClipboard = (text: string, buttonElement: HTMLElement): void => {
@@ -77,6 +88,26 @@ const handleCopy = (event: MouseEvent) => {
 const cardTemplate = $<HTMLTemplateElement>("#otp-card-template");
 
 /**
+ * Populates a detail field in the OTP card, handling missing values.
+ * @param cardElement The parent card element.
+ * @param field The data-value attribute of the target span.
+ * @param value The value to display.
+ */
+function populateDetail(
+  cardElement: HTMLElement,
+  field: string,
+  value: string | undefined | null
+): void {
+  const element = cardElement.querySelector<HTMLSpanElement>(
+    `[data-value="${field}"]`
+  );
+  if (!element) return;
+
+  element.textContent = value || "Not available";
+  element.classList.toggle("value-missing", !value);
+}
+
+/**
  * Creates an HTML element for a single OTP entry by cloning a template.
  */
 function createOtpCard(
@@ -84,36 +115,32 @@ function createOtpCard(
   index: number
 ): HTMLDivElement {
   const secretText = encode(otp.secret);
-  const issuerText = otp.issuer || "N/A";
-  const accountName = otp.name || "N/A";
-  const typeText = otp.type === 2 ? "totp" : "hotp";
+  const typeInfo = getOtpTypeInfo(otp.type);
 
-  let label = accountName;
-  if (otp.issuer) label = `${otp.issuer}:${accountName}`;
-  const encodedLabel = encodeURIComponent(label);
+  // Construct a display-friendly title and a URL-friendly label.
+  const titleText = otp.issuer
+    ? `${otp.issuer}${otp.name ? `: ${otp.name}` : ""}`
+    : otp.name || "Untitled Account";
+  const urlLabel = otp.issuer
+    ? `${otp.issuer}:${otp.name || ""}`
+    : otp.name || "Untitled Account";
+  const encodedLabel = encodeURIComponent(urlLabel);
 
-  let otpAuthUrl = `otpauth://${typeText}/${encodedLabel}?secret=${secretText}`;
+  let otpAuthUrl = `otpauth://${typeInfo.short}/${encodedLabel}?secret=${secretText}`;
   if (otp.issuer) otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
-  if (typeText === "hotp") otpAuthUrl += `&counter=${otp.counter || 0}`;
+  if (otp.type === OtpType.HOTP) otpAuthUrl += `&counter=${otp.counter || 0}`;
 
   const cardFragment = cardTemplate.content.cloneNode(true) as DocumentFragment;
   const cardElement = cardFragment.querySelector<HTMLDivElement>(".otp-card")!;
   cardElement.id = `otp-card-${index}`;
 
   // Populate the details from the template
-  const titleText = otp.issuer ? `${issuerText}: ${accountName}` : accountName;
   cardElement.querySelector<HTMLHeadingElement>(".otp-title")!.textContent = `${
     index + 1
   }. ${titleText}`;
-  cardElement.querySelector<HTMLSpanElement>(
-    '[data-value="name"]'
-  )!.textContent = accountName;
-  cardElement.querySelector<HTMLSpanElement>(
-    '[data-value="issuer"]'
-  )!.textContent = issuerText;
-  cardElement.querySelector<HTMLSpanElement>(
-    '[data-value="type"]'
-  )!.textContent = typeText;
+  populateDetail(cardElement, "name", otp.name);
+  populateDetail(cardElement, "issuer", otp.issuer);
+  populateDetail(cardElement, "type", typeInfo.full);
 
   cardElement.querySelector<HTMLInputElement>(".secret-input")!.value =
     secretText;
@@ -135,9 +162,7 @@ function createOtpCard(
   const qrCodeContainer =
     cardElement.querySelector<HTMLDivElement>(".qr-code-container")!;
   qrCodeContainer.addEventListener("click", () => {
-    const modalTitle = otp.issuer
-      ? `${issuerText}: ${accountName}`
-      : accountName;
+    const modalTitle = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
     showQrModal(otpAuthUrl, modalTitle);
   });
 
@@ -172,10 +197,4 @@ export function initResults() {
   // Setup modal listeners
   const modal = $<HTMLDivElement>("#qr-modal");
   modal.addEventListener("click", hideQrModal);
-  document.addEventListener("keydown", (event) => {
-    if (modal.style.display !== "none") {
-      event.preventDefault();
-      hideQrModal();
-    }
-  });
 }

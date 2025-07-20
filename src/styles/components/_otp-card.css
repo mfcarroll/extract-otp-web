@@ -20,11 +20,17 @@
   word-wrap: break-word;
 }
 
-.otp-card .label {
+.otp-details .label {
   font-weight: 600;
-  color: var(--subtle-text-color);
+  color: var(--text-color-secondary);
   display: inline-block;
   width: 80px;
+}
+
+.otp-details .value-missing {
+  color: var(--text-color-muted);
+  font-style: italic;
+  font-weight: 400; /* Override the default text weight */
 }
 
 .otp-card .secret-container,
@@ -81,26 +87,47 @@
   color: var(--primary-color);
 }
 
+/* --- Tooltips for Copy Button --- */
+/* Base styles for both "Copy" and "Copied!" tooltips */
+.copy-button::before,
 .copy-button::after {
-  content: "Copied!";
   position: absolute;
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--success-color);
-  color: var(--card-background);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.8rem;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
   pointer-events: none;
+  white-space: nowrap;
+  color: var(--btn-text-color);
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
 }
 
+.copy-button::before {
+  content: "Copy";
+  background-color: var(--subtle-text-color);
+}
+
+.copy-button::after {
+  content: "Copied!";
+  background-color: var(--success-color);
+}
+
+/* Show "Copy" on hover, but only if not in "copied" state */
+.copy-button:not(.copied):hover::before {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s; /* Delay to prevent flashing */
+}
+
+/* Show "Copied!" when .copied class is present */
 .copy-button.copied::after {
   opacity: 1;
   visibility: visible;
+  transition-delay: 0s; /* Show immediately on click */
 }
 
 .otp-details {

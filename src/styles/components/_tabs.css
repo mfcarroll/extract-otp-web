@@ -70,17 +70,6 @@
   margin-top: 0;
 }
 
-.tab-content a {
-  color: var(--primary-color);
-  text-decoration: underline;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.tab-content a:hover {
-  color: var(--primary-color-dark);
-}
-
 .tab-content ul {
   list-style: none;
   padding-left: 0;

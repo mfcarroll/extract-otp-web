@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Readex+Pro&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/style.css" />
@@ -159,13 +159,14 @@
                   <a
                     href="https://github.com/mfcarroll/extract-otp-web"
                     target="_blank"
+                    rel="noopener noreferrer"
                     >the code can be inspected by anyone</a
-                  >
-                  to verify its safety and methodology. It is hosted on GitHub
-                  pages, providing a
+                  >, to verify its safety and methodology. It is hosted on
+                  GitHub pages, providing a
                   <a
                     href="https://github.com/mfcarroll/extract-otp-web/deployments/github-pages"
                     target="_blank"
+                    rel="noopener noreferrer"
                     >secure and transparent deployment process</a
                   >.
                 </p>
@@ -180,8 +181,8 @@
                   aria-controls="faq-4-answer"
                 >
                   <span class="faq-title"
-                    >Why doesn't 1Password import Google Authenticator codes
-                    directly?</span
+                    >Why can't 1Password import Google Authenticator
+                    codes?</span
                   >
                 </button>
               </h3>
@@ -191,23 +192,26 @@
                   <a
                     href="https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     others</a
-                  >
-                  have
+                  >, have
                   <a
                     href="https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/"
                     target="_blank"
+                    rel="noopener noreferrer"
                     >asked</a
                   >. One reason given is a concern that Google's export format
                   might change. However, this format has been stable for years,
                   and other apps (like
-                  <a href="https://github.com/beemdevelopment/Aegis"
+                  <a
+                    href="https://getaegis.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     >Aegis Authenticator</a
-                  >) support it without issue. This tool uses the same simple,
-                  stable methodology. It seems password managers like 1Password
-                  <em>could</em> easily support direct imports, but have chosen
-                  not to.
+                  >) support it without issue. It seems password managers like
+                  1Password <em>could</em> easily support direct imports, but
+                  have chosen not to.
                 </p>
               </div>
             </div>
@@ -227,6 +231,7 @@
                   This tool was created by
                   <a
                     href="https://www.linkedin.com/in/matthewfcarroll/"
+                    rel="noopener noreferrer"
                     target="_blank"
                     >Matthew Carroll</a
                   >, a developer who was frustrated with the process of
@@ -247,23 +252,29 @@
               </h3>
               <div id="faq-6-answer" class="faq-answer">
                 <p>
-                  This tool was made possible by building on the work of several
-                  open-source projects, including:
+                  This tool builds on the work of several open-source projects,
+                  including:
                 </p>
                 <ul>
                   <li>
                     <a
                       href="https://github.com/scito/extract_otp_secrets/#readme"
                       target="_blank"
+                      rel="noopener noreferrer"
                       >Extract OTP Secrets</a
                     >, the python script by
-                    <a href="https://scito.ch/">Roland Kurmann</a>, on which
-                    this tool is based.
+                    <a
+                      href="https://scito.ch/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Roland Kurmann</a
+                    >, on which this tool is based.
                   </li>
                   <li>
                     <a
                       href="https://github.com/beemdevelopment/Aegis/#readme"
                       target="_blank"
+                      rel="noopener noreferrer"
                       >Aegis Authenticator</a
                     >, for the Google Authenticator export protobuf
                     specification.
@@ -272,21 +283,109 @@
                     <a
                       href="https://github.com/krissrex/google-authenticator-exporter/#readme"
                       target="_blank"
+                      rel="noopener noreferrer"
                       >Google Authenticator Exporter</a
                     >, another python script solution to the same problem.
                   </li>
                 </ul>
                 <p>
-                  The development of this tool was made possible in part through
-                  the support of
-                  <a href="https://stand.earth/" target="_blank">Stand.earth</a
-                  >. If you found this useful, and want to help protect the
-                  people and places you love, please
-                  <a href="https://stand.earth/donate/" target="_blank"
-                    >consider making a donation</a
-                  >
-                  to support Stand's work.
+                  The user interface and QR code processing are powered by these
+                  open-source libraries:
                 </p>
+                <ul>
+                  <li>
+                    <a
+                      href="https://github.com/cozmo/jsQR"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >jsQR</a
+                    >
+                    for decoding QR codes from images.
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/protobufjs/protobuf.js"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >protobuf.js</a
+                    >
+                    for decoding the Google Authenticator data payload.
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/soldair/node-qrcode"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >qrcode</a
+                    >
+                    for generating new QR codes for each account.
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/wzrdtales/thirty-two"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >thirty-two</a
+                    >
+                    for Base32 encoding the OTP secrets.
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/FortAwesome/Font-Awesome"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Font Awesome</a
+                    >
+                    for the icons used in the UI.
+                  </li>
+                </ul>
+                <p>
+                  Thank you to all the contributers to these excellent projects!
+                </p>
+                <p>
+                  <a
+                    href="https://codeassist.google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Gemini Code Assist</a
+                  >
+                  was used during the development of this tool. All AI-generated
+                  code has been carefully manually reviewed.
+                </p>
+                <div class="donation-section">
+                  <a
+                    class="logo-link"
+                    href="https://stand.earth/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div class="logo-with-tagline">
+                      <img
+                        class="logo"
+                        src="/Stand_Logo_Block-RGB_Red.svg"
+                        alt="Stand.earth logo"
+                      />
+                      <p class="tagline">For the people and places you love</p>
+                    </div></a
+                  >
+                  <p class="text">
+                    The development of this tool was made possible in part
+                    through the support of
+                    <a
+                      href="https://stand.earth/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Stand.earth</a
+                    >. If you find this useful, please consider
+                    <a
+                      href="https://stand.earth/donate/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >making a donation</a
+                    >
+                    to support Stand's work.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
