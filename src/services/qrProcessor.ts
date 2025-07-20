@@ -1,7 +1,6 @@
 import jsQR from "jsqr";
 import protobuf from "protobufjs";
 import { encode } from "thirty-two";
-import { $ } from "../ui/dom";
 import { MigrationOtpParameter } from "../types";
 
 // Pre-load the protobuf definition once for better performance.
@@ -52,7 +51,8 @@ export function processImage(
   file: File
 ): Promise<MigrationOtpParameter[] | null> {
   return new Promise((resolve, reject) => {
-    const canvas = $<HTMLCanvasElement>("#qr-canvas");
+    // The canvas is created on-demand in memory, decoupling this service from the DOM.
+    const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return reject(new Error("Could not get canvas context"));
 
