@@ -12,7 +12,6 @@
   --error-color-dark: #c9302c;
   --success-color: #5cb85c;
   --success-color-dark: #4cae4c;
-  --info-color: #3498db;
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
 
@@ -40,7 +39,6 @@ html.dark-mode {
   --border-color: #4a5568;
   --error-color: #e57373;
   --error-color-rgb: 229, 115, 115;
-  --info-color: #64b5f6;
   --success-color: #81c784;
 
   --subtle-text-color: #a0aec0;
