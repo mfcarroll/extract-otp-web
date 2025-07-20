@@ -149,15 +149,11 @@ function createOtpCard(
 
 function render(otps: MigrationOtpParameter[]): void {
   const resultsContainer = $<HTMLDivElement>("#results-container");
-  const exportContainer = $<HTMLDivElement>("#export-container");
 
   resultsContainer.innerHTML = "";
   if (!otps || otps.length === 0) {
-    exportContainer.style.display = "none";
     return;
   }
-
-  exportContainer.style.display = "block";
 
   const fragment = document.createDocumentFragment();
   otps.forEach((otp, index) => {
