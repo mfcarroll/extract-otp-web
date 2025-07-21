@@ -15,6 +15,10 @@ let lastFocusedInResults: HTMLElement | null = null;
 let lastFocusedExternalControl: HTMLElement | null = null;
 // --- Accessibility Enhancement: Store last focused info control for returning focus ---
 let lastFocusedInfoControl: HTMLElement | null = null;
+// --- Accessibility Enhancement: Store last focused element above the footer ---
+let lastFocusedAboveFooter: HTMLElement | null = null;
+// --- Accessibility Enhancement: Store last focused element within the footer ---
+let lastFocusedInFooter: HTMLElement | null = null;
 
 function getQrCodeColors() {
   const computedStyles = getComputedStyle(document.documentElement);
@@ -74,6 +78,7 @@ function hideQrModal(): void {
 
 function handleModalKeydown(event: KeyboardEvent): void {
   if (event.key === "Escape") {
+    event.stopPropagation(); // Prevent the global handler from also firing
     hideQrModal();
   }
 }
@@ -240,6 +245,20 @@ function handleKeydown(event: KeyboardEvent) {
   const hasResults = allCards.length > 0;
   let nextEl: HTMLElement | null = null;
 
+  // --- Global Escape Key Behavior ---
+  // If the escape key is pressed on any focusable element that doesn't
+  // have its own specific escape behavior (like a modal or open menu),
+  // remove focus from it. This provides a consistent way to "reset"
+  // keyboard focus to the document body.
+  if (
+    key === "Escape" &&
+    document.activeElement &&
+    document.activeElement !== document.body
+  ) {
+    (document.activeElement as HTMLElement).blur();
+    return; // Escape should not trigger other navigation actions.
+  }
+
   // --- Context: Info Tabs / FAQ ---
   if (target.closest("#info-tabs")) {
     const tabsContainer = $<HTMLDivElement>("#info-tabs");
@@ -305,6 +324,11 @@ function handleKeydown(event: KeyboardEvent) {
       } else {
         nextEl = firstCard.querySelector<HTMLElement>(".secret-input");
       }
+    } else if (key === "ArrowDown" && !hasResults) {
+      event.preventDefault();
+      lastFocusedAboveFooter = target;
+      // Go to last focused in footer, or default to the first element
+      nextEl = lastFocusedInFooter || $<HTMLElement>("#author-link");
     }
   }
   // --- Context: Export/Clear Buttons ---
@@ -324,9 +348,22 @@ function handleKeydown(event: KeyboardEvent) {
     } else if (isDownloadBtn && key === "ArrowRight") {
       event.preventDefault();
       nextEl = $<HTMLButtonElement>("#clear-all-button");
+    } else if (isDownloadBtn && key === "ArrowLeft") {
+      event.preventDefault();
+      if (hasResults) {
+        const lastCard = allCards[allCards.length - 1];
+        nextEl = lastCard.querySelector<HTMLElement>(".qr-code-container");
+        lastFocusedExternalControl = target;
+      }
     } else if (isClearBtn && key === "ArrowLeft") {
       event.preventDefault();
       nextEl = $<HTMLButtonElement>("#download-csv-button");
+    } else if (key === "ArrowDown") {
+      // This applies to both buttons
+      event.preventDefault();
+      lastFocusedAboveFooter = target;
+      // Go to last focused in footer, or default to the first element
+      nextEl = lastFocusedInFooter || $<HTMLElement>("#author-link");
     }
   }
   // --- Context: Results Grid ---
@@ -360,11 +397,13 @@ function handleKeydown(event: KeyboardEvent) {
     switch (key) {
       case "ArrowDown":
         event.preventDefault();
-        if (target.matches(".secret-input, .secret-container .copy-button")) {
+        if (target.matches(".secret-input")) {
           nextEl = currentCard.querySelector<HTMLElement>(".url-input");
-        } else if (
-          target.matches(".url-input, .otp-url-container .copy-button")
-        ) {
+        } else if (target.matches(".secret-container .copy-button")) {
+          nextEl = currentCard.querySelector<HTMLElement>(
+            ".otp-url-container .copy-button"
+          );
+        } else if (target.matches(".url-input")) {
           if (currentCardIndex < allCards.length - 1) {
             nextEl =
               allCards[currentCardIndex + 1].querySelector<HTMLElement>(
@@ -376,13 +415,27 @@ function handleKeydown(event: KeyboardEvent) {
               lastFocusedExternalControl ||
               $<HTMLButtonElement>("#download-csv-button");
           }
+        } else if (target.matches(".otp-url-container .copy-button")) {
+          if (currentCardIndex < allCards.length - 1) {
+            nextEl = allCards[currentCardIndex + 1].querySelector<HTMLElement>(
+              ".secret-container .copy-button"
+            );
+          } else {
+            // From last copy button down to export controls
+            lastFocusedInResults = target;
+            nextEl =
+              lastFocusedExternalControl ||
+              $<HTMLButtonElement>("#download-csv-button");
+          }
         } else if (target.matches(".qr-code-container")) {
+          // From QR code down to next QR code
           if (currentCardIndex < allCards.length - 1) {
             nextEl =
               allCards[currentCardIndex + 1].querySelector<HTMLElement>(
                 ".qr-code-container"
               );
           } else {
+            // From last QR code down to export controls
             lastFocusedInResults = target;
             nextEl =
               lastFocusedExternalControl ||
@@ -393,16 +446,27 @@ function handleKeydown(event: KeyboardEvent) {
 
       case "ArrowUp":
         event.preventDefault();
-        if (target.matches(".url-input, .otp-url-container .copy-button")) {
+        if (target.matches(".url-input")) {
           nextEl = currentCard.querySelector<HTMLElement>(".secret-input");
-        } else if (
-          target.matches(".secret-input, .secret-container .copy-button")
-        ) {
+        } else if (target.matches(".otp-url-container .copy-button")) {
+          nextEl = currentCard.querySelector<HTMLElement>(
+            ".secret-container .copy-button"
+          );
+        } else if (target.matches(".secret-input")) {
           if (currentCardIndex > 0) {
             nextEl =
               allCards[currentCardIndex - 1].querySelector<HTMLElement>(
                 ".url-input"
               );
+          } else {
+            lastFocusedInResults = target;
+            nextEl = $<HTMLLabelElement>(".file-input-label");
+          }
+        } else if (target.matches(".secret-container .copy-button")) {
+          if (currentCardIndex > 0) {
+            nextEl = allCards[currentCardIndex - 1].querySelector<HTMLElement>(
+              ".otp-url-container .copy-button"
+            );
           } else {
             lastFocusedInResults = target;
             nextEl = $<HTMLLabelElement>(".file-input-label");
@@ -495,6 +559,75 @@ function handleKeydown(event: KeyboardEvent) {
       lastFocusedCopyButton = null;
     }
   }
+  // --- Context: Footer ---
+  else if (target.closest("footer")) {
+    const authorLink = $<HTMLAnchorElement>("#author-link");
+    const sourceLink = $<HTMLAnchorElement>("#source-code-link");
+    const themeSwitcher = $<HTMLDivElement>("#theme-switcher");
+
+    // Let the theme switcher handle its own internal key events
+    if (target.closest("#theme-switcher")) {
+      // Except for ArrowUp, which should navigate out of the component.
+      if (key === "ArrowUp") {
+        event.preventDefault();
+        nextEl =
+          lastFocusedAboveFooter ||
+          (hasResults
+            ? $<HTMLButtonElement>("#download-csv-button")
+            : $<HTMLLabelElement>(".file-input-label"));
+      }
+      // For other keys, the component's internal handlers will use stopPropagation.
+      if (nextEl) setFocus(target, nextEl);
+      return;
+    }
+
+    if (key === "Enter" || key === " ") {
+      event.preventDefault();
+      (target as HTMLElement).click();
+      return;
+    }
+
+    switch (key) {
+      case "ArrowUp":
+        event.preventDefault();
+        nextEl =
+          lastFocusedAboveFooter ||
+          (hasResults
+            ? $<HTMLButtonElement>("#download-csv-button")
+            : $<HTMLLabelElement>(".file-input-label"));
+        break;
+
+      case "ArrowDown":
+        event.preventDefault();
+        if (target === authorLink) {
+          nextEl = sourceLink;
+        }
+        break;
+
+      case "ArrowRight":
+        event.preventDefault();
+        if (target === authorLink) {
+          nextEl = sourceLink;
+        } else if (target === sourceLink) {
+          nextEl = themeSwitcher;
+        }
+        break;
+
+      case "ArrowLeft":
+        event.preventDefault();
+        if (target === themeSwitcher) {
+          nextEl = sourceLink;
+        } else if (target === sourceLink) {
+          nextEl = authorLink;
+        }
+        break;
+    }
+
+    // If we are navigating within the footer, remember the last focused element.
+    if (nextEl && nextEl.closest("footer")) {
+      lastFocusedInFooter = nextEl;
+    }
+  }
 
   if (nextEl) {
     setFocus(target, nextEl);
@@ -517,15 +650,6 @@ function render(otps: MigrationOtpParameter[]): void {
     fragment.appendChild(cardElement);
   });
   resultsContainer.appendChild(fragment);
-
-  // --- Accessibility: Set initial focusable element ---
-  // After rendering, find the first focusable item and make it tabbable.
-  const firstFocusable = resultsContainer.querySelector<HTMLElement>(
-    ".secret-input, .url-input, .copy-button, .qr-code-container"
-  );
-  if (firstFocusable) {
-    firstFocusable.tabIndex = 0;
-  }
 }
 
 export function initResults() {
@@ -535,19 +659,14 @@ export function initResults() {
   // Re-render whenever the otps in the store change
   subscribe((state) => {
     render(state.otps);
-    const wasEmpty = previousOtpCount === 0;
-    if (wasEmpty && state.otps.length > 0) {
-      // If we just added the first items, focus the first element.
-      const firstFocusable = $<HTMLElement>(
-        '#results-container [tabindex="0"]'
-      );
-      firstFocusable?.focus();
-    } else if (state.otps.length === 0) {
+    if (state.otps.length === 0 && previousOtpCount > 0) {
       // If we just cleared the results, reset navigation state and focus file input.
       lastFocusedInResults = null;
       lastFocusedExternalControl = null;
       lastFocusedCopyButton = null;
       lastFocusedInfoControl = null;
+      lastFocusedAboveFooter = null;
+      lastFocusedInFooter = null;
       $<HTMLLabelElement>(".file-input-label")?.focus();
     }
     // Update for the next change

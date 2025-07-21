@@ -81,15 +81,6 @@ async function processFiles(files: FileList | null): Promise<void> {
         otps: [...currentState.otps, ...newlyAddedOtps],
       }));
 
-      // After the state update has rendered the new cards, if this was the
-      // first batch, we make the grid focusable by setting the first cell's tabindex.
-      if (wasEmpty) {
-        const firstCell = $<HTMLElement>(
-          '#results-container [role="gridcell"]'
-        );
-        if (firstCell) firstCell.tabIndex = 0;
-      }
-
       const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
       if (!anyDuplicatesOrErrors && firstNewCard) {
         firstNewCard.scrollIntoView({ behavior: "smooth", block: "start" });

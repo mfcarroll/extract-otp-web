@@ -1,4 +1,5 @@
 import { setState } from "../state/store";
+import { $ } from "./dom";
 
 /**
  * Manages the theme switcher UI and applies the selected theme.
@@ -9,6 +10,9 @@ export function initThemeSwitcher(): void {
     ".theme-switcher-wrapper"
   );
   if (!themeSwitcherWrapper) return;
+  themeSwitcherWrapper.tabIndex = 0;
+  themeSwitcherWrapper.setAttribute("aria-haspopup", "true");
+  themeSwitcherWrapper.setAttribute("aria-label", "Open theme switcher");
 
   const themeSwitcher =
     themeSwitcherWrapper.querySelector<HTMLDivElement>(".theme-switcher");
@@ -16,11 +20,6 @@ export function initThemeSwitcher(): void {
 
   const buttons = themeSwitcher.querySelectorAll<HTMLButtonElement>("button");
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-  let isWindowLosingFocus = false;
-  window.addEventListener("blur", () => {
-    isWindowLosingFocus = true;
-  });
 
   /**
    * Applies the selected theme to the document and updates UI elements.
@@ -88,6 +87,8 @@ export function initThemeSwitcher(): void {
 
     positionSwitcher();
     themeSwitcherWrapper.classList.add("open");
+    themeSwitcherWrapper.setAttribute("aria-expanded", "true");
+    buttons.forEach((button) => (button.tabIndex = 0));
   };
 
   const closeSwitcher = (): void => {
@@ -95,17 +96,11 @@ export function initThemeSwitcher(): void {
     themeSwitcher.style.removeProperty("--switcher-transform-x");
     themeSwitcherWrapper.style.removeProperty("width");
     themeSwitcherWrapper.style.removeProperty("height");
+    themeSwitcherWrapper.setAttribute("aria-expanded", "false");
+    buttons.forEach((button) => (button.tabIndex = -1));
   };
 
   themeSwitcherWrapper.addEventListener("mouseenter", openSwitcher);
-  themeSwitcherWrapper.addEventListener("focusin", () => {
-    if (isWindowLosingFocus) {
-      isWindowLosingFocus = false;
-      return;
-    }
-    openSwitcher();
-  });
-
   themeSwitcherWrapper.addEventListener("mouseleave", closeSwitcher);
   themeSwitcherWrapper.addEventListener("focusout", (e: FocusEvent) => {
     if (!themeSwitcherWrapper.contains(e.relatedTarget as Node)) {
@@ -123,6 +118,80 @@ export function initThemeSwitcher(): void {
     }
   });
 
+  // --- Keyboard Navigation ---
+  const allButtons = Array.from(buttons);
+
+  // Add a listener to the wrapper to "open" the switcher with keyboard.
+  themeSwitcherWrapper.addEventListener("keydown", (event: KeyboardEvent) => {
+    // If the switcher is already open, do nothing. This allows Enter/Space
+    // to activate the focused button inside.
+    if (themeSwitcherWrapper.classList.contains("open")) {
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      event.stopPropagation();
+      $<HTMLAnchorElement>("#source-code-link")?.focus();
+      return;
+    }
+
+    if (["Enter", " ", "ArrowDown", "ArrowRight"].includes(event.key)) {
+      event.preventDefault();
+      event.stopPropagation(); // Prevent global handler from also acting
+      openSwitcher();
+      const buttonToFocus =
+        themeSwitcher.querySelector<HTMLButtonElement>("button.active") ||
+        allButtons[0];
+      buttonToFocus?.focus();
+    }
+  });
+
+  // Add keyboard navigation for within the switcher
+  buttons.forEach((button) => {
+    button.addEventListener("keydown", (event: KeyboardEvent) => {
+      if (!themeSwitcherWrapper.classList.contains("open")) return;
+
+      event.stopPropagation();
+
+      switch (event.key) {
+        case "Escape":
+        case "ArrowUp":
+        case "ArrowDown":
+          event.preventDefault();
+          closeSwitcher();
+          themeSwitcherWrapper.focus();
+          break;
+
+        case " ":
+        case "Enter":
+          event.preventDefault();
+          closeSwitcher();
+          themeSwitcherWrapper.focus();
+          break;
+
+        case "ArrowRight":
+        case "ArrowLeft": {
+          event.preventDefault();
+          const currentIndex = allButtons.indexOf(button);
+          const isLeft = event.key === "ArrowLeft";
+          const nextIndex = isLeft ? currentIndex - 1 : currentIndex + 1;
+
+          if (isLeft && currentIndex === 0) {
+            closeSwitcher();
+            $<HTMLAnchorElement>("#source-code-link")?.focus();
+          } else if (nextIndex >= 0 && nextIndex < allButtons.length) {
+            const nextButton = allButtons[nextIndex];
+            const newTheme = nextButton.dataset.theme;
+            if (newTheme) applyTheme(newTheme);
+            nextButton.focus();
+          }
+          break;
+        }
+      }
+    });
+  });
+
   mediaQuery.addEventListener("change", () => {
     const currentTheme = localStorage.getItem("theme") || "system";
     if (currentTheme === "system") {
@@ -132,5 +201,6 @@ export function initThemeSwitcher(): void {
 
   const savedTheme = localStorage.getItem("theme") || "system";
   applyTheme(savedTheme);
+  themeSwitcherWrapper.setAttribute("aria-expanded", "false");
   closeSwitcher();
 }

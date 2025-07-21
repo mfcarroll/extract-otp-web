@@ -104,17 +104,13 @@ function setupAccordion(): void {
     });
 
   faqContainer.addEventListener("click", (event) => {
-    const target = event.target as HTMLElement;
-
-    // If a link inside the answer is clicked, do nothing.
-    if (target.closest("a")) {
-      return;
-    }
-    const faqItem = target.closest<HTMLDivElement>(".faq-item");
-    if (!faqItem) return;
-
-    const button = faqItem.querySelector<HTMLButtonElement>(".faq-button");
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
+      ".faq-button"
+    );
     if (!button) return;
+
+    const faqItem = button.closest<HTMLDivElement>(".faq-item");
+    if (!faqItem) return;
 
     faqItem.classList.toggle("open");
 
