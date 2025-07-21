@@ -456,7 +456,9 @@ function handleKeydown(event: KeyboardEvent) {
         } else if (target.matches(".qr-code-container")) {
           nextEl =
             lastFocusedCopyButton ||
-            currentCard.querySelector<HTMLElement>(".url-input");
+            currentCard.querySelector<HTMLElement>(
+              ".secret-container .copy-button"
+            );
         } else if (target.matches(".secret-input")) {
           if (currentCardIndex > 0) {
             nextEl =
@@ -486,6 +488,11 @@ function handleKeydown(event: KeyboardEvent) {
           nextEl = currentCard.querySelector<HTMLElement>(".qr-code-container");
         }
         break;
+    }
+
+    if (nextEl && !currentCard.contains(nextEl)) {
+      // If we are navigating outside the current card, reset the intra-card state.
+      lastFocusedCopyButton = null;
     }
   }
 
