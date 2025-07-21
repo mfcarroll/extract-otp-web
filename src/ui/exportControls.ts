@@ -18,43 +18,10 @@ function handleClearAll(): void {
 export function initExportControls(): void {
   const exportContainer = $<HTMLDivElement>("#export-container");
   const downloadButton = $<HTMLButtonElement>("#download-csv-button");
-  const clearButton = $<HTMLButtonElement>("#clear-button");
+  const clearButton = $<HTMLButtonElement>("#clear-all-button");
 
   downloadButton.addEventListener("click", downloadAsCsv);
   clearButton.addEventListener("click", handleClearAll);
-
-  const focusableCardSelector =
-    "#results-container .secret-input, #results-container .url-input, #results-container .qr-code-container";
-
-  downloadButton.addEventListener("keydown", (event: KeyboardEvent) => {
-    if (event.key === "ArrowUp") {
-      event.preventDefault();
-      const allFocusable = Array.from(
-        document.querySelectorAll<HTMLElement>(focusableCardSelector)
-      );
-      if (allFocusable.length > 0) {
-        allFocusable[allFocusable.length - 1].focus();
-      }
-    } else if (event.key === "ArrowDown") {
-      event.preventDefault();
-      clearButton.focus();
-    }
-  });
-
-  clearButton.addEventListener("keydown", (event: KeyboardEvent) => {
-    if (event.key === "ArrowUp") {
-      event.preventDefault();
-      downloadButton.focus();
-    } else if (event.key === "ArrowDown") {
-      event.preventDefault();
-      const firstFocusable = document.querySelector<HTMLElement>(
-        focusableCardSelector
-      );
-      if (firstFocusable) {
-        firstFocusable.focus();
-      }
-    }
-  });
 
   // Subscribe to state changes to control visibility
   subscribe((state) => {

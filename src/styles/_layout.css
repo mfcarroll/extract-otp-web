@@ -17,7 +17,7 @@ h1 {
   color: var(--primary-color);
   text-align: center;
   margin-top: 0;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 /* --- Results Container --- */

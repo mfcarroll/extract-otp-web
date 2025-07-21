@@ -3,10 +3,18 @@ import { encode } from "thirty-two";
 import { MigrationOtpParameter } from "../types";
 import { $ } from "./dom";
 import { getOtpTypeInfo, OtpType } from "./otp";
-import { subscribe } from "../state/store";
+import { subscribe, getState } from "../state/store";
 
 // --- Accessibility Enhancement: Store focus before modal opens ---
 let elementThatOpenedModal: HTMLElement | null = null;
+// --- Accessibility Enhancement: Store last focused element for QR navigation ---
+let lastFocusedCopyButton: HTMLElement | null = null;
+// --- Accessibility Enhancement: Store last focused element within the results grid for returning focus ---
+let lastFocusedInResults: HTMLElement | null = null;
+// --- Accessibility Enhancement: Store last focused external control for returning focus ---
+let lastFocusedExternalControl: HTMLElement | null = null;
+// --- Accessibility Enhancement: Store last focused info control for returning focus ---
+let lastFocusedInfoControl: HTMLElement | null = null;
 
 function getQrCodeColors() {
   const computedStyles = getComputedStyle(document.documentElement);
@@ -89,7 +97,7 @@ const handleCopy = (event: MouseEvent) => {
   );
   if (!container) return;
 
-  const input = container.querySelector<HTMLInputElement>(".text-input");
+  const input = container.querySelector<HTMLInputElement>("input");
   const button = container.querySelector<HTMLButtonElement>(".copy-button");
   if (!input || !button) return;
 
@@ -158,25 +166,38 @@ function createOtpCard(
   populateDetail(cardElement, "issuer", otp.issuer);
   populateDetail(cardElement, "type", typeInfo.description);
 
-  cardElement.querySelector<HTMLInputElement>(".secret-input")!.value =
-    secretText;
+  const secretInput =
+    cardElement.querySelector<HTMLInputElement>(".secret-input")!;
+  secretInput.value = secretText;
+  secretInput.tabIndex = -1; // For roving tabindex
 
   const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
   urlInput.value = decodeURIComponent(otpAuthUrl);
+  urlInput.tabIndex = -1; // For roving tabindex
   urlInput.nextElementSibling!.setAttribute("data-copy-text", otpAuthUrl);
+
+  // Set tabindex on copy buttons
+  cardElement.querySelector<HTMLButtonElement>(
+    ".secret-container .copy-button"
+  )!.tabIndex = -1;
+  cardElement.querySelector<HTMLButtonElement>(
+    ".otp-url-container .copy-button"
+  )!.tabIndex = -1;
 
   // Generate the QR code
   const qrCodeCanvas = cardElement.querySelector<HTMLCanvasElement>("canvas")!;
-
   QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, {
     width: 220,
     margin: 1,
     color: getQrCodeColors(),
   });
 
-  // Add event listeners
+  // Add event listeners and make QR code focusable
   const qrCodeContainer =
     cardElement.querySelector<HTMLDivElement>(".qr-code-container")!;
+  qrCodeContainer.tabIndex = -1; // For roving tabindex
+  qrCodeContainer.setAttribute("role", "button");
+  qrCodeContainer.setAttribute("aria-label", `Show QR code for ${titleText}`);
   qrCodeContainer.addEventListener("click", () => {
     const modalTitle = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
     showQrModal(otpAuthUrl, modalTitle);
@@ -189,117 +210,287 @@ function createOtpCard(
 }
 
 /**
- * Handles keyboard navigation within the results grid, following ARIA grid patterns.
- * This includes roving tabindex for arrow keys and activation for Enter/Space.
+ * Sets focus on a new element, managing the roving tabindex.
+ * @param currentEl The currently focused element.
+ * @param nextEl The element to move focus to.
+ */
+function setFocus(currentEl: HTMLElement | null, nextEl: HTMLElement | null) {
+  if (!nextEl) return;
+
+  if (currentEl) {
+    currentEl.tabIndex = -1;
+  }
+  nextEl.tabIndex = 0;
+  nextEl.focus();
+}
+
+/**
+ * Centralized keyboard navigation handler for the entire application.
+ * It determines the context of the focused element and delegates to the
+ * appropriate navigation logic.
  * @param event The keyboard event.
  */
-function handleResultsKeydown(event: KeyboardEvent): void {
+function handleKeydown(event: KeyboardEvent) {
   const target = event.target as HTMLElement;
-  const resultsContainer = $<HTMLDivElement>("#results-container");
+  const key = event.key;
 
-  // Ensure the event target is a gridcell within our grid
-  if (
-    !target.matches('[role="gridcell"]') ||
-    !resultsContainer.contains(target)
-  ) {
-    return;
-  }
+  const allCards = Array.from(
+    document.querySelectorAll<HTMLElement>(".otp-card")
+  );
+  const hasResults = allCards.length > 0;
+  let nextEl: HTMLElement | null = null;
 
-  // Handle activation with Enter or Space
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    // For inputs, the copy handler is on a parent. For others, a direct click works.
-    if (target.matches(".secret-input, .url-input")) {
-      target.parentElement?.click();
-    } else {
-      target.click();
+  // --- Context: Info Tabs / FAQ ---
+  if (target.closest("#info-tabs")) {
+    const tabsContainer = $<HTMLDivElement>("#info-tabs");
+    const tabButtons = Array.from(
+      tabsContainer.querySelectorAll<HTMLButtonElement>(".tab-button")
+    );
+    const faqButtons = Array.from(
+      tabsContainer.querySelectorAll<HTMLButtonElement>(".faq-button")
+    );
+
+    if (target.matches(".tab-button")) {
+      const currentIndex = tabButtons.indexOf(target as HTMLButtonElement);
+      if (key === "ArrowRight") {
+        nextEl = tabButtons[(currentIndex + 1) % tabButtons.length];
+      } else if (key === "ArrowLeft") {
+        nextEl =
+          tabButtons[
+            (currentIndex - 1 + tabButtons.length) % tabButtons.length
+          ];
+      } else if (key === "ArrowDown") {
+        event.preventDefault();
+        lastFocusedInfoControl = target;
+        const activeTabId = target.dataset.tab;
+        if (activeTabId === "faq" && faqButtons.length > 0) {
+          nextEl = faqButtons[0];
+        } else {
+          nextEl = $<HTMLLabelElement>(".file-input-label");
+        }
+      }
+    } else if (target.matches(".faq-button")) {
+      const currentIndex = faqButtons.indexOf(target as HTMLButtonElement);
+      if (key === "ArrowUp") {
+        event.preventDefault();
+        lastFocusedInfoControl = target;
+        if (currentIndex === 0) {
+          nextEl = $<HTMLButtonElement>('.tab-button[data-tab="faq"]');
+        } else {
+          nextEl = faqButtons[currentIndex - 1];
+        }
+      } else if (key === "ArrowDown") {
+        event.preventDefault();
+        lastFocusedInfoControl = target;
+        if (currentIndex === faqButtons.length - 1) {
+          nextEl = $<HTMLLabelElement>(".file-input-label");
+        } else {
+          nextEl = faqButtons[currentIndex + 1];
+        }
+      }
     }
-    return;
+  }
+  // --- Context: File Input Button ---
+  else if (target.matches(".file-input-label")) {
+    if (key === "ArrowUp") {
+      event.preventDefault();
+      nextEl =
+        lastFocusedInfoControl ||
+        $<HTMLButtonElement>("#info-tabs .tab-button.active");
+    } else if (key === "ArrowDown" && hasResults) {
+      event.preventDefault();
+      const firstCard = allCards[0];
+      if (lastFocusedInResults && firstCard.contains(lastFocusedInResults)) {
+        nextEl = lastFocusedInResults;
+      } else {
+        nextEl = firstCard.querySelector<HTMLElement>(".secret-input");
+      }
+    }
+  }
+  // --- Context: Export/Clear Buttons ---
+  else if (target.closest("#export-container")) {
+    const isDownloadBtn = target.matches("#download-csv-button");
+    const isClearBtn = target.matches("#clear-all-button");
+
+    if (key === "ArrowUp" && hasResults) {
+      event.preventDefault();
+      lastFocusedExternalControl = target;
+      const lastCard = allCards[allCards.length - 1];
+      if (lastFocusedInResults && lastCard.contains(lastFocusedInResults)) {
+        nextEl = lastFocusedInResults;
+      } else {
+        nextEl = lastCard.querySelector<HTMLElement>(".qr-code-container");
+      }
+    } else if (isDownloadBtn && key === "ArrowRight") {
+      event.preventDefault();
+      nextEl = $<HTMLButtonElement>("#clear-all-button");
+    } else if (isClearBtn && key === "ArrowLeft") {
+      event.preventDefault();
+      nextEl = $<HTMLButtonElement>("#download-csv-button");
+    }
+  }
+  // --- Context: Results Grid ---
+  else if (target.closest("#results-container")) {
+    // Handle activation with Enter or Space
+    if (key === "Enter" || key === " ") {
+      event.preventDefault();
+      if (target.matches(".secret-input, .url-input")) {
+        const inputElement = target as HTMLInputElement;
+        const button =
+          inputElement.parentElement?.querySelector(".copy-button");
+        if (button) copyToClipboard(inputElement.value, button as HTMLElement);
+      } else if (target.matches(".copy-button")) {
+        const input = target.parentElement?.querySelector(
+          "input"
+        ) as HTMLInputElement;
+        if (input)
+          copyToClipboard(target.dataset.copyText || input.value, target);
+      } else {
+        target.click();
+      }
+      return;
+    }
+
+    const currentCard = target.closest(".otp-card") as HTMLElement;
+    if (!currentCard) return;
+
+    const currentCardIndex = allCards.indexOf(currentCard);
+    if (!target.matches(".qr-code-container")) lastFocusedCopyButton = null;
+
+    switch (key) {
+      case "ArrowDown":
+        event.preventDefault();
+        if (target.matches(".secret-input, .secret-container .copy-button")) {
+          nextEl = currentCard.querySelector<HTMLElement>(".url-input");
+        } else if (
+          target.matches(".url-input, .otp-url-container .copy-button")
+        ) {
+          if (currentCardIndex < allCards.length - 1) {
+            nextEl =
+              allCards[currentCardIndex + 1].querySelector<HTMLElement>(
+                ".secret-input"
+              );
+          } else {
+            lastFocusedInResults = target;
+            nextEl =
+              lastFocusedExternalControl ||
+              $<HTMLButtonElement>("#download-csv-button");
+          }
+        } else if (target.matches(".qr-code-container")) {
+          if (currentCardIndex < allCards.length - 1) {
+            nextEl =
+              allCards[currentCardIndex + 1].querySelector<HTMLElement>(
+                ".qr-code-container"
+              );
+          } else {
+            lastFocusedInResults = target;
+            nextEl =
+              lastFocusedExternalControl ||
+              $<HTMLButtonElement>("#download-csv-button");
+          }
+        }
+        break;
+
+      case "ArrowUp":
+        event.preventDefault();
+        if (target.matches(".url-input, .otp-url-container .copy-button")) {
+          nextEl = currentCard.querySelector<HTMLElement>(".secret-input");
+        } else if (
+          target.matches(".secret-input, .secret-container .copy-button")
+        ) {
+          if (currentCardIndex > 0) {
+            nextEl =
+              allCards[currentCardIndex - 1].querySelector<HTMLElement>(
+                ".url-input"
+              );
+          } else {
+            lastFocusedInResults = target;
+            nextEl = $<HTMLLabelElement>(".file-input-label");
+          }
+        } else if (target.matches(".qr-code-container")) {
+          if (currentCardIndex > 0) {
+            nextEl =
+              allCards[currentCardIndex - 1].querySelector<HTMLElement>(
+                ".qr-code-container"
+              );
+          } else {
+            lastFocusedInResults = target;
+            nextEl = $<HTMLLabelElement>(".file-input-label");
+          }
+        }
+        break;
+
+      case "ArrowRight":
+        event.preventDefault();
+        if (target.matches(".secret-input")) {
+          nextEl = currentCard.querySelector<HTMLElement>(
+            ".secret-container .copy-button"
+          );
+        } else if (target.matches(".url-input")) {
+          nextEl = currentCard.querySelector<HTMLElement>(
+            ".otp-url-container .copy-button"
+          );
+        } else if (target.matches(".copy-button")) {
+          lastFocusedCopyButton = target;
+          nextEl = currentCard.querySelector<HTMLElement>(".qr-code-container");
+        } else if (target.matches(".qr-code-container")) {
+          if (currentCardIndex < allCards.length - 1) {
+            nextEl =
+              allCards[currentCardIndex + 1].querySelector<HTMLElement>(
+                ".secret-input"
+              );
+          } else {
+            lastFocusedInResults = target;
+            nextEl = $<HTMLButtonElement>("#download-csv-button");
+          }
+        }
+        break;
+
+      case "ArrowLeft":
+        event.preventDefault();
+        if (target.matches(".copy-button")) {
+          nextEl =
+            target.parentElement?.querySelector<HTMLElement>("input") ?? null;
+        } else if (target.matches(".url-input")) {
+          nextEl = currentCard.querySelector<HTMLElement>(".secret-input");
+        } else if (target.matches(".qr-code-container")) {
+          nextEl =
+            lastFocusedCopyButton ||
+            currentCard.querySelector<HTMLElement>(".url-input");
+        } else if (target.matches(".secret-input")) {
+          if (currentCardIndex > 0) {
+            nextEl =
+              allCards[currentCardIndex - 1].querySelector<HTMLElement>(
+                ".qr-code-container"
+              );
+          } else {
+            lastFocusedInResults = target;
+            nextEl = $<HTMLLabelElement>(".file-input-label");
+          }
+        }
+        break;
+
+      case "Home":
+        event.preventDefault();
+        nextEl = event.ctrlKey
+          ? allCards[0]?.querySelector<HTMLElement>(".secret-input")
+          : currentCard.querySelector<HTMLElement>(".secret-input");
+        break;
+
+      case "End":
+        event.preventDefault();
+        if (event.ctrlKey) {
+          const lastCard = allCards[allCards.length - 1];
+          nextEl = lastCard?.querySelector<HTMLElement>(".qr-code-container");
+        } else {
+          nextEl = currentCard.querySelector<HTMLElement>(".qr-code-container");
+        }
+        break;
+    }
   }
 
-  const allRows = Array.from(
-    resultsContainer.querySelectorAll('[role="row"]')
-  ) as HTMLElement[];
-  const currentRow = target.closest('[role="row"]') as HTMLElement;
-  if (!currentRow) return;
-
-  const currentRowIndex = allRows.indexOf(currentRow);
-  const cellsInCurrentRow = Array.from(
-    currentRow.querySelectorAll('[role="gridcell"]')
-  ) as HTMLElement[];
-  const currentCellIndex = cellsInCurrentRow.indexOf(target);
-
-  let nextCell: HTMLElement | null = null;
-
-  switch (event.key) {
-    case "ArrowRight":
-      event.preventDefault();
-      if (currentCellIndex < cellsInCurrentRow.length - 1) {
-        nextCell = cellsInCurrentRow[currentCellIndex + 1];
-      }
-      break;
-
-    case "ArrowLeft":
-      event.preventDefault();
-      if (currentCellIndex > 0) {
-        nextCell = cellsInCurrentRow[currentCellIndex - 1];
-      }
-      break;
-
-    case "ArrowDown":
-      event.preventDefault();
-      if (currentRowIndex < allRows.length - 1) {
-        const nextRow = allRows[currentRowIndex + 1];
-        const cellsInNextRow = Array.from(
-          nextRow.querySelectorAll('[role="gridcell"]')
-        ) as HTMLElement[];
-        nextCell =
-          cellsInNextRow[Math.min(currentCellIndex, cellsInNextRow.length - 1)];
-      } else {
-        // Move focus out of the grid downwards to the export button
-        $<HTMLButtonElement>("#download-csv-button")?.focus();
-      }
-      break;
-
-    case "ArrowUp":
-      event.preventDefault();
-      if (currentRowIndex > 0) {
-        const prevRow = allRows[currentRowIndex - 1];
-        const cellsInPrevRow = Array.from(
-          prevRow.querySelectorAll('[role="gridcell"]')
-        ) as HTMLElement[];
-        nextCell =
-          cellsInPrevRow[Math.min(currentCellIndex, cellsInPrevRow.length - 1)];
-      } else {
-        // Move focus out of the grid upwards to the file input button
-        $<HTMLLabelElement>(".file-input-label")?.focus();
-      }
-      break;
-
-    case "Home":
-      event.preventDefault();
-      nextCell = event.ctrlKey
-        ? allRows[0].querySelector('[role="gridcell"]')
-        : cellsInCurrentRow[0];
-      break;
-
-    case "End":
-      event.preventDefault();
-      if (event.ctrlKey) {
-        const lastRow = allRows[allRows.length - 1];
-        const cellsInLastRow = lastRow.querySelectorAll('[role="gridcell"]');
-        nextCell = cellsInLastRow[cellsInLastRow.length - 1] as HTMLElement;
-      } else {
-        nextCell = cellsInCurrentRow[cellsInCurrentRow.length - 1];
-      }
-      break;
-  }
-
-  if (nextCell) {
-    // Roving tabindex: move the focus and update tabindex
-    target.tabIndex = -1;
-    nextCell.tabIndex = 0;
-    nextCell.focus();
+  if (nextEl) {
+    setFocus(target, nextEl);
   }
 }
 
@@ -308,8 +499,10 @@ function render(otps: MigrationOtpParameter[]): void {
 
   resultsContainer.innerHTML = "";
   if (!otps || otps.length === 0) {
+    resultsContainer.style.display = "none"; // Hide container if no results
     return;
   }
+  resultsContainer.style.display = "block"; // Show container if there are results
 
   const fragment = document.createDocumentFragment();
   otps.forEach((otp, index) => {
@@ -317,12 +510,41 @@ function render(otps: MigrationOtpParameter[]): void {
     fragment.appendChild(cardElement);
   });
   resultsContainer.appendChild(fragment);
+
+  // --- Accessibility: Set initial focusable element ---
+  // After rendering, find the first focusable item and make it tabbable.
+  const firstFocusable = resultsContainer.querySelector<HTMLElement>(
+    ".secret-input, .url-input, .copy-button, .qr-code-container"
+  );
+  if (firstFocusable) {
+    firstFocusable.tabIndex = 0;
+  }
 }
 
 export function initResults() {
+  // Get initial state to determine the starting count.
+  let previousOtpCount = getState().otps.length;
+
   // Re-render whenever the otps in the store change
   subscribe((state) => {
     render(state.otps);
+    const wasEmpty = previousOtpCount === 0;
+    if (wasEmpty && state.otps.length > 0) {
+      // If we just added the first items, focus the first element.
+      const firstFocusable = $<HTMLElement>(
+        '#results-container [tabindex="0"]'
+      );
+      firstFocusable?.focus();
+    } else if (state.otps.length === 0) {
+      // If we just cleared the results, reset navigation state and focus file input.
+      lastFocusedInResults = null;
+      lastFocusedExternalControl = null;
+      lastFocusedCopyButton = null;
+      lastFocusedInfoControl = null;
+      $<HTMLLabelElement>(".file-input-label")?.focus();
+    }
+    // Update for the next change
+    previousOtpCount = state.otps.length;
   });
 
   // Setup modal listeners
@@ -347,7 +569,6 @@ export function initResults() {
     }
   });
 
-  // Add keyboard navigation for the results list
-  const resultsContainer = $<HTMLDivElement>("#results-container");
-  resultsContainer.addEventListener("keydown", handleResultsKeydown);
+  // Add a single, centralized keyboard navigation handler for the document
+  document.addEventListener("keydown", handleKeydown);
 }

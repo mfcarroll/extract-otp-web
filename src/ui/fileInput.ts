@@ -119,32 +119,9 @@ export function initFileInput(): void {
     processFiles((event.target as HTMLInputElement).files);
   });
 
-  fileInputLabel.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowUp") {
-      event.preventDefault();
-      const activeTab =
-        document.querySelector<HTMLButtonElement>(".tab-button.active");
-
-      if (activeTab?.dataset.tab === "faq") {
-        const faqButtons = document.querySelectorAll<HTMLButtonElement>(
-          "#tab-faq .faq-button"
-        );
-        if (faqButtons.length > 0) {
-          faqButtons[faqButtons.length - 1].focus();
-        } else {
-          activeTab.focus();
-        }
-      } else if (activeTab) {
-        activeTab.focus();
-      }
-    } else if (event.key === "ArrowDown") {
-      event.preventDefault();
-      // Focus the active cell in the results grid.
-      const activeCell = resultsContainer.querySelector<HTMLElement>(
-        '[role="gridcell"][tabindex="0"]'
-      );
-      activeCell?.focus();
-    } else if (event.key === " " || event.key === "Enter") {
+  fileInputLabel.addEventListener("keydown", (event: KeyboardEvent) => {
+    // Allow activation with space or enter, but defer navigation to the central handler.
+    if (event.key === " " || event.key === "Enter") {
       event.preventDefault();
       qrInput.click();
     }
