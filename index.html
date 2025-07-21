@@ -418,11 +418,16 @@
 
         <div id="error-message-container"></div>
 
-        <div id="results-container"></div>
+        <div
+          id="results-container"
+          role="grid"
+          aria-label="Extracted OTP Accounts"
+        ></div>
 
         <template id="otp-card-template">
-          <div class="otp-card">
-            <div class="otp-details">
+          <div class="otp-card" role="row">
+            <div class="otp-details" role="presentation">
+              <!-- The h3 will be programmatically linked to the row as its label -->
               <h3 class="otp-title"></h3>
               <p>
                 <span class="label">Name:</span> <span data-value="name"></span>
@@ -437,8 +442,19 @@
               <p class="secret-row">
                 <span class="label">Secret:</span>
                 <span class="secret-container">
-                  <input type="text" class="text-input secret-input" readonly />
-                  <button class="copy-button" aria-label="Copy secret">
+                  <input
+                    type="text"
+                    class="text-input secret-input"
+                    readonly
+                    role="gridcell"
+                    tabindex="-1"
+                  />
+                  <button
+                    class="copy-button"
+                    aria-label="Copy secret"
+                    role="gridcell"
+                    tabindex="-1"
+                  >
                     <i class="fa fa-copy"></i>
                   </button>
                 </span>
@@ -446,8 +462,19 @@
               <p class="otp-url-row">
                 <span class="label">URL: </span>
                 <span class="otp-url-container">
-                  <input type="text" class="text-input url-input" readonly />
-                  <button class="copy-button" aria-label="Copy URL">
+                  <input
+                    type="text"
+                    class="text-input url-input"
+                    readonly
+                    role="gridcell"
+                    tabindex="-1"
+                  />
+                  <button
+                    class="copy-button"
+                    aria-label="Copy URL"
+                    role="gridcell"
+                    tabindex="-1"
+                  >
                     <i class="fa fa-copy"></i>
                   </button>
                 </span>
@@ -455,8 +482,8 @@
             </div>
             <div
               class="qr-code-container"
-              role="button"
-              tabindex="0"
+              role="gridcell"
+              tabindex="-1"
               aria-label="Show larger QR code"
             >
               <canvas width="220" height="220"></canvas>

@@ -188,6 +188,121 @@ function createOtpCard(
   return cardElement;
 }
 
+/**
+ * Handles keyboard navigation within the results grid, following ARIA grid patterns.
+ * This includes roving tabindex for arrow keys and activation for Enter/Space.
+ * @param event The keyboard event.
+ */
+function handleResultsKeydown(event: KeyboardEvent): void {
+  const target = event.target as HTMLElement;
+  const resultsContainer = $<HTMLDivElement>("#results-container");
+
+  // Ensure the event target is a gridcell within our grid
+  if (
+    !target.matches('[role="gridcell"]') ||
+    !resultsContainer.contains(target)
+  ) {
+    return;
+  }
+
+  // Handle activation with Enter or Space
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    // For inputs, the copy handler is on a parent. For others, a direct click works.
+    if (target.matches(".secret-input, .url-input")) {
+      target.parentElement?.click();
+    } else {
+      target.click();
+    }
+    return;
+  }
+
+  const allRows = Array.from(
+    resultsContainer.querySelectorAll('[role="row"]')
+  ) as HTMLElement[];
+  const currentRow = target.closest('[role="row"]') as HTMLElement;
+  if (!currentRow) return;
+
+  const currentRowIndex = allRows.indexOf(currentRow);
+  const cellsInCurrentRow = Array.from(
+    currentRow.querySelectorAll('[role="gridcell"]')
+  ) as HTMLElement[];
+  const currentCellIndex = cellsInCurrentRow.indexOf(target);
+
+  let nextCell: HTMLElement | null = null;
+
+  switch (event.key) {
+    case "ArrowRight":
+      event.preventDefault();
+      if (currentCellIndex < cellsInCurrentRow.length - 1) {
+        nextCell = cellsInCurrentRow[currentCellIndex + 1];
+      }
+      break;
+
+    case "ArrowLeft":
+      event.preventDefault();
+      if (currentCellIndex > 0) {
+        nextCell = cellsInCurrentRow[currentCellIndex - 1];
+      }
+      break;
+
+    case "ArrowDown":
+      event.preventDefault();
+      if (currentRowIndex < allRows.length - 1) {
+        const nextRow = allRows[currentRowIndex + 1];
+        const cellsInNextRow = Array.from(
+          nextRow.querySelectorAll('[role="gridcell"]')
+        ) as HTMLElement[];
+        nextCell =
+          cellsInNextRow[Math.min(currentCellIndex, cellsInNextRow.length - 1)];
+      } else {
+        // Move focus out of the grid downwards to the export button
+        $<HTMLButtonElement>("#download-csv-button")?.focus();
+      }
+      break;
+
+    case "ArrowUp":
+      event.preventDefault();
+      if (currentRowIndex > 0) {
+        const prevRow = allRows[currentRowIndex - 1];
+        const cellsInPrevRow = Array.from(
+          prevRow.querySelectorAll('[role="gridcell"]')
+        ) as HTMLElement[];
+        nextCell =
+          cellsInPrevRow[Math.min(currentCellIndex, cellsInPrevRow.length - 1)];
+      } else {
+        // Move focus out of the grid upwards to the file input button
+        $<HTMLLabelElement>(".file-input-label")?.focus();
+      }
+      break;
+
+    case "Home":
+      event.preventDefault();
+      nextCell = event.ctrlKey
+        ? allRows[0].querySelector('[role="gridcell"]')
+        : cellsInCurrentRow[0];
+      break;
+
+    case "End":
+      event.preventDefault();
+      if (event.ctrlKey) {
+        const lastRow = allRows[allRows.length - 1];
+        const cellsInLastRow = lastRow.querySelectorAll('[role="gridcell"]');
+        nextCell = cellsInLastRow[cellsInLastRow.length - 1] as HTMLElement;
+      } else {
+        nextCell = cellsInCurrentRow[cellsInCurrentRow.length - 1];
+      }
+      break;
+  }
+
+  if (nextCell) {
+    // Roving tabindex: move the focus and update tabindex
+    target.tabIndex = -1;
+    nextCell.tabIndex = 0;
+    nextCell.focus();
+  }
+}
+
 function render(otps: MigrationOtpParameter[]): void {
   const resultsContainer = $<HTMLDivElement>("#results-container");
 
@@ -234,58 +349,5 @@ export function initResults() {
 
   // Add keyboard navigation for the results list
   const resultsContainer = $<HTMLDivElement>("#results-container");
-  resultsContainer.addEventListener("keydown", (event: KeyboardEvent) => {
-    const target = event.target as HTMLElement;
-
-    // We only care about events on the focusable elements within a card
-    const focusableSelector = ".secret-input, .url-input, .qr-code-container";
-    if (!target.matches(focusableSelector)) {
-      return;
-    }
-
-    const allFocusable = Array.from(
-      resultsContainer.querySelectorAll<HTMLElement>(focusableSelector)
-    );
-    const currentIndex = allFocusable.indexOf(target);
-
-    if (currentIndex === -1) return;
-
-    let nextElement: HTMLElement | undefined;
-
-    // Handle arrow navigation
-    if (event.key === "ArrowDown") {
-      event.preventDefault();
-      if (currentIndex < allFocusable.length - 1) {
-        nextElement = allFocusable[currentIndex + 1];
-      } else {
-        // --- Accessibility Enhancement: Move to export buttons ---
-        nextElement = $<HTMLButtonElement>("#download-csv-button");
-      }
-    } else if (event.key === "ArrowUp") {
-      event.preventDefault();
-      if (currentIndex > 0) {
-        nextElement = allFocusable[currentIndex - 1];
-      } else {
-        // --- Accessibility Enhancement: Move to the "Select QR Code" button ---
-        nextElement = $<HTMLLabelElement>(".file-input-label");
-      }
-    }
-
-    if (nextElement) {
-      nextElement.focus();
-      return;
-    }
-
-    // Handle activation with Enter or Space
-    if (event.key === "Enter" || event.key === " ") {
-      if (target.matches(".secret-input, .url-input")) {
-        event.preventDefault();
-        // The copy handler is on a parent element, so simulate a click on the input's container.
-        target.parentElement?.click();
-      } else if (target.matches(".qr-code-container")) {
-        event.preventDefault();
-        target.click();
-      }
-    }
-  });
+  resultsContainer.addEventListener("keydown", handleResultsKeydown);
 }
