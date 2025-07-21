@@ -24,9 +24,9 @@ function handleInitialPageKeydown(event: KeyboardEvent): void {
   // On Down or Right arrow, focus the first interactive element.
   if (event.key === "ArrowDown" || event.key === "ArrowRight") {
     event.preventDefault();
-    // The first "What is this?" tab is a good initial target.
-    const firstTab = $<HTMLButtonElement>("#info-tabs .tab-button");
-    firstTab?.focus();
+    // The currently active tab is a good initial target.
+    const activeTab = $<HTMLButtonElement>("#info-tabs .tab-button.active");
+    activeTab?.focus();
   }
 }
 

@@ -180,6 +180,9 @@ export function initThemeSwitcher(): void {
           if (isLeft && currentIndex === 0) {
             closeSwitcher();
             $<HTMLAnchorElement>("#source-code-link")?.focus();
+          } else if (!isLeft && currentIndex === allButtons.length - 1) {
+            closeSwitcher();
+            themeSwitcherWrapper.focus();
           } else if (nextIndex >= 0 && nextIndex < allButtons.length) {
             const nextButton = allButtons[nextIndex];
             const newTheme = nextButton.dataset.theme;

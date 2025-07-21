@@ -311,12 +311,12 @@ function handleKeydown(event: KeyboardEvent) {
   }
   // --- Context: File Input Button ---
   else if (target.matches(".file-input-label")) {
-    if (key === "ArrowUp") {
+    if (key === "ArrowUp" || key === "ArrowLeft") {
       event.preventDefault();
       nextEl =
         lastFocusedInfoControl ||
         $<HTMLButtonElement>("#info-tabs .tab-button.active");
-    } else if (key === "ArrowDown" && hasResults) {
+    } else if ((key === "ArrowDown" || key === "ArrowRight") && hasResults) {
       event.preventDefault();
       const firstCard = allCards[0];
       if (lastFocusedInResults && firstCard.contains(lastFocusedInResults)) {
@@ -324,7 +324,7 @@ function handleKeydown(event: KeyboardEvent) {
       } else {
         nextEl = firstCard.querySelector<HTMLElement>(".secret-input");
       }
-    } else if (key === "ArrowDown" && !hasResults) {
+    } else if ((key === "ArrowDown" || key === "ArrowRight") && !hasResults) {
       event.preventDefault();
       lastFocusedAboveFooter = target;
       // Go to last focused in footer, or default to the first element
@@ -358,8 +358,8 @@ function handleKeydown(event: KeyboardEvent) {
     } else if (isClearBtn && key === "ArrowLeft") {
       event.preventDefault();
       nextEl = $<HTMLButtonElement>("#download-csv-button");
-    } else if (key === "ArrowDown") {
-      // This applies to both buttons
+    } else if (key === "ArrowDown" || (isClearBtn && key === "ArrowRight")) {
+      // This applies to both buttons on ArrowDown, and only clear on ArrowRight
       event.preventDefault();
       lastFocusedAboveFooter = target;
       // Go to last focused in footer, or default to the first element
@@ -601,6 +601,8 @@ function handleKeydown(event: KeyboardEvent) {
         event.preventDefault();
         if (target === authorLink) {
           nextEl = sourceLink;
+        } else if (target === sourceLink) {
+          nextEl = themeSwitcher;
         }
         break;
 
@@ -619,6 +621,13 @@ function handleKeydown(event: KeyboardEvent) {
           nextEl = sourceLink;
         } else if (target === sourceLink) {
           nextEl = authorLink;
+        } else if (target === authorLink) {
+          // From the first item, left arrow should go up to the previous section.
+          nextEl =
+            lastFocusedAboveFooter ||
+            (hasResults
+              ? $<HTMLButtonElement>("#download-csv-button")
+              : $<HTMLLabelElement>(".file-input-label"));
         }
         break;
     }
@@ -626,6 +635,10 @@ function handleKeydown(event: KeyboardEvent) {
     // If we are navigating within the footer, remember the last focused element.
     if (nextEl && nextEl.closest("footer")) {
       lastFocusedInFooter = nextEl;
+    }
+    // If we are navigating *out* of the footer, remember where we left from.
+    else if (nextEl) {
+      lastFocusedInFooter = target;
     }
   }
 
