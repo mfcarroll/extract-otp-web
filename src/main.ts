@@ -5,6 +5,7 @@ import { initFileInput } from "./ui/fileInput";
 import { initThemeSwitcher } from "./ui/theme";
 import { initInfoTabs } from "./ui/infoTabs";
 import { initExportControls } from "./ui/exportControls";
+import { initNavigation } from "./ui/navigation";
 import { initFooter } from "./ui/footer";
 
 window.Buffer = Buffer; // Make Buffer globally available for libraries that might need it.
@@ -35,6 +36,7 @@ function handleInitialPageKeydown(event: KeyboardEvent): void {
  * This function is called once the DOM is fully loaded.
  */
 function initializeApp(): void {
+  initNavigation();
   initInfoTabs();
   initResults();
   initFileInput();

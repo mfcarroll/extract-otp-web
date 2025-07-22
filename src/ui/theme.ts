@@ -1,5 +1,6 @@
 import { setState } from "../state/store";
 import { $ } from "./dom";
+import { Navigation } from "./navigation";
 
 /**
  * Manages the theme switcher UI and applies the selected theme.
@@ -10,7 +11,6 @@ export function initThemeSwitcher(): void {
     ".theme-switcher-wrapper"
   );
   if (!themeSwitcherWrapper) return;
-  themeSwitcherWrapper.tabIndex = 0;
   themeSwitcherWrapper.setAttribute("aria-haspopup", "true");
   themeSwitcherWrapper.setAttribute("aria-label", "Open theme switcher");
 
@@ -108,6 +108,17 @@ export function initThemeSwitcher(): void {
     }
   });
 
+  themeSwitcherWrapper.addEventListener("click", () => {
+    // This click handler should only open the switcher if it's closed.
+    // If it's already open, clicks on the buttons inside are handled by
+    // a separate listener. This allows the generic navigation handler to
+    // activate the wrapper with Enter/Space.
+    if (!themeSwitcherWrapper.classList.contains("open")) {
+      const elementToFocus = openAndFocusActive();
+      elementToFocus?.focus();
+    }
+  });
+
   themeSwitcher.addEventListener("click", (event: MouseEvent) => {
     const target = (event.target as HTMLElement).closest("button");
     if (target) {
@@ -118,80 +129,57 @@ export function initThemeSwitcher(): void {
     }
   });
 
-  // --- Keyboard Navigation ---
   const allButtons = Array.from(buttons);
 
-  // Add a listener to the wrapper to "open" the switcher with keyboard.
-  themeSwitcherWrapper.addEventListener("keydown", (event: KeyboardEvent) => {
-    // If the switcher is already open, do nothing. This allows Enter/Space
-    // to activate the focused button inside.
-    if (themeSwitcherWrapper.classList.contains("open")) {
-      return;
-    }
+  // --- Declarative Keyboard Navigation ---
 
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      event.stopPropagation();
-      $<HTMLAnchorElement>("#source-code-link")?.focus();
-      return;
-    }
+  // Rules for when the wrapper is focused (and closed)
+  const openAndFocusActive = () => {
+    openSwitcher();
+    return (
+      themeSwitcher.querySelector<HTMLButtonElement>("button.active") ||
+      allButtons[0]
+    );
+  };
 
-    if (["Enter", " ", "ArrowDown", "ArrowRight"].includes(event.key)) {
-      event.preventDefault();
-      event.stopPropagation(); // Prevent global handler from also acting
-      openSwitcher();
-      const buttonToFocus =
-        themeSwitcher.querySelector<HTMLButtonElement>("button.active") ||
-        allButtons[0];
-      buttonToFocus?.focus();
-    }
-  });
+  Navigation.registerRule(themeSwitcherWrapper, "down", openAndFocusActive);
+  Navigation.registerRule(themeSwitcherWrapper, "right", openAndFocusActive);
 
-  // Add keyboard navigation for within the switcher
-  buttons.forEach((button) => {
-    button.addEventListener("keydown", (event: KeyboardEvent) => {
-      if (!themeSwitcherWrapper.classList.contains("open")) return;
+  // Rule for when the wrapper is focused and user presses left
+  Navigation.registerRule(themeSwitcherWrapper, "left", () =>
+    $<HTMLAnchorElement>("#source-code-link")
+  );
 
-      event.stopPropagation();
+  // Rules for when a button inside the switcher is focused (and open)
+  allButtons.forEach((button, index) => {
+    const closeAndFocusWrapper = () => {
+      closeSwitcher();
+      return themeSwitcherWrapper;
+    };
 
-      switch (event.key) {
-        case "Escape":
-        case "ArrowUp":
-        case "ArrowDown":
-          event.preventDefault();
-          closeSwitcher();
-          themeSwitcherWrapper.focus();
-          break;
+    Navigation.registerKeyAction(button, "escape", closeAndFocusWrapper);
+    Navigation.registerRule(button, "up", closeAndFocusWrapper);
+    Navigation.registerRule(button, "down", closeAndFocusWrapper);
 
-        case " ":
-        case "Enter":
-          event.preventDefault();
-          closeSwitcher();
-          themeSwitcherWrapper.focus();
-          break;
-
-        case "ArrowRight":
-        case "ArrowLeft": {
-          event.preventDefault();
-          const currentIndex = allButtons.indexOf(button);
-          const isLeft = event.key === "ArrowLeft";
-          const nextIndex = isLeft ? currentIndex - 1 : currentIndex + 1;
-
-          if (isLeft && currentIndex === 0) {
-            closeSwitcher();
-            $<HTMLAnchorElement>("#source-code-link")?.focus();
-          } else if (!isLeft && currentIndex === allButtons.length - 1) {
-            closeSwitcher();
-            themeSwitcherWrapper.focus();
-          } else if (nextIndex >= 0 && nextIndex < allButtons.length) {
-            const nextButton = allButtons[nextIndex];
-            const newTheme = nextButton.dataset.theme;
-            if (newTheme) applyTheme(newTheme);
-            nextButton.focus();
-          }
-          break;
-        }
+    Navigation.registerRule(button, "left", () => {
+      if (index > 0) {
+        const prevButton = allButtons[index - 1];
+        applyTheme(prevButton.dataset.theme!);
+        return prevButton;
       }
+      // At the start, close and move to the previous element in the footer
+      closeSwitcher();
+      return $<HTMLAnchorElement>("#source-code-link");
+    });
+
+    Navigation.registerRule(button, "right", () => {
+      if (index < allButtons.length - 1) {
+        const nextButton = allButtons[index + 1];
+        applyTheme(nextButton.dataset.theme!);
+        return nextButton;
+      }
+      // At the end, close and focus the wrapper itself
+      return closeAndFocusWrapper();
     });
   });
 

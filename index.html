@@ -26,7 +26,11 @@
         <h1>Google Authenticator OTP Secret Extractor</h1>
 
         <div id="info-tabs">
-          <button class="tab-button active" data-tab="what">
+          <button
+            class="tab-button navigable active"
+            data-tab="what"
+            tabindex="0"
+          >
             What is this?
           </button>
           <div id="tab-what" class="tab-content active">
@@ -41,7 +45,9 @@
             </p>
           </div>
 
-          <button class="tab-button" data-tab="use">How do I use it?</button>
+          <button class="tab-button navigable" tabindex="-1" data-tab="use">
+            How do I use it?
+          </button>
           <div id="tab-use" class="tab-content">
             <p>
               This tool reads the QR code screenshots from Google
@@ -79,12 +85,15 @@
             </ul>
           </div>
 
-          <button class="tab-button" data-tab="faq">FAQ</button>
+          <button class="tab-button navigable" tabindex="-1" data-tab="faq">
+            FAQ
+          </button>
           <div id="tab-faq" class="tab-content">
             <div class="faq-item">
               <h3>
                 <button
-                  class="faq-button"
+                  class="faq-button navigable"
+                  tabindex="-1"
                   aria-expanded="false"
                   aria-controls="faq-1-answer"
                 >
@@ -116,7 +125,8 @@
             <div class="faq-item">
               <h3>
                 <button
-                  class="faq-button"
+                  class="faq-button navigable"
+                  tabindex="-1"
                   aria-expanded="false"
                   aria-controls="faq-2-answer"
                 >
@@ -138,7 +148,8 @@
             <div class="faq-item">
               <h3>
                 <button
-                  class="faq-button"
+                  class="faq-button navigable"
+                  tabindex="-1"
                   aria-expanded="false"
                   aria-controls="faq-3-answer"
                 >
@@ -178,7 +189,8 @@
             <div class="faq-item">
               <h3>
                 <button
-                  class="faq-button"
+                  class="faq-button navigable"
+                  tabindex="-1"
                   aria-expanded="false"
                   aria-controls="faq-4-answer"
                 >
@@ -221,7 +233,8 @@
             <div class="faq-item">
               <h3>
                 <button
-                  class="faq-button"
+                  class="faq-button navigable"
+                  tabindex="-1"
                   aria-expanded="false"
                   aria-controls="faq-5-answer"
                 >
@@ -245,7 +258,8 @@
             <div class="faq-item">
               <h3>
                 <button
-                  class="faq-button"
+                  class="faq-button navigable"
+                  tabindex="-1"
                   id="faq-6-button"
                   aria-expanded="false"
                   aria-controls="faq-6-answer"
@@ -402,10 +416,10 @@
         <div class="file-input-wrapper">
           <label
             for="qr-input"
-            class="file-input-label btn btn-primary"
+            class="file-input-label btn btn-primary navigable"
             aria-label="Select QR Code Images"
             role="button"
-            tabindex="0"
+            tabindex="-1"
           >
             <i class="fa fa-upload"></i> Select QR Code Image(s)
           </label>
@@ -492,10 +506,18 @@
         </template>
 
         <div id="export-container" style="display: none">
-          <button id="download-csv-button" class="btn btn-success">
+          <button
+            id="download-csv-button"
+            class="btn btn-success navigable"
+            tabindex="-1"
+          >
             <i class="fa fa-download"></i> Save as CSV
           </button>
-          <button id="clear-all-button" class="btn btn-danger">
+          <button
+            id="clear-all-button"
+            class="btn btn-danger navigable"
+            tabindex="-1"
+          >
             <i class="fa fa-trash"></i> Clear All
           </button>
         </div>
@@ -506,6 +528,7 @@
           <span>&copy; <span id="copyright-year">2025</span></span>
           <a
             id="author-link"
+            class="navigable"
             href="https://www.linkedin.com/in/matthewfcarroll/"
             target="_blank"
             rel="noopener noreferrer"
@@ -515,6 +538,7 @@
           <span class="footer-separator">|</span>
           <a
             id="source-code-link"
+            class="navigable"
             href="https://github.com/mfcarroll/extract-otp-web"
             target="_blank"
             rel="noopener noreferrer"
@@ -522,26 +546,30 @@
             >Source Code</a
           >
           <span class="footer-separator">|</span>
-          <div id="theme-switcher" class="theme-switcher-wrapper">
+          <div
+            id="theme-switcher-wrapper"
+            class="theme-switcher-wrapper navigable"
+            tabindex="-1"
+          >
             <div class="theme-switcher">
               <button
+                class="navigable"
                 data-theme="system"
                 aria-label="Switch to system theme"
-                tabindex="-1"
               >
                 <i class="fa fa-desktop"></i>
               </button>
               <button
+                class="navigable"
                 data-theme="light"
                 aria-label="Switch to light theme"
-                tabindex="-1"
               >
                 <i class="fa fa-sun"></i>
               </button>
               <button
+                class="navigable"
                 data-theme="dark"
                 aria-label="Switch to dark theme"
-                tabindex="-1"
               >
                 <i class="fa fa-moon"></i>
               </button>

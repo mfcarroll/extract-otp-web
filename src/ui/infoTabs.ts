@@ -1,4 +1,5 @@
 import { $ } from "./dom";
+import { Navigation } from "./navigation";
 
 /**
  * Sets up the event listeners for the tabbed informational interface.
@@ -37,50 +38,69 @@ function setupTabs(): void {
     }
   });
 
-  tabsContainer.addEventListener("keydown", (event) => {
-    const target = event.target as HTMLElement;
-    if (!target.matches(".tab-button")) return;
+  // --- NEW PRIORITIZER RULE ---
+  // This rule provides semantic context to the spatial navigation system.
+  // It says: "If you are considering navigating to any of my tab buttons,
+  // you should *always* prefer the one that is currently active."
+  // This is more robust than a source-specific rule because it works
+  // regardless of where the navigation originates.
+  Navigation.registerPrioritizer((candidates, direction, from) => {
+    // This rule only applies when navigating UP into the tabs area.
+    if (direction !== "up") return null;
 
-    const currentIndex = tabButtons.indexOf(target as HTMLButtonElement);
-    if (currentIndex === -1) return;
-
-    let nextButton: HTMLButtonElement | undefined;
-
-    if (event.key === "ArrowRight") {
-      nextButton = tabButtons[(currentIndex + 1) % tabButtons.length];
-    } else if (event.key === "ArrowLeft") {
-      nextButton =
-        tabButtons[(currentIndex - 1 + tabButtons.length) % tabButtons.length];
-    } else if (event.key === "ArrowDown") {
-      event.preventDefault();
-      // Find the currently active tab button to determine which panel is open.
-      // This is more robust than checking the focused tab.
-      const activeTabButton =
-        tabsContainer.querySelector<HTMLButtonElement>(".tab-button.active");
-      const activeTabId = activeTabButton?.dataset.tab;
-
-      if (activeTabId === "faq") {
-        // Try to focus the first FAQ button.
-        const firstFaqButton = $<HTMLButtonElement>("#tab-faq .faq-button");
-        if (firstFaqButton) {
-          firstFaqButton.focus();
-        } else {
-          // If FAQ tab is active but has no items, fall back to the file input.
-          $<HTMLLabelElement>(".file-input-label")?.focus();
-        }
-      } else {
-        // For any other active tab, move focus down to the file input area.
-        $<HTMLLabelElement>(".file-input-label")?.focus();
-      }
-      return;
+    // Since candidates are now sorted by distance, check if the closest one is a tab.
+    const closestCandidate = candidates[0];
+    if (!closestCandidate || !closestCandidate.matches(".tab-button")) {
+      return null; // Not navigating towards the tabs, so we have no opinion.
     }
 
-    if (nextButton) {
-      event.preventDefault();
-      nextButton.focus();
-      // Directly activate the tab instead of relying on a programmatic click
+    // If the closest candidate is a tab, we enforce that the *active* tab gets focus.
+    return document.querySelector<HTMLButtonElement>(
+      "#info-tabs .tab-button.active"
+    );
+  });
+
+  // Register navigation rules for the tabs
+  tabButtons.forEach((button, index) => {
+    Navigation.registerRule(button, "left", () => {
+      const prevButton =
+        tabButtons[(index - 1 + tabButtons.length) % tabButtons.length];
+      activateTab(prevButton);
+      return prevButton;
+    });
+
+    Navigation.registerRule(button, "right", () => {
+      const nextButton = tabButtons[(index + 1) % tabButtons.length];
       activateTab(nextButton);
-    }
+      return nextButton;
+    });
+
+    Navigation.registerRule(button, "home", () => {
+      const firstButton = tabButtons[0];
+      activateTab(firstButton);
+      return firstButton;
+    });
+
+    Navigation.registerRule(button, "end", () => {
+      const lastButton = tabButtons[tabButtons.length - 1];
+      activateTab(lastButton);
+      return lastButton;
+    });
+
+    Navigation.registerRule(button, "down", () => {
+      const activeTabId =
+        tabsContainer.querySelector<HTMLButtonElement>(".tab-button.active")
+          ?.dataset.tab;
+      if (activeTabId === "faq") {
+        const firstFaqButton = document.querySelector<HTMLButtonElement>(
+          "#tab-faq .faq-button"
+        );
+        // If the FAQ tab is active, try to go to the first question.
+        if (firstFaqButton) return firstFaqButton;
+      }
+      // Otherwise (or if FAQ is empty), go to the file input button.
+      return $<HTMLLabelElement>(".file-input-label");
+    });
   });
 }
 
@@ -129,50 +149,22 @@ function setupAccordion(): void {
     return;
   }
 
-  // Keydown handler for keyboard navigation (roving tabindex)
-  faqContainer.addEventListener("keydown", (event) => {
-    const target = event.target as HTMLElement;
-    if (!target.matches(".faq-button")) {
-      return;
-    }
+  // Register navigation rules for the accordion
+  buttons.forEach((button, index) => {
+    // The `up` and `down` navigation is now handled by the default spatial
+    // navigation algorithm, which is smart enough to move between adjacent
+    // items. The "Prioritizer" handles the special case of navigating `up`
+    // from the first item into the active tab.
+    // We only need to keep the component-scoped Home/End behavior.
+    Navigation.registerRule(button, "home", () => {
+      // Go to the first FAQ item
+      return buttons[0];
+    });
 
-    const currentIndex = buttons.indexOf(target as HTMLButtonElement);
-    if (currentIndex === -1) {
-      return;
-    }
-
-    const isFirst = currentIndex === 0;
-    const isLast = currentIndex === buttons.length - 1;
-
-    switch (event.key) {
-      case "ArrowDown":
-        event.preventDefault();
-        if (isLast) {
-          $<HTMLLabelElement>(".file-input-label")?.focus();
-        } else {
-          buttons[currentIndex + 1].focus();
-        }
-        break;
-
-      case "ArrowUp":
-        event.preventDefault();
-        if (isFirst) {
-          $<HTMLButtonElement>('.tab-button[data-tab="faq"]')?.focus();
-        } else {
-          buttons[currentIndex - 1].focus();
-        }
-        break;
-
-      case "Home":
-        event.preventDefault();
-        buttons[0].focus();
-        break;
-
-      case "End":
-        event.preventDefault();
-        buttons[buttons.length - 1].focus();
-        break;
-    }
+    Navigation.registerRule(button, "end", () => {
+      // Go to the last FAQ item
+      return buttons[buttons.length - 1];
+    });
   });
 }
 

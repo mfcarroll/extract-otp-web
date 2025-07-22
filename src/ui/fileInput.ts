@@ -2,6 +2,7 @@ import { MigrationOtpParameter } from "../types";
 import { processImage, getOtpUniqueKey } from "../services/qrProcessor";
 import { setState, getState, subscribe } from "../state/store";
 import { addUploadLog, displayError, clearLogs } from "./notifications";
+import { Navigation } from "./navigation";
 import { $ } from "./dom";
 
 async function processFiles(files: FileList | null): Promise<void> {
@@ -108,14 +109,6 @@ export function initFileInput(): void {
 
   qrInput.addEventListener("change", (event: Event) => {
     processFiles((event.target as HTMLInputElement).files);
-  });
-
-  fileInputLabel.addEventListener("keydown", (event: KeyboardEvent) => {
-    // Allow activation with space or enter, but defer navigation to the central handler.
-    if (event.key === " " || event.key === "Enter") {
-      event.preventDefault();
-      qrInput.click();
-    }
   });
 
   subscribe((state) => {
