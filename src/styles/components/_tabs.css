@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-radius: 6px 6px 0 0;
+  position: relative; /* Create a stacking context for z-index */
   border: 1px solid var(--border-color);
   border-bottom: none;
 }
@@ -21,6 +22,7 @@
   color: var(--text-color);
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
   border-bottom: 3px solid transparent;
+  position: relative; /* Allow z-index to apply */
 }
 
 .tab-button:not(:last-child) {
@@ -43,6 +45,12 @@
   color: var(--primary-color);
   border-bottom-color: var(--primary-color);
   background-color: var(--card-background);
+}
+
+/* When a tab is focused with the keyboard, lift it above its siblings
+   so the focus outline isn't clipped by the next tab or the content below. */
+.tab-button:focus-visible {
+  z-index: 1;
 }
 
 .tab-content {

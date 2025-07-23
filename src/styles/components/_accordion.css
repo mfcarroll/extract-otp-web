@@ -31,11 +31,9 @@
 }
 
 .faq-button:hover,
-.faq-button:focus-visible,
 .faq-item:hover .faq-button {
   background-color: var(--faq-hover-background);
   color: var(--primary-color-dark);
-  outline: none;
 }
 
 .faq-title {

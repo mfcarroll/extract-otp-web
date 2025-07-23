@@ -1,0 +1,18 @@
+/* --- Accessibility Focus Styles --- */
+
+/*
+  1. Remove the default outline for mouse-click focus on our navigable elements.
+     This is a common practice, but we will add a better one back.
+  2. Apply a strong, visible outline ONLY for keyboard focus (:focus-visible).
+     - The outline is thick and high-contrast.
+     - The outline-offset prevents it from overlapping the element's border.
+*/
+.navigable:focus {
+  outline: none;
+}
+
+.navigable:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+  border-radius: 3px; /* Optional: for slightly rounded corners on the outline */
+}

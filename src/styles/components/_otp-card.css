@@ -45,6 +45,13 @@
 .otp-card .otp-url-row {
   display: flex;
   align-items: center;
+  position: relative; /* Establish stacking context for z-index */
+}
+
+/* When an input inside a row is focused, lift the entire row */
+.otp-card .secret-row:focus-within,
+.otp-card .otp-url-row:focus-within {
+  z-index: 1;
 }
 
 .otp-card .text-input {
@@ -143,4 +150,9 @@
 
 .qr-code-container:hover {
   transform: scale(1.02);
+}
+
+/* Special handling for the QR code container to ensure the outline is visible and rounded */
+.qr-code-container.navigable:focus-visible {
+  border-radius: 6px;
 }

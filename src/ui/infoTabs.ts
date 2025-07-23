@@ -44,20 +44,18 @@ function setupTabs(): void {
   // you should *always* prefer the one that is currently active."
   // This is more robust than a source-specific rule because it works
   // regardless of where the navigation originates.
-  Navigation.registerPrioritizer((candidates, direction, from) => {
-    // This rule only applies when navigating UP into the tabs area.
-    if (direction !== "up") return null;
+  Navigation.registerPrioritizer((candidates) => {
+    const bestCandidate = candidates[0];
+    if (!bestCandidate) return null;
 
-    // Since candidates are now sorted by distance, check if the closest one is a tab.
-    const closestCandidate = candidates[0];
-    if (!closestCandidate || !closestCandidate.matches(".tab-button")) {
-      return null; // Not navigating towards the tabs, so we have no opinion.
+    // Check if the best candidate is a tab button.
+    const tabsContainer = bestCandidate.closest(".tab-buttons");
+    if (!tabsContainer) {
+      return null; // Not navigating into the tabs section.
     }
 
-    // If the closest candidate is a tab, we enforce that the *active* tab gets focus.
-    return document.querySelector<HTMLButtonElement>(
-      "#info-tabs .tab-button.active"
-    );
+    // If we are entering the tabs section, force focus to the active tab.
+    return tabsContainer.querySelector<HTMLButtonElement>(".tab-button.active");
   });
 
   // Register navigation rules for the tabs
@@ -85,21 +83,6 @@ function setupTabs(): void {
       const lastButton = tabButtons[tabButtons.length - 1];
       activateTab(lastButton);
       return lastButton;
-    });
-
-    Navigation.registerRule(button, "down", () => {
-      const activeTabId =
-        tabsContainer.querySelector<HTMLButtonElement>(".tab-button.active")
-          ?.dataset.tab;
-      if (activeTabId === "faq") {
-        const firstFaqButton = document.querySelector<HTMLButtonElement>(
-          "#tab-faq .faq-button"
-        );
-        // If the FAQ tab is active, try to go to the first question.
-        if (firstFaqButton) return firstFaqButton;
-      }
-      // Otherwise (or if FAQ is empty), go to the file input button.
-      return $<HTMLLabelElement>(".file-input-label");
     });
   });
 }

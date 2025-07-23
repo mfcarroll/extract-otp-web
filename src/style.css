@@ -2,4 +2,5 @@
 
 @import url("./styles/_base.css");
 @import url("./styles/_layout.css");
+@import url("./styles/_accessibility.css");
 @import url("./styles/_components.css");

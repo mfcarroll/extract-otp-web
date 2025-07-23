@@ -25,6 +25,7 @@
   --drag-overlay-background: rgba(44, 62, 80, 0.5);
   --shadow-elevation-low: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-elevation-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --focus-color: #3b82f6; /* A distinct blue, accessible on light and dark backgrounds */
 }
 
 /* Dark theme overrides */

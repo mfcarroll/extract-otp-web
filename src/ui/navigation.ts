@@ -1,7 +1,8 @@
 import { $ } from "./dom";
 import { copyToClipboard } from "./results";
 
-type Direction = "up" | "down" | "left" | "right" | "home" | "end";
+type Direction = "up" | "down" | "left" | "right";
+type NavDirection = Direction | "home" | "end";
 type NavigationRule = () => HTMLElement | null;
 type KeyActionRule = () => HTMLElement | null;
 type Prioritizer = (
@@ -12,7 +13,7 @@ type Prioritizer = (
 
 const rules = new Map<
   HTMLElement,
-  Partial<Record<Direction, NavigationRule>>
+  Partial<Record<NavDirection, NavigationRule>>
 >();
 const keyActionRules = new Map<
   HTMLElement,
@@ -20,42 +21,71 @@ const keyActionRules = new Map<
 >();
 const prioritizers: Prioritizer[] = [];
 
+/**
+ * Briefly highlights an element to provide visual feedback for navigation events.
+ * @param el The element to highlight.
+ * @param color The color to use for the highlight.
+ */
+function highlightFocus(el: HTMLElement, color: string) {
+  el.style.outline = `2px solid ${color}`;
+  el.style.outlineOffset = "2px";
+  setTimeout(() => {
+    el.style.outline = "";
+    el.style.outlineOffset = "";
+  }, 300);
+}
+
+function getSection(el: HTMLElement): HTMLElement | null {
+  return el.closest(".navigable-section");
+}
+
+function getNavigableSections(): HTMLElement[] {
+  return Array.from(
+    document.querySelectorAll<HTMLElement>(".navigable-section")
+  ).filter((el) => el.offsetParent !== null);
+}
+
+function getSectionNavigables(section: HTMLElement): HTMLElement[] {
+  return Array.from(section.querySelectorAll<HTMLElement>(".navigable")).filter(
+    (el) => el.offsetParent !== null
+  );
+}
+
 function findClosestNavigableElement(
   currentEl: HTMLElement,
-  direction: Direction
+  direction: Direction,
+  candidates: HTMLElement[]
 ): HTMLElement | null {
-  const allNavigables = Array.from(
-    document.querySelectorAll<HTMLElement>(".navigable")
-  ).filter((el) => el !== currentEl && el.offsetParent !== null);
+  const allNavigables = candidates.filter((el) => el !== currentEl);
 
   const currentRect = currentEl.getBoundingClientRect();
 
-  let candidates: HTMLElement[] = [];
+  let filteredCandidates: HTMLElement[] = [];
   const tolerance = 1; // Use a 1px tolerance for geometric calculations
   switch (direction) {
     case "down":
-      candidates = allNavigables.filter(
-        (el) => el.getBoundingClientRect().top >= currentRect.bottom - tolerance
+      filteredCandidates = allNavigables.filter(
+        (el) => el.getBoundingClientRect().top > currentRect.bottom - tolerance
       );
       break;
     case "up":
-      candidates = allNavigables.filter(
-        (el) => el.getBoundingClientRect().bottom <= currentRect.top + tolerance
+      filteredCandidates = allNavigables.filter(
+        (el) => el.getBoundingClientRect().bottom < currentRect.top + tolerance
       );
       break;
     case "right":
-      candidates = allNavigables.filter(
-        (el) => el.getBoundingClientRect().left >= currentRect.right - tolerance
+      filteredCandidates = allNavigables.filter(
+        (el) => el.getBoundingClientRect().left > currentRect.right - tolerance
       );
       break;
     case "left":
-      candidates = allNavigables.filter(
-        (el) => el.getBoundingClientRect().right <= currentRect.left + tolerance
+      filteredCandidates = allNavigables.filter(
+        (el) => el.getBoundingClientRect().right < currentRect.left + tolerance
       );
       break;
   }
 
-  if (candidates.length === 0) {
+  if (filteredCandidates.length === 0) {
     return null;
   }
 
@@ -81,57 +111,31 @@ function findClosestNavigableElement(
         return currentRect.left - rect.right;
       case "right":
         return rect.left - currentRect.right;
-      // This case should not be reachable from `findClosestNavigableElement`,
-      // but it makes the function exhaustive and satisfies the type checker.
-      default:
-        throw new Error(
-          `Invalid direction for distance calculation: ${direction}`
-        );
     }
   };
 
-  candidates.sort((a, b) => {
-    const distA = getDistanceOnPrimaryAxis(a.getBoundingClientRect());
-    const distB = getDistanceOnPrimaryAxis(b.getBoundingClientRect());
-    return distA - distB;
+  filteredCandidates.sort((a, b) => {
+    const rectA = a.getBoundingClientRect();
+    const primaryDistA = getDistanceOnPrimaryAxis(rectA);
+    const crossDistA = getDistanceOnCrossAxis(rectA);
+    const scoreA = primaryDistA + crossDistA * 2; // Weight alignment more heavily
+
+    const rectB = b.getBoundingClientRect();
+    const primaryDistB = getDistanceOnPrimaryAxis(rectB);
+    const crossDistB = getDistanceOnCrossAxis(rectB);
+    const scoreB = primaryDistB + crossDistB * 2;
+
+    return scoreA - scoreB;
   });
 
-  // --- Prioritizer Logic ---
-  // Run prioritizers *after* sorting by primary distance. This allows a
-  // prioritizer to add semantic meaning to the "closest" group of candidates,
-  // preventing focus from jumping over entire sections.
-  for (const prioritizer of prioritizers) {
-    const prioritizedEl = prioritizer(candidates, direction, currentEl);
-    // The prioritizer's choice must be one of the potential candidates.
-    if (prioritizedEl && candidates.includes(prioritizedEl)) {
-      return prioritizedEl;
-    }
-  }
-
-  const minPrimaryDistance = getDistanceOnPrimaryAxis(
-    candidates[0].getBoundingClientRect()
-  );
-
-  const threshold =
-    direction === "up" || direction === "down"
-      ? currentRect.height
-      : currentRect.width;
-
-  const band = candidates.filter((el) => {
-    const primaryDist = getDistanceOnPrimaryAxis(el.getBoundingClientRect());
-    return primaryDist < minPrimaryDistance + threshold;
-  });
-
-  band.sort((a, b) => {
-    const crossDistA = getDistanceOnCrossAxis(a.getBoundingClientRect());
-    const crossDistB = getDistanceOnCrossAxis(b.getBoundingClientRect());
-    return crossDistA - crossDistB;
-  });
-
-  return band[0] || null;
+  return filteredCandidates[0] || null;
 }
 
-function setFocus(currentEl: HTMLElement | null, nextEl: HTMLElement | null) {
+function setFocus(
+  currentEl: HTMLElement | null,
+  nextEl: HTMLElement | null,
+  reason?: "rule" | "prioritizer"
+) {
   if (!nextEl) return;
 
   if (currentEl) {
@@ -139,59 +143,106 @@ function setFocus(currentEl: HTMLElement | null, nextEl: HTMLElement | null) {
   }
   nextEl.tabIndex = 0;
   nextEl.focus();
+
+  if (reason === "rule") {
+    highlightFocus(nextEl, "rgba(255, 0, 0, 0.7)"); // Red for custom rule
+  } else if (reason === "prioritizer") {
+    highlightFocus(nextEl, "rgba(0, 0, 255, 0.7)"); // Blue for prioritizer
+  }
 }
 
 function findNext(
   currentEl: HTMLElement,
-  direction: Direction
+  direction: NavDirection
 ): HTMLElement | null {
+  // 1. Check for element-specific override rules first (Requirement 7)
   const elementRules = rules.get(currentEl);
   if (elementRules && elementRules[direction]) {
-    return elementRules[direction]!();
+    const nextEl = elementRules[direction]!();
+    if (nextEl) setFocus(currentEl, nextEl, "rule");
+    return null; // Rule handled focus, so we return null to the keydown handler
   }
 
-  // --- Fallback for Home/End if no specific rule is found ---
+  // If no specific rule was found for Home/End, do nothing further.
   if (direction === "home" || direction === "end") {
-    const allNavigables = Array.from(
-      document.querySelectorAll<HTMLElement>(".navigable")
-    ).filter((el) => el.offsetParent !== null);
-    if (allNavigables.length > 0) {
-      return direction === "home"
-        ? allNavigables[0]
-        : allNavigables[allNavigables.length - 1];
-    }
     return null;
   }
 
-  // --- Fallback for Arrow keys ---
-  let nextEl = findClosestNavigableElement(currentEl, direction);
+  const currentSection = getSection(currentEl);
+  if (!currentSection) return null;
 
+  let nextEl: HTMLElement | null = null;
+
+  // 2. Try to navigate spatially within the current section (Requirement 2)
+  const sectionNavigables = getSectionNavigables(currentSection);
+  nextEl = findClosestNavigableElement(currentEl, direction, sectionNavigables);
+
+  // 3. Intra-section wrap-around for left/right (Requirement 3)
   if (!nextEl && (direction === "left" || direction === "right")) {
-    const allNavigables = Array.from(
-      document.querySelectorAll<HTMLElement>(".navigable")
-    ).filter((el) => el.offsetParent !== null);
-
-    allNavigables.sort((a, b) => {
-      const rectA = a.getBoundingClientRect();
-      const rectB = b.getBoundingClientRect();
-      if (Math.abs(rectA.top - rectB.top) > 5) {
-        return rectA.top - rectB.top;
-      }
-      return rectA.left - rectB.left;
-    });
-
-    const currentIndex = allNavigables.indexOf(currentEl);
+    const currentIndex = sectionNavigables.indexOf(currentEl);
     if (currentIndex !== -1) {
       const nextIndex =
         (currentIndex +
-          (direction === "left" ? -1 : 1) +
-          allNavigables.length) %
-        allNavigables.length;
-      nextEl = allNavigables[nextIndex];
+          (direction === "right" ? 1 : -1) +
+          sectionNavigables.length) %
+        sectionNavigables.length;
+      if (sectionNavigables.length > 1) {
+        nextEl = sectionNavigables[nextIndex];
+      }
     }
   }
 
-  return nextEl;
+  // 4 & 5. If no element found, move to the next/previous section
+  if (!nextEl) {
+    const allSections = getNavigableSections();
+    const currentSectionIndex = allSections.indexOf(currentSection);
+
+    if (currentSectionIndex !== -1) {
+      const nextSectionIndex =
+        currentSectionIndex +
+        (direction === "down" || direction === "right" ? 1 : -1);
+
+      if (nextSectionIndex >= 0 && nextSectionIndex < allSections.length) {
+        const nextSection = allSections[nextSectionIndex];
+        const nextSectionNavigables = getSectionNavigables(nextSection);
+
+        if (nextSectionNavigables.length > 0) {
+          if (direction === "up" || direction === "down") {
+            // 5. Spatial move for vertical navigation
+            nextEl = findClosestNavigableElement(
+              currentEl,
+              direction,
+              nextSectionNavigables
+            );
+          } else {
+            // 4. Sequential move for horizontal navigation
+            nextEl =
+              direction === "right"
+                ? nextSectionNavigables[0]
+                : nextSectionNavigables[nextSectionNavigables.length - 1];
+          }
+        }
+      }
+    }
+  }
+
+  // 6. Apply prioritizers to the potential next element (Requirement 6)
+  if (nextEl) {
+    for (const prioritizer of prioritizers) {
+      // For now, we only pass the single best candidate. This could be expanded.
+      const prioritizedEl = prioritizer([nextEl], direction, currentEl);
+      if (prioritizedEl) {
+        setFocus(currentEl, prioritizedEl, "prioritizer");
+        return null; // Prioritizer handled focus
+      }
+    }
+  }
+
+  if (nextEl) {
+    setFocus(currentEl, nextEl);
+  }
+
+  return null; // Let the keydown handler know we handled it.
 }
 
 function handleKeydown(event: KeyboardEvent) {
@@ -204,7 +255,7 @@ function handleKeydown(event: KeyboardEvent) {
   if (elementActionRules && elementActionRules[key.toLowerCase()]) {
     event.preventDefault();
     const nextEl = elementActionRules[key.toLowerCase()]!();
-    setFocus(target, nextEl);
+    setFocus(target, nextEl, "rule");
     return; // Action handled, stop further processing.
   }
 
@@ -239,21 +290,14 @@ function handleKeydown(event: KeyboardEvent) {
     return; // Activation should not also cause navigation
   }
 
-  let nextEl: HTMLElement | null = null;
-  let direction: Direction | null = null;
-
   if (key.startsWith("Arrow")) {
     const direction = key.substring(5).toLowerCase() as Direction;
     event.preventDefault();
-    nextEl = findNext(target, direction);
+    findNext(target, direction);
   } else if (key === "Home" || key === "End") {
-    const direction = key.toLowerCase() as Direction;
+    // Keep Home/End for component-specific rules
     event.preventDefault();
-    nextEl = findNext(target, direction);
-  }
-
-  if (nextEl) {
-    setFocus(target, nextEl);
+    findNext(target, key.toLowerCase() as "home" | "end");
   }
 }
 
@@ -266,7 +310,7 @@ export const Navigation = {
    */
   registerRule(
     from: HTMLElement,
-    direction: Direction,
+    direction: NavDirection,
     to: NavigationRule
   ): void {
     if (!rules.has(from)) {
