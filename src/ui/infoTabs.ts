@@ -6,14 +6,14 @@ import { Navigation } from "./navigation";
  * Uses event delegation for efficiency.
  */
 function setupTabs(): void {
-  const tabsContainer = document.getElementById("info-tabs");
-  if (!tabsContainer) return;
+  const tabButtonsContainer = $<HTMLDivElement>(".tab-buttons");
+  const tabContentsContainer = $<HTMLDivElement>(".tab-content-wrapper");
 
   const tabButtons = Array.from(
-    tabsContainer.querySelectorAll<HTMLButtonElement>(".tab-button")
+    tabButtonsContainer.querySelectorAll<HTMLButtonElement>(".tab-button")
   );
   const tabContents = Array.from(
-    tabsContainer.querySelectorAll<HTMLDivElement>(".tab-content")
+    tabContentsContainer.querySelectorAll<HTMLDivElement>(".tab-content")
   );
 
   function activateTab(tabToActivate: HTMLButtonElement) {
@@ -29,7 +29,7 @@ function setupTabs(): void {
     $(`#tab-${tabId}`)?.classList.add("active");
   }
 
-  tabsContainer.addEventListener("click", (event) => {
+  tabButtonsContainer.addEventListener("click", (event) => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
       ".tab-button"
     );
@@ -44,18 +44,27 @@ function setupTabs(): void {
   // you should *always* prefer the one that is currently active."
   // This is more robust than a source-specific rule because it works
   // regardless of where the navigation originates.
-  Navigation.registerPrioritizer((candidates) => {
+  Navigation.registerPrioritizer((candidates, direction, from) => {
     const bestCandidate = candidates[0];
     if (!bestCandidate) return null;
 
-    // Check if the best candidate is a tab button.
-    const tabsContainer = bestCandidate.closest(".tab-buttons");
-    if (!tabsContainer) {
+    // The section we are potentially navigating TO.
+    const targetSection = bestCandidate.closest(".tab-buttons");
+    if (!targetSection) {
       return null; // Not navigating into the tabs section.
     }
 
-    // If we are entering the tabs section, force focus to the active tab.
-    return tabsContainer.querySelector<HTMLButtonElement>(".tab-button.active");
+    // The section we are navigating FROM.
+    const sourceSection = from.closest(".tab-buttons");
+
+    // This prioritizer should only apply when *entering* the tabs section.
+    // If we are already moving between tabs, let the default rules apply.
+    if (sourceSection === targetSection) {
+      return null;
+    }
+
+    // If we are entering the tabs section from outside, force focus to the active tab.
+    return targetSection.querySelector<HTMLButtonElement>(".tab-button.active");
   });
 
   // Register navigation rules for the tabs

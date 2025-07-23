@@ -147,7 +147,7 @@ function setFocus(
   if (reason === "rule") {
     highlightFocus(nextEl, "rgba(255, 0, 0, 0.7)"); // Red for custom rule
   } else if (reason === "prioritizer") {
-    highlightFocus(nextEl, "rgba(0, 0, 255, 0.7)"); // Blue for prioritizer
+    highlightFocus(nextEl, "rgba(0, 255, 0, 0.7)"); // Green for prioritizer
   }
 }
 
@@ -195,14 +195,14 @@ function findNext(
   // 4 & 5. If no element found, move to the next/previous section
   if (!nextEl) {
     const allSections = getNavigableSections();
-    const currentSectionIndex = allSections.indexOf(currentSection);
+    let currentSectionIndex = allSections.indexOf(currentSection);
 
     if (currentSectionIndex !== -1) {
-      const nextSectionIndex =
-        currentSectionIndex +
-        (direction === "down" || direction === "right" ? 1 : -1);
+      const step = direction === "down" || direction === "right" ? 1 : -1;
+      let nextSectionIndex = currentSectionIndex + step;
 
-      if (nextSectionIndex >= 0 && nextSectionIndex < allSections.length) {
+      // Loop through sections until we find one with navigable items or run out of sections.
+      while (nextSectionIndex >= 0 && nextSectionIndex < allSections.length) {
         const nextSection = allSections[nextSectionIndex];
         const nextSectionNavigables = getSectionNavigables(nextSection);
 
@@ -214,6 +214,13 @@ function findNext(
               direction,
               nextSectionNavigables
             );
+            // If spatial search fails, fall back to a sequential choice
+            if (!nextEl) {
+              nextEl =
+                direction === "up"
+                  ? nextSectionNavigables[nextSectionNavigables.length - 1]
+                  : nextSectionNavigables[0];
+            }
           } else {
             // 4. Sequential move for horizontal navigation
             nextEl =
@@ -221,7 +228,11 @@ function findNext(
                 ? nextSectionNavigables[0]
                 : nextSectionNavigables[nextSectionNavigables.length - 1];
           }
+          // We found a target, so break the loop.
+          break;
         }
+        // If the section was empty, move to the next one in the same direction.
+        nextSectionIndex += step;
       }
     }
   }

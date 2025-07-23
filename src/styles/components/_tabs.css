@@ -1,16 +1,18 @@
 /* --- Tabbed Info Section Styling --- */
 #info-tabs {
   margin-bottom: 2rem;
+  position: relative; /* Create a stacking context for z-index */
+}
+
+.tab-buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-radius: 6px 6px 0 0;
-  position: relative; /* Create a stacking context for z-index */
   border: 1px solid var(--border-color);
   border-bottom: none;
 }
 
 .tab-button {
-  grid-row: 1;
   margin: 0;
   padding: 1rem;
   border: none;
@@ -55,8 +57,6 @@
 
 .tab-content {
   display: none;
-  grid-row: 2;
-  grid-column: 1 / -1; /* Span all columns */
   padding: 1.5rem;
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
