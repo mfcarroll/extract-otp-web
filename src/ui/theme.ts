@@ -145,11 +145,6 @@ export function initThemeSwitcher(): void {
   Navigation.registerRule(themeSwitcherWrapper, "down", openAndFocusActive);
   Navigation.registerRule(themeSwitcherWrapper, "right", openAndFocusActive);
 
-  // Rule for when the wrapper is focused and user presses left
-  Navigation.registerRule(themeSwitcherWrapper, "left", () =>
-    $<HTMLAnchorElement>("#source-code-link")
-  );
-
   // Rules for when a button inside the switcher is focused (and open)
   allButtons.forEach((button, index) => {
     const closeAndFocusWrapper = () => {
@@ -162,24 +157,17 @@ export function initThemeSwitcher(): void {
     Navigation.registerRule(button, "down", closeAndFocusWrapper);
 
     Navigation.registerRule(button, "left", () => {
-      if (index > 0) {
-        const prevButton = allButtons[index - 1];
-        applyTheme(prevButton.dataset.theme!);
-        return prevButton;
-      }
-      // At the start, close and move to the previous element in the footer
-      closeSwitcher();
-      return $<HTMLAnchorElement>("#source-code-link");
+      const prevIndex = (index - 1 + allButtons.length) % allButtons.length;
+      const prevButton = allButtons[prevIndex];
+      applyTheme(prevButton.dataset.theme!);
+      return prevButton;
     });
 
     Navigation.registerRule(button, "right", () => {
-      if (index < allButtons.length - 1) {
-        const nextButton = allButtons[index + 1];
-        applyTheme(nextButton.dataset.theme!);
-        return nextButton;
-      }
-      // At the end, close and focus the wrapper itself
-      return closeAndFocusWrapper();
+      const nextIndex = (index + 1) % allButtons.length;
+      const nextButton = allButtons[nextIndex];
+      applyTheme(nextButton.dataset.theme!);
+      return nextButton;
     });
   });
 

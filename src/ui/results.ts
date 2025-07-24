@@ -162,31 +162,20 @@ function createOtpCard(
   populateDetail(cardElement, "issuer", otp.issuer);
   populateDetail(cardElement, "type", typeInfo.description);
 
-  // Add .navigable class for spatial navigation
   const secretInput =
     cardElement.querySelector<HTMLInputElement>(".secret-input")!;
   secretInput.value = secretText;
-  secretInput.tabIndex = -1; // For roving tabindex
-  secretInput.classList.add("navigable");
 
-  // Add .navigable class for spatial navigation
   const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
   urlInput.value = decodeURIComponent(otpAuthUrl);
-  urlInput.tabIndex = -1; // For roving tabindex
   urlInput.nextElementSibling!.setAttribute("data-copy-text", otpAuthUrl);
-  urlInput.classList.add("navigable");
 
-  // Set tabindex on copy buttons
   const secretCopy = cardElement.querySelector<HTMLButtonElement>(
     ".secret-container .copy-button"
   )!;
-  secretCopy.tabIndex = -1;
-  secretCopy.classList.add("navigable");
   const urlCopy = cardElement.querySelector<HTMLButtonElement>(
     ".otp-url-container .copy-button"
   )!;
-  urlCopy.tabIndex = -1;
-  urlCopy.classList.add("navigable");
 
   // Generate the QR code
   const qrCodeCanvas = cardElement.querySelector<HTMLCanvasElement>("canvas")!;
@@ -196,12 +185,8 @@ function createOtpCard(
     color: getQrCodeColors(),
   });
 
-  // Add event listeners and make QR code focusable
   const qrCodeContainer =
     cardElement.querySelector<HTMLDivElement>(".qr-code-container")!;
-  qrCodeContainer.tabIndex = -1; // For roving tabindex
-  qrCodeContainer.setAttribute("role", "button");
-  qrCodeContainer.classList.add("navigable");
   qrCodeContainer.setAttribute("aria-label", `Show QR code for ${titleText}`);
   qrCodeContainer.addEventListener("click", () => {
     const modalTitle = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
@@ -279,23 +264,35 @@ export function initResults() {
 
   // --- Register Navigation Prioritizer ---
   // This rule provides a semantic entry point into the results grid.
-  // It says: "If you are navigating DOWN from an element positioned above
-  // the results container, your destination should be the very first
-  // focusable element in the first result card, regardless of horizontal alignment."
-  Navigation.registerPrioritizer((candidates, direction) => {
-    if (direction !== "down") return null;
-
-    const resultsContainer = $<HTMLDivElement>("#results-container");
-    if (resultsContainer.style.display === "none") return null;
-
-    // Since candidates are sorted, check if the closest one is inside the results container.
-    const closestCandidate = candidates[0];
-    if (!closestCandidate || !resultsContainer.contains(closestCandidate)) {
-      return null; // Not navigating into the results grid.
+  // It says: "When navigating DOWN into any result card from outside that card,
+  // the destination should always be the 'secret' input field."
+  Navigation.registerPrioritizer((candidates, direction, from) => {
+    // This rule only applies when moving down.
+    if (direction !== "down") {
+      return null;
     }
 
-    // If we are entering the results grid, force focus to the very first navigable
-    // element in the first card.
-    return resultsContainer.querySelector<HTMLElement>(".otp-card .navigable");
+    const bestCandidate = candidates[0];
+    if (!bestCandidate) {
+      return null;
+    }
+
+    // Find the card we are trying to navigate into.
+    const targetCard = bestCandidate.closest<HTMLElement>(".otp-card");
+    if (!targetCard) {
+      return null; // Not navigating into a card.
+    }
+
+    // Find the card we are navigating from.
+    const sourceCard = from.closest<HTMLElement>(".otp-card");
+
+    // If we are already inside the card we are navigating to, do nothing.
+    // This allows normal spatial navigation within a card.
+    if (sourceCard === targetCard) {
+      return null;
+    }
+
+    // If we are entering a card from above, force focus to its secret input field.
+    return targetCard.querySelector<HTMLElement>(".secret-input");
   });
 }

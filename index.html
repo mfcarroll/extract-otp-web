@@ -449,14 +449,6 @@
         <template id="otp-card-template">
           <!-- Each card is its own navigable section -->
           <div class="otp-card navigable-section" role="row">
-            <div
-              class="qr-code-container navigable"
-              role="gridcell"
-              tabindex="-1"
-              aria-label="Show larger QR code"
-            >
-              <canvas width="220" height="220"></canvas>
-            </div>
             <div class="otp-details" role="presentation">
               <!-- The h3 will be programmatically linked to the row as its label -->
               <h3 class="otp-title"></h3>
@@ -510,6 +502,14 @@
                   </button>
                 </span>
               </p>
+            </div>
+            <div
+              class="qr-code-container navigable"
+              role="gridcell"
+              tabindex="-1"
+              aria-label="Show larger QR code"
+            >
+              <canvas width="220" height="220"></canvas>
             </div>
           </div>
         </template>
