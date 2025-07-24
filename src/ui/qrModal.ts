@@ -1,8 +1,14 @@
 import QRCode from "qrcode";
 import { $ } from "./dom";
 
-// --- Accessibility Enhancement: Store focus before modal opens ---
+// --- Accessibility Enhancement: Manage focus before/after modal opens ---
 let elementThatOpenedModal: HTMLElement | null = null;
+/**
+ * Tracks if the modal was opened by a keyboard action. This helps decide
+ * whether to restore focus to the triggering element, which is desirable for
+ * keyboard users but not for mouse users.
+ */
+let openedByKeyboard = false;
 
 function handleModalKeydown(event: KeyboardEvent): void {
   if (event.key === "Escape") {
@@ -18,15 +24,24 @@ function hideQrModal(): void {
   modal.removeEventListener("keydown", handleModalKeydown);
 
   // --- Accessibility Enhancement: Restore focus to the element that opened the modal ---
+  // Only restore focus if the modal was opened via the keyboard. This prevents
+  // the focus ring from appearing on an element that was simply clicked with a mouse.
   if (elementThatOpenedModal) {
-    elementThatOpenedModal.focus();
+    if (openedByKeyboard) {
+      elementThatOpenedModal.focus();
+    }
     elementThatOpenedModal = null;
   }
 }
 
-export function showQrModal(otpAuthUrl: string, title: string): void {
+export function showQrModal(
+  otpAuthUrl: string,
+  title: string,
+  fromKeyboard = false
+): void {
   // --- Accessibility Enhancement: Store the element that had focus ---
   elementThatOpenedModal = document.activeElement as HTMLElement;
+  openedByKeyboard = fromKeyboard;
 
   const modal = $<HTMLDivElement>("#qr-modal");
   const modalContent = $<HTMLDivElement>("#modal-content");

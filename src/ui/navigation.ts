@@ -1,5 +1,5 @@
 import { $ } from "./dom";
-import { copyToClipboard } from "./clipboard";
+import { handleCopyAction } from "./clipboard";
 
 type Direction = "up" | "down" | "left" | "right";
 type NavDirection = Direction | "home" | "end";
@@ -156,6 +156,11 @@ function setFocus(
   }
   nextEl.tabIndex = 0;
   nextEl.focus();
+
+  // When focusing an input, ensure it doesn't scroll to the end.
+  if (nextEl.matches(".secret-input, .url-input")) {
+    (nextEl as HTMLInputElement).scrollLeft = 0;
+  }
 
   // If this was a directional move, record it.
   if (direction && currentEl) {
@@ -339,19 +344,8 @@ function handleKeydown(event: KeyboardEvent) {
   // --- Activation ---
   if (key === "Enter" || key === " ") {
     event.preventDefault();
-    if (target.matches(".secret-input, .url-input")) {
-      const inputElement = target as HTMLInputElement;
-      const button = inputElement.parentElement?.querySelector(".copy-button");
-      if (button) {
-        copyToClipboard(inputElement.value, button as HTMLElement);
-      }
-    } else if (target.matches(".copy-button")) {
-      const input = target.parentElement?.querySelector(
-        "input"
-      ) as HTMLInputElement;
-      if (input) {
-        copyToClipboard(target.dataset.copyText || input.value, target);
-      }
+    if (target.closest(".secret-container, .otp-url-container")) {
+      handleCopyAction(target);
     } else {
       target.click();
     }
@@ -427,4 +421,15 @@ export const Navigation = {
 
 export function initNavigation(): void {
   document.addEventListener("keydown", Navigation.handleKeydown);
+
+  // When focus leaves a text field, unselect its content and reset scroll.
+  document.addEventListener("focusout", (event) => {
+    const target = event.target as HTMLInputElement;
+    if (target.matches && target.matches(".secret-input, .url-input")) {
+      // Collapse the selection to the start of the input field. This is a more
+      // reliable way to "unselect" text in an input than using window.getSelection().
+      target.selectionStart = target.selectionEnd = 0;
+      target.scrollLeft = 0;
+    }
+  });
 }

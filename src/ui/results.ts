@@ -3,7 +3,7 @@ import { encode } from "thirty-two";
 import { MigrationOtpParameter } from "../types";
 import { $ } from "./dom";
 import { getOtpTypeInfo, OtpType } from "./otp";
-import { copyToClipboard } from "./clipboard";
+import { handleCopyAction } from "./clipboard";
 import { Navigation } from "./navigation";
 import { showQrModal } from "./qrModal";
 import { subscribe, getState } from "../state/store";
@@ -15,24 +15,6 @@ function getQrCodeColors() {
     light: computedStyles.getPropertyValue("--card-background").trim(),
   };
 }
-const handleCopy = (event: MouseEvent) => {
-  const triggerElement = event.target as HTMLElement;
-  const container = triggerElement.closest(
-    ".secret-container, .otp-url-container"
-  );
-  if (!container) return;
-
-  const input = container.querySelector<HTMLInputElement>("input");
-  const button = container.querySelector<HTMLButtonElement>(".copy-button");
-  if (!input || !button) return;
-
-  const textToCopy = triggerElement.matches(".copy-button, .copy-button i")
-    ? button.dataset.copyText || input.value
-    : input.value;
-
-  input.select();
-  copyToClipboard(textToCopy, button);
-};
 
 const cardTemplate = $<HTMLTemplateElement>("#otp-card-template");
 
@@ -117,13 +99,18 @@ function createOtpCard(
   const qrCodeContainer =
     cardElement.querySelector<HTMLDivElement>(".qr-code-container")!;
   qrCodeContainer.setAttribute("aria-label", `Show QR code for ${titleText}`);
-  qrCodeContainer.addEventListener("click", () => {
+  qrCodeContainer.addEventListener("click", (event: MouseEvent) => {
     const modalTitle = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
-    showQrModal(otpAuthUrl, modalTitle);
+    // A `detail` of 0 indicates a keyboard-initiated click. This allows us
+    // to conditionally restore focus only for keyboard users, which is better UX.
+    const fromKeyboard = event.detail === 0;
+    showQrModal(otpAuthUrl, modalTitle, fromKeyboard);
   });
 
   const otpDetails = cardElement.querySelector<HTMLDivElement>(".otp-details")!;
-  otpDetails.addEventListener("click", handleCopy);
+  otpDetails.addEventListener("click", (event) => {
+    handleCopyAction(event.target as HTMLElement);
+  });
 
   // --- Register Navigation Rules ---
   const secretContainer =
