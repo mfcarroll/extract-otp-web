@@ -152,18 +152,21 @@ export function initThemeSwitcher(): void {
       return themeSwitcherWrapper;
     };
 
+    // The theme switcher's internal controls are state-changing actions, not
+    // just spatial navigation. We register them as key actions so they take
+    // precedence over spatial navigation and don't create a "go back" history.
+    Navigation.registerKeyAction(button, "arrowup", closeAndFocusWrapper);
+    Navigation.registerKeyAction(button, "arrowdown", closeAndFocusWrapper);
     Navigation.registerKeyAction(button, "escape", closeAndFocusWrapper);
-    Navigation.registerRule(button, "up", closeAndFocusWrapper);
-    Navigation.registerRule(button, "down", closeAndFocusWrapper);
 
-    Navigation.registerRule(button, "left", () => {
+    Navigation.registerKeyAction(button, "arrowleft", () => {
       const prevIndex = (index - 1 + allButtons.length) % allButtons.length;
       const prevButton = allButtons[prevIndex];
       applyTheme(prevButton.dataset.theme!);
       return prevButton;
     });
 
-    Navigation.registerRule(button, "right", () => {
+    Navigation.registerKeyAction(button, "arrowright", () => {
       const nextIndex = (index + 1) % allButtons.length;
       const nextButton = allButtons[nextIndex];
       applyTheme(nextButton.dataset.theme!);

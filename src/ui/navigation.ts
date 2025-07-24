@@ -191,8 +191,10 @@ function findNext(
   // arrow key, we should go back to where we came from.
   if (
     lastMove &&
-    direction !== "home" &&
-    direction !== "end" &&
+    (direction === "up" ||
+      direction === "down" ||
+      direction === "left" ||
+      direction === "right") &&
     currentEl === lastMove.to &&
     direction === oppositeDirection[lastMove.direction]
   ) {
