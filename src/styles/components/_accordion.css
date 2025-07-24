@@ -42,10 +42,10 @@
 }
 
 .faq-button::after {
-  content: "+";
-  font-size: 1.5rem;
-  font-weight: 300;
-  line-height: 1;
+  content: "\f078"; /* Font Awesome chevron-down */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 1rem;
   transition: transform 0.3s ease-in-out;
   flex-shrink: 0;
 }
@@ -53,7 +53,7 @@
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-in-out, padding-bottom 0.4s ease-in-out;
+  transition: max-height 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   padding: 0 0.5rem; /* Horizontal padding only when closed */
 }
 
@@ -112,8 +112,7 @@
 
 /* --- Open State --- */
 .faq-item.open .faq-button::after {
-  content: "\2212"; /* minus sign */
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
 }
 
 .faq-item.open .faq-answer {

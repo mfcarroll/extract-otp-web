@@ -46,6 +46,7 @@ export function showQrModal(
   const modal = $<HTMLDivElement>("#qr-modal");
   const modalContent = $<HTMLDivElement>("#modal-content");
   const modalCloseButton = $<HTMLButtonElement>(".modal-close");
+  const modalTitleId = "qr-modal-title";
 
   modalContent.innerHTML = "";
 
@@ -63,11 +64,13 @@ export function showQrModal(
   modalContent.appendChild(modalCanvas);
 
   const titleElement = document.createElement("p");
+  titleElement.id = modalTitleId;
   titleElement.className = "modal-title";
   titleElement.textContent = title;
   modalContent.appendChild(titleElement);
 
   modal.style.display = "flex";
+  modal.setAttribute("aria-labelledby", modalTitleId);
   modal.addEventListener("keydown", handleModalKeydown);
   modalCloseButton.focus();
 }

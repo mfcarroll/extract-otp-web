@@ -27,25 +27,37 @@
 
         <div id="info-tabs">
           <!-- 1. Tabs Section -->
-          <div class="tab-buttons navigable-section">
+          <div class="tab-buttons navigable-section" role="tablist" aria-label="Information tabs">
             <button
               class="tab-button navigable active"
+              id="tab-btn-what"
               data-tab="what"
               tabindex="0"
+              role="tab"
+              aria-selected="true"
+              aria-controls="tab-what"
             >
               What is this?
             </button>
-            <button class="tab-button navigable" tabindex="-1" data-tab="use">
+            <button
+              class="tab-button navigable"
+              id="tab-btn-use"
+              tabindex="-1"
+              data-tab="use"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab-use"
+            >
               How do I use it?
             </button>
-            <button class="tab-button navigable" tabindex="-1" data-tab="faq">
+            <button class="tab-button navigable" id="tab-btn-faq" tabindex="-1" data-tab="faq" role="tab" aria-selected="false" aria-controls="tab-faq">
               FAQ
             </button>
           </div>
 
           <!-- 2. Tab Content Section -->
-          <div class="tab-content-wrapper navigable-section">
-            <div id="tab-what" class="tab-content active">
+          <div class="tab-content-wrapper">
+            <div id="tab-what" class="tab-content active" role="tabpanel" aria-labelledby="tab-btn-what">
               <p>
                 This tool extracts One-Time Password secrets from the Google
                 Authenticator app. There is no software to install, and no data
@@ -57,7 +69,7 @@
               </p>
             </div>
 
-            <div id="tab-use" class="tab-content">
+            <div id="tab-use" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-use" hidden>
               <p>
                 This tool reads the QR code screenshots from Google
                 Authenticator's export feature and gives you back the original
@@ -94,19 +106,20 @@
               </ul>
             </div>
 
-            <div id="tab-faq" class="tab-content">
+            <div id="tab-faq" class="tab-content navigable-section" role="tabpanel" aria-labelledby="tab-btn-faq" hidden>
               <div class="faq-item">
                 <h3>
                   <button
                     class="faq-button navigable"
                     tabindex="-1"
+                    id="faq-1-button"
                     aria-expanded="false"
                     aria-controls="faq-1-answer"
                   >
                     <span class="faq-title">Why is this needed?</span>
                   </button>
                 </h3>
-                <div id="faq-1-answer" class="faq-answer">
+                <div id="faq-1-answer" class="faq-answer" role="region" aria-labelledby="faq-1-button">
                   <p>
                     Google Authenticator lets you transfer your accounts to a new
                     phone, but it doesn't provide an easy way to export them to
@@ -133,13 +146,14 @@
                   <button
                     class="faq-button navigable"
                     tabindex="-1"
+                    id="faq-2-button"
                     aria-expanded="false"
                     aria-controls="faq-2-answer"
                   >
                     <span class="faq-title">How does it work?</span>
                   </button>
                 </h3>
-                <div id="faq-2-answer" class="faq-answer">
+                <div id="faq-2-answer" class="faq-answer" role="region" aria-labelledby="faq-2-button">
                   <p>
                     You provide screenshots of the QR codes from Google
                     Authenticator's export feature. This tool reads those QR
@@ -156,6 +170,7 @@
                   <button
                     class="faq-button navigable"
                     tabindex="-1"
+                    id="faq-3-button"
                     aria-expanded="false"
                     aria-controls="faq-3-answer"
                   >
@@ -164,7 +179,7 @@
                     >
                   </button>
                 </h3>
-                <div id="faq-3-answer" class="faq-answer">
+                <div id="faq-3-answer" class="faq-answer" role="region" aria-labelledby="faq-3-button">
                   <p>
                     Yes. Security and privacy are the top priorities.
                     <strong
@@ -197,6 +212,7 @@
                   <button
                     class="faq-button navigable"
                     tabindex="-1"
+                    id="faq-4-button"
                     aria-expanded="false"
                     aria-controls="faq-4-answer"
                   >
@@ -206,7 +222,7 @@
                     >
                   </button>
                 </h3>
-                <div id="faq-4-answer" class="faq-answer">
+                <div id="faq-4-answer" class="faq-answer" role="region" aria-labelledby="faq-4-button">
                   <p>
                     That's a great question, and one that
                     <a
@@ -241,13 +257,14 @@
                   <button
                     class="faq-button navigable"
                     tabindex="-1"
+                    id="faq-5-button"
                     aria-expanded="false"
                     aria-controls="faq-5-answer"
                   >
                     <span class="faq-title">Who made this?</span>
                   </button>
                 </h3>
-                <div id="faq-5-answer" class="faq-answer">
+                <div id="faq-5-answer" class="faq-answer" role="region" aria-labelledby="faq-5-button">
                   <p>
                     This tool was created by
                     <a
@@ -424,7 +441,6 @@
           <label
             for="qr-input"
             class="file-input-label btn btn-primary navigable"
-            aria-label="Select QR Code Images"
             role="button"
             tabindex="-1"
           >
@@ -589,7 +605,7 @@
         </div>
       </footer>
     </div>
-    <div id="qr-modal" class="modal-overlay" style="display: none">
+    <div id="qr-modal" class="modal-overlay" role="dialog" aria-modal="true" style="display: none">
       <button class="modal-close navigable" aria-label="Close" tabindex="-1">
         &#x2715;
       </button>

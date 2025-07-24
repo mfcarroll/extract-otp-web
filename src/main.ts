@@ -4,10 +4,11 @@ import { initResults } from "./ui/results";
 import { initFileInput } from "./ui/fileInput";
 import { initQrModal } from "./ui/qrModal";
 import { initThemeSwitcher } from "./ui/theme";
-import { initInfoTabs } from "./ui/infoTabs";
 import { initExportControls } from "./ui/exportControls";
 import { initNavigation } from "./ui/navigation";
 import { initFooter } from "./ui/footer";
+import { initTabs } from "./ui/tabs";
+import { initAccordion } from "./ui/accordion";
 
 window.Buffer = Buffer; // Make Buffer globally available for libraries that might need it.
 
@@ -38,7 +39,8 @@ function handleInitialPageKeydown(event: KeyboardEvent): void {
  */
 function initializeApp(): void {
   initNavigation();
-  initInfoTabs();
+  initTabs();
+  initAccordion();
   initQrModal();
   initResults();
   initFileInput();
