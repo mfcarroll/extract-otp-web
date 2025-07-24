@@ -2,6 +2,7 @@ import { Buffer } from "buffer"; // Keep for browser environment polyfill
 import { $ } from "./ui/dom";
 import { initResults } from "./ui/results";
 import { initFileInput } from "./ui/fileInput";
+import { initQrModal } from "./ui/qrModal";
 import { initThemeSwitcher } from "./ui/theme";
 import { initInfoTabs } from "./ui/infoTabs";
 import { initExportControls } from "./ui/exportControls";
@@ -38,6 +39,7 @@ function handleInitialPageKeydown(event: KeyboardEvent): void {
 function initializeApp(): void {
   initNavigation();
   initInfoTabs();
+  initQrModal();
   initResults();
   initFileInput();
   initThemeSwitcher();

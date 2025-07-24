@@ -1,5 +1,5 @@
 import { $ } from "./dom";
-import { copyToClipboard } from "./results";
+import { copyToClipboard } from "./clipboard";
 
 type Direction = "up" | "down" | "left" | "right";
 type NavDirection = Direction | "home" | "end";
