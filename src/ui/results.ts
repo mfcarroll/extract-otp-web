@@ -149,6 +149,11 @@ function createOtpCard(
 function render(otps: MigrationOtpParameter[]): void {
   const resultsContainer = $<HTMLDivElement>("#results-container");
 
+  // Any time the results are re-rendered, the DOM has changed significantly.
+  // This resets the "go back" navigation memory to prevent unexpected jumps
+  // if the previously focused element is no longer in a logical position.
+  Navigation.resetLastMove();
+
   resultsContainer.innerHTML = "";
   if (!otps || otps.length === 0) {
     resultsContainer.style.display = "none"; // Hide container if no results

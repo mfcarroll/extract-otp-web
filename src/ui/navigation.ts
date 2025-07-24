@@ -3,13 +3,20 @@ import { copyToClipboard } from "./clipboard";
 
 type Direction = "up" | "down" | "left" | "right";
 type NavDirection = Direction | "home" | "end";
-type NavigationRule = () => HTMLElement | null;
+type NavigationRule = () => HTMLElement | null | undefined;
 type KeyActionRule = () => HTMLElement | null;
 type Prioritizer = (
   candidates: HTMLElement[],
   direction: Direction,
   from: HTMLElement
 ) => HTMLElement | null;
+
+// --- State for "go back" feature ---
+let lastMove: {
+  from: HTMLElement;
+  to: HTMLElement;
+  direction: Direction;
+} | null = null;
 
 const rules = new Map<
   HTMLElement,
@@ -134,9 +141,14 @@ function findClosestNavigableElement(
 function setFocus(
   currentEl: HTMLElement | null,
   nextEl: HTMLElement | null,
-  reason?: "rule" | "prioritizer"
+  direction?: Direction,
+  reason?: "rule" | "prioritizer" | "reversal"
 ) {
-  if (!nextEl) return;
+  if (!nextEl) {
+    // If focus doesn't change for any reason, clear the last move.
+    lastMove = null;
+    return;
+  }
 
   if (currentEl) {
     currentEl.tabIndex = -1;
@@ -144,26 +156,74 @@ function setFocus(
   nextEl.tabIndex = 0;
   nextEl.focus();
 
+  // If this was a directional move, record it.
+  if (direction && currentEl) {
+    lastMove = { from: currentEl, to: nextEl, direction };
+  } else {
+    // Any non-directional focus change (e.g. from a key action) should clear the memory.
+    lastMove = null;
+  }
+
   if (reason === "rule") {
     highlightFocus(nextEl, "rgba(255, 0, 0, 0.7)"); // Red for custom rule
   } else if (reason === "prioritizer") {
     highlightFocus(nextEl, "rgba(0, 255, 0, 0.7)"); // Green for prioritizer
+  } else if (reason === "reversal") {
+    highlightFocus(nextEl, "rgba(255, 165, 0, 0.7)"); // Orange for reversal
   }
 }
+
+const oppositeDirection: Record<Direction, Direction> = {
+  up: "down",
+  down: "up",
+  left: "right",
+  right: "left",
+};
 
 function findNext(
   currentEl: HTMLElement,
   direction: NavDirection
 ): HTMLElement | null {
-  // 1. Check for element-specific override rules first (Requirement 7)
-  const elementRules = rules.get(currentEl);
-  if (elementRules && elementRules[direction]) {
-    const nextEl = elementRules[direction]!();
-    if (nextEl) setFocus(currentEl, nextEl, "rule");
-    return null; // Rule handled focus, so we return null to the keydown handler
+  // --- Step 0: Handle immediate reversal ---
+  // This rule has the highest priority. If the user presses the opposite
+  // arrow key, we should go back to where we came from.
+  if (
+    lastMove &&
+    direction !== "home" &&
+    direction !== "end" &&
+    currentEl === lastMove.to &&
+    direction === oppositeDirection[lastMove.direction]
+  ) {
+    const fromEl = lastMove.from;
+    // Clear the memory after using it.
+    lastMove = null;
+    setFocus(currentEl, fromEl, direction, "reversal");
+    return null; // We handled it.
   }
 
-  // If no specific rule was found for Home/End, do nothing further.
+  // On any other navigation attempt, clear the "go back" memory.
+  // It will be re-set in `setFocus` if this navigation is successful.
+  lastMove = null;
+
+  // --- Step 1: Handle explicit navigation rules ---
+  // First, check if a specific rule is registered for this element and direction.
+  // This allows for custom, non-spatial navigation (e.g., from a text field to its copy button).
+  const elementRules = rules.get(currentEl);
+  if (elementRules && elementRules[direction]) {
+    const result = elementRules[direction]!();
+    if (result) {
+      // The rule returned an element. Navigate to it and stop.
+      setFocus(currentEl, result, direction as Direction, "rule");
+      return null;
+    }
+    if (result === null) {
+      // The rule explicitly returned null. Stop all navigation.
+      return null;
+    }
+    // The rule returned undefined. Fall through to default spatial logic.
+  }
+
+  // Home/End keys are only handled by explicit rules. If none were found, do nothing.
   if (direction === "home" || direction === "end") {
     return null;
   }
@@ -173,84 +233,77 @@ function findNext(
 
   let nextEl: HTMLElement | null = null;
 
-  // 2. Try to navigate spatially within the current section (Requirement 2)
+  // --- Step 2: Spatial navigation within the current section ---
+  // Try to find the geometrically closest element in the desired direction
+  // within the same navigation section (e.g., inside the same OTP card).
   const sectionNavigables = getSectionNavigables(currentSection);
   nextEl = findClosestNavigableElement(currentEl, direction, sectionNavigables);
 
-  // 3. Intra-section wrap-around for left/right (Requirement 3)
-  if (!nextEl && (direction === "left" || direction === "right")) {
-    const currentIndex = sectionNavigables.indexOf(currentEl);
-    if (currentIndex !== -1) {
-      const nextIndex =
-        (currentIndex +
-          (direction === "right" ? 1 : -1) +
-          sectionNavigables.length) %
-        sectionNavigables.length;
-      if (sectionNavigables.length > 1) {
-        nextEl = sectionNavigables[nextIndex];
-      }
-    }
-  }
-
-  // 4 & 5. If no element found, move to the next/previous section
+  // --- Step 3: Fallback Navigation ---
+  // If no spatial match was found within the section, try a fallback strategy.
   if (!nextEl) {
-    const allSections = getNavigableSections();
-    let currentSectionIndex = allSections.indexOf(currentSection);
+    if (direction === "up" || direction === "down") {
+      // For up/down, try a spatial search on the next available section.
+      const allSections = getNavigableSections();
+      const currentSectionIndex = allSections.indexOf(currentSection);
 
-    if (currentSectionIndex !== -1) {
-      const step = direction === "down" || direction === "right" ? 1 : -1;
-      let nextSectionIndex = currentSectionIndex + step;
+      if (currentSectionIndex !== -1) {
+        const step = direction === "down" ? 1 : -1;
+        let nextSectionIndex = currentSectionIndex + step;
 
-      // Loop through sections until we find one with navigable items or run out of sections.
-      while (nextSectionIndex >= 0 && nextSectionIndex < allSections.length) {
-        const nextSection = allSections[nextSectionIndex];
-        const nextSectionNavigables = getSectionNavigables(nextSection);
+        while (nextSectionIndex >= 0 && nextSectionIndex < allSections.length) {
+          const nextSection = allSections[nextSectionIndex];
+          const nextSectionNavigables = getSectionNavigables(nextSection);
 
-        if (nextSectionNavigables.length > 0) {
-          if (direction === "up" || direction === "down") {
-            // 5. Spatial move for vertical navigation
+          if (nextSectionNavigables.length > 0) {
             nextEl = findClosestNavigableElement(
               currentEl,
               direction,
               nextSectionNavigables
             );
-            // If spatial search fails, fall back to a sequential choice
-            if (!nextEl) {
-              nextEl =
-                direction === "up"
-                  ? nextSectionNavigables[nextSectionNavigables.length - 1]
-                  : nextSectionNavigables[0];
-            }
-          } else {
-            // 4. Sequential move for horizontal navigation
-            nextEl =
-              direction === "right"
-                ? nextSectionNavigables[0]
-                : nextSectionNavigables[nextSectionNavigables.length - 1];
+            if (nextEl) break; // Found a target
           }
-          // We found a target, so break the loop.
-          break;
+          nextSectionIndex += step;
         }
-        // If the section was empty, move to the next one in the same direction.
-        nextSectionIndex += step;
+      }
+    } else if (direction === "left" || direction === "right") {
+      // For left/right, fall back to sequential DOM order. This handles wrapping.
+      const allNavigables = Array.from(
+        document.querySelectorAll<HTMLElement>(".navigable")
+      ).filter((el) => el.offsetParent !== null); // Only visible elements
+
+      const currentIndex = allNavigables.indexOf(currentEl);
+      if (currentIndex !== -1) {
+        const step = direction === "right" ? 1 : -1;
+        const nextIndex =
+          (currentIndex + step + allNavigables.length) % allNavigables.length;
+
+        if (allNavigables.length > 1) {
+          nextEl = allNavigables[nextIndex];
+        }
       }
     }
   }
 
-  // 6. Apply prioritizers to the potential next element (Requirement 6)
+  // --- Step 4: Apply prioritizers ---
+  // Before focusing the chosen element, check if a prioritizer wants to
+  // intercept and redirect focus to a different element (e.g., always focus
+  // the 'active' tab when entering the tab group).
   if (nextEl) {
     for (const prioritizer of prioritizers) {
       // For now, we only pass the single best candidate. This could be expanded.
       const prioritizedEl = prioritizer([nextEl], direction, currentEl);
       if (prioritizedEl) {
-        setFocus(currentEl, prioritizedEl, "prioritizer");
-        return null; // Prioritizer handled focus
+        setFocus(currentEl, prioritizedEl, direction, "prioritizer");
+        return null; // Prioritizer handled focus, so we stop here.
       }
     }
   }
 
+  // --- Step 5: Set focus ---
+  // If a next element was found and not handled by a prioritizer, focus it.
   if (nextEl) {
-    setFocus(currentEl, nextEl);
+    setFocus(currentEl, nextEl, direction);
   }
 
   return null; // Let the keydown handler know we handled it.
@@ -260,13 +313,13 @@ function handleKeydown(event: KeyboardEvent) {
   const target = event.target as HTMLElement;
   const key = event.key;
 
-  // --- NEW: Check for specific, non-directional key action rules first ---
+  // --- Check for specific, non-directional key action rules first ---
   // This allows components to define custom behavior for keys like 'Escape'.
   const elementActionRules = keyActionRules.get(target);
   if (elementActionRules && elementActionRules[key.toLowerCase()]) {
     event.preventDefault();
     const nextEl = elementActionRules[key.toLowerCase()]!();
-    setFocus(target, nextEl, "rule");
+    setFocus(target, nextEl, undefined, "rule");
     return; // Action handled, stop further processing.
   }
 
@@ -351,6 +404,15 @@ export const Navigation = {
    */
   registerPrioritizer(prioritizer: Prioritizer): void {
     prioritizers.push(prioritizer);
+  },
+
+  /**
+   * Resets the "go back" navigation memory. This should be called
+   * whenever the DOM is significantly manipulated (e.g. adding or removing
+   * elements), which could make the last navigation move obsolete.
+   */
+  resetLastMove(): void {
+    lastMove = null;
   },
 
   /**

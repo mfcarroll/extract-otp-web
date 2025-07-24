@@ -141,20 +141,21 @@ function setupAccordion(): void {
     return;
   }
 
-  // Register navigation rules for the accordion
+  // Register navigation rules for the accordion to strictly follow ARIA patterns.
   buttons.forEach((button, index) => {
-    // The `up` and `down` navigation is now handled by the default spatial
-    // navigation algorithm, which is smart enough to move between adjacent
-    // items. The "Prioritizer" handles the special case of navigating `up`
-    // from the first item into the active tab.
-    // We only need to keep the component-scoped Home/End behavior.
+    // Up/Down arrows are correctly handled by the default spatial navigation.
+
+    // Left/Right arrows should do nothing according to ARIA spec for accordion.
+    // Returning null prevents the default spatial navigation from taking over.
+    Navigation.registerRule(button, "left", () => null);
+    Navigation.registerRule(button, "right", () => null);
+
+    // Home/End go to the first/last item.
     Navigation.registerRule(button, "home", () => {
-      // Go to the first FAQ item
       return buttons[0];
     });
 
     Navigation.registerRule(button, "end", () => {
-      // Go to the last FAQ item
       return buttons[buttons.length - 1];
     });
   });
