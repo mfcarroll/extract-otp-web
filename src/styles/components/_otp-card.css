@@ -148,6 +148,11 @@
   transition: transform 0.2s ease-in-out;
 }
 
+.qr-code-container canvas {
+  /* Fixes the extra space at the bottom of the container */
+  display: block;
+}
+
 .qr-code-container:hover {
   transform: scale(1.02);
 }

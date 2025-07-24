@@ -34,6 +34,7 @@ const prioritizers: Prioritizer[] = [];
  * @param color The color to use for the highlight.
  */
 function highlightFocus(el: HTMLElement, color: string) {
+  // This function is used for debugging navigation behavior.
   el.style.outline = `2px solid ${color}`;
   el.style.outlineOffset = "2px";
   setTimeout(() => {
@@ -164,13 +165,14 @@ function setFocus(
     lastMove = null;
   }
 
-  if (reason === "rule") {
-    highlightFocus(nextEl, "rgba(255, 0, 0, 0.7)"); // Red for custom rule
-  } else if (reason === "prioritizer") {
-    highlightFocus(nextEl, "rgba(0, 255, 0, 0.7)"); // Green for prioritizer
-  } else if (reason === "reversal") {
-    highlightFocus(nextEl, "rgba(255, 165, 0, 0.7)"); // Orange for reversal
-  }
+  // Debug Highlighting
+  // if (reason === "rule") {
+  //   highlightFocus(nextEl, "rgba(255, 0, 0, 0.7)"); // Red for custom rule
+  // } else if (reason === "prioritizer") {
+  //   highlightFocus(nextEl, "rgba(0, 255, 0, 0.7)"); // Green for prioritizer
+  // } else if (reason === "reversal") {
+  //   highlightFocus(nextEl, "rgba(255, 165, 0, 0.7)"); // Orange for reversal
+  // }
 }
 
 const oppositeDirection: Record<Direction, Direction> = {
