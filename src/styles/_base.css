@@ -28,6 +28,7 @@
   --shadow-elevation-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
   --focus-color: #3b82f6;
   --focus-color-rgb: 59, 130, 246;
+  --focus-ring-color: #ccc; /* For card-level focus indicators */
 }
 
 /* Dark theme overrides */
@@ -65,6 +66,8 @@ html.dark-mode {
   --btn-text-color: #ffffff;
   --shadow-elevation-low: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-elevation-medium: 0 6px 15px rgba(0, 0, 0, 0.2);
+  --focus-color: #63b3ed; /* Use the primary color for focus in dark mode */
+  --focus-color-rgb: 99, 179, 237; /* Corresponds to #63b3ed */
 }
 
 /* Modal is always light-themed for QR code scannability */

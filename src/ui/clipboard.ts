@@ -1,3 +1,5 @@
+import { announceToScreenReader } from "./notifications";
+
 /**
  * Copies a string to the user's clipboard and provides visual feedback on a button.
  * @param text The text to copy.
@@ -11,10 +13,17 @@ export const copyToClipboard = (
     .writeText(text)
     .then(() => {
       buttonElement.classList.add("copied");
+      // Announce success to screen readers
+      const subject = (
+        buttonElement.getAttribute("aria-label") || "Content"
+      ).replace("Copy ", "");
+      announceToScreenReader(`${subject} copied to clipboard.`);
       setTimeout(() => buttonElement.classList.remove("copied"), 1500);
     })
     .catch((err) => {
       console.error("Could not copy text: ", err);
+      // Announce failure to screen readers
+      announceToScreenReader("Failed to copy to clipboard.");
     });
 };
 

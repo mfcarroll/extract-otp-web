@@ -66,3 +66,17 @@ export function clearLogs(): void {
   logList.innerHTML = "";
   logContainer.style.display = "none";
 }
+
+/**
+ * Makes an announcement to screen readers using a visually-hidden live region.
+ * @param message The message to be announced.
+ */
+export function announceToScreenReader(message: string): void {
+  const announcer = $<HTMLDivElement>("#sr-announcer");
+  // Set text content and then clear it after a short delay.
+  // This ensures that the same message can be announced again if needed.
+  announcer.textContent = message;
+  setTimeout(() => {
+    announcer.textContent = "";
+  }, 1000);
+}
