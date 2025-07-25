@@ -6,11 +6,13 @@ import { MigrationOtpParameter } from "../types";
  */
 export interface AppState {
   otps: MigrationOtpParameter[];
+  logCount: number;
   theme: "light" | "dark" | "system";
 }
 
 const state: AppState = {
   otps: [],
+  logCount: 0,
   theme: (localStorage.getItem("theme") as AppState["theme"]) || "system",
 };
 

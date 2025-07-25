@@ -32,7 +32,7 @@ function setProcessingState(isProcessing: boolean): void {
       fileInputLabel.appendChild(icon);
       fileInputLabel.appendChild(text);
       processingTimeoutId = null;
-    }, 200); // 200ms delay
+    }, 100); // 200ms delay
   } else {
     // If we are stopping the processing state, clear any pending timeout.
     if (processingTimeoutId) {
@@ -172,23 +172,24 @@ async function processFiles(files: FileList | null): Promise<void> {
   }
 }
 
+let qrInputElement: HTMLInputElement | null = null;
+
+/** Resets the file input element, clearing its selection. */
+export function resetFileInput(): void {
+  if (qrInputElement) {
+    qrInputElement.value = "";
+  }
+}
+
 export function initFileInput(): void {
-  const qrInput = $<HTMLInputElement>("#qr-input");
+  qrInputElement = $<HTMLInputElement>("#qr-input");
   const fileInputLabel = $<HTMLLabelElement>(".file-input-label");
   const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
   const dragOverlay = $<HTMLDivElement>("#drag-overlay");
-  const resultsContainer = $<HTMLDivElement>("#results-container");
   let dragCounter = 0;
 
-  qrInput.addEventListener("change", (event: Event) => {
+  qrInputElement.addEventListener("change", (event: Event) => {
     processFiles((event.target as HTMLInputElement).files);
-  });
-
-  subscribe((state) => {
-    if (state.otps.length === 0) {
-      clearLogs();
-      qrInput.value = "";
-    }
   });
 
   function preventDefaults(e: Event): void {

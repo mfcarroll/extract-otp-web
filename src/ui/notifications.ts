@@ -1,4 +1,5 @@
 import { $ } from "./dom";
+import { setState } from "../state/store";
 
 function escapeHtml(unsafe: string): string {
   return unsafe
@@ -33,6 +34,7 @@ export function addUploadLog(
   )}</span><span class="log-filler"></span><span class="log-message">${message}</span>`;
 
   logList.appendChild(logItem);
+  setState((s) => ({ ...s, logCount: (s.logCount || 0) + 1 }));
 }
 
 /**

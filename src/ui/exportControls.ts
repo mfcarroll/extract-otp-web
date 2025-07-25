@@ -3,13 +3,15 @@ import { downloadAsCsv } from "../services/csvExporter";
 import { downloadAsJson } from "../services/jsonExporter";
 import { clearLogs } from "./notifications";
 import { setState, subscribe } from "../state/store";
+import { resetFileInput } from "./fileInput";
 
 /**
  * Clears all logs and resets the OTP state.
  */
 function handleClearAll(): void {
   clearLogs();
-  setState(() => ({ otps: [] }));
+  setState(() => ({ otps: [], logCount: 0 }));
+  resetFileInput();
 }
 
 /**
@@ -28,6 +30,15 @@ export function initExportControls(): void {
 
   // Subscribe to state changes to control visibility
   subscribe((state) => {
-    exportContainer.style.display = state.otps.length > 0 ? "block" : "none";
+    const hasOtps = state.otps.length > 0;
+    const hasLogs = (state.logCount || 0) > 0;
+
+    // Show the main container if there's anything to show/clear
+    exportContainer.style.display = hasOtps || hasLogs ? "block" : "none";
+
+    // Show download buttons only if there are OTPs
+    const showDownload = hasOtps ? "inline-block" : "none";
+    csvButton.style.display = showDownload;
+    jsonButton.style.display = showDownload;
   });
 }
