@@ -341,6 +341,22 @@ function handleKeydown(event: KeyboardEvent) {
   const target = event.target as HTMLElement;
   const key = event.key;
 
+  // --- Handle initial keyboard navigation entry ---
+  // This listener should only act when no element has focus, or the body has focus.
+  // Once an element has focus, this listener will ignore subsequent key presses.
+  if (target === document.body) {
+    // On Down or Right arrow, focus the first interactive element.
+    if (key === "ArrowDown" || key === "ArrowRight") {
+      event.preventDefault();
+      // The currently active tab is a good initial target.
+      const activeTab = $<HTMLButtonElement>("#info-tabs .tab-button.active");
+      activeTab?.focus();
+    }
+    // After the initial interaction, subsequent keydowns on the body are ignored
+    // until an element is focused, at which point this block is skipped.
+    return;
+  }
+
   // --- Check for specific, non-directional key action rules first ---
   // This allows components to define custom behavior for keys like 'Escape'.
   const elementActionRules = keyActionRules.get(target);
