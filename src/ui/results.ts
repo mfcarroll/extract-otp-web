@@ -66,14 +66,36 @@ function createOtpCard(
   cardElement.id = `otp-card-${index}`;
 
   // --- ARIA: Set tabindex for roving focus ---
-  // The first navigable element in the first card (index === 0) should be
-  // in the tab order. All other navigable items have tabindex="-1" by default
-  // from the template, which is correct for the roving tabindex pattern.
-  if (index === 0) {
-    const firstNavigable = cardElement.querySelector<HTMLElement>(".navigable");
-    // The template sets tabindex="-1", so we override it for the first element.
-    firstNavigable?.setAttribute("tabindex", "0");
-  }
+  // The first navigable element in EACH card should be a tab stop. This
+  // allows users to tab between cards as if they are distinct sections.
+  // All other navigable items have tabindex="-1" by default from the
+  // template, which is correct for the roving tabindex pattern within a card.
+  const firstNavigable = cardElement.querySelector<HTMLElement>(".navigable");
+  // The template sets tabindex="-1", so we override it for the first element of each card.
+  firstNavigable?.setAttribute("tabindex", "0");
+
+  // --- ARIA: Reset roving tabindex when focus leaves the card ---
+  cardElement.addEventListener("focusout", (event) => {
+    // `relatedTarget` is the element that is receiving focus.
+    const newFocusTarget = event.relatedTarget as HTMLElement | null;
+
+    // If the new focus target is null or is outside of the current card,
+    // then we have tabbed out of the card.
+    if (!newFocusTarget || !cardElement.contains(newFocusTarget)) {
+      const navigables = Array.from(
+        cardElement.querySelectorAll<HTMLElement>(".navigable")
+      );
+
+      // Reset all navigable elements in this card to tabindex="-1".
+      navigables.forEach((el) => el.setAttribute("tabindex", "-1"));
+
+      // Set the first one to be the designated tab stop for the next time
+      // the user tabs into this card.
+      if (navigables.length > 0) {
+        navigables[0].setAttribute("tabindex", "0");
+      }
+    }
+  });
 
   // --- ARIA: Label the entire row with its title for screen reader context ---
   const titleElement =

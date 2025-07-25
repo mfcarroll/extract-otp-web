@@ -163,7 +163,14 @@ function setFocus(
     // If the current element is in a roving container, and the next element
     // is also in that same container, then we update the tabindex.
     if (rovingContainer && rovingContainer.contains(nextEl)) {
-      currentEl.tabIndex = -1;
+      const currentSection = getSection(currentEl);
+      const nextSection = getSection(nextEl);
+
+      // Only rove tabindex (set old element to -1) if the navigation
+      // is happening within the same section.
+      if (currentSection && currentSection === nextSection) {
+        currentEl.tabIndex = -1;
+      }
     }
   }
   nextEl.tabIndex = 0;
