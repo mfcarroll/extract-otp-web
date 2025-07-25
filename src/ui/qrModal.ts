@@ -14,6 +14,39 @@ function handleModalKeydown(event: KeyboardEvent): void {
   if (event.key === "Escape") {
     event.stopPropagation(); // Prevent the global handler from also firing
     hideQrModal();
+    return;
+  }
+
+  // Trap focus within the modal
+  if (event.key === "Tab") {
+    const modal = $<HTMLDivElement>("#qr-modal");
+    // Find all focusable elements within the modal
+    const focusableElements = Array.from(
+      modal.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter(
+      (el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden")
+    );
+
+    if (focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey) {
+      // If shift + tab is pressed on the first element, move focus to the last
+      if (document.activeElement === firstElement) {
+        lastElement.focus();
+        event.preventDefault();
+      }
+    } else {
+      // If tab is pressed on the last element, move focus to the first
+      if (document.activeElement === lastElement) {
+        firstElement.focus();
+        event.preventDefault();
+      }
+    }
   }
 }
 

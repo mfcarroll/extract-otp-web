@@ -1,17 +1,18 @@
 :root {
-  --primary-color: #4a90e2;
-  --primary-color-dark: #357abd;
+  --primary-color: #005a9e; /* More vibrant blue for accessibility */
+  --primary-color-dark: #004c85; /* Hover state for vibrant blue */
+  --link-color: #2570b3;
   --background-color: #f4f7f6;
   --text-color: #2c3e50;
   --text-color-secondary: #555;
   --text-color-muted: #888;
   --card-background: #ffffff;
   --border-color: #e0e0e0;
-  --error-color: #d9534f;
-  --error-color-rgb: 217, 83, 79;
-  --error-color-dark: #c9302c;
-  --success-color: #5cb85c;
-  --success-color-dark: #4cae4c;
+  --error-color: #c62828; /* More vibrant red for accessibility */
+  --error-color-rgb: 198, 40, 40; /* Corresponds to #c62828 */
+  --error-color-dark: #b71c1c; /* Hover state for vibrant red */
+  --success-color: #2e7d32; /* More vibrant green for accessibility */
+  --success-color-dark: #1b5e20; /* Hover state for vibrant green */
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
 
@@ -25,22 +26,34 @@
   --drag-overlay-background: rgba(44, 62, 80, 0.5);
   --shadow-elevation-low: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-elevation-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --focus-color: #3b82f6; /* A distinct blue, accessible on light and dark backgrounds */
+  --focus-color: #3b82f6;
+  --focus-color-rgb: 59, 130, 246;
 }
 
 /* Dark theme overrides */
 html.dark-mode {
-  --primary-color: #4a90e2;
-  --primary-color-dark: #5aa1f2;
+  --primary-color: #63b3ed; /* For headings */
+  --primary-color-dark: #90cdf4; /* For link hover */
+  --link-color: #63b3ed;
+
   --background-color: #1a202c;
   --text-color: #e2e8f0;
   --text-color-secondary: #e2e8f0;
   --text-color-muted: #777;
   --card-background: #2d3748;
   --border-color: #4a5568;
-  --error-color: #e57373;
-  --error-color-rgb: 229, 115, 115;
-  --success-color: #81c784;
+
+  /* Button colors for dark mode */
+  --btn-primary-background-color: #2a69ac;
+  --btn-primary-background-color-hover: #3b82f6;
+  --btn-success-background-color: #276749;
+  --btn-success-background-color-hover: #2f855a;
+  --btn-danger-background-color: #b91c1c;
+  --btn-danger-background-color-hover: #c53030;
+
+  --error-color: #c53030;
+  --error-color-rgb: 197, 48, 48;
+  --success-color: #2f855a;
 
   --subtle-text-color: #a0aec0;
   --active-background-color: #2c3a50;
@@ -75,12 +88,11 @@ body {
 }
 
 a {
-  color: var(--primary-color);
-  text-decoration: none;
+  color: var(--link-color);
+  text-decoration: underline;
   transition: color 0.2s ease;
 }
 
 a:hover {
   color: var(--primary-color-dark);
-  text-decoration: underline;
 }

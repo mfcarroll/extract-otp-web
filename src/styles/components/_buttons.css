@@ -46,3 +46,25 @@
   gap: 1rem;
   justify-content: center;
 }
+
+/* Dark mode overrides */
+html.dark-mode .btn-primary {
+  background-color: var(--btn-primary-background-color);
+}
+html.dark-mode .btn-primary:hover {
+  background-color: var(--btn-primary-background-color-hover);
+}
+
+html.dark-mode .btn-success {
+  background-color: var(--btn-success-background-color);
+}
+html.dark-mode .btn-success:hover {
+  background-color: var(--btn-success-background-color-hover);
+}
+
+html.dark-mode .btn-danger {
+  background-color: var(--btn-danger-background-color);
+}
+html.dark-mode .btn-danger:hover {
+  background-color: var(--btn-danger-background-color-hover);
+}

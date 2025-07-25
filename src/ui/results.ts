@@ -65,6 +65,16 @@ function createOtpCard(
   const cardElement = cardFragment.querySelector<HTMLDivElement>(".otp-card")!;
   cardElement.id = `otp-card-${index}`;
 
+  // --- ARIA: Set tabindex for roving focus ---
+  // The first navigable element in the first card (index === 0) should be
+  // in the tab order. All other navigable items have tabindex="-1" by default
+  // from the template, which is correct for the roving tabindex pattern.
+  if (index === 0) {
+    const firstNavigable = cardElement.querySelector<HTMLElement>(".navigable");
+    // The template sets tabindex="-1", so we override it for the first element.
+    firstNavigable?.setAttribute("tabindex", "0");
+  }
+
   // --- ARIA: Label the entire row with its title for screen reader context ---
   const titleElement =
     cardElement.querySelector<HTMLHeadingElement>(".otp-title")!;

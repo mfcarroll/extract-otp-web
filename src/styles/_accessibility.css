@@ -16,3 +16,13 @@
   outline-offset: 2px;
   border-radius: 3px; /* Optional: for slightly rounded corners on the outline */
 }
+
+/* Ensure all links have a clear focus state, not just .navigable items */
+a:focus {
+  outline: none; /* Remove default outline only when we provide a better one */
+}
+a:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
