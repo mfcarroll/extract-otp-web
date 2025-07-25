@@ -152,7 +152,19 @@ function setFocus(
   }
 
   if (currentEl) {
-    currentEl.tabIndex = -1;
+    // This is the logic for "roving tabindex". It should only apply when
+    // moving between items *within* the same composite widget (like a
+    // tablist or grid). For standalone controls, we just move focus
+    // without altering their tabindex, preserving the natural tab order.
+    const rovingContainer = currentEl.closest(
+      '[role="tablist"], [role="grid"], #tab-faq'
+    );
+
+    // If the current element is in a roving container, and the next element
+    // is also in that same container, then we update the tabindex.
+    if (rovingContainer && rovingContainer.contains(nextEl)) {
+      currentEl.tabIndex = -1;
+    }
   }
   nextEl.tabIndex = 0;
   nextEl.focus();

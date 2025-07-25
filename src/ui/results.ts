@@ -65,21 +65,38 @@ function createOtpCard(
   const cardElement = cardFragment.querySelector<HTMLDivElement>(".otp-card")!;
   cardElement.id = `otp-card-${index}`;
 
+  // --- ARIA: Label the entire row with its title for screen reader context ---
+  const titleElement =
+    cardElement.querySelector<HTMLHeadingElement>(".otp-title")!;
+  const titleId = `otp-title-${index}`;
+  titleElement.id = titleId;
+  cardElement.setAttribute("aria-labelledby", titleId);
+
   // Populate the details from the template
-  cardElement.querySelector<HTMLHeadingElement>(".otp-title")!.textContent = `${
-    index + 1
-  }. ${titleText}`;
+  titleElement.textContent = `${index + 1}. ${titleText}`;
   populateDetail(cardElement, "name", otp.name);
   populateDetail(cardElement, "issuer", otp.issuer);
   populateDetail(cardElement, "type", typeInfo.description);
 
+  // --- ARIA: Explicitly label the input fields for screen readers ---
+  const secretLabel =
+    cardElement.querySelector<HTMLSpanElement>(".secret-row .label")!;
+  const secretLabelId = `secret-label-${index}`;
+  secretLabel.id = secretLabelId;
   const secretInput =
     cardElement.querySelector<HTMLInputElement>(".secret-input")!;
   secretInput.value = secretText;
+  secretInput.setAttribute("aria-labelledby", secretLabelId);
 
+  const urlLabelElement = cardElement.querySelector<HTMLSpanElement>(
+    ".otp-url-row .label"
+  )!;
+  const urlLabelId = `url-label-${index}`;
+  urlLabelElement.id = urlLabelId;
   const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
   urlInput.value = decodeURIComponent(otpAuthUrl);
   urlInput.nextElementSibling!.setAttribute("data-copy-text", otpAuthUrl);
+  urlInput.setAttribute("aria-labelledby", urlLabelId);
 
   const secretCopy = cardElement.querySelector<HTMLButtonElement>(
     ".secret-container .copy-button"

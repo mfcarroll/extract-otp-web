@@ -22,7 +22,7 @@
 
   <body>
     <div class="page-container">
-      <div id="app">
+      <main id="app">
         <h1>Google Authenticator OTP Secret Extractor</h1>
 
         <div id="info-tabs">
@@ -229,6 +229,7 @@
                       href="https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="1Password community discussion about importing from Google Authenticator"
                     >
                       others</a
                     >, have
@@ -236,6 +237,7 @@
                       href="https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Reddit discussion about adding existing 2FA to 1Password"
                       >asked</a
                     >. One reason given is a concern that Google's export format
                     might change. However, this format has been stable for years,
@@ -408,7 +410,7 @@
                       <img
                         class="logo"
                         src="/Stand_Logo_Block-RGB_Red.svg"
-                        alt="Stand.earth logo"
+                        alt="Stand.earth"
                       />
                       <p class="tagline">For the people and places you love</p>
                     </div></a
@@ -442,7 +444,7 @@
             for="qr-input"
             class="file-input-label btn btn-primary navigable"
             role="button"
-            tabindex="-1"
+            tabindex="0"
           >
             <i class="fa fa-upload"></i> Select QR Code Image(s)
           </label>
@@ -535,19 +537,17 @@
           <button
             id="download-csv-button"
             class="btn btn-success navigable"
-            tabindex="-1"
           >
             <i class="fa fa-download"></i> Save as CSV
           </button>
           <button
             id="clear-all-button"
             class="btn btn-danger navigable"
-            tabindex="-1"
           >
             <i class="fa fa-trash"></i> Clear All
           </button>
         </div>
-      </div>
+      </main>
 
       <!-- 6. Footer Section -->
       <footer class="navigable-section">
@@ -559,7 +559,6 @@
             href="https://www.linkedin.com/in/matthewfcarroll/"
             target="_blank"
             rel="noopener noreferrer"
-            tabindex="-1"
             >Matthew Carroll</a
           >
           <span class="footer-separator">|</span>
@@ -569,20 +568,25 @@
             href="https://github.com/mfcarroll/extract-otp-web"
             target="_blank"
             rel="noopener noreferrer"
-            tabindex="-1"
             >Source Code</a
           >
           <span class="footer-separator">|</span>
           <div
             id="theme-switcher-wrapper"
             class="theme-switcher-wrapper navigable"
-            tabindex="-1"
+            role="button"
+            tabindex="0"
+            aria-haspopup="true"
+            aria-label="Open theme switcher"
+            aria-expanded="false"
           >
-            <div class="theme-switcher">
+            <div class="theme-switcher" role="menu">
               <button
                 class="navigable"
                 data-theme="system"
                 aria-label="Switch to system theme"
+                role="menuitemradio"
+                aria-checked="false"
               >
                 <i class="fa fa-desktop"></i>
               </button>
@@ -590,6 +594,8 @@
                 class="navigable"
                 data-theme="light"
                 aria-label="Switch to light theme"
+                role="menuitemradio"
+                aria-checked="false"
               >
                 <i class="fa fa-sun"></i>
               </button>
@@ -597,6 +603,8 @@
                 class="navigable"
                 data-theme="dark"
                 aria-label="Switch to dark theme"
+                role="menuitemradio"
+                aria-checked="false"
               >
                 <i class="fa fa-moon"></i>
               </button>
@@ -606,7 +614,7 @@
       </footer>
     </div>
     <div id="qr-modal" class="modal-overlay" role="dialog" aria-modal="true" style="display: none">
-      <button class="modal-close navigable" aria-label="Close" tabindex="-1">
+      <button class="modal-close navigable" aria-label="Close">
         &#x2715;
       </button>
       <div id="modal-content"></div>

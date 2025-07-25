@@ -11,8 +11,6 @@ export function initThemeSwitcher(): void {
     ".theme-switcher-wrapper"
   );
   if (!themeSwitcherWrapper) return;
-  themeSwitcherWrapper.setAttribute("aria-haspopup", "true");
-  themeSwitcherWrapper.setAttribute("aria-label", "Open theme switcher");
 
   const themeSwitcher =
     themeSwitcherWrapper.querySelector<HTMLDivElement>(".theme-switcher");
@@ -28,7 +26,10 @@ export function initThemeSwitcher(): void {
   const applyTheme = (theme: string): void => {
     const html = document.documentElement;
     html.classList.remove("light-mode", "dark-mode");
-    buttons.forEach((button) => button.classList.remove("active"));
+    buttons.forEach((button) => {
+      button.classList.remove("active");
+      button.setAttribute("aria-checked", "false");
+    });
 
     let effectiveTheme = theme;
     if (theme === "system") {
@@ -45,6 +46,7 @@ export function initThemeSwitcher(): void {
       `button[data-theme="${theme}"]`
     );
     buttonToActivate?.classList.add("active");
+    buttonToActivate?.setAttribute("aria-checked", "true");
 
     // Update the global state. This will trigger subscribers (like results) to re-render.
     setState(() => ({ theme: theme as "light" | "dark" | "system" }));
@@ -102,11 +104,6 @@ export function initThemeSwitcher(): void {
 
   themeSwitcherWrapper.addEventListener("mouseenter", openSwitcher);
   themeSwitcherWrapper.addEventListener("mouseleave", closeSwitcher);
-  themeSwitcherWrapper.addEventListener("focusout", (e: FocusEvent) => {
-    if (!themeSwitcherWrapper.contains(e.relatedTarget as Node)) {
-      closeSwitcher();
-    }
-  });
 
   themeSwitcherWrapper.addEventListener("click", () => {
     // This click handler should only open the switcher if it's closed.
@@ -133,6 +130,15 @@ export function initThemeSwitcher(): void {
 
   // --- Declarative Keyboard Navigation ---
 
+  // When the switcher is open, if the user tabs away, it should close.
+  themeSwitcher.addEventListener("keydown", (event: KeyboardEvent) => {
+    if (event.key === "Tab") {
+      // By simply closing the switcher, we allow the default tab behavior
+      // to proceed, which will correctly move focus to the next element.
+      closeSwitcher();
+    }
+  });
+
   // Rules for when the wrapper is focused (and closed)
   const openAndFocusActive = () => {
     openSwitcher();
@@ -158,6 +164,8 @@ export function initThemeSwitcher(): void {
     Navigation.registerKeyAction(button, "arrowup", closeAndFocusWrapper);
     Navigation.registerKeyAction(button, "arrowdown", closeAndFocusWrapper);
     Navigation.registerKeyAction(button, "escape", closeAndFocusWrapper);
+    Navigation.registerKeyAction(button, "enter", closeAndFocusWrapper);
+    Navigation.registerKeyAction(button, " ", closeAndFocusWrapper);
 
     Navigation.registerKeyAction(button, "arrowleft", () => {
       const prevIndex = (index - 1 + allButtons.length) % allButtons.length;
@@ -183,6 +191,5 @@ export function initThemeSwitcher(): void {
 
   const savedTheme = localStorage.getItem("theme") || "system";
   applyTheme(savedTheme);
-  themeSwitcherWrapper.setAttribute("aria-expanded", "false");
   closeSwitcher();
 }
