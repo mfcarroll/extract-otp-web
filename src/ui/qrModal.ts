@@ -65,6 +65,7 @@ function hideQrModal(): void {
     }
     elementThatOpenedModal = null;
   }
+  document.body.classList.remove("modal-open");
 }
 
 export function showQrModal(
@@ -106,6 +107,7 @@ export function showQrModal(
   modal.setAttribute("aria-labelledby", modalTitleId);
   modal.addEventListener("keydown", handleModalKeydown);
   modalCloseButton.focus();
+  document.body.classList.add("modal-open");
 }
 
 export function initQrModal(): void {

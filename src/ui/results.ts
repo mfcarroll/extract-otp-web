@@ -1,12 +1,11 @@
 import QRCode from "qrcode";
-import { encode } from "thirty-two";
-import { MigrationOtpParameter } from "../types";
+import { MigrationOtpParameter, OtpData } from "../types";
 import { $ } from "./dom";
-import { getOtpTypeInfo, OtpType } from "./otp";
 import { handleCopyAction } from "./clipboard";
 import { Navigation } from "./navigation";
 import { showQrModal } from "./qrModal";
 import { subscribe, getState } from "../state/store";
+import { convertToOtpData } from "../services/otpFormatter";
 
 function getQrCodeColors() {
   const computedStyles = getComputedStyle(document.documentElement);
@@ -41,25 +40,9 @@ function populateDetail(
 /**
  * Creates an HTML element for a single OTP entry by cloning a template.
  */
-function createOtpCard(
-  otp: MigrationOtpParameter,
-  index: number
-): HTMLDivElement {
-  const secretText = encode(otp.secret);
-  const typeInfo = getOtpTypeInfo(otp.type);
-
-  // Construct a display-friendly title and a URL-friendly label.
-  const titleText = otp.issuer
-    ? `${otp.issuer}${otp.name ? `: ${otp.name}` : ""}`
-    : otp.name || "Untitled Account";
-  const urlLabel = otp.issuer
-    ? `${otp.issuer}:${otp.name || ""}`
-    : otp.name || "Untitled Account";
-  const encodedLabel = encodeURIComponent(urlLabel);
-
-  let otpAuthUrl = `otpauth://${typeInfo.key}/${encodedLabel}?secret=${secretText}`;
-  if (otp.issuer) otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
-  if (otp.type === OtpType.HOTP) otpAuthUrl += `&counter=${otp.counter || 0}`;
+function createOtpCard(otp: OtpData, index: number): HTMLDivElement {
+  // The title is for display purposes in the card header.
+  const titleText = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
 
   const cardFragment = cardTemplate.content.cloneNode(true) as DocumentFragment;
   const cardElement = cardFragment.querySelector<HTMLDivElement>(".otp-card")!;
@@ -108,7 +91,7 @@ function createOtpCard(
   titleElement.textContent = `${index + 1}. ${titleText}`;
   populateDetail(cardElement, "name", otp.name);
   populateDetail(cardElement, "issuer", otp.issuer);
-  populateDetail(cardElement, "type", typeInfo.description);
+  populateDetail(cardElement, "type", otp.typeDescription);
 
   // --- ARIA: Explicitly label the input fields for screen readers ---
   const secretLabel =
@@ -117,7 +100,7 @@ function createOtpCard(
   secretLabel.id = secretLabelId;
   const secretInput =
     cardElement.querySelector<HTMLInputElement>(".secret-input")!;
-  secretInput.value = secretText;
+  secretInput.value = otp.secret;
   secretInput.setAttribute("aria-labelledby", secretLabelId);
 
   const urlLabelElement = cardElement.querySelector<HTMLSpanElement>(
@@ -126,8 +109,8 @@ function createOtpCard(
   const urlLabelId = `url-label-${index}`;
   urlLabelElement.id = urlLabelId;
   const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
-  urlInput.value = decodeURIComponent(otpAuthUrl);
-  urlInput.nextElementSibling!.setAttribute("data-copy-text", otpAuthUrl);
+  urlInput.value = decodeURIComponent(otp.url);
+  urlInput.nextElementSibling!.setAttribute("data-copy-text", otp.url);
   urlInput.setAttribute("aria-labelledby", urlLabelId);
 
   const secretCopy = cardElement.querySelector<HTMLButtonElement>(
@@ -139,7 +122,7 @@ function createOtpCard(
 
   // Generate the QR code
   const qrCodeCanvas = cardElement.querySelector<HTMLCanvasElement>("canvas")!;
-  QRCode.toCanvas(qrCodeCanvas, otpAuthUrl, {
+  QRCode.toCanvas(qrCodeCanvas, otp.url, {
     width: 220,
     margin: 1,
     color: getQrCodeColors(),
@@ -153,7 +136,7 @@ function createOtpCard(
     // A `detail` of 0 indicates a keyboard-initiated click. This allows us
     // to conditionally restore focus only for keyboard users, which is better UX.
     const fromKeyboard = event.detail === 0;
-    showQrModal(otpAuthUrl, modalTitle, fromKeyboard);
+    showQrModal(otp.url, modalTitle, fromKeyboard);
   });
 
   const otpDetails = cardElement.querySelector<HTMLDivElement>(".otp-details")!;
@@ -182,7 +165,7 @@ function createOtpCard(
   return cardElement;
 }
 
-function render(otps: MigrationOtpParameter[]): void {
+function render(rawOtps: MigrationOtpParameter[]): void {
   const resultsContainer = $<HTMLDivElement>("#results-container");
 
   // Any time the results are re-rendered, the DOM has changed significantly.
@@ -191,14 +174,15 @@ function render(otps: MigrationOtpParameter[]): void {
   Navigation.resetLastMove();
 
   resultsContainer.innerHTML = "";
-  if (!otps || otps.length === 0) {
+  if (!rawOtps || rawOtps.length === 0) {
     resultsContainer.style.display = "none"; // Hide container if no results
     return;
   }
   resultsContainer.style.display = "block"; // Show container if there are results
 
+  const formattedOtps = rawOtps.map(convertToOtpData);
   const fragment = document.createDocumentFragment();
-  otps.forEach((otp, index) => {
+  formattedOtps.forEach((otp, index) => {
     const cardElement = createOtpCard(otp, index);
     fragment.appendChild(cardElement);
   });

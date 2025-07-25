@@ -92,6 +92,6 @@ export function processImage(
 
 /** Create a unique key for an OTP parameter to check for duplicates. */
 export function getOtpUniqueKey(otp: MigrationOtpParameter): string {
-  const secretText = encode(otp.secret);
+  const secretText = encode(otp.secret).toString();
   return `${otp.issuer}:${otp.name}:${otp.type}:${secretText}`;
 }

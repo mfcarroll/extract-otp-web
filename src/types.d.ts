@@ -3,6 +3,7 @@ export interface OtpData {
   secret: string;
   issuer: string;
   type: string;
+  typeDescription: string;
   counter: number | "";
   url: string;
 }

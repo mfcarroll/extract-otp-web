@@ -1,5 +1,6 @@
 import { getState } from "../state/store";
 import { OtpData } from "../types";
+import { announceToScreenReader } from "../ui/notifications";
 import { convertToOtpData } from "./otpFormatter";
 
 const escapeCsvField = (field: any): string => {
@@ -13,7 +14,7 @@ const escapeCsvField = (field: any): string => {
 export function downloadAsCsv(): void {
   const { otps } = getState();
   if (otps.length === 0) {
-    alert("No data to export.");
+    announceToScreenReader("No data to export.");
     return;
   }
 
@@ -22,6 +23,7 @@ export function downloadAsCsv(): void {
     "secret",
     "issuer",
     "type",
+    "typeDescription",
     "counter",
     "url",
   ];

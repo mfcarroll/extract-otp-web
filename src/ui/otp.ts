@@ -18,11 +18,11 @@ export function getOtpTypeInfo(type: number): OtpTypeInfo {
   if (type === OtpType.TOTP) {
     return {
       key: "totp",
-      description: "Time-based one-time password",
+      description: "Time-based (TOTP)",
     };
   }
   return {
     key: "hotp",
-    description: "HMAC-based one-time password",
+    description: "Counter-based (HOTP)",
   };
 }

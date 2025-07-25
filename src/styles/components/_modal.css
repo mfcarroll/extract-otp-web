@@ -1,4 +1,8 @@
 /* --- QR Code Modal --- */
+body.modal-open {
+  overflow: hidden;
+}
+
 #qr-modal {
   position: fixed;
   top: 0;

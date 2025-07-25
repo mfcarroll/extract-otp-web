@@ -1,5 +1,6 @@
 import { encode } from "thirty-two";
 import { OtpData, MigrationOtpParameter } from "../types";
+import { getOtpTypeInfo } from "../ui/otp";
 
 /**
  * Converts a raw MigrationOtpParameter from the QR code payload into a
@@ -8,9 +9,9 @@ import { OtpData, MigrationOtpParameter } from "../types";
  * @returns A formatted OtpData object.
  */
 export function convertToOtpData(otp: MigrationOtpParameter): OtpData {
-  const secretText = encode(otp.secret);
-  const accountName = otp.name || "N/A";
-  const typeText = otp.type === 2 ? "totp" : "hotp";
+  const secretText = encode(otp.secret).toString();
+  const accountName = otp.name || "N/A"; // Use a fallback for display
+  const typeInfo = getOtpTypeInfo(otp.type);
 
   let label = accountName;
   if (otp.issuer) {
@@ -18,20 +19,26 @@ export function convertToOtpData(otp: MigrationOtpParameter): OtpData {
   }
   const encodedLabel = encodeURIComponent(label);
 
-  let otpAuthUrl = `otpauth://${typeText}/${encodedLabel}?secret=${secretText}`;
+  const params = new URLSearchParams({
+    secret: secretText,
+  });
   if (otp.issuer) {
-    otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
+    params.set("issuer", otp.issuer);
   }
-  if (typeText === "hotp") {
-    otpAuthUrl += `&counter=${otp.counter || 0}`;
+  if (typeInfo.key === "hotp") {
+    params.set("counter", (otp.counter || 0).toString());
   }
+  const otpAuthUrl = `otpauth://${
+    typeInfo.key
+  }/${encodedLabel}?${params.toString()}`;
 
   return {
     name: accountName,
     secret: secretText,
     issuer: otp.issuer || "",
-    type: typeText,
-    counter: typeText === "hotp" ? otp.counter || 0 : "",
-    url: decodeURIComponent(otpAuthUrl),
+    type: typeInfo.key,
+    typeDescription: typeInfo.description,
+    counter: typeInfo.key === "hotp" ? otp.counter || 0 : "",
+    url: otpAuthUrl,
   };
 }
