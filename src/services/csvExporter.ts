@@ -1,35 +1,6 @@
-import { encode } from "thirty-two";
 import { getState } from "../state/store";
-import { OtpData, MigrationOtpParameter } from "../types";
-
-function convertToOtpData(otp: MigrationOtpParameter): OtpData {
-  const secretText = encode(otp.secret);
-  const accountName = otp.name || "N/A";
-  const typeText = otp.type === 2 ? "totp" : "hotp";
-
-  let label = accountName;
-  if (otp.issuer) {
-    label = `${otp.issuer}:${accountName}`;
-  }
-  const encodedLabel = encodeURIComponent(label);
-
-  let otpAuthUrl = `otpauth://${typeText}/${encodedLabel}?secret=${secretText}`;
-  if (otp.issuer) {
-    otpAuthUrl += `&issuer=${encodeURIComponent(otp.issuer)}`;
-  }
-  if (typeText === "hotp") {
-    otpAuthUrl += `&counter=${otp.counter || 0}`;
-  }
-
-  return {
-    name: accountName,
-    secret: secretText,
-    issuer: otp.issuer || "",
-    type: typeText,
-    counter: typeText === "hotp" ? otp.counter || 0 : "",
-    url: decodeURIComponent(otpAuthUrl),
-  };
-}
+import { OtpData } from "../types";
+import { convertToOtpData } from "./otpFormatter";
 
 const escapeCsvField = (field: any): string => {
   const str = String(field ?? "");

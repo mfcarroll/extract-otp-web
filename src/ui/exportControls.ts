@@ -1,5 +1,6 @@
 import { $ } from "./dom";
 import { downloadAsCsv } from "../services/csvExporter";
+import { downloadAsJson } from "../services/jsonExporter";
 import { clearLogs } from "./notifications";
 import { setState, subscribe } from "../state/store";
 
@@ -17,10 +18,12 @@ function handleClearAll(): void {
  */
 export function initExportControls(): void {
   const exportContainer = $<HTMLDivElement>("#export-container");
-  const downloadButton = $<HTMLButtonElement>("#download-csv-button");
+  const csvButton = $<HTMLButtonElement>("#download-csv-button");
+  const jsonButton = $<HTMLButtonElement>("#download-json-button");
   const clearButton = $<HTMLButtonElement>("#clear-all-button");
 
-  downloadButton.addEventListener("click", downloadAsCsv);
+  csvButton.addEventListener("click", downloadAsCsv);
+  jsonButton.addEventListener("click", downloadAsJson);
   clearButton.addEventListener("click", handleClearAll);
 
   // Subscribe to state changes to control visibility

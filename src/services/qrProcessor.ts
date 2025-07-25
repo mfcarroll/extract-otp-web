@@ -67,8 +67,17 @@ export function processImage(
       const code = jsQR(imageData.data, imageData.width, imageData.height);
 
       if (code) {
-        const otpParameters = await getOtpParametersFromUrl(code.data);
-        resolve(otpParameters);
+        try {
+          const otpParameters = await getOtpParametersFromUrl(code.data);
+          resolve(otpParameters);
+        } catch (error) {
+          console.error("Error decoding QR code data:", error);
+          reject(
+            new Error(
+              "QR code is invalid or not a Google Authenticator export."
+            )
+          );
+        }
       } else {
         resolve(null);
       }
