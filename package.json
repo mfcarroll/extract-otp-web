@@ -7,17 +7,23 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
   },
   "devDependencies": {
+    "@types/pako": "^2.0.3",
     "@types/protobufjs": "^6.0.0",
     "@types/qrcode": "^1.5.5",
+    "jsdom": "^26.1.0",
     "typescript": "^5.8.3",
-    "vite": "^7.0.4"
+    "vite": "^7.0.4",
+    "vitest": "^3.2.4"
   },
   "dependencies": {
     "buffer": "^6.0.3",
     "jsqr": "^1.4.0",
+    "pako": "^2.1.0",
     "protobufjs": "^7.5.3",
     "qrcode": "^1.5.4",
     "thirty-two": "^1.0.2"

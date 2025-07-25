@@ -1,5 +1,6 @@
 import jsQR from "jsqr";
 import protobuf from "protobufjs";
+import pako from "pako";
 import { encode } from "thirty-two";
 import { MigrationOtpParameter } from "../types";
 
@@ -22,24 +23,59 @@ function base64ToUint8Array(base64: string): Uint8Array {
  * @param otpUrl The full otpauth-migration URL from the QR code.
  * @returns A promise that resolves to an array of OTP parameters.
  */
-async function getOtpParametersFromUrl(
+export async function getOtpParametersFromUrl(
   otpUrl: string
 ): Promise<MigrationOtpParameter[]> {
+  const trimmedUrl = otpUrl.trim();
+  const isLastPass = trimmedUrl.startsWith("lpaauth-migration://");
+  const isGoogleAuth = trimmedUrl.startsWith("otpauth-migration://");
+
+  if (!isLastPass && !isGoogleAuth) {
+    throw new Error(
+      "QR code is not a supported OTP export format (Google or LastPass)."
+    );
+  }
   const url = new URL(otpUrl);
   const dataBase64 = url.searchParams.get("data");
   if (!dataBase64) {
     throw new Error('Invalid OTP URL: Missing "data" parameter.');
   }
 
-  const data = base64ToUint8Array(dataBase64);
+  const decodedFromBase64 = base64ToUint8Array(dataBase64);
+
+  // LastPass data is GZIP compressed. We need to decompress it first.
+  const data = isLastPass ? pako.inflate(decodedFromBase64) : decodedFromBase64;
 
   const root = await protobufRoot;
   const MigrationPayload = root.lookupType("MigrationPayload");
 
-  const payload = MigrationPayload.decode(data) as unknown as {
-    otpParameters: MigrationOtpParameter[];
-  };
-  return payload.otpParameters;
+  try {
+    const payload = MigrationPayload.decode(data) as unknown as {
+      otpParameters: MigrationOtpParameter[];
+    };
+    return payload.otpParameters;
+  } catch (error) {
+    if (isLastPass) {
+      // For reverse-engineering, log the raw decompressed data as a hex string.
+      const toHexString = (bytes: Uint8Array) =>
+        bytes.reduce(
+          (str, byte) => str + byte.toString(16).padStart(2, "0"),
+          ""
+        );
+      console.error(
+        "Decompressed LastPass Hex Data for analysis:",
+        toHexString(data)
+      );
+      console.error("Original protobuf parsing error:", error);
+
+      // This error indicates the protobuf schema does not match.
+      throw new Error(
+        "Successfully decompressed LastPass data, but failed to parse it. The data structure is different from Google's and is not yet supported."
+      );
+    }
+    // Re-throw original error for other cases (e.g., corrupted Google QR)
+    throw error;
+  }
 }
 
 /**
@@ -67,16 +103,15 @@ export function processImage(
       const code = jsQR(imageData.data, imageData.width, imageData.height);
 
       if (code) {
+        console.log("Raw QR Code Data:\n`" + code.data + "`");
         try {
           const otpParameters = await getOtpParametersFromUrl(code.data);
           resolve(otpParameters);
         } catch (error) {
-          console.error("Error decoding QR code data:", error);
-          reject(
-            new Error(
-              "QR code is invalid or not a Google Authenticator export."
-            )
-          );
+          // Re-throw the original error to preserve the specific message
+          // (e.g., for LastPass incompatibility) so it can be displayed
+          // in the UI log.
+          reject(error);
         }
       } else {
         resolve(null);

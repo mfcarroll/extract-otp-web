@@ -9,15 +9,13 @@ import { getOtpTypeInfo } from "../ui/otp";
  * @returns A formatted OtpData object.
  */
 export function convertToOtpData(otp: MigrationOtpParameter): OtpData {
-  const secretText = encode(otp.secret).toString();
+  // The original Python script removes Base32 padding, so we do the same
+  // to ensure compatibility and match the expected output.
+  const secretText = encode(otp.secret).toString().replace(/=/g, "");
   const accountName = otp.name || "N/A"; // Use a fallback for display
   const typeInfo = getOtpTypeInfo(otp.type);
-
-  let label = accountName;
-  if (otp.issuer) {
-    label = `${otp.issuer}:${accountName}`;
-  }
-  const encodedLabel = encodeURIComponent(label);
+  // The label for the otpauth URL is just the account name. The issuer is a separate parameter.
+  const encodedLabel = encodeURIComponent(accountName);
 
   const params = new URLSearchParams({
     secret: secretText,
@@ -25,8 +23,10 @@ export function convertToOtpData(otp: MigrationOtpParameter): OtpData {
   if (otp.issuer) {
     params.set("issuer", otp.issuer);
   }
+  // The protobuf library decodes int64 as a Long object. Convert it to a number.
+  const counterValue = Number(otp.counter || 0);
   if (typeInfo.key === "hotp") {
-    params.set("counter", (otp.counter || 0).toString());
+    params.set("counter", counterValue.toString());
   }
   const otpAuthUrl = `otpauth://${
     typeInfo.key
@@ -38,7 +38,7 @@ export function convertToOtpData(otp: MigrationOtpParameter): OtpData {
     issuer: otp.issuer || "",
     type: typeInfo.key,
     typeDescription: typeInfo.description,
-    counter: typeInfo.key === "hotp" ? otp.counter || 0 : "",
+    counter: typeInfo.key === "hotp" ? counterValue : "",
     url: otpAuthUrl,
   };
 }
