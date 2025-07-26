@@ -93,6 +93,14 @@ function createOtpCard(otp: OtpData, index: number): HTMLDivElement {
   populateDetail(cardElement, "issuer", otp.issuer);
   populateDetail(cardElement, "type", otp.typeDescription);
 
+  // Show and populate the counter field only for HOTP accounts.
+  const counterRow =
+    cardElement.querySelector<HTMLParagraphElement>(".counter-row");
+  if (counterRow && otp.type === "hotp") {
+    populateDetail(cardElement, "counter", String(otp.counter));
+    counterRow.style.display = "block";
+  }
+
   // --- ARIA: Explicitly label the input fields for screen readers ---
   const secretLabel =
     cardElement.querySelector<HTMLSpanElement>(".secret-row .label")!;
