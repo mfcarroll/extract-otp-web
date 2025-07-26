@@ -23,7 +23,7 @@
 .otp-card .detail-row {
   display: flex;
   align-items: baseline;
-  margin: 0.5rem 0;
+  margin: 0.2rem 0;
   word-wrap: break-word;
   position: relative; /* For z-index on focus-within */
 }
