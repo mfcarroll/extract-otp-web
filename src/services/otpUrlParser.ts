@@ -1,7 +1,91 @@
 import pako from "pako";
+import { decode as thirtyTwoDecode } from "thirty-two";
 import { MigrationOtpParameter } from "../types";
 import { base64ToUint8Array, decodeProtobufPayload } from "./protobufProcessor";
 import { processLastPassQrJson } from "./lastPassFormatter";
+
+const ALGORITHM_MAP: { [key: string]: number } = {
+  SHA1: 1,
+  SHA256: 2,
+  SHA512: 3,
+  MD5: 4,
+};
+
+const DIGITS_MAP: { [key: number]: number } = {
+  6: 1, // DIGIT_COUNT_SIX
+  8: 2, // DIGIT_COUNT_EIGHT
+};
+
+/**
+ * Decodes a standard otpauth:// URL into OTP parameters.
+ * This is used for single-account QR codes, sometimes exported by apps like LastPass.
+ * @param otpUrlString The full otpauth:// URL.
+ */
+async function decodeStandardOtpAuthUrl(
+  otpUrlString: string
+): Promise<MigrationOtpParameter[]> {
+  const url = new URL(otpUrlString);
+
+  const type = url.hostname.toLowerCase(); // 'totp' or 'hotp'
+  if (type !== "totp" && type !== "hotp") {
+    throw new Error(`Unsupported OTP type in URL: ${type}`);
+  }
+
+  const label = decodeURIComponent(url.pathname.substring(1));
+  const params = url.searchParams;
+
+  const secretB32 = params.get("secret");
+  if (!secretB32) {
+    throw new Error("Missing 'secret' parameter in otpauth URL.");
+  }
+  const secretBytes = new Uint8Array(thirtyTwoDecode(secretB32));
+
+  let issuer = params.get("issuer");
+  let name = label;
+
+  if (issuer) {
+    // If issuer is in params, it's the authority.
+    // The label might still contain the issuer. If so, remove it for a cleaner name.
+    if (name.startsWith(`${issuer}:`)) {
+      name = name.substring(issuer.length + 1).trim();
+    }
+  } else {
+    // If issuer is not in params, try to extract from label "Issuer:Name".
+    const parts = label.split(":");
+    if (parts.length > 1) {
+      issuer = parts[0];
+      name = parts.slice(1).join(":").trim();
+    }
+  }
+
+  const algorithmStr = (params.get("algorithm") || "SHA1").toUpperCase();
+  const algorithm = ALGORITHM_MAP[algorithmStr] || 0; // 0 for invalid/unspecified
+
+  const digitsStr = params.get("digits") || "6";
+  const digits = DIGITS_MAP[parseInt(digitsStr, 10)] || 0; // 0 for unspecified
+
+  const otp: MigrationOtpParameter = {
+    secret: secretBytes,
+    name: name,
+    issuer: issuer || "",
+    algorithm: algorithm,
+    digits: digits,
+    type: type === "totp" ? 2 : 1, // 2 for TOTP, 1 for HOTP
+    counter: 0, // Default counter
+  };
+
+  if (type === "hotp") {
+    const counterStr = params.get("counter");
+    if (!counterStr) {
+      throw new Error(
+        "Missing 'counter' parameter for hotp type in otpauth URL."
+      );
+    }
+    otp.counter = parseInt(counterStr, 10);
+  }
+
+  return [otp];
+}
 
 /**
  * Decodes a standard Google Authenticator payload.
@@ -68,10 +152,15 @@ export async function getOtpParametersFromUrl(
   const trimmedUrl = otpUrl.trim();
   const isLastPass = trimmedUrl.startsWith("lpaauth-migration://");
   const isGoogleAuth = trimmedUrl.startsWith("otpauth-migration://");
+  const isStandardOtp = trimmedUrl.startsWith("otpauth://");
+
+  if (isStandardOtp) {
+    return decodeStandardOtpAuthUrl(trimmedUrl);
+  }
 
   if (!isLastPass && !isGoogleAuth) {
     throw new Error(
-      "QR code is not a supported OTP export format (Google or LastPass)."
+      "QR code is not a supported OTP export format (Google, LastPass, or standard otpauth)."
     );
   }
 
