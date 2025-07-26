@@ -1,8 +1,12 @@
 import { MigrationOtpParameter } from "../types";
-import { processImage, getOtpUniqueKey } from "../services/qrProcessor";
+import {
+  processImage,
+  getOtpUniqueKey,
+  filterAndLogOtps,
+} from "../services/qrProcessor";
 import { processJson } from "../services/jsonProcessor";
-import { setState, getState, subscribe } from "../state/store";
-import { addUploadLog, displayError, clearLogs } from "./notifications";
+import { setState, getState } from "../state/store";
+import { addUploadLog, displayError } from "./notifications";
 import { $ } from "./dom";
 
 let processingTimeoutId: number | null = null;
@@ -68,9 +72,6 @@ async function processSingleFile(
   newOtps: MigrationOtpParameter[];
   hasDuplicatesOrErrors: boolean;
 }> {
-  const newOtpsFromFile: MigrationOtpParameter[] = [];
-  let hasDuplicatesOrErrors = false;
-
   try {
     let otpParameters: MigrationOtpParameter[] | null = null;
 
@@ -89,52 +90,29 @@ async function processSingleFile(
     }
 
     if (otpParameters && otpParameters.length > 0) {
-      let extractedInFile = 0;
-      let duplicatesInFile = 0;
-
-      for (const otp of otpParameters) {
-        const key = getOtpUniqueKey(otp);
-        if (existingAndBatchKeys.has(key)) {
-          duplicatesInFile++;
-        } else {
-          newOtpsFromFile.push(otp);
-          existingAndBatchKeys.add(key); // Mutate the set for the next file in the batch
-          extractedInFile++;
-        }
-      }
-
-      if (extractedInFile > 0) {
-        const plural = extractedInFile > 1 ? "s" : "";
-        addUploadLog(
-          file.name,
-          "success",
-          `${extractedInFile} secret${plural} extracted.`
-        );
-      }
-      if (duplicatesInFile > 0) {
-        hasDuplicatesOrErrors = true;
-        const plural = duplicatesInFile > 1 ? "s" : "";
-        addUploadLog(
-          file.name,
-          "warning",
-          `${duplicatesInFile} duplicate secret${plural} skipped.`
-        );
-      }
+      const { newOtps, duplicatesFound } = filterAndLogOtps(
+        otpParameters,
+        existingAndBatchKeys,
+        file.name
+      );
+      return { newOtps, hasDuplicatesOrErrors: duplicatesFound > 0 };
     } else if (otpParameters === null) {
+      // This case is specific to image processing where no QR code is found.
       addUploadLog(file.name, "warning", "No QR code found.");
+      return { newOtps: [], hasDuplicatesOrErrors: true };
     } else {
+      // This case handles empty but valid files (e.g., empty JSON array).
       addUploadLog(file.name, "info", "No OTP secrets found.");
+      return { newOtps: [], hasDuplicatesOrErrors: false };
     }
   } catch (error: any) {
-    hasDuplicatesOrErrors = true;
     const message =
       (error instanceof Error ? error.message : String(error)) ||
       "An unknown error occurred.";
     console.error(`Error processing file ${file.name}:`, error);
     addUploadLog(file.name, "error", message);
+    return { newOtps: [], hasDuplicatesOrErrors: true };
   }
-
-  return { newOtps: newOtpsFromFile, hasDuplicatesOrErrors };
 }
 
 async function processFiles(files: FileList | null): Promise<void> {

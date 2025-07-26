@@ -1,0 +1,65 @@
+/* --- Camera Feature UI --- */
+
+/*
+  Hide the camera button by default. It will only be shown if the inline
+  script in the <head> detects camera support and adds the .camera-supported
+  class to the <html> element. This prevents a "flicker" on page load.
+*/
+#take-photo-button {
+  display: none;
+}
+.camera-supported #take-photo-button {
+  display: inline-flex; /* Use inline-flex to match .btn styles */
+}
+
+.camera-container {
+  position: relative;
+  background-color: #000;
+  width: 90vw;
+  max-width: 640px;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--modal-shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#camera-video {
+  /* Ensure the video covers the container, even if it means cropping */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#camera-video.mirrored {
+  transform: scaleX(-1);
+}
+
+.camera-reticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  aspect-ratio: 1 / 1; /* Modern way to create a square */
+  max-width: 300px;
+  max-height: 300px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+.camera-scan-text {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  pointer-events: none; /* So it doesn't interfere with clicks on the overlay */
+  text-align: center;
+}

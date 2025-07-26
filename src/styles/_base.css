@@ -19,6 +19,7 @@
   --btn-text-color: #ffffff;
   --subtle-text-color: #777;
   --active-background-color: #e8f0fe;
+
   --input-background-color: #f7f7f7;
   --log-filler-color: #ccc;
   --faq-hover-background: #f9f9f9;
@@ -51,6 +52,9 @@ html.dark-mode {
   --btn-success-background-color-hover: #2f855a;
   --btn-danger-background-color: #b91c1c;
   --btn-danger-background-color-hover: #c53030;
+  --secondary-button-background: #5a6268;
+  --secondary-button-color: #ffffff;
+  --secondary-button-hover-background: #4e555b;
 
   --error-color: #c53030;
   --error-color-rgb: 197, 48, 48;

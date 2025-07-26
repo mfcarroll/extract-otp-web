@@ -17,6 +17,13 @@
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Readex+Pro&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Immediately check for camera support and add a class to the html element.
+      // This runs before the body is rendered, preventing any flicker.
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        document.documentElement.classList.add("camera-supported");
+      }
+    </script>
     <link rel="stylesheet" href="/src/style.css" />
   </head>
 
@@ -77,8 +84,10 @@
             >
               <p>
                 This tool extracts One-Time Password secrets from the Google
-                Authenticator app. There is no software to install, and no data
-                ever leaves your computer.
+                Authenticator or LastPass Authenticator apps. There is no
+                software to install, and no data ever leaves your computer.
+              </p>
+              <p>
                 <strong
                   >All of the processing of your QR codes and secrets happens
                   entirely locally, right here in your browser.</strong
@@ -95,11 +104,13 @@
             >
               <p>
                 This tool reads the QR code screenshots from Google
-                Authenticator's export feature and gives you back the original
-                secret for each account. You can then use these secrets to
-                import your accounts into any other authenticator app.
+                Authenticator or LastPass Authenticator's export feature and
+                gives you back the original secret for each account. You can
+                then use these secrets to import your accounts into any other
+                authenticator app.
               </p>
-              <h3>1. Export from Google Authenticator</h3>
+              <h3>1. Export from your One-Time Password App</h3>
+              <h4>Export from Google Authenticator</h4>
               <ul>
                 <li>Open the Google Authenticator app on your phone.</li>
                 <li>
@@ -109,6 +120,20 @@
                 <li>Select the accounts you wish to export.</li>
                 <li>Take a screenshot of each QR code that is displayed.</li>
               </ul>
+              <h4>Export from LastPass</h4>
+              <ul>
+                <li>Open the LastPass Authenticator on your phone.</li>
+                <li>
+                  Click on the cog and select "Transfer accounts" > "Export
+                  accounts to QR code".
+                </li>
+                <li>Take a screenshot of each QR code that is displayed.</li>
+              </ul>
+              <p>
+                (For lastpass, you can also choose "Export accounts to file" and
+                upload that instead. This tool supports both formats.)
+              </p>
+
               <h3>2. Extract Secrets</h3>
               <ul>
                 <li>
@@ -541,14 +566,25 @@
 
         <!-- 3. File Upload Section -->
         <div class="file-input-wrapper navigable-section">
-          <label
-            for="qr-input"
-            class="file-input-label btn btn-primary navigable"
-            role="button"
-            tabindex="0"
-          >
-            <i class="fa fa-upload"></i> Select QR Code Image(s)
-          </label>
+          <div class="file-input-buttons">
+            <label
+              for="qr-input"
+              class="file-input-label btn btn-primary navigable"
+              role="button"
+              tabindex="0"
+            >
+              <i class="fa fa-upload"></i> Select QR Code Image(s)
+            </label>
+            <label
+              id="take-photo-button"
+              class="btn btn-primary navigable"
+              role="button"
+              tabindex="0"
+            >
+              <i class="fa fa-camera"></i> Scan with Camera
+            </label>
+          </div>
+
           <div class="drop-text">or drag and drop files here</div>
           <div id="upload-log-container" style="display: none">
             <ul id="upload-log-list"></ul>
@@ -729,6 +765,23 @@
     >
       <button class="modal-close navigable" aria-label="Close">&#x2715;</button>
       <div id="modal-content"></div>
+    </div>
+    <div
+      id="camera-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      style="display: none"
+    >
+      <div class="camera-container">
+        <video id="camera-video" playsinline></video>
+        <div class="camera-reticle"></div>
+        <div class="camera-scan-text">Scan QR Code</div>
+        <canvas id="camera-canvas" style="display: none"></canvas>
+        <button id="camera-cancel" class="modal-close" aria-label="Close">
+          &#x2715;
+        </button>
+      </div>
     </div>
     <div id="drag-overlay"></div>
     <!-- Visually hidden live region for screen reader announcements -->

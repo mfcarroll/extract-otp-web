@@ -16,14 +16,24 @@ While other tools exist to solve this, they often require technical steps like r
 
 ## How to Use
 
-This tool reads the QR code screenshots from Google Authenticator's export feature and gives you back the original secret for each account. You can then use these secrets to import your accounts into any other authenticator app.
+This tool reads the QR code screenshots from Google Authenticator or LastPass Authenticator's export feature and gives you back the original secret for each account. You can then use these secrets to import your accounts into any other authenticator app.
 
-1.  **Export from Google Authenticator**:
+1.  **Export from your One-Time Password App**:
+
+    _Export from Google Authenticator_:
 
     - Open the Google Authenticator app on your phone.
     - Go to the menu and select "Transfer accounts" > "Export accounts".
     - Select the accounts you wish to export.
     - Take a screenshot of each QR code that is displayed.
+
+    _Export from LastPass_:
+
+    - Open the LastPass Authenticator on your phone.
+    - Click on the cog and select "Transfer accounts" > "Export accounts to QR code".
+    - Take a screenshot of each QR code that is displayed.
+
+    (For lastpass, you can also choose "Export accounts to file" and upload that instead. This tool supports both formats.)
 
 2.  **Extract Secrets**:
 
@@ -95,4 +105,4 @@ The user interface and QR code processing are powered by these excellent open-so
 
 [Gemini Code Assist](https://codeassist.google/) was used during the development of this tool. All AI-generated code has been carefully manually reviewed.
 
-The development of this tool was made possible in part through the support of [Stand.earth](https://stand.earth/). If you find this useful, please [consider making a donation](https://stand.earth/donate/) to support Stand's work.
+The development of this tool was made possible in part through the support of [Stand.earth](https://stand.earth/). If you find this usefulm , please [consider making a donation](https://stand.earth/donate/) to support Stand's work.

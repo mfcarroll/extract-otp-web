@@ -1,6 +1,7 @@
 import { Buffer } from "buffer"; // Keep for browser environment polyfill
 import { initResults } from "./ui/results";
 import { initFileInput } from "./ui/fileInput";
+import { initCamera } from "./ui/camera";
 import { initQrModal } from "./ui/qrModal";
 import { initThemeSwitcher } from "./ui/theme";
 import { initExportControls } from "./ui/exportControls";
@@ -43,6 +44,7 @@ function initializeApp(): void {
   initQrModal();
   initResults();
   initFileInput();
+  initCamera();
   initThemeSwitcher();
   initExportControls();
   initFooter();

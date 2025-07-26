@@ -11,6 +11,7 @@
   transition: background-color 0.2s ease-in-out;
   font-weight: 500;
   text-decoration: none; /* For label-as-button */
+  margin: 0 0.125rem;
 }
 
 .btn i {
