@@ -1,11 +1,16 @@
-syntax = "proto3";
+// Adapted from:
+// https://github.com/beemdevelopment/Aegis/blob/master/app/src/main/proto/google_auth.proto
+// https://github.com/qistoph/otp_export/blob/master/OtpMigration.proto
 
-// Copied from: https://github.com/beemdevelopment/Aegis/blob/master/app/src/main/proto/google_auth.proto
+syntax = "proto3";
 
 message MigrationPayload {
   enum Algorithm {
     ALGO_INVALID = 0;
     ALGO_SHA1 = 1;
+    SHA256 = 2;
+	  SHA512 = 3;
+	  MD5 = 4;
   }
 
   enum OtpType {

@@ -23,11 +23,15 @@
   <body>
     <div class="page-container">
       <main id="app">
-        <h1>Google Authenticator OTP Secret Extractor</h1>
+        <h1>One-Time Password Secret Extractor</h1>
 
         <div id="info-tabs">
           <!-- 1. Tabs Section -->
-          <div class="tab-buttons navigable-section" role="tablist" aria-label="Information tabs">
+          <div
+            class="tab-buttons navigable-section"
+            role="tablist"
+            aria-label="Information tabs"
+          >
             <button
               class="tab-button navigable active"
               id="tab-btn-what"
@@ -50,14 +54,27 @@
             >
               How do I use it?
             </button>
-            <button class="tab-button navigable" id="tab-btn-faq" tabindex="-1" data-tab="faq" role="tab" aria-selected="false" aria-controls="tab-faq">
+            <button
+              class="tab-button navigable"
+              id="tab-btn-faq"
+              tabindex="-1"
+              data-tab="faq"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab-faq"
+            >
               FAQ
             </button>
           </div>
 
           <!-- 2. Tab Content Section -->
           <div class="tab-content-wrapper">
-            <div id="tab-what" class="tab-content active" role="tabpanel" aria-labelledby="tab-btn-what">
+            <div
+              id="tab-what"
+              class="tab-content active"
+              role="tabpanel"
+              aria-labelledby="tab-btn-what"
+            >
               <p>
                 This tool extracts One-Time Password secrets from the Google
                 Authenticator app. There is no software to install, and no data
@@ -69,12 +86,18 @@
               </p>
             </div>
 
-            <div id="tab-use" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-use" hidden>
+            <div
+              id="tab-use"
+              class="tab-content"
+              role="tabpanel"
+              aria-labelledby="tab-btn-use"
+              hidden
+            >
               <p>
                 This tool reads the QR code screenshots from Google
                 Authenticator's export feature and gives you back the original
-                secret for each account. You can then use these secrets to import
-                your accounts into any other authenticator app.
+                secret for each account. You can then use these secrets to
+                import your accounts into any other authenticator app.
               </p>
               <h3>1. Export from Google Authenticator</h3>
               <ul>
@@ -106,7 +129,13 @@
               </ul>
             </div>
 
-            <div id="tab-faq" class="tab-content navigable-section" role="tabpanel" aria-labelledby="tab-btn-faq" hidden>
+            <div
+              id="tab-faq"
+              class="tab-content navigable-section"
+              role="tabpanel"
+              aria-labelledby="tab-btn-faq"
+              hidden
+            >
               <div class="faq-item">
                 <h3>
                   <button
@@ -119,18 +148,23 @@
                     <span class="faq-title">Why is this needed?</span>
                   </button>
                 </h3>
-                <div id="faq-1-answer" class="faq-answer" role="region" aria-labelledby="faq-1-button">
+                <div
+                  id="faq-1-answer"
+                  class="faq-answer"
+                  role="region"
+                  aria-labelledby="faq-1-button"
+                >
                   <p>
-                    Google Authenticator lets you transfer your accounts to a new
-                    phone, but it doesn't provide an easy way to export them to
-                    other apps like 1Password or Bitwarden. This is because it
-                    hides the original "secret" (the QR code you first scanned)
-                    for each account.
+                    Google Authenticator lets you transfer your accounts to a
+                    new phone, but it doesn't provide an easy way to export them
+                    to other apps like 1Password or Bitwarden. This is because
+                    it hides the original "secret" (the QR code you first
+                    scanned) for each account.
                   </p>
                   <p>
-                    Without these secrets, moving to a new password manager means
-                    manually re-configuring 2FA for every single account, which is
-                    a huge pain.
+                    Without these secrets, moving to a new password manager
+                    means manually re-configuring 2FA for every single account,
+                    which is a huge pain.
                   </p>
                   <p>
                     While other tools exist to solve this, they often require
@@ -153,7 +187,12 @@
                     <span class="faq-title">How does it work?</span>
                   </button>
                 </h3>
-                <div id="faq-2-answer" class="faq-answer" role="region" aria-labelledby="faq-2-button">
+                <div
+                  id="faq-2-answer"
+                  class="faq-answer"
+                  role="region"
+                  aria-labelledby="faq-2-button"
+                >
                   <p>
                     You provide screenshots of the QR codes from Google
                     Authenticator's export feature. This tool reads those QR
@@ -179,14 +218,19 @@
                     >
                   </button>
                 </h3>
-                <div id="faq-3-answer" class="faq-answer" role="region" aria-labelledby="faq-3-button">
+                <div
+                  id="faq-3-answer"
+                  class="faq-answer"
+                  role="region"
+                  aria-labelledby="faq-3-button"
+                >
                   <p>
                     Yes. Security and privacy are the top priorities.
                     <strong
                       >Nothing you do here ever leaves your computer.</strong
                     >
-                    All processing happens locally, right in your browser. Your QR
-                    code images and secrets are never sent to any server.
+                    All processing happens locally, right in your browser. Your
+                    QR code images and secrets are never sent to any server.
                   </p>
                   <p>
                     This tool is open-source and
@@ -217,12 +261,53 @@
                     aria-controls="faq-4-answer"
                   >
                     <span class="faq-title"
-                      >Why can't 1Password import Google Authenticator
+                      >Why doesn't Google Authenticator show my original QR
                       codes?</span
                     >
                   </button>
                 </h3>
-                <div id="faq-4-answer" class="faq-answer" role="region" aria-labelledby="faq-4-button">
+                <div
+                  id="faq-4-answer"
+                  class="faq-answer"
+                  role="region"
+                  aria-labelledby="faq-4-button"
+                >
+                  <p>
+                    Authenticator apps like Google Authenticator and password
+                    managers like LastPass often make it difficult to view the
+                    original secrets used to set up your accounts. Instead, they
+                    provide a proprietary export QR code that bundles all your
+                    accounts together. This makes it easy to transfer to a new
+                    device, but difficult to switch to a different authenticator
+                    app. LastPass also provides a JSON file export, which is an
+                    improvement, but still not easily portable. In contrast,
+                    apps like 1Password make the original secrets easily
+                    accessible, allowing for simple transfers to other 2FA apps.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <h3>
+                  <button
+                    class="faq-button navigable"
+                    tabindex="-1"
+                    id="faq-5-button"
+                    aria-expanded="false"
+                    aria-controls="faq-5-answer"
+                  >
+                    <span class="faq-title"
+                      >Why can't 1Password import from Google
+                      Authenticator?</span
+                    >
+                  </button>
+                </h3>
+                <div
+                  id="faq-5-answer"
+                  class="faq-answer"
+                  role="region"
+                  aria-labelledby="faq-5-button"
+                >
                   <p>
                     That's a great question, and one that
                     <a
@@ -240,8 +325,8 @@
                       aria-label="Reddit discussion about adding existing 2FA to 1Password"
                       >asked</a
                     >. One reason given is a concern that Google's export format
-                    might change. However, this format has been stable for years,
-                    and other apps (like
+                    might change. However, this format has been stable for
+                    years, and other apps (like
                     <a
                       href="https://getaegis.app/"
                       target="_blank"
@@ -259,37 +344,11 @@
                   <button
                     class="faq-button navigable"
                     tabindex="-1"
-                    id="faq-5-button"
-                    aria-expanded="false"
-                    aria-controls="faq-5-answer"
-                  >
-                    <span class="faq-title">Who made this?</span>
-                  </button>
-                </h3>
-                <div id="faq-5-answer" class="faq-answer" role="region" aria-labelledby="faq-5-button">
-                  <p>
-                    This tool was created by
-                    <a
-                      href="https://www.linkedin.com/in/matthewfcarroll/"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      >Matthew Carroll</a
-                    >, a developer who was frustrated with the process of
-                    migrating OTP codes from Google Authenticator into 1Password.
-                  </p>
-                </div>
-              </div>
-
-              <div class="faq-item">
-                <h3>
-                  <button
-                    class="faq-button navigable"
-                    tabindex="-1"
                     id="faq-6-button"
                     aria-expanded="false"
                     aria-controls="faq-6-answer"
                   >
-                    <span class="faq-title">Acknowledgements</span>
+                    <span class="faq-title">Who made this?</span>
                   </button>
                 </h3>
                 <div
@@ -299,8 +358,40 @@
                   aria-labelledby="faq-6-button"
                 >
                   <p>
-                    This tool builds on the work of several open-source projects,
-                    including:
+                    This tool was created by
+                    <a
+                      href="https://www.linkedin.com/in/matthewfcarroll/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      >Matthew Carroll</a
+                    >, a developer who was frustrated with the process of
+                    migrating OTP codes from Google Authenticator into
+                    1Password.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <h3>
+                  <button
+                    class="faq-button navigable"
+                    tabindex="-1"
+                    id="faq-7-button"
+                    aria-expanded="false"
+                    aria-controls="faq-7-answer"
+                  >
+                    <span class="faq-title">Acknowledgements</span>
+                  </button>
+                </h3>
+                <div
+                  id="faq-7-answer"
+                  class="faq-answer"
+                  role="region"
+                  aria-labelledby="faq-7-button"
+                >
+                  <p>
+                    This tool builds on the work of several open-source
+                    projects, including:
                   </p>
                   <ul>
                     <li>
@@ -322,9 +413,15 @@
                         href="https://github.com/beemdevelopment/Aegis/#readme"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >Aegis Authenticator</a
-                      >, for the Google Authenticator export protobuf
-                      specification.
+                        >Aegis Authenticator
+                      </a>
+                      and
+                      <a
+                        href="https://github.com/qistoph/otp_export/#readme"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Chris van Marle</a
+                      >, for the export protobuf specification.
                     </li>
                     <li>
                       <a
@@ -336,8 +433,8 @@
                     </li>
                   </ul>
                   <p>
-                    The user interface and QR code processing are powered by these
-                    open-source libraries:
+                    The user interface and QR code processing are powered by
+                    these open-source libraries:
                   </p>
                   <ul>
                     <li>
@@ -363,75 +460,79 @@
                         href="https://github.com/soldair/node-qrcode"
                         target="_blank"
                         rel="noopener noreferrer"
-                      >qrcode</a
-                    >
-                    for generating new QR codes for each account.
-                  </li>
-                  <li>
+                        >qrcode</a
+                      >
+                      for generating new QR codes for each account.
+                    </li>
+                    <li>
+                      <a
+                        href="https://github.com/wzrdtales/thirty-two"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >thirty-two</a
+                      >
+                      for Base32 encoding the OTP secrets.
+                    </li>
+                    <li>
+                      <a
+                        href="https://github.com/FortAwesome/Font-Awesome"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Font Awesome</a
+                      >
+                      for the icons used in the UI.
+                    </li>
+                  </ul>
+                  <p>
+                    Thank you to all the contributers to these excellent
+                    projects!
+                  </p>
+                  <p>
                     <a
-                      href="https://github.com/wzrdtales/thirty-two"
+                      href="https://codeassist.google.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      >thirty-two</a
+                      >Gemini Code Assist</a
                     >
-                    for Base32 encoding the OTP secrets.
-                  </li>
-                  <li>
+                    was used during the development of this tool. All
+                    AI-generated code has been carefully manually reviewed.
+                  </p>
+                  <div class="donation-section">
                     <a
-                      href="https://github.com/FortAwesome/Font-Awesome"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >Font Awesome</a
-                    >
-                    for the icons used in the UI.
-                  </li>
-                </ul>
-                <p>
-                  Thank you to all the contributers to these excellent projects!
-                </p>
-                <p>
-                  <a
-                    href="https://codeassist.google.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Gemini Code Assist</a
-                  >
-                  was used during the development of this tool. All AI-generated
-                  code has been carefully manually reviewed.
-                </p>
-                <div class="donation-section">
-                  <a
-                    class="logo-link"
-                    href="https://stand.earth/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div class="logo-with-tagline">
-                      <img
-                        class="logo"
-                        src="/Stand_Logo_Block-RGB_Red.svg"
-                        alt="Stand.earth"
-                      />
-                      <p class="tagline">For the people and places you love</p>
-                    </div></a
-                  >
-                  <p class="text">
-                    The development of this tool was made possible in part
-                    through the support of
-                    <a
+                      class="logo-link"
                       href="https://stand.earth/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      >Stand.earth</a
-                    >. If you find this useful, please consider
-                    <a
-                      href="https://stand.earth/donate/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >making a donation</a
                     >
-                    to support Stand's work.
-                  </p>
+                      <span class="logo-with-tagline">
+                        <img
+                          class="logo"
+                          src="/Stand_Logo_Block-RGB_Red.svg"
+                          alt="Stand.earth"
+                        />
+                        <span class="tagline"
+                          >For the people and places you love</span
+                        >
+                      </span></a
+                    >
+                    <p class="text">
+                      The development of this tool was made possible in part
+                      through the support of
+                      <a
+                        href="https://stand.earth/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Stand.earth</a
+                      >. If you find this useful, please consider
+                      <a
+                        href="https://stand.earth/donate/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >making a donation</a
+                      >
+                      to support Stand's work.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -452,7 +553,12 @@
           <div id="upload-log-container" style="display: none">
             <ul id="upload-log-list"></ul>
           </div>
-          <input type="file" id="qr-input" accept="image/*" multiple />
+          <input
+            type="file"
+            id="qr-input"
+            accept="image/*,application/json,.json"
+            multiple
+          />
         </div>
 
         <div id="error-message-container"></div>
@@ -533,23 +639,18 @@
         </template>
 
         <!-- 5. Results Buttons Section -->
-        <div id="export-container" class="navigable-section" style="display: none">
-          <button
-            id="download-csv-button"
-            class="btn btn-success navigable"
-          >
+        <div
+          id="export-container"
+          class="navigable-section"
+          style="display: none"
+        >
+          <button id="download-csv-button" class="btn btn-success navigable">
             <i class="fa fa-download"></i> Save as CSV
           </button>
-          <button
-            id="download-json-button"
-            class="btn btn-success navigable"
-          >
+          <button id="download-json-button" class="btn btn-success navigable">
             <i class="fa fa-download"></i> Save as JSON
           </button>
-          <button
-            id="clear-all-button"
-            class="btn btn-danger navigable"
-          >
+          <button id="clear-all-button" class="btn btn-danger navigable">
             <i class="fa fa-trash"></i> Clear All
           </button>
         </div>
@@ -619,10 +720,14 @@
         </div>
       </footer>
     </div>
-    <div id="qr-modal" class="modal-overlay" role="dialog" aria-modal="true" style="display: none">
-      <button class="modal-close navigable" aria-label="Close">
-        &#x2715;
-      </button>
+    <div
+      id="qr-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      style="display: none"
+    >
+      <button class="modal-close navigable" aria-label="Close">&#x2715;</button>
       <div id="modal-content"></div>
     </div>
     <div id="drag-overlay"></div>

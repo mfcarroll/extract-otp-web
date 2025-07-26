@@ -109,7 +109,10 @@ function createOtpCard(otp: OtpData, index: number): HTMLDivElement {
   const urlLabelId = `url-label-${index}`;
   urlLabelElement.id = urlLabelId;
   const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
-  urlInput.value = decodeURIComponent(otp.url);
+  // Display the raw, encoded URL. While less "pretty" than a decoded
+  // version, it's the technically correct representation and avoids
+  // confusion about spaces or special characters in the URL.
+  urlInput.value = otp.url;
   urlInput.nextElementSibling!.setAttribute("data-copy-text", otp.url);
   urlInput.setAttribute("aria-labelledby", urlLabelId);
 

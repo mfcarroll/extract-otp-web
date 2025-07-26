@@ -16,5 +16,5 @@ export interface MigrationOtpParameter {
   algorithm: number; // ALGORITHM_UNSPECIFIED (0), SHA1 (1)
   digits: number; // DIGITS_UNSPECIFIED (0), SIX (1), EIGHT (2)
   type: number; // TYPE_UNSPECIFIED (0), HOTP (1), TOTP (2)
-  counter: number;
+  counter?: number;
 }

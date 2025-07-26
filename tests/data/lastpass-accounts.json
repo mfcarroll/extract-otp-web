@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "deviceName": "iPhone15,2",
+  "folders": [
+    { "id": 1, "isOpened": true, "name": "Favorites" },
+    { "id": 0, "name": "Other Accounts", "isOpened": true }
+  ],
+  "accounts": [
+    {
+      "originalUserName": "TOTP Test 1",
+      "userName": "TOTP Test 1",
+      "accountID": "0354F2C0-79F2-4EE6-A67A-006AE2C63186",
+      "algorithm": "SHA1",
+      "folderData": { "position": 0, "folderId": 0 },
+      "timeStep": 30,
+      "digits": 6,
+      "lmiUserId": "",
+      "isFavorite": false,
+      "secret": "N7F4M4QNFI3XZV4V73EWMPMXTFGGJ4R5",
+      "originalIssuerName": "LP Test 1",
+      "creationTimestamp": 1753485518,
+      "issuerName": "LP Test 1"
+    },
+    {
+      "algorithm": "SHA1",
+      "lmiUserId": "",
+      "isFavorite": false,
+      "folderData": { "folderId": 0, "position": 1 },
+      "userName": "TOTP Test 2",
+      "issuerName": "LP Test 2",
+      "secret": "BPCRAWTI27QXIDV42MVPHYL5KSVTMMYZ",
+      "originalIssuerName": "LP Test 2",
+      "creationTimestamp": 1753485524,
+      "timeStep": 30,
+      "digits": 6,
+      "originalUserName": "TOTP Test 2",
+      "accountID": "263F192A-75D9-453B-884D-E62E65C76B8A"
+    }
+  ],
+  "localDeviceId": null
+}

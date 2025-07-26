@@ -1,0 +1,40 @@
+{
+  "dS": "",
+  "dId": "",
+  "a": [
+    {
+      "uN": "TOTP Test 1",
+      "iF": false,
+      "oUN": "TOTP Test 1",
+      "s": "N7F4M4QNFI3XZV4V73EWMPMXTFGGJ4R5",
+      "pN": false,
+      "fD": { "folderId": 0, "position": 0 },
+      "aId": "B30519DF-C0B0-45F1-A82D-5E231E0B7D8E",
+      "d": 6,
+      "tS": 30,
+      "oIN": "LP Test 1",
+      "cT": 1753485518446,
+      "a": "SHA1",
+      "iN": "LP Test 1"
+    },
+    {
+      "uN": "TOTP Test 2",
+      "iF": false,
+      "oUN": "TOTP Test 2",
+      "s": "BPCRAWTI27QXIDV42MVPHYL5KSVTMMYZ",
+      "pN": false,
+      "fD": { "folderId": 0, "position": 1 },
+      "aId": "6DBD18F2-5B20-4DAB-9A4F-D025C9FCD223",
+      "d": 6,
+      "tS": 30,
+      "oIN": "LP Test 2",
+      "cT": 1753485524472,
+      "a": "SHA1",
+      "iN": "LP Test 2"
+    }
+  ],
+  "f": [
+    { "iO": true, "i": 1, "n": "Favorites" },
+    { "iO": true, "i": 0, "n": "Other Accounts" }
+  ]
+}

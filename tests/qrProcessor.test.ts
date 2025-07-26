@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import fs from "fs";
 import path from "path";
-import { getOtpParametersFromUrl } from "../src/services/qrProcessor";
+import { getOtpParametersFromUrl } from "../src/services/otpUrlParser";
 import { convertToOtpData } from "../src/services/otpFormatter";
 import { OtpData } from "../src/types";
 

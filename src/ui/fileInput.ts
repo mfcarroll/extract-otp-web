@@ -1,5 +1,6 @@
 import { MigrationOtpParameter } from "../types";
 import { processImage, getOtpUniqueKey } from "../services/qrProcessor";
+import { processJson } from "../services/jsonProcessor";
 import { setState, getState, subscribe } from "../state/store";
 import { addUploadLog, displayError, clearLogs } from "./notifications";
 import { $ } from "./dom";
@@ -46,7 +47,9 @@ function setProcessingState(isProcessing: boolean): void {
     // Restore original text and icon
     const icon = document.createElement("i");
     icon.className = "fa fa-upload";
-    const text = document.createTextNode(" Select QR Code Image(s)");
+    const text = document.createTextNode(
+      " Select QR Code Image(s) or JSON File"
+    );
     fileInputLabel.appendChild(icon);
     fileInputLabel.appendChild(text);
   }
@@ -69,7 +72,21 @@ async function processSingleFile(
   let hasDuplicatesOrErrors = false;
 
   try {
-    const otpParameters = await processImage(file);
+    let otpParameters: MigrationOtpParameter[] | null = null;
+
+    if (file.type.startsWith("image/")) {
+      otpParameters = await processImage(file);
+    } else if (
+      file.type === "application/json" ||
+      file.name.endsWith(".json")
+    ) {
+      const fileContent = await file.text();
+      otpParameters = await processJson(fileContent);
+    } else {
+      throw new Error(
+        "Unsupported file type. Please select an image or a .json file."
+      );
+    }
 
     if (otpParameters && otpParameters.length > 0) {
       let extractedInFile = 0;
