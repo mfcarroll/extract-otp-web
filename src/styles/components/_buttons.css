@@ -3,6 +3,7 @@
   display: inline-flex; /* Use inline-flex for better icon alignment */
   align-items: center;
   justify-content: center;
+  margin: 0;
   padding: 12px 24px;
   color: var(--btn-text-color);
   border: none;
@@ -11,7 +12,8 @@
   transition: background-color 0.2s ease-in-out;
   font-weight: 500;
   text-decoration: none; /* For label-as-button */
-  margin: 0 0.125rem;
+  background: transparent;
+  font: inherit;
 }
 
 .btn i {

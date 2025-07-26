@@ -574,25 +574,23 @@
               tabindex="0"
             >
               <span class="label-idle">
-                <i class="fa fa-upload"></i> Select QR Code Image(s) or JSON
-                File
+                <i class="fa fa-upload"></i> Select Image(s)
               </span>
               <span class="label-processing">
                 <i class="fa fa-spinner fa-spin"></i> Processing...
               </span>
             </label>
-            <label
+            <button
               id="take-photo-button"
               class="btn btn-primary navigable"
-              role="button"
               tabindex="0"
             >
-              <i class="fa fa-camera"></i> Scan with Camera
-            </label>
+              <i class="fa fa-camera"></i> Scan QR Code
+            </button>
           </div>
 
           <div class="drop-text">or drag and drop files here</div>
-          <div id="upload-log-container" style="display: none">
+          <div id="upload-log-container">
             <ul id="upload-log-list"></ul>
           </div>
           <input
@@ -618,22 +616,22 @@
             <div class="otp-details" role="presentation">
               <!-- The h3 will be programmatically linked to the row as its label -->
               <h3 class="otp-title"></h3>
-              <p>
+              <p class="detail-row">
                 <span class="label">Name:</span> <span data-value="name"></span>
               </p>
-              <p>
+              <p class="detail-row">
                 <span class="label">Issuer:</span>
                 <span data-value="issuer"></span>
               </p>
-              <p>
+              <p class="detail-row">
                 <span class="label">Type:</span> <span data-value="type"></span>
               </p>
-              <p class="counter-row" style="display: none">
+              <p class="detail-row counter-row" style="display: none">
                 <span class="label">Counter:</span>
                 <span data-value="counter"></span>
               </p>
-              <p class="secret-row">
-                <span class="label">Secret:</span>
+              <p class="detail-row secret-row">
+                <label class="label">Secret:</label>
                 <span class="secret-container">
                   <input
                     type="text"
@@ -644,16 +642,16 @@
                   />
                   <button
                     class="copy-button navigable"
-                    aria-label="Copy secret"
                     role="gridcell"
                     tabindex="-1"
                   >
-                    <i class="fa fa-copy"></i>
+                    <i class="fa fa-copy" aria-hidden="true"></i>
+                    <span class="visually-hidden">Copy secret</span>
                   </button>
                 </span>
               </p>
-              <p class="otp-url-row">
-                <span class="label">URL: </span>
+              <p class="detail-row otp-url-row">
+                <label class="label">URL:</label>
                 <span class="otp-url-container">
                   <input
                     type="text"
@@ -664,23 +662,26 @@
                   />
                   <button
                     class="copy-button navigable"
-                    aria-label="Copy URL"
                     role="gridcell"
                     tabindex="-1"
                   >
-                    <i class="fa fa-copy"></i>
+                    <i class="fa fa-copy" aria-hidden="true"></i>
+                    <span class="visually-hidden">Copy URL</span>
                   </button>
                 </span>
               </p>
+              <p class="visually-hidden card-actions-help">
+                Press Enter or Space to copy.
+              </p>
             </div>
-            <div
+            <button
               class="qr-code-container navigable"
               role="gridcell"
               tabindex="-1"
-              aria-label="Show larger QR code"
             >
               <canvas width="220" height="220"></canvas>
-            </div>
+              <span class="visually-hidden">Show larger QR code</span>
+            </button>
           </div>
         </template>
 
@@ -711,7 +712,7 @@
       <!-- 6. Footer Section -->
       <footer class="navigable-section">
         <div class="footer-content">
-          <span>&copy; <span id="copyright-year">2025</span></span>
+          <span>&copy; <span id="copyright-year"></span></span>
           <a
             id="author-link"
             class="navigable"
@@ -736,36 +737,36 @@
             role="button"
             tabindex="0"
             aria-haspopup="true"
-            aria-label="Open theme switcher"
             aria-expanded="false"
           >
+            <span class="visually-hidden">Open theme switcher</span>
             <div class="theme-switcher" role="menu">
               <button
                 class="navigable"
                 data-theme="system"
-                aria-label="Switch to system theme"
                 role="menuitemradio"
                 aria-checked="false"
               >
                 <i class="fa fa-desktop"></i>
+                <span class="visually-hidden">Switch to system theme</span>
               </button>
               <button
                 class="navigable"
                 data-theme="light"
-                aria-label="Switch to light theme"
                 role="menuitemradio"
                 aria-checked="false"
               >
                 <i class="fa fa-sun"></i>
+                <span class="visually-hidden">Switch to light theme</span>
               </button>
               <button
                 class="navigable"
                 data-theme="dark"
-                aria-label="Switch to dark theme"
                 role="menuitemradio"
                 aria-checked="false"
               >
                 <i class="fa fa-moon"></i>
+                <span class="visually-hidden">Switch to dark theme</span>
               </button>
             </div>
           </div>

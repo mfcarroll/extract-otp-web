@@ -71,25 +71,28 @@ function populateCardDetails(
     counterRow.style.display = "block";
   }
 
-  // --- ARIA: Explicitly label the input fields for screen readers ---
-  const secretLabel =
-    cardElement.querySelector<HTMLSpanElement>(".secret-row .label")!;
-  const secretLabelId = `secret-label-${index}`;
-  secretLabel.id = secretLabelId;
+  // --- ARIA: Use proper labels and add descriptive help text ---
+  const helpText =
+    cardElement.querySelector<HTMLParagraphElement>(".card-actions-help")!;
+  const helpTextId = `card-actions-help-${index}`;
+  helpText.id = helpTextId;
+
   const secretInput =
     cardElement.querySelector<HTMLInputElement>(".secret-input")!;
+  const secretInputId = `secret-input-${index}`;
+  secretInput.id = secretInputId;
   secretInput.value = otp.secret;
-  secretInput.setAttribute("aria-labelledby", secretLabelId);
+  cardElement.querySelector<HTMLLabelElement>(".secret-row .label")!.htmlFor =
+    secretInputId;
+  secretInput.setAttribute("aria-describedby", helpTextId);
 
-  const urlLabelElement = cardElement.querySelector<HTMLSpanElement>(
-    ".otp-url-row .label"
-  )!;
-  const urlLabelId = `url-label-${index}`;
-  urlLabelElement.id = urlLabelId;
   const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
+  const urlInputId = `url-input-${index}`;
+  urlInput.id = urlInputId;
   urlInput.value = otp.url;
-  urlInput.nextElementSibling!.setAttribute("data-copy-text", otp.url);
-  urlInput.setAttribute("aria-labelledby", urlLabelId);
+  cardElement.querySelector<HTMLLabelElement>(".otp-url-row .label")!.htmlFor =
+    urlInputId;
+  urlInput.setAttribute("aria-describedby", helpTextId);
 }
 
 /**
@@ -99,9 +102,16 @@ function populateCardDetails(
  */
 function setupCardEvents(cardElement: HTMLElement, otp: OtpData): void {
   const qrCodeContainer =
-    cardElement.querySelector<HTMLDivElement>(".qr-code-container")!;
+    cardElement.querySelector<HTMLButtonElement>(".qr-code-container")!;
   const titleText = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
-  qrCodeContainer.setAttribute("aria-label", `Show QR code for ${titleText}`);
+
+  // Update the accessible name for the QR code button
+  const qrCodeLabel =
+    qrCodeContainer.querySelector<HTMLSpanElement>(".visually-hidden");
+  if (qrCodeLabel) {
+    qrCodeLabel.textContent = `Show larger QR code for ${titleText}`;
+  }
+
   qrCodeContainer.addEventListener("click", (event: MouseEvent) => {
     const modalTitle = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
     const fromKeyboard = event.detail === 0;
@@ -129,7 +139,7 @@ function setupCardNavigation(cardElement: HTMLElement): void {
     ".otp-url-container .copy-button"
   )!;
   const qrCodeContainer =
-    cardElement.querySelector<HTMLDivElement>(".qr-code-container")!;
+    cardElement.querySelector<HTMLButtonElement>(".qr-code-container")!;
 
   Navigation.registerRule(qrCodeContainer, "left", () => secretCopyButton);
   Navigation.registerRule(secretInput, "right", () => secretCopyButton);
@@ -163,7 +173,11 @@ function setupRovingTabindex(cardElement: HTMLElement): void {
 /**
  * Creates an HTML element for a single OTP entry by cloning a template.
  */
-function createOtpCard(otp: OtpData, index: number): HTMLDivElement {
+function createOtpCard(
+  otp: OtpData,
+  index: number,
+  qrColors: { dark: string; light: string }
+): HTMLDivElement {
   const cardFragment = cardTemplate.content.cloneNode(true) as DocumentFragment;
   const cardElement = cardFragment.querySelector<HTMLDivElement>(".otp-card")!;
   cardElement.id = `otp-card-${index}`;
@@ -178,7 +192,7 @@ function createOtpCard(otp: OtpData, index: number): HTMLDivElement {
   QRCode.toCanvas(qrCodeCanvas, otp.url, {
     width: 220,
     margin: 1,
-    color: getQrCodeColors(),
+    color: qrColors,
   });
 
   return cardElement;
@@ -201,8 +215,9 @@ function render(rawOtps: MigrationOtpParameter[]): void {
 
   const formattedOtps = rawOtps.map(convertToOtpData);
   const fragment = document.createDocumentFragment();
+  const qrColors = getQrCodeColors();
   formattedOtps.forEach((otp, index) => {
-    const cardElement = createOtpCard(otp, index);
+    const cardElement = createOtpCard(otp, index, qrColors);
     fragment.appendChild(cardElement);
   });
 

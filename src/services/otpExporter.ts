@@ -4,6 +4,20 @@ import protobuf from "protobufjs";
 import { LastPassQrAccount, MigrationOtpParameter } from "../types";
 import { uint8ArrayToBase64 } from "./protobufProcessor";
 
+// --- Constants ---
+
+const GOOGLE_PAYLOAD_DEFAULTS = {
+  VERSION: 1,
+  BATCH_SIZE: 1,
+  BATCH_INDEX: 0,
+};
+
+const LASTPASS_DEFAULTS = {
+  VERSION: 3,
+  TIME_STEP: 30,
+  DEFAULT_FOLDER_ID: 0,
+};
+
 // --- Protobuf and Data Mapping Setup ---
 
 const protobufRoot = protobuf.load("otp_migration.proto");
@@ -36,9 +50,9 @@ export async function exportToGoogleAuthenticator(
   // The protobuf payload expects the otpParameters field.
   const payload = {
     otpParameters: otps,
-    version: 1,
-    batchSize: 1,
-    batchIndex: 0,
+    version: GOOGLE_PAYLOAD_DEFAULTS.VERSION,
+    batchSize: GOOGLE_PAYLOAD_DEFAULTS.BATCH_SIZE,
+    batchIndex: GOOGLE_PAYLOAD_DEFAULTS.BATCH_INDEX,
     // Generate a random 32-bit integer for the batch ID.
     batchId: Math.floor(Math.random() * 2 ** 32),
   };
@@ -56,6 +70,18 @@ export async function exportToGoogleAuthenticator(
     base64Data
   )}`;
   return url;
+}
+
+/**
+ * Helper function to stringify, gzip, and Base64 encode a JSON payload.
+ * @param payload The JSON object to process.
+ * @returns The final Base64 encoded string.
+ */
+function gzipAndBase64Encode(payload: object): string {
+  const jsonString = JSON.stringify(payload);
+  const jsonBytes = new TextEncoder().encode(jsonString);
+  const gzippedPayload = pako.gzip(jsonBytes);
+  return uint8ArrayToBase64(gzippedPayload);
 }
 
 // --- LastPass Authenticator Export ---
@@ -90,7 +116,7 @@ export async function exportToLastPass(
         s: secretText,
         a: algorithm,
         d: digits,
-        tS: 30, // LastPass seems to default to a 30-second time step.
+        tS: LASTPASS_DEFAULTS.TIME_STEP, // LastPass seems to default to a 30-second time step.
         // Mimicked fields from your import log for compatibility
         uN: otp.name,
         iN: otp.issuer,
@@ -98,7 +124,7 @@ export async function exportToLastPass(
         cT: Date.now(), // Set creation time to now
         iF: false,
         pN: false,
-        fD: { folderId: 0, position: index },
+        fD: { folderId: LASTPASS_DEFAULTS.DEFAULT_FOLDER_ID, position: index },
       };
       return account;
     })
@@ -120,28 +146,22 @@ export async function exportToLastPass(
       { iO: true, i: 0, n: "Other Accounts" },
     ],
   };
-  const finalJsonString = JSON.stringify(finalJsonPayload);
 
   // --- Step 3: Gzip and Base64 encode the inner payload ---
-  const finalJsonBytes = new TextEncoder().encode(finalJsonString);
-  const gzippedInnerPayload = pako.gzip(finalJsonBytes);
-  const contentBase64 = uint8ArrayToBase64(gzippedInnerPayload);
+  const contentBase64 = gzipAndBase64Encode(finalJsonPayload);
 
   // --- Step 4: Create the complex outer JSON wrapper ---
   // This matches the structure from your log's "Step 4".
   const jsonWrapper = {
     batchId: crypto.randomUUID().toUpperCase(),
     batchSize: 1,
-    version: 3, // Matches the imported version
+    version: LASTPASS_DEFAULTS.VERSION, // Matches the imported version
     batchIndex: 0,
     content: contentBase64,
   };
-  const jsonWrapperString = JSON.stringify(jsonWrapper);
 
   // --- Step 5: Gzip and Base64 encode the outer wrapper ---
-  const jsonWrapperBytes = new TextEncoder().encode(jsonWrapperString);
-  const gzippedOuterPayload = pako.gzip(jsonWrapperBytes);
-  const finalBase64Data = uint8ArrayToBase64(gzippedOuterPayload);
+  const finalBase64Data = gzipAndBase64Encode(jsonWrapper);
 
   // --- Step 6: Construct the final URL with the correct '/offline' path ---
   const url = `lpaauth-migration://offline?data=${encodeURIComponent(

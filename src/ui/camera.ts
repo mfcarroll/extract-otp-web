@@ -8,7 +8,7 @@ let video: HTMLVideoElement;
 let canvas: HTMLCanvasElement;
 let canvasContext: CanvasRenderingContext2D;
 let cameraModal: HTMLDivElement;
-let takePhotoButton: HTMLLabelElement;
+let takePhotoButton: HTMLButtonElement;
 let cancelButton: HTMLButtonElement;
 
 let stream: MediaStream | null = null;
@@ -154,7 +154,7 @@ export function initCamera(): void {
     return;
   }
 
-  takePhotoButton = $<HTMLLabelElement>("#take-photo-button");
+  takePhotoButton = $<HTMLButtonElement>("#take-photo-button");
 
   cameraModal = $<HTMLDivElement>("#camera-modal");
   video = $<HTMLVideoElement>("#camera-video");

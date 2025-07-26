@@ -90,10 +90,8 @@ async function processFiles(files: FileList | null): Promise<void> {
   const fileArray = Array.from(files);
 
   try {
-    const logContainer = $<HTMLDivElement>("#upload-log-container");
-    if (logContainer.style.display === "none") {
-      logContainer.style.display = "block";
-    }
+    // Ensure the log container is visible once files are processed.
+    $<HTMLDivElement>("#upload-log-container").classList.add("visible");
 
     const currentOtps = getState().otps;
     const firstNewIndex = currentOtps.length;
@@ -144,51 +142,71 @@ export function resetFileInput(): void {
   }
 }
 
+/**
+ * Initializes the file input and drag-and-drop functionality.
+ * Sets up event listeners for file selection, drag enter, drag leave, and drop events.
+ */
 export function initFileInput(): void {
-  qrInputElement = $<HTMLInputElement>("#qr-input");
-  const fileInputLabel = $<HTMLLabelElement>(".file-input-label");
+  qrInputElement = $<HTMLInputElement>("#qr-input"); // Assign to module-level variable
   const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
   const dragOverlay = $<HTMLDivElement>("#drag-overlay");
   let dragCounter = 0;
 
+  // --- Helper Functions ---
+
+  const preventDefaults = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const showDragUI = () => {
+    fileDropZone.classList.add("active");
+    dragOverlay.classList.add("active");
+  };
+
+  const hideDragUI = () => {
+    fileDropZone.classList.remove("active");
+    dragOverlay.classList.remove("active");
+  };
+
+  // --- Event Listeners ---
+
+  // 1. Standard file input change
   qrInputElement.addEventListener("change", (event: Event) => {
     processFiles((event.target as HTMLInputElement).files);
   });
 
-  function preventDefaults(e: Event): void {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-
-  // Prevent default for drag events to allow drop to fire correctly.
-  ["dragenter", "dragover", "dragleave"].forEach((eventName) => {
-    document.body.addEventListener(eventName, preventDefaults);
+  // 2. Drag and Drop listeners on the whole body for a better user experience.
+  document.body.addEventListener("dragenter", (e: DragEvent) => {
+    preventDefaults(e);
+    // Only show the UI if files are being dragged in. This prevents the UI
+    // from appearing when dragging other things like text.
+    if (e.dataTransfer?.types.includes("Files")) {
+      dragCounter++;
+      showDragUI();
+    }
   });
 
-  document.body.addEventListener("dragenter", () => {
-    dragCounter++;
-    fileDropZone.classList.add("active");
-    dragOverlay.classList.add("active");
+  document.body.addEventListener("dragover", (e: DragEvent) => {
+    // We must prevent default on dragover to allow the drop event to fire.
+    preventDefaults(e);
   });
 
-  document.body.addEventListener("dragleave", () => {
+  document.body.addEventListener("dragleave", (e: DragEvent) => {
+    preventDefaults(e);
     dragCounter--;
-    if (dragCounter === 0) {
-      fileDropZone.classList.remove("active");
-      dragOverlay.classList.remove("active");
+    if (dragCounter <= 0) {
+      dragCounter = 0; // Reset in case of weird event firing
+      hideDragUI();
     }
   });
 
   document.body.addEventListener("drop", (event: DragEvent) => {
     // We must prevent the default action for file drops to avoid the browser
-    // trying to open the file. We only do this for files to avoid interfering
-    // with other drag-and-drop operations like dragging text or links.
-    if (event.dataTransfer?.types.includes("Files")) {
-      preventDefaults(event);
-    }
+    // trying to open the file.
+    preventDefaults(event);
     dragCounter = 0;
-    fileDropZone.classList.remove("active");
-    dragOverlay.classList.remove("active");
+    hideDragUI();
     processFiles(event.dataTransfer?.files ?? null);
   });
 }

@@ -19,6 +19,13 @@
   z-index: 991; /* To appear above the drag overlay */
 }
 
+.file-input-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .file-input-label .label-processing {
   display: none;
 }

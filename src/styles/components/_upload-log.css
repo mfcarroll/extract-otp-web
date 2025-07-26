@@ -4,6 +4,11 @@
   margin-top: 1.5rem;
   font-size: 0.9em;
   text-align: left;
+  display: none;
+}
+
+#upload-log-container.visible {
+  display: block;
 }
 
 #upload-log-list {
@@ -41,17 +46,21 @@
   text-overflow: ellipsis;
 }
 
-.log-item--success .log-message {
-  color: var(--success-color);
+.log-item--success {
+  --log-item-status-color: var(--success-color);
 }
 
-.log-item--warning .log-message,
-.log-item--error .log-message {
-  color: var(--error-color);
+.log-item--warning,
+.log-item--error {
+  --log-item-status-color: var(--error-color);
 }
 
-.log-item--info .log-message {
-  color: var(--subtle-text-color);
+.log-item--info {
+  --log-item-status-color: var(--subtle-text-color);
+}
+
+.log-item .log-message {
+  color: var(--log-item-status-color);
 }
 
 .log-filler {

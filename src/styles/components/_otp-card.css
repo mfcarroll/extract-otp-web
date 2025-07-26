@@ -20,16 +20,20 @@
   margin-top: 0;
 }
 
-.otp-card p {
-  margin: 0.2rem 0;
+.otp-card .detail-row {
+  display: flex;
+  align-items: baseline;
+  margin: 0.5rem 0;
   word-wrap: break-word;
+  position: relative; /* For z-index on focus-within */
 }
 
 .otp-details .label {
-  font-weight: 600;
-  color: var(--text-color-secondary);
-  display: inline-block;
-  width: 80px;
+  font-weight: 700;
+  width: 75px; /* Adjust width as needed */
+  flex-shrink: 0;
+  margin-right: 10px;
+  color: var(--subtle-text-color);
 }
 
 .otp-details .value-missing {
@@ -46,16 +50,8 @@
   position: relative; /* For positioning the copy button */
 }
 
-.otp-card .secret-row,
-.otp-card .otp-url-row {
-  display: flex;
-  align-items: center;
-  position: relative; /* Establish stacking context for z-index */
-}
-
 /* When an input inside a row is focused, lift the entire row */
-.otp-card .secret-row:focus-within,
-.otp-card .otp-url-row:focus-within {
+.otp-card .detail-row:focus-within {
   z-index: 1;
 }
 
@@ -148,6 +144,11 @@
 }
 
 .qr-code-container {
+  /* Reset default button styles to make it behave like a div */
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
   flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
