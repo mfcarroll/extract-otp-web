@@ -5,6 +5,7 @@ import {
   filterAndLogOtps,
 } from "../services/qrProcessor";
 import { processJson } from "../services/jsonProcessor";
+import { processCsv } from "../services/csvProcessor";
 import { setState, getState } from "../state/store";
 import { addUploadLog, displayError } from "./notifications";
 import { $ } from "./dom";
@@ -47,9 +48,12 @@ async function processSingleFile(
     ) {
       const fileContent = await file.text();
       otpParameters = await processJson(fileContent);
+    } else if (file.type === "text/csv" || file.name.endsWith(".csv")) {
+      const fileContent = await file.text();
+      otpParameters = await processCsv(fileContent);
     } else {
       throw new Error(
-        "Unsupported file type. Please select an image or a .json file."
+        "Unsupported file type. Please select an image, .json, or .csv file."
       );
     }
 
