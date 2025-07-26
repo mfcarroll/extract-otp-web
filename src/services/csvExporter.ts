@@ -1,5 +1,4 @@
-import { getState } from "../state/store";
-import { OtpData } from "../types";
+import { MigrationOtpParameter, OtpData } from "../types";
 import { announceToScreenReader } from "../ui/notifications";
 import { convertToOtpData } from "./otpFormatter";
 import { triggerDownload } from "./download";
@@ -12,9 +11,8 @@ const escapeCsvField = (field: any): string => {
   return str;
 };
 
-export function downloadAsCsv(): void {
-  const { otps } = getState();
-  if (otps.length === 0) {
+export function downloadAsCsv(otpsToExport: MigrationOtpParameter[]): void {
+  if (otpsToExport.length === 0) {
     announceToScreenReader("No data to export.");
     return;
   }
@@ -29,7 +27,7 @@ export function downloadAsCsv(): void {
     "url",
   ];
 
-  const otpDataForCsv = otps.map(convertToOtpData);
+  const otpDataForCsv = otpsToExport.map(convertToOtpData);
   const csvRows = [
     headers.join(","),
     ...otpDataForCsv.map((otp) =>

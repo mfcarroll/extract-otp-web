@@ -4,8 +4,9 @@ import { $ } from "./dom";
 import { handleCopyAction } from "./clipboard";
 import { Navigation } from "./navigation";
 import { showQrModal } from "./qrModal";
-import { subscribe, getState } from "../state/store";
+import { subscribe, getState, setState } from "../state/store";
 import { convertToOtpData } from "../services/otpFormatter";
+import { getOtpUniqueKey } from "../services/qrProcessor";
 
 function getQrCodeColors() {
   const computedStyles = getComputedStyle(document.documentElement);
@@ -100,7 +101,11 @@ function populateCardDetails(
  * @param cardElement The card element to set up events for.
  * @param otp The OTP data for the card.
  */
-function setupCardEvents(cardElement: HTMLElement, otp: OtpData): void {
+function setupCardEvents(
+  cardElement: HTMLElement,
+  otp: OtpData,
+  key: string
+): void {
   const qrCodeContainer =
     cardElement.querySelector<HTMLButtonElement>(".qr-code-container")!;
   const titleText = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
@@ -121,6 +126,31 @@ function setupCardEvents(cardElement: HTMLElement, otp: OtpData): void {
   const otpDetails = cardElement.querySelector<HTMLDivElement>(".otp-details")!;
   otpDetails.addEventListener("click", (event) => {
     handleCopyAction(event.target as HTMLElement);
+  });
+
+  // --- Selection Logic ---
+  cardElement.addEventListener("click", (event) => {
+    // Don't toggle selection if an interactive element inside the card was clicked.
+    if (
+      (event.target as HTMLElement).closest(
+        "a, button, input:not(.otp-select-checkbox)"
+      )
+    ) {
+      return;
+    }
+    // Also ignore if the user was just selecting text.
+    if (window.getSelection()?.toString()) {
+      return;
+    }
+
+    event.preventDefault();
+
+    // Update global state, which will trigger a re-render.
+    setState((s) => {
+      const newSelected = new Set(s.selectedOtpKeys);
+      newSelected.has(key) ? newSelected.delete(key) : newSelected.add(key);
+      return { ...s, selectedOtpKeys: newSelected };
+    });
   });
 }
 
@@ -176,19 +206,32 @@ function setupRovingTabindex(cardElement: HTMLElement): void {
 function createOtpCard(
   otp: OtpData,
   index: number,
-  qrColors: { dark: string; light: string }
+  qrColors: { dark: string; light: string },
+  key: string,
+  isSelected: boolean
 ): HTMLDivElement {
   const cardFragment = cardTemplate.content.cloneNode(true) as DocumentFragment;
   const cardElement = cardFragment.querySelector<HTMLDivElement>(".otp-card")!;
   cardElement.id = `otp-card-${index}`;
+  cardElement.dataset.key = key;
+  cardElement.classList.toggle("selected", isSelected);
 
   setupRovingTabindex(cardElement);
   populateCardDetails(cardElement, otp, index);
-  setupCardEvents(cardElement, otp);
+  setupCardEvents(cardElement, otp, key);
   setupCardNavigation(cardElement);
 
   // Generate the QR code
   const qrCodeCanvas = cardElement.querySelector<HTMLCanvasElement>("canvas")!;
+  const checkbox = cardElement.querySelector<HTMLInputElement>(
+    ".otp-select-checkbox"
+  )!;
+  checkbox.checked = isSelected;
+  // Link the card to the checkbox for better accessibility semantics
+  const checkboxId = `otp-select-${index}`;
+  checkbox.id = checkboxId;
+  cardElement.setAttribute("aria-describedby", checkboxId);
+
   QRCode.toCanvas(qrCodeCanvas, otp.url, {
     width: 220,
     margin: 1,
@@ -198,7 +241,10 @@ function createOtpCard(
   return cardElement;
 }
 
-function render(rawOtps: MigrationOtpParameter[]): void {
+function render(
+  rawOtps: MigrationOtpParameter[],
+  selectedOtpKeys: Set<string>
+): void {
   const resultsContainer = $<HTMLDivElement>("#results-container");
 
   // Any time the results are re-rendered, the DOM has changed significantly.
@@ -215,9 +261,17 @@ function render(rawOtps: MigrationOtpParameter[]): void {
 
   const formattedOtps = rawOtps.map(convertToOtpData);
   const fragment = document.createDocumentFragment();
+  const keys = rawOtps.map(getOtpUniqueKey);
   const qrColors = getQrCodeColors();
   formattedOtps.forEach((otp, index) => {
-    const cardElement = createOtpCard(otp, index, qrColors);
+    const key = keys[index];
+    const cardElement = createOtpCard(
+      otp,
+      index,
+      qrColors,
+      key,
+      selectedOtpKeys.has(key)
+    );
     fragment.appendChild(cardElement);
   });
 
@@ -230,8 +284,47 @@ export function initResults() {
 
   // Re-render whenever the otps in the store change
   subscribe((state) => {
-    render(state.otps);
-    if (state.otps.length === 0 && previousOtpCount > 0) {
+    render(state.otps, state.selectedOtpKeys);
+
+    const { otps, selectedOtpKeys } = state;
+
+    // Update visibility of export and selection controls
+    const exportContainer = $<HTMLDivElement>("#export-container")!;
+    const selectionControls = $<HTMLDivElement>("#selection-controls")!;
+    const selectionCountSpan = $<HTMLSpanElement>("#selection-count")!;
+    const downloadCsvButton = $<HTMLButtonElement>("#download-csv-button");
+    const downloadJsonButton = $<HTMLButtonElement>("#download-json-button");
+    const exportGoogleButton = $<HTMLButtonElement>("#export-google-button");
+    const exportLastPassButton = $<HTMLButtonElement>(
+      "#export-lastpass-button"
+    );
+
+    const hasOtps = otps.length > 0;
+    exportContainer.style.display = hasOtps ? "flex" : "none";
+    selectionControls.style.display = hasOtps ? "flex" : "none";
+
+    if (hasOtps) {
+      const count = selectedOtpKeys.size;
+      const total = otps.length;
+      selectionCountSpan.textContent = `${count} of ${total} selected`;
+
+      const hasSelection = count > 0;
+      downloadCsvButton.disabled = !hasSelection;
+      downloadJsonButton.disabled = !hasSelection;
+      exportGoogleButton.disabled = !hasSelection;
+
+      if (hasSelection) {
+        const selectedOtps = otps.filter((otp) =>
+          selectedOtpKeys.has(getOtpUniqueKey(otp))
+        );
+        const hasTotp = selectedOtps.some((otp) => otp.type === 2); // 2 is TOTP
+        exportLastPassButton.disabled = !hasTotp;
+      } else {
+        exportLastPassButton.disabled = true;
+      }
+    }
+
+    if (otps.length === 0 && previousOtpCount > 0) {
       $<HTMLLabelElement>(".file-input-label")?.focus();
     }
     // Update for the next change

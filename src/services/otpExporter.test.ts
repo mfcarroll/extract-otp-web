@@ -106,7 +106,7 @@ describe("OTP Exporter", () => {
     ];
 
     await expect(exportToLastPass(hotpOnly)).rejects.toThrow(
-      "No compatible (TOTP) accounts found for LastPass export."
+      "No compatible (TOTP) accounts selected for LastPass export."
     );
   });
 });

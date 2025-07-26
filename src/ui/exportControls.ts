@@ -7,98 +7,128 @@ import {
 } from "../services/otpExporter";
 import {
   announceToScreenReader,
-  clearLogs,
   displayError,
+  displayWarning,
 } from "./notifications";
-import { setState, subscribe, getState } from "../state/store";
-import { resetFileInput } from "./fileInput";
+import { setState, getState } from "../state/store";
+import { getOtpUniqueKey } from "../services/qrProcessor";
+import { MigrationOtpParameter } from "../types";
 import { showQrModal } from "./qrModal";
 
 /**
- * Clears all logs and resets the OTP state.
+ * Gets the currently selected OTPs from the global state.
+ * @returns An array of the selected OTP parameters.
  */
-function handleClearAll(): void {
-  clearLogs();
-  setState(() => ({ otps: [], logCount: 0 }));
-  resetFileInput();
+function getSelectedOtps(): MigrationOtpParameter[] {
+  const { otps, selectedOtpKeys } = getState();
+  return otps.filter((otp) => selectedOtpKeys.has(getOtpUniqueKey(otp)));
 }
 
 /**
- * A higher-order function that wraps an export action. It checks if there is
- * data to export before executing the action, handling the empty state uniformly.
- * @param action The export function to wrap.
- * @returns An event handler function.
+ * A wrapper to safely execute an export function, handling potential errors.
+ * @param exportFn The export function to call with the selected OTPs.
  */
-function withExportData(action: (event: MouseEvent) => Promise<void> | void) {
-  return (event: MouseEvent) => {
-    const { otps } = getState();
-    if (otps.length === 0) {
-      announceToScreenReader("No data to export.");
-      return;
+async function handleExport(
+  exportFn: (otps: MigrationOtpParameter[]) => Promise<any>,
+  isQrExport = false
+) {
+  const selectedOtps = getSelectedOtps();
+  if (selectedOtps.length === 0) {
+    announceToScreenReader("No accounts selected to export.");
+    return;
+  }
+  try {
+    const result = await exportFn(selectedOtps);
+    if (isQrExport && typeof result === "string") {
+      const title = result.startsWith("lpaauth")
+        ? "Scan with LastPass Authenticator"
+        : "Scan with Google Authenticator";
+      showQrModal(result, title, true);
     }
-    action(event);
-  };
+  } catch (error: any) {
+    const message = error.message || "An unknown error occurred during export.";
+    displayError(message);
+    console.error("Export failed:", error);
+  }
 }
+
 /**
  * Initializes the export control buttons (Save CSV, Clear All)
  * and manages the visibility of their container.
  */
 export function initExportControls(): void {
-  const exportContainer = $<HTMLDivElement>("#export-container");
-  const csvButton = $<HTMLButtonElement>("#download-csv-button");
-  const jsonButton = $<HTMLButtonElement>("#download-json-button");
-  const googleButton = $<HTMLButtonElement>("#export-google-button");
-  const lastPassButton = $<HTMLButtonElement>("#export-lastpass-button");
-  const clearButton = $<HTMLButtonElement>("#clear-all-button");
+  const downloadCsvButton = $<HTMLButtonElement>("#download-csv-button")!;
+  const downloadJsonButton = $<HTMLButtonElement>("#download-json-button")!;
+  const exportGoogleButton = $<HTMLButtonElement>("#export-google-button")!;
+  const exportLastPassButton = $<HTMLButtonElement>("#export-lastpass-button")!;
+  const clearAllButton = $<HTMLButtonElement>("#clear-all-button")!;
 
-  clearButton.addEventListener("click", handleClearAll);
+  const selectAllButton = $<HTMLButtonElement>("#select-all-button")!;
+  const deselectAllButton = $<HTMLButtonElement>("#deselect-all-button")!;
 
-  csvButton.addEventListener("click", withExportData(downloadAsCsv));
-  jsonButton.addEventListener("click", withExportData(downloadAsJson));
-
-  googleButton.addEventListener(
-    "click",
-    withExportData(async (event) => {
-      try {
-        const { otps } = getState();
-        const url = await exportToGoogleAuthenticator(otps);
-        const fromKeyboard = event.detail === 0;
-        showQrModal(url, "Export to Google Authenticator", fromKeyboard);
-      } catch (error: any) {
-        displayError(
-          error.message || "Failed to generate Google Authenticator QR code."
-        );
-      }
-    })
+  // --- Export Button Listeners ---
+  downloadCsvButton.addEventListener("click", () => {
+    handleExport(async (otps) => downloadAsCsv(otps));
+  });
+  downloadJsonButton.addEventListener("click", () => {
+    handleExport(async (otps) => downloadAsJson(otps));
+  });
+  exportGoogleButton.addEventListener("click", () =>
+    handleExport(exportToGoogleAuthenticator, true)
   );
+  exportLastPassButton.addEventListener("click", () => {
+    const selectedOtps = getSelectedOtps();
+    if (selectedOtps.length === 0) {
+      announceToScreenReader("No accounts selected to export.");
+      return;
+    }
 
-  lastPassButton.addEventListener(
-    "click",
-    withExportData(async (event) => {
-      try {
-        const { otps } = getState();
-        const url = await exportToLastPass(otps);
-        const fromKeyboard = event.detail === 0;
-        showQrModal(url, "Export to LastPass", fromKeyboard);
-      } catch (error: any) {
-        displayError(error.message || "Failed to generate LastPass QR code.");
-      }
-    })
-  );
+    const hotpAccounts = selectedOtps.filter((otp) => otp.type === 1); // 1 is HOTP
+    const hasHotp = hotpAccounts.length > 0;
+    const hasTotp = selectedOtps.some((otp) => otp.type === 2);
 
-  // Subscribe to state changes to control visibility
-  subscribe((state) => {
-    const hasOtps = state.otps.length > 0;
-    const hasLogs = (state.logCount || 0) > 0;
+    // If the selection contains a mix of compatible (TOTP) and incompatible (HOTP) accounts...
+    if (hasHotp && hasTotp) {
+      // ...we implement the "correct and inform" flow.
+      const hotpKeys = new Set(hotpAccounts.map(getOtpUniqueKey));
 
-    // Show the main container if there's anything to show/clear
-    exportContainer.style.display = hasOtps || hasLogs ? "flex" : "none";
+      // 1. Remove the incompatible HOTP items from the current selection.
+      setState((s) => {
+        const newSelectedKeys = new Set(s.selectedOtpKeys);
+        hotpKeys.forEach((key) => newSelectedKeys.delete(key));
+        return { ...s, selectedOtpKeys: newSelectedKeys };
+      });
 
-    // Show download buttons only if there are OTPs
-    const showExport = hasOtps ? "inline-flex" : "none";
-    csvButton.style.display = showExport;
-    jsonButton.style.display = showExport;
-    googleButton.style.display = showExport;
-    lastPassButton.style.display = showExport;
+      // 2. Inform the user what happened and why, prompting them to click again.
+      const plural = hotpAccounts.length > 1 ? "s were" : " was";
+      const count = hotpAccounts.length == 1 ? "An" : hotpAccounts.length;
+      const message = `LastPass only supports time-based (TOTP) accounts. ${count} incompatible counter-based account${plural} removed from your selection. Click "Export to LastPass" again to continue.`;
+      displayWarning(message);
+      return; // Stop the export this time.
+    }
+
+    // For all other cases (only TOTP, or only HOTP), let the standard export function handle it.
+    // It will succeed for TOTP-only selections, and fail with a clear error for HOTP-only selections.
+    handleExport(exportToLastPass, true);
+  });
+
+  // --- State-Modifying Button Listeners ---
+  clearAllButton.addEventListener("click", () => {
+    if (
+      confirm(
+        "Are you sure you want to clear all extracted accounts? This cannot be undone."
+      )
+    ) {
+      setState(() => ({ otps: [], selectedOtpKeys: new Set(), logCount: 0 }));
+    }
+  });
+
+  selectAllButton.addEventListener("click", () => {
+    const allKeys = new Set(getState().otps.map(getOtpUniqueKey));
+    setState((s) => ({ ...s, selectedOtpKeys: allKeys }));
+  });
+
+  deselectAllButton.addEventListener("click", () => {
+    setState((s) => ({ ...s, selectedOtpKeys: new Set() }));
   });
 }

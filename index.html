@@ -613,6 +613,10 @@
         <template id="otp-card-template">
           <!-- Each card is its own navigable section -->
           <div class="otp-card navigable-section" role="row">
+            <input
+              type="checkbox"
+              class="visually-hidden otp-select-checkbox"
+            />
             <div class="otp-details" role="presentation">
               <!-- The h3 will be programmatically linked to the row as its label -->
               <h3 class="otp-title"></h3>
@@ -691,6 +695,19 @@
           class="navigable-section"
           style="display: none"
         >
+          <div
+            id="selection-controls"
+            class="export-button-row"
+            style="display: none"
+          >
+            <button id="select-all-button" class="btn btn-secondary">
+              Select All
+            </button>
+            <button id="deselect-all-button" class="btn btn-secondary">
+              Deselect All
+            </button>
+            <span id="selection-count">0 selected</span>
+          </div>
           <div class="export-button-row">
             <button id="download-csv-button" class="btn btn-success navigable">
               <i class="fa fa-download"></i> Save as CSV

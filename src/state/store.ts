@@ -7,12 +7,14 @@ import { MigrationOtpParameter } from "../types";
 export interface AppState {
   otps: MigrationOtpParameter[];
   logCount: number;
+  selectedOtpKeys: Set<string>;
   theme: "light" | "dark" | "system";
 }
 
 const state: AppState = {
   otps: [],
   logCount: 0,
+  selectedOtpKeys: new Set(),
   theme: (localStorage.getItem("theme") as AppState["theme"]) || "system",
 };
 

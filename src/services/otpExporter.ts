@@ -131,7 +131,9 @@ export async function exportToLastPass(
     .filter((acc): acc is LastPassQrAccount => acc !== null);
 
   if (lastPassAccounts.length === 0) {
-    throw new Error("No compatible (TOTP) accounts found for LastPass export.");
+    throw new Error(
+      "No compatible (TOTP) accounts selected for LastPass export."
+    );
   }
 
   // --- Step 2: Create the complex inner JSON payload ---

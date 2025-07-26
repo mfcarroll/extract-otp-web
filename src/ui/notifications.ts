@@ -1,14 +1,16 @@
 import { $ } from "./dom";
 import { setState } from "../state/store";
 
+type AlertType = "error" | "warning" | "success" | "info";
+
 /**
- * Fades out and removes an error message element.
- * @param errorElement The error element to close.
+ * Fades out and removes an alert message element.
+ * @param alertElement The alert element to close.
  */
-function closeError(errorElement: HTMLElement): void {
-  errorElement.classList.add("fade-out");
+function closeAlert(alertElement: HTMLElement): void {
+  alertElement.classList.add("fade-out");
   // Remove the element after the fade-out transition completes.
-  errorElement.addEventListener("transitionend", () => errorElement.remove(), {
+  alertElement.addEventListener("transitionend", () => alertElement.remove(), {
     once: true,
   });
 }
@@ -43,46 +45,69 @@ export function addUploadLog(
   logItem.className = `log-item log-item--${status}`;
   logItem.innerHTML = `<i class="fa fa-file"></i><span class="log-file-name">${escapeHtml(
     fileName
-  )}</span><span class="log-filler"></span><span class="log-message">${message}</span>`;
+  )}</span><span class="log-filler"></span><span class="log-message">${escapeHtml(
+    message
+  )}</span>`;
 
   logList.appendChild(logItem);
   setState((s) => ({ ...s, logCount: (s.logCount || 0) + 1 }));
 }
 
 /**
- * Displays a dismissible error message at the top of the main content area.
- * @param message The error message to display.
+ * Displays a dismissible alert message at the top of the main content area.
+ * @param message The message to display.
+ * @param type The type of alert (e.g., 'error', 'warning').
  */
-export function displayError(message: string): void {
-  const errorContainer = $<HTMLDivElement>("#error-message-container");
+function displayAlert(message: string, type: AlertType): void {
+  const alertContainer = $<HTMLDivElement>("#error-message-container");
 
-  // Remove any existing error to prevent multiple messages from stacking.
-  const existingError = errorContainer.querySelector(".error-message");
-  if (existingError) {
-    existingError.remove();
+  // Remove any existing alert to prevent multiple messages from stacking.
+  const existingAlert = alertContainer.querySelector(".alert-message");
+  if (existingAlert) {
+    existingAlert.remove();
   }
 
-  const errorElement = document.createElement("div");
-  errorElement.className = "error-message";
-  errorElement.setAttribute("role", "alert"); // Announce to screen readers
+  const alertElement = document.createElement("div");
+  // Base class + modifier class for the type
+  alertElement.className = `alert-message alert-message--${type}`;
+  alertElement.setAttribute("role", "alert"); // Announce to screen readers
 
   const messageSpan = document.createElement("span");
   messageSpan.textContent = message;
 
   const closeButton = document.createElement("button");
-  closeButton.className = "error-close-button";
+  closeButton.className = "alert-close-button navigable";
   closeButton.innerHTML = "&#x2715;"; // '✕' symbol
-  closeButton.setAttribute("aria-label", "Close error message");
+  closeButton.setAttribute("aria-label", `Close ${type} message`);
 
-  errorElement.appendChild(messageSpan);
-  errorElement.appendChild(closeButton);
+  alertElement.appendChild(messageSpan);
+  alertElement.appendChild(closeButton);
 
-  errorContainer.prepend(errorElement);
+  alertContainer.prepend(alertElement);
 
   // The entire message can be clicked to dismiss.
-  errorElement.addEventListener("click", () => {
-    closeError(errorElement);
+  alertElement.addEventListener("click", () => {
+    closeAlert(alertElement);
   });
+
+  // Scroll the alert message into view so the user sees it.
+  alertElement.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+/**
+ * Displays a dismissible error message.
+ * @param message The error message to display.
+ */
+export function displayError(message: string): void {
+  displayAlert(message, "error");
+}
+
+/**
+ * Displays a dismissible warning message.
+ * @param message The warning message to display.
+ */
+export function displayWarning(message: string): void {
+  displayAlert(message, "warning");
 }
 
 /**

@@ -1,14 +1,12 @@
 /* --- Alert & Message Boxes --- */
 
-.error-message {
+.alert-message {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  color: var(--error-color);
+  align-items: flex-start;
   font-weight: bold;
   padding: 1rem;
-  background-color: rgba(var(--error-color-rgb), 0.1);
-  border: 1px solid var(--error-color);
+  border: 1px solid;
   border-radius: 4px;
   margin-bottom: 1rem;
   opacity: 1;
@@ -16,22 +14,45 @@
   cursor: pointer;
 }
 
-.error-message.fade-out {
+.alert-message.fade-out {
   opacity: 0;
 }
 
-.error-close-button {
+/* Error Style */
+.alert-message--error {
+  color: var(--error-color);
+  background-color: rgba(var(--error-color-rgb), 0.1);
+  border-color: var(--error-color);
+}
+
+/* Warning Style */
+.alert-message--warning {
+  color: var(--warning-color);
+  background-color: rgba(var(--warning-color-rgb), 0.1);
+  border-color: var(--warning-color);
+}
+
+.alert-close-button {
   background: none;
   border: none;
   color: inherit;
   font-size: 1.2rem;
-  line-height: 1;
-  padding: 0 0 0 1rem; /* Add some space to the left of the 'x' */
+  padding: 0;
+  margin-left: 1rem; /* Space between message and button */
   cursor: pointer;
   opacity: 0.7;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  /* Make it a square for a predictable focus outline */
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
 }
 
-.error-close-button:hover {
+.alert-close-button:hover,
+.alert-close-button.navigable:focus-visible {
   opacity: 1;
+  /* background-color: var(--active-background-color); */
 }
