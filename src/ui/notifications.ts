@@ -1,6 +1,18 @@
 import { $ } from "./dom";
 import { setState } from "../state/store";
 
+/**
+ * Fades out and removes an error message element.
+ * @param errorElement The error element to close.
+ */
+function closeError(errorElement: HTMLElement): void {
+  errorElement.classList.add("fade-out");
+  // Remove the element after the fade-out transition completes.
+  errorElement.addEventListener("transitionend", () => errorElement.remove(), {
+    once: true,
+  });
+}
+
 function escapeHtml(unsafe: string): string {
   return unsafe
     .replace(/&/g, "&amp;")
@@ -40,23 +52,37 @@ export function addUploadLog(
 /**
  * Displays a dismissible error message at the top of the main content area.
  * @param message The error message to display.
- * @param duration The time in milliseconds before the message starts to fade out.
  */
-export function displayError(message: string, duration = 5000): void {
+export function displayError(message: string): void {
   const errorContainer = $<HTMLDivElement>("#error-message-container");
 
+  // Remove any existing error to prevent multiple messages from stacking.
   const existingError = errorContainer.querySelector(".error-message");
-  if (existingError) existingError.remove();
+  if (existingError) {
+    existingError.remove();
+  }
 
   const errorElement = document.createElement("div");
   errorElement.className = "error-message";
-  errorElement.textContent = message;
+  errorElement.setAttribute("role", "alert"); // Announce to screen readers
+
+  const messageSpan = document.createElement("span");
+  messageSpan.textContent = message;
+
+  const closeButton = document.createElement("button");
+  closeButton.className = "error-close-button";
+  closeButton.innerHTML = "&#x2715;"; // '✕' symbol
+  closeButton.setAttribute("aria-label", "Close error message");
+
+  errorElement.appendChild(messageSpan);
+  errorElement.appendChild(closeButton);
+
   errorContainer.prepend(errorElement);
 
-  setTimeout(() => {
-    errorElement.classList.add("fade-out");
-    errorElement.addEventListener("transitionend", () => errorElement.remove());
-  }, duration);
+  // The entire message can be clicked to dismiss.
+  errorElement.addEventListener("click", () => {
+    closeError(errorElement);
+  });
 }
 
 /**

@@ -1,6 +1,9 @@
 /* --- Alert & Message Boxes --- */
 
 .error-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: var(--error-color);
   font-weight: bold;
   padding: 1rem;
@@ -9,9 +12,26 @@
   border-radius: 4px;
   margin-bottom: 1rem;
   opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-out;
+  cursor: pointer;
 }
 
 .error-message.fade-out {
   opacity: 0;
+}
+
+.error-close-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0 0 0 1rem; /* Add some space to the left of the 'x' */
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.error-close-button:hover {
+  opacity: 1;
 }

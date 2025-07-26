@@ -44,11 +44,17 @@
 /* --- Export Buttons --- */
 #export-container {
   margin-top: 2rem;
-  text-align: center;
   display: flex;
+  flex-direction: column; /* Stack rows vertically */
+  align-items: center; /* Center the rows horizontally */
   gap: 1rem;
+}
+
+.export-button-row {
+  display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  gap: 1rem; /* Space between buttons in a row */
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
 }
 
 /* Dark mode overrides */

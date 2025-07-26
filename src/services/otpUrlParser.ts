@@ -165,9 +165,7 @@ export async function getOtpParametersFromUrl(
   }
 
   if (!isLastPass && !isGoogleAuth) {
-    throw new Error(
-      "QR code is not a supported OTP export format (Google, LastPass, or standard otpauth)."
-    );
+    throw new Error("QR code is not a supported format.");
   }
 
   const url = new URL(otpUrl);

@@ -52,9 +52,7 @@ async function processSingleFile(
       const fileContent = await file.text();
       otpParameters = await processCsv(fileContent);
     } else {
-      throw new Error(
-        "Unsupported file type. Please select an image, .json, or .csv file."
-      );
+      throw new Error("Unsupported file type.");
     }
 
     if (otpParameters && otpParameters.length > 0) {
