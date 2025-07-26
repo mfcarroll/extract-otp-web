@@ -6,6 +6,19 @@ A simple, secure, and purely client-side web tool to extract One-Time Password (
 
 [https://mfcarroll.github.io/extract-otp-web/](https://mfcarroll.github.io/extract-otp-web/)
 
+## Features
+
+- Load from Google Authenticator bulk QR codes
+- Load from LastPass Authenticator bulk QR codes
+- Load from regular otpauth QR codes
+- Load from LastPass Authenticator JSON export
+- Display individual OTP secrets and QR codes
+- Save to CSV
+- Save to JSON
+- Export to Google Authenticator bulk QR code
+- Export to LastPass Authenticator bulk QR code
+- Scan direct from camera
+
 ## Why is this needed?
 
 Google Authenticator lets you transfer your accounts to a new phone, but it doesn't provide an easy way to export them to other apps like 1Password or Bitwarden. This is because it hides the original "secret" (the QR code you first scanned) for each account.

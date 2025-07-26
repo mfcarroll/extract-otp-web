@@ -23,6 +23,7 @@ interface LastPassQrJson {
 const ALGORITHM_MAP: { [key: string]: number } = {
   SHA1: 1,
   SHA256: 2,
+  "SHA1-256": 2, // Add this line to handle LastPass's proprietary name for SHA256
   SHA512: 3,
   MD5: 4,
 };

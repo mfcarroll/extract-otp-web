@@ -109,21 +109,42 @@ async function decodeGoogleAuthenticatorPayload(
 async function decodeLastPassPayload(
   dataBase64: string
 ): Promise<MigrationOtpParameter[]> {
+  console.log("[LastPass Import] Step 1: Received Base64 data", dataBase64);
   const decodedBytes = base64ToUint8Array(dataBase64);
+  console.log(
+    "[LastPass Import] Step 2: Decoded Base64 to Uint8Array",
+    decodedBytes
+  );
 
   try {
     // The outer layer is Gzipped JSON.
     const jsonWrapperBytes = pako.inflate(decodedBytes);
+    console.log(
+      "[LastPass Import] Step 3: Inflated outer payload",
+      jsonWrapperBytes
+    );
     const jsonWrapperString = new TextDecoder().decode(jsonWrapperBytes);
+    console.log(
+      "[LastPass Import] Step 4: Decoded outer payload to JSON string",
+      jsonWrapperString
+    );
     const jsonWrapper = JSON.parse(jsonWrapperString);
 
     if (jsonWrapper.content && typeof jsonWrapper.content === "string") {
       const contentBase64 = jsonWrapper.content;
+      console.log(
+        "[LastPass Import] Step 5: Extracted inner Base64 content",
+        contentBase64
+      );
 
       // The 'content' field is a Base64 encoded, Gzipped JSON string.
       const gzippedInnerPayload = base64ToUint8Array(contentBase64);
       const finalJsonBytes = pako.inflate(gzippedInnerPayload);
       const finalJsonString = new TextDecoder().decode(finalJsonBytes);
+      console.log(
+        "[LastPass Import] Step 6: Decoded final inner JSON string",
+        finalJsonString
+      );
 
       // The final JSON string can be processed by our formatter.
       return processLastPassQrJson(finalJsonString);

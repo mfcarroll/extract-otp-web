@@ -17,6 +17,21 @@ export function base64ToUint8Array(base64: string): Uint8Array {
   return bytes;
 }
 
+/**
+ * Converts a Uint8Array to a Base64 encoded string.
+ * @param bytes The byte array to encode.
+ * @returns The Base64 encoded string.
+ */
+export function uint8ArrayToBase64(bytes: Uint8Array): string {
+  let binary = "";
+  const len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  // The btoa function in browsers creates a Base64-encoded ASCII string.
+  return btoa(binary);
+}
+
 /** Helper for debugging to convert a Uint8Array to a hex string. */
 const toHexString = (bytes: Uint8Array) =>
   bytes.reduce((str, byte) => str + byte.toString(16).padStart(2, "0"), "");

@@ -298,16 +298,16 @@
                   aria-labelledby="faq-4-button"
                 >
                   <p>
-                    Authenticator apps like Google Authenticator and password
-                    managers like LastPass often make it difficult to view the
-                    original secrets used to set up your accounts. Instead, they
-                    provide a proprietary export QR code that bundles all your
-                    accounts together. This makes it easy to transfer to a new
-                    device, but difficult to switch to a different authenticator
-                    app. LastPass also provides a JSON file export, which is an
-                    improvement, but still not easily portable. In contrast,
-                    apps like 1Password make the original secrets easily
-                    accessible, allowing for simple transfers to other 2FA apps.
+                    Google Authenticator makes it difficult to view the original
+                    secrets used to set up your accounts. Instead, they provide
+                    an export QR code that bundles all your accounts together.
+                    This makes it easy to transfer to a new device, but
+                    difficult to switch to a different authenticator app.
+                    LastPass also provides individual QR codes for each account,
+                    which is a huge improvement, but it only provides the text
+                    secrets in a JSON code format. In contrast, apps like
+                    1Password make the original secrets easily accessible,
+                    allowing for simple transfers to other 2FA apps.
                   </p>
                 </div>
               </div>
@@ -685,6 +685,12 @@
           </button>
           <button id="download-json-button" class="btn btn-success navigable">
             <i class="fa fa-download"></i> Save as JSON
+          </button>
+          <button id="export-google-button" class="btn btn-primary navigable">
+            <i class="fa-brands fa-google"></i> Export to Google
+          </button>
+          <button id="export-lastpass-button" class="btn btn-primary navigable">
+            <i class="fa-solid fa-key"></i> Export to LastPass
           </button>
           <button id="clear-all-button" class="btn btn-danger navigable">
             <i class="fa fa-trash"></i> Clear All
