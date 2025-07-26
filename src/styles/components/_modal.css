@@ -45,8 +45,8 @@ body.modal-open {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(0, 0, 0, 0.5);
-  color: var(--modal-close-color);
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
   border: none;
   border-radius: 50%;
   width: 2.5rem;
@@ -61,5 +61,5 @@ body.modal-open {
 
 .modal-close:hover,
 .modal-close:focus-visible {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.4);
 }

@@ -19,6 +19,20 @@
   z-index: 991; /* To appear above the drag overlay */
 }
 
+.file-input-label .label-processing {
+  display: none;
+}
+
+/* When processing, hide the idle label and show the processing label */
+.file-input-label.processing .label-idle {
+  display: none;
+}
+
+.file-input-label.processing .label-processing {
+  display: inline-flex; /* Match .btn style */
+  align-items: center;
+}
+
 .drop-text {
   margin-top: 1rem;
   color: var(--subtle-text-color);

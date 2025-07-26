@@ -5,7 +5,11 @@ import {
   exportToGoogleAuthenticator,
   exportToLastPass,
 } from "../services/otpExporter";
-import { clearLogs, displayError } from "./notifications";
+import {
+  announceToScreenReader,
+  clearLogs,
+  displayError,
+} from "./notifications";
 import { setState, subscribe, getState } from "../state/store";
 import { resetFileInput } from "./fileInput";
 import { showQrModal } from "./qrModal";
@@ -20,6 +24,22 @@ function handleClearAll(): void {
 }
 
 /**
+ * A higher-order function that wraps an export action. It checks if there is
+ * data to export before executing the action, handling the empty state uniformly.
+ * @param action The export function to wrap.
+ * @returns An event handler function.
+ */
+function withExportData(action: (event: MouseEvent) => Promise<void> | void) {
+  return (event: MouseEvent) => {
+    const { otps } = getState();
+    if (otps.length === 0) {
+      announceToScreenReader("No data to export.");
+      return;
+    }
+    action(event);
+  };
+}
+/**
  * Initializes the export control buttons (Save CSV, Clear All)
  * and manages the visibility of their container.
  */
@@ -31,35 +51,40 @@ export function initExportControls(): void {
   const lastPassButton = $<HTMLButtonElement>("#export-lastpass-button");
   const clearButton = $<HTMLButtonElement>("#clear-all-button");
 
-  csvButton.addEventListener("click", downloadAsCsv);
-  jsonButton.addEventListener("click", downloadAsJson);
   clearButton.addEventListener("click", handleClearAll);
 
-  googleButton.addEventListener("click", async (event: MouseEvent) => {
-    try {
-      const { otps } = getState();
-      if (otps.length === 0) return;
-      const url = await exportToGoogleAuthenticator(otps);
-      const fromKeyboard = event.detail === 0;
-      showQrModal(url, "Export to Google Authenticator", fromKeyboard);
-    } catch (error: any) {
-      displayError(
-        error.message || "Failed to generate Google Authenticator QR code."
-      );
-    }
-  });
+  csvButton.addEventListener("click", withExportData(downloadAsCsv));
+  jsonButton.addEventListener("click", withExportData(downloadAsJson));
 
-  lastPassButton.addEventListener("click", async (event: MouseEvent) => {
-    try {
-      const { otps } = getState();
-      if (otps.length === 0) return;
-      const url = await exportToLastPass(otps);
-      const fromKeyboard = event.detail === 0;
-      showQrModal(url, "Export to LastPass", fromKeyboard);
-    } catch (error: any) {
-      displayError(error.message || "Failed to generate LastPass QR code.");
-    }
-  });
+  googleButton.addEventListener(
+    "click",
+    withExportData(async (event) => {
+      try {
+        const { otps } = getState();
+        const url = await exportToGoogleAuthenticator(otps);
+        const fromKeyboard = event.detail === 0;
+        showQrModal(url, "Export to Google Authenticator", fromKeyboard);
+      } catch (error: any) {
+        displayError(
+          error.message || "Failed to generate Google Authenticator QR code."
+        );
+      }
+    })
+  );
+
+  lastPassButton.addEventListener(
+    "click",
+    withExportData(async (event) => {
+      try {
+        const { otps } = getState();
+        const url = await exportToLastPass(otps);
+        const fromKeyboard = event.detail === 0;
+        showQrModal(url, "Export to LastPass", fromKeyboard);
+      } catch (error: any) {
+        displayError(error.message || "Failed to generate LastPass QR code.");
+      }
+    })
+  );
 
   // Subscribe to state changes to control visibility
   subscribe((state) => {

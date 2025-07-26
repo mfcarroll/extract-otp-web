@@ -1,7 +1,7 @@
 import { encode as base32Encode } from "thirty-two";
 import pako from "pako";
 import protobuf from "protobufjs";
-import { MigrationOtpParameter } from "../types";
+import { LastPassQrAccount, MigrationOtpParameter } from "../types";
 import { uint8ArrayToBase64 } from "./protobufProcessor";
 
 // --- Protobuf and Data Mapping Setup ---
@@ -72,7 +72,7 @@ export async function exportToLastPass(
 ): Promise<string> {
   // --- Step 1: Map OTPs to the complex LastPass account format ---
   // We mimic the detailed structure seen in your import logs, including a unique ID and timestamp.
-  const lastPassAccounts = otps
+  const lastPassAccounts: LastPassQrAccount[] = otps
     .map((otp, index) => {
       if (otp.type !== 2) {
         // LastPass only seems to handle TOTP
@@ -83,7 +83,7 @@ export async function exportToLastPass(
       const algorithm = ALGORITHM_STRING_MAP[otp.algorithm] || "SHA1";
       const digits = DIGITS_VALUE_MAP[otp.digits] || 6;
 
-      return {
+      const account: LastPassQrAccount = {
         // Essential OTP data
         oUN: otp.name,
         oIN: otp.issuer,
@@ -100,8 +100,9 @@ export async function exportToLastPass(
         pN: false,
         fD: { folderId: 0, position: index },
       };
+      return account;
     })
-    .filter((acc): acc is NonNullable<typeof acc> => acc !== null);
+    .filter((acc): acc is LastPassQrAccount => acc !== null);
 
   if (lastPassAccounts.length === 0) {
     throw new Error("No compatible (TOTP) accounts found for LastPass export.");

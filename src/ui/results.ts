@@ -38,47 +38,17 @@ function populateDetail(
 }
 
 /**
- * Creates an HTML element for a single OTP entry by cloning a template.
+ * Populates the text content and ARIA attributes of an OTP card.
+ * @param cardElement The card element to populate.
+ * @param otp The OTP data for the card.
+ * @param index The index of the card.
  */
-function createOtpCard(otp: OtpData, index: number): HTMLDivElement {
-  // The title is for display purposes in the card header.
+function populateCardDetails(
+  cardElement: HTMLElement,
+  otp: OtpData,
+  index: number
+): void {
   const titleText = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
-
-  const cardFragment = cardTemplate.content.cloneNode(true) as DocumentFragment;
-  const cardElement = cardFragment.querySelector<HTMLDivElement>(".otp-card")!;
-  cardElement.id = `otp-card-${index}`;
-
-  // --- ARIA: Set tabindex for roving focus ---
-  // The first navigable element in EACH card should be a tab stop. This
-  // allows users to tab between cards as if they are distinct sections.
-  // All other navigable items have tabindex="-1" by default from the
-  // template, which is correct for the roving tabindex pattern within a card.
-  const firstNavigable = cardElement.querySelector<HTMLElement>(".navigable");
-  // The template sets tabindex="-1", so we override it for the first element of each card.
-  firstNavigable?.setAttribute("tabindex", "0");
-
-  // --- ARIA: Reset roving tabindex when focus leaves the card ---
-  cardElement.addEventListener("focusout", (event) => {
-    // `relatedTarget` is the element that is receiving focus.
-    const newFocusTarget = event.relatedTarget as HTMLElement | null;
-
-    // If the new focus target is null or is outside of the current card,
-    // then we have tabbed out of the card.
-    if (!newFocusTarget || !cardElement.contains(newFocusTarget)) {
-      const navigables = Array.from(
-        cardElement.querySelectorAll<HTMLElement>(".navigable")
-      );
-
-      // Reset all navigable elements in this card to tabindex="-1".
-      navigables.forEach((el) => el.setAttribute("tabindex", "-1"));
-
-      // Set the first one to be the designated tab stop for the next time
-      // the user tabs into this card.
-      if (navigables.length > 0) {
-        navigables[0].setAttribute("tabindex", "0");
-      }
-    }
-  });
 
   // --- ARIA: Label the entire row with its title for screen reader context ---
   const titleElement =
@@ -117,35 +87,23 @@ function createOtpCard(otp: OtpData, index: number): HTMLDivElement {
   const urlLabelId = `url-label-${index}`;
   urlLabelElement.id = urlLabelId;
   const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
-  // Display the raw, encoded URL. While less "pretty" than a decoded
-  // version, it's the technically correct representation and avoids
-  // confusion about spaces or special characters in the URL.
   urlInput.value = otp.url;
   urlInput.nextElementSibling!.setAttribute("data-copy-text", otp.url);
   urlInput.setAttribute("aria-labelledby", urlLabelId);
+}
 
-  const secretCopy = cardElement.querySelector<HTMLButtonElement>(
-    ".secret-container .copy-button"
-  )!;
-  const urlCopy = cardElement.querySelector<HTMLButtonElement>(
-    ".otp-url-container .copy-button"
-  )!;
-
-  // Generate the QR code
-  const qrCodeCanvas = cardElement.querySelector<HTMLCanvasElement>("canvas")!;
-  QRCode.toCanvas(qrCodeCanvas, otp.url, {
-    width: 220,
-    margin: 1,
-    color: getQrCodeColors(),
-  });
-
+/**
+ * Sets up event listeners for an OTP card (copying, QR modal).
+ * @param cardElement The card element to set up events for.
+ * @param otp The OTP data for the card.
+ */
+function setupCardEvents(cardElement: HTMLElement, otp: OtpData): void {
   const qrCodeContainer =
     cardElement.querySelector<HTMLDivElement>(".qr-code-container")!;
+  const titleText = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
   qrCodeContainer.setAttribute("aria-label", `Show QR code for ${titleText}`);
   qrCodeContainer.addEventListener("click", (event: MouseEvent) => {
     const modalTitle = otp.issuer ? `${otp.issuer}: ${otp.name}` : otp.name;
-    // A `detail` of 0 indicates a keyboard-initiated click. This allows us
-    // to conditionally restore focus only for keyboard users, which is better UX.
     const fromKeyboard = event.detail === 0;
     showQrModal(otp.url, modalTitle, fromKeyboard);
   });
@@ -154,24 +112,74 @@ function createOtpCard(otp: OtpData, index: number): HTMLDivElement {
   otpDetails.addEventListener("click", (event) => {
     handleCopyAction(event.target as HTMLElement);
   });
+}
 
-  // --- Register Navigation Rules ---
-  const secretContainer =
-    cardElement.querySelector<HTMLDivElement>(".secret-container")!;
-  const urlContainer =
-    cardElement.querySelector<HTMLDivElement>(".otp-url-container")!;
-  const secretCopyButton =
-    secretContainer.querySelector<HTMLDivElement>(".copy-button")!;
-  const urlCopyButton =
-    urlContainer.querySelector<HTMLDivElement>(".copy-button")!;
+/**
+ * Sets up the keyboard navigation rules for an OTP card.
+ * @param cardElement The card element to set up navigation for.
+ */
+function setupCardNavigation(cardElement: HTMLElement): void {
+  const secretInput =
+    cardElement.querySelector<HTMLInputElement>(".secret-input")!;
+  const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
+  const secretCopyButton = cardElement.querySelector<HTMLButtonElement>(
+    ".secret-container .copy-button"
+  )!;
+  const urlCopyButton = cardElement.querySelector<HTMLButtonElement>(
+    ".otp-url-container .copy-button"
+  )!;
+  const qrCodeContainer =
+    cardElement.querySelector<HTMLDivElement>(".qr-code-container")!;
 
   Navigation.registerRule(qrCodeContainer, "left", () => secretCopyButton);
-
   Navigation.registerRule(secretInput, "right", () => secretCopyButton);
   Navigation.registerRule(urlInput, "right", () => urlCopyButton);
+  Navigation.registerRule(secretCopyButton, "left", () => secretInput);
+  Navigation.registerRule(urlCopyButton, "left", () => urlInput);
+}
 
-  Navigation.registerRule(secretCopy, "left", () => secretInput);
-  Navigation.registerRule(urlCopy, "left", () => urlInput);
+/**
+ * Sets up roving tabindex for a card, making it a single tab stop.
+ * @param cardElement The card element to set up.
+ */
+function setupRovingTabindex(cardElement: HTMLElement): void {
+  const firstNavigable = cardElement.querySelector<HTMLElement>(".navigable");
+  firstNavigable?.setAttribute("tabindex", "0");
+
+  cardElement.addEventListener("focusout", (event) => {
+    const newFocusTarget = event.relatedTarget as HTMLElement | null;
+    if (!newFocusTarget || !cardElement.contains(newFocusTarget)) {
+      const navigables = Array.from(
+        cardElement.querySelectorAll<HTMLElement>(".navigable")
+      );
+      navigables.forEach((el) => el.setAttribute("tabindex", "-1"));
+      if (navigables.length > 0) {
+        navigables[0].setAttribute("tabindex", "0");
+      }
+    }
+  });
+}
+
+/**
+ * Creates an HTML element for a single OTP entry by cloning a template.
+ */
+function createOtpCard(otp: OtpData, index: number): HTMLDivElement {
+  const cardFragment = cardTemplate.content.cloneNode(true) as DocumentFragment;
+  const cardElement = cardFragment.querySelector<HTMLDivElement>(".otp-card")!;
+  cardElement.id = `otp-card-${index}`;
+
+  setupRovingTabindex(cardElement);
+  populateCardDetails(cardElement, otp, index);
+  setupCardEvents(cardElement, otp);
+  setupCardNavigation(cardElement);
+
+  // Generate the QR code
+  const qrCodeCanvas = cardElement.querySelector<HTMLCanvasElement>("canvas")!;
+  QRCode.toCanvas(qrCodeCanvas, otp.url, {
+    width: 220,
+    margin: 1,
+    color: getQrCodeColors(),
+  });
 
   return cardElement;
 }

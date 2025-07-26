@@ -1,20 +1,8 @@
 import pako from "pako";
-import { decode as thirtyTwoDecode } from "thirty-two";
 import { MigrationOtpParameter } from "../types";
 import { base64ToUint8Array, decodeProtobufPayload } from "./protobufProcessor";
 import { processLastPassQrJson } from "./lastPassFormatter";
-
-const ALGORITHM_MAP: { [key: string]: number } = {
-  SHA1: 1,
-  SHA256: 2,
-  SHA512: 3,
-  MD5: 4,
-};
-
-const DIGITS_MAP: { [key: number]: number } = {
-  6: 1, // DIGIT_COUNT_SIX
-  8: 2, // DIGIT_COUNT_EIGHT
-};
+import { mapToMigrationOtpParameter, RawOtpAccount } from "./otpDataMapper";
 
 /**
  * Decodes a standard otpauth:// URL into OTP parameters.
@@ -38,7 +26,6 @@ async function decodeStandardOtpAuthUrl(
   if (!secretB32) {
     throw new Error("Missing 'secret' parameter in otpauth URL.");
   }
-  const secretBytes = new Uint8Array(thirtyTwoDecode(secretB32));
 
   let issuer = params.get("issuer");
   let name = label;
@@ -59,19 +46,16 @@ async function decodeStandardOtpAuthUrl(
   }
 
   const algorithmStr = (params.get("algorithm") || "SHA1").toUpperCase();
-  const algorithm = ALGORITHM_MAP[algorithmStr] || 0; // 0 for invalid/unspecified
-
   const digitsStr = params.get("digits") || "6";
-  const digits = DIGITS_MAP[parseInt(digitsStr, 10)] || 0; // 0 for unspecified
+  const digits = parseInt(digitsStr, 10);
 
-  const otp: MigrationOtpParameter = {
-    secret: secretBytes,
+  const rawAccount: RawOtpAccount = {
     name: name,
     issuer: issuer || "",
-    algorithm: algorithm,
-    digits: digits,
-    type: type === "totp" ? 2 : 1, // 2 for TOTP, 1 for HOTP
-    counter: 0, // Default counter
+    secret: secretB32,
+    algorithm: algorithmStr,
+    digits: digits === 6 || digits === 8 ? digits : 6,
+    type: type,
   };
 
   if (type === "hotp") {
@@ -81,9 +65,10 @@ async function decodeStandardOtpAuthUrl(
         "Missing 'counter' parameter for hotp type in otpauth URL."
       );
     }
-    otp.counter = parseInt(counterStr, 10);
+    rawAccount.counter = parseInt(counterStr, 10);
   }
 
+  const otp = mapToMigrationOtpParameter(rawAccount);
   return [otp];
 }
 

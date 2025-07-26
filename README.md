@@ -118,4 +118,4 @@ The user interface and QR code processing are powered by these excellent open-so
 
 [Gemini Code Assist](https://codeassist.google/) was used during the development of this tool. All AI-generated code has been carefully manually reviewed.
 
-The development of this tool was made possible in part through the support of [Stand.earth](https://stand.earth/). If you find this usefulm , please [consider making a donation](https://stand.earth/donate/) to support Stand's work.
+The development of this tool was made possible in part through the support of [Stand.earth](https://stand.earth/). If you find this useful, please [consider making a donation](https://stand.earth/donate/) to support Stand's work.

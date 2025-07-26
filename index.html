@@ -573,7 +573,13 @@
               role="button"
               tabindex="0"
             >
-              <i class="fa fa-upload"></i> Select QR Code Image(s)
+              <span class="label-idle">
+                <i class="fa fa-upload"></i> Select QR Code Image(s) or JSON
+                File
+              </span>
+              <span class="label-processing">
+                <i class="fa fa-spinner fa-spin"></i> Processing...
+              </span>
             </label>
             <label
               id="take-photo-button"
@@ -788,7 +794,11 @@
         <div class="camera-reticle"></div>
         <div class="camera-scan-text">Scan QR Code</div>
         <canvas id="camera-canvas" style="display: none"></canvas>
-        <button id="camera-cancel" class="modal-close" aria-label="Close">
+        <button
+          id="camera-cancel"
+          class="modal-close navigable"
+          aria-label="Close"
+        >
           &#x2715;
         </button>
       </div>

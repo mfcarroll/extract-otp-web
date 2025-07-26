@@ -2,6 +2,7 @@ import { getState } from "../state/store";
 import { OtpData } from "../types";
 import { announceToScreenReader } from "../ui/notifications";
 import { convertToOtpData } from "./otpFormatter";
+import { triggerDownload } from "./download";
 
 const escapeCsvField = (field: any): string => {
   const str = String(field ?? "");
@@ -37,15 +38,5 @@ export function downloadAsCsv(): void {
   ];
 
   const csvString = csvRows.join("\n");
-  const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
-
-  const link = document.createElement("a");
-  const url = URL.createObjectURL(blob);
-  link.setAttribute("href", url);
-  link.setAttribute("download", "otp_secrets.csv");
-  link.style.visibility = "hidden";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+  triggerDownload("otp_secrets.csv", csvString, "text/csv;charset=utf-8;");
 }

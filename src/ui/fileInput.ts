@@ -9,8 +9,6 @@ import { setState, getState } from "../state/store";
 import { addUploadLog, displayError } from "./notifications";
 import { $ } from "./dom";
 
-let processingTimeoutId: number | null = null;
-
 /**
  * Toggles the UI's processing state. It disables the input immediately but only
  * shows a visual "processing" indicator after a short delay. This prevents
@@ -18,45 +16,11 @@ let processingTimeoutId: number | null = null;
  * @param isProcessing Whether the application is currently processing files.
  */
 function setProcessingState(isProcessing: boolean): void {
-  const qrInput = $<HTMLInputElement>("#qr-input");
   const fileInputLabel = $<HTMLLabelElement>(".file-input-label");
+  const qrInput = $<HTMLInputElement>("#qr-input");
 
-  // Always disable the input immediately when processing starts to prevent re-entry.
+  fileInputLabel.classList.toggle("processing", isProcessing);
   qrInput.disabled = isProcessing;
-  fileInputLabel.classList.toggle("navigable", !isProcessing);
-
-  if (isProcessing) {
-    // Set a timeout to show the processing indicator. If processing finishes
-    // before this, the timeout will be cleared and the user won't see a flicker.
-    processingTimeoutId = window.setTimeout(() => {
-      fileInputLabel.classList.add("processing");
-      fileInputLabel.innerHTML = ""; // Clear existing content
-      const icon = document.createElement("i");
-      icon.className = "fa fa-spinner fa-spin";
-      const text = document.createTextNode(" Processing...");
-      fileInputLabel.appendChild(icon);
-      fileInputLabel.appendChild(text);
-      processingTimeoutId = null;
-    }, 100); // 200ms delay
-  } else {
-    // If we are stopping the processing state, clear any pending timeout.
-    if (processingTimeoutId) {
-      clearTimeout(processingTimeoutId);
-      processingTimeoutId = null;
-    }
-
-    // Restore the button to its original state.
-    fileInputLabel.classList.remove("processing");
-    fileInputLabel.innerHTML = ""; // Clear existing content
-    // Restore original text and icon
-    const icon = document.createElement("i");
-    icon.className = "fa fa-upload";
-    const text = document.createTextNode(
-      " Select QR Code Image(s) or JSON File"
-    );
-    fileInputLabel.appendChild(icon);
-    fileInputLabel.appendChild(text);
-  }
 }
 
 /**
