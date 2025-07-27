@@ -601,7 +601,7 @@
           />
         </div>
 
-        <div id="error-message-container"></div>
+        <div id="error-message-container" class="navigable-section"></div>
 
         <!-- 4. Results Container (each card inside is its own section) -->
         <div
@@ -612,10 +612,15 @@
 
         <template id="otp-card-template">
           <!-- Each card is its own navigable section -->
-          <div class="otp-card navigable-section" role="row">
+          <div
+            class="otp-card navigable-section navigable"
+            role="row"
+            tabindex="0"
+          >
             <input
               type="checkbox"
               class="visually-hidden otp-select-checkbox"
+              tabindex="-1"
             />
             <div class="otp-details" role="presentation">
               <!-- The h3 will be programmatically linked to the row as its label -->
@@ -690,25 +695,24 @@
         </template>
 
         <!-- 5. Results Buttons Section -->
-        <div
-          id="export-container"
-          class="navigable-section"
-          style="display: none"
-        >
+        <div id="export-container" style="display: none">
           <div
             id="selection-controls"
-            class="export-button-row"
+            class="export-button-row navigable-section"
             style="display: none"
           >
-            <button id="select-all-button" class="btn btn-secondary">
+            <button id="select-all-button" class="btn btn-secondary navigable">
               Select All
             </button>
-            <button id="deselect-all-button" class="btn btn-secondary">
+            <button
+              id="deselect-all-button"
+              class="btn btn-secondary navigable"
+            >
               Deselect All
             </button>
             <span id="selection-count">0 selected</span>
           </div>
-          <div class="export-button-row">
+          <div class="export-button-row navigable-section">
             <button id="download-csv-button" class="btn btn-success navigable">
               <i class="fa fa-download"></i> Save as CSV
             </button>
@@ -719,7 +723,7 @@
               <i class="fa fa-trash"></i> Clear All
             </button>
           </div>
-          <div class="export-button-row">
+          <div class="export-button-row navigable-section">
             <button id="export-google-button" class="btn btn-primary navigable">
               <i class="fa-brands fa-google"></i> Export to Google
             </button>

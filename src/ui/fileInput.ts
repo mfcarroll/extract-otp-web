@@ -21,6 +21,8 @@ function setProcessingState(isProcessing: boolean): void {
   const qrInput = $<HTMLInputElement>("#qr-input");
 
   fileInputLabel.classList.toggle("processing", isProcessing);
+  // A processing label is not interactive.
+  fileInputLabel.classList.toggle("navigable", !isProcessing);
   qrInput.disabled = isProcessing;
 }
 

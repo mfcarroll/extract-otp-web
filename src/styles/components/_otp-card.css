@@ -17,11 +17,6 @@
   border-color: var(--primary-color);
 }
 
-.otp-card:focus-within {
-  border-color: var(--focus-ring-color);
-  box-shadow: 0 0 8px rgba(var(--focus-color-rgb), 0.4);
-}
-
 .otp-card h3 {
   color: var(--primary-color);
   margin-top: 0;

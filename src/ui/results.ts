@@ -128,6 +128,19 @@ function setupCardEvents(
     handleCopyAction(event.target as HTMLElement);
   });
 
+  const toggleSelection = (fromKeyboard: boolean) => {
+    // Update global state, which will trigger a re-render.
+    setState((s) => {
+      const newSelected = new Set(s.selectedOtpKeys);
+      newSelected.has(key) ? newSelected.delete(key) : newSelected.add(key);
+      return {
+        ...s,
+        selectedOtpKeys: newSelected,
+        focusedOtpKey: fromKeyboard ? key : null,
+      };
+    });
+  };
+
   // --- Selection Logic ---
   cardElement.addEventListener("click", (event) => {
     // Don't toggle selection if an interactive element inside the card was clicked.
@@ -145,12 +158,10 @@ function setupCardEvents(
 
     event.preventDefault();
 
-    // Update global state, which will trigger a re-render.
-    setState((s) => {
-      const newSelected = new Set(s.selectedOtpKeys);
-      newSelected.has(key) ? newSelected.delete(key) : newSelected.add(key);
-      return { ...s, selectedOtpKeys: newSelected };
-    });
+    // Differentiate between a real user click and a programmatic one from
+    // the navigation system (Enter/Space). A programmatic click has event.detail === 0.
+    const fromKeyboard = event.detail === 0;
+    toggleSelection(fromKeyboard);
   });
 }
 
@@ -159,6 +170,14 @@ function setupCardEvents(
  * @param cardElement The card element to set up navigation for.
  */
 function setupCardNavigation(cardElement: HTMLElement): void {
+  // Get all navigable elements within the card in DOM order.
+  const innerNavigables = Array.from(
+    cardElement.querySelectorAll<HTMLElement>(".navigable")
+  ).filter(
+    (el) => el.offsetParent !== null // Ensure the element is visible
+  );
+
+  // Get specific card elements
   const secretInput =
     cardElement.querySelector<HTMLInputElement>(".secret-input")!;
   const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
@@ -171,33 +190,23 @@ function setupCardNavigation(cardElement: HTMLElement): void {
   const qrCodeContainer =
     cardElement.querySelector<HTMLButtonElement>(".qr-code-container")!;
 
+  // --- Rules for going IN and OUT of the card ---
+
+  Navigation.registerRule(cardElement, "right", () => secretInput);
+  Navigation.registerRule(cardElement, "left", () => qrCodeContainer);
+
+  // From any inner control, "Escape" returns focus to the card container.
+  innerNavigables.forEach((el) => {
+    Navigation.registerKeyAction(el, "escape", () => cardElement);
+  });
+
+  // --- Rules for moving between the inner controls ---
+
   Navigation.registerRule(qrCodeContainer, "left", () => secretCopyButton);
   Navigation.registerRule(secretInput, "right", () => secretCopyButton);
   Navigation.registerRule(urlInput, "right", () => urlCopyButton);
   Navigation.registerRule(secretCopyButton, "left", () => secretInput);
   Navigation.registerRule(urlCopyButton, "left", () => urlInput);
-}
-
-/**
- * Sets up roving tabindex for a card, making it a single tab stop.
- * @param cardElement The card element to set up.
- */
-function setupRovingTabindex(cardElement: HTMLElement): void {
-  const firstNavigable = cardElement.querySelector<HTMLElement>(".navigable");
-  firstNavigable?.setAttribute("tabindex", "0");
-
-  cardElement.addEventListener("focusout", (event) => {
-    const newFocusTarget = event.relatedTarget as HTMLElement | null;
-    if (!newFocusTarget || !cardElement.contains(newFocusTarget)) {
-      const navigables = Array.from(
-        cardElement.querySelectorAll<HTMLElement>(".navigable")
-      );
-      navigables.forEach((el) => el.setAttribute("tabindex", "-1"));
-      if (navigables.length > 0) {
-        navigables[0].setAttribute("tabindex", "0");
-      }
-    }
-  });
 }
 
 /**
@@ -215,8 +224,10 @@ function createOtpCard(
   cardElement.id = `otp-card-${index}`;
   cardElement.dataset.key = key;
   cardElement.classList.toggle("selected", isSelected);
+  // The first card is the entry point for tabbing. Others are not in tab order.
+  // The main navigation system will handle roving tabindex from here.
+  // cardElement.setAttribute("tabindex", index === 0 ? "0" : "-1");
 
-  setupRovingTabindex(cardElement);
   populateCardDetails(cardElement, otp, index);
   setupCardEvents(cardElement, otp, key);
   setupCardNavigation(cardElement);
@@ -286,6 +297,23 @@ export function initResults() {
   subscribe((state) => {
     render(state.otps, state.selectedOtpKeys);
 
+    const keyToFocus = state.focusedOtpKey;
+    // After rendering, if a key was marked for focus (e.g., from a keyboard
+    // selection), restore focus to that element.
+    if (keyToFocus) {
+      // First, immediately clear the key from the state. This may trigger a
+      // synchronous re-render, but that's okay. The important part is that
+      // the state is clean for the next update, and our focus call happens last.
+      setState(() => ({ focusedOtpKey: null }));
+
+      // After the state is cleared, find the element that was just rendered
+      // and apply focus to it.
+      const elementToFocus = document.querySelector<HTMLElement>(
+        `.otp-card[data-key="${keyToFocus}"]`
+      );
+      elementToFocus?.focus();
+    }
+
     const { otps, selectedOtpKeys } = state;
 
     // Update visibility of export and selection controls
@@ -308,19 +336,27 @@ export function initResults() {
       const total = otps.length;
       selectionCountSpan.textContent = `${count} of ${total} selected`;
 
+      const setButtonNavigable = (
+        button: HTMLButtonElement,
+        enabled: boolean
+      ) => {
+        button.disabled = !enabled;
+        button.classList.toggle("navigable", enabled);
+      };
+
       const hasSelection = count > 0;
-      downloadCsvButton.disabled = !hasSelection;
-      downloadJsonButton.disabled = !hasSelection;
-      exportGoogleButton.disabled = !hasSelection;
+      setButtonNavigable(downloadCsvButton, hasSelection);
+      setButtonNavigable(downloadJsonButton, hasSelection);
+      setButtonNavigable(exportGoogleButton, hasSelection);
 
       if (hasSelection) {
         const selectedOtps = otps.filter((otp) =>
           selectedOtpKeys.has(getOtpUniqueKey(otp))
         );
         const hasTotp = selectedOtps.some((otp) => otp.type === 2); // 2 is TOTP
-        exportLastPassButton.disabled = !hasTotp;
+        setButtonNavigable(exportLastPassButton, hasTotp);
       } else {
-        exportLastPassButton.disabled = true;
+        setButtonNavigable(exportLastPassButton, false);
       }
     }
 

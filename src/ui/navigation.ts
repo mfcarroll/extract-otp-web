@@ -157,6 +157,16 @@ function findNextSpatially(
 
   // --- 2. If no match in section, use fallback strategies ---
   if (!nextEl) {
+    // Before jumping to another section, check if the container of the
+    // current section is itself a navigable element. If so, and if we are
+    // not already on it, "surface" focus to the container.
+    if (
+      currentSection.classList.contains("navigable") &&
+      currentEl !== currentSection
+    ) {
+      return currentSection;
+    }
+
     if (direction === "up" || direction === "down") {
       // For up/down, find the next/previous section and search within it.
       const allSections = getNavigableSections();
@@ -168,15 +178,22 @@ function findNextSpatially(
 
         while (nextSectionIndex >= 0 && nextSectionIndex < allSections.length) {
           const nextSection = allSections[nextSectionIndex];
-          const nextSectionNavigables = getSectionNavigables(nextSection);
 
-          if (nextSectionNavigables.length > 0) {
-            nextEl = findClosestNavigableElement(
-              currentEl,
-              direction,
-              nextSectionNavigables
-            );
-            if (nextEl) break; // Found a target
+          // If the section container is itself a navigable target (e.g., an otp-card),
+          // it becomes the focus target, rather than any of its children.
+          if (nextSection.classList.contains("navigable")) {
+            nextEl = nextSection;
+            if (nextEl) break;
+          } else {
+            const nextSectionNavigables = getSectionNavigables(nextSection);
+            if (nextSectionNavigables.length > 0) {
+              nextEl = findClosestNavigableElement(
+                currentEl,
+                direction,
+                nextSectionNavigables
+              );
+              if (nextEl) break; // Found a target
+            }
           }
           nextSectionIndex += step;
         }
@@ -227,8 +244,6 @@ function findNext(
   lastMove = null;
 
   // --- Step 1: Handle explicit navigation rules ---
-  // First, check if a specific rule is registered for this element and direction.
-  // This allows for custom, non-spatial navigation (e.g., from a text field to its copy button).
   const elementRules = rules.get(currentEl);
   if (elementRules && elementRules[direction]) {
     const result = elementRules[direction]!();

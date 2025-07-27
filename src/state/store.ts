@@ -9,6 +9,7 @@ export interface AppState {
   logCount: number;
   selectedOtpKeys: Set<string>;
   theme: "light" | "dark" | "system";
+  focusedOtpKey: string | null;
 }
 
 const state: AppState = {
@@ -16,6 +17,7 @@ const state: AppState = {
   logCount: 0,
   selectedOtpKeys: new Set(),
   theme: (localStorage.getItem("theme") as AppState["theme"]) || "system",
+  focusedOtpKey: null,
 };
 
 type Listener = (state: AppState) => void;
