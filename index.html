@@ -698,41 +698,58 @@
         <div id="export-container" style="display: none">
           <div
             id="selection-controls"
-            class="export-button-row navigable-section"
+            class="navigable-section export-button-row"
             style="display: none"
           >
-            <button id="select-all-button" class="btn btn-secondary navigable">
+            <span id="selection-count">0 selected</span>
+            <button
+              id="select-all-button"
+              class="btn btn-secondary btn-small navigable"
+            >
               Select All
             </button>
             <button
               id="deselect-all-button"
-              class="btn btn-secondary navigable"
+              class="btn btn-secondary btn-small navigable"
             >
-              Deselect All
-            </button>
-            <span id="selection-count">0 selected</span>
-          </div>
-          <div class="export-button-row navigable-section">
-            <button id="download-csv-button" class="btn btn-success navigable">
-              <i class="fa fa-download"></i> Save as CSV
-            </button>
-            <button id="download-json-button" class="btn btn-success navigable">
-              <i class="fa fa-download"></i> Save as JSON
-            </button>
-            <button id="clear-all-button" class="btn btn-danger navigable">
-              <i class="fa fa-trash"></i> Clear All
-            </button>
-          </div>
-          <div class="export-button-row navigable-section">
-            <button id="export-google-button" class="btn btn-primary navigable">
-              <i class="fa-brands fa-google"></i> Export to Google
+              Select None
             </button>
             <button
-              id="export-lastpass-button"
-              class="btn btn-primary navigable"
+              id="clear-all-button"
+              class="btn btn-danger btn-small navigable"
             >
-              <i class="fa-solid fa-key"></i> Export to LastPass
+              <i class="fa fa-trash"></i> Reset
             </button>
+          </div>
+          <div class="main-export-actions">
+            <div class="export-button-row navigable-section">
+              <button
+                id="download-csv-button"
+                class="btn btn-success navigable"
+              >
+                <i class="fa fa-download"></i> Save as CSV
+              </button>
+              <button
+                id="download-json-button"
+                class="btn btn-success navigable"
+              >
+                <i class="fa fa-download"></i> Save as JSON
+              </button>
+            </div>
+            <div class="export-button-row navigable-section">
+              <button
+                id="export-google-button"
+                class="btn btn-primary navigable"
+              >
+                <i class="fa-brands fa-google"></i> Export to Google
+              </button>
+              <button
+                id="export-lastpass-button"
+                class="btn btn-primary navigable"
+              >
+                <i class="fa-solid fa-key"></i> Export to LastPass
+              </button>
+            </div>
           </div>
         </div>
       </main>

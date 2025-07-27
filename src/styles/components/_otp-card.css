@@ -12,6 +12,10 @@
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+.otp-card:last-of-type {
+  margin-bottom: 1rem;
+}
+
 .otp-card.selected {
   background-color: var(--active-background-color);
   border-color: var(--primary-color);

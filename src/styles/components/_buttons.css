@@ -55,18 +55,38 @@
   background-color: var(--secondary-button-hover-background);
 }
 
+.btn-small {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+
+.btn-small i {
+  /* Reduce icon margin for smaller buttons */
+  margin-right: 0.4em;
+}
+
 #selection-count {
   color: var(--text-color-secondary);
   font-size: 0.9rem;
+  display: block;
+  margin-top: 0;
+  text-align: center;
 }
 
 /* --- Export Buttons --- */
 #export-container {
-  margin-top: 2rem;
+  margin-top: 0;
   display: flex;
-  flex-direction: column; /* Stack rows vertically */
-  align-items: center; /* Center the rows horizontally */
+  flex-direction: column;
+  gap: 1.5rem; /* Increased gap between selection bar and main buttons */
+}
+
+.main-export-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 1rem;
+  padding-top: 1rem;
 }
 
 .export-button-row {

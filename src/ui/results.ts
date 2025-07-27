@@ -326,6 +326,8 @@ export function initResults() {
     const exportLastPassButton = $<HTMLButtonElement>(
       "#export-lastpass-button"
     );
+    const selectAllButton = $<HTMLButtonElement>("#select-all-button");
+    const deselectAllButton = $<HTMLButtonElement>("#deselect-all-button");
 
     const hasOtps = otps.length > 0;
     exportContainer.style.display = hasOtps ? "flex" : "none";
@@ -343,6 +345,9 @@ export function initResults() {
         button.disabled = !enabled;
         button.classList.toggle("navigable", enabled);
       };
+
+      setButtonNavigable(selectAllButton, count < total);
+      setButtonNavigable(deselectAllButton, count > 0);
 
       const hasSelection = count > 0;
       setButtonNavigable(downloadCsvButton, hasSelection);

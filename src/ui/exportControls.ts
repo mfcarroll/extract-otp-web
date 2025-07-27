@@ -22,7 +22,7 @@ import { showQrModal } from "./qrModal";
  */
 function handleClearAll(): void {
   clearLogs();
-  setState(() => ({ otps: [], logCount: 0 }));
+  setState(() => ({ otps: [], logCount: 0, selectedOtpKeys: new Set() }));
   resetFileInput();
 }
 
