@@ -63,7 +63,7 @@ html.dark-mode {
   --warning-color-rgb: 246, 224, 94; /* Corresponds to #f6e05e */
 
   --subtle-text-color: #a0aec0;
-  --active-background-color: #2c3a50;
+  --active-background-color: rgba(var(--focus-color-rgb), 0.15);
   --btn-danger-background-color: #b91c1c;
   --btn-danger-background-color-hover: #c53030;
   --secondary-button-background: #4a5568;

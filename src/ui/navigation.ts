@@ -3,6 +3,8 @@ import { handleCopyAction } from "./clipboard";
 import { findClosestElementByScore } from "../services/spatialNavigationScore";
 import { findClosestElementByProjection } from "../services/spatialNavigationProjection";
 import { Direction } from "../services/navigationTypes";
+import { getState, setState } from "../state/store";
+import { getOtpUniqueKey } from "../services/qrProcessor";
 
 type NavDirection = Direction | "home" | "end";
 type NavigationRule = () => HTMLElement | null | undefined;
@@ -292,15 +294,28 @@ function findNext(
 }
 
 function handleKeydown(event: KeyboardEvent) {
+  // --- Global Shortcuts (like Ctrl+A) ---
+  // These should be checked first and should work regardless of what is focused.
+  if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "a") {
+    const { otps } = getState();
+    // Only override if there are OTPs to select.
+    if (otps.length > 0) {
+      event.preventDefault();
+      const allKeys = new Set(otps.map(getOtpUniqueKey));
+      setState((s) => ({ ...s, selectedOtpKeys: allKeys }));
+      return; // Handled, no further processing needed.
+    }
+  }
+
   const target = event.target as HTMLElement;
-  const key = event.key;
+  const key = event.key.toLowerCase();
 
   // --- Handle initial keyboard navigation entry ---
   // This listener should only act when no element has focus, or the body has focus.
   // Once an element has focus, this listener will ignore subsequent key presses.
   if (target === document.body) {
     // On Down or Right arrow, focus the first interactive element.
-    if (key === "ArrowDown" || key === "ArrowRight") {
+    if (key === "arrowdown" || key === "arrowright") {
       event.preventDefault();
       // The currently active tab is a good initial target.
       const activeTab = $<HTMLButtonElement>("#info-tabs .tab-button.active");
@@ -314,15 +329,15 @@ function handleKeydown(event: KeyboardEvent) {
   // --- Check for specific, non-directional key action rules first ---
   // This allows components to define custom behavior for keys like 'Escape'.
   const elementActionRules = keyActionRules.get(target);
-  if (elementActionRules && elementActionRules[key.toLowerCase()]) {
+  if (elementActionRules && elementActionRules[key]) {
     event.preventDefault();
-    const nextEl = elementActionRules[key.toLowerCase()]!();
+    const nextEl = elementActionRules[key]!();
     setFocus(target, nextEl, undefined, "rule");
     return; // Action handled, stop further processing.
   }
 
   if (
-    key === "Escape" &&
+    key === "escape" &&
     document.activeElement &&
     document.activeElement !== document.body
   ) {
@@ -331,7 +346,7 @@ function handleKeydown(event: KeyboardEvent) {
   }
 
   // --- Activation ---
-  if (key === "Enter" || key === " ") {
+  if (key === "enter" || key === " ") {
     event.preventDefault();
     if (target.closest(".secret-container, .otp-url-container")) {
       handleCopyAction(target);
@@ -341,14 +356,14 @@ function handleKeydown(event: KeyboardEvent) {
     return; // Activation should not also cause navigation
   }
 
-  if (key.startsWith("Arrow")) {
-    const direction = key.substring(5).toLowerCase() as Direction;
+  if (key.startsWith("arrow")) {
+    const direction = key.substring(5) as Direction;
     event.preventDefault();
     findNext(target, direction);
-  } else if (key === "Home" || key === "End") {
+  } else if (key === "home" || key === "end") {
     // Keep Home/End for component-specific rules
     event.preventDefault();
-    findNext(target, key.toLowerCase() as "home" | "end");
+    findNext(target, key as "home" | "end");
   }
 }
 

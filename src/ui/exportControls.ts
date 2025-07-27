@@ -7,13 +7,24 @@ import {
 } from "../services/otpExporter";
 import {
   announceToScreenReader,
+  clearLogs,
   displayError,
   displayWarning,
 } from "./notifications";
+import { resetFileInput } from "./fileInput";
 import { setState, getState } from "../state/store";
 import { getOtpUniqueKey } from "../services/qrProcessor";
 import { MigrationOtpParameter } from "../types";
 import { showQrModal } from "./qrModal";
+
+/**
+ * Clears all logs and resets the OTP state.
+ */
+function handleClearAll(): void {
+  clearLogs();
+  setState(() => ({ otps: [], logCount: 0 }));
+  resetFileInput();
+}
 
 /**
  * Gets the currently selected OTPs from the global state.
@@ -114,13 +125,7 @@ export function initExportControls(): void {
 
   // --- State-Modifying Button Listeners ---
   clearAllButton.addEventListener("click", () => {
-    if (
-      confirm(
-        "Are you sure you want to clear all extracted accounts? This cannot be undone."
-      )
-    ) {
-      setState(() => ({ otps: [], selectedOtpKeys: new Set(), logCount: 0 }));
-    }
+    handleClearAll();
   });
 
   selectAllButton.addEventListener("click", () => {
