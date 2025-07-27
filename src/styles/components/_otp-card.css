@@ -34,6 +34,16 @@
   position: relative; /* For z-index on focus-within */
 }
 
+/* Hide the counter row by default */
+.otp-card .counter-row {
+  display: none;
+}
+
+/* When made visible by JS, it should behave like any other detail row */
+.otp-card .counter-row.visible {
+  display: flex;
+}
+
 .otp-details .label {
   font-weight: 700;
   width: 75px; /* Adjust width as needed */
@@ -57,6 +67,8 @@
 }
 
 /* When an input inside a row is focused, lift the entire row */
+/* When a row is hovered or contains focus, lift it to ensure tooltips are visible. */
+.otp-card .detail-row:hover,
 .otp-card .detail-row:focus-within {
   z-index: 1;
 }
@@ -72,6 +84,16 @@
     monospace;
   color: var(--text-color);
   box-sizing: border-box;
+}
+
+.otp-card .secret-input,
+.otp-card .url-input {
+  resize: none; /* Disable user resizing on textareas */
+  overflow: hidden; /* Hide scrollbar on desktop */
+  line-height: 1.4; /* Adjust for better vertical alignment in a single line */
+  /* For long strings like secrets and URLs, break anywhere to prevent
+     overflow and avoid large gaps at the end of lines. */
+  word-break: break-all;
 }
 
 .otp-card .secret-input {
@@ -158,11 +180,15 @@
   flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  width: 220px;
+  aspect-ratio: 1 / 1; /* Modern way to maintain a square shape */
 }
 
 .qr-code-container canvas {
   /* Fixes the extra space at the bottom of the container */
   display: block;
+  width: 100%;
+  height: auto;
 }
 
 .qr-code-container:hover {
@@ -172,4 +198,70 @@
 /* Special handling for the QR code container to ensure the outline is visible and rounded */
 .qr-code-container.navigable:focus-visible {
   border-radius: 6px;
+}
+
+/* --- Responsive Adjustments for OTP Card --- */
+@media (max-width: 600px) {
+  .otp-card {
+    flex-direction: column;
+    align-items: center;
+    /* Set a smaller gap for mobile to reduce space between flex items (title, rows, qr) */
+    gap: 0.75rem;
+  }
+
+  /* The title becomes a direct flex item of .otp-card (due to display:contents
+     on its parent), so we use 'order' to move it to the very top. */
+  .otp-card .otp-title {
+    order: -2; /* Title first */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0; /* Spacing is now handled by the parent's 'gap' property */
+  }
+
+  .qr-code-container {
+    /* Move the QR code to appear directly after the title. */
+    margin-top: 0; /* Spacing is now handled by the parent's 'gap' property */
+    order: -1; /* QR code second */
+    /* On mobile, make the QR code responsive */
+    width: 100%;
+    max-width: 250px;
+  }
+
+  /* Use display:contents to allow reordering of child elements like the title.
+     This makes .otp-title and .detail-row direct flex children of .otp-card. */
+  .otp-details {
+    display: contents;
+  }
+
+  .otp-card {
+    padding: 1rem; /* Reduce padding on smaller screens */
+  }
+
+  /* On mobile, hide the copy button and adjust input padding accordingly.
+     Users can use the native long-press-to-copy functionality. */
+  .otp-card .copy-button {
+    display: none;
+  }
+
+  .otp-card .text-input {
+    padding-right: 12px;
+  }
+
+  /* On mobile, stack labels and inputs vertically to prevent overflow */
+  .otp-card .detail-row {
+    width: 100%; /* Since .otp-details is gone, rows need full width */
+    margin: 0;
+  }
+
+  /* Normalize font sizes for readability and consistent height */
+  .otp-card .secret-input,
+  .otp-card .url-input {
+    font-size: 1rem;
+    letter-spacing: normal;
+  }
+
+  .otp-card .secret-input,
+  .otp-card .url-input {
+    overflow-y: hidden; /* Ensure no scrollbar appears during resize */
+  }
 }

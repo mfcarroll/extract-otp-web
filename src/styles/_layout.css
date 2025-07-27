@@ -31,3 +31,16 @@ footer {
   margin-top: 0.5rem;
   padding-top: 1rem;
 }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  #app {
+    padding: 2rem 1rem; /* Adjust padding for mobile */
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  footer {
+    padding: 1rem; /* Give footer some space on mobile */
+  }
+}

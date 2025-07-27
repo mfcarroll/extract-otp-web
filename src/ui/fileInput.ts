@@ -109,14 +109,27 @@ async function processFiles(files: FileList | null): Promise<void> {
     }
 
     if (newlyAddedOtps.length > 0) {
-      const wasEmpty = getState().otps.length === 0;
+      const wasEmpty = currentOtps.length === 0;
       setState((currentState) => ({
         otps: [...currentState.otps, ...newlyAddedOtps],
       }));
 
-      const firstNewCard = document.getElementById(`otp-card-${firstNewIndex}`);
-      if (!anyDuplicatesOrErrors && firstNewCard) {
-        firstNewCard.scrollIntoView({ behavior: "smooth", block: "start" });
+      // If there were no errors or duplicates, perform a "success" scroll.
+      if (!anyDuplicatesOrErrors) {
+        if (wasEmpty) {
+          // On the very first successful load, scroll gently to show the user
+          // that results have appeared below, but keep the input area in view.
+          const fileDropZone = $<HTMLDivElement>(".file-input-wrapper");
+          fileDropZone.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          // On subsequent successful loads, scroll to the first new card.
+          const firstNewCard = document.getElementById(
+            `otp-card-${firstNewIndex}`
+          );
+          if (firstNewCard) {
+            firstNewCard.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
       }
     }
 

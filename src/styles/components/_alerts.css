@@ -56,3 +56,14 @@
   opacity: 1;
   /* background-color: var(--active-background-color); */
 }
+
+/* --- Responsive Adjustments for Alerts --- */
+@media (max-width: 768px) {
+  .alert-message {
+    margin-left: -1rem; /* Counteract #app padding */
+    margin-right: -1rem; /* Counteract #app padding */
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+}

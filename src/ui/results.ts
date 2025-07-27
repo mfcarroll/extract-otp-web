@@ -16,6 +16,17 @@ function getQrCodeColors() {
   };
 }
 
+/**
+ * Adjusts the height of a textarea to fit its content.
+ * @param textarea The textarea element to adjust.
+ */
+function autoResizeTextarea(textarea: HTMLTextAreaElement): void {
+  // Temporarily reset height to allow scrollHeight to be calculated correctly.
+  textarea.style.height = "auto";
+  // Set the height to the scroll height, which represents the full content height.
+  textarea.style.height = `${textarea.scrollHeight}px`;
+}
+
 const cardTemplate = $<HTMLTemplateElement>("#otp-card-template");
 
 /**
@@ -69,7 +80,7 @@ function populateCardDetails(
     cardElement.querySelector<HTMLParagraphElement>(".counter-row");
   if (counterRow && otp.type === "hotp") {
     populateDetail(cardElement, "counter", String(otp.counter));
-    counterRow.style.display = "block";
+    counterRow.classList.add("visible");
   }
 
   // --- ARIA: Use proper labels and add descriptive help text ---
@@ -79,7 +90,7 @@ function populateCardDetails(
   helpText.id = helpTextId;
 
   const secretInput =
-    cardElement.querySelector<HTMLInputElement>(".secret-input")!;
+    cardElement.querySelector<HTMLTextAreaElement>(".secret-input")!;
   const secretInputId = `secret-input-${index}`;
   secretInput.id = secretInputId;
   secretInput.value = otp.secret;
@@ -87,7 +98,8 @@ function populateCardDetails(
     secretInputId;
   secretInput.setAttribute("aria-describedby", helpTextId);
 
-  const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
+  const urlInput =
+    cardElement.querySelector<HTMLTextAreaElement>(".url-input")!;
   const urlInputId = `url-input-${index}`;
   urlInput.id = urlInputId;
   urlInput.value = otp.url;
@@ -125,7 +137,36 @@ function setupCardEvents(
 
   const otpDetails = cardElement.querySelector<HTMLDivElement>(".otp-details")!;
   otpDetails.addEventListener("click", (event) => {
-    handleCopyAction(event.target as HTMLElement);
+    const target = event.target as HTMLElement;
+    // Use the same breakpoint as the CSS that hides the copy button.
+    const isMobileView = window.matchMedia("(max-width: 600px)").matches;
+
+    if (isMobileView) {
+      // On mobile, select the text of an input when it's tapped.
+      // This allows the user to use the native copy functionality.
+      if (target.matches(".secret-input")) {
+        (target as HTMLTextAreaElement).select();
+      } else if (target.matches(".url-input")) {
+        (target as HTMLTextAreaElement).select();
+      }
+    } else {
+      // On desktop, allow clicking the text field or its container to copy.
+      // If the copy button is clicked, we find the associated input/textarea
+      // to ensure handleCopyAction receives the element with the value.
+      let elementToCopyFrom: HTMLElement = target;
+      const copyButton = target.closest(".copy-button");
+      if (copyButton) {
+        const container = copyButton.closest(
+          ".secret-container, .otp-url-container"
+        );
+        const inputElement =
+          container?.querySelector<HTMLElement>(".text-input");
+        if (inputElement) {
+          elementToCopyFrom = inputElement;
+        }
+      }
+      handleCopyAction(elementToCopyFrom);
+    }
   });
 
   const toggleSelection = (fromKeyboard: boolean) => {
@@ -179,8 +220,9 @@ function setupCardNavigation(cardElement: HTMLElement): void {
 
   // Get specific card elements
   const secretInput =
-    cardElement.querySelector<HTMLInputElement>(".secret-input")!;
-  const urlInput = cardElement.querySelector<HTMLInputElement>(".url-input")!;
+    cardElement.querySelector<HTMLTextAreaElement>(".secret-input")!;
+  const urlInput =
+    cardElement.querySelector<HTMLTextAreaElement>(".url-input")!;
   const secretCopyButton = cardElement.querySelector<HTMLButtonElement>(
     ".secret-container .copy-button"
   )!;
@@ -244,7 +286,10 @@ function createOtpCard(
   cardElement.setAttribute("aria-describedby", checkboxId);
 
   QRCode.toCanvas(qrCodeCanvas, otp.url, {
-    width: 220,
+    // Render the QR code at a higher resolution. The CSS will scale it down
+    // visually, which ensures it looks sharp on all screen densities.
+    // The canvas element itself has no width/height attributes.
+    width: 300,
     margin: 1,
     color: qrColors,
   });
@@ -287,6 +332,11 @@ function render(
   });
 
   resultsContainer.appendChild(fragment);
+
+  // After appending, resize all textareas to ensure scrollHeight is calculated correctly.
+  resultsContainer
+    .querySelectorAll<HTMLTextAreaElement>(".secret-input, .url-input")
+    .forEach(autoResizeTextarea);
 }
 
 export function initResults() {

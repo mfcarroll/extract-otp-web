@@ -111,3 +111,10 @@ a {
 a:hover {
   color: var(--primary-color-dark);
 }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+}

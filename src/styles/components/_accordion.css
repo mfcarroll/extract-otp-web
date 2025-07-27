@@ -120,3 +120,10 @@
   max-height: 1000px;
   padding-bottom: 1.5rem;
 }
+
+/* --- Responsive Adjustments for Donation Section --- */
+@media (max-width: 600px) {
+  .donation-section {
+    flex-direction: column;
+  }
+}

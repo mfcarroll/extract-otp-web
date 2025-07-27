@@ -1,7 +1,9 @@
 /* File Input & Drag/Drop Styling */
 .file-input-wrapper {
   margin: 2rem 0;
-  padding: 2rem;
+  /* Increased bottom padding to make the section taller and visually
+     center the buttons by balancing the "drag and drop" text. */
+  padding: 4rem 2rem 3rem;
   border: 2px dashed var(--border-color);
   border-radius: 8px;
   display: flex;
@@ -68,4 +70,23 @@
 #drag-overlay.active {
   opacity: 1;
   visibility: visible;
+}
+
+/* --- Responsive Adjustments for File Input --- */
+@media (max-width: 768px) {
+  .file-input-wrapper {
+    /* Reduce vertical margin on mobile to tighten up spacing */
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: -1rem; /* Counteract #app padding */
+    margin-right: -1rem; /* Counteract #app padding */
+    border: none; /* Remove the "dropzone" look on mobile */
+    border-radius: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .file-input-wrapper .drop-text {
+    display: none; /* Hide drag/drop text on mobile */
+  }
 }

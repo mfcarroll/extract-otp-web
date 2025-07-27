@@ -85,7 +85,7 @@
               <p>
                 This tool extracts One-Time Password secrets from the Google
                 Authenticator or LastPass Authenticator apps. There is no
-                software to install, and no data ever leaves your computer.
+                software to install, and no data ever leaves your device.
               </p>
               <p>
                 <strong
@@ -635,20 +635,20 @@
               <p class="detail-row">
                 <span class="label">Type:</span> <span data-value="type"></span>
               </p>
-              <p class="detail-row counter-row" style="display: none">
+              <p class="detail-row counter-row">
                 <span class="label">Counter:</span>
                 <span data-value="counter"></span>
               </p>
               <p class="detail-row secret-row">
                 <label class="label">Secret:</label>
                 <span class="secret-container">
-                  <input
-                    type="text"
+                  <textarea
                     class="text-input secret-input navigable"
                     readonly
                     role="gridcell"
                     tabindex="-1"
-                  />
+                    rows="1"
+                  ></textarea>
                   <button
                     class="copy-button navigable"
                     role="gridcell"
@@ -662,13 +662,13 @@
               <p class="detail-row otp-url-row">
                 <label class="label">URL:</label>
                 <span class="otp-url-container">
-                  <input
-                    type="text"
+                  <textarea
                     class="text-input url-input navigable"
                     readonly
                     role="gridcell"
                     tabindex="-1"
-                  />
+                    rows="1"
+                  ></textarea>
                   <button
                     class="copy-button navigable"
                     role="gridcell"
@@ -688,7 +688,7 @@
               role="gridcell"
               tabindex="-1"
             >
-              <canvas width="220" height="220"></canvas>
+              <canvas></canvas>
               <span class="visually-hidden">Show larger QR code</span>
             </button>
           </div>

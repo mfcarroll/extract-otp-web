@@ -38,7 +38,9 @@ export function handleCopyAction(triggerElement: HTMLElement): void {
   );
   if (!container) return;
 
-  const input = container.querySelector<HTMLInputElement>("input");
+  const input = container.querySelector<HTMLInputElement | HTMLTextAreaElement>(
+    ".text-input"
+  );
   const button = container.querySelector<HTMLButtonElement>(".copy-button");
   if (!input || !button) return;
 

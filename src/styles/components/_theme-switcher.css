@@ -93,3 +93,14 @@
   color: var(--primary-color);
   background-color: var(--active-background-color);
 }
+
+/* --- Responsive Adjustments for Theme Switcher --- */
+@media (max-width: 768px) {
+  .theme-switcher-wrapper.open .theme-switcher {
+    /* On mobile, anchor the switcher to the right edge of its container
+       so it always expands to the left, preventing it from going off-screen. */
+    left: auto;
+    right: 0;
+    transform: translateY(-50%); /* Remove horizontal transform logic */
+  }
+}
