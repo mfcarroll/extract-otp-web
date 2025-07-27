@@ -84,8 +84,7 @@ function closeCamera() {
   video.pause();
   video.srcObject = null;
   video.classList.remove("mirrored"); // Clean up class on close
-
-  cameraModal.removeEventListener("keydown", handleCameraModalKeydown);
+  document.removeEventListener("keydown", handleCameraModalKeydown);
 
   // Restore focus to the element that opened the modal.
   elementThatOpenedModal?.focus();
@@ -106,7 +105,8 @@ async function openCamera() {
   try {
     cameraModal.style.display = "flex";
     document.body.classList.add("modal-open");
-    cameraModal.addEventListener("keydown", handleCameraModalKeydown);
+    cameraModal.setAttribute("aria-labelledby", "camera-title");
+    document.addEventListener("keydown", handleCameraModalKeydown);
     cancelButton.focus();
 
     stream = await navigator.mediaDevices.getUserMedia({

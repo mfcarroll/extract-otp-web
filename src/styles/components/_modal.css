@@ -63,3 +63,35 @@ body.modal-open {
 .modal-close:focus-visible {
   background: rgba(255, 255, 255, 0.4);
 }
+
+/* --- Responsive Adjustments for Modal --- */
+@media (max-width: 600px) {
+  #modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+    justify-content: center; /* Vertically center the content */
+    /* Reduce padding on mobile to give the QR code more space. */
+    padding: 1rem;
+  }
+
+  /* On mobile, the QR modal content is full-screen with a light background,
+     so the close button needs to be dark to be visible. */
+  #qr-modal .modal-close {
+    color: var(--modal-text-color); /* Use the same dark color as the title */
+    background: rgba(0, 0, 0, 0.1); /* A subtle dark background */
+  }
+
+  #qr-modal .modal-close:hover,
+  #qr-modal .modal-close:focus-visible {
+    background: rgba(
+      0,
+      0,
+      0,
+      0.2
+    ); /* A slightly darker background on hover/focus */
+  }
+}

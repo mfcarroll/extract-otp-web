@@ -252,7 +252,8 @@
                   <p>
                     Yes. Security and privacy are the top priorities.
                     <strong
-                      >Nothing you do here ever leaves your computer.</strong
+                      >Nothing you do here ever leaves your computer or mobile
+                      device.</strong
                     >
                     All processing happens locally, right in your browser. Your
                     QR code images and secrets are never sent to any server.
@@ -682,15 +683,21 @@
               <p class="visually-hidden card-actions-help">
                 Press Enter or Space to copy.
               </p>
+              <div class="detail-row qr-code-row">
+                <span class="label">QR:</span>
+                <button
+                  class="qr-code-container navigable"
+                  role="gridcell"
+                  tabindex="-1"
+                >
+                  <canvas></canvas>
+                  <span class="visually-hidden">Show larger QR code</span>
+                  <small class="qr-enlarge-hint" aria-hidden="true"
+                    >Tap to enlarge</small
+                  >
+                </button>
+              </div>
             </div>
-            <button
-              class="qr-code-container navigable"
-              role="gridcell"
-              tabindex="-1"
-            >
-              <canvas></canvas>
-              <span class="visually-hidden">Show larger QR code</span>
-            </button>
           </div>
         </template>
 
@@ -698,7 +705,7 @@
         <div id="export-container" style="display: none">
           <div
             id="selection-controls"
-            class="navigable-section export-button-row"
+            class="navigable-section"
             style="display: none"
           >
             <span id="selection-count">0 selected</span>
@@ -838,7 +845,7 @@
       <div class="camera-container">
         <video id="camera-video" playsinline></video>
         <div class="camera-reticle"></div>
-        <div class="camera-scan-text">Scan QR Code</div>
+        <div id="camera-title" class="camera-scan-text">Scan QR Code</div>
         <canvas id="camera-canvas" style="display: none"></canvas>
         <button
           id="camera-cancel"

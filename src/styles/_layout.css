@@ -41,6 +41,7 @@ footer {
   }
 
   footer {
-    padding: 1rem; /* Give footer some space on mobile */
+    /* Give footer some space on mobile, with extra at the bottom. */
+    padding: 1rem 1rem 1.5rem;
   }
 }

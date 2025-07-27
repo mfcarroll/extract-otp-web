@@ -78,23 +78,44 @@
   margin-top: 0;
   display: flex;
   flex-direction: column;
+  /* Mobile-first: full-bleed container with internal padding, consistent
+     with the file input section. */
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding: 0 1rem;
   gap: 1.5rem; /* Increased gap between selection bar and main buttons */
 }
 
 .main-export-actions {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* Mobile-first: child rows are stretched to full-width */
+  align-items: stretch;
   gap: 1rem;
-  padding-top: 1rem;
 }
 
 .export-button-row {
   display: flex;
   justify-content: center;
   gap: 1rem; /* Space between buttons in a row */
-  align-items: center; /* Vertically align items in the row */
-  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  /* Mobile-first: buttons are stacked and stretched */
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* --- Selection Controls --- */
+/* Mobile-first: re-flow the selection controls for smaller screens. */
+#selection-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem 1rem; /* Adjust gap for wrapped items */
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#selection-count {
+  width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 /* Dark mode overrides */
@@ -127,29 +148,32 @@ html.dark-mode .btn-secondary:hover {
   background-color: var(--secondary-button-hover-background);
 }
 
-/* --- Responsive Adjustments for Export Buttons --- */
-@media (max-width: 600px) {
-  /*
-    Re-flow the selection controls:
-    1. Make the count span full-width to push buttons to the next line.
-    2. Center the buttons on the second line.
-  */
+/* --- Responsive Adjustments for Buttons --- */
+@media (min-width: 601px) {
+  /* Revert to desktop layout */
+  .main-export-actions {
+    align-items: center;
+  }
+
+  #export-container {
+    /* Revert mobile-first full-bleed styles */
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  .export-button-row {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
   #selection-controls {
-    justify-content: center;
-    gap: 0.5rem 1rem; /* Adjust gap for wrapped items */
+    flex-wrap: nowrap;
   }
 
   #selection-count {
-    width: 100%;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Stack the main action buttons vertically and make them full-width */
-  .main-export-actions {
-    align-items: stretch; /* Make child rows full-width */
-  }
-  .main-export-actions .export-button-row {
-    flex-direction: column;
-    align-items: stretch; /* Make buttons inside the row full-width */
+    width: auto;
+    margin-bottom: 0;
   }
 }

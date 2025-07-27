@@ -54,7 +54,7 @@ function hideQrModal(): void {
   const modal = $<HTMLDivElement>("#qr-modal");
   modal.style.display = "none";
   $<HTMLDivElement>("#modal-content").innerHTML = "";
-  modal.removeEventListener("keydown", handleModalKeydown);
+  document.removeEventListener("keydown", handleModalKeydown);
 
   // --- Accessibility Enhancement: Restore focus to the element that opened the modal ---
   // Only restore focus if the modal was opened via the keyboard. This prevents
@@ -85,8 +85,23 @@ export function showQrModal(
   modalContent.innerHTML = "";
 
   const modalCanvas = document.createElement("canvas");
-  const viewportSize = Math.min(window.innerWidth, window.innerHeight);
-  const canvasSize = Math.floor(viewportSize * 0.8);
+
+  const isMobile = window.matchMedia("(max-width: 600px)").matches;
+  let canvasSize;
+
+  if (isMobile) {
+    // On mobile, calculate width based on viewport width minus the modal's
+    // padding (1rem on each side).
+    const rootFontSize = parseFloat(
+      getComputedStyle(document.documentElement).fontSize
+    );
+    const paddingInPx = 2 * rootFontSize; // 1rem padding on each side
+    canvasSize = Math.floor(window.innerWidth - paddingInPx);
+  } else {
+    // On desktop, keep it proportional to the smaller viewport dimension.
+    const viewportSize = Math.min(window.innerWidth, window.innerHeight);
+    canvasSize = Math.floor(viewportSize * 0.8);
+  }
 
   QRCode.toCanvas(modalCanvas, otpAuthUrl, {
     width: canvasSize,
@@ -105,7 +120,7 @@ export function showQrModal(
 
   modal.style.display = "flex";
   modal.setAttribute("aria-labelledby", modalTitleId);
-  modal.addEventListener("keydown", handleModalKeydown);
+  document.addEventListener("keydown", handleModalKeydown);
   modalCloseButton.focus();
   document.body.classList.add("modal-open");
 }

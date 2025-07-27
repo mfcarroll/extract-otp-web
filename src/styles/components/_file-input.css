@@ -1,10 +1,10 @@
 /* File Input & Drag/Drop Styling */
 .file-input-wrapper {
-  margin: 2rem 0;
-  /* Increased bottom padding to make the section taller and visually
-     center the buttons by balancing the "drag and drop" text. */
-  padding: 4rem 2rem 3rem;
-  border: 2px dashed var(--border-color);
+  /* Mobile-first: full-bleed container with vertical padding.
+     Negative horizontal margins counteract the padding on the #app container. */
+  margin: 1.5rem -1rem;
+  padding: 1rem 0;
+  border: none;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -22,10 +22,15 @@
 }
 
 .file-input-buttons {
+  /* Base styles are mobile-first: stacked, full-width buttons */
   display: flex;
   gap: 1rem;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem;
 }
 
 .file-input-label .label-processing {
@@ -46,6 +51,7 @@
   margin-top: 1rem;
   color: var(--subtle-text-color);
   font-size: 0.9rem;
+  display: none; /* Hidden on mobile by default */
 }
 
 #qr-input {
@@ -72,21 +78,22 @@
   visibility: visible;
 }
 
-/* --- Responsive Adjustments for File Input --- */
-@media (max-width: 768px) {
+/* On desktop, revert to a side-by-side button layout and a bordered dropzone. */
+@media (min-width: 601px) {
   .file-input-wrapper {
-    /* Reduce vertical margin on mobile to tighten up spacing */
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    margin-left: -1rem; /* Counteract #app padding */
-    margin-right: -1rem; /* Counteract #app padding */
-    border: none; /* Remove the "dropzone" look on mobile */
-    border-radius: 0;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    margin: 2rem 0;
+    padding: 4rem 2rem 3rem;
+    border: 2px dashed var(--border-color);
   }
 
   .file-input-wrapper .drop-text {
-    display: none; /* Hide drag/drop text on mobile */
+    display: block; /* Show drag/drop text on desktop */
+  }
+
+  .file-input-buttons {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    padding: 0;
   }
 }

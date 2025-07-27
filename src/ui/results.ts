@@ -286,10 +286,11 @@ function createOtpCard(
   cardElement.setAttribute("aria-describedby", checkboxId);
 
   QRCode.toCanvas(qrCodeCanvas, otp.url, {
-    // Render the QR code at a higher resolution. The CSS will scale it down
-    // visually, which ensures it looks sharp on all screen densities.
-    // The canvas element itself has no width/height attributes.
-    width: 300,
+    // The `width` option sets the canvas's drawing buffer size (its intrinsic
+    // resolution). We render it at a reasonably high resolution to ensure it
+    // looks sharp on desktop and can be scaled down cleanly on mobile without
+    // breaking the layout.
+    width: 220,
     margin: 1,
     color: qrColors,
   });

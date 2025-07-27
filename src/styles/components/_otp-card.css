@@ -1,13 +1,14 @@
 .otp-card {
+  position: relative; /* For positioning QR code on desktop */
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  padding: 1.5rem;
+  padding: 1rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-elevation-low);
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.75rem;
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -24,12 +25,15 @@
 .otp-card h3 {
   color: var(--primary-color);
   margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  width: 100%;
 }
 
 .otp-card .detail-row {
   display: flex;
   align-items: baseline;
-  margin: 0.2rem 0;
+  margin: 0.2rem 0; /* Mobile-first: let card's gap handle spacing */
   word-wrap: break-word;
   position: relative; /* For z-index on focus-within */
 }
@@ -76,7 +80,8 @@
 .otp-card .text-input {
   flex: 1;
   min-width: 0;
-  padding: 8px 40px 8px 12px; /* Add space on the right for the button */
+  /* Base padding for mobile (no copy button) */
+  padding: 8px 12px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
   background-color: var(--input-background-color);
@@ -88,21 +93,15 @@
 
 .otp-card .secret-input,
 .otp-card .url-input {
-  resize: none; /* Disable user resizing on textareas */
-  overflow: hidden; /* Hide scrollbar on desktop */
+  resize: none;
+  overflow-y: hidden; /* Hide scrollbar, especially during auto-resize */
   line-height: 1.4; /* Adjust for better vertical alignment in a single line */
   /* For long strings like secrets and URLs, break anywhere to prevent
      overflow and avoid large gaps at the end of lines. */
   word-break: break-all;
-}
-
-.otp-card .secret-input {
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-}
-
-.otp-card .url-input {
-  font-size: 0.8rem;
+  /* Normalize font sizes for mobile readability */
+  font-size: 1rem;
+  letter-spacing: normal;
 }
 
 .copy-button {
@@ -116,6 +115,8 @@
   padding: 8px;
   color: var(--subtle-text-color);
   transition: color 0.2s ease;
+  /* Hide on mobile, show on desktop via media query */
+  display: none;
 }
 
 .copy-button.copied,
@@ -171,28 +172,50 @@
   min-width: 0;
 }
 
+/* For rows with non-text content like a QR code, top-align the label. */
+.detail-row.qr-code-row {
+  align-items: flex-start;
+}
+
+.qr-enlarge-hint {
+  display: block; /* Default is inline */
+  font-size: 0.75rem;
+  color: var(--subtle-text-color);
+  text-align: center;
+}
+
 .qr-code-container {
   /* Reset default button styles to make it behave like a div */
   background: none;
   border: none;
   padding: 0;
   font: inherit;
-  flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
-  width: 220px;
-  aspect-ratio: 1 / 1; /* Modern way to maintain a square shape */
+  /* On mobile, the button acts as a container for the canvas and hint text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  line-height: 1rem;
+  /* The button will shrink to fit its content, aligning to the left. */
 }
 
 .qr-code-container canvas {
-  /* Fixes the extra space at the bottom of the container */
   display: block;
+  /* The canvas should be 100% of the button's width. The button's width
+     is determined by the canvas's intrinsic size, so this works out. */
   width: 100%;
   height: auto;
+  aspect-ratio: 1 / 1;
 }
 
-.qr-code-container:hover {
-  transform: scale(1.02);
+/* On devices that support hover, provide a subtle zoom effect.
+   This prevents the hover state from "sticking" on mobile after a tap. */
+@media (hover: hover) {
+  .qr-code-container:hover {
+    transform: scale(1.02);
+  }
 }
 
 /* Special handling for the QR code container to ensure the outline is visible and rounded */
@@ -201,67 +224,54 @@
 }
 
 /* --- Responsive Adjustments for OTP Card --- */
-@media (max-width: 600px) {
+@media (min-width: 601px) {
   .otp-card {
-    flex-direction: column;
-    align-items: center;
-    /* Set a smaller gap for mobile to reduce space between flex items (title, rows, qr) */
-    gap: 0.75rem;
+    padding: 1.5rem; /* Restore desktop padding */
+    flex-direction: row;
+    /* Align details to top; QR code is positioned independently */
+    align-items: flex-start;
+    gap: 20px;
+    /* Add padding on the right to make space for the absolutely positioned QR code */
+    padding-right: calc(220px + 20px + 1.5rem);
   }
 
-  /* The title becomes a direct flex item of .otp-card (due to display:contents
-     on its parent), so we use 'order' to move it to the very top. */
-  .otp-card .otp-title {
-    order: -2; /* Title first */
-    width: 100%;
-    text-align: center;
-    margin-bottom: 0; /* Spacing is now handled by the parent's 'gap' property */
+  .otp-card h3 {
+    text-align: left;
+    margin-bottom: 1rem;
   }
 
-  .qr-code-container {
-    /* Move the QR code to appear directly after the title. */
-    margin-top: 0; /* Spacing is now handled by the parent's 'gap' property */
-    order: -1; /* QR code second */
-    /* On mobile, make the QR code responsive */
-    width: 100%;
-    max-width: 250px;
-  }
-
-  /* Use display:contents to allow reordering of child elements like the title.
-     This makes .otp-title and .detail-row direct flex children of .otp-card. */
-  .otp-details {
-    display: contents;
-  }
-
-  .otp-card {
-    padding: 1rem; /* Reduce padding on smaller screens */
-  }
-
-  /* On mobile, hide the copy button and adjust input padding accordingly.
-     Users can use the native long-press-to-copy functionality. */
-  .otp-card .copy-button {
-    display: none;
+  .otp-card .detail-row {
+    margin: 0.2rem 0; /* Restore vertical margin for desktop */
   }
 
   .otp-card .text-input {
-    padding-right: 12px;
+    /* Add space on the right for the copy button on desktop */
+    padding-right: 40px;
   }
 
-  /* On mobile, stack labels and inputs vertically to prevent overflow */
-  .otp-card .detail-row {
-    width: 100%; /* Since .otp-details is gone, rows need full width */
-    margin: 0;
+  .copy-button {
+    display: block; /* Show copy button on desktop */
   }
 
-  /* Normalize font sizes for readability and consistent height */
-  .otp-card .secret-input,
+  .otp-card .secret-input {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
   .otp-card .url-input {
-    font-size: 1rem;
-    letter-spacing: normal;
+    font-size: 0.8rem;
   }
 
-  .otp-card .secret-input,
-  .otp-card .url-input {
-    overflow-y: hidden; /* Ensure no scrollbar appears during resize */
+  .qr-code-row {
+    position: absolute;
+    right: 1.5rem; /* Corresponds to card padding */
+    bottom: 1.5rem; /* Corresponds to card padding */
+    width: 220px;
+  }
+
+  /* Hide mobile-specific UI on desktop */
+  .qr-code-row .label,
+  .qr-enlarge-hint {
+    display: none;
   }
 }

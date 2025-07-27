@@ -1,6 +1,6 @@
-# Google Authenticator OTP Secret Extractor
+# One-Time Password Secret Extractor
 
-A simple, secure, and purely client-side web tool to extract One-Time Password (OTP) secrets from Google Authenticator QR code exports.
+A simple, secure, and purely client-side web tool to extract One-Time Password (OTP) secrets from Google Authenticator and LastPass Authenticator QR code exports.
 
 ## [Open the tool →](https://mfcarroll.github.io/extract-otp-web/)
 
