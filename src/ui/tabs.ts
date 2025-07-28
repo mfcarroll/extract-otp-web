@@ -7,6 +7,9 @@ import { Navigation } from "./navigation";
  * @param tabToActivate The button element of the tab to activate.
  */
 function activateTab(tabToActivate: HTMLButtonElement) {
+  // If the tab is already active, there's nothing to do.
+  if (tabToActivate.classList.contains("active")) return;
+
   const tabId = tabToActivate.dataset.tab;
   if (!tabId) return;
 
@@ -51,14 +54,56 @@ function setupTabs(): void {
     tabButtonsContainer.querySelectorAll<HTMLButtonElement>(".tab-button")
   );
 
-  // Handle clicks on tabs using event delegation
+  // --- Robust Tab Activation ---
+  // The 'click' event is not always reliable on mobile. If a user taps a tab
+  // but moves their finger even slightly, the browser may cancel the 'click'
+  // event. A simple 'touchstart' listener with `preventDefault()` solves this,
+  // but it can also block page scrolling. This more robust implementation
+  // activates the tab only if the touch gesture ends on the same button it
+  // started on, correctly distinguishing a "tap" from a "scroll".
+
+  let startButton: HTMLButtonElement | null = null;
+
+  tabButtonsContainer.addEventListener(
+    "touchstart",
+    (event) => {
+      // Identify the button where the touch gesture began.
+      startButton = (event.target as HTMLElement).closest<HTMLButtonElement>(
+        ".tab-button"
+      );
+    },
+    { passive: true } // Use passive for better scroll performance.
+  );
+
+  tabButtonsContainer.addEventListener("touchend", (event) => {
+    // If the touch didn't start on a button, do nothing.
+    if (!startButton) return;
+
+    // Find the button where the touch gesture ended.
+    const endButton = (event.target as HTMLElement).closest<HTMLButtonElement>(
+      ".tab-button"
+    );
+
+    // If the touch ended on the same button it started on, it's a valid tap.
+    if (endButton && endButton === startButton) {
+      // We found a button and it was a valid tap.
+      // Prevent the browser from firing a "ghost" click event 300ms later.
+      event.preventDefault();
+      activateTab(endButton);
+    }
+
+    // Reset for the next touch interaction.
+    startButton = null;
+  });
+
+  // A 'click' handler is still necessary for mouse users and accessibility (e.g.,
+  // screen reader activation, Enter/Space key presses). The `preventDefault()`
+  // in the `touchend` listener prevents this from firing twice on touch devices.
   tabButtonsContainer.addEventListener("click", (event) => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
       ".tab-button"
     );
-    if (button) {
-      activateTab(button);
-    }
+    if (button) activateTab(button);
   });
 
   // This rule ensures that when navigating *into* the tab group from another

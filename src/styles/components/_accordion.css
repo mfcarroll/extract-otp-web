@@ -28,6 +28,10 @@
   transition: color 0.2s ease, background-color 0.2s ease;
   border-radius: 4px;
   cursor: pointer;
+  /* Prevent text selection on long-press on mobile, which can interfere
+     with the tap/click event and makes the UI feel more responsive. */
+  -webkit-user-select: none; /* Safari */
+  user-select: none;
 }
 
 .faq-button:hover,

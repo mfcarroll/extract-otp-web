@@ -87,27 +87,22 @@ export function showQrModal(
 
   const modalCanvas = document.createElement("canvas");
 
-  let canvasSize;
-  if (isNarrowViewport()) {
-    // On mobile, calculate width based on viewport width minus the modal's
-    // padding (1rem on each side).
-    const rootFontSize = parseFloat(
-      getComputedStyle(document.documentElement).fontSize
-    );
-    const paddingInPx = 2 * rootFontSize; // 1rem padding on each side
-    canvasSize = Math.floor(window.innerWidth - paddingInPx);
-  } else {
-    // On desktop, keep it proportional to the smaller viewport dimension.
-    const viewportSize = Math.min(window.innerWidth, window.innerHeight);
-    canvasSize = Math.floor(viewportSize * 0.8);
-  }
-
   QRCode.toCanvas(modalCanvas, otpAuthUrl, {
-    width: canvasSize,
+    // The `width` option sets the canvas's drawing buffer size (its intrinsic
+    // resolution). We render it at a reasonably high resolution (e.g., 512px)
+    // to ensure it looks sharp even when CSS scales it up to fill the modal.
+    // This decouples the rendering resolution from the display size.
+    width: 512,
     margin: 2,
     // modal QR is always white on black for ease of scanning regardless of theme
     color: { dark: "#000000", light: "#ffffff" },
   });
+
+  // After rendering the QR code to the canvas's drawing buffer (which sets
+  // its intrinsic width/height attributes), we explicitly set the CSS style
+  // to ensure it scales down to fit its container.
+  modalCanvas.style.width = "100%";
+  modalCanvas.style.height = "auto";
 
   modalContent.appendChild(modalCanvas);
 

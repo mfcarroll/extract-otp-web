@@ -71,7 +71,12 @@ function populateCardDetails(
   cardElement.setAttribute("aria-labelledby", titleId);
 
   // Populate the details from the template
-  titleElement.textContent = `${index + 1}. ${titleText}`;
+  titleElement.textContent = titleText;
+
+  const indexElement =
+    cardElement.querySelector<HTMLSpanElement>(".otp-card-index")!;
+  indexElement.textContent = String(index + 1);
+
   populateDetail(cardElement, "name", otp.name);
   populateDetail(cardElement, "issuer", otp.issuer);
   populateDetail(cardElement, "type", otp.typeDescription);
@@ -294,6 +299,12 @@ function createOtpCard(
     margin: 1,
     color: qrColors,
   });
+
+  // After rendering the QR code to the canvas's drawing buffer (which sets
+  // its intrinsic width/height attributes), we explicitly set the CSS style
+  // to ensure it scales down to fit its container.
+  qrCodeCanvas.style.width = "100%";
+  qrCodeCanvas.style.height = "auto";
 
   return cardElement;
 }

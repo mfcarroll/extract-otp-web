@@ -13,6 +13,16 @@
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+.otp-card-index {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--subtle-text-color);
+  z-index: 1; /* Ensure it's above the h3's border */
+}
+
 .otp-card:last-of-type {
   margin-bottom: 1rem;
 }
@@ -198,6 +208,7 @@
   align-items: center;
   gap: 0.25rem;
   line-height: 1rem;
+  width: 100%;
   /* The button will shrink to fit its content, aligning to the left. */
 }
 
@@ -206,6 +217,7 @@
   /* The canvas should be 100% of the button's width. The button's width
      is determined by the canvas's intrinsic size, so this works out. */
   width: 100%;
+  min-width: 100%;
   height: auto;
   aspect-ratio: 1 / 1;
 }
@@ -236,8 +248,10 @@
   }
 
   .otp-card h3 {
+    /* Reset mobile-specific full-width styles */
+    margin: 0 0 1rem 0;
+    padding: 0 0 1rem 0;
     text-align: left;
-    margin-bottom: 1rem;
   }
 
   .otp-card .detail-row {

@@ -16,37 +16,59 @@ body.modal-open {
   z-index: 1000;
 }
 
+/* --- Mobile-First Styles --- */
 #modal-content {
   position: relative;
-  /* Override theme to always be light for scannability */
   background-color: var(--modal-background);
-  border-radius: 8px;
-  box-shadow: var(--modal-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
-  /* Ensure modal content doesn't overflow viewport */
-  max-width: 90vw;
-  max-height: 90vh;
+  justify-content: center; /* Vertically center content on mobile */
   overflow: auto;
+
+  /* Mobile: Full-screen */
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0m;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.modal-content canvas {
+  /* Scale the canvas to fill most of the available space */
+  width: 100%;
+  height: auto;
+  /* Ensure the canvas does not exceed the width of its container, even if its
+     intrinsic size is larger. This is crucial for responsive scaling. */
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+
+  /* When scaling a canvas, browsers default to a blurry (bilinear) filter.
+     For a QR code, 'pixelated' (nearest-neighbor) is much better, as it
+     keeps the blocks sharp. */
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -webkit-crisp-edges; /* Webkit (old) */
+  image-rendering: pixelated; /* Modern browsers */
+  image-rendering: crisp-edges; /* Fallback */
 }
 
 .modal-title {
-  margin-top: 1rem;
-  font-size: 1.2rem;
+  /* Ensure title is always below the QR code */
+  order: 1;
+  font-size: 1rem;
   font-weight: 600;
-  /* Override theme to always be light for scannability */
   color: var(--modal-text-color);
   text-align: center;
+  margin: 0 1rem 2rem;
+  line-height: 1.4rem;
 }
 
 .modal-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
   border: none;
   border-radius: 50%;
   width: 2.5rem;
@@ -57,41 +79,58 @@ body.modal-open {
   cursor: pointer;
   z-index: 1010;
   transition: background-color 0.2s ease;
+
+  /* Default: Light button for dark overlays (like the camera modal) */
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 .modal-close:hover,
 .modal-close:focus-visible {
+  /* Default hover is slightly more opaque */
   background: rgba(255, 255, 255, 0.4);
 }
 
-/* --- Responsive Adjustments for Modal --- */
-@media (max-width: 600px) {
+/* On mobile, the QR modal content is full-screen with a light background,
+   so its close button needs to be dark to be visible. */
+#qr-modal .modal-close {
+  color: var(--modal-text-color); /* Use the same dark color as the title */
+  background: rgba(0, 0, 0, 0.1); /* A subtle dark background */
+}
+
+#qr-modal .modal-close:hover,
+#qr-modal .modal-close:focus-visible {
+  background: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* A slightly darker background on hover/focus */
+}
+
+/* --- Desktop Adjustments --- */
+@media (min-width: 601px) {
   #modal-content {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    max-height: none;
-    border-radius: 0;
-    box-shadow: none;
-    justify-content: center; /* Vertically center the content */
-    /* Reduce padding on mobile to give the QR code more space. */
-    padding: 1rem;
+    /* Revert to a smaller, centered modal on larger screens */
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: var(--modal-shadow);
+    padding: 2rem;
+    justify-content: flex-start; /* Align content to the top */
   }
 
-  /* On mobile, the QR modal content is full-screen with a light background,
-     so the close button needs to be dark to be visible. */
+  /* On desktop, the QR modal's close button is on the dark overlay again,
+     so it should revert to the default light style. */
   #qr-modal .modal-close {
-    color: var(--modal-text-color); /* Use the same dark color as the title */
-    background: rgba(0, 0, 0, 0.1); /* A subtle dark background */
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
   }
 
   #qr-modal .modal-close:hover,
   #qr-modal .modal-close:focus-visible {
-    background: rgba(
-      0,
-      0,
-      0,
-      0.2
-    ); /* A slightly darker background on hover/focus */
+    background: rgba(255, 255, 255, 0.4);
   }
 }

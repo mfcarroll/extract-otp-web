@@ -2,8 +2,7 @@
 .file-input-wrapper {
   /* Mobile-first: full-bleed container with vertical padding.
      Negative horizontal margins counteract the padding on the #app container. */
-  margin: 1rem -1rem;
-  padding: 1rem 0;
+  margin: 3rem -1rem;
   border: none;
   border-radius: 8px;
   display: flex;
