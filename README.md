@@ -61,7 +61,7 @@ This tool reads the QR code screenshots from Google Authenticator or LastPass Au
 
 Security and privacy are the top priorities of this tool.
 
-- **Nothing you upload ever leaves your computer.** All processing happens locally, right in your browser.
+- **Nothing you upload ever leaves your device.** All processing happens locally, right in your browser.
 - Your QR code images and the secrets they contain are never sent to any server.
 - This tool is open-source and [the code can be inspected by anyone](https://github.com/mfcarroll/extract-otp-web) to verify its safety and methodology. It is hosted on GitHub pages, providing a [secure and transparent deployment process](https://github.com/mfcarroll/extract-otp-web/deployments/github-pages).
 - For maximum security, you can download the source code from GitHub and run it on a local, offline machine.

@@ -7,6 +7,7 @@ import { showQrModal } from "./qrModal";
 import { subscribe, getState, setState } from "../state/store";
 import { convertToOtpData } from "../services/otpFormatter";
 import { getOtpUniqueKey } from "../services/qrProcessor";
+import { isNarrowViewport } from "./viewport";
 
 function getQrCodeColors() {
   const computedStyles = getComputedStyle(document.documentElement);
@@ -139,9 +140,8 @@ function setupCardEvents(
   otpDetails.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
     // Use the same breakpoint as the CSS that hides the copy button.
-    const isMobileView = window.matchMedia("(max-width: 600px)").matches;
 
-    if (isMobileView) {
+    if (isNarrowViewport()) {
       // On mobile, select the text of an input when it's tapped.
       // This allows the user to use the native copy functionality.
       if (target.matches(".secret-input")) {

@@ -1,5 +1,6 @@
 import QRCode from "qrcode";
 import { $ } from "./dom";
+import { isNarrowViewport } from "./viewport";
 
 // --- Accessibility Enhancement: Manage focus before/after modal opens ---
 let elementThatOpenedModal: HTMLElement | null = null;
@@ -86,10 +87,8 @@ export function showQrModal(
 
   const modalCanvas = document.createElement("canvas");
 
-  const isMobile = window.matchMedia("(max-width: 600px)").matches;
   let canvasSize;
-
-  if (isMobile) {
+  if (isNarrowViewport()) {
     // On mobile, calculate width based on viewport width minus the modal's
     // padding (1rem on each side).
     const rootFontSize = parseFloat(

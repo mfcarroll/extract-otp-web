@@ -1,6 +1,6 @@
 /* --- Tabbed Info Section Styling --- */
 #info-tabs {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   position: relative; /* Create a stacking context for z-index */
 }
 
@@ -74,13 +74,14 @@
     border-left: none;
     border-right: none;
     border-radius: 0; /* Remove rounding when flush with edges */
+    border-bottom: 1px solid var(--border-color);
+    margin: 0 -1rem;
   }
 
   .tab-content {
     padding-left: 0;
     padding-right: 0;
-    border-left: none;
-    border-right: none;
+    border: none;
     border-radius: 0; /* Remove rounding when flush with edges */
   }
 }

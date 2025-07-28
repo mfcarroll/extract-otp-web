@@ -2,7 +2,7 @@
 .file-input-wrapper {
   /* Mobile-first: full-bleed container with vertical padding.
      Negative horizontal margins counteract the padding on the #app container. */
-  margin: 1.5rem -1rem;
+  margin: 1rem -1rem;
   padding: 1rem 0;
   border: none;
   border-radius: 8px;
@@ -51,7 +51,15 @@
   margin-top: 1rem;
   color: var(--subtle-text-color);
   font-size: 0.9rem;
-  display: none; /* Hidden on mobile by default */
+  display: none; /* Hidden by default */
+}
+
+/* Show the drag-and-drop hint only on devices with a fine pointer (mouse, stylus),
+   as this is the primary interaction model for drag-and-drop. */
+@media (pointer: fine) {
+  .drop-text {
+    display: block;
+  }
 }
 
 #qr-input {
@@ -78,16 +86,10 @@
   visibility: visible;
 }
 
-/* On desktop, revert to a side-by-side button layout and a bordered dropzone. */
+/* On desktop, revert to a side-by-side button layout and adjust margins. */
 @media (min-width: 601px) {
   .file-input-wrapper {
     margin: 2rem 0;
-    padding: 4rem 2rem 3rem;
-    border: 2px dashed var(--border-color);
-  }
-
-  .file-input-wrapper .drop-text {
-    display: block; /* Show drag/drop text on desktop */
   }
 
   .file-input-buttons {
@@ -95,5 +97,14 @@
     align-items: center;
     width: auto;
     padding: 0;
+  }
+}
+
+/* On large screens that also have a fine pointer, create a prominent dropzone
+   with extra padding and a dashed border. */
+@media (min-width: 601px) and (pointer: fine) {
+  .file-input-wrapper {
+    padding: 4rem 2rem 3rem;
+    border: 2px dashed var(--border-color);
   }
 }

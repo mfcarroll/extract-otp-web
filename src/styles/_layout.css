@@ -22,7 +22,7 @@ h1 {
 
 /* --- Results Container --- */
 #results-container {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 /* --- Footer --- */
@@ -35,7 +35,7 @@ footer {
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   #app {
-    padding: 2rem 1rem; /* Adjust padding for mobile */
+    padding: 1rem; /* Adjust padding for mobile */
     border-radius: 0;
     box-shadow: none;
   }

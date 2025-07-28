@@ -1,6 +1,7 @@
 import { setState } from "../state/store";
 import { $ } from "./dom";
 import { Navigation } from "./navigation";
+import { isMobile } from "./viewport";
 
 /**
  * Manages the theme switcher UI and applies the selected theme.
@@ -102,8 +103,14 @@ export function initThemeSwitcher(): void {
     buttons.forEach((button) => (button.tabIndex = -1));
   };
 
-  themeSwitcherWrapper.addEventListener("mouseenter", openSwitcher);
-  themeSwitcherWrapper.addEventListener("mouseleave", closeSwitcher);
+  themeSwitcherWrapper.addEventListener("mouseenter", () => {
+    if (isMobile()) return;
+    openSwitcher();
+  });
+  themeSwitcherWrapper.addEventListener("mouseleave", () => {
+    if (isMobile()) return;
+    closeSwitcher();
+  });
 
   themeSwitcherWrapper.addEventListener("click", () => {
     // This click handler should only open the switcher if it's closed.
@@ -117,11 +124,22 @@ export function initThemeSwitcher(): void {
   });
 
   themeSwitcher.addEventListener("click", (event: MouseEvent) => {
+    // This handler should only act when the switcher is already open.
+    // Otherwise, it intercepts the click meant to open the switcher,
+    // preventing it from ever opening on mobile (where click is the only open mechanism).
+    if (!themeSwitcherWrapper.classList.contains("open")) {
+      return;
+    }
     const target = (event.target as HTMLElement).closest("button");
     if (target) {
+      event.stopPropagation(); // Prevent the wrapper's click handler from re-opening.
       const newTheme = target.dataset.theme;
       if (newTheme) {
         applyTheme(newTheme);
+        // On mobile, close the switcher after a theme is selected.
+        if (isMobile()) {
+          closeSwitcher();
+        }
       }
     }
   });
