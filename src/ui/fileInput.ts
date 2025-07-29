@@ -1,11 +1,8 @@
 import { MigrationOtpParameter } from "../types";
-import {
-  processImage,
-  getOtpUniqueKey,
-  filterAndLogOtps,
-} from "../services/qrProcessor";
+import { processImage } from "../services/qrProcessor";
 import { processJson } from "../services/jsonProcessor";
 import { processCsv } from "../services/csvProcessor";
+import { getOtpUniqueKey, filterAndLogOtps } from "../services/dataHandler";
 import { setState, getState } from "../state/store";
 import { addUploadLog, displayError } from "./notifications";
 import { $ } from "./dom";

@@ -112,6 +112,7 @@ The user interface and QR code processing are powered by these excellent open-so
 
 - [jsQR](https://github.com/cozmo/jsQR) for decoding QR codes from images.
 - [protobuf.js](https://github.com/protobufjs/protobuf.js) for decoding the Google Authenticator data payload.
+- [pica](https://github.com/nodeca/pica) for high-quality image resizing.
 - [qrcode](https://github.com/soldair/node-qrcode) for generating new QR codes for each account.
 - [thirty-two](https://github.com/wzrdtales/thirty-two) for Base32 encoding the OTP secrets.
 - [Font Awesome](https://github.com/FortAwesome/Font-Awesome) for the icons used in the UI.

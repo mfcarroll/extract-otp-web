@@ -14,7 +14,7 @@ import {
 } from "./notifications";
 import { resetFileInput } from "./fileInput";
 import { setState, getState } from "../state/store";
-import { getOtpUniqueKey } from "../services/qrProcessor";
+import { getOtpUniqueKey } from "../services/dataHandler";
 import { MigrationOtpParameter } from "../types";
 import { showQrModal } from "./qrModal";
 import { logger } from "../services/logger";

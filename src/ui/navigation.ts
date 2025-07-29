@@ -4,7 +4,7 @@ import { findClosestElementByScore } from "../services/spatialNavigationScore";
 import { findClosestElementByProjection } from "../services/spatialNavigationProjection";
 import { Direction } from "../services/navigationTypes";
 import { getState, setState } from "../state/store";
-import { getOtpUniqueKey } from "../services/qrProcessor";
+import { getOtpUniqueKey } from "../services/dataHandler";
 
 type NavDirection = Direction | "home" | "end";
 type NavigationRule = () => HTMLElement | null | undefined;

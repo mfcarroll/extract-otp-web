@@ -1,6 +1,6 @@
 import jsQR from "jsqr";
 import { $ } from "./dom";
-import { processDecodedQrCodeString } from "../services/qrProcessor";
+import { handleDecodedQrString } from "../services/dataHandler";
 import { displayError, announceToScreenReader } from "./notifications";
 import { logger } from "../services/logger";
 
@@ -58,7 +58,7 @@ function scanFrame() {
       closeCamera();
       announceToScreenReader("QR code found and processed.");
       // Delegate all processing to the central service.
-      processDecodedQrCodeString(code.data, "Camera Scan");
+      handleDecodedQrString(code.data, "Camera Scan");
       return; // Stop the scanning loop
     }
   }

@@ -6,7 +6,7 @@ import { Navigation } from "./navigation";
 import { showQrModal } from "./qrModal";
 import { subscribe, getState, setState } from "../state/store";
 import { convertToOtpData } from "../services/otpFormatter";
-import { getOtpUniqueKey } from "../services/qrProcessor";
+import { getOtpUniqueKey } from "../services/dataHandler";
 import { isNarrowViewport } from "./viewport";
 
 function getQrCodeColors() {
