@@ -21,9 +21,11 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
+    "@types/pica": "^9.0.5",
     "buffer": "^6.0.3",
     "jsqr": "^1.4.0",
     "pako": "^2.1.0",
+    "pica": "^9.0.1",
     "protobufjs": "^7.5.3",
     "qrcode": "^1.5.4",
     "thirty-two": "^1.0.2"

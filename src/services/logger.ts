@@ -4,7 +4,7 @@
  */
 
 // Vite exposes `VITE_` prefixed env variables as strings. We check for 'true'.
-const isDebugEnabled = import.meta.env.VITE_DEBUG_LOGGING === "true";
+export const isDebugEnabled = import.meta.env.VITE_DEBUG_LOGGING === "true";
 
 export const logger = {
   /**
