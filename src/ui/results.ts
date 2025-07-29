@@ -380,7 +380,7 @@ export function initResults() {
 
     const { otps, selectedOtpKeys } = state;
 
-    // Update visibility of export and selection controls
+    // --- Update UI based on state ---
     const exportContainer = $<HTMLDivElement>("#export-container")!;
     const selectionControls = $<HTMLDivElement>("#selection-controls")!;
     const selectionCountSpan = $<HTMLSpanElement>("#selection-count")!;
@@ -393,11 +393,13 @@ export function initResults() {
     const selectAllButton = $<HTMLButtonElement>("#select-all-button");
     const deselectAllButton = $<HTMLButtonElement>("#deselect-all-button");
 
+    // 1. Toggle visibility of the entire export section.
     const hasOtps = otps.length > 0;
     exportContainer.style.display = hasOtps ? "flex" : "none";
     selectionControls.style.display = hasOtps ? "flex" : "none";
 
     if (hasOtps) {
+      // 2. Update the selection count text.
       const count = selectedOtpKeys.size;
       const total = otps.length;
       selectionCountSpan.textContent = `${count} of ${total} selected`;
@@ -410,14 +412,17 @@ export function initResults() {
         button.classList.toggle("navigable", enabled);
       };
 
+      // 3. Enable/disable "Select All" / "Select None" buttons.
       setButtonNavigable(selectAllButton, count < total);
       setButtonNavigable(deselectAllButton, count > 0);
 
+      // 4. Enable/disable the main export buttons based on whether any items are selected.
       const hasSelection = count > 0;
       setButtonNavigable(downloadCsvButton, hasSelection);
       setButtonNavigable(downloadJsonButton, hasSelection);
       setButtonNavigable(exportGoogleButton, hasSelection);
 
+      // 5. LastPass button has special logic: it's only enabled if the selection contains at least one TOTP account.
       if (hasSelection) {
         const selectedOtps = otps.filter((otp) =>
           selectedOtpKeys.has(getOtpUniqueKey(otp))
@@ -429,6 +434,7 @@ export function initResults() {
       }
     }
 
+    // If all OTPs are cleared, return focus to the file input area for a smooth workflow.
     if (otps.length === 0 && previousOtpCount > 0) {
       $<HTMLLabelElement>(".file-input-label")?.focus();
     }

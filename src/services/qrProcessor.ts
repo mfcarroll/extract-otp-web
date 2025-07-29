@@ -4,6 +4,7 @@ import { MigrationOtpParameter } from "../types";
 import { getOtpParametersFromUrl } from "./otpUrlParser";
 import { addUploadLog } from "../ui/notifications";
 import { getState, setState } from "../state/store";
+import { logger } from "./logger";
 
 /**
  * Processes a single image file, extracts QR code data, and returns OTP parameters.
@@ -14,6 +15,7 @@ import { getState, setState } from "../state/store";
 export function processImage(
   file: File
 ): Promise<MigrationOtpParameter[] | null> {
+  logger.debug(`[processImage] Starting processing for: ${file.name}`);
   return new Promise((resolve, reject) => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
@@ -21,9 +23,13 @@ export function processImage(
 
     const img = new Image();
     img.onload = async () => {
-      const MAX_SIZE = 1000;
+      const MAX_SIZE = 800;
       let width = img.width;
       let height = img.height;
+
+      logger.debug(
+        `[processImage] Original image dimensions: ${width}x${height}`
+      );
 
       // If the smallest dimension is over MAX_SIZE, we need to downscale the image
       // before processing. This improves performance and reliability for very
@@ -31,6 +37,7 @@ export function processImage(
       if (Math.min(width, height) > MAX_SIZE) {
         // Calculate new dimensions to scale down, preserving aspect ratio.
         // The largest dimension will become MAX_SIZE.
+        logger.debug(`[processImage] Image is large, resizing...`);
         if (width > height) {
           height *= MAX_SIZE / width;
           width = MAX_SIZE;
@@ -38,6 +45,11 @@ export function processImage(
           width *= MAX_SIZE / height;
           height = MAX_SIZE;
         }
+        logger.debug(
+          `[processImage] New dimensions: ${Math.round(width)}x${Math.round(
+            height
+          )}`
+        );
       }
 
       // Set canvas dimensions and draw the (potentially resized) image.
@@ -50,12 +62,12 @@ export function processImage(
       const code = jsQR(imageData.data, imageData.width, imageData.height);
 
       if (code) {
-        console.log("Raw QR Code Data:\n`" + code.data + "`");
+        logger.debug("Raw QR Code Data:\n`" + code.data + "`");
         try {
           const otpParameters = await getOtpParametersFromUrl(code.data);
           resolve(otpParameters);
         } catch (error) {
-          console.error(
+          logger.error(
             `Failed to process QR code content from ${file.name}. Raw data:`,
             code.data
           );
@@ -168,8 +180,8 @@ export async function processDecodedQrCodeString(
     const message =
       (error instanceof Error ? error.message : String(error)) ||
       "An unknown error occurred.";
-    console.error(`Error processing QR data from ${sourceName}:`, error);
-    console.error(
+    logger.error(`Error processing QR data from ${sourceName}:`, error);
+    logger.error(
       `Failed to process QR code content from ${sourceName}. Raw data:`,
       qrCodeData
     );

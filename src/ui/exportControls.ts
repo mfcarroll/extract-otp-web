@@ -17,6 +17,7 @@ import { setState, getState } from "../state/store";
 import { getOtpUniqueKey } from "../services/qrProcessor";
 import { MigrationOtpParameter } from "../types";
 import { showQrModal } from "./qrModal";
+import { logger } from "../services/logger";
 
 /**
  * Clears all logs and resets the OTP state.
@@ -40,6 +41,8 @@ function getSelectedOtps(): MigrationOtpParameter[] {
 /**
  * A wrapper to safely execute an export function, handling potential errors.
  * @param exportFn The export function to call with the selected OTPs.
+ * @param isQrExport If true, the result is expected to be a URL string that
+ * should be displayed in a QR code modal.
  */
 async function handleExport(
   exportFn: (otps: MigrationOtpParameter[]) => Promise<any>,
@@ -56,12 +59,15 @@ async function handleExport(
       const title = result.startsWith("lpaauth")
         ? "Scan with LastPass Authenticator"
         : "Scan with Google Authenticator";
-      showQrModal(result, title, true);
+      // Show the QR modal. The `true` argument indicates that the modal was
+      // opened by a user action (potentially keyboard), so focus should be
+      // restored to the trigger button when the modal is closed.
+      showQrModal(result, title, true /* fromKeyboard */);
     }
   } catch (error: any) {
     const message = error.message || "An unknown error occurred during export.";
     displayError(message);
-    console.error("Export failed:", error);
+    logger.error("Export failed:", error);
   }
 }
 
@@ -100,6 +106,12 @@ export function initExportControls(): void {
     const hasHotp = hotpAccounts.length > 0;
     const hasTotp = selectedOtps.some((otp) => otp.type === 2);
 
+    // --- "Correct and Inform" Flow for Incompatible Accounts ---
+    // LastPass only supports TOTP accounts in its QR export. If the user
+    // has selected a mix of TOTP and HOTP accounts, we don't just fail.
+    // Instead, we automatically deselect the incompatible HOTP accounts,
+    // inform the user what happened and why, and then prompt them to click
+    // the export button again to proceed with the corrected selection.
     // If the selection contains a mix of compatible (TOTP) and incompatible (HOTP) accounts...
     if (hasHotp && hasTotp) {
       // ...we implement the "correct and inform" flow.
@@ -133,16 +145,18 @@ export function initExportControls(): void {
   selectAllButton.addEventListener("click", (event) => {
     const allKeys = new Set(getState().otps.map(getOtpUniqueKey));
     setState((s) => ({ ...s, selectedOtpKeys: allKeys }));
+    // For keyboard users, move focus to the opposite action button for a
+    // more intuitive flow. `event.detail === 0` is a reliable way to check
+    // if a click was triggered by Enter/Space.
     if (event.detail === 0) {
-      // Check if activated by keyboard
       deselectAllButton.focus();
     }
   });
 
   deselectAllButton.addEventListener("click", (event) => {
     setState((s) => ({ ...s, selectedOtpKeys: new Set() }));
+    // For keyboard users, move focus to the opposite action button.
     if (event.detail === 0) {
-      // Check if activated by keyboard
       selectAllButton.focus();
     }
   });

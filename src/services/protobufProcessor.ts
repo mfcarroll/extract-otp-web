@@ -1,5 +1,6 @@
 import protobuf from "protobufjs";
 import { MigrationOtpParameter } from "../types";
+import { logger } from "./logger";
 
 // Pre-load the protobuf definition once for better performance.
 const protobufRoot = protobuf.load("otp_migration.proto");
@@ -56,8 +57,8 @@ export async function decodeProtobufPayload(
     }
     return payload.otpParameters;
   } catch (error) {
-    console.error("Failed to parse final protobuf data:", error);
-    console.error(
+    logger.error("Failed to parse final protobuf data:", error);
+    logger.error(
       "Protobuf Decode Error. Offending data (hex):",
       toHexString(protobufData)
     );

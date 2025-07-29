@@ -3,6 +3,7 @@ import { MigrationOtpParameter } from "../types";
 import { base64ToUint8Array, decodeProtobufPayload } from "./protobufProcessor";
 import { processLastPassQrJson } from "./lastPassFormatter";
 import { mapToMigrationOtpParameter, RawOtpAccount } from "./otpDataMapper";
+import { logger } from "./logger";
 
 /**
  * Decodes a standard otpauth:// URL into OTP parameters.
@@ -94,9 +95,9 @@ async function decodeGoogleAuthenticatorPayload(
 async function decodeLastPassPayload(
   dataBase64: string
 ): Promise<MigrationOtpParameter[]> {
-  console.log("[LastPass Import] Step 1: Received Base64 data", dataBase64);
+  logger.debug("[LastPass Import] Step 1: Received Base64 data", dataBase64);
   const decodedBytes = base64ToUint8Array(dataBase64);
-  console.log(
+  logger.debug(
     "[LastPass Import] Step 2: Decoded Base64 to Uint8Array",
     decodedBytes
   );
@@ -104,12 +105,12 @@ async function decodeLastPassPayload(
   try {
     // The outer layer is Gzipped JSON.
     const jsonWrapperBytes = pako.inflate(decodedBytes);
-    console.log(
+    logger.debug(
       "[LastPass Import] Step 3: Inflated outer payload",
       jsonWrapperBytes
     );
     const jsonWrapperString = new TextDecoder().decode(jsonWrapperBytes);
-    console.log(
+    logger.debug(
       "[LastPass Import] Step 4: Decoded outer payload to JSON string",
       jsonWrapperString
     );
@@ -117,7 +118,7 @@ async function decodeLastPassPayload(
 
     if (jsonWrapper.content && typeof jsonWrapper.content === "string") {
       const contentBase64 = jsonWrapper.content;
-      console.log(
+      logger.debug(
         "[LastPass Import] Step 5: Extracted inner Base64 content",
         contentBase64
       );
@@ -126,7 +127,7 @@ async function decodeLastPassPayload(
       const gzippedInnerPayload = base64ToUint8Array(contentBase64);
       const finalJsonBytes = pako.inflate(gzippedInnerPayload);
       const finalJsonString = new TextDecoder().decode(finalJsonBytes);
-      console.log(
+      logger.debug(
         "[LastPass Import] Step 6: Decoded final inner JSON string",
         finalJsonString
       );
@@ -140,7 +141,7 @@ async function decodeLastPassPayload(
       "Invalid LastPass QR code: 'content' property not found in payload."
     );
   } catch (e) {
-    console.error("Failed to decode or decompress LastPass payload:", e);
+    logger.error("Failed to decode or decompress LastPass payload:", e);
     throw new Error(
       "Failed to decode LastPass QR code. The data format is not recognized or is corrupted."
     );

@@ -1,3 +1,11 @@
+/**
+ * This module serves as a centralized data mapping layer. Its primary role is
+ * to convert OTP account data from various external formats (like LastPass exports)
+ * into the application's standardized internal format, `MigrationOtpParameter`.
+ * This decouples the internal data structure from the specifics of any single
+ * import source, making the application more modular and easier to extend with
+ * new import formats in the future.
+ */
 import { decode as thirtyTwoDecode } from "thirty-two";
 import { MigrationOtpParameter } from "../types";
 

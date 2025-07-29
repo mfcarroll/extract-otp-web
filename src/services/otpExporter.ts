@@ -1,18 +1,34 @@
+/**
+ * This module handles the logic for exporting OTP secrets into various formats,
+ * specifically for Google Authenticator and LastPass Authenticator. It constructs
+ * the complex, proprietary `otpauth-migration://` and `lpaauth-migration://`
+ * URLs that these apps use for their QR code-based account transfer features.
+ * This involves data mapping, protobuf serialization for Google, and a nested,
+ * gzipped JSON structure for LastPass.
+ */
 import { encode as base32Encode } from "thirty-two";
 import pako from "pako";
 import protobuf from "protobufjs";
 import { LastPassQrAccount, MigrationOtpParameter } from "../types";
 import { uint8ArrayToBase64 } from "./protobufProcessor";
 import { generateUUID } from "./uuid";
+import { logger } from "./logger";
 
 // --- Constants ---
 
+/**
+ * Default values for the Google Authenticator protobuf payload.
+ * These are based on observed exports and seem to be constant.
+ */
 const GOOGLE_PAYLOAD_DEFAULTS = {
   VERSION: 1,
   BATCH_SIZE: 1,
   BATCH_INDEX: 0,
 };
 
+/**
+ * Default values used when constructing a LastPass Authenticator export.
+ */
 const LASTPASS_DEFAULTS = {
   VERSION: 3,
   TIME_STEP: 30,
@@ -21,8 +37,13 @@ const LASTPASS_DEFAULTS = {
 
 // --- Protobuf and Data Mapping Setup ---
 
+// Pre-load the protobuf definition once for better performance.
 const protobufRoot = protobuf.load("otp_migration.proto");
 
+/**
+ * Maps the internal algorithm enum (number) back to the string representation
+ * required by the `otpauth://` URL standard.
+ */
 const ALGORITHM_STRING_MAP: { [key: number]: string } = {
   1: "SHA1",
   2: "SHA256",
@@ -30,6 +51,10 @@ const ALGORITHM_STRING_MAP: { [key: number]: string } = {
   4: "MD5",
 };
 
+/**
+ * Maps the internal digits enum (number) back to the actual number of digits
+ * (6 or 8) required by the `otpauth://` URL standard.
+ */
 const DIGITS_VALUE_MAP: { [key: number]: 6 | 8 } = {
   1: 6, // DIGIT_COUNT_SIX
   2: 8, // DIGIT_COUNT_EIGHT
@@ -54,7 +79,8 @@ export async function exportToGoogleAuthenticator(
     version: GOOGLE_PAYLOAD_DEFAULTS.VERSION,
     batchSize: GOOGLE_PAYLOAD_DEFAULTS.BATCH_SIZE,
     batchIndex: GOOGLE_PAYLOAD_DEFAULTS.BATCH_INDEX,
-    // Generate a random 32-bit integer for the batch ID.
+    // The batch ID seems to be a random 32-bit integer. We generate one here
+    // to mimic the behavior of the official app.
     batchId: Math.floor(Math.random() * 2 ** 32),
   };
 
@@ -98,11 +124,11 @@ export async function exportToLastPass(
   otps: MigrationOtpParameter[]
 ): Promise<string> {
   // --- Step 1: Map OTPs to the complex LastPass account format ---
-  // We mimic the detailed structure seen in your import logs, including a unique ID and timestamp.
   const lastPassAccounts: LastPassQrAccount[] = otps
     .map((otp, index) => {
       if (otp.type !== 2) {
-        // LastPass only seems to handle TOTP
+        // LastPass QR code exports only support TOTP accounts.
+        // Filter out any incompatible HOTP accounts.
         return null;
       }
 
@@ -118,7 +144,6 @@ export async function exportToLastPass(
         a: algorithm,
         d: digits,
         tS: LASTPASS_DEFAULTS.TIME_STEP, // LastPass seems to default to a 30-second time step.
-        // Mimicked fields from your import log for compatibility
         uN: otp.name,
         iN: otp.issuer,
         aId: generateUUID().toUpperCase(), // Generate a unique ID for the account
@@ -138,7 +163,6 @@ export async function exportToLastPass(
   }
 
   // --- Step 2: Create the complex inner JSON payload ---
-  // This matches the structure from your log's "Step 6".
   const finalJsonPayload = {
     dS: "",
     dId: "",
@@ -154,7 +178,6 @@ export async function exportToLastPass(
   const contentBase64 = gzipAndBase64Encode(finalJsonPayload);
 
   // --- Step 4: Create the complex outer JSON wrapper ---
-  // This matches the structure from your log's "Step 4".
   const jsonWrapper = {
     batchId: generateUUID().toUpperCase(),
     batchSize: 1,
@@ -171,6 +194,7 @@ export async function exportToLastPass(
     finalBase64Data
   )}`;
 
-  console.log("[LastPass Export] Final URL constructed:", url);
+  // This log is useful for debugging the complex nested structure.
+  logger.debug("[LastPass Export] Final URL constructed:", url);
   return url;
 }

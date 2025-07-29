@@ -1,4 +1,5 @@
 import { announceToScreenReader } from "./notifications";
+import { logger } from "../services/logger";
 
 /**
  * Copies a string to the user's clipboard and provides visual feedback on a button.
@@ -21,7 +22,7 @@ export const copyToClipboard = (
       setTimeout(() => buttonElement.classList.remove("copied"), 1500);
     })
     .catch((err) => {
-      console.error("Could not copy text: ", err);
+      logger.error("Could not copy text: ", err);
       // Announce failure to screen readers
       announceToScreenReader("Failed to copy to clipboard.");
     });

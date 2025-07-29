@@ -1,3 +1,10 @@
+/**
+ * This module is responsible for processing JSON files. It can intelligently
+ * detect and parse different JSON formats, including the application's own
+ * export format and the format used by LastPass Authenticator's file export.
+ * It acts as a dispatcher, routing the parsed JSON data to the appropriate
+ * format-specific processor.
+ */
 import {
   LastPassFilePayload,
   LastPassFileAccount,
@@ -6,6 +13,7 @@ import {
 } from "../types";
 import { mapToMigrationOtpParameter, RawOtpAccount } from "./otpDataMapper";
 import { getOtpParametersFromUrl } from "./otpUrlParser";
+import { logger } from "./logger";
 
 // --- Type Guards ---
 
@@ -47,8 +55,8 @@ async function processOtpDataArray(
   const promises = otpDataArray
     .filter((otp) => otp.url && typeof otp.url === "string")
     .map((otp) =>
-      getOtpParametersFromUrl(otp.url).catch((error) => {
-        console.warn(`Skipping invalid entry in JSON file: ${otp.name}`, error);
+      getOtpParametersFromUrl(otp.url).catch((error: any) => {
+        logger.warn(`Skipping invalid entry in JSON file: ${otp.name}`, error);
         return []; // Return an empty array for failed items to not break Promise.all
       })
     );

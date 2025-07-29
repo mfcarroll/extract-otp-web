@@ -2,6 +2,7 @@ import jsQR from "jsqr";
 import { $ } from "./dom";
 import { processDecodedQrCodeString } from "../services/qrProcessor";
 import { displayError, announceToScreenReader } from "./notifications";
+import { logger } from "../services/logger";
 
 // DOM Elements
 let video: HTMLVideoElement;
@@ -138,7 +139,7 @@ async function openCamera() {
     if (err.name === "AbortError") {
       return; // Ignore user aborting by closing the modal.
     }
-    console.error("Error accessing camera: ", err);
+    logger.error("Error accessing camera: ", err);
     displayError("Could not access the camera.");
     closeCamera();
   }

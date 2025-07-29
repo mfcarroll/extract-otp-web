@@ -32,8 +32,19 @@ const keyActionRules = new Map<
 >();
 const prioritizers: Prioritizer[] = [];
 
-// To switch navigation algorithms, change the function assigned here.
-const findClosestNavigableElement = findClosestElementByProjection;
+const oppositeDirection: Record<Direction, Direction> = {
+  up: "down",
+  down: "up",
+  left: "right",
+  right: "left",
+};
+
+/**
+ * The core spatial navigation algorithm. This can be swapped with other
+ * implementations (like `findClosestElementByScore`) to test different
+ * navigation behaviors. `findClosestElementByProjection` is generally more intuitive.
+ */
+const findClosestNavigableElement = findClosestElementByProjection; // The primary, projection-based algorithm
 // const findClosestNavigableElement = findClosestElementByScore; // The original algorithm
 
 /**
@@ -82,7 +93,7 @@ function setFocus(
   if (currentEl) {
     // This is the logic for "roving tabindex". It should only apply when
     // moving between items *within* the same composite widget (like a
-    // tablist or grid). For standalone controls, we just move focus
+    // tablist, grid, or the FAQ accordion). For standalone controls, we just move focus
     // without altering their tabindex, preserving the natural tab order.
     const rovingContainer = currentEl.closest(
       '[role="tablist"], [role="grid"], #tab-faq'
@@ -127,17 +138,130 @@ function setFocus(
   // }
 }
 
-const oppositeDirection: Record<Direction, Direction> = {
-  up: "down",
-  down: "up",
-  left: "right",
-  right: "left",
-};
+/**
+ * Finds the closest element within the same section.
+ */
+function findNextInSameSection(
+  currentEl: HTMLElement,
+  direction: Direction,
+  section: HTMLElement
+): HTMLElement | null {
+  const sectionNavigables = getSectionNavigables(section);
+  return findClosestNavigableElement(currentEl, direction, sectionNavigables);
+}
 
 /**
- * Finds the next element to navigate to using spatial logic.
- * It prioritizes elements within the same section and then falls back
- * to other sections or sequential order.
+ * If inside a navigable container, "surfaces" focus to the container itself.
+ * This is a fallback when no other element is found in the current direction.
+ */
+function findNextBySurfacing(
+  currentEl: HTMLElement,
+  section: HTMLElement
+): HTMLElement | null {
+  if (section.classList.contains("navigable") && currentEl !== section) {
+    return section;
+  }
+  return null;
+}
+
+/**
+ * Finds the next element by jumping to an adjacent section.
+ * This is primarily used for up/down navigation between distinct UI blocks.
+ */
+function findNextInAdjacentSection(
+  currentEl: HTMLElement,
+  direction: Direction,
+  currentSection: HTMLElement
+): HTMLElement | null {
+  // This strategy is only for vertical navigation.
+  if (direction !== "up" && direction !== "down") {
+    return null;
+  }
+
+  const allSections = getNavigableSections();
+  const currentSectionIndex = allSections.indexOf(currentSection);
+  if (currentSectionIndex === -1) return null;
+
+  const step = direction === "down" ? 1 : -1;
+  let nextSectionIndex = currentSectionIndex + step;
+
+  // Iterate through subsequent sections in the given direction.
+  while (nextSectionIndex >= 0 && nextSectionIndex < allSections.length) {
+    const nextSection = allSections[nextSectionIndex];
+
+    // If the section container is itself a navigable target (e.g., an otp-card),
+    // it becomes the focus target, rather than any of its children.
+    if (nextSection.classList.contains("navigable")) {
+      return nextSection;
+    }
+
+    // Otherwise, search for the best candidate within that section.
+    const nextSectionNavigables = getSectionNavigables(nextSection);
+    if (nextSectionNavigables.length > 0) {
+      const nextEl = findClosestNavigableElement(
+        currentEl,
+        direction,
+        nextSectionNavigables
+      );
+      if (nextEl) return nextEl; // Found a target, so we're done.
+    }
+    nextSectionIndex += step;
+  }
+
+  return null; // No element found in any subsequent section.
+}
+
+/**
+ * Finds the next element by sequential DOM order, wrapping around the page.
+ * This is a fallback for left/right navigation when no spatial match is found.
+ */
+function findNextSequentially(
+  currentEl: HTMLElement,
+  direction: Direction
+): HTMLElement | null {
+  // This strategy is only for horizontal navigation.
+  if (direction !== "left" && direction !== "right") {
+    return null;
+  }
+
+  const allNavigables = Array.from(
+    document.querySelectorAll<HTMLElement>(".navigable")
+  ).filter((el) => el.offsetParent !== null);
+
+  const currentIndex = allNavigables.indexOf(currentEl);
+  if (currentIndex === -1) return null;
+
+  const step = direction === "right" ? 1 : -1;
+  const nextIndex =
+    (currentIndex + step + allNavigables.length) % allNavigables.length;
+
+  if (allNavigables.length > 1) {
+    let nextEl = allNavigables[nextIndex];
+
+    // This logic prevents "diving into" a container when wrapping around.
+    // If we are moving from an element inside one container to an element
+    // inside a *different* container, the target should be the container
+    // itself, not the element inside it.
+    const nextParentNavigable =
+      nextEl.parentElement?.closest<HTMLElement>(".navigable");
+
+    if (nextParentNavigable) {
+      const currentParentNavigable =
+        currentEl.parentElement?.closest<HTMLElement>(".navigable");
+
+      if (nextParentNavigable !== currentParentNavigable) {
+        return nextParentNavigable;
+      }
+    }
+    return nextEl;
+  }
+
+  return null;
+}
+
+/**
+ * Finds the next element to navigate to using a series of spatial and
+ * fallback strategies.
  * @param currentEl The starting element.
  * @param direction The direction of navigation.
  * @returns The next element, or null if none is found.
@@ -149,95 +273,39 @@ function findNextSpatially(
   const currentSection = getSection(currentEl);
   if (!currentSection) return null;
 
-  // --- 1. Try to find the closest element within the same section ---
-  const sectionNavigables = getSectionNavigables(currentSection);
-  let nextEl = findClosestNavigableElement(
+  // --- Strategy 1: Find the closest element within the same section. ---
+  const nextInSame = findNextInSameSection(
     currentEl,
     direction,
-    sectionNavigables
+    currentSection
   );
+  if (nextInSame) return nextInSame;
 
-  // --- 2. If no match in section, use fallback strategies ---
-  if (!nextEl) {
-    // Before jumping to another section, check if the container of the
-    // current section is itself a navigable element. If so, and if we are
-    // not already on it, "surface" focus to the container.
-    if (
-      currentSection.classList.contains("navigable") &&
-      currentEl !== currentSection
-    ) {
-      return currentSection;
-    }
+  // --- Strategy 2: "Surface" to the section container if it's navigable. ---
+  const nextBySurfacing = findNextBySurfacing(currentEl, currentSection);
+  if (nextBySurfacing) return nextBySurfacing;
 
-    if (direction === "up" || direction === "down") {
-      // For up/down, find the next/previous section and search within it.
-      const allSections = getNavigableSections();
-      const currentSectionIndex = allSections.indexOf(currentSection);
+  // --- Strategy 3 (Vertical): Jump to an adjacent section. ---
+  const nextInAdjacent = findNextInAdjacentSection(
+    currentEl,
+    direction,
+    currentSection
+  );
+  if (nextInAdjacent) return nextInAdjacent;
 
-      if (currentSectionIndex !== -1) {
-        const step = direction === "down" ? 1 : -1;
-        let nextSectionIndex = currentSectionIndex + step;
+  // --- Strategy 4 (Horizontal): Wrap around using sequential DOM order. ---
+  const nextSequentially = findNextSequentially(currentEl, direction);
+  if (nextSequentially) return nextSequentially;
 
-        while (nextSectionIndex >= 0 && nextSectionIndex < allSections.length) {
-          const nextSection = allSections[nextSectionIndex];
-
-          // If the section container is itself a navigable target (e.g., an otp-card),
-          // it becomes the focus target, rather than any of its children.
-          if (nextSection.classList.contains("navigable")) {
-            nextEl = nextSection;
-            if (nextEl) break;
-          } else {
-            const nextSectionNavigables = getSectionNavigables(nextSection);
-            if (nextSectionNavigables.length > 0) {
-              nextEl = findClosestNavigableElement(
-                currentEl,
-                direction,
-                nextSectionNavigables
-              );
-              if (nextEl) break; // Found a target
-            }
-          }
-          nextSectionIndex += step;
-        }
-      }
-    } else if (direction === "left" || direction === "right") {
-      // For left/right, fall back to sequential DOM order for wrapping.
-      const allNavigables = Array.from(
-        document.querySelectorAll<HTMLElement>(".navigable")
-      ).filter((el) => el.offsetParent !== null);
-
-      const currentIndex = allNavigables.indexOf(currentEl);
-      if (currentIndex !== -1) {
-        const step = direction === "right" ? 1 : -1;
-        const nextIndex =
-          (currentIndex + step + allNavigables.length) % allNavigables.length;
-        if (allNavigables.length > 1) {
-          nextEl = allNavigables[nextIndex];
-
-          if (nextEl) {
-            // Check if the next element is inside a larger navigable container (e.g., a button inside an otp-card).
-            const nextParentNavigable =
-              nextEl.parentElement?.closest<HTMLElement>(".navigable");
-
-            if (nextParentNavigable) {
-              // Now check if the current element is in the same container.
-              const currentParentNavigable =
-                currentEl.parentElement?.closest<HTMLElement>(".navigable");
-
-              // If we are moving from an element inside one container to an element inside a *different* container,
-              // the target should be the container itself, not the element inside it.
-              if (nextParentNavigable !== currentParentNavigable) {
-                nextEl = nextParentNavigable;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  return nextEl;
+  return null; // No suitable element found.
 }
 
+/**
+ * The main navigation dispatcher. It orchestrates the various strategies
+ * (reversal, rules, spatial) to determine the next element to focus.
+ * @param currentEl The currently focused element.
+ * @param direction The direction of navigation.
+ */
 function findNext(
   currentEl: HTMLElement,
   direction: NavDirection
@@ -316,10 +384,16 @@ function findNext(
     setFocus(currentEl, nextEl, direction);
   }
 
-  return null; // Let the keydown handler know we handled it.
+  return null; // Let the keydown handler know we've handled the event.
 }
 
-function handleKeydown(event: KeyboardEvent) {
+/**
+ * The central keyboard event handler for the entire application. It intercepts
+ * key presses, determines if they are navigation-related, and dispatches
+ * them to the appropriate navigation or action handlers.
+ * @param event The keyboard event.
+ */
+function handleKeydown(event: KeyboardEvent): void {
   // --- Global Shortcuts (like Ctrl+A) ---
   // These should be checked first and should work regardless of what is focused.
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "a") {

@@ -1,3 +1,9 @@
+/**
+ * This is the main entry point for the application.
+ * It is responsible for initializing all the different UI components and services,
+ * setting up global event listeners, and orchestrating the application startup.
+ */
+
 import { Buffer } from "buffer"; // Keep for browser environment polyfill
 import { initResults } from "./ui/results";
 import { initFileInput } from "./ui/fileInput";
@@ -9,7 +15,8 @@ import { initNavigation } from "./ui/navigation";
 import { initFooter } from "./ui/footer";
 import { initTabs } from "./ui/tabs";
 import { initAccordion } from "./ui/accordion";
-import { displayError } from "./ui/notifications";
+import { displayError, announceToScreenReader } from "./ui/notifications";
+import { logger } from "./services/logger";
 
 window.Buffer = Buffer; // Make Buffer globally available for libraries that might need it.
 
@@ -22,12 +29,12 @@ function setupGlobalErrorHandling(): void {
     "An unexpected error occurred. Please try again or refresh the page.";
 
   window.addEventListener("error", (event) => {
-    console.error("Uncaught error:", event.error);
+    logger.error("Uncaught error:", event.error);
     displayError(genericErrorMessage);
   });
 
   window.addEventListener("unhandledrejection", (event) => {
-    console.error("Unhandled promise rejection:", event.reason);
+    logger.error("Unhandled promise rejection:", event.reason);
     displayError(genericErrorMessage);
   });
 }

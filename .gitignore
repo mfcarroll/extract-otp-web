@@ -1,3 +1,8 @@
 .venv/
 .DS_Store/
 node_modules/
+
+# Ignore all .env files...
+.env*
+# ...except for the example file.
+!.env.local.example
