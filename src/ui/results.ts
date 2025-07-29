@@ -141,7 +141,9 @@ function setupCardEvents(
     showQrModal(otp.url, modalTitle, fromKeyboard);
   });
 
-  const otpDetails = cardElement.querySelector<HTMLDivElement>(".otp-details")!;
+  const otpDetails = cardElement.querySelector<HTMLDivElement>(
+    ".otp-card-main-content"
+  )!;
   otpDetails.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
     // Use the same breakpoint as the CSS that hides the copy button.

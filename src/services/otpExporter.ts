@@ -3,6 +3,7 @@ import pako from "pako";
 import protobuf from "protobufjs";
 import { LastPassQrAccount, MigrationOtpParameter } from "../types";
 import { uint8ArrayToBase64 } from "./protobufProcessor";
+import { generateUUID } from "./uuid";
 
 // --- Constants ---
 
@@ -120,7 +121,7 @@ export async function exportToLastPass(
         // Mimicked fields from your import log for compatibility
         uN: otp.name,
         iN: otp.issuer,
-        aId: crypto.randomUUID().toUpperCase(), // Generate a unique ID for the account
+        aId: generateUUID().toUpperCase(), // Generate a unique ID for the account
         cT: Date.now(), // Set creation time to now
         iF: false,
         pN: false,
@@ -155,7 +156,7 @@ export async function exportToLastPass(
   // --- Step 4: Create the complex outer JSON wrapper ---
   // This matches the structure from your log's "Step 4".
   const jsonWrapper = {
-    batchId: crypto.randomUUID().toUpperCase(),
+    batchId: generateUUID().toUpperCase(),
     batchSize: 1,
     version: LASTPASS_DEFAULTS.VERSION, // Matches the imported version
     batchIndex: 0,

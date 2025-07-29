@@ -611,7 +611,6 @@
         ></div>
 
         <template id="otp-card-template">
-          <!-- Each card is its own navigable section -->
           <div
             class="otp-card navigable-section navigable"
             role="row"
@@ -623,18 +622,20 @@
               class="visually-hidden otp-select-checkbox"
               tabindex="-1"
             />
-            <div class="otp-details" role="presentation">
-              <!-- The h3 will be programmatically linked to the row as its label -->
-              <h3 class="otp-title"></h3>
+            <!-- The h3 will be programmatically linked to the row as its label -->
+            <h3 class="otp-title"></h3>
+            <div class="otp-card-main-content">
               <p class="detail-row">
-                <span class="label">Name:</span> <span data-value="name"></span>
+                <span class="label">Name:</span>
+                <span data-value="name"></span>
               </p>
               <p class="detail-row">
                 <span class="label">Issuer:</span>
                 <span data-value="issuer"></span>
               </p>
               <p class="detail-row">
-                <span class="label">Type:</span> <span data-value="type"></span>
+                <span class="label">Type:</span>
+                <span data-value="type"></span>
               </p>
               <p class="detail-row counter-row">
                 <span class="label">Counter:</span>
@@ -683,6 +684,8 @@
               <p class="visually-hidden card-actions-help">
                 Press Enter or Space to copy.
               </p>
+            </div>
+            <div class="qr-code-wrapper">
               <div class="detail-row qr-code-row">
                 <span class="label">QR:</span>
                 <button
