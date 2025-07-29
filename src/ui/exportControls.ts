@@ -130,12 +130,20 @@ export function initExportControls(): void {
     handleClearAll();
   });
 
-  selectAllButton.addEventListener("click", () => {
+  selectAllButton.addEventListener("click", (event) => {
     const allKeys = new Set(getState().otps.map(getOtpUniqueKey));
     setState((s) => ({ ...s, selectedOtpKeys: allKeys }));
+    if (event.detail === 0) {
+      // Check if activated by keyboard
+      deselectAllButton.focus();
+    }
   });
 
-  deselectAllButton.addEventListener("click", () => {
+  deselectAllButton.addEventListener("click", (event) => {
     setState((s) => ({ ...s, selectedOtpKeys: new Set() }));
+    if (event.detail === 0) {
+      // Check if activated by keyboard
+      selectAllButton.focus();
+    }
   });
 }
