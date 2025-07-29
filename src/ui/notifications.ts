@@ -111,6 +111,14 @@ export function displayWarning(message: string): void {
 }
 
 /**
+ * Clears any visible alert messages from the container.
+ */
+export function clearAlerts(): void {
+  const alertContainer = $<HTMLDivElement>("#error-message-container");
+  alertContainer.innerHTML = "";
+}
+
+/**
  * Clears all entries from the upload log and hides the container.
  */
 export function clearLogs(): void {

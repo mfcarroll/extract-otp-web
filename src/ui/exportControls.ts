@@ -8,6 +8,7 @@ import {
 import {
   announceToScreenReader,
   clearLogs,
+  clearAlerts,
   displayError,
   displayWarning,
 } from "./notifications";
@@ -21,6 +22,7 @@ import { showQrModal } from "./qrModal";
  * Clears all logs and resets the OTP state.
  */
 function handleClearAll(): void {
+  clearAlerts();
   clearLogs();
   setState(() => ({ otps: [], logCount: 0, selectedOtpKeys: new Set() }));
   resetFileInput();
