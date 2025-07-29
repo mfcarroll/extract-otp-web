@@ -254,8 +254,9 @@
                       >Nothing you do here ever leaves your computer or mobile
                       device.</strong
                     >
-                    All processing happens locally, right in your browser. Your
-                    QR code images and secrets are never sent to any server.
+                    All processing happens locally, offline, right in your
+                    browser. Your QR code images and secrets are never sent to
+                    any server.
                   </p>
                   <p>
                     This tool is open-source and
@@ -373,7 +374,9 @@
                     aria-expanded="false"
                     aria-controls="faq-6-answer"
                   >
-                    <span class="faq-title">Who made this?</span>
+                    <span class="faq-title"
+                      >My LastPass QR code won't scan!</span
+                    >
                   </button>
                 </h3>
                 <div
@@ -381,6 +384,36 @@
                   class="faq-answer"
                   role="region"
                   aria-labelledby="faq-6-button"
+                >
+                  <p>
+                    LastPass puts all of your accounts together into one QR
+                    code, and if you have many accounts this can make the
+                    details of the code hard to read. Google Authenticator works
+                    around this issue by providing more than one code, each
+                    containing a few accounts. Luckily, LastPass allows you to
+                    export a json file, which this tool can also read, so just
+                    upload that instead.
+                  </p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <h3>
+                  <button
+                    class="faq-button navigable"
+                    tabindex="-1"
+                    id="faq-7-button"
+                    aria-expanded="false"
+                    aria-controls="faq-7-answer"
+                  >
+                    <span class="faq-title">Who made this?</span>
+                  </button>
+                </h3>
+                <div
+                  id="faq-7-answer"
+                  class="faq-answer"
+                  role="region"
+                  aria-labelledby="faq-7-button"
                 >
                   <p>
                     This tool was created by
@@ -401,18 +434,18 @@
                   <button
                     class="faq-button navigable"
                     tabindex="-1"
-                    id="faq-7-button"
+                    id="faq-8-button"
                     aria-expanded="false"
-                    aria-controls="faq-7-answer"
+                    aria-controls="faq-8-answer"
                   >
                     <span class="faq-title">Acknowledgements</span>
                   </button>
                 </h3>
                 <div
-                  id="faq-7-answer"
+                  id="faq-8-answer"
                   class="faq-answer"
                   role="region"
-                  aria-labelledby="faq-7-button"
+                  aria-labelledby="faq-8-button"
                 >
                   <p>
                     This tool builds on the work of several open-source

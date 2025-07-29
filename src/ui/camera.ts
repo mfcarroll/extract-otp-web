@@ -130,16 +130,16 @@ async function openCamera() {
     }
 
     video.srcObject = stream;
-    // The `play()` method returns a promise which can be safely ignored here,
-    // as we are not dependent on the exact moment playback begins.
-    video.play();
+
+    await video.play();
 
     animationFrameId = requestAnimationFrame(scanFrame);
-  } catch (err) {
+  } catch (err: any) {
+    if (err.name === "AbortError") {
+      return; // Ignore user aborting by closing the modal.
+    }
     console.error("Error accessing camera: ", err);
-    displayError(
-      "Could not access the camera. Please ensure you have a camera connected and have granted permission."
-    );
+    displayError("Could not access the camera.");
     closeCamera();
   }
 }

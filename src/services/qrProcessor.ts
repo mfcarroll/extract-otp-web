@@ -21,12 +21,32 @@ export function processImage(
 
     const img = new Image();
     img.onload = async () => {
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
+      const MAX_SIZE = 1000;
+      let width = img.width;
+      let height = img.height;
+
+      // If the smallest dimension is over MAX_SIZE, we need to downscale the image
+      // before processing. This improves performance and reliability for very
+      // large images, such as photos from a modern phone camera.
+      if (Math.min(width, height) > MAX_SIZE) {
+        // Calculate new dimensions to scale down, preserving aspect ratio.
+        // The largest dimension will become MAX_SIZE.
+        if (width > height) {
+          height *= MAX_SIZE / width;
+          width = MAX_SIZE;
+        } else {
+          width *= MAX_SIZE / height;
+          height = MAX_SIZE;
+        }
+      }
+
+      // Set canvas dimensions and draw the (potentially resized) image.
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(img, 0, 0, width, height);
       URL.revokeObjectURL(img.src);
 
-      const imageData = ctx.getImageData(0, 0, img.width, img.height);
+      const imageData = ctx.getImageData(0, 0, width, height);
       const code = jsQR(imageData.data, imageData.width, imageData.height);
 
       if (code) {
