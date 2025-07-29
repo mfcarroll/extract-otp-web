@@ -250,9 +250,15 @@ function findNext(
   if (elementRules && elementRules[direction]) {
     const result = elementRules[direction]!();
     if (result) {
-      // The rule returned an element. Navigate to it and stop.
+      // The rule returned an element. Attempt to navigate to it.
+      const initialActiveElement = document.activeElement;
       setFocus(currentEl, result, direction as Direction, "rule");
-      return null;
+      // If setFocus did not change the active element (e.g., because 'result' was not visible),
+      // then fall through to spatial logic.
+      if (document.activeElement !== initialActiveElement) {
+        return null; // Rule successfully set focus, stop here.
+      }
+      // Rule failed to set focus, proceed to spatial navigation (fall through)
     }
     if (result === null) {
       // The rule explicitly returned null. Stop all navigation.
