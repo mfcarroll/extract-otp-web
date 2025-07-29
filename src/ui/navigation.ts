@@ -211,7 +211,27 @@ function findNextSpatially(
         const step = direction === "right" ? 1 : -1;
         const nextIndex =
           (currentIndex + step + allNavigables.length) % allNavigables.length;
-        if (allNavigables.length > 1) nextEl = allNavigables[nextIndex];
+        if (allNavigables.length > 1) {
+          nextEl = allNavigables[nextIndex];
+
+          if (nextEl) {
+            // Check if the next element is inside a larger navigable container (e.g., a button inside an otp-card).
+            const nextParentNavigable =
+              nextEl.parentElement?.closest<HTMLElement>(".navigable");
+
+            if (nextParentNavigable) {
+              // Now check if the current element is in the same container.
+              const currentParentNavigable =
+                currentEl.parentElement?.closest<HTMLElement>(".navigable");
+
+              // If we are moving from an element inside one container to an element inside a *different* container,
+              // the target should be the container itself, not the element inside it.
+              if (nextParentNavigable !== currentParentNavigable) {
+                nextEl = nextParentNavigable;
+              }
+            }
+          }
+        }
       }
     }
   }
