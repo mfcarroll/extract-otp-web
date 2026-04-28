@@ -5,6 +5,7 @@ import { processLastPassQrJson } from './lastPassFormatter';
 import { mapToMigrationOtpParameter, RawOtpAccount } from './otpDataMapper';
 import base32 from 'thirty-two';
 import { logger } from './logger';
+import { t } from '../i18n';
 
 /**
  * Parses either an otpauth URL, a Google Migration URL, a LastPass JSON string,
@@ -51,9 +52,7 @@ export async function parseFlexibleInput(
     ];
   }
 
-  throw new Error(
-    'Input must be a valid OTP URL, LastPass JSON, or a Base32 secret (letters A-Z, numbers 2-7).'
-  );
+  throw new Error(t('error.invalidInput'));
 }
 
 /**
@@ -68,7 +67,7 @@ async function decodeStandardOtpAuthUrl(
 
   const type = url.hostname.toLowerCase(); // 'totp' or 'hotp'
   if (type !== 'totp' && type !== 'hotp') {
-    throw new Error(`Unsupported OTP type in URL: ${type}`);
+    throw new Error(t('error.unsupportedOtpType', { type }));
   }
 
   const label = decodeURIComponent(url.pathname.substring(1));
@@ -76,7 +75,7 @@ async function decodeStandardOtpAuthUrl(
 
   const secretB32 = params.get('secret');
   if (!secretB32) {
-    throw new Error("Missing 'secret' parameter in otpauth URL.");
+    throw new Error(t('error.missingSecret'));
   }
 
   let issuer = params.get('issuer');
@@ -113,9 +112,7 @@ async function decodeStandardOtpAuthUrl(
   if (type === 'hotp') {
     const counterStr = params.get('counter');
     if (!counterStr) {
-      throw new Error(
-        "Missing 'counter' parameter for hotp type in otpauth URL."
-      );
+      throw new Error(t('error.missingCounter'));
     }
     rawAccount.counter = parseInt(counterStr, 10);
   }
@@ -188,14 +185,10 @@ async function decodeLastPassPayload(
     }
 
     // If we are here, the 'content' property was missing from the outer JSON.
-    throw new Error(
-      "Invalid LastPass QR code: 'content' property not found in payload."
-    );
+    throw new Error(t('error.invalidLastPassPayload'));
   } catch (e) {
     logger.error('Failed to decode or decompress LastPass payload:', e);
-    throw new Error(
-      'Failed to decode LastPass QR code. The data format is not recognized or is corrupted.'
-    );
+    throw new Error(t('error.lastPassDecodeFailed'));
   }
 }
 
@@ -217,14 +210,14 @@ export async function getOtpParametersFromUrl(
   }
 
   if (!isLastPass && !isGoogleAuth) {
-    throw new Error('QR code is not a supported format.');
+    throw new Error(t('error.unsupportedQrFormat'));
   }
 
   const url = new URL(otpUrl);
   const dataBase64 = url.searchParams.get('data');
 
   if (!dataBase64) {
-    throw new Error('Invalid OTP URL: Missing "data" parameter.');
+    throw new Error(t('error.missingDataParam'));
   }
 
   if (isLastPass) {

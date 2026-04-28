@@ -20,6 +20,20 @@
   color: var(--primary-color-dark);
 }
 
+.footer-link-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  text-decoration: underline;
+}
+
+.footer-link-button:hover {
+  color: var(--primary-color-dark);
+}
+
 .footer-separator {
   color: var(--border-color);
 }

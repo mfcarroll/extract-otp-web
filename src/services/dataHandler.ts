@@ -4,6 +4,7 @@ import { getOtpParametersFromUrl } from './otpUrlParser';
 import { addUploadLog } from '../ui/notifications';
 import { getState, setState } from '../state/store';
 import { logger } from './logger';
+import { t } from '../i18n';
 
 /**
  * Creates a unique and consistent key for an OTP parameter.
@@ -44,20 +45,24 @@ export function filterAndLogOtps(
   }
 
   if (newOtps.length > 0) {
-    const plural = newOtps.length > 1 ? 's' : '';
     addUploadLog(
       sourceName,
       'success',
-      `${newOtps.length} secret${plural} extracted.`
+      t('log.extracted', {
+        count: newOtps.length,
+        plural: newOtps.length > 1 ? 's' : '',
+      })
     );
   }
 
   if (duplicatesFound > 0) {
-    const plural = duplicatesFound > 1 ? 's' : '';
     addUploadLog(
       sourceName,
       'warning',
-      `${duplicatesFound} duplicate secret${plural} skipped.`
+      t('log.duplicatesSkipped', {
+        count: duplicatesFound,
+        plural: duplicatesFound > 1 ? 's' : '',
+      })
     );
   }
 
@@ -78,7 +83,7 @@ export async function handleDecodedQrString(
     const otpParameters = await getOtpParametersFromUrl(qrCodeData);
 
     if (!otpParameters || otpParameters.length === 0) {
-      addUploadLog(sourceName, 'info', 'No OTP secrets found in QR code.');
+      addUploadLog(sourceName, 'info', t('log.noSecretsInQr'));
       return;
     }
 
@@ -97,7 +102,7 @@ export async function handleDecodedQrString(
   } catch (error: any) {
     const message =
       (error instanceof Error ? error.message : String(error)) ||
-      'An unknown error occurred.';
+      t('error.unknown');
     logger.error(`Error processing QR data from ${sourceName}:`, error);
     addUploadLog(sourceName, 'error', message);
   }

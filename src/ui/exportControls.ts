@@ -18,6 +18,7 @@ import { getOtpUniqueKey } from '../services/dataHandler';
 import { MigrationOtpParameter } from '../types';
 import { showQrModal } from './qrModal';
 import { logger } from '../services/logger';
+import { t } from '../i18n';
 
 /**
  * Clears all logs and resets the OTP state.
@@ -51,19 +52,19 @@ async function handleExport(
 ) {
   const selectedOtps = getSelectedOtps();
   if (selectedOtps.length === 0) {
-    announceToScreenReader('No accounts selected to export.');
+    announceToScreenReader(t('export.noSelection'));
     return;
   }
   try {
     const result = await exportFn(selectedOtps);
     if (isQrExport && typeof result === 'string') {
       const title = result.startsWith('lpaauth')
-        ? 'Scan with LastPass Authenticator'
-        : 'Scan with Google Authenticator';
+        ? t('export.scanLastPass')
+        : t('export.scanGoogle');
       showQrModal(result, title, openedByKeyboard);
     }
   } catch (error: any) {
-    const message = error.message || 'An unknown error occurred during export.';
+    const message = error.message || t('error.exportFailed');
     displayError(message);
     logger.error('Export failed:', error);
   }
@@ -96,7 +97,7 @@ export function initExportControls(): void {
   exportLastPassButton.addEventListener('click', (event) => {
     const selectedOtps = getSelectedOtps();
     if (selectedOtps.length === 0) {
-      announceToScreenReader('No accounts selected to export.');
+      announceToScreenReader(t('export.noSelection'));
       return;
     }
 
@@ -123,9 +124,9 @@ export function initExportControls(): void {
       });
 
       // 2. Inform the user what happened and why, prompting them to click again.
-      const plural = hotpAccounts.length > 1 ? 's were' : ' was';
-      const count = hotpAccounts.length == 1 ? 'An' : hotpAccounts.length;
-      const message = `LastPass only supports time-based (TOTP) accounts. ${count} incompatible counter-based account${plural} removed from your selection. Click "Export to LastPass" again to continue.`;
+      const pluralVerb = hotpAccounts.length > 1 ? 's were' : ' was';
+      const countText = hotpAccounts.length === 1 ? 'An' : hotpAccounts.length;
+      const message = t('export.lastPassMixedWarning', { pluralVerb, countText });
       displayWarning(message);
       return; // Stop the export this time.
     }

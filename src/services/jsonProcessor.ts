@@ -14,6 +14,7 @@ import {
 import { mapToMigrationOtpParameter, RawOtpAccount } from './otpDataMapper';
 import { getOtpParametersFromUrl } from './otpUrlParser';
 import { logger } from './logger';
+import { t } from '../i18n';
 
 // --- Type Guards ---
 
@@ -106,6 +107,6 @@ export async function processJson(
   }
 
   throw new Error(
-    'Invalid JSON format: Expected an array of OTP accounts or a LastPass export object.'
+    t('error.invalidJson')
   );
 }

@@ -13,6 +13,7 @@ import { LastPassQrAccount, MigrationOtpParameter } from '../types';
 import { uint8ArrayToBase64 } from './protobufProcessor';
 import { generateUUID } from './uuid';
 import { logger } from './logger';
+import { t } from '../i18n';
 
 // --- Constants ---
 
@@ -157,9 +158,7 @@ export async function exportToLastPass(
     .filter((acc): acc is LastPassQrAccount => acc !== null);
 
   if (lastPassAccounts.length === 0) {
-    throw new Error(
-      'No compatible (TOTP) accounts selected for LastPass export.'
-    );
+    throw new Error(t('export.noCompatibleLastPass'));
   }
 
   // --- Step 2: Create the complex inner JSON payload ---

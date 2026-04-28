@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "npm run build:gh",
+    "build:gh": "vite build --base=/extract-otp-web/",
+    "build:local": "vite build --base=./",
     "preview": "vite preview",
     "check": "tsc --noEmit",
     "test": "vitest",

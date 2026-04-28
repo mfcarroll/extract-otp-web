@@ -5,6 +5,7 @@ import { setState, getState } from '../state/store';
 import { addUploadLog } from './notifications';
 import { $ } from './dom';
 import { openModal, closeModal } from './modalHandler';
+import { t } from '../i18n';
 
 export function initManualInput(): void {
   const btnOpenModal = $<HTMLButtonElement>('#btn-manual-entry');
@@ -49,7 +50,7 @@ export function initManualInput(): void {
         const { newOtps } = filterAndLogOtps(
           otpParameters,
           existingAndBatchKeys,
-          'Manual Input'
+          t('log.manualInput')
         );
 
         if (newOtps.length > 0) {
@@ -74,11 +75,11 @@ export function initManualInput(): void {
           hideModal(); // Hide even if duplicate, logs will show the outcome
         }
       } else {
-        addUploadLog('Manual Input', 'info', 'No OTP secrets found.');
+        addUploadLog(t('log.manualInput'), 'info', t('log.noSecrets'));
       }
     } catch (error: any) {
       const message = error instanceof Error ? error.message : String(error);
-      addUploadLog('Manual Input', 'error', message);
+      addUploadLog(t('log.manualInput'), 'error', message);
     } finally {
       inputEl.disabled = false;
       submitBtn.disabled = false;

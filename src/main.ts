@@ -19,6 +19,8 @@ import { initTabs } from './ui/tabs';
 import { initAccordion } from './ui/accordion';
 import { displayError, announceToScreenReader } from './ui/notifications';
 import { logger } from './services/logger';
+import { initI18n, onLanguageChange, t } from './i18n';
+import { setState } from './state/store';
 
 window.Buffer = Buffer; // Make Buffer globally available for libraries that might need it.
 
@@ -27,8 +29,7 @@ window.Buffer = Buffer; // Make Buffer globally available for libraries that mig
  * rejections, providing a user-friendly error message.
  */
 function setupGlobalErrorHandling(): void {
-  const genericErrorMessage =
-    'An unexpected error occurred. Please try again or refresh the page.';
+  const genericErrorMessage = t('error.unexpected');
 
   window.addEventListener('error', (event) => {
     logger.error('Uncaught error:', event.error);
@@ -46,6 +47,7 @@ function setupGlobalErrorHandling(): void {
  * This function is called once the DOM is fully loaded.
  */
 function initializeApp(): void {
+  initI18n();
   setupGlobalErrorHandling();
   initNavigation();
   initTabs();
@@ -58,6 +60,11 @@ function initializeApp(): void {
   initThemeSwitcher();
   initExportControls();
   initFooter();
+
+  onLanguageChange(() => {
+    // Trigger subscribers so state-driven UI text can refresh in the new language.
+    setState((state) => ({ ...state }));
+  });
 }
 
 // Initialize the application once the DOM is ready.

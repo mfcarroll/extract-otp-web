@@ -8,6 +8,7 @@ import { subscribe, getState, setState } from '../state/store';
 import { convertToOtpData } from '../services/otpFormatter';
 import { getOtpUniqueKey } from '../services/dataHandler';
 import { isNarrowViewport } from './viewport';
+import { t } from '../i18n';
 
 function getQrCodeColors() {
   const computedStyles = getComputedStyle(document.documentElement);
@@ -46,7 +47,7 @@ function populateDetail(
   );
   if (!element) return;
 
-  element.textContent = value || 'Not available';
+  element.textContent = value || t('notAvailable');
   element.classList.toggle('value-missing', !value);
 }
 
@@ -402,7 +403,7 @@ export function initResults() {
       // 2. Update the selection count text.
       const count = selectedOtpKeys.size;
       const total = otps.length;
-      selectionCountSpan.textContent = `${count} of ${total} selected`;
+      selectionCountSpan.textContent = t('selection.count', { count, total });
 
       const setButtonNavigable = (
         button: HTMLButtonElement,
