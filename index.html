@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OTP Secret Extractor</title>
+    <title>
+      One-Time Password Secret Extractor – Google Authenticator Export
+    </title>
+    <meta
+      name="description"
+      content="Extract TOTP/HOTP one-time password secrets from Google Authenticator or LastPass 2FA export QR codes. Runs entirely in your browser; nothing is uploaded."
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -77,7 +83,8 @@
               aria-labelledby="tab-btn-what"
             >
               <p>
-                This tool extracts One-Time Password secrets from the Google
+                This tool extracts one-time password (OTP) secrets, the codes
+                used for two-factor authentication (2FA), from the Google
                 Authenticator or LastPass Authenticator apps. There is no
                 software to install, and no data ever leaves your device.
               </p>
@@ -102,7 +109,7 @@
                 secret for each account. You can then use these secrets to
                 import your accounts into any other authenticator app.
               </p>
-              <h3>1. Export from your One-Time Password App</h3>
+              <h3>1. Export from your one-time password app</h3>
               <h4>Export from Google Authenticator</h4>
               <ul>
                 <li>Open the Google Authenticator app on your phone.</li>
@@ -128,16 +135,26 @@
               <h3>2. Extract Secrets</h3>
               <ul>
                 <li>
-                  Click "Scan QR" to scan codes directly using a second device.
+                  Open this tool on your computer or a second device, and click
+                  "Scan QR" to scan the export QR codes on your phone directly.
+                  This is the most convenient option, and it avoids storing
+                  screenshots of your secrets.
                 </li>
                 <li>
                   Alternatively, take a screenshot of each QR code that is
-                  displayed, then click "Select QR Code Image(s)" or drag and
-                  drop your screenshot(s) onto the page.
+                  displayed, then click "Open File(s)" or drag and drop your
+                  screenshot(s) onto the page.
                 </li>
                 <li>
-                  You can also enter a secret directly as text, and this tool
-                  will display your original setup QR code.
+                  You can also click "Enter Code" to enter a secret key or setup
+                  URL directly as text, and this tool will display your original
+                  setup QR code.
+                </li>
+                <li>
+                  This tool can also read individual setup QR codes from any
+                  app, or a text file with one secret key or URL per line. This
+                  makes it easy to turn secrets from anywhere into scannable QR
+                  codes.
                 </li>
               </ul>
               <h3>3. Use Your Secrets</h3>
@@ -149,6 +166,29 @@
                 <li>
                   You can now import these secrets into your preferred
                   authenticator app or password manager.
+                </li>
+                <li>
+                  Click "Save as CSV" or "Save as JSON" to keep a copy of your
+                  secrets. You can open these files here again later to display
+                  your QR codes.
+                </li>
+                <li>
+                  To move accounts into Google Authenticator or LastPass
+                  Authenticator, select them and click "Export to Google" or
+                  "Export to LastPass". This tool will show a transfer QR code
+                  you can scan with that app.
+                </li>
+              </ul>
+              <h3>4. Clean Up</h3>
+              <ul>
+                <li>
+                  <strong
+                    >Note: Any screenshots or downloaded files contain your
+                    unencrypted secrets.</strong
+                  >
+                  Be sure to store them securely, or delete them when you are
+                  done. This includes deleting them from your "Trash", "Recycle
+                  Bin", "Recently Deleted" and any cloud photo backups.
                 </li>
               </ul>
             </div>
@@ -218,12 +258,13 @@
                   aria-labelledby="faq-2-button"
                 >
                   <p>
-                    You provide screenshots of the QR codes from Google
-                    Authenticator's export feature. This tool reads those QR
-                    codes&mdash;right here in your browser&mdash;and gives you
-                    back the original secret for each account. You can then use
-                    these secrets to import your accounts into any other
-                    authenticator app.
+                    You scan the QR codes from Google Authenticator or LastPass
+                    Authenticator's export feature with your camera, or provide
+                    screenshots of them (or a LastPass export file). This tool
+                    reads those QR codes&mdash;right here in your
+                    browser&mdash;and gives you back the original secret for
+                    each account. You can then use these secrets to import your
+                    accounts into any other authenticator app.
                   </p>
                 </div>
               </div>
@@ -257,6 +298,21 @@
                     All processing happens locally, offline, right in your
                     browser. Your QR code images and secrets are never sent to
                     any server.
+                  </p>
+                  <p>
+                    For the most privacy, open this tool on your computer or a
+                    second device, and click "Scan QR" to scan the export QR
+                    codes on your phone directly, without taking screenshots.
+                  </p>
+                  <p>
+                    <strong
+                      >Note: Any screenshots or downloaded files contain your
+                      unencrypted secrets.</strong
+                    >
+                    Be sure to store them securely, or delete them when you are
+                    done. This includes deleting them from your "Trash",
+                    "Recycle Bin", "Recently Deleted" and any cloud photo
+                    backups.
                   </p>
                   <p>
                     This tool is open-source and
