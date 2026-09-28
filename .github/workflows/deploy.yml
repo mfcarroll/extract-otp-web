@@ -40,7 +40,7 @@ jobs:
       - name: Build
         run: npm run build # This command uses your vite.config.js
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
