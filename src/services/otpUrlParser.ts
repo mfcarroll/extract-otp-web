@@ -1,4 +1,4 @@
-import pako from 'pako';
+import * as pako from 'pako';
 import { MigrationOtpParameter } from '../types';
 import { base64ToUint8Array, decodeProtobufPayload } from './protobufProcessor';
 import { processLastPassQrJson } from './lastPassFormatter';

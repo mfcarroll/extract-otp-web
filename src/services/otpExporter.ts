@@ -7,7 +7,7 @@
  * gzipped JSON structure for LastPass.
  */
 import { encode as base32Encode } from 'thirty-two';
-import pako from 'pako';
+import * as pako from 'pako';
 import protobuf from 'protobufjs';
 import { LastPassQrAccount, MigrationOtpParameter } from '../types';
 import { uint8ArrayToBase64 } from './protobufProcessor';
