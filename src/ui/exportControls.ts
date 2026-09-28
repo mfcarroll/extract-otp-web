@@ -85,10 +85,18 @@ export function initExportControls(): void {
 
   // --- Export Button Listeners ---
   downloadCsvButton.addEventListener('click', (event) => {
-    handleExport(async (otps) => downloadAsCsv(otps), false, event.detail === 0);
+    handleExport(
+      async (otps) => downloadAsCsv(otps),
+      false,
+      event.detail === 0
+    );
   });
   downloadJsonButton.addEventListener('click', (event) => {
-    handleExport(async (otps) => downloadAsJson(otps), false, event.detail === 0);
+    handleExport(
+      async (otps) => downloadAsJson(otps),
+      false,
+      event.detail === 0
+    );
   });
   exportGoogleButton.addEventListener('click', (event) =>
     handleExport(exportToGoogleAuthenticator, true, event.detail === 0)

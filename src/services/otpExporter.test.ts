@@ -1,7 +1,8 @@
 import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest';
-import pako from 'pako';
+import * as pako from 'pako';
 import protobuf from 'protobufjs';
 import { exportToGoogleAuthenticator, exportToLastPass } from './otpExporter';
+import { getOtpParametersFromUrl } from './otpUrlParser';
 import { MigrationOtpParameter } from '../types';
 
 // Mock data for testing
@@ -74,7 +75,7 @@ describe('OTP Exporter', () => {
     // 1. Decode outer layer
     const outerDataB64 = decodeURIComponent(url.split('data=')[1]);
     const outerGzipped = Buffer.from(outerDataB64, 'base64');
-    const outerJsonString = pako.ungzip(outerGzipped, { to: 'string' });
+    const outerJsonString = pako.ungzip(outerGzipped, { toText: true });
     const outerPayload = JSON.parse(outerJsonString);
 
     expect(outerPayload.version).toBe(3);
@@ -83,7 +84,7 @@ describe('OTP Exporter', () => {
     // 2. Decode inner layer
     const innerDataB64 = outerPayload.content;
     const innerGzipped = Buffer.from(innerDataB64, 'base64');
-    const innerJsonString = pako.ungzip(innerGzipped, { to: 'string' });
+    const innerJsonString = pako.ungzip(innerGzipped, { toText: true });
     const innerPayload = JSON.parse(innerJsonString);
 
     // 3. Assert the final content
@@ -96,6 +97,26 @@ describe('OTP Exporter', () => {
     expect(firstAccount.d).toBe(6);
     expect(firstAccount.cT).toBe(1672531200000);
   });
+
+  // Round-trips exercise the import path (otpUrlParser) against our own exports,
+  // so a decompression or protobuf regression fails here rather than in the browser.
+  it.each([
+    ['Google Authenticator', exportToGoogleAuthenticator],
+    ['LastPass', exportToLastPass],
+  ])(
+    'should round-trip a %s export back to the original secrets',
+    async (_, exportFn) => {
+      const url = await exportFn(mockOtps);
+      const parsed = await getOtpParametersFromUrl(url);
+
+      expect(parsed).toHaveLength(mockOtps.length);
+      parsed.forEach((otp, i) => {
+        expect(Array.from(otp.secret)).toEqual(Array.from(mockOtps[i].secret));
+        expect(otp.name).toBe(mockOtps[i].name);
+        expect(otp.issuer).toBe(mockOtps[i].issuer);
+      });
+    }
+  );
 
   it('should throw an error if no compatible accounts are found for LastPass', async () => {
     const hotpOnly: MigrationOtpParameter[] = [

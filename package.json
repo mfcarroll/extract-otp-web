@@ -13,22 +13,20 @@
     "format": "prettier --write index.html 'src/**/*.{ts,css}' 'tests/**/*.ts'"
   },
   "devDependencies": {
-    "@types/pako": "^2.0.3",
-    "@types/qrcode": "^1.5.5",
-    "@vitejs/plugin-basic-ssl": "^2.1.0",
-    "jsdom": "^26.1.0",
-    "prettier": "^3.6.2",
-    "typescript": "^5.8.3",
-    "vite": "^7.0.4",
-    "vitest": "^3.2.4"
+    "@types/qrcode": "^1.5.6",
+    "@vitejs/plugin-basic-ssl": "^2.3.0",
+    "jsdom": "^30.0.1",
+    "prettier": "^3.9.6",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.0"
   },
   "dependencies": {
-    "@types/pica": "^9.0.5",
     "buffer": "^6.0.3",
     "jsqr": "^1.4.0",
-    "pako": "^2.1.0",
-    "pica": "^9.0.1",
-    "protobufjs": "^7.5.3",
+    "pako": "^3.0.2",
+    "pica": "^10.0.3",
+    "protobufjs": "^8.8.0",
     "qr-scanner": "^1.4.2",
     "qrcode": "^1.5.4",
     "thirty-two": "^1.0.2"
