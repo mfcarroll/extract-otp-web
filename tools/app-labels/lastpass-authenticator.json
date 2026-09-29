@@ -1,5 +1,5 @@
 {
-  "description": "LastPass Authenticator labels, read from the iOS app (version 2.27.0) on 2026-09-29: Settings > \"Transfer accounts\" > \"Export accounts to QR code\" / \"Export accounts to file\". The app is only translated into these languages (per its App Store listing); in any other language it shows English. The Android labels have not been read.",
+  "description": "LastPass Authenticator labels, read from the iOS app (version 2.27.0) on 2026-09-29: Settings > \"Transfer accounts\" > \"Export accounts to QR code\" / \"Export accounts to file\". Its languages (from its iOS language setting) are English, Dutch, French, German, Italian, Japanese, Portuguese (Brazil) and Spanish, but in Japanese these screens are still in English (null below). In any other language it shows English. The Android labels have not been read.",
   "labels": {
     "en": {
       "transfer": "Transfer accounts",
@@ -50,6 +50,7 @@
       "transfer": "Transferir contas",
       "exportToQrCode": "Exportar contas para código QR",
       "exportToFile": "Exportar contas para arquivo"
-    }
+    },
+    "ja": null
   }
 }

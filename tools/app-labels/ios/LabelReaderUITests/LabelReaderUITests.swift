@@ -19,8 +19,10 @@ final class LabelReaderUITests: XCTestCase {
         "ro", "ru", "zh-Hans", "zh-Hant", "sk", "es", "es-419", "sv", "th", "tr",
         "uk", "vi",
     ]
+    /// LastPass Authenticator's languages, from its language setting in iOS
+    /// Settings (its App Store listing omits Japanese).
     let lastPassLanguages = [
-        "en", "nl", "fr", "fr-CA", "de", "it", "pt-BR", "pt-PT", "es", "es-419",
+        "en", "nl", "fr", "fr-CA", "de", "it", "ja", "pt-BR", "es", "es-419",
     ]
 
     override func setUp() {

@@ -14,7 +14,9 @@ accounts to QR code" / "Export accounts to file"). LastPass is only translated
 into a few languages; in the others, quote its English labels with a
 translation in brackets. Use these when adding or checking a translation.
 
-An app's supported languages are listed on the App Store:
+An app's supported languages are listed on the App Store (though LastPass also
+has Japanese, which its listing omits; iOS Settings > the app > Language shows
+the full list):
 `curl "https://itunes.apple.com/lookup?bundleId=com.google.Authenticator"`
 (see `languageCodesISO2A`).
 
