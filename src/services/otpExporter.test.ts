@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest';
 import * as pako from 'pako';
-import protobuf from 'protobufjs';
 import { exportToGoogleAuthenticator, exportToLastPass } from './otpExporter';
 import { getOtpParametersFromUrl } from './otpUrlParser';
+import { migrationRoot } from './migrationSchema';
 import { MigrationOtpParameter } from '../types';
 
 // Mock data for testing
@@ -51,8 +51,7 @@ describe('OTP Exporter', () => {
     const data = decodeURIComponent(url.split('data=')[1]);
     const buffer = Buffer.from(data, 'base64');
 
-    const root = await protobuf.load('otp_migration.proto');
-    const MigrationPayload = root.lookupType('MigrationPayload');
+    const MigrationPayload = migrationRoot.lookupType('MigrationPayload');
     const payload = MigrationPayload.decode(buffer);
     const payloadObject = MigrationPayload.toObject(payload);
 

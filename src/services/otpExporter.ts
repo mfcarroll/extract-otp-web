@@ -8,11 +8,11 @@
  */
 import { encode as base32Encode } from 'thirty-two';
 import * as pako from 'pako';
-import protobuf from 'protobufjs';
 import { LastPassQrAccount, MigrationOtpParameter } from '../types';
 import { uint8ArrayToBase64 } from './protobufProcessor';
 import { generateUUID } from './uuid';
 import { logger } from './logger';
+import { migrationRoot } from './migrationSchema';
 
 // --- Constants ---
 
@@ -35,10 +35,7 @@ const LASTPASS_DEFAULTS = {
   DEFAULT_FOLDER_ID: 0,
 };
 
-// --- Protobuf and Data Mapping Setup ---
-
-// Pre-load the protobuf definition once for better performance.
-const protobufRoot = protobuf.load('otp_migration.proto');
+// --- Data Mapping ---
 
 /**
  * Maps the internal algorithm enum (number) back to the string representation
@@ -70,7 +67,7 @@ const DIGITS_VALUE_MAP: { [key: number]: 6 | 8 } = {
 export async function exportToGoogleAuthenticator(
   otps: MigrationOtpParameter[]
 ): Promise<string> {
-  const root = await protobufRoot;
+  const root = migrationRoot;
   const MigrationPayload = root.lookupType('MigrationPayload');
 
   // The protobuf payload expects the otpParameters field.

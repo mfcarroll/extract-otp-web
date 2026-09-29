@@ -1,9 +1,6 @@
-import protobuf from 'protobufjs';
 import { MigrationOtpParameter } from '../types';
 import { logger } from './logger';
-
-// Pre-load the protobuf definition once for better performance.
-const protobufRoot = protobuf.load('otp_migration.proto');
+import { migrationRoot } from './migrationSchema';
 
 export function base64ToUint8Array(base64: string): Uint8Array {
   // The atob function in browsers handles spaces, but it's good practice to remove them.
@@ -45,7 +42,7 @@ const toHexString = (bytes: Uint8Array) =>
 export async function decodeProtobufPayload(
   protobufData: Uint8Array
 ): Promise<MigrationOtpParameter[]> {
-  const root = await protobufRoot;
+  const root = migrationRoot;
   const MigrationPayload = root.lookupType('MigrationPayload');
 
   try {
