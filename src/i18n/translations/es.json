@@ -411,7 +411,7 @@
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
-      "text": "En LastPass también puedes elegir «Export accounts to file» (Exportar cuentas a un archivo) e importar ese archivo. Esta herramienta admite ambos formatos."
+      "text": "En LastPass también puedes elegir «Exportar cuentas a archivo» e importar ese archivo. Esta herramienta admite ambos formatos."
     },
     "use.export.lastPass.heading": {
       "source": "e8cea4166a",
@@ -423,7 +423,7 @@
     },
     "use.export.lastPass.transfer": {
       "source": "97245dc288",
-      "text": "Toca el engranaje y selecciona «Transfer accounts» (Transferir cuentas) &gt; «Export accounts to QR code» (Exportar cuentas a código QR)."
+      "text": "Toca el engranaje y selecciona «Transferir cuentas» &gt; «Exportar cuentas a código QR»."
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
@@ -494,6 +494,14 @@
     "alert.close.warning": {
       "source": "9c4fd921c4",
       "text": "Cerrar la advertencia"
+    },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "Basado en un contador (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "Basado en el tiempo (TOTP)"
     },
     "copy.content": {
       "source": "47bd29075f",

@@ -129,18 +129,17 @@ function setupTabs(): void {
     // activation logic runs every time, bypassing the "go back" feature in
     // the main navigation system, which would otherwise just move focus
     // without activating the tab.
-    Navigation.registerKeyAction(button, 'arrowleft', () => {
-      const prevButton =
-        tabButtons[(index - 1 + tabButtons.length) % tabButtons.length];
-      activateTab(prevButton);
-      return prevButton;
-    });
-
-    Navigation.registerKeyAction(button, 'arrowright', () => {
-      const nextButton = tabButtons[(index + 1) % tabButtons.length];
-      activateTab(nextButton);
-      return nextButton;
-    });
+    // Left and right follow the screen, so they swap in right-to-left languages.
+    const move = (towardsRight: boolean) => () => {
+      const rtl = getComputedStyle(button).direction === 'rtl';
+      const offset = towardsRight === rtl ? -1 : 1;
+      const target =
+        tabButtons[(index + offset + tabButtons.length) % tabButtons.length];
+      activateTab(target);
+      return target;
+    };
+    Navigation.registerKeyAction(button, 'arrowleft', move(false));
+    Navigation.registerKeyAction(button, 'arrowright', move(true));
 
     // Home/End can remain as standard rules as they don't conflict with the
     // directional "go back" logic.

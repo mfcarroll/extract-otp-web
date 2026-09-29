@@ -1,0 +1,700 @@
+{
+  "language": {
+    "name": "Svenska",
+    "lang": "sv",
+    "hreflang": "sv",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Extrahera hemliga nycklar för engångslösenord"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Välj kamera"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Byt kamera"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "Skanna QR-kod"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "Kopierad!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Tryck på Enter eller blanksteg för att kopiera."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Kopiera hemlig nyckel"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Kopiera"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "Kopiera URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Räknare:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Utfärdare:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Namn:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Hemlig nyckel:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "Visa större QR-kod"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Tryck för att förstora"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Typ:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Det här är ett utkast till översättning som fortfarande granskas, och det kan innehålla fel."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Exportera till Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "Exportera till LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "Spara som CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "Spara som JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Verktyget har skapats av <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, en utvecklare som tyckte att det var frustrerande att flytta OTP-koder från Google Authenticator till 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Vem har gjort det här?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator gör det svårt att se de ursprungliga hemliga nycklarna som användes för att konfigurera dina konton. I stället får du en export-QR-kod som samlar alla dina konton. Det gör det enkelt att flytta till en ny enhet, men svårt att byta till en annan autentiseringsapp. LastPass ger dig faktiskt individuella QR-koder för varje konto, vilket är en stor förbättring, men visar bara de hemliga nycklarna som text i JSON-format. Appar som 1Password gör däremot de ursprungliga hemliga nycklarna lättillgängliga, så att det är enkelt att flytta till andra 2FA-appar."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Varför visar inte Google Authenticator mina ursprungliga QR-koder?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Du skannar QR-koderna från exportfunktionen i Google Authenticator eller LastPass Authenticator med kameran, eller lägger in skärmbilder av dem (eller en exportfil från LastPass). Verktyget läser QR-koderna – direkt här i din webbläsare – och ger dig tillbaka den ursprungliga hemliga nyckeln för varje konto. Du kan sedan använda de hemliga nycklarna för att importera dina konton till valfri annan autentiseringsapp."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Hur fungerar det?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass samlar alla dina konton i en enda QR-kod, och om du har många konton kan QR-kodens detaljer bli mycket små och svåra att läsa. Google Authenticator löser det genom att visa flera koder med några konton i varje. Som tur är låter LastPass dig exportera en JSON-fil, som verktyget också kan läsa. Om du har problem med LastPass sparar du bara JSON-filen och importerar den i stället."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "Min QR-kod från LastPass går inte att skanna!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "Bra fråga, och en som <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Diskussion i 1Passwords community om import från Google Authenticator\">andra</a> också har <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Diskussion på Reddit om att lägga till befintliga 2FA-konton i 1Password\">ställt</a>. Ett skäl som har angetts är en oro för att Googles exportformat kan ändras. Formatet har dock varit stabilt i flera år, och andra appar (som <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) stöder det utan problem. Det verkar som att lösenordshanterare som 1Password <em>skulle kunna</em> stödja direktimport utan svårighet, men har valt att inte göra det."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "Varför kan inte 1Password importera från Google Authenticator?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Rapportera problem med verktyget på <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Hur rapporterar jag ett problem?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "För bästa möjliga integritet öppnar du det här verktyget på din dator eller en annan enhet och klickar på ”Skanna QR” för att skanna export-QR-koderna direkt från din telefon, utan att ta skärmbilder."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Ja. Säkerhet och integritet har högsta prioritet. <strong>Ingenting du gör här lämnar någonsin din dator eller mobila enhet.</strong> All behandling sker lokalt, offline, direkt i din webbläsare. Dina QR-kodbilder och hemliga nycklar skickas aldrig till någon server."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Verktyget har öppen källkod och <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">koden kan granskas av vem som helst</a> för att kontrollera dess säkerhet och metoder. Det finns på GitHub Pages, vilket ger en <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">säker och transparent publiceringsprocess</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "Är det säkert att ”ladda upp” mina QR-koder?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "<a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> och <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> användes vid utvecklingen av verktyget. All AI-genererad kod har granskats noggrant manuellt."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, en annan skriptlösning i Python för samma problem."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, Python-skriptet av <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>, som det här verktyget bygger på."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Tack till alla som bidragit till dessa utmärkta projekt!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> för ikonerna i användargränssnittet."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> för avkodning av QR-koder från bilder."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "Användargränssnittet och QR-kodbehandlingen drivs av dessa bibliotek med öppen källkod:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> för storleksändring av bilder med hög kvalitet."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Verktyget bygger på arbete från flera projekt med öppen källkod, bland annat:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> för avkodning av datainnehållet från Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> för att skapa nya QR-koder för varje konto."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> för skanning av QR-koder med kameran."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> och <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>, för protobuf-specifikationen av exportformatet."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "Utvecklingen av verktyget har delvis möjliggjorts genom stöd från <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. Om du tycker att verktyget är användbart får du gärna <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">ge en gåva</a> för att stödja Stands arbete."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "För de människor och platser du älskar"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> för Base32-kodning av de hemliga OTP-nycklarna."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Tack"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "Översättningarna har skrivits och granskats av:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Med Google Authenticator kan du överföra dina konton till en ny telefon, men det finns inget enkelt sätt att exportera dem till andra appar som 1Password eller Bitwarden. Det beror på att appen döljer den ursprungliga ”hemliga nyckeln” (QR-koden du skannade första gången) för varje konto."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Utan de hemliga nycklarna innebär ett byte till en ny lösenordshanterare att du måste konfigurera om 2FA manuellt för varenda konto, vilket är väldigt krångligt."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "Det finns andra verktyg för det här, men de kräver ofta tekniska steg som att köra skript eller installera programvara. Det här verktyget är utformat för att vara en enkel och säker lösning som alla kan använda."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "Varför behövs det här?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Språk"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Källkod"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "Läs den på engelska"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Hjälp till att förbättra översättningen"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Den här sidan har översatts automatiskt."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "Avbryt"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Stäng dialogrutan"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Klistra in en <code>otpauth://</code>-URL eller en hemlig nyckel i Base32-format (t.ex. <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Hemlig nyckel eller URL …"
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Lägg till kod"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "Ange OTP-kod"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Extrahera hemliga nycklar för TOTP/HOTP-engångslösenord från 2FA-export-QR-koder från Google Authenticator eller LastPass. Körs helt i din webbläsare; ingenting laddas upp."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Extrahera hemliga nycklar för engångslösenord – export från Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Stäng"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Obs! Alla skärmbilder och nedladdade filer innehåller dina okrypterade hemliga nycklar.</strong> Se till att förvara dem säkert, eller radera dem när du är klar. Det innebär även att radera dem från ”Papperskorgen” (på Mac och i Windows), ”Nyligen raderade” och alla säkerhetskopior av foton i molnet."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Extraherade OTP-konton"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Markera alla"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Avmarkera alla"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 markerade"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Återställ"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "Vanliga frågor"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "Informationsflikar"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Så gör du"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Vad är det här?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Byt till mörkt tema"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Byt till ljust tema"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Öppna temaväljaren"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Byt till systemets tema"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "eller dra och släpp filer här<br>(bild, JSON-export, CSV eller TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Ange kod"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Öppna fil(er)"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "Skanna QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Städa upp"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Exportera från Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Öppna appen Google Authenticator på din telefon."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Välj de konton du vill exportera."
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "Öppna menyn och välj ”Överför konton” &gt; ”Exportera konton” (på Android: ”Överför koder” &gt; ”Exportera koder”)."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Exportera från din app för engångslösenord"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "I LastPass kan du också välja ”Export accounts to file” (Exportera konton till fil) och importera filen i stället. Verktyget stöder båda formaten."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "Exportera från LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Öppna LastPass Authenticator på din telefon."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Tryck på kugghjulet och välj ”Transfer accounts” (Överför konton) &gt; ”Export accounts to QR code” (Exportera konton till QR-kod)."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Du kan också klicka på ”Ange kod” för att ange en hemlig nyckel eller konfigurations-URL direkt som text, så visar verktyget din ursprungliga QR-kod för konfigurationen."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Extrahera hemliga nycklar"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Verktyget kan också läsa enskilda QR-koder för konfiguration från vilken app som helst, eller en textfil med en hemlig nyckel eller URL per rad. Det gör det enkelt att göra om hemliga nycklar varifrån som helst till skanningsbara QR-koder."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Öppna det här verktyget på din dator eller en annan enhet och klicka på ”Skanna QR” för att skanna export-QR-koderna direkt från din telefon. Det är det smidigaste alternativet, och du slipper spara skärmbilder av dina hemliga nycklar."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Du kan också ta en skärmbild av varje QR-kod som visas och sedan klicka på ”Öppna fil(er)” eller dra och släppa dina skärmbilder på sidan."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Det här verktyget läser QR-koder från exportfunktionen i Google Authenticator eller LastPass Authenticator och ger dig tillbaka den ursprungliga hemliga nyckeln för varje konto. Du kan sedan använda de hemliga nycklarna för att importera dina konton till valfri annan autentiseringsapp."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "Verktyget visar de extraherade hemliga OTP-nycklarna, var och en med sin egen QR-kod och hemliga nyckel."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Om du vill flytta konton till Google Authenticator eller LastPass Authenticator markerar du dem och klickar på ”Exportera till Google” eller ”Exportera till LastPass”. Verktyget visar då en överförings-QR-kod som du kan skanna med den appen."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Använd dina hemliga nycklar"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Nu kan du importera de hemliga nycklarna till den autentiseringsapp eller lösenordshanterare du föredrar."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Klicka på ”Spara som CSV” eller ”Spara som JSON” för att behålla en kopia av dina hemliga nycklar. Du kan öppna filerna här igen senare för att visa dina QR-koder."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Det här verktyget extraherar hemliga nycklar för engångslösenord (OTP), koderna som används för tvåfaktorsautentisering (2FA), från apparna Google Authenticator eller LastPass Authenticator. Det finns ingen programvara att installera, och inga data lämnar någonsin din enhet."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>All behandling av dina QR-koder och hemliga nycklar sker helt offline, lokalt, direkt här i din webbläsare.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Stäng felmeddelandet"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Stäng informationsmeddelandet"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Stäng bekräftelsemeddelandet"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Stäng varningsmeddelandet"
+    },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "Räknarbaserad (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "Tidsbaserad (TOTP)"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "Innehållet"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject} har kopierats till urklipp."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Det gick inte att kopiera till urklipp."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Det gick inte att bearbeta QR-koden från kameran."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "Ett okänt fel uppstod vid exporten."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "Filen är inte en giltig bild eller kunde inte läsas in."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Det gick inte att bearbeta bilden på grund av säkerhetsbegränsningar (tainted canvas)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Ogiltigt format"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "Indata måste vara en giltig OTP-URL, LastPass-JSON eller en hemlig nyckel i Base32 med minst 16 tecken (bokstäverna A–Z, siffrorna 2–7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Ogiltigt JSON-format: en lista med OTP-konton eller ett exportobjekt från LastPass förväntades."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Ogiltigt JSON-format i QR-koden från LastPass: matrisen 'a' (konton) hittades inte."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "Det gick inte att avkoda QR-koden från LastPass. Dataformatet känns inte igen eller är skadat."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Ogiltig QR-kod från LastPass: egenskapen 'content' hittades inte i datainnehållet."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "Parametern 'counter' saknas för typen hotp i otpauth-URL:en."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "Ogiltig OTP-URL: parametern ”data” saknas."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "Parametern 'secret' saknas i otpauth-URL:en."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Ingen kamera hittades. Kontrollera att en kamera är ansluten."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Det gick inte att tolka det slutliga datainnehållet. Det kan vara skadat eller ha ett oväntat format."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "Ett oväntat fel uppstod när filerna bearbetades."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "Bearbetningen misslyckades."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Det gick inte att starta kameran. Kontrollera att en kamera är ansluten och att du har gett behörighet."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Det gick inte att byta kamera."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Rad {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Det gick inte att tolka några giltiga OTP:er från texten.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "Ett oväntat fel uppstod. Försök igen eller uppdatera sidan."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "Ett okänt fel uppstod."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Filtypen stöds inte."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "OTP-typen i URL:en stöds inte: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "QR-koden har ett format som inte stöds."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "LastPass stöder bara tidsbaserade (TOTP) konton. Ett inkompatibelt räknarbaserat konto har tagits bort från ditt urval. Klicka på ”Exportera till LastPass” igen för att fortsätta.",
+        "other": "LastPass stöder bara tidsbaserade (TOTP) konton. {count} inkompatibla räknarbaserade konton har tagits bort från ditt urval. Klicka på ”Exportera till LastPass” igen för att fortsätta."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "Inga kompatibla (TOTP) konton har markerats för export till LastPass."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Det finns inga data att exportera."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Inga konton har markerats för export."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Skanna med Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "Skanna med LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "QR-koden har redan bearbetats."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Kameraskanning"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "{count} dubblett av hemlig nyckel hoppades över.",
+        "other": "{count} dubbletter av hemliga nycklar hoppades över."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "{count} hemlig nyckel extraherades.",
+        "other": "{count} hemliga nycklar extraherades."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Manuell inmatning"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "Ingen QR-kod hittades."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "Inga hemliga OTP-nycklar hittades."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "Inga hemliga OTP-nycklar hittades i QR-koden."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Inte tillgängligt"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "Visa större QR-kod för {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{count} av {total} markerade"
+    }
+  }
+}

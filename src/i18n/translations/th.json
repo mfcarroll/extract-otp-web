@@ -1,0 +1,697 @@
+{
+  "language": {
+    "name": "ไทย",
+    "lang": "th",
+    "hreflang": "th",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "เครื่องมือดึงคีย์ลับรหัสผ่านแบบใช้ครั้งเดียว"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "เลือกกล้อง"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "สลับกล้อง"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "สแกนคิวอาร์โค้ด"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "คัดลอกแล้ว!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "กด Enter หรือ Space เพื่อคัดลอก"
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "คัดลอกคีย์ลับ"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "คัดลอก"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "คัดลอก URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "ตัวนับ:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "ผู้ออก:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "ชื่อ:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "คีย์ลับ:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "แสดงคิวอาร์โค้ดขนาดใหญ่ขึ้น"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "แตะเพื่อขยาย"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "ประเภท:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "นี่คือคำแปลฉบับร่างที่ยังอยู่ระหว่างการตรวจทาน และอาจมีข้อผิดพลาด"
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "ส่งออกไปยัง Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "ส่งออกไปยัง LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "บันทึกเป็น CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "บันทึกเป็น JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "เครื่องมือนี้สร้างโดย <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> นักพัฒนาที่หงุดหงิดกับขั้นตอนการย้ายรหัส OTP จาก Google Authenticator ไปยัง 1Password"
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "ใครเป็นผู้สร้าง"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator ทำให้การดูคีย์ลับดั้งเดิมที่ใช้ตั้งค่าบัญชีของคุณเป็นเรื่องยาก แต่กลับให้คิวอาร์โค้ดส่งออกที่รวมบัญชีทั้งหมดของคุณไว้ด้วยกันแทน วิธีนี้ทำให้โอนไปยังอุปกรณ์ใหม่ได้ง่าย แต่เปลี่ยนไปใช้แอป Authenticator อื่นได้ยาก LastPass ให้คิวอาร์โค้ดแยกสำหรับแต่ละบัญชี ซึ่งดีขึ้นมาก แต่ให้คีย์ลับที่เป็นข้อความในรูปแบบโค้ด JSON เท่านั้น ในทางกลับกัน แอปอย่าง 1Password ให้เข้าถึงคีย์ลับดั้งเดิมได้ง่าย ทำให้โอนไปยังแอป 2FA อื่นได้อย่างง่ายดาย"
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "ทำไม Google Authenticator จึงไม่แสดงคิวอาร์โค้ดดั้งเดิมของฉัน"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "คุณสแกนคิวอาร์โค้ดจากฟีเจอร์ส่งออกของ Google Authenticator หรือ LastPass Authenticator ด้วยกล้อง หรือให้ภาพหน้าจอของคิวอาร์โค้ดเหล่านั้น (หรือไฟล์ส่งออกของ LastPass) เครื่องมือนี้จะอ่านคิวอาร์โค้ดเหล่านั้น—ในเบราว์เซอร์ของคุณตรงนี้เอง—แล้วให้คีย์ลับดั้งเดิมของแต่ละบัญชีกลับมาแก่คุณ จากนั้นคุณสามารถใช้คีย์ลับเหล่านี้เพื่อนำเข้าบัญชีของคุณไปยังแอป Authenticator อื่นใดก็ได้"
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "ทำงานอย่างไร"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass รวมบัญชีทั้งหมดของคุณไว้ในคิวอาร์โค้ดเดียว และหากคุณมีบัญชีจำนวนมาก รายละเอียดของคิวอาร์โค้ดอาจเล็กมากจนอ่านยาก Google Authenticator แก้ปัญหานี้ด้วยการให้โค้ดมากกว่าหนึ่งรหัส โดยแต่ละรหัสมีเพียงไม่กี่บัญชี โชคดีที่ LastPass ให้คุณส่งออกไฟล์ JSON ได้ ซึ่งเครื่องมือนี้ก็อ่านได้เช่นกัน หากคุณมีปัญหากับ LastPass เพียงบันทึกไฟล์ JSON แล้วนำเข้าไฟล์นั้นแทน"
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "สแกนคิวอาร์โค้ด LastPass ของฉันไม่ได้!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "เป็นคำถามที่ดีมาก และ<a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"การสนทนาในชุมชน 1Password เกี่ยวกับการนำเข้าจาก Google Authenticator\">คนอื่นๆ</a>ก็เคย<a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"การสนทนาบน Reddit เกี่ยวกับการเพิ่ม 2FA ที่มีอยู่ลงใน 1Password\">ถาม</a>เช่นกัน เหตุผลหนึ่งที่ได้รับคือความกังวลว่ารูปแบบการส่งออกของ Google อาจเปลี่ยนแปลง อย่างไรก็ตาม รูปแบบนี้คงที่มาหลายปีแล้ว และแอปอื่นๆ (เช่น <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) ก็รองรับได้โดยไม่มีปัญหา ดูเหมือนว่าโปรแกรมจัดการรหัสผ่านอย่าง 1Password <em>สามารถ</em>รองรับการนำเข้าโดยตรงได้อย่างง่ายดาย แต่เลือกที่จะไม่ทำ"
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "ทำไม 1Password จึงนำเข้าจาก Google Authenticator ไม่ได้"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "โปรดรายงานปัญหาใดๆ ของเครื่องมือนี้บน <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>"
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "ฉันจะรายงานปัญหาได้อย่างไร"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "เพื่อความเป็นส่วนตัวสูงสุด ให้เปิดเครื่องมือนี้บนคอมพิวเตอร์หรืออุปกรณ์เครื่องที่สอง แล้วคลิก “สแกน QR” เพื่อสแกนคิวอาร์โค้ดส่งออกบนโทรศัพท์ของคุณโดยตรง โดยไม่ต้องถ่ายภาพหน้าจอ"
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "ปลอดภัย ความปลอดภัยและความเป็นส่วนตัวคือสิ่งสำคัญที่สุด <strong>ทุกสิ่งที่คุณทำที่นี่ไม่เคยออกจากคอมพิวเตอร์หรืออุปกรณ์เคลื่อนที่ของคุณเลย</strong> การประมวลผลทั้งหมดเกิดขึ้นภายในเครื่อง แบบออฟไลน์ ในเบราว์เซอร์ของคุณเอง ภาพคิวอาร์โค้ดและคีย์ลับของคุณจะไม่ถูกส่งไปยังเซิร์ฟเวอร์ใดๆ เลย"
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "เครื่องมือนี้เป็นโอเพนซอร์ส และ<a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">ทุกคนสามารถตรวจสอบโค้ดได้</a> เพื่อยืนยันความปลอดภัยและวิธีการทำงาน โดยโฮสต์อยู่บน GitHub Pages ซึ่งมี<a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">กระบวนการเผยแพร่ที่ปลอดภัยและโปร่งใส</a>"
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "การ “อัปโหลด” คิวอาร์โค้ดของฉันปลอดภัยหรือไม่"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "มีการใช้ <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> และ <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> ระหว่างการพัฒนาเครื่องมือนี้ โค้ดทั้งหมดที่สร้างโดย AI ได้รับการตรวจสอบด้วยมืออย่างละเอียดแล้ว"
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a> สคริปต์ Python อีกตัวหนึ่งที่แก้ปัญหาเดียวกัน"
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a> สคริปต์ Python โดย <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a> ซึ่งเป็นพื้นฐานของเครื่องมือนี้"
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "ขอขอบคุณผู้มีส่วนร่วมทุกคนในโครงการยอดเยี่ยมเหล่านี้!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> สำหรับไอคอนที่ใช้ในส่วนติดต่อผู้ใช้"
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> สำหรับถอดรหัสคิวอาร์โค้ดจากรูปภาพ"
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "ส่วนติดต่อผู้ใช้และการประมวลผลคิวอาร์โค้ดทำงานด้วยไลบรารีโอเพนซอร์สเหล่านี้"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> สำหรับปรับขนาดรูปภาพคุณภาพสูง"
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "เครื่องมือนี้ต่อยอดจากผลงานของโครงการโอเพนซอร์สหลายโครงการ ได้แก่"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> สำหรับถอดรหัสข้อมูลของ Google Authenticator"
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> สำหรับสร้างคิวอาร์โค้ดใหม่ของแต่ละบัญชี"
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> สำหรับสแกนคิวอาร์โค้ดด้วยกล้อง"
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> และ <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a> สำหรับข้อกำหนด protobuf ของรูปแบบการส่งออก"
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "การพัฒนาเครื่องมือนี้เกิดขึ้นได้ส่วนหนึ่งจากการสนับสนุนของ <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a> หากคุณเห็นว่าเครื่องมือนี้มีประโยชน์ โปรดพิจารณา<a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">บริจาค</a>เพื่อสนับสนุนงานของ Stand"
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "เพื่อผู้คนและสถานที่ที่คุณรัก"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> สำหรับเข้ารหัสคีย์ลับ OTP แบบ Base32"
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "กิตติกรรมประกาศ"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "คำแปลเขียนและตรวจทานโดย"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator ให้คุณโอนบัญชีไปยังโทรศัพท์เครื่องใหม่ได้ แต่ไม่มีวิธีง่ายๆ ในการส่งออกบัญชีไปยังแอปอื่นอย่าง 1Password หรือ Bitwarden เพราะแอปซ่อน “คีย์ลับ” ดั้งเดิม (คิวอาร์โค้ดที่คุณสแกนตอนแรก) ของแต่ละบัญชีไว้"
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "หากไม่มีคีย์ลับเหล่านี้ การย้ายไปใช้โปรแกรมจัดการรหัสผ่านใหม่หมายความว่าต้องตั้งค่า 2FA ใหม่ด้วยตนเองทีละบัญชี ซึ่งยุ่งยากมาก"
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "แม้จะมีเครื่องมืออื่นที่แก้ปัญหานี้ได้ แต่มักต้องใช้ขั้นตอนทางเทคนิค เช่น การรันสคริปต์หรือการติดตั้งซอฟต์แวร์ เครื่องมือนี้ออกแบบมาให้เป็นทางออกที่เรียบง่ายและปลอดภัยที่ทุกคนใช้ได้"
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "ทำไมจึงต้องใช้เครื่องมือนี้"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "ภาษา"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "ซอร์สโค้ด"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "อ่านเป็นภาษาอังกฤษ"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "ช่วยปรับปรุงคำแปลนี้"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "หน้านี้แปลโดยอัตโนมัติ"
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "ยกเลิก"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "ปิดหน้าต่าง"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "วาง URL <code>otpauth://</code> หรือคีย์ลับ Base32 แบบดิบ (เช่น <code>JBSW Y3DP EHPK 3PXP</code>)"
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "คีย์ลับหรือ URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "เพิ่มรหัส"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "ป้อนรหัส OTP"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "ดึงคีย์ลับรหัสผ่านแบบใช้ครั้งเดียว TOTP/HOTP จากคิวอาร์โค้ดส่งออก 2FA ของ Google Authenticator หรือ LastPass ทำงานในเบราว์เซอร์ของคุณทั้งหมด ไม่มีข้อมูลใดถูกส่งไปยังเซิร์ฟเวอร์"
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "เครื่องมือดึงคีย์ลับรหัสผ่านแบบใช้ครั้งเดียว – ส่งออกจาก Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "ปิด"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>หมายเหตุ: ภาพหน้าจอหรือไฟล์ที่ดาวน์โหลดมาจะมีคีย์ลับของคุณที่ไม่ได้เข้ารหัส</strong> โปรดเก็บไว้อย่างปลอดภัย หรือลบทิ้งเมื่อใช้งานเสร็จแล้ว ซึ่งรวมถึงการลบออกจาก “ถังขยะ” “ถังรีไซเคิล” “ลบล่าสุด” และจากข้อมูลสำรองรูปภาพบนคลาวด์ใดๆ ที่มีไฟล์เหล่านี้อยู่"
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "บัญชี OTP ที่ดึงออกมา"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "เลือกทั้งหมด"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "ไม่เลือกเลย"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "เลือกแล้ว 0 รายการ"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "รีเซ็ต"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "คำถามที่พบบ่อย"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "แท็บข้อมูล"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "ใช้งานอย่างไร"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "นี่คืออะไร"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "เปลี่ยนเป็นธีมมืด"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "เปลี่ยนเป็นธีมสว่าง"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "เปิดตัวเลือกธีม"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "เปลี่ยนเป็นธีมของระบบ"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "หรือลากไฟล์มาวางที่นี่<br>(รูปภาพ, ไฟล์ส่งออก JSON, CSV หรือ TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "ป้อนรหัส"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "เปิดไฟล์"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "สแกน QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. ล้างข้อมูล"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "ส่งออกจาก Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "เปิดแอป Google Authenticator บนโทรศัพท์ของคุณ"
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "เลือกบัญชีที่คุณต้องการส่งออก"
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "ไปที่เมนูแล้วเลือก “โอนบัญชี” &gt; “ส่งออกบัญชี” (บน Android: “โอนรหัส” &gt; “ส่งออกรหัส”)"
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. ส่งออกจากแอปรหัสผ่านแบบใช้ครั้งเดียวของคุณ"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "สำหรับ LastPass คุณยังเลือก “Export accounts to file” (ส่งออกบัญชีเป็นไฟล์) แล้วนำเข้าไฟล์นั้นแทนได้ด้วย เครื่องมือนี้รองรับทั้งสองรูปแบบ"
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "ส่งออกจาก LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "เปิด LastPass Authenticator บนโทรศัพท์ของคุณ"
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "แตะไอคอนรูปเฟืองแล้วเลือก “Transfer accounts” (โอนบัญชี) &gt; “Export accounts to QR code” (ส่งออกบัญชีเป็นคิวอาร์โค้ด)"
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "คุณยังสามารถคลิก “ป้อนรหัส” เพื่อป้อนคีย์ลับหรือ URL สำหรับตั้งค่าเป็นข้อความโดยตรง แล้วเครื่องมือนี้จะแสดงคิวอาร์โค้ดสำหรับตั้งค่าดั้งเดิมของคุณ"
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. ดึงคีย์ลับ"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "เครื่องมือนี้ยังอ่านคิวอาร์โค้ดสำหรับตั้งค่าแบบทีละบัญชีจากแอปใดก็ได้ หรือไฟล์ข้อความที่มีคีย์ลับหรือ URL บรรทัดละหนึ่งรายการ จึงทำให้เปลี่ยนคีย์ลับจากที่ใดก็ได้ให้เป็นคิวอาร์โค้ดที่สแกนได้อย่างง่ายดาย"
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "เปิดเครื่องมือนี้บนคอมพิวเตอร์หรืออุปกรณ์เครื่องที่สอง แล้วคลิก “สแกน QR” เพื่อสแกนคิวอาร์โค้ดส่งออกบนโทรศัพท์ของคุณโดยตรง นี่เป็นวิธีที่สะดวกที่สุด และช่วยให้ไม่ต้องเก็บภาพหน้าจอที่มีคีย์ลับของคุณ"
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "หรืออีกวิธีหนึ่ง ให้ถ่ายภาพหน้าจอคิวอาร์โค้ดแต่ละรหัสที่แสดงขึ้นมา แล้วคลิก “เปิดไฟล์” หรือลากภาพหน้าจอมาวางบนหน้านี้"
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "เครื่องมือนี้อ่านคิวอาร์โค้ดจากฟีเจอร์ส่งออกของ Google Authenticator หรือ LastPass Authenticator แล้วให้คีย์ลับดั้งเดิมของแต่ละบัญชีกลับมาแก่คุณ จากนั้นคุณสามารถใช้คีย์ลับเหล่านี้เพื่อนำเข้าบัญชีของคุณไปยังแอป Authenticator อื่นใดก็ได้"
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "เครื่องมือจะแสดงคีย์ลับ OTP ที่ดึงออกมา โดยแต่ละรายการจะมีคิวอาร์โค้ดและคีย์ลับของตัวเอง"
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "หากต้องการย้ายบัญชีไปยัง Google Authenticator หรือ LastPass Authenticator ให้เลือกบัญชีแล้วคลิก “ส่งออกไปยัง Google” หรือ “ส่งออกไปยัง LastPass” เครื่องมือนี้จะแสดงคิวอาร์โค้ดสำหรับโอนที่คุณสแกนได้ด้วยแอปนั้น"
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. ใช้คีย์ลับของคุณ"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "ตอนนี้คุณสามารถนำเข้าคีย์ลับเหล่านี้ไปยังแอป Authenticator หรือโปรแกรมจัดการรหัสผ่านที่คุณต้องการได้แล้ว"
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "คลิก “บันทึกเป็น CSV” หรือ “บันทึกเป็น JSON” เพื่อเก็บสำเนาคีย์ลับของคุณไว้ คุณสามารถเปิดไฟล์เหล่านี้ที่นี่อีกครั้งในภายหลังเพื่อแสดงคิวอาร์โค้ดของคุณ"
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "เครื่องมือนี้ดึงคีย์ลับของรหัสผ่านแบบใช้ครั้งเดียว (OTP) ซึ่งเป็นรหัสที่ใช้สำหรับการยืนยันตัวตนแบบสองปัจจัย (2FA) ออกจากแอป Google Authenticator หรือ LastPass Authenticator โดยไม่ต้องติดตั้งซอฟต์แวร์ใดๆ และไม่มีข้อมูลใดออกจากอุปกรณ์ของคุณเลย"
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>การประมวลผลคิวอาร์โค้ดและคีย์ลับของคุณทั้งหมดเกิดขึ้นแบบออฟไลน์โดยสมบูรณ์ ภายในเครื่อง ในเบราว์เซอร์ของคุณตรงนี้เอง</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "ปิดข้อความแสดงข้อผิดพลาด"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "ปิดข้อความแจ้งข้อมูล"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "ปิดข้อความแจ้งความสำเร็จ"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "ปิดข้อความคำเตือน"
+    },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "อิงตามตัวนับ (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "อิงตามเวลา (TOTP)"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "เนื้อหา"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "คัดลอก {subject} ไปยังคลิปบอร์ดแล้ว"
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "คัดลอกไปยังคลิปบอร์ดไม่สำเร็จ"
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "ประมวลผลคิวอาร์โค้ดจากภาพกล้องไม่สำเร็จ"
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุระหว่างการส่งออก"
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "ไฟล์ไม่ใช่รูปภาพที่ถูกต้องหรือโหลดไม่ได้"
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "ประมวลผลรูปภาพไม่ได้เนื่องจากข้อจำกัดด้านความปลอดภัย (tainted canvas)"
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "รูปแบบไม่ถูกต้อง"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "ข้อมูลที่ป้อนต้องเป็น URL ของ OTP ที่ถูกต้อง, JSON ของ LastPass หรือคีย์ลับ Base32 ที่มีอย่างน้อย 16 อักขระ (ตัวอักษร A-Z, ตัวเลข 2-7)"
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "รูปแบบ JSON ไม่ถูกต้อง: ต้องเป็นอาร์เรย์ของบัญชี OTP หรืออ็อบเจ็กต์ส่งออกของ LastPass"
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "รูปแบบ JSON ของคิวอาร์โค้ด LastPass ไม่ถูกต้อง: ไม่พบอาร์เรย์ 'a' (บัญชี)"
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "ถอดรหัสคิวอาร์โค้ด LastPass ไม่สำเร็จ ไม่รู้จักรูปแบบข้อมูลหรือข้อมูลเสียหาย"
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "คิวอาร์โค้ด LastPass ไม่ถูกต้อง: ไม่พบพร็อพเพอร์ตี 'content' ในข้อมูล"
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "ไม่มีพารามิเตอร์ 'counter' สำหรับประเภท hotp ใน URL ของ otpauth"
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "URL ของ OTP ไม่ถูกต้อง: ไม่มีพารามิเตอร์ “data”"
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "ไม่มีพารามิเตอร์ 'secret' ใน URL ของ otpauth"
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "ไม่พบกล้อง โปรดตรวจสอบว่าได้เชื่อมต่อกล้องแล้ว"
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "แยกวิเคราะห์ข้อมูลขั้นสุดท้ายไม่สำเร็จ ข้อมูลอาจเสียหายหรืออยู่ในรูปแบบที่ไม่คาดคิด"
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "เกิดข้อผิดพลาดที่ไม่คาดคิดขณะประมวลผลไฟล์"
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "การประมวลผลล้มเหลว"
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "เปิดกล้องไม่สำเร็จ โปรดตรวจสอบว่าได้เชื่อมต่อกล้องและให้สิทธิ์แล้ว"
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "สลับกล้องไม่สำเร็จ"
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "บรรทัด {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "แยกวิเคราะห์ OTP ที่ถูกต้องจากข้อความไม่ได้เลย\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "เกิดข้อผิดพลาดที่ไม่คาดคิด โปรดลองอีกครั้งหรือรีเฟรชหน้านี้"
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ"
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "ไม่รองรับประเภทไฟล์นี้"
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "ไม่รองรับประเภท OTP ใน URL: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "คิวอาร์โค้ดอยู่ในรูปแบบที่ไม่รองรับ"
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "other": "LastPass รองรับเฉพาะบัญชีแบบอิงเวลา (TOTP) เท่านั้น บัญชีแบบอิงตัวนับที่ใช้ร่วมกันไม่ได้ {count} บัญชีถูกนำออกจากรายการที่คุณเลือกแล้ว คลิก “ส่งออกไปยัง LastPass” อีกครั้งเพื่อดำเนินการต่อ"
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "ไม่ได้เลือกบัญชีที่รองรับ (TOTP) สำหรับการส่งออกไปยัง LastPass"
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "ไม่มีข้อมูลที่จะส่งออก"
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "ไม่ได้เลือกบัญชีที่จะส่งออก"
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "สแกนด้วย Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "สแกนด้วย LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "ประมวลผลคิวอาร์โค้ดนี้ไปแล้ว"
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "สแกนด้วยกล้อง"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "other": "ข้ามคีย์ลับที่ซ้ำกัน {count} รายการ"
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "other": "ดึงคีย์ลับออกมาแล้ว {count} รายการ"
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "ป้อนด้วยตนเอง"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "ไม่พบคิวอาร์โค้ด"
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "ไม่พบคีย์ลับ OTP"
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "ไม่พบคีย์ลับ OTP ในคิวอาร์โค้ด"
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "ไม่มีข้อมูล"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "แสดงคิวอาร์โค้ดขนาดใหญ่ขึ้นสำหรับ {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "เลือกแล้ว {count} จาก {total} รายการ"
+    }
+  }
+}

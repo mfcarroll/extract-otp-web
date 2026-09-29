@@ -403,7 +403,7 @@
     },
     "use.export.google.transfer": {
       "source": "2766f2b5c2",
-      "text": "메뉴를 열고 ‘계정 이전’ &gt; ‘계정 내보내기’를 선택합니다(Android에서는 ‘코드 전송’ &gt; ‘코드 내보내기’)."
+      "text": "메뉴를 열고 ‘계정 전송’ &gt; ‘계정 내보내기’를 선택합니다(Android에서는 ‘코드 전송’ &gt; ‘코드 내보내기’)."
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
@@ -494,6 +494,14 @@
     "alert.close.warning": {
       "source": "9c4fd921c4",
       "text": "경고 메시지 닫기"
+    },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "카운터 기반 (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "시간 기반 (TOTP)"
     },
     "copy.content": {
       "source": "47bd29075f",

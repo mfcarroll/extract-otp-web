@@ -35,15 +35,15 @@
 }
 
 .tab-button:not(:last-child) {
-  border-right: 1px solid var(--border-color);
+  border-inline-end: 1px solid var(--border-color);
 }
 
 .tab-button:first-of-type {
-  border-top-left-radius: 5px;
+  border-start-start-radius: 5px;
 }
 
 .tab-button:last-of-type {
-  border-top-right-radius: 5px;
+  border-start-end-radius: 5px;
 }
 
 .tab-button:hover {
@@ -105,20 +105,20 @@
 
 .tab-content ul {
   list-style: none;
-  padding-left: 0;
+  padding-inline-start: 0;
   margin-top: 0.5rem;
 }
 
 .tab-content li {
   position: relative;
-  padding-left: 1.2em;
+  padding-inline-start: 1.2em;
   margin-bottom: 0.5rem;
 }
 
 .tab-content ul li::before {
   content: '–'; /* Using an en-dash for a clean look */
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   color: var(--primary-color);
   font-weight: bold;
 }

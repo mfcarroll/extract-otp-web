@@ -22,7 +22,7 @@
 }
 
 .btn i {
-  margin-right: 0.5em;
+  margin-inline-end: 0.5em;
 }
 
 .btn-primary {
@@ -62,7 +62,7 @@
 
 .btn-small i {
   /* Reduce icon margin for smaller buttons */
-  margin-right: 0.4em;
+  margin-inline-end: 0.4em;
 }
 
 #selection-count {

@@ -1,0 +1,700 @@
+{
+  "language": {
+    "name": "Nederlands",
+    "lang": "nl",
+    "hreflang": "nl",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Geheimen van eenmalige wachtwoorden extraheren"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Camera selecteren"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Van camera wisselen"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "QR-code scannen"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "Gekopieerd!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Druk op Enter of Spatie om te kopiëren."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Geheim kopiëren"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Kopiëren"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "URL kopiëren"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Teller:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Uitgever:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Naam:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Geheim:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "Grotere QR-code tonen"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Tik om te vergroten"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Type:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Dit is een conceptvertaling die nog wordt nagekeken en fouten kan bevatten."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Exporteren naar Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "Exporteren naar LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "Opslaan als CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "Opslaan als JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Deze tool is gemaakt door <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, een ontwikkelaar die zich ergerde aan het overzetten van OTP-codes van Google Authenticator naar 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Wie heeft dit gemaakt?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator maakt het lastig om de oorspronkelijke geheimen te bekijken waarmee je accounts zijn ingesteld. In plaats daarvan biedt de app een export-QR-code die al je accounts bundelt. Dat maakt overzetten naar een nieuw apparaat makkelijk, maar overstappen naar een andere authenticator-app lastig. LastPass biedt wel afzonderlijke QR-codes voor elk account, wat een enorme verbetering is, maar geeft de geheimen als tekst alleen in een JSON-code. Apps zoals 1Password maken de oorspronkelijke geheimen daarentegen makkelijk toegankelijk, zodat je eenvoudig kunt overstappen naar andere 2FA-apps."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Waarom toont Google Authenticator mijn oorspronkelijke QR-codes niet?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Je scant de QR-codes uit de exportfunctie van Google Authenticator of LastPass Authenticator met je camera, of je levert er screenshots van aan (of een LastPass-exportbestand). Deze tool leest die QR-codes, hier in je browser, en geeft je voor elk account het oorspronkelijke geheim terug. Daarna kun je met deze geheimen je accounts importeren in elke andere authenticator-app."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Hoe werkt het?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass zet al je accounts samen in één QR-code, en als je veel accounts hebt, kunnen de details van de QR-code daardoor piepklein en moeilijk leesbaar worden. Google Authenticator omzeilt dit probleem door meer dan één code te geven, elk met een paar accounts. Gelukkig kun je in LastPass een JSON-bestand exporteren, dat deze tool ook kan lezen. Heb je problemen met LastPass, sla dan gewoon het JSON-bestand op en importeer dat."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "Mijn LastPass-QR-code wil niet scannen!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "Goede vraag, en <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Discussie in de 1Password-community over importeren uit Google Authenticator\">anderen</a> hebben die ook al <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Discussie op Reddit over het toevoegen van bestaande 2FA aan 1Password\">gesteld</a>. Een van de genoemde redenen is de zorg dat het exportformaat van Google zou kunnen veranderen. Dit formaat is echter al jaren stabiel en andere apps (zoals <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) ondersteunen het zonder problemen. Het lijkt erop dat wachtwoordmanagers zoals 1Password rechtstreeks importeren makkelijk <em>zouden kunnen</em> ondersteunen, maar ervoor hebben gekozen dat niet te doen."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "Waarom kan 1Password niet importeren uit Google Authenticator?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Meld problemen met deze tool op <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Hoe meld ik een probleem?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "Voor de meeste privacy open je deze tool op je computer of op een tweede apparaat en klik je op ‘QR scannen’ om de export-QR-codes op je telefoon direct te scannen, zonder screenshots te maken."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Ja. Beveiliging en privacy hebben de hoogste prioriteit. <strong>Niets wat je hier doet, verlaat ooit je computer of mobiele apparaat.</strong> Alle verwerking gebeurt lokaal, offline, direct in je browser. Je QR-code-afbeeldingen en geheimen worden nooit naar een server gestuurd."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Deze tool is open source en <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">de code kan door iedereen worden bekeken</a> om de veiligheid en werkwijze te controleren. De tool wordt gehost op GitHub Pages, wat zorgt voor een <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">veilig en transparant publicatieproces</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "Is het veilig om mijn QR-codes te ‘uploaden’?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "<a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> en <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> zijn gebruikt bij de ontwikkeling van deze tool. Alle door AI gegenereerde code is zorgvuldig handmatig nagekeken."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, een andere oplossing voor hetzelfde probleem in de vorm van een Python-script."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, het Python-script van <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>, waarop deze tool is gebaseerd."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Bedankt aan alle bijdragers aan deze uitstekende projecten!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> voor de pictogrammen in de interface."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> voor het decoderen van QR-codes uit afbeeldingen."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "De gebruikersinterface en de verwerking van QR-codes worden mogelijk gemaakt door deze opensourcebibliotheken:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> voor het schalen van afbeeldingen in hoge kwaliteit."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Deze tool bouwt voort op het werk van verschillende opensourceprojecten, waaronder:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> voor het decoderen van de gegevenspayload van Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> voor het genereren van nieuwe QR-codes voor elk account."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> voor het scannen van QR-codes met de camera."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator </a> en <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>, voor de protobuf-specificatie van de export."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "De ontwikkeling van deze tool is mede mogelijk gemaakt door de steun van <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. Vind je dit nuttig, overweeg dan <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">een donatie te doen</a> om het werk van Stand te steunen."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "Voor de mensen en plekken waar je van houdt"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> voor het coderen van de OTP-geheimen in Base32."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Dankbetuiging"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "De vertalingen zijn geschreven en nagekeken door:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Met Google Authenticator kun je je accounts overzetten naar een nieuwe telefoon, maar er is geen eenvoudige manier om ze te exporteren naar andere apps zoals 1Password of Bitwarden. Dat komt doordat het voor elk account het oorspronkelijke ‘geheim’ (de QR-code die je de eerste keer hebt gescand) verbergt."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Zonder deze geheimen betekent overstappen naar een nieuwe wachtwoordmanager dat je 2FA voor elk afzonderlijk account handmatig opnieuw moet instellen, en dat is enorm vervelend."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "Er bestaan wel andere tools om dit op te lossen, maar die vereisen vaak technische stappen, zoals scripts uitvoeren of software installeren. Deze tool is bedoeld als een eenvoudige, veilige oplossing die iedereen kan gebruiken."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "Waarom is dit nodig?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Taal"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Broncode"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "Lees deze pagina in het Engels"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Help deze vertaling te verbeteren"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Deze pagina is automatisch vertaald."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "Annuleren"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Venster sluiten"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Plak een <code>otpauth://</code>-URL of een onbewerkte Base32-geheime sleutel (bijv. <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Geheime sleutel of URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Code toevoegen"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "OTP-code invoeren"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Extraheer de geheimen van eenmalige TOTP/HOTP-wachtwoorden uit 2FA-export-QR-codes van Google Authenticator of LastPass. Werkt volledig in je browser; er wordt niets naar een server gestuurd."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Geheimen van eenmalige wachtwoorden extraheren – Google Authenticator-export"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Sluiten"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Let op: screenshots en gedownloade bestanden bevatten je onversleutelde geheimen.</strong> Bewaar ze veilig, of verwijder ze als je klaar bent. Verwijder ze dan ook uit de ‘Prullenmand’, de ‘Prullenbak’, ‘Recent verwijderd’ en eventuele fotoback-ups in de cloud."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Geëxtraheerde OTP-accounts"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Alles selecteren"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Niets selecteren"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 geselecteerd"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Resetten"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "Veelgestelde vragen"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "Informatietabbladen"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Hoe werkt het?"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Wat is dit?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Overschakelen naar donker thema"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Overschakelen naar licht thema"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Themakiezer openen"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Overschakelen naar systeemthema"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "of sleep bestanden hierheen<br>(afbeelding, JSON-export, CSV of TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Code invoeren"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Bestand(en) openen"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "QR scannen"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Opruimen"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Exporteren uit Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Open de Google Authenticator-app op je telefoon."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Selecteer de accounts die je wilt exporteren."
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "Ga naar het menu en kies ‘Accounts overzetten’ &gt; ‘Accounts exporteren’ (op Android: ‘Codes overzetten’ &gt; ‘Codes exporteren’)."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Exporteer uit je app voor eenmalige wachtwoorden"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "Bij LastPass kun je ook ‘Accounts exporteren naar bestand’ kiezen en dat bestand importeren. Deze tool ondersteunt beide formaten."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "Exporteren uit LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Open LastPass Authenticator op je telefoon."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Tik op het tandwiel en kies ‘Accounts overdragen’ &gt; ‘Accounts exporteren naar QR-code’."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Je kunt ook op ‘Code invoeren’ klikken om een geheime sleutel of configuratie-URL direct als tekst in te voeren. Deze tool toont dan je oorspronkelijke configuratie-QR-code."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Geheimen extraheren"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Deze tool kan ook afzonderlijke configuratie-QR-codes van elke app lezen, of een tekstbestand met één geheime sleutel of URL per regel. Zo kun je geheimen van waar dan ook eenvoudig omzetten in scanbare QR-codes."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Open deze tool op je computer of op een tweede apparaat en klik op ‘QR scannen’ om de export-QR-codes op je telefoon direct te scannen. Dit is de handigste optie en zo voorkom je dat er screenshots van je geheimen worden opgeslagen."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Je kunt ook een screenshot maken van elke QR-code die wordt weergegeven en daarna op ‘Bestand(en) openen’ klikken of je screenshot(s) naar de pagina slepen."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Deze tool leest QR-codes uit de exportfunctie van Google Authenticator of LastPass Authenticator en geeft je voor elk account het oorspronkelijke geheim terug. Daarna kun je met deze geheimen je accounts importeren in elke andere authenticator-app."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "De tool toont de geëxtraheerde OTP-geheimen, elk met een eigen QR-code en geheime sleutel."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Om accounts naar Google Authenticator of LastPass Authenticator te verplaatsen, selecteer je ze en klik je op ‘Exporteren naar Google’ of ‘Exporteren naar LastPass’. Deze tool toont dan een overdrachts-QR-code die je met die app kunt scannen."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Je geheimen gebruiken"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Je kunt deze geheimen nu importeren in de authenticator-app of wachtwoordmanager van je voorkeur."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Klik op ‘Opslaan als CSV’ of ‘Opslaan als JSON’ om een kopie van je geheimen te bewaren. Je kunt deze bestanden later hier weer openen om je QR-codes weer te geven."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Deze tool extraheert de geheimen van eenmalige wachtwoorden (OTP), de codes die worden gebruikt voor tweestapsverificatie (2FA), uit de apps Google Authenticator of LastPass Authenticator. Je hoeft geen software te installeren en er verlaten nooit gegevens je apparaat."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>Alle verwerking van je QR-codes en geheimen gebeurt volledig offline, lokaal, hier in je browser.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Foutmelding sluiten"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Informatiemelding sluiten"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Succesmelding sluiten"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Waarschuwing sluiten"
+    },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "Op teller gebaseerd (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "Op tijd gebaseerd (TOTP)"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "Inhoud"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject} gekopieerd naar klembord."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Kopiëren naar klembord mislukt."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Kan de QR-code uit het camerabeeld niet verwerken."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "Er is een onbekende fout opgetreden tijdens het exporteren."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "Het bestand is geen geldige afbeelding of kan niet worden geladen."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Kan de afbeelding niet verwerken vanwege beveiligingsbeperkingen (tainted canvas)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Ongeldig formaat"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "De invoer moet een geldige OTP-URL, LastPass-JSON of een Base32-geheim van minstens 16 tekens zijn (letters A-Z, cijfers 2-7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Ongeldig JSON-formaat: verwacht werd een array van OTP-accounts of een LastPass-exportobject."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Ongeldig JSON-formaat van LastPass-QR: array 'a' (accounts) niet gevonden."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "Kan de LastPass-QR-code niet decoderen. Het gegevensformaat wordt niet herkend of is beschadigd."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Ongeldige LastPass-QR-code: eigenschap 'content' niet gevonden in payload."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "Parameter 'counter' ontbreekt voor type hotp in otpauth-URL."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "Ongeldige OTP-URL: parameter \"data\" ontbreekt."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "Parameter 'secret' ontbreekt in otpauth-URL."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Geen camera gevonden. Zorg dat er een camera is aangesloten."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Kan de uiteindelijke gegevenspayload niet parseren. Mogelijk is deze beschadigd of heeft deze een onverwacht formaat."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "Er is een onverwachte fout opgetreden bij het verwerken van de bestanden."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "Verwerking mislukt."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Kan de camera niet starten. Zorg dat er een camera is aangesloten en dat je toestemming hebt gegeven."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Kan niet van camera wisselen."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Regel {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Kan geen geldige OTP's uit de tekst halen.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "Er is een onverwachte fout opgetreden. Probeer het opnieuw of vernieuw de pagina."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "Er is een onbekende fout opgetreden."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Bestandstype niet ondersteund."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "OTP-type in URL niet ondersteund: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "De QR-code heeft geen ondersteund formaat."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "LastPass ondersteunt alleen tijdgebaseerde (TOTP-)accounts. Een niet-compatibel tellergebaseerd account is uit je selectie verwijderd. Klik nogmaals op ‘Exporteren naar LastPass’ om door te gaan.",
+        "other": "LastPass ondersteunt alleen tijdgebaseerde (TOTP-)accounts. {count} niet-compatibele tellergebaseerde accounts zijn uit je selectie verwijderd. Klik nogmaals op ‘Exporteren naar LastPass’ om door te gaan."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "Geen compatibele (TOTP-)accounts geselecteerd voor export naar LastPass."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Geen gegevens om te exporteren."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Geen accounts geselecteerd om te exporteren."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Scan met Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "Scan met LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "QR-code is al verwerkt."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Camerascan"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "{count} dubbel geheim overgeslagen.",
+        "other": "{count} dubbele geheimen overgeslagen."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "{count} geheim geëxtraheerd.",
+        "other": "{count} geheimen geëxtraheerd."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Handmatige invoer"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "Geen QR-code gevonden."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "Geen OTP-geheimen gevonden."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "Geen OTP-geheimen gevonden in QR-code."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Niet beschikbaar"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "Grotere QR-code tonen voor {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{count} van {total} geselecteerd"
+    }
+  }
+}

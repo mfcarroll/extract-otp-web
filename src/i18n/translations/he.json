@@ -1,0 +1,703 @@
+{
+  "language": {
+    "name": "עברית",
+    "lang": "he",
+    "hreflang": "he",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "חילוץ סודות של סיסמאות חד-פעמיות"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "בחירת מצלמה"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "החלפת מצלמה"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "סריקת קוד QR"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "הועתק!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "יש ללחוץ על Enter או על מקש הרווח כדי להעתיק."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "העתקת הסוד"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "העתקה"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "העתקת כתובת ה-URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "מונה:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "מנפיק:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "שם:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "סוד:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "הצגת קוד QR גדול יותר"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "הקשה להגדלה"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "סוג:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "כתובת URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "זהו תרגום טיוטה שעדיין נמצא בבדיקה, והוא עשוי להכיל שגיאות."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "ייצוא ל-Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "ייצוא ל-LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "שמירה כ-CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "שמירה כ-JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "הכלי הזה נוצר על ידי <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, מפתח שהיה מתוסכל מתהליך העברת קודי OTP מ-Google Authenticator אל 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "מי יצר את זה?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator מקשה לראות את הסודות המקוריים ששימשו להגדרת החשבונות שלך. במקום זאת, היא מספקת קוד QR לייצוא שמאגד את כל החשבונות שלך יחד. כך קל להעביר אותם למכשיר חדש, אבל קשה לעבור לאפליקציית אימות אחרת. LastPass כן מספקת קודי QR נפרדים לכל חשבון, וזה שיפור עצום, אבל היא מספקת את הסודות כטקסט רק בפורמט קוד JSON. לעומת זאת, אפליקציות כמו 1Password מאפשרות גישה קלה לסודות המקוריים, וכך קל להעביר אותם לאפליקציות 2FA אחרות."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "למה Google Authenticator לא מציגה את קודי ה-QR המקוריים שלי?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "סורקים את קודי ה-QR מתכונת הייצוא של Google Authenticator או LastPass Authenticator בעזרת המצלמה, או מספקים צילומי מסך שלהם (או קובץ ייצוא של LastPass). הכלי הזה קורא את קודי ה-QR האלה – ממש כאן בדפדפן שלך – ומחזיר לך את הסוד המקורי של כל חשבון. לאחר מכן אפשר להשתמש בסודות האלה כדי לייבא את החשבונות שלך לכל אפליקציית אימות אחרת."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "איך זה עובד?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass מכניסה את כל החשבונות שלך לקוד QR אחד, ואם יש לך הרבה חשבונות, הפרטים בקוד ה-QR עלולים להיות זעירים וקשים לקריאה. Google Authenticator עוקפת את הבעיה הזו בכך שהיא מספקת יותר מקוד אחד, שכל אחד מהם מכיל כמה חשבונות. למרבה המזל, LastPass מאפשרת לייצא קובץ JSON, שגם אותו הכלי הזה יכול לקרוא. אם יש בעיות עם LastPass, פשוט יש לשמור את קובץ ה-JSON ולייבא אותו במקום."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "קוד ה-QR של LastPass לא נסרק!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "זו שאלה מצוינת, ו<a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"דיון בקהילת 1Password על ייבוא מ-Google Authenticator\">אחרים</a> כבר <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"דיון ב-Reddit על הוספת 2FA קיים ל-1Password\">שאלו</a> אותה. אחת הסיבות שניתנו היא חשש שפורמט הייצוא של Google עלול להשתנות. עם זאת, הפורמט הזה יציב כבר שנים, ואפליקציות אחרות (כמו <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) תומכות בו בלי בעיה. נראה שמנהלי סיסמאות כמו 1Password <em>היו יכולים</em> לתמוך בקלות בייבוא ישיר, אבל בחרו שלא לעשות זאת."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "למה 1Password לא יכולה לייבא מ-Google Authenticator?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "נא לדווח על כל בעיה בכלי הזה ב-<a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "איך מדווחים על בעיה?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "לפרטיות מרבית, יש לפתוח את הכלי הזה במחשב או במכשיר נוסף, וללחוץ על \"סריקת QR\" כדי לסרוק ישירות את קודי ה-QR לייצוא שבטלפון שלך, בלי לצלם צילומי מסך."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "כן. אבטחה ופרטיות הן בעדיפות העליונה. <strong>שום דבר שנעשה כאן לעולם לא יוצא מהמחשב או מהמכשיר הנייד שלך.</strong> כל העיבוד מתבצע באופן מקומי, במצב לא מקוון, ממש בדפדפן שלך. תמונות קודי ה-QR והסודות שלך לעולם לא נשלחים לשום שרת."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "הכלי הזה הוא קוד פתוח, ו<a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">כל אחד יכול לבחון את הקוד</a> כדי לוודא את הבטיחות ואת שיטת הפעולה שלו. הוא מתארח ב-GitHub Pages, עם <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">תהליך פריסה מאובטח ושקוף</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "האם זה בטוח \"להעלות\" את קודי ה-QR שלי?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "במהלך הפיתוח של הכלי הזה נעשה שימוש ב-<a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> וב-<a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a>. כל הקוד שנוצר על ידי AI נבדק ידנית בקפידה."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, פתרון נוסף מבוסס סקריפט Python לאותה בעיה."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, סקריפט ה-Python של <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>, שעליו מבוסס הכלי הזה."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "תודה לכל התורמים לפרויקטים המצוינים האלה!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> לסמלים שבממשק המשתמש."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> לפענוח קודי QR מתמונות."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "ממשק המשתמש ועיבוד קודי ה-QR מבוססים על ספריות הקוד הפתוח האלה:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> לשינוי גודל של תמונות באיכות גבוהה."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "הכלי הזה מבוסס על עבודתם של כמה פרויקטים בקוד פתוח, ביניהם:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> לפענוח מטען הנתונים של Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> ליצירת קודי QR חדשים לכל חשבון."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> לסריקת קודי QR באמצעות המצלמה."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> ו-<a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>, על מפרט ה-protobuf של הייצוא."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "הפיתוח של הכלי הזה התאפשר בין היתר בזכות התמיכה של <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. אם הכלי מועיל לך, אפשר לשקול <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">לתרום</a> כדי לתמוך בעבודה של Stand."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "למען האנשים והמקומות שיקרים לך"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> לקידוד סודות ה-OTP ב-Base32."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "תודות"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "התרגומים נכתבו ונבדקו על ידי:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator מאפשרת להעביר את החשבונות שלך לטלפון חדש, אבל היא לא מספקת דרך קלה לייצא אותם לאפליקציות אחרות כמו 1Password או Bitwarden. הסיבה לכך היא שהיא מסתירה את \"הסוד\" המקורי (קוד ה-QR שסרקת בהתחלה) של כל חשבון."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "בלי הסודות האלה, מעבר למנהל סיסמאות חדש פירושו להגדיר מחדש באופן ידני את האימות הדו-שלבי (2FA) בכל חשבון וחשבון, וזה כאב ראש רציני."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "אמנם קיימים כלים אחרים שפותרים את הבעיה הזו, אבל לעיתים קרובות הם דורשים צעדים טכניים כמו הרצת סקריפטים או התקנת תוכנה. הכלי הזה נועד להיות פתרון פשוט ומאובטח שכולם יכולים להשתמש בו."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "למה זה נחוץ?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "שפה"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "קוד מקור"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "לקריאה באנגלית"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "עזרה בשיפור התרגום הזה"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "דף זה תורגם באופן אוטומטי."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "ביטול"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "סגירת החלון"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "יש להדביק כתובת <code>otpauth://</code> או מפתח סודי גולמי בפורמט Base32 (לדוגמה, <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "מפתח סודי או כתובת URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "הוספת קוד"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "הזנת קוד OTP"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "חילוץ סודות של סיסמאות חד-פעמיות מסוג TOTP/HOTP מקודי QR לייצוא 2FA של Google Authenticator או LastPass. הכלי פועל כולו בדפדפן שלך; שום דבר לא מועלה לשרת."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "חילוץ סודות של סיסמאות חד-פעמיות – ייצוא מ-Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "סגירה"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>הערה: כל צילומי המסך או הקבצים שהורדו מכילים את הסודות שלך ללא הצפנה.</strong> יש להקפיד לאחסן אותם באופן מאובטח, או למחוק אותם בסיום. זה כולל למחוק אותם גם מתוך \"פח\", \"סל המיחזור\", \"נמחקו לאחרונה\", וגם מכל גיבוי תמונות בענן."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "חשבונות OTP שחולצו"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "בחירת הכול"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "ביטול הבחירה"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 נבחרו"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "איפוס"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "שאלות נפוצות"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "כרטיסיות מידע"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "איך משתמשים בזה?"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "מה זה?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "מעבר לערכת נושא כהה"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "מעבר לערכת נושא בהירה"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "פתיחת בורר ערכות הנושא"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "מעבר לערכת הנושא של המערכת"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "או לגרור ולשחרר קבצים לכאן<br>(תמונה, קובץ ייצוא json, קובץ csv או txt)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "הזנת קוד"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "פתיחת קבצים"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "סריקת QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. ניקוי"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "ייצוא מ-Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "יש לפתוח את אפליקציית Google Authenticator בטלפון שלך."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "יש לבחור את החשבונות שברצונך לייצא."
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "יש לעבור לתפריט ולבחור \"העברת חשבונות\" &gt; \"ייצוא חשבונות\" (ב-Android: \"העברת קודים\" &gt; \"ייצוא קודים\")."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. ייצוא מאפליקציית הסיסמאות החד-פעמיות שלך"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "ב-LastPass אפשר גם לבחור \"Export accounts to file\" (ייצוא חשבונות לקובץ) ולייבא את הקובץ הזה במקום. הכלי הזה תומך בשני הפורמטים."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "ייצוא מ-LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "יש לפתוח את LastPass Authenticator בטלפון שלך."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "יש ללחוץ על סמל גלגל השיניים ולבחור \"Transfer accounts\" (העברת חשבונות) &gt; \"Export accounts to QR code\" (ייצוא חשבונות לקוד QR)."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "אפשר גם ללחוץ על \"הזנת קוד\" כדי להזין מפתח סודי או כתובת URL להגדרה ישירות כטקסט, והכלי יציג את קוד ה-QR המקורי להגדרה."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. חילוץ הסודות"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "הכלי יכול גם לקרוא קודי QR בודדים להגדרה מכל אפליקציה, או קובץ טקסט עם מפתח סודי אחד או כתובת URL אחת בכל שורה. כך קל להפוך סודות מכל מקום לקודי QR שאפשר לסרוק."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "יש לפתוח את הכלי הזה במחשב או במכשיר נוסף, וללחוץ על \"סריקת QR\" כדי לסרוק ישירות את קודי ה-QR לייצוא שבטלפון שלך. זו האפשרות הנוחה ביותר, והיא חוסכת את הצורך לשמור צילומי מסך של הסודות שלך."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "לחלופין, אפשר לצלם מסך של כל קוד QR שמוצג, ואז ללחוץ על \"פתיחת קבצים\" או לגרור ולשחרר את צילומי המסך אל הדף."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "הכלי הזה קורא קודי QR מתכונת הייצוא של Google Authenticator או LastPass Authenticator ומחזיר לך את הסוד המקורי של כל חשבון. לאחר מכן אפשר להשתמש בסודות האלה כדי לייבא את החשבונות שלך לכל אפליקציית אימות אחרת."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "הכלי יציג את סודות ה-OTP שחולצו, כל אחד עם קוד QR ומפתח סודי משלו."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "כדי להעביר חשבונות אל Google Authenticator או אל LastPass Authenticator, יש לבחור אותם וללחוץ על \"ייצוא ל-Google\" או על \"ייצוא ל-LastPass\". הכלי יציג קוד QR להעברה שאפשר לסרוק באפליקציה הזו."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. שימוש בסודות"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "עכשיו אפשר לייבא את הסודות האלה לאפליקציית האימות או למנהל הסיסמאות שבחרת."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "יש ללחוץ על \"שמירה כ-CSV\" או על \"שמירה כ-JSON\" כדי לשמור עותק של הסודות שלך. אפשר לפתוח את הקבצים האלה כאן שוב מאוחר יותר כדי להציג את קודי ה-QR."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "הכלי הזה מחלץ סודות של סיסמאות חד-פעמיות (OTP), הקודים המשמשים לאימות דו-שלבי (2FA), מהאפליקציות Google Authenticator או LastPass Authenticator. אין צורך להתקין שום תוכנה, ושום מידע לעולם לא יוצא מהמכשיר שלך."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>כל העיבוד של קודי ה-QR והסודות שלך מתבצע כולו במצב לא מקוון, באופן מקומי, ממש כאן בדפדפן שלך.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "סגירת הודעת השגיאה"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "סגירת הודעת המידע"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "סגירת הודעת ההצלחה"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "סגירת הודעת האזהרה"
+    },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "מבוסס מונה (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "מבוסס זמן (TOTP)"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "התוכן"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject} הועתק ללוח."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "ההעתקה ללוח נכשלה."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "עיבוד קוד ה-QR מהמצלמה נכשל."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "אירעה שגיאה לא ידועה במהלך הייצוא."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "הקובץ אינו תמונה תקינה או שלא ניתן היה לטעון אותו."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "לא ניתן לעבד את התמונה בגלל הגבלות אבטחה (tainted canvas)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "פורמט לא תקין"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "הקלט חייב להיות כתובת OTP תקינה, JSON של LastPass או סוד Base32 באורך 16 תווים לפחות (אותיות A-Z, ספרות 2-7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "פורמט JSON לא תקין: צפוי מערך של חשבונות OTP או אובייקט ייצוא של LastPass."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "פורמט JSON לא תקין בקוד ה-QR של LastPass: המערך 'a' (חשבונות) לא נמצא."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "פענוח קוד ה-QR של LastPass נכשל. פורמט הנתונים לא מזוהה או פגום."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "קוד QR לא תקין של LastPass: המאפיין 'content' לא נמצא בנתונים."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "הפרמטר 'counter' חסר עבור סוג hotp בכתובת ה-otpauth."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "כתובת OTP לא תקינה: הפרמטר \"data\" חסר."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "הפרמטר 'secret' חסר בכתובת ה-otpauth."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "לא נמצאה מצלמה. יש לוודא שמחוברת מצלמה."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "ניתוח מטען הנתונים הסופי נכשל. ייתכן שהוא פגום או בפורמט לא צפוי."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "אירעה שגיאה לא צפויה במהלך עיבוד הקבצים."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "העיבוד נכשל."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "הפעלת המצלמה נכשלה. יש לוודא שמחוברת מצלמה ושניתנה הרשאה."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "החלפת המצלמה נכשלה."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "שורה {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "לא ניתן היה לנתח מהטקסט אף OTP תקין.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "אירעה שגיאה לא צפויה. יש לנסות שוב או לרענן את הדף."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "אירעה שגיאה לא ידועה."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "סוג הקובץ לא נתמך."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "סוג OTP לא נתמך בכתובת ה-URL: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "פורמט קוד ה-QR לא נתמך."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "LastPass תומכת רק בחשבונות מבוססי זמן (TOTP). חשבון אחד לא תואם מבוסס מונה הוסר מהבחירה שלך. יש ללחוץ שוב על \"ייצוא ל-LastPass\" כדי להמשיך.",
+        "two": "LastPass תומכת רק בחשבונות מבוססי זמן (TOTP). {count} חשבונות לא תואמים מבוססי מונה הוסרו מהבחירה שלך. יש ללחוץ שוב על \"ייצוא ל-LastPass\" כדי להמשיך.",
+        "other": "LastPass תומכת רק בחשבונות מבוססי זמן (TOTP). {count} חשבונות לא תואמים מבוססי מונה הוסרו מהבחירה שלך. יש ללחוץ שוב על \"ייצוא ל-LastPass\" כדי להמשיך."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "לא נבחרו חשבונות תואמים (TOTP) לייצוא ל-LastPass."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "אין נתונים לייצוא."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "לא נבחרו חשבונות לייצוא."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "סריקה באמצעות Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "סריקה באמצעות LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "קוד ה-QR הזה כבר עבר עיבוד."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "סריקה במצלמה"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "סוד כפול אחד דולג.",
+        "two": "{count} סודות כפולים דולגו.",
+        "other": "{count} סודות כפולים דולגו."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "סוד אחד חולץ.",
+        "two": "{count} סודות חולצו.",
+        "other": "{count} סודות חולצו."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "הזנה ידנית"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "לא נמצא קוד QR."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "לא נמצאו סודות OTP."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "לא נמצאו סודות OTP בקוד ה-QR."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "לא זמין"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "הצגת קוד QR גדול יותר עבור {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{count} מתוך {total} נבחרו"
+    }
+  }
+}

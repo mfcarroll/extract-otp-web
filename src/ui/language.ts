@@ -21,10 +21,25 @@ export function initLanguageSwitcher(): void {
 
   const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
 
+  // The first time the menu opens, scroll the current language to the middle
+  // of the list (the browser clamps this at either end). After that the menu
+  // keeps wherever it was last scrolled.
+  let scrolled = false;
+
   const open = () => {
     if (!isOpen()) announceOpen('language');
     menu.hidden = false;
     toggle.setAttribute('aria-expanded', 'true');
+    // The menu opens upwards: keep it within the space above the switcher
+    // (it scrolls if the list is longer), capped at 60% of the viewport.
+    const room = nav.getBoundingClientRect().top - 16;
+    menu.style.maxHeight = `${Math.max(160, Math.min(room, window.innerHeight * 0.6))}px`;
+    if (!scrolled) {
+      scrolled = true;
+      const item = current.parentElement ?? current;
+      menu.scrollTop =
+        item.offsetTop - (menu.clientHeight - item.offsetHeight) / 2;
+    }
   };
 
   const close = () => {

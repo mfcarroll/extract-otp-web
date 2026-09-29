@@ -1,0 +1,706 @@
+{
+  "language": {
+    "name": "Українська",
+    "lang": "uk",
+    "hreflang": "uk",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Видобування секретів одноразових паролів"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Виберіть камеру"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Змінити камеру"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "Сканування QR-коду"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "Скопійовано!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Натисніть Enter або пробіл, щоб скопіювати."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Копіювати секрет"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Копіювати"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "Копіювати URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Лічильник:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Постачальник:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Назва:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Секрет:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "Показати більший QR-код"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Торкніться, щоб збільшити"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Тип:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Це чорновий переклад, який ще перевіряється, тож він може містити помилки."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Експорт у Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "Експорт у LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "Зберегти як CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "Зберегти як JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Цей інструмент створив <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> — розробник, якого розчарував процес перенесення кодів OTP із Google Authenticator у 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Хто це створив?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator ускладнює перегляд оригінальних секретів, використаних для налаштування ваших облікових записів. Натомість він надає QR-код експорту, який об’єднує всі ваші облікові записи. Це полегшує перенесення на новий пристрій, але ускладнює перехід на інший застосунок-автентифікатор. LastPass надає окремі QR-коди для кожного облікового запису, що є величезним покращенням, але текстові секрети він надає лише у форматі JSON. Натомість такі застосунки, як 1Password, роблять оригінальні секрети легкодоступними, що дає змогу просто переносити їх в інші застосунки 2FA."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Чому Google Authenticator не показує мої оригінальні QR-коди?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Ви скануєте камерою QR-коди, створені функцією експорту Google Authenticator або LastPass Authenticator, або надаєте їхні знімки екрана (чи файл експорту LastPass). Цей інструмент зчитує ці QR-коди — просто тут, у вашому браузері — і повертає вам оригінальний секрет для кожного облікового запису. Потім ці секрети можна використати, щоб імпортувати облікові записи в будь-який інший застосунок-автентифікатор."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Як це працює?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass поміщає всі ваші облікові записи в один QR-код, і якщо облікових записів багато, деталі QR-коду можуть стати крихітними й погано читатися. Google Authenticator обходить цю проблему, надаючи кілька кодів, кожен з яких містить кілька облікових записів. На щастя, LastPass дає змогу експортувати файл JSON, який цей інструмент теж може зчитати. Якщо з LastPass виникають проблеми, просто збережіть файл JSON та імпортуйте його."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "Мій QR-код LastPass не сканується!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "Чудове запитання, і його <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Обговорення в спільноті 1Password про імпорт із Google Authenticator\">інші</a> теж <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Обговорення на Reddit про додавання наявних 2FA до 1Password\">ставили</a>. Одна з названих причин — побоювання, що формат експорту Google може змінитися. Однак цей формат стабільний уже багато років, і інші застосунки (як-от <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) підтримують його без проблем. Схоже, менеджери паролів, як-от 1Password, <em>могли б</em> легко підтримувати прямий імпорт, але вирішили цього не робити."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "Чому 1Password не може імпортувати дані з Google Authenticator?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Будь ласка, повідомляйте про будь-які проблеми з цим інструментом на <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Як повідомити про проблему?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "Для максимальної конфіденційності відкрийте цей інструмент на комп’ютері або іншому пристрої та натисніть «Сканувати QR», щоб сканувати QR-коди експорту безпосередньо з екрана телефона, не роблячи знімків екрана."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Так. Безпека й конфіденційність — головні пріоритети. <strong>Ніщо з того, що ви робите тут, ніколи не залишає ваш комп’ютер чи мобільний пристрій.</strong> Уся обробка відбувається локально, офлайн, просто у вашому браузері. Зображення ваших QR-кодів і секрети ніколи не надсилаються на жоден сервер."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Цей інструмент має відкритий код, і <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">будь-хто може переглянути цей код</a>, щоб перевірити його безпечність і методологію. Він розміщений на GitHub Pages, що забезпечує <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">безпечний і прозорий процес розгортання</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "Чи безпечно «завантажувати» мої QR-коди?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "Під час розробки цього інструмента використовувалися <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> і <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a>. Увесь код, згенерований ШІ, було ретельно перевірено вручну."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a> — ще одне рішення тієї самої проблеми у вигляді скрипту на Python."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a> — скрипт на Python від <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>, на якому базується цей інструмент."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Дякуємо всім учасникам цих чудових проєктів!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> — за значки, використані в інтерфейсі."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> — для декодування QR-кодів із зображень."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "Інтерфейс користувача й обробку QR-кодів забезпечують такі бібліотеки з відкритим кодом:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> — для якісної зміни розміру зображень."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Цей інструмент спирається на роботу кількох проєктів з відкритим кодом, зокрема:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> — для декодування даних Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> — для створення нових QR-кодів для кожного облікового запису."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> — для сканування QR-кодів камерою."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator </a> і <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a> — за специфікацію protobuf формату експорту."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "Розробка цього інструмента стала можливою частково завдяки підтримці <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. Якщо цей інструмент вам знадобився, будь ласка, розгляньте можливість <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">зробити пожертву</a> на підтримку роботи Stand."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "Для людей і місць, які ви любите"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> — для кодування секретів OTP у Base32."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Подяки"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "Переклади написали й перевірили:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator дає змогу перенести облікові записи на новий телефон, але не надає простого способу експортувати їх в інші застосунки, як-от 1Password або Bitwarden. Причина в тому, що він приховує оригінальний «секрет» (QR-код, який ви відсканували спочатку) для кожного облікового запису."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Без цих секретів перехід на новий менеджер паролів означає ручне повторне налаштування 2FA для кожного облікового запису, а це величезний клопіт."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "Хоча для цього існують інші інструменти, вони часто вимагають технічних дій, як-от запуску скриптів чи встановлення програм. Цей інструмент задуманий як просте й безпечне рішення, яким може скористатися будь-хто."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "Навіщо це потрібно?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Мова"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Вихідний код"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "Читати англійською"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Допоможіть покращити цей переклад"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Цю сторінку перекладено автоматично."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "Скасувати"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Закрити вікно"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Вставте URL-адресу <code>otpauth://</code> або секретний ключ Base32 (наприклад, <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Секретний ключ або URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Додати код"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "Введення коду OTP"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Видобувайте секрети одноразових паролів TOTP/HOTP із QR-кодів експорту 2FA з Google Authenticator або LastPass. Працює повністю у вашому браузері; нічого не надсилається на сервер."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Видобування секретів одноразових паролів – експорт із Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Закрити"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Примітка: будь-які знімки екрана чи завантажені файли містять ваші незашифровані секрети.</strong> Обов’язково зберігайте їх у безпечному місці або видаліть, коли закінчите. Це стосується і їх видалення з «Кошика» (macOS і Windows), альбому «Нещодавно видалені» та будь-яких хмарних резервних копій фото."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Видобуті облікові записи OTP"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Вибрати всі"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Скасувати вибір"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "Вибрано 0"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Скинути"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "Часті запитання"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "Інформаційні вкладки"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Як цим користуватися?"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Що це таке?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Увімкнути темну тему"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Увімкнути світлу тему"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Відкрити вибір теми"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Увімкнути системну тему"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "або перетягніть файли сюди<br>(зображення, експорт JSON, CSV або TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Ввести код"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Відкрити файл(и)"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "Сканувати QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Приберіть за собою"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Експорт із Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Відкрийте застосунок Google Authenticator на телефоні."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Виберіть облікові записи, які хочете експортувати."
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "Відкрийте меню й виберіть «Перенести облікові записи» &gt; «Експортуйте облікові записи» (на Android: «Перенести коди» &gt; «Експортувати коди»)."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Експортуйте дані із застосунку одноразових паролів"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "У LastPass можна також вибрати «Export accounts to file» (Експортувати облікові записи у файл) і імпортувати цей файл. Цей інструмент підтримує обидва формати."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "Експорт із LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Відкрийте LastPass Authenticator на телефоні."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Натисніть значок шестерні й виберіть «Transfer accounts» (Перенести облікові записи) &gt; «Export accounts to QR code» (Експортувати облікові записи в QR-код)."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Також можна натиснути «Ввести код», щоб ввести секретний ключ або URL-адресу налаштування безпосередньо як текст, і цей інструмент покаже ваш оригінальний QR-код налаштування."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Видобудьте секрети"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Цей інструмент також може зчитувати окремі QR-коди налаштування з будь-якого застосунку або текстовий файл з одним секретним ключем чи URL-адресою в кожному рядку. Так можна легко перетворити секрети з будь-якого джерела на QR-коди, які можна сканувати."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Відкрийте цей інструмент на комп’ютері або іншому пристрої та натисніть «Сканувати QR», щоб сканувати QR-коди експорту безпосередньо з екрана телефона. Це найзручніший варіант, і він дає змогу не зберігати знімки екрана з вашими секретами."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Або ж зробіть знімок екрана кожного показаного QR-коду, а потім натисніть «Відкрити файл(и)» чи перетягніть знімки екрана на сторінку."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Цей інструмент зчитує QR-коди, створені функцією експорту Google Authenticator або LastPass Authenticator, і повертає вам оригінальний секрет для кожного облікового запису. Потім ці секрети можна використати, щоб імпортувати облікові записи в будь-який інший застосунок-автентифікатор."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "Інструмент покаже видобуті секрети OTP, кожен з власним QR-кодом і секретним ключем."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Щоб перенести облікові записи в Google Authenticator або LastPass Authenticator, виберіть їх і натисніть «Експорт у Google» або «Експорт у LastPass». Цей інструмент покаже QR-код перенесення, який можна сканувати відповідним застосунком."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Використайте свої секрети"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Тепер ви можете імпортувати ці секрети у свій улюблений застосунок-автентифікатор або менеджер паролів."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Натисніть «Зберегти як CSV» або «Зберегти як JSON», щоб зберегти копію своїх секретів. Пізніше ви зможете знову відкрити ці файли тут, щоб показати свої QR-коди."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Цей інструмент видобуває секрети одноразових паролів (OTP), тобто коди, що використовуються для двофакторної автентифікації (2FA), із застосунків Google Authenticator або LastPass Authenticator. Не потрібно встановлювати жодного програмного забезпечення, і жодні дані ніколи не залишають ваш пристрій."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>Уся обробка ваших QR-кодів і секретів відбувається повністю офлайн, локально, просто тут, у вашому браузері.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Закрити повідомлення про помилку"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Закрити інформаційне повідомлення"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Закрити повідомлення про успіх"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Закрити попередження"
+    },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "На основі лічильника (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "На основі часу (TOTP)"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "Вміст"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject}: скопійовано в буфер обміну."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Не вдалося скопіювати в буфер обміну."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Не вдалося обробити QR-код із зображення камери."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "Під час експорту сталася невідома помилка."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "Файл не є дійсним зображенням або його не вдалося завантажити."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Не вдалося обробити зображення через обмеження безпеки (tainted canvas)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Недійсний формат"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "Введені дані мають бути дійсною URL-адресою OTP, JSON LastPass або секретом Base32 довжиною щонайменше 16 символів (літери A-Z, цифри 2-7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Недійсний формат JSON: очікувався масив облікових записів OTP або об’єкт експорту LastPass."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Недійсний формат JSON у QR-коді LastPass: не знайдено масив «a» (облікові записи)."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "Не вдалося декодувати QR-код LastPass. Формат даних не розпізнано або дані пошкоджено."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Недійсний QR-код LastPass: у даних не знайдено властивість «content»."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "В URL-адресі otpauth відсутній параметр «counter» для типу hotp."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "Недійсна URL-адреса OTP: відсутній параметр «data»."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "В URL-адресі otpauth відсутній параметр «secret»."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Камеру не знайдено. Переконайтеся, що камеру підключено."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Не вдалося розібрати кінцеві дані. Можливо, їх пошкоджено або вони мають неочікуваний формат."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "Під час обробки файлів сталася неочікувана помилка."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "Помилка обробки."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Не вдалося запустити камеру. Переконайтеся, що камеру підключено і ви надали дозвіл."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Не вдалося змінити камеру."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Рядок {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Не вдалося розпізнати жодного дійсного OTP у тексті.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "Сталася неочікувана помилка. Спробуйте ще раз або оновіть сторінку."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "Сталася невідома помилка."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Непідтримуваний тип файлу."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "Непідтримуваний тип OTP в URL-адресі: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "QR-код має непідтримуваний формат."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "LastPass підтримує лише облікові записи на основі часу (TOTP). Із вашого вибору вилучено {count} несумісний обліковий запис на основі лічильника. Натисніть «Експорт у LastPass» ще раз, щоб продовжити.",
+        "few": "LastPass підтримує лише облікові записи на основі часу (TOTP). Із вашого вибору вилучено {count} несумісні облікові записи на основі лічильника. Натисніть «Експорт у LastPass» ще раз, щоб продовжити.",
+        "many": "LastPass підтримує лише облікові записи на основі часу (TOTP). Із вашого вибору вилучено {count} несумісних облікових записів на основі лічильника. Натисніть «Експорт у LastPass» ще раз, щоб продовжити.",
+        "other": "LastPass підтримує лише облікові записи на основі часу (TOTP). Із вашого вибору вилучено {count} несумісного облікового запису на основі лічильника. Натисніть «Експорт у LastPass» ще раз, щоб продовжити."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "Для експорту в LastPass не вибрано сумісних облікових записів (TOTP)."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Немає даних для експорту."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Не вибрано облікових записів для експорту."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Скануйте в Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "Скануйте в LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "Цей QR-код уже оброблено."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Сканування камерою"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "Пропущено {count} дублікат секрету.",
+        "few": "Пропущено {count} дублікати секретів.",
+        "many": "Пропущено {count} дублікатів секретів.",
+        "other": "Пропущено {count} дубліката секретів."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "Видобуто {count} секрет.",
+        "few": "Видобуто {count} секрети.",
+        "many": "Видобуто {count} секретів.",
+        "other": "Видобуто {count} секрету."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Ручне введення"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "QR-код не знайдено."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "Секретів OTP не знайдено."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "У QR-коді не знайдено секретів OTP."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Недоступно"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "Показати більший QR-код для {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "Вибрано {count} з {total}"
+    }
+  }
+}

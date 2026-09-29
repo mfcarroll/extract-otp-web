@@ -1,0 +1,712 @@
+{
+  "language": {
+    "name": "العربية",
+    "lang": "ar",
+    "hreflang": "ar",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "أداة استخراج المفاتيح السرية لكلمات المرور لمرة واحدة"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "اختيار الكاميرا"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "تبديل الكاميرا"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "مسح رمز QR"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "تم النسخ!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "اضغط على Enter أو مفتاح المسافة للنسخ."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "نسخ المفتاح السري"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "نسخ"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "نسخ عنوان URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "العدّاد:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "الجهة المُصدِرة:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "الاسم:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "رمز QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "المفتاح السري:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "عرض رمز QR بحجم أكبر"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "انقر للتكبير"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "النوع:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "عنوان URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "هذه مسودة ترجمة لا تزال قيد المراجعة، وقد تحتوي على أخطاء."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "تصدير إلى Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "تصدير إلى LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "حفظ بتنسيق CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "حفظ بتنسيق JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "أنشأ هذه الأداة <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>، وهو مطوّر شعر بالإحباط من عملية نقل رموز OTP من Google Authenticator إلى 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "من أنشأ هذه الأداة؟"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "يُصعّب Google Authenticator عرض المفاتيح السرية الأصلية المستخدمة لإعداد حساباتك. وبدلًا من ذلك، يوفر رمز QR للتصدير يجمع كل حساباتك معًا. وهذا يسهّل النقل إلى جهاز جديد، لكنه يصعّب التبديل إلى تطبيق مصادقة مختلف. أما LastPass فيوفر رموز QR فردية لكل حساب، وهو تحسّن كبير، لكنه لا يقدّم المفاتيح السرية النصية إلا بتنسيق JSON. في المقابل، تجعل تطبيقات مثل 1Password الوصول إلى المفاتيح السرية الأصلية سهلًا، ما يتيح نقلها بسهولة إلى تطبيقات 2FA أخرى."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "لماذا لا يعرض Google Authenticator رموز QR الأصلية الخاصة بي؟"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "تقوم بمسح رموز QR من ميزة التصدير في Google Authenticator أو LastPass Authenticator باستخدام الكاميرا، أو بتقديم لقطات شاشة لها (أو ملف تصدير من LastPass). تقرأ هذه الأداة رموز QR تلك — هنا في متصفحك — وتعيد إليك المفتاح السري الأصلي لكل حساب. ويمكنك بعد ذلك استخدام هذه المفاتيح السرية لاستيراد حساباتك إلى أي تطبيق مصادقة آخر."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "كيف تعمل الأداة؟"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "يضع LastPass جميع حساباتك معًا في رمز QR واحد، وإذا كان لديك الكثير من الحسابات فقد تصبح تفاصيل رمز QR صغيرة جدًا ويصعب قراءتها. ويتغلب Google Authenticator على هذه المشكلة بتوفير أكثر من رمز، يحتوي كل منها على بضعة حسابات. ولحسن الحظ، يتيح لك LastPass تصدير ملف JSON، ويمكن لهذه الأداة قراءته أيضًا. إذا واجهت مشكلات مع LastPass، فما عليك سوى حفظ ملف JSON واستيراده بدلًا من ذلك."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "لا يمكن مسح رمز QR الخاص بـ LastPass!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "هذا سؤال رائع، وقد <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"نقاش في مجتمع 1Password حول الاستيراد من Google Authenticator\">طرحه</a> <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"نقاش على Reddit حول إضافة حسابات 2FA موجودة إلى 1Password\">آخرون</a> أيضًا. ومن الأسباب المذكورة القلق من احتمال تغيّر تنسيق التصدير الخاص بـ Google. غير أن هذا التنسيق ظل مستقرًا لسنوات، وتدعمه تطبيقات أخرى (مثل <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) دون أي مشكلة. ويبدو أن مديري كلمات المرور مثل 1Password <em>بإمكانهم</em> دعم الاستيراد المباشر بسهولة، لكنهم اختاروا عدم فعل ذلك."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "لماذا لا يستطيع 1Password الاستيراد من Google Authenticator؟"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "يُرجى الإبلاغ عن أي مشكلات في هذه الأداة على <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "كيف أُبلغ عن مشكلة؟"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "لتحقيق أقصى قدر من الخصوصية، افتح هذه الأداة على حاسوبك أو على جهاز ثانٍ، وانقر على «مسح رمز QR» لمسح رموز QR الخاصة بالتصدير على هاتفك مباشرةً، دون التقاط لقطات شاشة."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "نعم. الأمان والخصوصية هما الأولوية القصوى. <strong>لا شيء مما تفعله هنا يغادر حاسوبك أو جهازك المحمول أبدًا.</strong> تتم جميع عمليات المعالجة محليًا، دون اتصال بالإنترنت، داخل متصفحك مباشرةً. ولا تُرسَل صور رموز QR ولا المفاتيح السرية الخاصة بك إلى أي خادم أبدًا."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "هذه الأداة مفتوحة المصدر، و<a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">يمكن لأي شخص فحص الكود</a> للتحقق من أمانها ومنهجيتها. وهي مستضافة على GitHub Pages، ما يوفر <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">عملية نشر آمنة وشفافة</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "هل من الآمن «رفع» رموز QR الخاصة بي؟"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "استُخدم <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> و<a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> أثناء تطوير هذه الأداة. وقد رُوجعت جميع التعليمات البرمجية المولَّدة بالذكاء الاصطناعي يدويًا بعناية."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>، وهو حل آخر في صورة نص Python برمجي للمشكلة نفسها."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>، وهو نص Python البرمجي من تأليف <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>، والذي تستند إليه هذه الأداة."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "شكرًا لجميع المساهمين في هذه المشاريع الرائعة!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> للأيقونات المستخدمة في واجهة المستخدم."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> لفك ترميز رموز QR من الصور."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "تعتمد واجهة المستخدم ومعالجة رموز QR على المكتبات مفتوحة المصدر التالية:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> لتغيير حجم الصور بجودة عالية."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "تعتمد هذه الأداة على أعمال عدة مشاريع مفتوحة المصدر، منها:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> لفك ترميز حمولة بيانات Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> لإنشاء رموز QR جديدة لكل حساب."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> لمسح رموز QR باستخدام الكاميرا."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> و<a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>، لمواصفات protobuf الخاصة بالتصدير."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "أصبح تطوير هذه الأداة ممكنًا جزئيًا بفضل دعم <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. إذا وجدت هذه الأداة مفيدة، فيُرجى التفكير في <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">تقديم تبرع</a> لدعم عمل Stand."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "من أجل الناس والأماكن التي تحبها"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> لترميز مفاتيح OTP السرية بتنسيق Base32."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "شكر وتقدير"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "كتب الترجمات وراجعها:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "يتيح لك Google Authenticator نقل حساباتك إلى هاتف جديد، لكنه لا يوفر طريقة سهلة لتصديرها إلى تطبيقات أخرى مثل 1Password أو Bitwarden. والسبب أنه يُخفي «المفتاح السري» الأصلي (رمز QR الذي مسحته أول مرة) لكل حساب."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "ومن دون هذه المفاتيح السرية، يعني الانتقال إلى مدير كلمات مرور جديد إعادة ضبط المصادقة الثنائية (2FA) يدويًا لكل حساب على حدة، وهو أمر مرهق للغاية."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "ورغم وجود أدوات أخرى لحل هذه المشكلة، فإنها تتطلب غالبًا خطوات تقنية مثل تشغيل نصوص برمجية أو تثبيت برامج. أما هذه الأداة فمصممة لتكون حلًا بسيطًا وآمنًا يمكن لأي شخص استخدامه."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "لماذا نحتاج إلى هذه الأداة؟"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "اللغة"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "الكود المصدري"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "قراءة الصفحة باللغة الإنجليزية"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "المساعدة في تحسين هذه الترجمة"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "تُرجمت هذه الصفحة آليًا."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "إلغاء"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "إغلاق النافذة"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "الصق عنوان URL من نوع <code>otpauth://</code> أو مفتاحًا سريًا خامًا بتنسيق Base32 (مثل <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "المفتاح السري أو عنوان URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "إضافة الرمز"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "إدخال رمز OTP"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "استخراج المفاتيح السرية لكلمات المرور لمرة واحدة (TOTP/HOTP) من رموز QR الخاصة بتصدير المصادقة الثنائية (2FA) في Google Authenticator أو LastPass. تعمل الأداة بالكامل في متصفحك، ولا يُرسَل أي شيء إلى أي خادم."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "أداة استخراج المفاتيح السرية لكلمات المرور لمرة واحدة – تصدير Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "إغلاق"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>ملاحظة: تحتوي أي لقطات شاشة أو ملفات منزّلة على مفاتيحك السرية غير مشفّرة.</strong> احرص على تخزينها بشكل آمن، أو احذفها عند الانتهاء. ويشمل ذلك حذفها من «سلة المهملات» و«سلة المحذوفات» و«المحذوفة مؤخرًا» وأي نسخ احتياطية للصور على السحابة."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "حسابات OTP المستخرجة"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "تحديد الكل"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "إلغاء تحديد الكل"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "تم تحديد 0"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "إعادة الضبط"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "الأسئلة الشائعة"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "علامات تبويب المعلومات"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "كيف أستخدمها؟"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "ما هذه الأداة؟"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "التبديل إلى المظهر الداكن"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "التبديل إلى المظهر الفاتح"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "فتح أداة تبديل المظهر"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "التبديل إلى مظهر النظام"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "أو اسحب الملفات وأفلتها هنا<br>(صورة، أو ملف تصدير JSON، أو CSV، أو TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "إدخال رمز"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "فتح الملفات"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "مسح رمز QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. التنظيف"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "التصدير من Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "افتح تطبيق Google Authenticator على هاتفك."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "اختر الحسابات التي تريد تصديرها."
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "انتقل إلى القائمة واختر «نقل الحسابات» &gt; «تصدير الحسابات» (على Android: «نقل الرموز» &gt; «تصدير الرموز»)."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. التصدير من تطبيق كلمات المرور لمرة واحدة"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "في LastPass، يمكنك أيضًا اختيار «Export accounts to file» (تصدير الحسابات إلى ملف) واستيراد ذلك الملف بدلًا من ذلك. تدعم هذه الأداة كلا التنسيقين."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "التصدير من LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "افتح تطبيق LastPass Authenticator على هاتفك."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "انقر على رمز الترس واختر «Transfer accounts» (نقل الحسابات) &gt; «Export accounts to QR code» (تصدير الحسابات إلى رمز QR)."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "يمكنك أيضًا النقر على «إدخال رمز» لإدخال مفتاح سري أو عنوان URL للإعداد مباشرةً كنص، وستعرض هذه الأداة رمز QR الأصلي للإعداد."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. استخراج المفاتيح السرية"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "يمكن لهذه الأداة أيضًا قراءة رموز QR فردية للإعداد من أي تطبيق، أو ملف نصي يحتوي على مفتاح سري أو عنوان URL واحد في كل سطر. وهذا يسهّل تحويل المفاتيح السرية من أي مصدر إلى رموز QR قابلة للمسح."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "افتح هذه الأداة على حاسوبك أو على جهاز ثانٍ، وانقر على «مسح رمز QR» لمسح رموز QR الخاصة بالتصدير على هاتفك مباشرةً. هذا هو الخيار الأكثر ملاءمة، ويتجنب تخزين لقطات شاشة لمفاتيحك السرية."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "أو بدلًا من ذلك، التقط لقطة شاشة لكل رمز QR معروض، ثم انقر على «فتح الملفات» أو اسحب لقطة (لقطات) الشاشة وأفلتها على الصفحة."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "تقرأ هذه الأداة رموز QR من ميزة التصدير في Google Authenticator أو LastPass Authenticator، وتعيد إليك المفتاح السري الأصلي لكل حساب. ويمكنك بعد ذلك استخدام هذه المفاتيح السرية لاستيراد حساباتك إلى أي تطبيق مصادقة آخر."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "ستعرض الأداة مفاتيح OTP السرية المستخرجة، ولكل منها رمز QR ومفتاح سري خاص به."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "لنقل الحسابات إلى Google Authenticator أو LastPass Authenticator، حدّدها وانقر على «تصدير إلى Google» أو «تصدير إلى LastPass». ستعرض هذه الأداة رمز QR للنقل يمكنك مسحه باستخدام ذلك التطبيق."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. استخدام مفاتيحك السرية"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "يمكنك الآن استيراد هذه المفاتيح السرية إلى تطبيق المصادقة أو مدير كلمات المرور المفضل لديك."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "انقر على «حفظ بتنسيق CSV» أو «حفظ بتنسيق JSON» للاحتفاظ بنسخة من مفاتيحك السرية. ويمكنك فتح هذه الملفات هنا مرة أخرى لاحقًا لعرض رموز QR الخاصة بك."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "تستخرج هذه الأداة المفاتيح السرية لكلمات المرور لمرة واحدة (OTP)، وهي الرموز المستخدمة في المصادقة الثنائية (2FA)، من تطبيقَي Google Authenticator أو LastPass Authenticator. لا حاجة إلى تثبيت أي برنامج، ولا تغادر أي بيانات جهازك أبدًا."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>تتم جميع عمليات معالجة رموز QR والمفاتيح السرية الخاصة بك بالكامل دون اتصال بالإنترنت، محليًا، هنا في متصفحك.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "إغلاق رسالة الخطأ"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "إغلاق رسالة المعلومات"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "إغلاق رسالة النجاح"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "إغلاق رسالة التحذير"
+    },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "قائم على العدّاد (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "قائم على الوقت (TOTP)"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "المحتوى"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "تم نسخ {subject} إلى الحافظة."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "تعذّر النسخ إلى الحافظة."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "تعذّرت معالجة رمز QR من بث الكاميرا."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "حدث خطأ غير معروف أثناء التصدير."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "الملف ليس صورة صالحة أو تعذّر تحميله."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "تعذّرت معالجة الصورة بسبب قيود أمنية (tainted canvas)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "تنسيق غير صالح"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "يجب أن يكون الإدخال عنوان URL صالحًا لـ OTP، أو JSON من LastPass، أو مفتاحًا سريًا بتنسيق Base32 لا يقل طوله عن 16 حرفًا (الأحرف A-Z والأرقام 2-7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "تنسيق JSON غير صالح: كان من المتوقع مصفوفة من حسابات OTP أو كائن تصدير من LastPass."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "تنسيق JSON لرمز QR من LastPass غير صالح: لم يتم العثور على المصفوفة 'a' (الحسابات)."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "تعذّر فك ترميز رمز QR من LastPass. تنسيق البيانات غير معروف أو تالف."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "رمز QR من LastPass غير صالح: لم يتم العثور على الخاصية 'content' في الحمولة."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "المعلمة 'counter' مفقودة للنوع hotp في عنوان URL من نوع otpauth."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "عنوان URL لـ OTP غير صالح: المعلمة \"data\" مفقودة."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "المعلمة 'secret' مفقودة في عنوان URL من نوع otpauth."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "لم يتم العثور على كاميرا. يُرجى التأكد من توصيل كاميرا."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "تعذّر تحليل حمولة البيانات النهائية. قد تكون تالفة أو بتنسيق غير متوقع."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "حدث خطأ غير متوقع أثناء معالجة الملفات."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "تعذّرت المعالجة."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "تعذّر تشغيل الكاميرا. يُرجى التأكد من توصيل كاميرا ومنح الإذن."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "تعذّر تبديل الكاميرا."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "السطر {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "تعذّر تحليل أي رموز OTP صالحة من النص.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "حدث خطأ غير متوقع. يُرجى المحاولة مرة أخرى أو إعادة تحميل الصفحة."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "حدث خطأ غير معروف."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "نوع الملف غير مدعوم."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "نوع OTP غير مدعوم في عنوان URL: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "تنسيق رمز QR غير مدعوم."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "zero": "لا يدعم LastPass إلا الحسابات المستندة إلى الوقت (TOTP). لم تتم إزالة أي حساب غير متوافق مستند إلى العدّاد من تحديدك. انقر على «تصدير إلى LastPass» مرة أخرى للمتابعة.",
+        "one": "لا يدعم LastPass إلا الحسابات المستندة إلى الوقت (TOTP). تمت إزالة حساب واحد غير متوافق مستند إلى العدّاد من تحديدك. انقر على «تصدير إلى LastPass» مرة أخرى للمتابعة.",
+        "two": "لا يدعم LastPass إلا الحسابات المستندة إلى الوقت (TOTP). تمت إزالة حسابين غير متوافقين مستندين إلى العدّاد من تحديدك. انقر على «تصدير إلى LastPass» مرة أخرى للمتابعة.",
+        "few": "لا يدعم LastPass إلا الحسابات المستندة إلى الوقت (TOTP). تمت إزالة {count} حسابات غير متوافقة مستندة إلى العدّاد من تحديدك. انقر على «تصدير إلى LastPass» مرة أخرى للمتابعة.",
+        "many": "لا يدعم LastPass إلا الحسابات المستندة إلى الوقت (TOTP). تمت إزالة {count} حسابًا غير متوافق مستندًا إلى العدّاد من تحديدك. انقر على «تصدير إلى LastPass» مرة أخرى للمتابعة.",
+        "other": "لا يدعم LastPass إلا الحسابات المستندة إلى الوقت (TOTP). تمت إزالة {count} حساب غير متوافق مستند إلى العدّاد من تحديدك. انقر على «تصدير إلى LastPass» مرة أخرى للمتابعة."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "لم يتم تحديد أي حسابات متوافقة (TOTP) للتصدير إلى LastPass."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "لا توجد بيانات لتصديرها."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "لم يتم تحديد أي حسابات لتصديرها."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "امسح باستخدام Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "امسح باستخدام LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "تمت معالجة رمز QR هذا من قبل."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "مسح بالكاميرا"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "zero": "لم يتم تخطي أي مفتاح سري مكرر.",
+        "one": "تم تخطي مفتاح سري مكرر واحد.",
+        "two": "تم تخطي مفتاحين سريين مكررين.",
+        "few": "تم تخطي {count} مفاتيح سرية مكررة.",
+        "many": "تم تخطي {count} مفتاحًا سريًا مكررًا.",
+        "other": "تم تخطي {count} مفتاح سري مكرر."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "zero": "لم يُستخرج أي مفتاح سري.",
+        "one": "تم استخراج مفتاح سري واحد.",
+        "two": "تم استخراج مفتاحين سريين.",
+        "few": "تم استخراج {count} مفاتيح سرية.",
+        "many": "تم استخراج {count} مفتاحًا سريًا.",
+        "other": "تم استخراج {count} مفتاح سري."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "إدخال يدوي"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "لم يتم العثور على رمز QR."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "لم يتم العثور على مفاتيح OTP سرية."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "لم يتم العثور على مفاتيح OTP سرية في رمز QR."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "غير متوفر"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "عرض رمز QR بحجم أكبر لـ {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "تم تحديد {count} من {total}"
+    }
+  }
+}

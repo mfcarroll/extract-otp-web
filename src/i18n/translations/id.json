@@ -495,6 +495,14 @@
       "source": "9c4fd921c4",
       "text": "Tutup peringatan"
     },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "Berbasis penghitung (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "Berbasis waktu (TOTP)"
+    },
     "copy.content": {
       "source": "47bd29075f",
       "text": "Konten"

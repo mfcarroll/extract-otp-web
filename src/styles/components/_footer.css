@@ -50,13 +50,11 @@
   cursor: pointer;
 }
 
-/* Invisible bridge over the gap between the button and the open menu, so
-   moving the pointer up to the menu doesn't leave the switcher and close it. */
-.language-toggle {
-  position: relative;
-}
-
-.language-toggle::before {
+/* While open, an invisible bridge over the gap between the switcher and the
+   menu, so moving the pointer up to the menu doesn't leave the switcher and
+   close it. It spans the whole switcher (separator included), since hovering
+   any of it opens the menu. */
+.language-switcher:has(> .language-toggle[aria-expanded='true'])::before {
   content: '';
   position: absolute;
   left: 0;
@@ -99,7 +97,7 @@
   color: var(--text-color);
   text-decoration: none;
   white-space: nowrap;
-  text-align: left;
+  text-align: start;
 }
 
 .footer-content .language-menu a:hover {

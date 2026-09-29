@@ -44,7 +44,7 @@ export function addUploadLog(
   const logList = $<HTMLUListElement>('#upload-log-list');
   const logItem = document.createElement('li');
   logItem.className = `log-item log-item--${status}`;
-  logItem.innerHTML = `<i class="fa fa-file"></i><span class="log-file-name">${escapeHtml(
+  logItem.innerHTML = `<i class="fa fa-file"></i><span class="log-file-name" dir="auto">${escapeHtml(
     fileName
   )}</span><span class="log-filler"></span><span class="log-message">${escapeHtml(
     message

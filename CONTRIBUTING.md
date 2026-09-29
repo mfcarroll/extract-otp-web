@@ -93,6 +93,8 @@ The build generates a separate page for each language, so search engines index e
 
 The development server serves every language at the same addresses.
 
+Right-to-left languages such as Arabic and Hebrew get `dir="rtl"`, worked out from `lang`, and the layout mirrors itself. The CSS uses logical properties (`margin-inline-start`, `inset-inline-end`, `text-align: start`) rather than left and right, so keep to those. Secrets, URLs and code stay left to right. In a translation, follow any English app label with its translation in parentheses, so the steps of a menu path stay in reading order.
+
 Every translation records a fingerprint (`source`) of the English it was made from. When the English changes, the translation is reported as out of date. Translations may only use a few inline tags (`<a>`, `<strong>`, `<em>`, `<code>`, `<br>`), and links may only point where the English already does. Untranslated or invalid strings fall back to English.
 
 ### Translation commands
@@ -107,6 +109,10 @@ Every translation records a fingerprint (`source`) of the English it was made fr
 | `npm run i18n -- review-export es`                           | Write `translation-review-es.csv`, the reviewer spreadsheet described above.                                              |
 | `npm run i18n -- review-import es translation-review-es.csv` | Apply a returned spreadsheet: shows each change and any comments, and rejects anything invalid without changing the file. |
 | `npm run i18n -- confirm all <key>`                          | Mark translations as still correct after an English edit that doesn't affect them, such as a typo fix.                    |
+
+### App labels
+
+The instructions quote Google Authenticator's menu labels, which differ between iOS ("Transfer accounts" > "Export accounts") and Android ("Transfer codes" > "Export codes"). [`tools/app-labels/google-authenticator.json`](tools/app-labels/google-authenticator.json) has both, read from the apps in 49 languages, with tools to refresh them. LastPass Authenticator's labels are in [`tools/app-labels/lastpass-authenticator.json`](tools/app-labels/lastpass-authenticator.json); it's only translated into a few languages, so in the others, quote its English labels with a translation in brackets.
 
 ### Machine translations
 
