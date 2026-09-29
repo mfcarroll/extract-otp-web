@@ -1,0 +1,692 @@
+{
+  "language": {
+    "name": "हिन्दी",
+    "lang": "hi",
+    "hreflang": "hi",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "वन-टाइम पासवर्ड सीक्रेट एक्सट्रैक्टर"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "कैमरा चुनें"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "कैमरा बदलें"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "QR कोड स्कैन करें"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "कॉपी हो गया!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "कॉपी करने के लिए Enter या Space दबाएँ।"
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "सीक्रेट कॉपी करें"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "कॉपी करें"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "URL कॉपी करें"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "काउंटर:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "जारीकर्ता:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "नाम:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "सीक्रेट:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "बड़ा QR कोड दिखाएँ"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "बड़ा करने के लिए टैप करें"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "प्रकार:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "यह एक ड्राफ़्ट अनुवाद है जिसकी अभी समीक्षा की जा रही है, और इसमें गलतियाँ हो सकती हैं।"
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Google में एक्सपोर्ट करें"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "LastPass में एक्सपोर्ट करें"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "CSV के रूप में सेव करें"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "JSON के रूप में सेव करें"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "यह टूल <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> ने बनाया है, जो एक डेवलपर हैं और Google Authenticator से 1Password में OTP कोड माइग्रेट करने की प्रक्रिया से परेशान थे।"
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "इसे किसने बनाया?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator आपके खातों को सेट अप करने में इस्तेमाल हुए मूल सीक्रेट देखना मुश्किल बना देता है। इसके बजाय, यह एक एक्सपोर्ट QR कोड देता है जिसमें आपके सभी खाते एक साथ बंडल होते हैं। इससे नए डिवाइस पर ट्रांसफ़र करना आसान हो जाता है, लेकिन किसी दूसरे ऑथेंटिकेटर ऐप पर जाना मुश्किल। LastPass हर खाते के लिए अलग QR कोड देता है, जो एक बड़ा सुधार है, लेकिन यह टेक्स्ट सीक्रेट सिर्फ़ JSON कोड फ़ॉर्मैट में देता है। इसके विपरीत, 1Password जैसे ऐप मूल सीक्रेट को आसानी से उपलब्ध कराते हैं, जिससे दूसरे 2FA ऐप में ट्रांसफ़र करना आसान हो जाता है।"
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Google Authenticator मेरे मूल QR कोड क्यों नहीं दिखाता?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "आप Google Authenticator या LastPass Authenticator की एक्सपोर्ट सुविधा के QR कोड अपने कैमरे से स्कैन करते हैं, या उनके स्क्रीनशॉट (या LastPass की एक्सपोर्ट फ़ाइल) देते हैं। यह टूल उन QR कोड को—यहीं आपके ब्राउज़र में—पढ़ता है और आपको हर खाते का मूल सीक्रेट वापस देता है। फिर आप इन सीक्रेट का इस्तेमाल करके अपने खातों को किसी भी दूसरे ऑथेंटिकेटर ऐप में इंपोर्ट कर सकते हैं।"
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "यह कैसे काम करता है?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass आपके सभी खातों को एक ही QR कोड में रखता है, और अगर आपके बहुत सारे खाते हैं, तो QR कोड के बारीक हिस्से बहुत छोटे और पढ़ने में मुश्किल हो सकते हैं। Google Authenticator इस समस्या से बचने के लिए एक से ज़्यादा कोड देता है, जिनमें से हर एक में कुछ खाते होते हैं। अच्छी बात यह है कि LastPass आपको एक JSON फ़ाइल एक्सपोर्ट करने देता है, जिसे यह टूल भी पढ़ सकता है। अगर आपको LastPass के साथ समस्या आ रही है, तो बस JSON फ़ाइल सेव करें और उसके बजाय उसे इंपोर्ट करें।"
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "मेरा LastPass QR कोड स्कैन नहीं हो रहा!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "यह बहुत अच्छा सवाल है, और <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Google Authenticator से इंपोर्ट करने के बारे में 1Password कम्युनिटी की चर्चा\">दूसरों</a> ने भी यह <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"1Password में मौजूदा 2FA जोड़ने के बारे में Reddit पर चर्चा\">पूछा</a> है। इसकी एक वजह यह बताई गई है कि Google का एक्सपोर्ट फ़ॉर्मैट बदल सकता है। हालाँकि, यह फ़ॉर्मैट सालों से स्थिर है, और दूसरे ऐप (जैसे <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) बिना किसी समस्या के इसे सपोर्ट करते हैं। ऐसा लगता है कि 1Password जैसे पासवर्ड मैनेजर आसानी से सीधे इंपोर्ट को सपोर्ट <em>कर सकते हैं</em>, लेकिन उन्होंने ऐसा न करने का फ़ैसला किया है।"
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "1Password, Google Authenticator से इंपोर्ट क्यों नहीं कर सकता?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "कृपया इस टूल से जुड़ी किसी भी समस्या की रिपोर्ट <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a> पर करें।"
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "मैं किसी समस्या की रिपोर्ट कैसे करूँ?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "सबसे ज़्यादा निजता के लिए, इस टूल को अपने कंप्यूटर या किसी दूसरे डिवाइस पर खोलें, और स्क्रीनशॉट लिए बिना अपने फ़ोन पर दिख रहे एक्सपोर्ट QR कोड को सीधे स्कैन करने के लिए “QR स्कैन करें” पर क्लिक करें।"
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "हाँ। सुरक्षा और निजता सबसे बड़ी प्राथमिकताएँ हैं। <strong>आप यहाँ जो कुछ भी करते हैं, वह कभी भी आपके कंप्यूटर या मोबाइल डिवाइस से बाहर नहीं जाता।</strong> सारी प्रोसेसिंग स्थानीय रूप से, ऑफ़लाइन, सीधे आपके ब्राउज़र में होती है। आपके QR कोड की इमेज और सीक्रेट कभी भी किसी सर्वर पर नहीं भेजे जाते।"
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "यह टूल ओपन-सोर्स है और <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">इसके कोड की जाँच कोई भी कर सकता है</a>, ताकि इसकी सुरक्षा और कार्यप्रणाली की पुष्टि की जा सके। यह GitHub Pages पर होस्ट किया गया है, जो एक <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">सुरक्षित और पारदर्शी डिप्लॉयमेंट प्रक्रिया</a> देता है।"
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "क्या अपने QR कोड “अपलोड” करना सुरक्षित है?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "इस टूल को बनाने के दौरान <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> और <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> का इस्तेमाल किया गया। AI से बनाए गए सभी कोड की सावधानी से मैन्युअल समीक्षा की गई है।"
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, इसी समस्या का एक और Python स्क्रिप्ट समाधान।"
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a> की Python स्क्रिप्ट, जिस पर यह टूल आधारित है।"
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "इन बेहतरीन प्रोजेक्ट में योगदान देने वाले सभी लोगों का धन्यवाद!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "UI में इस्तेमाल किए गए आइकॉन के लिए <a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>।"
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "इमेज से QR कोड डिकोड करने के लिए <a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>।"
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "यूज़र इंटरफ़ेस और QR कोड प्रोसेसिंग इन ओपन-सोर्स लाइब्रेरी की मदद से काम करते हैं:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "इमेज का उच्च-गुणवत्ता वाला आकार बदलने के लिए <a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>।"
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "यह टूल कई ओपन-सोर्स प्रोजेक्ट के काम पर आधारित है, जिनमें ये शामिल हैं:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "Google Authenticator के डेटा पेलोड को डिकोड करने के लिए <a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>।"
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "हर खाते के लिए नए QR कोड बनाने के लिए <a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>।"
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "कैमरे से QR कोड स्कैन करने के लिए <a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>।"
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "एक्सपोर्ट के protobuf स्पेसिफ़िकेशन के लिए <a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> और <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>।"
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "इस टूल का विकास कुछ हद तक <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a> के सहयोग से संभव हुआ। अगर आपको यह उपयोगी लगे, तो कृपया Stand के काम में सहयोग के लिए <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">दान करने</a> पर विचार करें।"
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "उन लोगों और जगहों के लिए जिनसे आप प्यार करते हैं"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "OTP सीक्रेट को Base32 में एनकोड करने के लिए <a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>।"
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "आभार"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "अनुवाद इन्होंने लिखे और इनकी समीक्षा की:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator आपको अपने खाते नए फ़ोन पर ट्रांसफ़र करने देता है, लेकिन उन्हें 1Password या Bitwarden जैसे दूसरे ऐप में एक्सपोर्ट करने का कोई आसान तरीका नहीं देता। ऐसा इसलिए है क्योंकि यह हर खाते का मूल “सीक्रेट” (वह QR कोड जिसे आपने पहली बार स्कैन किया था) छिपा देता है।"
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "इन सीक्रेट के बिना, किसी नए पासवर्ड मैनेजर पर जाने का मतलब है हर एक खाते के लिए 2FA को मैन्युअल रूप से फिर से सेट अप करना, जो बहुत बड़ा सिरदर्द है।"
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "हालाँकि इस समस्या को हल करने के लिए दूसरे टूल मौजूद हैं, लेकिन उनमें अक्सर स्क्रिप्ट चलाने या सॉफ़्टवेयर इंस्टॉल करने जैसे तकनीकी कदम उठाने पड़ते हैं। यह टूल एक आसान और सुरक्षित समाधान के रूप में बनाया गया है, जिसका इस्तेमाल कोई भी कर सकता है।"
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "इसकी ज़रूरत क्यों है?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "भाषा"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "सोर्स कोड"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "इसे अंग्रेज़ी में पढ़ें"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "इस अनुवाद को बेहतर बनाने में मदद करें"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "इस पेज का अनुवाद अपने-आप किया गया है।"
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "रद्द करें"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "विंडो बंद करें"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "कोई <code>otpauth://</code> URL या रॉ Base32 सीक्रेट कुंजी चिपकाएँ (जैसे, <code>JBSW Y3DP EHPK 3PXP</code>)।"
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "सीक्रेट कुंजी या URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "कोड जोड़ें"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "OTP कोड डालें"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Google Authenticator या LastPass के 2FA एक्सपोर्ट QR कोड से TOTP/HOTP वन-टाइम पासवर्ड सीक्रेट निकालें। यह पूरी तरह से आपके ब्राउज़र में चलता है; कुछ भी किसी सर्वर पर नहीं भेजा जाता।"
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "वन-टाइम पासवर्ड सीक्रेट एक्सट्रैक्टर – Google Authenticator एक्सपोर्ट"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "बंद करें"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>ध्यान दें: किसी भी स्क्रीनशॉट या डाउनलोड की गई फ़ाइल में आपके सीक्रेट बिना एन्क्रिप्शन के मौजूद होते हैं।</strong> इन्हें सुरक्षित रूप से स्टोर करना पक्का करें, या काम पूरा होने पर इन्हें डिलीट कर दें। इसमें इन्हें आपके “ट्रैश”, “रीसायकल बिन”, “हाल ही में डिलीट किए गए” और किसी भी क्लाउड फ़ोटो बैकअप से डिलीट करना भी शामिल है।"
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "निकाले गए OTP खाते"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "सभी चुनें"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "कोई नहीं चुनें"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 चुने गए"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "रीसेट करें"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "आम सवाल"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "जानकारी वाले टैब"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "इस्तेमाल कैसे करें?"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "यह क्या है?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "डार्क थीम पर स्विच करें"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "लाइट थीम पर स्विच करें"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "थीम स्विचर खोलें"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "सिस्टम थीम पर स्विच करें"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "या फ़ाइलों को खींचकर यहाँ छोड़ें<br>(इमेज, JSON एक्सपोर्ट, CSV या TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "कोड डालें"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "फ़ाइलें खोलें"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "QR स्कैन करें"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. सफ़ाई करें"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Google Authenticator से एक्सपोर्ट करें"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "अपने फ़ोन पर Google Authenticator ऐप खोलें।"
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "वे खाते चुनें जिन्हें आप एक्सपोर्ट करना चाहते हैं।"
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "मेन्यू में जाएँ और “Transfer accounts” &gt; “Export accounts” चुनें (Android पर: “कोड ट्रांसफ़र करें” &gt; “कोड एक्सपोर्ट करें”)।"
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. अपने वन-टाइम पासवर्ड ऐप से एक्सपोर्ट करें"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "LastPass में, आप “Export accounts to file” (खातों को फ़ाइल में एक्सपोर्ट करें) भी चुन सकते हैं और उसके बजाय वह फ़ाइल इंपोर्ट कर सकते हैं। यह टूल दोनों फ़ॉर्मैट को सपोर्ट करता है।"
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "LastPass से एक्सपोर्ट करें"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "अपने फ़ोन पर LastPass Authenticator खोलें।"
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "कॉग (गियर) आइकॉन पर टैप करें और “Transfer accounts” (खाते ट्रांसफ़र करें) &gt; “Export accounts to QR code” (खातों को QR कोड में एक्सपोर्ट करें) चुनें।"
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "आप “कोड डालें” पर क्लिक करके कोई सीक्रेट कुंजी या सेटअप URL सीधे टेक्स्ट के रूप में भी डाल सकते हैं, और यह टूल आपका मूल सेटअप QR कोड दिखाएगा।"
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. सीक्रेट निकालें"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "यह टूल किसी भी ऐप के अलग-अलग सेटअप QR कोड, या ऐसी टेक्स्ट फ़ाइल भी पढ़ सकता है जिसकी हर लाइन में एक सीक्रेट कुंजी या URL हो। इससे कहीं से भी मिले सीक्रेट को स्कैन किए जा सकने वाले QR कोड में बदलना आसान हो जाता है।"
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "इस टूल को अपने कंप्यूटर या किसी दूसरे डिवाइस पर खोलें, और अपने फ़ोन पर दिख रहे एक्सपोर्ट QR कोड को सीधे स्कैन करने के लिए “QR स्कैन करें” पर क्लिक करें। यह सबसे सुविधाजनक विकल्प है, और इससे आपको अपने सीक्रेट के स्क्रीनशॉट सेव नहीं करने पड़ते।"
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "इसके अलावा, दिखाए गए हर QR कोड का स्क्रीनशॉट लें, फिर “फ़ाइलें खोलें” पर क्लिक करें या अपने स्क्रीनशॉट को खींचकर इस पेज पर छोड़ें।"
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "यह टूल Google Authenticator या LastPass Authenticator की एक्सपोर्ट सुविधा से QR कोड पढ़ता है और आपको हर खाते का मूल सीक्रेट वापस देता है। फिर आप इन सीक्रेट का इस्तेमाल करके अपने खातों को किसी भी दूसरे ऑथेंटिकेटर ऐप में इंपोर्ट कर सकते हैं।"
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "टूल निकाले गए OTP सीक्रेट दिखाएगा, हर एक अपने QR कोड और सीक्रेट कुंजी के साथ।"
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "खातों को Google Authenticator या LastPass Authenticator में ले जाने के लिए, उन्हें चुनें और “Google में एक्सपोर्ट करें” या “LastPass में एक्सपोर्ट करें” पर क्लिक करें। यह टूल एक ट्रांसफ़र QR कोड दिखाएगा जिसे आप उस ऐप से स्कैन कर सकते हैं।"
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. अपने सीक्रेट का इस्तेमाल करें"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "अब आप इन सीक्रेट को अपने पसंदीदा ऑथेंटिकेटर ऐप या पासवर्ड मैनेजर में इंपोर्ट कर सकते हैं।"
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "अपने सीक्रेट की एक कॉपी रखने के लिए “CSV के रूप में सेव करें” या “JSON के रूप में सेव करें” पर क्लिक करें। अपने QR कोड दिखाने के लिए आप बाद में इन फ़ाइलों को यहाँ फिर से खोल सकते हैं।"
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "यह टूल Google Authenticator या LastPass Authenticator ऐप से वन-टाइम पासवर्ड (OTP) सीक्रेट निकालता है, यानी वे कोड जिनका इस्तेमाल टू-फ़ैक्टर ऑथेंटिकेशन (2FA) के लिए किया जाता है। कोई सॉफ़्टवेयर इंस्टॉल करने की ज़रूरत नहीं है, और कोई भी डेटा कभी भी आपके डिवाइस से बाहर नहीं जाता।"
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>आपके QR कोड और सीक्रेट की सारी प्रोसेसिंग पूरी तरह से ऑफ़लाइन, स्थानीय रूप से, यहीं आपके ब्राउज़र में होती है।</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "गड़बड़ी का मैसेज बंद करें"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "जानकारी का मैसेज बंद करें"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "सफलता का मैसेज बंद करें"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "चेतावनी का मैसेज बंद करें"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "सामग्री"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject} क्लिपबोर्ड पर कॉपी हो गया।"
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "क्लिपबोर्ड पर कॉपी नहीं किया जा सका।"
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "कैमरा फ़ीड से QR कोड प्रोसेस नहीं किया जा सका।"
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "एक्सपोर्ट के दौरान एक अज्ञात गड़बड़ी हुई।"
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "फ़ाइल एक मान्य इमेज नहीं है या लोड नहीं की जा सकी।"
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "सुरक्षा प्रतिबंधों (tainted canvas) के कारण इमेज प्रोसेस नहीं की जा सकी।"
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "अमान्य फ़ॉर्मैट"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "इनपुट एक मान्य OTP URL, LastPass JSON, या कम से कम 16 वर्णों की Base32 सीक्रेट कुंजी (अक्षर A-Z, संख्याएँ 2-7) होना चाहिए।"
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "अमान्य JSON फ़ॉर्मैट: OTP खातों का ऐरे या LastPass एक्सपोर्ट ऑब्जेक्ट अपेक्षित था।"
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "अमान्य LastPass QR JSON फ़ॉर्मैट: 'a' (खाते) ऐरे नहीं मिला।"
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "LastPass QR कोड डिकोड नहीं किया जा सका। डेटा फ़ॉर्मैट पहचाना नहीं गया या वह खराब है।"
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "अमान्य LastPass QR कोड: पेलोड में 'content' प्रॉपर्टी नहीं मिली।"
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "otpauth URL में hotp प्रकार के लिए 'counter' पैरामीटर मौजूद नहीं है।"
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "अमान्य OTP URL: “data” पैरामीटर मौजूद नहीं है।"
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "otpauth URL में 'secret' पैरामीटर मौजूद नहीं है।"
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "कोई कैमरा नहीं मिला। कृपया पक्का करें कि आपका कैमरा कनेक्ट है।"
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "अंतिम डेटा पेलोड पार्स नहीं किया जा सका। हो सकता है कि वह खराब हो या किसी अनपेक्षित फ़ॉर्मैट में हो।"
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "फ़ाइलें प्रोसेस करते समय एक अनपेक्षित गड़बड़ी हुई।"
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "प्रोसेसिंग विफल रही।"
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "कैमरा शुरू नहीं किया जा सका। कृपया पक्का करें कि आपका कैमरा कनेक्ट है और आपने अनुमति दी है।"
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "कैमरा नहीं बदला जा सका।"
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "लाइन {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "टेक्स्ट से कोई भी मान्य OTP पार्स नहीं किया जा सका।\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "एक अनपेक्षित गड़बड़ी हुई। कृपया फिर से कोशिश करें या पेज को रीफ़्रेश करें।"
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "एक अज्ञात गड़बड़ी हुई।"
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "यह फ़ाइल प्रकार समर्थित नहीं है।"
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "URL में असमर्थित OTP प्रकार: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "यह QR कोड समर्थित फ़ॉर्मैट में नहीं है।"
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "LastPass सिर्फ़ समय-आधारित (TOTP) खातों को सपोर्ट करता है। {count} असंगत काउंटर-आधारित खाता आपके चुने गए खातों से हटा दिया गया। जारी रखने के लिए “LastPass में एक्सपोर्ट करें” पर फिर से क्लिक करें।",
+        "other": "LastPass सिर्फ़ समय-आधारित (TOTP) खातों को सपोर्ट करता है। {count} असंगत काउंटर-आधारित खाते आपके चुने गए खातों से हटा दिए गए। जारी रखने के लिए “LastPass में एक्सपोर्ट करें” पर फिर से क्लिक करें।"
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "LastPass एक्सपोर्ट के लिए कोई संगत (TOTP) खाता नहीं चुना गया है।"
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "एक्सपोर्ट करने के लिए कोई डेटा नहीं है।"
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "एक्सपोर्ट करने के लिए कोई खाता नहीं चुना गया है।"
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Google Authenticator से स्कैन करें"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "LastPass Authenticator से स्कैन करें"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "QR कोड पहले ही प्रोसेस किया जा चुका है।"
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "कैमरा स्कैन"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "{count} डुप्लिकेट सीक्रेट छोड़ा गया।",
+        "other": "{count} डुप्लिकेट सीक्रेट छोड़े गए।"
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "{count} सीक्रेट निकाला गया।",
+        "other": "{count} सीक्रेट निकाले गए।"
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "मैन्युअल इनपुट"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "कोई QR कोड नहीं मिला।"
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "कोई OTP सीक्रेट नहीं मिला।"
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "QR कोड में कोई OTP सीक्रेट नहीं मिला।"
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "उपलब्ध नहीं"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "{title} के लिए बड़ा QR कोड दिखाएँ"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{total} में से {count} चुने गए"
+    }
+  }
+}
