@@ -1,0 +1,697 @@
+{
+  "language": {
+    "name": "简体中文",
+    "lang": "zh-Hans",
+    "hreflang": "zh-Hans",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "n66g4",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "一次性密码密钥提取器"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "选择摄像头"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "切换摄像头"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "扫描二维码"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "已复制！"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "按 Enter 或空格键复制。"
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "复制密钥"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "复制"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "复制链接"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "计数器："
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "签发方："
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "名称："
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "二维码："
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "密钥："
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "查看放大二维码"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "点击放大"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "类型："
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "链接："
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "这是一份仍在审校中的翻译草稿，可能包含错误。"
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "导出到 Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "导出到 LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "保存为 CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "保存为 JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "由 <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> 开发。他在把 OTP 从 Google Authenticator 迁移到 1Password 时感到流程太繁琐，于是做了这个工具。"
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "这个工具是谁做的？"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator 不容易查看原始密钥，而是提供一个打包多个账号的导出二维码。这对换机很方便，但对迁移到其他认证器并不友好。LastPass 会给每个账号单独二维码，这是进步，但文本形式的密钥只以 JSON 格式提供。相比之下，像 1Password 这类应用更容易查看原始密钥，迁移更简单。"
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "为什么 Google Authenticator 不显示原始二维码？"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "你可以用摄像头扫描 Google Authenticator 或 LastPass Authenticator 导出功能生成的二维码，也可以提供这些二维码的截图（或 LastPass 导出文件）。本工具会在你的浏览器中读取这些二维码，并还原每个账号的原始密钥。之后你可以用这些密钥把账号导入任何其他认证器应用。"
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "它是如何工作的？"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass 常把所有账号塞进一个二维码，账号多时二维码细节会过小，导致难以识别。Google Authenticator 会分成多个二维码来缓解。好消息是 LastPass 支持导出 JSON 文件，本工具也支持导入；如果扫码困难，建议改用 JSON 文件导入。"
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "LastPass 二维码扫不出来怎么办？"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "这是个好问题，也有<a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"1Password 社区关于从 Google Authenticator 导入的讨论\">其他人</a><a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Reddit 上关于把现有 2FA 添加到 1Password 的讨论\">问过</a>。一种说法是担心 Google 的导出格式可能会改变。然而，这个格式多年来一直很稳定，其他应用（例如<a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>）也能毫无问题地支持它。看起来像 1Password 这样的密码管理器<em>完全可以</em>轻松支持直接导入，只是选择了不这样做。"
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "为什么 1Password 不能直接导入 Google Authenticator？"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "请在 <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub Issues</a> 提交问题。"
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "怎么反馈问题？"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "为了最大程度保护隐私，请在电脑或另一台设备上打开本工具，点击“扫描二维码”直接扫描手机上的导出二维码，无需截图。"
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "安全。隐私和安全是第一优先。<strong>你在这里的所有操作都不会离开你的设备。</strong>所有处理都在浏览器本地离线完成，二维码和密钥不会发送到任何服务器。"
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "项目是开源的，任何人都可以查看<a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">源码</a>，以验证它的安全性和实现方式。本工具托管在 GitHub Pages，提供<a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">安全、透明的发布流程</a>。"
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "“上传”我的二维码安全吗？"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "开发过程中使用了 <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> 和 <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a>，所有 AI 生成的代码都经过了仔细的人工审阅。"
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>（另一个 Python 方案）。"
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>（Roland Kurmann 的 Python 脚本，本项目的重要基础）。"
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "感谢这些优秀项目的所有贡献者！"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>：提供界面中使用的图标。"
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>：从图片中识别二维码。"
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "界面与二维码处理也使用了优秀的开源库："
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>：高质量地缩放图片。"
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "本工具基于多个开源项目，包括："
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>：解码 Google Authenticator 的数据。"
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>：为每个账号生成新的二维码。"
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>：通过摄像头扫描二维码。"
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> 和 <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>，提供了导出数据的 protobuf 规范。"
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "本工具的开发部分得到了 <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a> 的支持。如果你觉得它有用，请考虑<a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">捐款</a>支持 Stand 的工作。"
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "为了你所爱的人和地方"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>：对 OTP 密钥进行 Base32 编码。"
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "致谢"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "翻译撰写与审校："
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator 可以把账号转移到新手机，但没有提供简单的方法把它们导出到 1Password 或 Bitwarden 等其他应用。这是因为它隐藏了每个账号的原始“密钥”（也就是你最初扫描的二维码）。"
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "如果拿不到这些密钥，迁移到新密码管理器就要逐个网站重新配置 2FA，非常麻烦。"
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "虽然已有一些解决方案，但通常需要脚本或安装软件。这个工具的目标是：简单、安全、人人可用。"
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "为什么需要这个工具？"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "语言"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "源码"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "阅读英文版"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "帮助改进此翻译"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "本页面为自动翻译。"
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "取消"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "关闭对话框"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "可粘贴 <code>otpauth://</code> 链接，或直接粘贴 Base32 密钥（例如 <code>JBSW Y3DP EHPK 3PXP</code>）。"
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "密钥或 URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "添加"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "输入 OTP 代码"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "从 Google Authenticator 或 LastPass 的 2FA 导出二维码中提取 TOTP/HOTP 一次性密码密钥。全部在浏览器中运行，不会上传任何内容。"
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "一次性密码密钥提取器 – Google Authenticator 导出"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "关闭"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>注意：任何截图或下载的文件都包含未加密的密钥。</strong>请妥善保管，或在用完后删除。这包括从“废纸篓”“回收站”“最近删除”以及所有云端照片备份中删除。"
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "提取出的 OTP 账号"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "全选"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "全不选"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "已选择 0 个"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "重置"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "常见问题"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "信息标签页"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "怎么使用？"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "这是什么？"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "切换为深色主题"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "切换为浅色主题"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "打开主题切换器"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "切换为系统主题"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "或将文件拖拽到这里<br>（图片、json 导出、csv 或 txt）"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "手动输入"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "打开文件"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "扫描二维码"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. 清理"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "从 Google Authenticator 导出"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "在手机上打开 Google Authenticator。"
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "勾选你要导出的账号。"
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "进入菜单，选择“转移账号” &gt; “导出账号”（Android 上为“转移动态密码” &gt; “导出验证码”）。"
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. 从你的一次性密码应用导出"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "LastPass 也支持 “Export accounts to file”（导出账号到文件），本工具同样支持导入该格式。"
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "从 LastPass 导出"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "打开 LastPass Authenticator。"
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "点击设置图标，选择 “Transfer accounts”（转移账号）&gt; “Export accounts to QR code”（导出账号到二维码）。"
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "你也可以点击“手动输入”，以文本形式直接输入密钥或设置 URL，本工具会显示你原始的设置二维码。"
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. 提取密钥"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "本工具也可以读取任何应用的单个设置二维码，或每行一个密钥或 URL 的文本文件。这样可以轻松地把任何来源的密钥转换成可扫描的二维码。"
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "在电脑或另一台设备上打开本工具，点击“扫描二维码”，直接扫描手机上显示的导出二维码。这是最方便的方式，也不需要保存包含密钥的截图。"
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "或者，对显示的每个二维码截图，然后点击“打开文件”，或将截图拖放到页面上。"
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "这个工具会读取 Google Authenticator 或 LastPass Authenticator 导出的二维码，并还原每个账号的原始密钥。随后你可以将这些密钥导入其他认证器应用。"
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "工具会展示每个账号提取出的 OTP 密钥和对应二维码。"
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "如果要把账号转移到 Google Authenticator 或 LastPass Authenticator，请选中这些账号并点击“导出到 Google”或“导出到 LastPass”。本工具会显示一个转移二维码，用对应的应用扫描即可。"
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. 使用密钥"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "你可以将这些密钥导入你偏好的认证器或密码管理器。"
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "点击“保存为 CSV”或“保存为 JSON”可以保留一份密钥副本。以后可以在这里重新打开这些文件，再次显示你的二维码。"
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "本工具可以从 Google Authenticator 或 LastPass Authenticator 应用中提取一次性密码（OTP）密钥，也就是用于双重身份验证（2FA）的代码。无需安装任何软件，任何数据都不会离开你的设备。"
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>二维码和密钥的处理全部在你的浏览器本地离线完成。</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "关闭错误消息"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "关闭提示消息"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "关闭成功消息"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "关闭警告消息"
+    },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "基于计数器 (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "基于时间 (TOTP)"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "内容"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject}已复制到剪贴板。"
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "复制到剪贴板失败。"
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "处理摄像头二维码失败。"
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "导出时发生未知错误。"
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "文件不是有效的图片，或无法加载。"
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "由于安全限制（画布被污染），无法处理该图片。"
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "格式无效"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "输入内容必须是有效 OTP URL、LastPass JSON，或至少 16 个字符的 Base32 密钥（A-Z 与 2-7）。"
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "JSON 格式无效：应为 OTP 数组或 LastPass 导出对象。"
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "LastPass 二维码 JSON 格式无效：未找到 'a'（账号）数组。"
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "无法解析 LastPass 二维码，数据格式无法识别或已损坏。"
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "LastPass 二维码无效：负载中缺少 'content' 字段。"
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "hotp 类型的 otpauth URL 缺少 'counter' 参数。"
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "OTP URL 无效：缺少 \"data\" 参数。"
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "otpauth URL 缺少 'secret' 参数。"
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "未检测到摄像头，请确认设备已连接摄像头。"
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "无法解析最终的数据负载，数据可能已损坏或格式不符合预期。"
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "处理文件时发生意外错误。"
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "处理失败。"
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "无法启动摄像头，请确认已连接摄像头并已授权访问。"
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "切换摄像头失败。"
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "第 {line} 行：{message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "无法从文本中解析出任何有效的 OTP。\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "发生了意外错误，请重试或刷新页面。"
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "发生未知错误。"
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "不支持的文件类型。"
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "URL 中的 OTP 类型不受支持：{type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "二维码格式不受支持。"
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "other": "LastPass 仅支持基于时间的（TOTP）账号。已从你的选择中移除 {count} 个不兼容的基于计数器的账号。请再次点击“导出到 LastPass”继续。"
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "未选择可导出的 TOTP 账号（LastPass 仅支持 TOTP）。"
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "没有可导出的数据。"
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "未选择要导出的账号。"
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "请使用 Google Authenticator 扫描"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "请使用 LastPass Authenticator 扫描"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "该二维码已处理过。"
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "摄像头扫描"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "other": "已跳过 {count} 个重复的密钥。"
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "other": "已提取 {count} 个密钥。"
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "手动输入"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "未识别到二维码。"
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "未找到 OTP 密钥。"
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "二维码中未找到 OTP 密钥。"
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "未提供"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "查看 {title} 的放大二维码"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "已选择 {count} / {total}"
+    }
+  }
+}
