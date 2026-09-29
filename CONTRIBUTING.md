@@ -93,6 +93,8 @@ The build generates a separate page for each language, so search engines index e
 
 The development server serves every language at the same addresses.
 
+Right-to-left languages such as Arabic and Hebrew get `dir="rtl"`, worked out from `lang`, and the layout mirrors itself. The CSS uses logical properties (`margin-inline-start`, `inset-inline-end`, `text-align: start`) rather than left and right, so keep to those. Secrets, URLs and code stay left to right. In a translation, follow any English app label with its translation in parentheses, so the steps of a menu path stay in reading order.
+
 Every translation records a fingerprint (`source`) of the English it was made from. When the English changes, the translation is reported as out of date. Translations may only use a few inline tags (`<a>`, `<strong>`, `<em>`, `<code>`, `<br>`), and links may only point where the English already does. Untranslated or invalid strings fall back to English.
 
 ### Translation commands
