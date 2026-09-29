@@ -10,14 +10,17 @@ final class LabelReaderUITests: XCTestCase {
     /// The hamburger menu, top left (its accessibility label is "Info").
     let menuButton = "kOTPAIMainInfoButton"
 
-    /// Languages to read, as iOS language codes. Where the app has no
-    /// translation it falls back to English, which the output flags.
+    /// Languages to read, as iOS language codes: the languages each app lists
+    /// on the App Store, plus regional variants. To check an app's list:
+    /// curl "https://itunes.apple.com/lookup?bundleId=<id>" (languageCodesISO2A).
     let languages = [
-        "en", "fr", "fr-CA", "es", "es-419", "pt-BR", "pt-PT", "de", "it", "nl",
-        "ja", "ko", "zh-Hans", "zh-Hant", "zh-HK", "ru", "uk", "pl", "tr", "id",
-        "ms", "vi", "th", "hi", "bn", "ar", "he", "fa", "ro", "cs", "sk", "hu",
-        "el", "sv", "da", "nb", "fi", "ca", "hr", "bg", "sr", "sl", "lt", "lv",
-        "et", "fil", "ur", "ta", "sw",
+        "en", "ar", "ca", "hr", "cs", "da", "nl", "fi", "fr", "fr-CA", "de", "el",
+        "he", "hu", "id", "it", "ja", "ko", "ms", "nb", "pl", "pt-BR", "pt-PT",
+        "ro", "ru", "zh-Hans", "zh-Hant", "sk", "es", "es-419", "sv", "th", "tr",
+        "uk", "vi",
+    ]
+    let lastPassLanguages = [
+        "en", "nl", "fr", "fr-CA", "de", "it", "pt-BR", "pt-PT", "es", "es-419",
     ]
 
     override func setUp() {
@@ -127,5 +130,92 @@ final class LabelReaderUITests: XCTestCase {
         }
         log("Transfer accounts not found")
         app.terminate()
+    }
+
+    // MARK: - LastPass Authenticator
+
+    let lastPassID = "com.lastpass.authenticator"
+
+    func launchLastPass(_ lang: String) -> XCUIApplication {
+        let app = XCUIApplication(bundleIdentifier: lastPassID)
+        app.terminate()
+        app.launchArguments = ["-AppleLanguages", "(\(lang))", "-AppleLocale", lang.replacingOccurrences(of: "-", with: "_")]
+        app.launch()
+        // Allow time for Face ID or a PIN, if the app asks for one.
+        _ = app.buttons.firstMatch.waitForExistence(timeout: 45)
+        sleep(3)
+        return app
+    }
+
+    /// Discovery, English only: find the settings cog and the Transfer
+    /// accounts screen's export options. Never taps an export option.
+    func testDiscoverLastPass() throws {
+        let app = launchLastPass("en")
+        let height = app.windows.firstMatch.frame.height
+        let chrome = app.descendants(matching: .any).allElementsBoundByIndex.filter {
+            $0.exists && $0.frame.width > 10 && $0.frame.width < 200 && ($0.frame.maxY < 200 || $0.frame.minY > height - 200)
+        }
+        for (i, e) in chrome.enumerated() {
+            log("chrome[\(i)] type=\(e.elementType.rawValue) id=\(e.identifier) label=\(safe(e.label) ?? "<hidden>")")
+        }
+        let target = app.descendants(matching: .any).matching(NSPredicate(format: "label ==[c] %@", "Transfer accounts")).firstMatch
+        let words = ["setting", "cog", "gear", "menu", "more", "option"]
+        for (i, e) in chrome.enumerated() where e.isHittable {
+            let text = (e.label + " " + e.identifier).lowercased()
+            guard words.contains(where: { text.contains($0) }) else { continue }
+            log("tapping chrome[\(i)]")
+            e.tap()
+            sleep(2)
+            if target.waitForExistence(timeout: 3) {
+                let items = app.descendants(matching: target.elementType).allElementsBoundByIndex
+                let index = items.firstIndex { $0.label.caseInsensitiveCompare("Transfer accounts") == .orderedSame } ?? -1
+                log("FOUND Transfer accounts after chrome[\(i)] type=\(target.elementType.rawValue) index=\(index) id=\(target.identifier)")
+                target.tap()
+                sleep(2)
+                for (j, e) in (app.buttons.allElementsBoundByIndex + app.cells.allElementsBoundByIndex + app.staticTexts.allElementsBoundByIndex).enumerated() where e.exists {
+                    log("transfer screen[\(j)] type=\(e.elementType.rawValue) id=\(e.identifier) label=\(safe(e.label) ?? "<hidden>")")
+                }
+                app.terminate()
+                return
+            }
+            _ = launchLastPass("en")
+        }
+        log("Transfer accounts not found")
+        app.terminate()
+    }
+
+    /// Reads LastPass Authenticator's "Transfer accounts" (in Settings) and
+    /// its two export options in every language, printing one LASTPASS line
+    /// each. Never taps an export option.
+    func testReadLastPassLabels() throws {
+        let only = ProcessInfo.processInfo.environment["LABEL_LANGS"]?
+            .split(separator: ",").map(String.init)
+        var english: [String]? = nil
+        for lang in only.map({ ["en"] + $0 }) ?? lastPassLanguages {
+            let app = launchLastPass(lang)
+            let settings = app.buttons["ButtonSettings"].firstMatch
+            guard settings.waitForExistence(timeout: 10) else {
+                log("LASTPASS|\(lang)|<settings not found>")
+                continue
+            }
+            settings.tap()
+            sleep(2)
+            // In English, "Transfer accounts" is the sixth button in Settings.
+            let transfer = app.buttons.element(boundBy: 5)
+            guard transfer.waitForExistence(timeout: 5) else {
+                log("LASTPASS|\(lang)|<transfer not found>")
+                continue
+            }
+            let transferLabel = transfer.label
+            transfer.tap()
+            sleep(2)
+            let toQR = app.buttons.element(boundBy: 1)
+            let toFile = app.buttons.element(boundBy: 2)
+            let labels = [transferLabel, toQR.exists ? toQR.label : "<not found>", toFile.exists ? toFile.label : "<not found>"]
+            if lang == "en" { english = labels }
+            let fallback = lang != "en" && english == labels
+            log("LASTPASS|\(lang)|" + labels.map { safe($0) ?? "<hidden>" }.joined(separator: "|") + (fallback ? "|same as English" : ""))
+            app.terminate()
+        }
     }
 }

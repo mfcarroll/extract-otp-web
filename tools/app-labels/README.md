@@ -8,7 +8,15 @@ a reader can find them on their phone. The two platforms differ:
 
 [`google-authenticator.json`](google-authenticator.json) has both, read from
 the apps themselves in 49 languages. `null` means the app shows English in
-that language. Use it when adding or checking a translation.
+that language. [`lastpass-authenticator.json`](lastpass-authenticator.json)
+has LastPass Authenticator's labels (Settings > "Transfer accounts" > "Export
+accounts to QR code" / "Export accounts to file"). LastPass is only translated
+into a few languages; in the others, quote its English labels with a
+translation in brackets. Use these when adding or checking a translation.
+
+An app's supported languages are listed on the App Store:
+`curl "https://itunes.apple.com/lookup?bundleId=com.google.Authenticator"`
+(see `languageCodesISO2A`).
 
 ## Refreshing the labels
 
@@ -42,6 +50,9 @@ xcodebuild test -project LabelReader.xcodeproj -scheme LabelReader \
   -only-testing:LabelReaderUITests/LabelReaderUITests/testReadLabels \
   | grep RESULT
 ```
+
+For LastPass Authenticator, run `testReadLastPassLabels` instead and grep for
+`LASTPASS`.
 
 Approve the UI automation prompt on the phone (and Face ID, if the app asks).
 Each `RESULT|language|transfer|export` line is one language; "same as English"

@@ -110,7 +110,7 @@ Every translation records a fingerprint (`source`) of the English it was made fr
 
 ### App labels
 
-The instructions quote Google Authenticator's menu labels, which differ between iOS ("Transfer accounts" > "Export accounts") and Android ("Transfer codes" > "Export codes"). [`tools/app-labels/google-authenticator.json`](tools/app-labels/google-authenticator.json) has both, read from the apps in 49 languages, with tools to refresh them. LastPass Authenticator isn't translated into every language, so where it isn't, quote its English labels with a translation in brackets.
+The instructions quote Google Authenticator's menu labels, which differ between iOS ("Transfer accounts" > "Export accounts") and Android ("Transfer codes" > "Export codes"). [`tools/app-labels/google-authenticator.json`](tools/app-labels/google-authenticator.json) has both, read from the apps in 49 languages, with tools to refresh them. LastPass Authenticator's labels are in [`tools/app-labels/lastpass-authenticator.json`](tools/app-labels/lastpass-authenticator.json); it's only translated into a few languages, so in the others, quote its English labels with a translation in brackets.
 
 ### Machine translations
 
