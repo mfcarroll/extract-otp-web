@@ -1,0 +1,36 @@
+name: Translation
+description: Point out a wording problem, offer to review a translation, or ask for a new language.
+title: '[Translation] '
+labels: ['translation']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping! No coding is needed. **Please don't include real secrets, QR codes or screenshots of them.**
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      placeholder: e.g. Français, 中文, Español
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What would you like to do?
+      options:
+        - Point out a wording problem
+        - Review this translation (I'll get a spreadsheet)
+        - Add this language
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: For a wording problem, say where you saw it, what it says now, and what it should say.
+  - type: input
+    id: credit
+    attributes:
+      label: How should we credit you? (optional)
+      description: A name, and optionally a link, for the tool's Acknowledgements page. Leave blank to use your GitHub username.

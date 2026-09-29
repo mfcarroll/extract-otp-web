@@ -1,0 +1,25 @@
+name: Problem
+description: Something doesn't work as expected.
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never include real secrets, QR codes or screenshots of them.** They give full access to your accounts. If you need an example, use a test code.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Browser and device
+      placeholder: e.g. Chrome on Windows, Safari on iPhone
+  - type: input
+    id: source
+    attributes:
+      label: Which app did the codes come from?
+      placeholder: e.g. Google Authenticator, LastPass Authenticator
