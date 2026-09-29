@@ -411,7 +411,7 @@
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
-      "text": "No LastPass, você também pode escolher \"Export accounts to file\" (Exportar contas para arquivo) e importar esse arquivo. Esta ferramenta aceita os dois formatos."
+      "text": "No LastPass, você também pode escolher \"Exportar contas para arquivo\" e importar esse arquivo. Esta ferramenta aceita os dois formatos."
     },
     "use.export.lastPass.heading": {
       "source": "e8cea4166a",
@@ -423,7 +423,7 @@
     },
     "use.export.lastPass.transfer": {
       "source": "97245dc288",
-      "text": "Toque na engrenagem e selecione \"Transfer accounts\" (Transferir contas) &gt; \"Export accounts to QR code\" (Exportar contas para código QR)."
+      "text": "Toque na engrenagem e selecione \"Transferir contas\" &gt; \"Exportar contas para código QR\"."
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",

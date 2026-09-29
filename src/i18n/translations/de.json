@@ -411,7 +411,7 @@
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
-      "text": "In LastPass können Sie auch „Export accounts to file“ (Konten in Datei exportieren) wählen und stattdessen diese Datei importieren. Dieses Tool unterstützt beide Formate."
+      "text": "In LastPass können Sie auch „Konten in Datei exportieren“ wählen und stattdessen diese Datei importieren. Dieses Tool unterstützt beide Formate."
     },
     "use.export.lastPass.heading": {
       "source": "e8cea4166a",
@@ -423,7 +423,7 @@
     },
     "use.export.lastPass.transfer": {
       "source": "97245dc288",
-      "text": "Tippen Sie auf das Zahnrad und wählen Sie „Transfer accounts“ (Konten übertragen) &gt; „Export accounts to QR code“ (Konten als QR-Code exportieren)."
+      "text": "Tippen Sie auf das Zahnrad und wählen Sie „Konten übertragen“ &gt; „Konten als QR exportieren“."
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
