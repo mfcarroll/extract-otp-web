@@ -120,6 +120,7 @@ const html = `<!doctype html><html lang="en"><head><title data-i18n="meta.title"
   <template><span data-i18n="card.name">Name:</span></template>
   <nav id="language-switcher" hidden></nav>
   <p id="draft-banner" hidden>Draft</p>
+  <p id="machine-notice" hidden><a class="machine-notice-english" href="./">English</a></p>
 </body></html>`;
 
 describe('extractPageSource', () => {
@@ -154,6 +155,7 @@ const config = {
       hreflang: 'en',
       path: '',
       name: 'English',
+      status: 'reviewed',
       published: true,
     },
     {
@@ -162,6 +164,7 @@ const config = {
       hreflang: 'fr',
       path: 'fr/',
       name: 'Français',
+      status: 'machine',
       published: true,
     },
     {
@@ -170,6 +173,7 @@ const config = {
       hreflang: 'zh-Hans',
       path: 'zh/',
       name: '中文',
+      status: 'draft',
       published: false,
     },
   ],
@@ -267,6 +271,13 @@ describe('renderPage', () => {
     );
     expect(out).not.toContain('noindex');
     expect(out).toContain('<p id="draft-banner" hidden="">');
+  });
+
+  it('shows the machine-translation notice, linking to the English page', () => {
+    expect(render('fr')).toContain(
+      '<p id="machine-notice"><a class="machine-notice-english" href="/app/">'
+    );
+    expect(render('en')).toContain('<p id="machine-notice" hidden="">');
   });
 
   it('marks draft languages noindex and leaves them out of hreflang', () => {

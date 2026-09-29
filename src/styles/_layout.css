@@ -60,3 +60,19 @@ footer {
 .draft-banner[hidden] {
   display: none;
 }
+
+/* Shown on machine-translated pages (see scripts/i18n). */
+.machine-notice {
+  margin: -0.5rem 0 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--subtle-text-color);
+}
+
+.machine-notice[hidden] {
+  display: none;
+}
+
+.machine-notice a {
+  color: inherit;
+}

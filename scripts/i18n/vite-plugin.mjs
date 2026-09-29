@@ -2,8 +2,9 @@
  * Generates one page per language from index.html.
  *
  * - Build: the English page is written as usual, then each other language is
- *   written to <outDir>/<path>/index.html (<code>/ when published,
- *   draft/<code>/ otherwise), plus sitemap.xml of the published pages.
+ *   written to <outDir>/<path>/index.html (<code>/ when published, as a
+ *   machine or reviewed translation; draft/<code>/ for drafts), plus
+ *   sitemap.xml of the published pages.
  * - Dev server: every language is served at the same paths.
  *
  * Published pages link only to published languages; a draft page also links

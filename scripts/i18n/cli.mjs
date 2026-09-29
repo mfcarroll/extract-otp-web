@@ -21,6 +21,9 @@
  *   npm run i18n -- review-import <code> <file.csv>
  *                                    Apply the suggested changes (or edits to
  *                                    the translation column) from that sheet.
+ *   npm run i18n -- critical <code>  Print the safety-critical strings
+ *                                    (marked data-i18n-critical) with their
+ *                                    translations, for a careful check.
  *   npm run i18n -- confirm <code|all> <key>...
  *                                    Mark translations as still correct after
  *                                    an English edit that doesn't affect them
@@ -84,7 +87,7 @@ function check() {
       translations: loadTranslations(locale.code),
     });
     const total = pageSource.size + Object.keys(englishMessages).length;
-    const status = locale.published ? 'published' : 'draft';
+    const { status } = locale;
     console.log(
       `\n${locale.name} (${locale.code}, ${status}): ${total - report.missing.length}/${total} translated`
     );
@@ -214,7 +217,7 @@ function addLanguage(code, name, lang, hreflang) {
       name,
       lang,
       hreflang: hreflang ?? lang,
-      published: false,
+      status: 'draft',
       contributors: [{ name: '', github: '', url: '' }],
     },
     page: {},
@@ -350,6 +353,17 @@ function reviewImport(code, file) {
   );
 }
 
+function critical(code) {
+  const locale = findLocale(code);
+  const { page } = loadTranslations(code);
+  for (const [key, { text, critical }] of pageSource) {
+    if (!critical) continue;
+    console.log(
+      `\n${key}\n  EN: ${text}\n  ${locale.code.toUpperCase()}: ${page[key]?.text ?? '(missing)'}`
+    );
+  }
+}
+
 const [command, ...args] = process.argv.slice(2);
 if (command === 'add' && args.length >= 3) addLanguage(...args);
 else if (command === 'check') check();
@@ -359,11 +373,12 @@ else if (command === 'import' && args[0] && args[1])
 else if (command === 'review-export' && args[0]) reviewExport(args[0], args[1]);
 else if (command === 'review-import' && args[0] && args[1])
   reviewImport(args[0], args[1]);
+else if (command === 'critical' && args[0]) critical(args[0]);
 else if (command === 'confirm' && args.length > 1)
   confirm(args[0], args.slice(1));
 else {
   console.error(
-    'Usage: npm run i18n -- add <code> <name> <lang> [hreflang] | check | todo <code> | import <code> <file.json> | review-export <code> [file.csv] | review-import <code> <file.csv> | confirm <code|all> <key>...'
+    'Usage: npm run i18n -- add <code> <name> <lang> [hreflang] | check | todo <code> | import <code> <file.json> | review-export <code> [file.csv] | review-import <code> <file.csv> | critical <code> | confirm <code|all> <key>...'
   );
   process.exit(1);
 }

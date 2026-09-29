@@ -9,6 +9,7 @@
     <meta
       name="description"
       data-i18n-attr="content:meta.description"
+      data-i18n-critical
       content="Extract TOTP/HOTP one-time password secrets from Google Authenticator or LastPass 2FA export QR codes. Runs entirely in your browser; nothing is uploaded."
     />
     <link
@@ -38,6 +39,25 @@
           >
         </p>
         <h1 data-i18n="app.title">One-Time Password Secret Extractor</h1>
+        <p id="machine-notice" class="machine-notice" hidden>
+          <span data-i18n="machine.notice"
+            >This page was translated automatically.</span
+          >
+          <a
+            class="machine-notice-english"
+            href="./"
+            data-i18n="machine.english"
+            >Read it in English</a
+          >
+          <span aria-hidden="true">·</span>
+          <a
+            href="https://github.com/mfcarroll/extract-otp-web/blob/main/CONTRIBUTING.md#translations"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="machine.help"
+            >Help improve this translation</a
+          >
+        </p>
 
         <div id="info-tabs">
           <!-- 1. Tabs Section -->
@@ -93,13 +113,13 @@
               role="tabpanel"
               aria-labelledby="tab-btn-what"
             >
-              <p data-i18n="what.intro">
+              <p data-i18n="what.intro" data-i18n-critical>
                 This tool extracts one-time password (OTP) secrets, the codes
                 used for two-factor authentication (2FA), from the Google
                 Authenticator or LastPass Authenticator apps. There is no
                 software to install, and no data ever leaves your device.
               </p>
-              <p data-i18n="what.offline">
+              <p data-i18n="what.offline" data-i18n-critical>
                 <strong
                   >All processing of your QR codes and secrets happens entirely
                   offline, locally, right here in your browser.</strong
@@ -157,7 +177,7 @@
 
               <h3 data-i18n="use.extract.heading">2. Extract Secrets</h3>
               <ul>
-                <li data-i18n="use.extract.scan">
+                <li data-i18n="use.extract.scan" data-i18n-critical>
                   Open this tool on your computer or a second device, and click
                   "Scan QR" to scan the export QR codes on your phone directly.
                   This is the most convenient option, and it avoids storing
@@ -204,7 +224,7 @@
               </ul>
               <h3 data-i18n="use.cleanup.heading">4. Clean Up</h3>
               <ul>
-                <li data-i18n="note.storage">
+                <li data-i18n="note.storage" data-i18n-critical>
                   <strong
                     >Note: Any screenshots or downloaded files contain your
                     unencrypted secrets.</strong
@@ -284,7 +304,7 @@
                   role="region"
                   aria-labelledby="faq-2-button"
                 >
-                  <p data-i18n="faq.how.answer">
+                  <p data-i18n="faq.how.answer" data-i18n-critical>
                     You scan the QR codes from Google Authenticator or LastPass
                     Authenticator's export feature with your camera, or provide
                     screenshots of them (or a LastPass export file). This tool
@@ -316,7 +336,7 @@
                   role="region"
                   aria-labelledby="faq-3-button"
                 >
-                  <p data-i18n="faq.safe.local">
+                  <p data-i18n="faq.safe.local" data-i18n-critical>
                     Yes. Security and privacy are the top priorities.
                     <strong
                       >Nothing you do here ever leaves your computer or mobile
@@ -326,12 +346,12 @@
                     browser. Your QR code images and secrets are never sent to
                     any server.
                   </p>
-                  <p data-i18n="faq.safe.camera">
+                  <p data-i18n="faq.safe.camera" data-i18n-critical>
                     For the most privacy, open this tool on your computer or a
                     second device, and click "Scan QR" to scan the export QR
                     codes on your phone directly, without taking screenshots.
                   </p>
-                  <p data-i18n="note.storage">
+                  <p data-i18n="note.storage" data-i18n-critical>
                     <strong
                       >Note: Any screenshots or downloaded files contain your
                       unencrypted secrets.</strong

@@ -8,7 +8,7 @@
  *
  *   {
  *     "language": {
- *       "name": "Français", "lang": "fr-CA", "hreflang": "fr", "published": false,
+ *       "name": "Français", "lang": "fr-CA", "hreflang": "fr", "status": "machine",
  *       "contributors": [{ "name": "…", "github": "…", "url": "https://…" }]
  *     },
  *     "page":     { "<key>": { "source": "<hash>", "text": "..." } },
@@ -35,12 +35,19 @@ export const ROOT = path.resolve(
 const I18N_DIR = path.join(ROOT, 'src/i18n');
 
 const TRANSLATIONS_DIR = path.join(I18N_DIR, 'translations');
+const STATUSES = ['draft', 'machine', 'reviewed'];
 
 /**
  * Site settings plus every language: English from src/i18n/config.json, then
- * one per translation file, in order of language code. A published
- * language's page is at <base><code>/; a draft's is at <base>draft/<code>/,
- * built but not linked from published pages.
+ * one per translation file, in order of language code.
+ *
+ * A language's "status" is one of:
+ * - "draft": being worked on. Built at <base>draft/<code>/ for reviewers,
+ *   with a banner, but noindex and not linked from published pages.
+ * - "machine": machine-translated and published at <base><code>/, with a
+ *   short notice linking to the English and inviting help to improve it.
+ * - "reviewed": published at <base><code>/ with no notice.
+ * The older "published": true / false means "reviewed" / "draft".
  */
 export function loadConfig() {
   const config = JSON.parse(
@@ -50,6 +57,7 @@ export function loadConfig() {
     ...config.english,
     code: config.defaultLocale,
     path: '',
+    status: 'reviewed',
     published: true,
   };
   const codes = existsSync(TRANSLATIONS_DIR)
@@ -70,13 +78,21 @@ export function loadConfig() {
         `${code}.json needs a "language" block with "name" and "lang"`
       );
     }
+    const status =
+      language.status ?? (language.published === true ? 'reviewed' : 'draft');
+    if (!STATUSES.includes(status)) {
+      throw new Error(
+        `${code}.json: status must be one of ${STATUSES.join(', ')}`
+      );
+    }
     return {
       code,
       name: language.name,
       lang: language.lang,
       hreflang: language.hreflang ?? language.lang,
-      path: language.published === true ? `${code}/` : `draft/${code}/`,
-      published: language.published === true,
+      path: status === 'draft' ? `draft/${code}/` : `${code}/`,
+      status,
+      published: status !== 'draft',
       contributors: validateContributors(code, language.contributors ?? []),
     };
   });
@@ -195,6 +211,7 @@ export function extractPageSource(html) {
   for (const { el, key, attr } of annotated(document)) {
     const text = normalize(attr ? (el.getAttribute(attr) ?? '') : el.innerHTML);
     const entry = { text, markup: !attr && el.children.length > 0 };
+    if (el.hasAttribute('data-i18n-critical')) entry.critical = true;
     const existing = source.get(key);
     if (existing && existing.text !== text) {
       throw new Error(
@@ -449,6 +466,13 @@ export function renderPage(
       hreflang: 'x-default',
       href: pageUrl(config, fallback),
     });
+  }
+  if (locale.status === 'machine') {
+    const notice = document.getElementById('machine-notice');
+    notice?.removeAttribute('hidden');
+    notice
+      ?.querySelector('.machine-notice-english')
+      ?.setAttribute('href', base);
   }
   if (!locale.published) {
     document.getElementById('draft-banner')?.removeAttribute('hidden');

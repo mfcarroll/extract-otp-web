@@ -259,7 +259,17 @@ export function reviewRows({
 
   const rows = [];
 
-  for (const { key, where, attr } of describePage(html)) {
+  // Safety-critical strings come first, so a reviewer covers them even if
+  // they don't get through everything.
+  const described = describePage(html);
+  const isCritical = (d) => Boolean(audit.pageSource.get(d.key)?.critical);
+  const ordered = [
+    ...described
+      .filter(isCritical)
+      .map((d) => ({ ...d, where: `★ Priority: ${d.where}` })),
+    ...described.filter((d) => !isCritical(d)),
+  ];
+  for (const { key, where, attr } of ordered) {
     const englishHtml = audit.pageSource.get(key).text;
     const current = translations.page[key]?.text;
     const show = (value) =>
