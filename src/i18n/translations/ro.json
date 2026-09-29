@@ -1,0 +1,695 @@
+{
+  "language": {
+    "name": "Română",
+    "lang": "ro",
+    "hreflang": "ro",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Extractor de chei secrete pentru parole unice"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Selectează camera"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Schimbă camera"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "Scanează codul QR"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "S-a copiat!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Apasă Enter sau tasta spațiu ca să copiezi."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Copiază cheia secretă"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Copiază"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "Copiază URL-ul"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Contor:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Emitent:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Nume:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Cheie secretă:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "Afișează codul QR mai mare"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Atinge pentru a mări"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Tip:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Aceasta este o traducere provizorie, încă în curs de verificare, și poate conține greșeli."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Exportă în Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "Exportă în LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "Salvează ca CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "Salvează ca JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Acest instrument a fost creat de <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, un dezvoltator frustrat de procesul de mutare a codurilor OTP din Google Authenticator în 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Cine a creat asta?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator face dificilă vizualizarea cheilor secrete originale folosite la configurarea conturilor. În schimb, oferă un cod QR de export care reunește toate conturile tale. Asta ușurează mutarea pe un dispozitiv nou, dar îngreunează trecerea la altă aplicație de autentificare. LastPass oferă câte un cod QR pentru fiecare cont, ceea ce e o îmbunătățire mare, dar oferă cheile secrete sub formă de text doar în format JSON. În schimb, aplicații precum 1Password fac cheile secrete originale ușor accesibile, așa că trecerea la alte aplicații 2FA e simplă."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "De ce nu îmi arată Google Authenticator codurile QR originale?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Scanezi cu camera codurile QR din funcția de export a Google Authenticator sau LastPass Authenticator ori furnizezi capturi de ecran ale lor (sau un fișier de export LastPass). Acest instrument citește acele coduri QR — chiar aici, în browserul tău — și îți oferă înapoi cheia secretă originală a fiecărui cont. Apoi poți folosi aceste chei ca să imporți conturile în orice altă aplicație de autentificare."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Cum funcționează?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass pune toate conturile tale într-un singur cod QR, iar dacă ai multe conturi, detaliile codului QR pot deveni minuscule și greu de citit. Google Authenticator ocolește această problemă oferind mai multe coduri, fiecare cu câteva conturi. Din fericire, LastPass îți permite să exporți un fișier JSON, pe care acest instrument îl poate citi și el. Dacă ai probleme cu LastPass, salvează pur și simplu fișierul JSON și importă-l pe acela."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "Codul meu QR din LastPass nu se scanează!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "E o întrebare foarte bună, pe care și <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Discuție în comunitatea 1Password despre importul din Google Authenticator\">alții</a> au <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Discuție pe Reddit despre adăugarea autentificărilor 2FA existente în 1Password\">pus-o</a>. Unul dintre motivele invocate este teama că formatul de export al Google s-ar putea schimba. Totuși, acest format este stabil de ani de zile, iar alte aplicații (cum ar fi <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) îl acceptă fără probleme. Se pare că managerii de parole precum 1Password <em>ar putea</em> accepta ușor importul direct, dar au ales să nu o facă."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "De ce nu poate 1Password să importe din Google Authenticator?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Te rugăm să raportezi orice problemă legată de acest instrument pe <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Cum raportez o problemă?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "Pentru confidențialitate maximă, deschide acest instrument pe computer sau pe un al doilea dispozitiv și dă clic pe „Scanează QR” ca să scanezi direct codurile QR de export de pe telefon, fără să faci capturi de ecran."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Da. Securitatea și confidențialitatea sunt prioritățile principale. <strong>Nimic din ce faci aici nu părăsește vreodată computerul sau dispozitivul tău mobil.</strong> Toată procesarea are loc local, offline, direct în browserul tău. Imaginile codurilor QR și cheile tale secrete nu sunt trimise niciodată către niciun server."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Acest instrument este open source și <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">oricine poate examina codul</a> ca să verifice siguranța și modul de funcționare. Este găzduit pe GitHub Pages, printr-un <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">proces de publicare sigur și transparent</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "Este sigur să îmi „încarc” codurile QR?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "La dezvoltarea acestui instrument au fost folosite <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> și <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a>. Tot codul generat de IA a fost verificat manual, cu atenție."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, un alt script Python care rezolvă aceeași problemă."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, scriptul Python al lui <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>, pe care se bazează acest instrument."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Mulțumim tuturor celor care contribuie la aceste proiecte excelente!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>, pentru pictogramele din interfață."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>, pentru citirea codurilor QR din imagini."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "Interfața și procesarea codurilor QR folosesc aceste biblioteci open source:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>, pentru redimensionarea imaginilor la calitate înaltă."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Acest instrument se bazează pe munca mai multor proiecte open source, printre care:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>, pentru decodarea datelor din Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>, pentru generarea de coduri QR noi pentru fiecare cont."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>, pentru scanarea codurilor QR cu camera."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> și <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>, pentru specificația protobuf a exportului."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "Dezvoltarea acestui instrument a fost posibilă în parte datorită sprijinului <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. Dacă ți se pare util, te rugăm să iei în considerare <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">o donație</a> pentru a sprijini munca Stand."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "Pentru oamenii și locurile pe care le iubești"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>, pentru codificarea în Base32 a cheilor secrete OTP."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Mulțumiri"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "Traduceri scrise și verificate de:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator îți permite să transferi conturile pe un telefon nou, dar nu oferă o modalitate simplă de a le exporta în alte aplicații, cum ar fi 1Password sau Bitwarden. Asta pentru că ascunde „cheia secretă” originală (codul QR pe care l-ai scanat la început) a fiecărui cont."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Fără aceste chei secrete, trecerea la un nou manager de parole înseamnă să reconfigurezi manual 2FA pentru fiecare cont în parte, ceea ce e foarte obositor."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "Există și alte instrumente pentru asta, dar deseori cer pași tehnici, cum ar fi rularea unor scripturi sau instalarea de programe. Acest instrument este gândit ca o soluție simplă și sigură, pe care o poate folosi oricine."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "De ce este nevoie de asta?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Limbă"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Cod sursă"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "Citește în engleză"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Ajută la îmbunătățirea traducerii"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Această pagină a fost tradusă automat."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "Anulează"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Închide fereastra"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Lipește un URL <code>otpauth://</code> sau o cheie secretă Base32 brută (de ex., <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Cheie secretă sau URL…"
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Adaugă codul"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "Introdu codul OTP"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Extrage cheile secrete TOTP/HOTP ale parolelor unice din codurile QR de export 2FA din Google Authenticator sau LastPass. Rulează complet în browserul tău; nimic nu este trimis către un server."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Extractor de chei secrete pentru parole unice – Export din Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Închide"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Notă: orice captură de ecran sau fișier descărcat conține cheile tale secrete necriptate.</strong> Păstrează-le în siguranță sau șterge-le după ce ai terminat. Asta include ștergerea lor din „Coșul de gunoi”, „Coșul de reciclare”, „Șterse recent” și din orice copie de rezervă a fotografiilor în cloud."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Conturi OTP extrase"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Selectează tot"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Deselectează tot"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 selectate"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Resetează"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "Întrebări frecvente"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "File de informații"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Cum se folosește?"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Ce este?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Folosește tema întunecată"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Folosește tema luminoasă"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Deschide selectorul de temă"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Folosește tema sistemului"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "sau trage și plasează fișierele aici<br>(imagine, export JSON, CSV sau TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Introdu codul"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Deschide fișiere"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "Scanează QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Curățenie"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Export din Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Deschide aplicația Google Authenticator pe telefon."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Selectează conturile pe care vrei să le exporți."
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "Deschide meniul și selectează „Transferă conturile” &gt; „Exportă conturile” (pe Android: „Transferă codurile” &gt; „Exportă codurile”)."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Exportă din aplicația de parole unice"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "În LastPass poți alege și „Export accounts to file” (Exportă conturile într-un fișier) și poți importa acel fișier. Acest instrument acceptă ambele formate."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "Export din LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Deschide LastPass Authenticator pe telefon."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Atinge rotița și selectează „Transfer accounts” (Transferă conturile) &gt; „Export accounts to QR code” (Exportă conturile într-un cod QR)."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Poți da clic și pe „Introdu codul” ca să scrii direct o cheie secretă sau un URL de configurare, iar acest instrument îți va afișa codul QR de configurare original."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Extrage cheile secrete"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Acest instrument poate citi și coduri QR de configurare individuale din orice aplicație, sau un fișier text cu câte o cheie secretă ori un URL pe fiecare rând. Astfel poți transforma ușor chei secrete de oriunde în coduri QR ce pot fi scanate."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Deschide acest instrument pe computer sau pe un al doilea dispozitiv și dă clic pe „Scanează QR” ca să scanezi direct codurile QR de export afișate pe telefon. Este varianta cea mai comodă și eviți să păstrezi capturi de ecran cu cheile tale secrete."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Sau fă o captură de ecran pentru fiecare cod QR afișat, apoi dă clic pe „Deschide fișiere” ori trage și plasează capturile pe pagină."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Acest instrument citește codurile QR din funcția de export a Google Authenticator sau LastPass Authenticator și îți oferă înapoi cheia secretă originală a fiecărui cont. Apoi poți folosi aceste chei ca să imporți conturile în orice altă aplicație de autentificare."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "Instrumentul va afișa cheile secrete OTP extrase, fiecare cu propriul cod QR și propria cheie secretă."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Ca să muți conturi în Google Authenticator sau LastPass Authenticator, selectează-le și dă clic pe „Exportă în Google” sau „Exportă în LastPass”. Acest instrument va afișa un cod QR de transfer pe care îl poți scana cu aplicația respectivă."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Folosește cheile secrete"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Acum poți importa aceste chei secrete în aplicația de autentificare sau managerul de parole preferat."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Dă clic pe „Salvează ca CSV” sau „Salvează ca JSON” ca să păstrezi o copie a cheilor secrete. Mai târziu poți redeschide aici aceste fișiere ca să-ți afișezi din nou codurile QR."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Acest instrument extrage cheile secrete ale parolelor unice (OTP), adică ale codurilor folosite pentru autentificarea în doi pași (2FA), din aplicațiile Google Authenticator sau LastPass Authenticator. Nu trebuie să instalezi niciun program și nicio dată nu părăsește vreodată dispozitivul tău."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>Toată procesarea codurilor QR și a cheilor tale secrete are loc complet offline, local, chiar aici, în browserul tău.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Închide mesajul de eroare"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Închide mesajul informativ"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Închide mesajul de confirmare"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Închide avertismentul"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "Conținutul"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject} a fost copiat în clipboard."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Nu s-a putut copia în clipboard."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Codul QR de la cameră nu a putut fi procesat."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "A apărut o eroare necunoscută în timpul exportului."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "Fișierul nu este o imagine validă sau nu a putut fi încărcat."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Imaginea nu a putut fi procesată din cauza restricțiilor de securitate (canvas contaminat)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Format nevalid"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "Datele introduse trebuie să fie un URL OTP valid, un JSON LastPass sau o cheie secretă Base32 de cel puțin 16 caractere (literele A-Z, cifrele 2-7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Format JSON nevalid: se aștepta o listă de conturi OTP sau un obiect de export LastPass."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Format JSON nevalid al codului QR LastPass: lista 'a' (conturi) nu a fost găsită."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "Codul QR LastPass nu a putut fi decodat. Formatul datelor nu este recunoscut sau este deteriorat."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Cod QR LastPass nevalid: proprietatea 'content' nu a fost găsită în date."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "Lipsește parametrul 'counter' pentru tipul hotp din URL-ul otpauth."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "URL OTP nevalid: lipsește parametrul \"data\"."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "Lipsește parametrul 'secret' din URL-ul otpauth."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Nu s-a găsit nicio cameră. Asigură-te că ai o cameră conectată."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Datele finale nu au putut fi analizate. Este posibil să fie deteriorate sau într-un format neașteptat."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "A apărut o eroare neașteptată la procesarea fișierelor."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "Procesarea a eșuat."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Camera nu a putut porni. Asigură-te că ai o cameră conectată și că ai acordat permisiunea."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Camera nu a putut fi schimbată."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Rândul {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Nu s-a găsit niciun OTP valid în text.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "A apărut o eroare neașteptată. Încearcă din nou sau reîncarcă pagina."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "A apărut o eroare necunoscută."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Tip de fișier neacceptat."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "Tip OTP neacceptat în URL: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "Formatul acestui cod QR nu este acceptat."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "LastPass acceptă doar conturi bazate pe timp (TOTP). Un cont incompatibil, bazat pe contor, a fost eliminat din selecție. Dă clic din nou pe „Exportă în LastPass” ca să continui.",
+        "few": "LastPass acceptă doar conturi bazate pe timp (TOTP). {count} conturi incompatibile, bazate pe contor, au fost eliminate din selecție. Dă clic din nou pe „Exportă în LastPass” ca să continui.",
+        "other": "LastPass acceptă doar conturi bazate pe timp (TOTP). {count} de conturi incompatibile, bazate pe contor, au fost eliminate din selecție. Dă clic din nou pe „Exportă în LastPass” ca să continui."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "Nu ai selectat niciun cont compatibil (TOTP) pentru exportul în LastPass."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Nu există date de exportat."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Nu ai selectat niciun cont de exportat."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Scanează cu Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "Scanează cu LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "Acest cod QR a fost deja procesat."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Scanare cu camera"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "{count} cheie secretă duplicată omisă.",
+        "few": "{count} chei secrete duplicate omise.",
+        "other": "{count} de chei secrete duplicate omise."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "{count} cheie secretă extrasă.",
+        "few": "{count} chei secrete extrase.",
+        "other": "{count} de chei secrete extrase."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Introducere manuală"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "Nu s-a găsit niciun cod QR."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "Nu s-au găsit chei secrete OTP."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "Nu s-au găsit chei secrete OTP în codul QR."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Indisponibil"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "Afișează mai mare codul QR pentru {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{count} din {total} selectate"
+    }
+  }
+}
