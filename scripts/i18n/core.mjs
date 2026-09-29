@@ -234,9 +234,12 @@ function links(fragment) {
   );
 }
 
+// One shared document: a new JSDOM per string runs out of memory across many languages.
+let scratch;
+
 function parseFragment(html) {
-  const { document } = new JSDOM('').window;
-  const template = document.createElement('template');
+  scratch ??= new JSDOM('').window.document;
+  const template = scratch.createElement('template');
   template.innerHTML = html;
   return template.content;
 }
