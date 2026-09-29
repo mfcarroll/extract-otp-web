@@ -524,22 +524,30 @@ export function renderPage(
     }
   }
 
+  // Language switcher: a disclosure button showing the current language,
+  // controlling a list of links to the others (behaviour in src/ui/language.ts).
+  // The links are real <a> elements in the page, so crawlers can follow them.
   const switcher = document.getElementById('language-switcher');
   if (switcher && visible.length > 1) {
     switcher.removeAttribute('hidden');
-    const parts = ['<span class="footer-separator">|</span>'];
-    visible.forEach((l, i) => {
-      if (i > 0)
-        parts.push(
-          '<span class="language-separator" aria-hidden="true">·</span>'
-        );
-      const current = l.code === locale.code ? ' aria-current="page"' : '';
-      const draft = l.published ? '' : ' data-draft="true"';
-      parts.push(
-        `<a class="navigable" href="${base}${l.path}" hreflang="${l.hreflang}" lang="${l.lang}"${current}${draft}>${l.name}</a>`
+    const label = switcher.getAttribute('aria-label') ?? 'Language';
+    const escape = (text) =>
+      text.replace(
+        /[&<>"]/g,
+        (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]
       );
+    const items = visible.map((l) => {
+      const current = l.code === locale.code ? ' aria-current="page"' : '';
+      return `<li><a class="navigable" href="${base}${l.path}" hreflang="${l.hreflang}" lang="${l.lang}"${current}>${escape(l.name)}</a></li>`;
     });
-    switcher.innerHTML = parts.join('');
+    switcher.innerHTML =
+      '<span class="footer-separator">|</span>' +
+      `<button type="button" class="language-toggle navigable" aria-expanded="false" aria-controls="language-menu">` +
+      `<i class="fa fa-globe" aria-hidden="true"></i>` +
+      `<span class="visually-hidden">${escape(label)}: </span>` +
+      `<span lang="${locale.lang}">${escape(locale.name)}</span>` +
+      `</button>` +
+      `<ul id="language-menu" class="language-menu" hidden>${items.join('')}</ul>`;
   }
 
   return dom.serialize();

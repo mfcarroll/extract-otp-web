@@ -25,8 +25,9 @@
   color: var(--border-color);
 }
 
-/* Links to the other language versions of the page */
+/* Language switcher: a small button that opens a list of languages above it */
 .language-switcher {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -36,25 +37,83 @@
   display: none;
 }
 
-.language-separator {
-  color: var(--border-color);
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.35rem;
+  border: none;
+  border-radius: 1rem;
+  background: transparent;
+  color: var(--primary-color);
+  font: inherit;
+  cursor: pointer;
 }
 
-.footer-content .language-switcher a[aria-current='page'] {
-  color: var(--subtle-text-color);
+.language-toggle:hover,
+.language-toggle[aria-expanded='true'] {
+  background-color: var(--active-background-color);
+}
+
+.language-menu {
+  position: absolute;
+  bottom: calc(100% + 0.4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  min-width: 8rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  background-color: var(--input-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.language-menu[hidden] {
+  display: none;
+}
+
+.footer-content .language-menu a {
+  display: block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--text-color);
   text-decoration: none;
+  white-space: nowrap;
+  text-align: left;
 }
 
-/* On narrow screens, give the language links their own centred line below the
-   rest of the footer, rather than wrapping mid-row behind a separator. */
+.footer-content .language-menu a:hover {
+  background-color: var(--active-background-color);
+  color: var(--text-color);
+}
+
+.footer-content .language-menu a[aria-current='page'] {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* The language and theme switchers, kept together so the footer wraps cleanly */
+.footer-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* On narrow screens the controls get their own centred line, without a
+   separator at the start of it. */
 @media (max-width: 600px) {
-  .language-switcher {
-    order: 1;
+  .footer-controls {
     flex-basis: 100%;
     justify-content: center;
   }
 
-  .language-switcher > .footer-separator {
+  .language-switcher > .footer-separator,
+  .language-switcher[hidden] + .footer-separator {
     display: none;
   }
 }

@@ -1,3 +1,4 @@
+import { JSDOM } from 'jsdom';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import {
   auditLocale,
@@ -271,6 +272,21 @@ describe('renderPage', () => {
     );
     expect(out).not.toContain('noindex');
     expect(out).toContain('<p id="draft-banner" hidden="">');
+  });
+
+  it('renders the switcher as a button showing the current language and a hidden list of links', () => {
+    const { document } = new JSDOM(render('fr')).window;
+    const toggle = document.querySelector(
+      '#language-switcher .language-toggle'
+    )!;
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(toggle.getAttribute('aria-controls')).toBe('language-menu');
+    expect(toggle.textContent).toContain('Français');
+    const menu = document.getElementById('language-menu')!;
+    expect(menu.hasAttribute('hidden')).toBe(true);
+    expect(
+      [...menu.querySelectorAll('a')].map((a) => a.getAttribute('lang'))
+    ).toEqual(['en', 'fr-CA']);
   });
 
   it('shows the machine-translation notice, linking to the English page', () => {

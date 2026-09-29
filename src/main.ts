@@ -12,6 +12,7 @@ import { initManualInput } from './ui/manualInput';
 import { initCamera } from './ui/camera';
 
 import { initThemeSwitcher } from './ui/theme';
+import { initLanguageSwitcher } from './ui/language';
 import { initExportControls } from './ui/exportControls';
 import { initNavigation } from './ui/navigation';
 import { initFooter } from './ui/footer';
@@ -56,6 +57,7 @@ function initializeApp(): void {
   initManualInput();
   initCamera();
   initThemeSwitcher();
+  initLanguageSwitcher();
   initExportControls();
   initFooter();
 }
