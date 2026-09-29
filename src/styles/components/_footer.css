@@ -44,3 +44,17 @@
   color: var(--subtle-text-color);
   text-decoration: none;
 }
+
+/* On narrow screens, give the language links their own centred line below the
+   rest of the footer, rather than wrapping mid-row behind a separator. */
+@media (max-width: 600px) {
+  .language-switcher {
+    order: 1;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .language-switcher > .footer-separator {
+    display: none;
+  }
+}
