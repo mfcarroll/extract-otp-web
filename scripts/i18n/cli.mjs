@@ -10,6 +10,10 @@
  *                                    "messages": { key: text } }) into the
  *                                    language file, recording which English
  *                                    each was translated from.
+ *   npm run i18n -- confirm <code|all> <key>...
+ *                                    Mark translations as still correct after
+ *                                    an English edit that doesn't affect them
+ *                                    (a typo fix, say), clearing the warning.
  *
  * `check` fails on invalid, unknown or (for published languages) missing
  * strings. Stale strings, where the English changed after translation, are
@@ -139,22 +143,45 @@ function importFile(code, file) {
     console.error(`\nNot imported: ${problems} problem(s).`);
     process.exit(1);
   }
+  save(locale.code, current);
+  console.log(
+    `Imported into ${path.relative(ROOT, translationPath(locale.code))}.`
+  );
+}
+
+function save(code, translations) {
   const sorted = (entries) =>
     Object.fromEntries(
       Object.entries(entries).sort(([a], [b]) => a.localeCompare(b))
     );
   const output = {
-    page: sorted(current.page),
-    messages: sorted(current.messages),
+    page: sorted(translations.page),
+    messages: sorted(translations.messages),
   };
-  mkdirSync(path.dirname(translationPath(locale.code)), { recursive: true });
-  writeFileSync(
-    translationPath(locale.code),
-    JSON.stringify(output, null, 2) + '\n'
-  );
-  console.log(
-    `Imported into ${path.relative(ROOT, translationPath(locale.code))}.`
-  );
+  mkdirSync(path.dirname(translationPath(code)), { recursive: true });
+  writeFileSync(translationPath(code), JSON.stringify(output, null, 2) + '\n');
+}
+
+function confirm(code, keys) {
+  const locales = code === 'all' ? others : [findLocale(code)];
+  let failed = false;
+  for (const locale of locales) {
+    const current = loadTranslations(locale.code);
+    for (const key of keys) {
+      const area = key in current.page ? 'page' : 'messages';
+      const entry = current[area][key];
+      const english = englishFor(area, key);
+      if (!entry || english === undefined) {
+        console.error(`${locale.code}: no translation for ${key}`);
+        failed = true;
+        continue;
+      }
+      entry.source = fingerprint(english);
+      console.log(`${locale.code}: ${key} confirmed`);
+    }
+    save(locale.code, current);
+  }
+  process.exit(failed ? 1 : 0);
 }
 
 const [command, ...args] = process.argv.slice(2);
@@ -162,9 +189,11 @@ if (command === 'check') check();
 else if (command === 'todo' && args[0]) todo(args[0]);
 else if (command === 'import' && args[0] && args[1])
   importFile(args[0], args[1]);
+else if (command === 'confirm' && args.length > 1)
+  confirm(args[0], args.slice(1));
 else {
   console.error(
-    'Usage: npm run i18n -- check | todo <code> | import <code> <file.json>'
+    'Usage: npm run i18n -- check | todo <code> | import <code> <file.json> | confirm <code|all> <key>...'
   );
   process.exit(1);
 }

@@ -104,6 +104,7 @@ Each other language has one file, `src/i18n/translations/<code>.json`, and an en
 - `npm run i18n -- check` validates all translations. CI runs this.
 - `npm run i18n -- todo fr` prints the English that still needs translating, or that changed since it was translated, as JSON.
 - `npm run i18n -- import fr file.json` merges translations in that same shape into the language file.
+- `npm run i18n -- confirm all <key>` marks translations as still correct after an English edit that doesn't affect them, such as a typo fix.
 
 Translations may only use a few inline tags (`<a>`, `<strong>`, `<em>`, `<code>`, `<br>`), and links may only point to URLs the English already uses. A language is only built and linked once `published` is set to `true` in `locales.json`. To preview draft languages in a production build, run `I18N_DRAFTS=1 npm run build`.
 
