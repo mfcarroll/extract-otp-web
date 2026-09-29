@@ -402,8 +402,8 @@
       "text": "Selecione as contas que deseja exportar."
     },
     "use.export.google.transfer": {
-      "source": "a4fe6e7a56",
-      "text": "Abra o menu e selecione \"Transferir contas\" &gt; \"Exportar contas\"."
+      "source": "2766f2b5c2",
+      "text": "Abra o menu e selecione \"Transferir contas\" &gt; \"Exportar contas\" (no Android: \"Transferir códigos\" &gt; \"Exportar códigos\")."
     },
     "use.export.heading": {
       "source": "23bb9f85b6",

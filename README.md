@@ -34,7 +34,7 @@ While other tools exist to solve this, they often require technical steps like r
 
 1. **Export from your one-time password app**
 
-   _Google Authenticator_: open the app on your phone, go to the menu and select "Transfer accounts" > "Export accounts", then select the accounts you want to export.
+   _Google Authenticator_: open the app on your phone, go to the menu and select "Transfer accounts" > "Export accounts" (on Android: "Transfer codes" > "Export codes"), then select the accounts you want to export.
 
    _LastPass Authenticator_: open the app on your phone, tap the cog and select "Transfer accounts" > "Export accounts to QR code". You can also choose "Export accounts to file" and open that file in the tool instead.
 
