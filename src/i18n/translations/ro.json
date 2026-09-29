@@ -3,10 +3,10 @@
     "name": "Română",
     "lang": "ro",
     "hreflang": "ro",
-    "status": "machine",
+    "status": "reviewed",
     "contributors": [
       {
-        "name": "",
+        "name": "T12",
         "github": "",
         "url": ""
       }
@@ -227,7 +227,7 @@
     },
     "faq.thanks.tagline": {
       "source": "866418f7de",
-      "text": "Pentru oamenii și locurile pe care le iubești"
+      "text": "Pentru locurile și oamenii pe care îi iubești​"
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
