@@ -5,6 +5,7 @@ import { logger } from './logger';
 import jsQR, { QRCode } from 'jsqr';
 import pica from 'pica';
 import QrScanner from 'qr-scanner';
+import { t } from '../i18n';
 
 const TARGET_SIZES = [400, 600, 800, 1000, 1200];
 const picaInstance = pica();
@@ -349,13 +350,9 @@ export function processImage(
       resolve(null);
     } catch (error) {
       if (error instanceof DOMException && error.name === 'SecurityError') {
-        reject(
-          new Error(
-            'Could not process image due to security restrictions (tainted canvas).'
-          )
-        );
+        reject(new Error(t('error.imageSecurity')));
       }
-      reject(new Error('File is not a valid image or could not be loaded.'));
+      reject(new Error(t('error.imageLoad')));
     }
   });
 }

@@ -1,6 +1,7 @@
 import { MigrationOtpParameter } from '../types';
 import { logger } from './logger';
 import { migrationRoot } from './migrationSchema';
+import { t } from '../i18n';
 
 export function base64ToUint8Array(base64: string): Uint8Array {
   // The atob function in browsers handles spaces, but it's good practice to remove them.
@@ -59,8 +60,6 @@ export async function decodeProtobufPayload(
       'Protobuf Decode Error. Offending data (hex):',
       toHexString(protobufData)
     );
-    throw new Error(
-      'Failed to parse the final data payload. It may be corrupted or in an unexpected format.'
-    );
+    throw new Error(t('error.payloadParse'));
   }
 }

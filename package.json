@@ -10,7 +10,9 @@
     "check": "tsc --noEmit",
     "test": "vitest",
     "test:watch": "vitest --watch",
-    "format": "prettier --write index.html 'src/**/*.{ts,css}' 'tests/**/*.ts'"
+    "format": "prettier --write index.html 'src/**/*.{ts,css,json}' 'scripts/**/*.mjs' 'tests/**/*.ts'",
+    "i18n": "node scripts/i18n/cli.mjs",
+    "i18n:check": "node scripts/i18n/cli.mjs check"
   },
   "devDependencies": {
     "@types/qrcode": "^1.5.6",

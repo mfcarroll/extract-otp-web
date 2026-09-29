@@ -69,7 +69,7 @@ This project is built with [Vite](https://vitejs.dev/).
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (version 18 or higher recommended)
+- [Node.js](https://nodejs.org/) (version 22 or higher)
 - npm, pnpm, or yarn
 
 ### Running Locally
@@ -94,6 +94,18 @@ This project is built with [Vite](https://vitejs.dev/).
     ```
 
 4.  Open your browser to the local URL provided.
+
+### Translations
+
+English is written once. Page text lives in `index.html`, where each translatable element has a `data-i18n="key"` attribute (or `data-i18n-attr="attribute:key"`). Messages the app shows while running live in `src/i18n/en.json` and are looked up in code with `t('key')`.
+
+Each other language has one file, `src/i18n/translations/<code>.json`, and an entry in `src/i18n/locales.json`. The build generates a separate page for each language (for example `/fr/`), so search engines index every language. On the development server, every language is available, including drafts.
+
+- `npm run i18n -- check` validates all translations. CI runs this.
+- `npm run i18n -- todo fr` prints the English that still needs translating, or that changed since it was translated, as JSON.
+- `npm run i18n -- import fr file.json` merges translations in that same shape into the language file.
+
+Translations may only use a few inline tags (`<a>`, `<strong>`, `<em>`, `<code>`, `<br>`), and links may only point to URLs the English already uses. A language is only built and linked once `published` is set to `true` in `locales.json`. To preview draft languages in a production build, run `I18N_DRAFTS=1 npm run build`.
 
 ## Acknowledgements
 

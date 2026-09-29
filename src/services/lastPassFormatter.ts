@@ -4,6 +4,7 @@ import {
   MigrationOtpParameter,
 } from '../types';
 import { mapToMigrationOtpParameter, RawOtpAccount } from './otpDataMapper';
+import { t } from '../i18n';
 
 /**
  * Processes the proprietary JSON format from a LastPass QR code, converting its
@@ -22,9 +23,7 @@ export function processLastPassQrJson(
   // which is present in both formats.
   const accounts = data.a;
   if (!accounts || !Array.isArray(accounts)) {
-    throw new Error(
-      "Invalid LastPass QR JSON format: 'a' (accounts) array not found."
-    );
+    throw new Error(t('error.lastPassAccounts'));
   }
 
   return accounts.map((lpAccount: LastPassQrAccount) => {

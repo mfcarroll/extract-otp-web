@@ -2,13 +2,14 @@ import { MigrationOtpParameter } from '../types';
 import { announceToScreenReader } from '../ui/notifications';
 import { convertToOtpData } from './otpFormatter';
 import { triggerDownload } from './download';
+import { t } from '../i18n';
 
 /**
  * Exports the current OTP data as a formatted JSON file.
  */
 export function downloadAsJson(otpsToExport: MigrationOtpParameter[]): void {
   if (otpsToExport.length === 0) {
-    announceToScreenReader('No data to export.');
+    announceToScreenReader(t('export.noData'));
     return;
   }
 

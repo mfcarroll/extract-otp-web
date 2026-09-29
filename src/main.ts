@@ -19,6 +19,7 @@ import { initTabs } from './ui/tabs';
 import { initAccordion } from './ui/accordion';
 import { displayError, announceToScreenReader } from './ui/notifications';
 import { logger } from './services/logger';
+import { t } from './i18n';
 
 window.Buffer = Buffer; // Make Buffer globally available for libraries that might need it.
 
@@ -27,8 +28,7 @@ window.Buffer = Buffer; // Make Buffer globally available for libraries that mig
  * rejections, providing a user-friendly error message.
  */
 function setupGlobalErrorHandling(): void {
-  const genericErrorMessage =
-    'An unexpected error occurred. Please try again or refresh the page.';
+  const genericErrorMessage = t('error.unexpected');
 
   window.addEventListener('error', (event) => {
     logger.error('Uncaught error:', event.error);

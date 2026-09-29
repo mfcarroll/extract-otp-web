@@ -2,6 +2,7 @@ import { MigrationOtpParameter, OtpData } from '../types';
 import { announceToScreenReader } from '../ui/notifications';
 import { convertToOtpData } from './otpFormatter';
 import { triggerDownload } from './download';
+import { t } from '../i18n';
 
 const escapeCsvField = (field: any): string => {
   const str = String(field ?? '');
@@ -13,7 +14,7 @@ const escapeCsvField = (field: any): string => {
 
 export function downloadAsCsv(otpsToExport: MigrationOtpParameter[]): void {
   if (otpsToExport.length === 0) {
-    announceToScreenReader('No data to export.');
+    announceToScreenReader(t('export.noData'));
     return;
   }
 

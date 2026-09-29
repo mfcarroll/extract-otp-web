@@ -171,12 +171,12 @@
 }
 
 .copy-button::before {
-  content: 'Copy';
+  content: attr(data-tooltip-copy);
   background-color: var(--subtle-text-color);
 }
 
 .copy-button::after {
-  content: 'Copied!';
+  content: attr(data-tooltip-copied);
   background-color: var(--success-color);
 }
 

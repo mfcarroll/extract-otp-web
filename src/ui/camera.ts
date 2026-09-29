@@ -5,6 +5,7 @@ import { setState, getState } from '../state/store';
 import { displayError, addUploadLog } from './notifications';
 import { logger } from '../services/logger';
 import { filterAndLogOtps, getOtpUniqueKey } from '../services/dataHandler';
+import { t } from '../i18n';
 
 const cameraModal = document.getElementById('camera-modal') as HTMLElement;
 const video = document.getElementById('camera-video') as HTMLVideoElement;
@@ -70,7 +71,7 @@ async function processScanResult(result: QrScanner.ScanResult) {
       const { newOtps, duplicatesFound } = filterAndLogOtps(
         otpParameters,
         existingAndBatchKeys,
-        'Camera Scan'
+        t('log.cameraScan')
       );
 
       if (newOtps.length > 0) {
@@ -78,21 +79,19 @@ async function processScanResult(result: QrScanner.ScanResult) {
           otps: [...currentState.otps, ...newOtps],
         }));
       } else if (duplicatesFound > 0) {
-        addUploadLog('Camera Scan', 'info', 'QR code already processed.');
+        addUploadLog(t('log.cameraScan'), 'info', t('log.alreadyProcessed'));
       }
     } else {
-      addUploadLog(
-        'Camera Scan',
-        'warning',
-        'No OTP secrets found in QR code.'
-      );
+      addUploadLog(t('log.cameraScan'), 'warning', t('log.noSecretsInQr'));
     }
   } catch (error: any) {
     logger.error('Error processing scanned QR code:', error);
-    displayError(
-      error.message || 'Failed to process QR code from camera feed.'
+    displayError(error.message || t('error.cameraProcess'));
+    addUploadLog(
+      t('log.cameraScan'),
+      'error',
+      error.message || t('error.processingFailed')
     );
-    addUploadLog('Camera Scan', 'error', error.message || 'Processing failed.');
   }
 }
 
@@ -181,17 +180,13 @@ async function startScan(event: MouseEvent | KeyboardEvent) {
       cameraSelect.style.display = 'none';
       cameraSwitch.style.display = 'none';
       currentCameraId = null;
-      displayError(
-        'No camera found. Please ensure you have a camera connected.'
-      );
+      displayError(t('error.noCamera'));
       stopScan(); // Ensure modal is closed if no camera
       return; // Exit early if no camera
     }
   } catch (error) {
     logger.error('Failed to start camera:', error);
-    displayError(
-      'Failed to start camera. Please ensure you have a camera connected and have granted permission.'
-    );
+    displayError(t('error.startCamera'));
     stopScan(); // Ensure modal is closed if camera fails to start
   }
 }
@@ -252,7 +247,7 @@ async function switchCamera() {
       logger.debug('Switched to camera:', targetCamera.label);
     } catch (error) {
       logger.error('Failed to switch camera:', error);
-      displayError('Failed to switch camera.');
+      displayError(t('error.switchCamera'));
     }
   }
 }

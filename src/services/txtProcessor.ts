@@ -1,6 +1,7 @@
 // src/services/txtProcessor.ts
 import { MigrationOtpParameter } from '../types';
 import { parseFlexibleInput } from './otpUrlParser';
+import { t } from '../i18n';
 
 export async function processText(
   fileContent: string
@@ -18,12 +19,17 @@ export async function processText(
       const params = await parseFlexibleInput(trimmedLine);
       allOtpParams.push(...params);
     } catch (error: any) {
-      errors.push(`Line ${i + 1}: ${error.message || 'Invalid format'}`);
+      errors.push(
+        t('error.textLine', {
+          line: i + 1,
+          message: error.message || t('error.invalidFormat'),
+        })
+      );
     }
   }
 
   if (allOtpParams.length === 0 && errors.length > 0) {
-    throw new Error(`Failed to parse any valid OTPs from text.\n${errors[0]}`);
+    throw new Error(t('error.textParse', { detail: errors[0] }));
   }
 
   return allOtpParams;

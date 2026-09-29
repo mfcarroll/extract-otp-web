@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
+    <title data-i18n="meta.title">
       One-Time Password Secret Extractor – Google Authenticator Export
     </title>
     <meta
       name="description"
+      data-i18n-attr="content:meta.description"
       content="Extract TOTP/HOTP one-time password secrets from Google Authenticator or LastPass 2FA export QR codes. Runs entirely in your browser; nothing is uploaded."
     />
     <link
@@ -30,16 +31,18 @@
   <body>
     <div class="page-container">
       <main id="app">
-        <h1>One-Time Password Secret Extractor</h1>
+        <h1 data-i18n="app.title">One-Time Password Secret Extractor</h1>
 
         <div id="info-tabs">
           <!-- 1. Tabs Section -->
           <div
             class="tab-buttons navigable-section"
+            data-i18n-attr="aria-label:tabs.label"
             role="tablist"
             aria-label="Information tabs"
           >
             <button
+              data-i18n="tabs.what"
               class="tab-button navigable active"
               id="tab-btn-what"
               data-tab="what"
@@ -51,6 +54,7 @@
               What is this?
             </button>
             <button
+              data-i18n="tabs.use"
               class="tab-button navigable"
               id="tab-btn-use"
               tabindex="-1"
@@ -62,6 +66,7 @@
               How do I use it?
             </button>
             <button
+              data-i18n="tabs.faq"
               class="tab-button navigable"
               id="tab-btn-faq"
               tabindex="-1"
@@ -82,13 +87,13 @@
               role="tabpanel"
               aria-labelledby="tab-btn-what"
             >
-              <p>
+              <p data-i18n="what.intro">
                 This tool extracts one-time password (OTP) secrets, the codes
                 used for two-factor authentication (2FA), from the Google
                 Authenticator or LastPass Authenticator apps. There is no
                 software to install, and no data ever leaves your device.
               </p>
-              <p>
+              <p data-i18n="what.offline">
                 <strong
                   >All processing of your QR codes and secrets happens entirely
                   offline, locally, right here in your browser.</strong
@@ -103,85 +108,97 @@
               aria-labelledby="tab-btn-use"
               hidden
             >
-              <p>
+              <p data-i18n="use.intro">
                 This tool reads QR codes from Google Authenticator or LastPass
                 Authenticator's export feature and gives you back the original
                 secret for each account. You can then use these secrets to
                 import your accounts into any other authenticator app.
               </p>
-              <h3>1. Export from your one-time password app</h3>
-              <h4>Export from Google Authenticator</h4>
+              <h3 data-i18n="use.export.heading">
+                1. Export from your one-time password app
+              </h3>
+              <h4 data-i18n="use.export.google.heading">
+                Export from Google Authenticator
+              </h4>
               <ul>
-                <li>Open the Google Authenticator app on your phone.</li>
-                <li>
+                <li data-i18n="use.export.google.open">
+                  Open the Google Authenticator app on your phone.
+                </li>
+                <li data-i18n="use.export.google.transfer">
                   Go to the menu and select "Transfer accounts" > "Export
                   accounts".
                 </li>
-                <li>Select the accounts you wish to export.</li>
+                <li data-i18n="use.export.google.select">
+                  Select the accounts you wish to export.
+                </li>
               </ul>
-              <h4>Export from LastPass</h4>
+              <h4 data-i18n="use.export.lastPass.heading">
+                Export from LastPass
+              </h4>
               <ul>
-                <li>Open the LastPass Authenticator on your phone.</li>
-                <li>
+                <li data-i18n="use.export.lastPass.open">
+                  Open the LastPass Authenticator on your phone.
+                </li>
+                <li data-i18n="use.export.lastPass.transfer">
                   Click on the cog and select "Transfer accounts" > "Export
                   accounts to QR code".
                 </li>
-                <li>
+                <li data-i18n="use.export.lastPass.file">
                   For lastpass, you can also choose "Export accounts to file"
                   and import that instead. This tool supports both formats.
                 </li>
               </ul>
 
-              <h3>2. Extract Secrets</h3>
+              <h3 data-i18n="use.extract.heading">2. Extract Secrets</h3>
               <ul>
-                <li>
+                <li data-i18n="use.extract.scan">
                   Open this tool on your computer or a second device, and click
                   "Scan QR" to scan the export QR codes on your phone directly.
                   This is the most convenient option, and it avoids storing
                   screenshots of your secrets.
                 </li>
-                <li>
+                <li data-i18n="use.extract.screenshot">
                   Alternatively, take a screenshot of each QR code that is
                   displayed, then click "Open File(s)" or drag and drop your
                   screenshot(s) onto the page.
                 </li>
-                <li>
+                <li data-i18n="use.extract.enter">
                   You can also click "Enter Code" to enter a secret key or setup
                   URL directly as text, and this tool will display your original
                   setup QR code.
                 </li>
-                <li>
+                <li data-i18n="use.extract.other">
                   This tool can also read individual setup QR codes from any
                   app, or a text file with one secret key or URL per line. This
                   makes it easy to turn secrets from anywhere into scannable QR
                   codes.
                 </li>
               </ul>
-              <h3>3. Use Your Secrets</h3>
+              <h3 data-i18n="use.use.heading">3. Use Your Secrets</h3>
               <ul>
-                <li>
+                <li data-i18n="use.use.display">
                   The tool will display the extracted OTP secrets, each with its
                   own QR code and secret key.
                 </li>
-                <li>
+                <li data-i18n="use.use.import">
                   You can now import these secrets into your preferred
                   authenticator app or password manager.
                 </li>
-                <li>
+                <li data-i18n="use.use.save">
                   Click "Save as CSV" or "Save as JSON" to keep a copy of your
                   secrets. You can open these files here again later to display
                   your QR codes.
                 </li>
-                <li>
+                <li data-i18n="use.use.export">
                   To move accounts into Google Authenticator or LastPass
                   Authenticator, select them and click "Export to Google" or
                   "Export to LastPass". This tool will show a transfer QR code
                   you can scan with that app.
                 </li>
               </ul>
-              <h3>4. Clean Up</h3>
+              <h3 data-i18n="use.cleanup.heading">4. Clean Up</h3>
               <ul>
-                <li>
+                <li data-i18n="note.storage">
                   <strong
                     >Note: Any screenshots or downloaded files contain your
                     unencrypted secrets.</strong
@@ -209,7 +226,9 @@
                     aria-expanded="false"
                     aria-controls="faq-1-answer"
                   >
-                    <span class="faq-title">Why is this needed?</span>
+                    <span data-i18n="faq.why.title" class="faq-title"
+                      >Why is this needed?</span
+                    >
                   </button>
                 </h3>
                 <div
@@ -218,19 +237,19 @@
                   role="region"
                   aria-labelledby="faq-1-button"
                 >
-                  <p>
+                  <p data-i18n="faq.why.p1">
                     Google Authenticator lets you transfer your accounts to a
                     new phone, but it doesn't provide an easy way to export them
                     to other apps like 1Password or Bitwarden. This is because
                     it hides the original "secret" (the QR code you first
                     scanned) for each account.
                   </p>
-                  <p>
+                  <p data-i18n="faq.why.p2">
                     Without these secrets, moving to a new password manager
                     means manually re-configuring 2FA for every single account,
                     which is a huge pain.
                   </p>
-                  <p>
+                  <p data-i18n="faq.why.p3">
                     While other tools exist to solve this, they often require
                     technical steps like running scripts or installing software.
                     This tool is designed to be a simple, secure solution that
@@ -248,7 +267,9 @@
                     aria-expanded="false"
                     aria-controls="faq-2-answer"
                   >
-                    <span class="faq-title">How does it work?</span>
+                    <span data-i18n="faq.how.title" class="faq-title"
+                      >How does it work?</span
+                    >
                   </button>
                 </h3>
                 <div
@@ -257,7 +278,7 @@
                   role="region"
                   aria-labelledby="faq-2-button"
                 >
-                  <p>
+                  <p data-i18n="faq.how.answer">
                     You scan the QR codes from Google Authenticator or LastPass
                     Authenticator's export feature with your camera, or provide
                     screenshots of them (or a LastPass export file). This tool
@@ -278,7 +299,7 @@
                     aria-expanded="false"
                     aria-controls="faq-3-answer"
                   >
-                    <span class="faq-title"
+                    <span data-i18n="faq.safe.title" class="faq-title"
                       >Is it safe to &ldquo;upload&rdquo; my QR codes?</span
                     >
                   </button>
@@ -289,7 +310,7 @@
                   role="region"
                   aria-labelledby="faq-3-button"
                 >
-                  <p>
+                  <p data-i18n="faq.safe.local">
                     Yes. Security and privacy are the top priorities.
                     <strong
                       >Nothing you do here ever leaves your computer or mobile
@@ -299,12 +320,12 @@
                     browser. Your QR code images and secrets are never sent to
                     any server.
                   </p>
-                  <p>
+                  <p data-i18n="faq.safe.camera">
                     For the most privacy, open this tool on your computer or a
                     second device, and click "Scan QR" to scan the export QR
                     codes on your phone directly, without taking screenshots.
                   </p>
-                  <p>
+                  <p data-i18n="note.storage">
                     <strong
                       >Note: Any screenshots or downloaded files contain your
                       unencrypted secrets.</strong
@@ -314,7 +335,7 @@
                     "Recycle Bin", "Recently Deleted" and any cloud photo
                     backups.
                   </p>
-                  <p>
+                  <p data-i18n="faq.safe.openSource">
                     This tool is open-source and
                     <a
                       href="https://github.com/mfcarroll/extract-otp-web"
@@ -342,7 +363,7 @@
                     aria-expanded="false"
                     aria-controls="faq-4-answer"
                   >
-                    <span class="faq-title"
+                    <span data-i18n="faq.hidden.title" class="faq-title"
                       >Why doesn't Google Authenticator show my original QR
                       codes?</span
                     >
@@ -354,7 +375,7 @@
                   role="region"
                   aria-labelledby="faq-4-button"
                 >
-                  <p>
+                  <p data-i18n="faq.hidden.answer">
                     Google Authenticator makes it difficult to view the original
                     secrets used to set up your accounts. Instead, they provide
                     an export QR code that bundles all your accounts together.
@@ -378,7 +399,7 @@
                     aria-expanded="false"
                     aria-controls="faq-5-answer"
                   >
-                    <span class="faq-title"
+                    <span data-i18n="faq.onePassword.title" class="faq-title"
                       >Why can't 1Password import from Google
                       Authenticator?</span
                     >
@@ -390,7 +411,7 @@
                   role="region"
                   aria-labelledby="faq-5-button"
                 >
-                  <p>
+                  <p data-i18n="faq.onePassword.answer">
                     That's a great question, and one that
                     <a
                       href="https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418"
@@ -430,7 +451,7 @@
                     aria-expanded="false"
                     aria-controls="faq-6-answer"
                   >
-                    <span class="faq-title"
+                    <span data-i18n="faq.lastPassScan.title" class="faq-title"
                       >My LastPass QR code won't scan!</span
                     >
                   </button>
@@ -441,7 +462,7 @@
                   role="region"
                   aria-labelledby="faq-6-button"
                 >
-                  <p>
+                  <p data-i18n="faq.lastPassScan.answer">
                     LastPass puts all of your accounts together into one QR
                     code, and if you have many accounts this can make the QR
                     code details tiny and hard to read. Google Authenticator
@@ -463,7 +484,9 @@
                     aria-expanded="false"
                     aria-controls="faq-7-answer"
                   >
-                    <span class="faq-title">Who made this?</span>
+                    <span data-i18n="faq.author.title" class="faq-title"
+                      >Who made this?</span
+                    >
                   </button>
                 </h3>
                 <div
@@ -472,7 +495,7 @@
                   role="region"
                   aria-labelledby="faq-7-button"
                 >
-                  <p>
+                  <p data-i18n="faq.author.answer">
                     This tool was created by
                     <a
                       href="https://www.linkedin.com/in/matthewfcarroll/"
@@ -495,7 +518,9 @@
                     aria-expanded="false"
                     aria-controls="faq-8-answer"
                   >
-                    <span class="faq-title">How do I report a problem?</span>
+                    <span data-i18n="faq.report.title" class="faq-title"
+                      >How do I report a problem?</span
+                    >
                   </button>
                 </h3>
                 <div
@@ -504,7 +529,7 @@
                   role="region"
                   aria-labelledby="faq-8-button"
                 >
-                  <p>
+                  <p data-i18n="faq.report.answer">
                     Please report any issues with this tool on
                     <a
                       href="https://github.com/mfcarroll/extract-otp-web/issues"
@@ -525,7 +550,9 @@
                     aria-expanded="false"
                     aria-controls="faq-9-answer"
                   >
-                    <span class="faq-title">Acknowledgements</span>
+                    <span data-i18n="faq.thanks.title" class="faq-title"
+                      >Acknowledgements</span
+                    >
                   </button>
                 </h3>
                 <div
@@ -534,12 +561,12 @@
                   role="region"
                   aria-labelledby="faq-9-button"
                 >
-                  <p>
+                  <p data-i18n="faq.thanks.projects">
                     This tool builds on the work of several open-source
                     projects, including:
                   </p>
                   <ul>
-                    <li>
+                    <li data-i18n="faq.thanks.basis">
                       <a
                         href="https://github.com/scito/extract_otp_secrets/#readme"
                         target="_blank"
@@ -553,7 +580,7 @@
                         >Roland Kurmann</a
                       >, on which this tool is based.
                     </li>
-                    <li>
+                    <li data-i18n="faq.thanks.spec">
                       <a
                         href="https://github.com/beemdevelopment/Aegis/#readme"
                         target="_blank"
@@ -568,7 +595,7 @@
                         >Chris van Marle</a
                       >, for the export protobuf specification.
                     </li>
-                    <li>
+                    <li data-i18n="faq.thanks.alternative">
                       <a
                         href="https://github.com/krissrex/google-authenticator-exporter/#readme"
                         target="_blank"
@@ -577,12 +604,12 @@
                       >, another python script solution to the same problem.
                     </li>
                   </ul>
-                  <p>
+                  <p data-i18n="faq.thanks.libraries">
                     The user interface and QR code processing are powered by
                     these open-source libraries:
                   </p>
                   <ul>
-                    <li>
+                    <li data-i18n="faq.thanks.jsqr">
                       <a
                         href="https://github.com/cozmo/jsQR#readme"
                         target="_blank"
@@ -591,7 +618,7 @@
                       >
                       for decoding QR codes from images.
                     </li>
-                    <li>
+                    <li data-i18n="faq.thanks.pica">
                       <a
                         href="https://github.com/nodeca/pica#readme"
                         target="_blank"
@@ -600,7 +627,7 @@
                       >
                       for high-quality image resizing.
                     </li>
-                    <li>
+                    <li data-i18n="faq.thanks.qrScanner">
                       <a
                         href="https://github.com/nimiq/qr-scanner/#readme"
                         target="_blank"
@@ -609,7 +636,7 @@
                       >
                       for scanning QR codes using the camera.
                     </li>
-                    <li>
+                    <li data-i18n="faq.thanks.protobuf">
                       <a
                         href="https://github.com/protobufjs/protobuf.js#readme"
                         target="_blank"
@@ -618,7 +645,7 @@
                       >
                       for decoding the Google Authenticator data payload.
                     </li>
-                    <li>
+                    <li data-i18n="faq.thanks.qrcode">
                       <a
                         href="https://github.com/soldair/node-qrcode#readme"
                         target="_blank"
@@ -627,7 +654,7 @@
                       >
                       for generating new QR codes for each account.
                     </li>
-                    <li>
+                    <li data-i18n="faq.thanks.thirtyTwo">
                       <a
                         href="https://github.com/wzrdtales/thirty-two"
                         target="_blank"
@@ -636,7 +663,7 @@
                       >
                       for Base32 encoding the OTP secrets.
                     </li>
-                    <li>
+                    <li data-i18n="faq.thanks.fontAwesome">
                       <a
                         href="https://github.com/FortAwesome/Font-Awesome#readme"
                         target="_blank"
@@ -646,11 +673,11 @@
                       for the icons used in the UI.
                     </li>
                   </ul>
-                  <p>
+                  <p data-i18n="faq.thanks.contributors">
                     Thank you to all the contributers to these excellent
                     projects!
                   </p>
-                  <p>
+                  <p data-i18n="faq.thanks.ai">
                     <a
                       href="https://codeassist.google.com/"
                       target="_blank"
@@ -673,12 +700,12 @@
                           src="/Stand_Logo_Block-RGB_Red.svg"
                           alt="Stand.earth"
                         />
-                        <span class="tagline"
+                        <span data-i18n="faq.thanks.tagline" class="tagline"
                           >For the people and places you love</span
                         >
                       </span></a
                     >
-                    <p class="text">
+                    <p data-i18n="faq.thanks.support" class="text">
                       The development of this tool was made possible in part
                       through the support of
                       <a
@@ -713,22 +740,25 @@
           />
           <div class="file-input-buttons">
             <button id="btn-scan-qr" class="btn btn-primary navigable">
-              <i class="fa fa-camera"></i> Scan QR
+              <i class="fa fa-camera"></i>
+              <span data-i18n="upload.scanQr">Scan QR</span>
             </button>
 
             <button
               class="btn btn-secondary navigable"
               onclick="document.getElementById('file-input').click()"
             >
-              <i class="fa fa-upload"></i> Open File(s)
+              <i class="fa fa-upload"></i>
+              <span data-i18n="upload.openFiles">Open File(s)</span>
             </button>
 
             <button id="btn-manual-entry" class="btn btn-secondary navigable">
-              <i class="fa fa-pen-to-square"></i> Enter Code
+              <i class="fa fa-pen-to-square"></i>
+              <span data-i18n="upload.enterCode">Enter Code</span>
             </button>
           </div>
 
-          <div class="drop-text">
+          <div data-i18n="upload.dropHint" class="drop-text">
             or drag and drop files here<br />(image, json export, csv, or txt)
           </div>
 
@@ -742,6 +772,7 @@
         <!-- 4. Results Container (each card inside is its own section) -->
         <div
           id="results-container"
+          data-i18n-attr="aria-label:results.label"
           role="grid"
           aria-label="Extracted OTP Accounts"
         ></div>
@@ -762,23 +793,23 @@
             <h3 class="otp-title"></h3>
             <div class="otp-card-main-content">
               <p class="detail-row">
-                <span class="label">Name:</span>
+                <span data-i18n="card.name" class="label">Name:</span>
                 <span data-value="name"></span>
               </p>
               <p class="detail-row">
-                <span class="label">Issuer:</span>
+                <span data-i18n="card.issuer" class="label">Issuer:</span>
                 <span data-value="issuer"></span>
               </p>
               <p class="detail-row">
-                <span class="label">Type:</span>
+                <span data-i18n="card.type" class="label">Type:</span>
                 <span data-value="type"></span>
               </p>
               <p class="detail-row counter-row">
-                <span class="label">Counter:</span>
+                <span data-i18n="card.counter" class="label">Counter:</span>
                 <span data-value="counter"></span>
               </p>
               <p class="detail-row secret-row">
-                <label class="label">Secret:</label>
+                <label data-i18n="card.secret" class="label">Secret:</label>
                 <span class="secret-container">
                   <textarea
                     class="text-input secret-input navigable"
@@ -791,14 +822,19 @@
                     class="copy-button navigable"
                     role="gridcell"
                     tabindex="-1"
+                    data-tooltip-copy="Copy"
+                    data-tooltip-copied="Copied!"
+                    data-i18n-attr="data-tooltip-copy:card.copyTooltip; data-tooltip-copied:card.copiedTooltip"
                   >
                     <i class="fa fa-copy" aria-hidden="true"></i>
-                    <span class="visually-hidden">Copy secret</span>
+                    <span data-i18n="card.copySecret" class="visually-hidden"
+                      >Copy secret</span
+                    >
                   </button>
                 </span>
               </p>
               <p class="detail-row otp-url-row">
-                <label class="label">URL:</label>
+                <label data-i18n="card.url" class="label">URL:</label>
                 <span class="otp-url-container">
                   <textarea
                     class="text-input url-input navigable"
@@ -811,27 +847,40 @@
                     class="copy-button navigable"
                     role="gridcell"
                     tabindex="-1"
+                    data-tooltip-copy="Copy"
+                    data-tooltip-copied="Copied!"
+                    data-i18n-attr="data-tooltip-copy:card.copyTooltip; data-tooltip-copied:card.copiedTooltip"
                   >
                     <i class="fa fa-copy" aria-hidden="true"></i>
-                    <span class="visually-hidden">Copy URL</span>
+                    <span data-i18n="card.copyUrl" class="visually-hidden"
+                      >Copy URL</span
+                    >
                   </button>
                 </span>
               </p>
-              <p class="visually-hidden card-actions-help">
+              <p
+                data-i18n="card.copyHelp"
+                class="visually-hidden card-actions-help"
+              >
                 Press Enter or Space to copy.
               </p>
             </div>
             <div class="qr-code-wrapper">
               <div class="detail-row qr-code-row">
-                <span class="label">QR:</span>
+                <span data-i18n="card.qr" class="label">QR:</span>
                 <button
                   class="qr-code-container navigable"
                   role="gridcell"
                   tabindex="-1"
                 >
                   <canvas></canvas>
-                  <span class="visually-hidden">Show larger QR code</span>
-                  <small class="qr-enlarge-hint" aria-hidden="true"
+                  <span data-i18n="card.showLargerQr" class="visually-hidden"
+                    >Show larger QR code</span
+                  >
+                  <small
+                    data-i18n="card.tapToEnlarge"
+                    class="qr-enlarge-hint"
+                    aria-hidden="true"
                     >Tap to enlarge</small
                   >
                 </button>
@@ -847,14 +896,18 @@
             class="navigable-section"
             style="display: none"
           >
-            <span id="selection-count">0 selected</span>
+            <span data-i18n="selection.initial" id="selection-count"
+              >0 selected</span
+            >
             <button
+              data-i18n="selection.all"
               id="select-all-button"
               class="btn btn-secondary btn-small navigable"
             >
               Select All
             </button>
             <button
+              data-i18n="selection.clear"
               id="deselect-all-button"
               class="btn btn-secondary btn-small navigable"
             >
@@ -864,7 +917,8 @@
               id="clear-all-button"
               class="btn btn-danger btn-small navigable"
             >
-              <i class="fa fa-trash"></i> Reset
+              <i class="fa fa-trash"></i>
+              <span data-i18n="selection.reset">Reset</span>
             </button>
           </div>
           <div class="main-export-actions">
@@ -873,13 +927,15 @@
                 id="download-csv-button"
                 class="btn btn-success navigable"
               >
-                <i class="fa fa-download"></i> Save as CSV
+                <i class="fa fa-download"></i>
+                <span data-i18n="export.saveCsv">Save as CSV</span>
               </button>
               <button
                 id="download-json-button"
                 class="btn btn-success navigable"
               >
-                <i class="fa fa-download"></i> Save as JSON
+                <i class="fa fa-download"></i>
+                <span data-i18n="export.saveJson">Save as JSON</span>
               </button>
             </div>
             <div class="export-button-row navigable-section">
@@ -887,13 +943,15 @@
                 id="export-google-button"
                 class="btn btn-primary navigable"
               >
-                <i class="fa-brands fa-google"></i> Export to Google
+                <i class="fa-brands fa-google"></i>
+                <span data-i18n="export.google">Export to Google</span>
               </button>
               <button
                 id="export-lastpass-button"
                 class="btn btn-primary navigable"
               >
-                <i class="fa-solid fa-key"></i> Export to LastPass
+                <i class="fa-solid fa-key"></i>
+                <span data-i18n="export.lastPass">Export to LastPass</span>
               </button>
             </div>
           </div>
@@ -914,6 +972,7 @@
           >
           <span class="footer-separator">|</span>
           <a
+            data-i18n="footer.source"
             id="source-code-link"
             class="navigable"
             href="https://github.com/mfcarroll/extract-otp-web"
@@ -921,6 +980,13 @@
             rel="noopener noreferrer"
             >Source Code</a
           >
+          <nav
+            id="language-switcher"
+            class="language-switcher"
+            aria-label="Language"
+            data-i18n-attr="aria-label:footer.languages"
+            hidden
+          ></nav>
           <span class="footer-separator">|</span>
           <div
             id="theme-switcher-wrapper"
@@ -930,7 +996,9 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <span class="visually-hidden">Open theme switcher</span>
+            <span data-i18n="theme.open" class="visually-hidden"
+              >Open theme switcher</span
+            >
             <div class="theme-switcher" role="menu">
               <button
                 class="navigable"
@@ -939,7 +1007,9 @@
                 aria-checked="false"
               >
                 <i class="fa fa-desktop"></i>
-                <span class="visually-hidden">Switch to system theme</span>
+                <span data-i18n="theme.system" class="visually-hidden"
+                  >Switch to system theme</span
+                >
               </button>
               <button
                 class="navigable"
@@ -948,7 +1018,9 @@
                 aria-checked="false"
               >
                 <i class="fa fa-sun"></i>
-                <span class="visually-hidden">Switch to light theme</span>
+                <span data-i18n="theme.light" class="visually-hidden"
+                  >Switch to light theme</span
+                >
               </button>
               <button
                 class="navigable"
@@ -957,7 +1029,9 @@
                 aria-checked="false"
               >
                 <i class="fa fa-moon"></i>
-                <span class="visually-hidden">Switch to dark theme</span>
+                <span data-i18n="theme.dark" class="visually-hidden"
+                  >Switch to dark theme</span
+                >
               </button>
             </div>
           </div>
@@ -965,7 +1039,13 @@
       </footer>
     </div>
     <div id="qr-modal" class="modal-overlay" role="dialog" aria-modal="true">
-      <button class="modal-close navigable" aria-label="Close">&#x2715;</button>
+      <button
+        class="modal-close navigable"
+        aria-label="Close"
+        data-i18n-attr="aria-label:modal.close"
+      >
+        &#x2715;
+      </button>
       <div class="modal-content"></div>
     </div>
     <div
@@ -977,13 +1057,25 @@
       <div class="camera-container">
         <video id="camera-video" playsinline></video>
 
-        <div id="camera-title" class="camera-scan-text">Scan QR Code</div>
+        <div
+          data-i18n="camera.title"
+          id="camera-title"
+          class="camera-scan-text"
+        >
+          Scan QR Code
+        </div>
         <canvas id="camera-canvas"></canvas>
       </div>
       <div class="camera-controls">
-        <select id="camera-select" class="navigable"></select>
+        <select
+          id="camera-select"
+          class="navigable"
+          aria-label="Select camera"
+          data-i18n-attr="aria-label:camera.select"
+        ></select>
         <button
           id="camera-switch"
+          data-i18n-attr="aria-label:camera.switch"
           class="btn btn-secondary navigable"
           aria-label="Switch Camera"
         >
@@ -992,6 +1084,7 @@
       </div>
       <button
         id="camera-cancel"
+        data-i18n-attr="aria-label:modal.close"
         class="modal-close navigable"
         aria-label="Close"
       >
@@ -1006,8 +1099,14 @@
         aria-labelledby="manual-modal-title"
       >
         <div class="modal-header">
-          <h2 id="manual-modal-title">Enter OTP Code</h2>
-          <button class="modal-close navigable" aria-label="Close modal">
+          <h2 data-i18n="manual.title" id="manual-modal-title">
+            Enter OTP Code
+          </h2>
+          <button
+            class="modal-close navigable"
+            aria-label="Close modal"
+            data-i18n-attr="aria-label:manual.close"
+          >
             &times;
           </button>
         </div>
@@ -1015,13 +1114,17 @@
           class="modal-body"
           style="display: flex; flex-direction: column; gap: 1rem"
         >
-          <p style="font-size: 0.9rem; color: var(--text-secondary)">
+          <p
+            data-i18n="manual.help"
+            style="font-size: 0.9rem; color: var(--text-secondary)"
+          >
             Paste an <code>otpauth://</code> URL or a raw Base32 secret key
             (e.g., <code>JBSW Y3DP EHPK 3PXP</code>).
           </p>
           <input
             type="text"
             id="manual-otp-input"
+            data-i18n-attr="placeholder:manual.placeholder"
             class="navigable"
             placeholder="Secret key or URL..."
             style="
@@ -1045,10 +1148,18 @@
             margin-top: 1rem;
           "
         >
-          <button id="manual-otp-cancel" class="btn btn-secondary navigable">
+          <button
+            data-i18n="manual.cancel"
+            id="manual-otp-cancel"
+            class="btn btn-secondary navigable"
+          >
             Cancel
           </button>
-          <button id="manual-otp-submit" class="btn btn-primary navigable">
+          <button
+            data-i18n="manual.submit"
+            id="manual-otp-submit"
+            class="btn btn-primary navigable"
+          >
             Add Code
           </button>
         </div>
