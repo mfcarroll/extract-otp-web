@@ -100,7 +100,22 @@ export function validateContributors(code, contributors) {
   if (!Array.isArray(contributors)) {
     throw new Error(`${code}.json: "contributors" must be a list`);
   }
-  return contributors.map((c, i) => {
+  // Empty fields count as absent, and an entry with nothing filled in is
+  // skipped, so a blank { "name": "", "github": "", "url": "" } is a template.
+  const filled = contributors.map((entry) =>
+    Object.fromEntries(
+      Object.entries(entry ?? {})
+        .map(([key, value]) => [
+          key,
+          typeof value === 'string' ? value.trim() : value,
+        ])
+        .filter(
+          ([, value]) => value !== '' && value !== undefined && value !== null
+        )
+    )
+  );
+  return filled.flatMap((c, i) => {
+    if (!Object.keys(c).length) return [];
     const where = `${code}.json contributor ${i + 1}`;
     if (
       c.github !== undefined &&
@@ -111,12 +126,12 @@ export function validateContributors(code, contributors) {
     if (c.url !== undefined && !/^https:\/\/[^\s"<>]+$/.test(c.url)) {
       throw new Error(`${where}: url must start with https://`);
     }
-    const name = c.name?.trim() || c.github;
+    const name = c.name || c.github;
     if (!name) {
       throw new Error(`${where}: needs a name or github to show`);
     }
     const url = c.url ?? (c.github ? `https://github.com/${c.github}` : null);
-    return { name, url };
+    return [{ name, url }];
   });
 }
 

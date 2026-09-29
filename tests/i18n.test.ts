@@ -366,6 +366,19 @@ describe('translator credits', () => {
     ).toEqual([{ name: 'luc', url: 'https://luc.example/' }]);
   });
 
+  it('treats empty fields as absent and skips blank entries', () => {
+    expect(
+      validateContributors('fr', [
+        { name: '', github: '', url: '' },
+        { name: '', github: 'luc', url: '' },
+        { name: ' Anne ', github: '', url: '' },
+      ])
+    ).toEqual([
+      { name: 'luc', url: 'https://github.com/luc' },
+      { name: 'Anne', url: null },
+    ]);
+  });
+
   it('rejects a url with nothing to show', () => {
     expect(() =>
       validateContributors('fr', [{ url: 'https://x.example/' }])
@@ -378,9 +391,6 @@ describe('translator credits', () => {
     ).toThrow(/https/);
     expect(() => validateContributors('fr', [{ github: 'bad/name' }])).toThrow(
       /GitHub/
-    );
-    expect(() => validateContributors('fr', [{}])).toThrow(
-      /name or github to show/
     );
   });
 });

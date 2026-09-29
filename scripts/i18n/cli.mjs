@@ -194,7 +194,13 @@ function addLanguage(code, name, lang, hreflang) {
     process.exit(1);
   }
   save(code, {
-    language: { name, lang, hreflang: hreflang ?? lang, published: false },
+    language: {
+      name,
+      lang,
+      hreflang: hreflang ?? lang,
+      published: false,
+      contributors: [{ name: '', github: '', url: '' }],
+    },
     page: {},
     messages: {},
   });
