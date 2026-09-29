@@ -13,6 +13,14 @@
  *                                    "messages": { key: text } }) into the
  *                                    language file, recording which English
  *                                    each was translated from.
+ *   npm run i18n -- review-export <code> [file.csv]
+ *                                    Write a spreadsheet for reviewing a
+ *                                    translation: where each string appears,
+ *                                    the English, the translation, and columns
+ *                                    for a suggested change and a comment.
+ *   npm run i18n -- review-import <code> <file.csv>
+ *                                    Apply the suggested changes (or edits to
+ *                                    the translation column) from that sheet.
  *   npm run i18n -- confirm <code|all> <key>...
  *                                    Mark translations as still correct after
  *                                    an English edit that doesn't affect them
@@ -36,6 +44,14 @@ import {
   validateMessage,
   validatePageText,
 } from './core.mjs';
+import {
+  COLUMNS,
+  describePage,
+  fromMarkers,
+  parseCsv,
+  reviewRows,
+  toCsv,
+} from './review.mjs';
 
 const config = loadConfig();
 const englishMessages = loadEnglishMessages();
@@ -209,17 +225,145 @@ function addLanguage(code, name, lang, hreflang) {
   );
 }
 
+function rowsFor(locale, translations) {
+  const html = readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  const audit = auditLocale(locale.code, locale.lang, {
+    pageSource,
+    englishMessages,
+    translations,
+  });
+  return reviewRows({
+    html,
+    locale,
+    englishMessages,
+    translations,
+    audit: { ...audit, pageSource },
+  });
+}
+
+function reviewExport(code, file) {
+  const locale = findLocale(code);
+  const rows = rowsFor(locale, loadTranslations(code));
+  const header = [...COLUMNS];
+  header[2] = `${locale.name} (current)`;
+  const out = path.resolve(file ?? `translation-review-${code}.csv`);
+  writeFileSync(out, toCsv([header, ...rows]));
+  console.log(
+    `Wrote ${rows.length} strings to ${path.relative(process.cwd(), out)}`
+  );
+}
+
+function reviewImport(code, file) {
+  const locale = findLocale(code);
+  const current = loadTranslations(code);
+  // IDs look like "page:key~fingerprint of the exported translation".
+  const idOf = (cell) => (cell ?? '').trim().split('~');
+  const exported = new Map(
+    rowsFor(locale, current).map((row) => [idOf(row[6])[0], row])
+  );
+  const attrKeys = new Set(
+    describePage(readFileSync(path.join(ROOT, 'index.html'), 'utf8'))
+      .filter((d) => d.attr)
+      .map((d) => d.key)
+  );
+  const [header, ...rows] = parseCsv(readFileSync(path.resolve(file), 'utf8'));
+  const idColumn = header.findIndex((h) => h.startsWith('ID'));
+  if (idColumn < 0) throw new Error('No ID column found in the sheet.');
+
+  const changes = [];
+  const comments = [];
+  const problems = [];
+  for (const row of rows) {
+    const [id, exportedHash] = idOf(row[idColumn]);
+    const original = exported.get(id);
+    if (!original) {
+      if (id) problems.push(`${id}: not a string in this translation`);
+      continue;
+    }
+    const [where] = original;
+    const suggested = row[3]?.trim();
+    const edited = row[2]?.trim();
+    // An edit to the translation column counts only if it differs from what
+    // was exported, so re-importing an older sheet doesn't undo newer changes.
+    const editedDirectly =
+      exportedHash && fingerprint(edited ?? '') !== exportedHash;
+    const value = suggested || (editedDirectly ? edited : '');
+    if (row[4]?.trim()) comments.push(`${where}\n    ${row[4].trim()}`);
+    if (!value) continue;
+
+    const [area, rest] = id.split(':');
+    const [key, form] = rest.split('#');
+    try {
+      if (area === 'page') {
+        const english = pageSource.get(key);
+        let text = value;
+        if (!attrKeys.has(key)) {
+          const translated = current.page[key]?.text;
+          const sameLinks =
+            translated &&
+            (translated.match(/<a /g) ?? []).length ===
+              (english.text.match(/<a /g) ?? []).length;
+          text = fromMarkers(value, sameLinks ? translated : english.text);
+        }
+        const issues = validatePageText(text, english);
+        if (issues.length) throw new Error(issues.join('; '));
+        changes.push({ where, before: original[2], after: value });
+        current.page[key] = { source: fingerprint(english.text), text };
+      } else {
+        const english = englishMessages[key];
+        let text = value;
+        if (form) {
+          const existing = current.messages[key]?.text;
+          text = {
+            ...(typeof existing === 'object' ? existing : {}),
+            [form]: value,
+          };
+        }
+        const issues = validateMessage(text, english, locale.lang);
+        if (
+          issues.length &&
+          !(form && issues.every((i) => i.includes('"other"')))
+        ) {
+          throw new Error(issues.join('; '));
+        }
+        changes.push({ where, before: original[2], after: value });
+        current.messages[key] = { source: fingerprint(english), text };
+      }
+    } catch (error) {
+      problems.push(`${where} (${id}): ${error.message}`);
+    }
+  }
+
+  for (const { where, before, after } of changes) {
+    console.log(`\n${where}\n  - ${before || '(missing)'}\n  + ${after}`);
+  }
+  if (comments.length) console.log(`\nComments:\n  ${comments.join('\n  ')}`);
+  if (problems.length) {
+    console.error(
+      `\nNot imported, ${problems.length} problem(s):\n  ${problems.join('\n  ')}`
+    );
+    process.exit(1);
+  }
+  save(code, current);
+  console.log(
+    `\n${changes.length} change(s) applied to ${path.relative(ROOT, translationPath(code))}.`
+  );
+}
+
 const [command, ...args] = process.argv.slice(2);
 if (command === 'add' && args.length >= 3) addLanguage(...args);
 else if (command === 'check') check();
 else if (command === 'todo' && args[0]) todo(args[0]);
 else if (command === 'import' && args[0] && args[1])
   importFile(args[0], args[1]);
+else if (command === 'review-export' && args[0]) reviewExport(args[0], args[1]);
+else if (command === 'review-import' && args[0] && args[1])
+  reviewImport(args[0], args[1]);
 else if (command === 'confirm' && args.length > 1)
   confirm(args[0], args.slice(1));
 else {
   console.error(
-    'Usage: npm run i18n -- add <code> <name> <lang> [hreflang] | check | todo <code> | import <code> <file.json> | confirm <code|all> <key>...'
+    'Usage: npm run i18n -- add <code> <name> <lang> [hreflang] | check | todo <code> | import <code> <file.json> | review-export <code> [file.csv] | review-import <code> <file.csv> | confirm <code|all> <key>...'
   );
   process.exit(1);
 }

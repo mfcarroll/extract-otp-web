@@ -10,3 +10,6 @@ dist/
 .env*
 # ...except for the example file.
 !.env.local.example
+
+# Translation review spreadsheets
+translation-review-*.csv

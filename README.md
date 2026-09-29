@@ -99,15 +99,17 @@ This project is built with [Vite](https://vitejs.dev/).
 
 English is written once. Page text lives in `index.html`, where each translatable element has a `data-i18n="key"` attribute (or `data-i18n-attr="attribute:key"`). Messages the app shows while running live in `src/i18n/en.json` and are looked up in code with `t('key')`.
 
-Each other language is a single file, `src/i18n/translations/<code>.json`, which starts with a `language` block (its name, `lang` and `published` flag, plus optional `contributors`, who are credited in the Acknowledgements). Each contributor needs a `name` or `github` username, and may add a `url`. Empty fields are ignored, so `{ "name": "", "github": "", "url": "" }` works as a template to fill in. The credit shows their name if given (otherwise their username), linked to their `url` if given (otherwise their GitHub profile). Languages are found by scanning that folder, so adding one changes no shared file, and the footer language links are generated from them. The build generates a separate page for each language (for example `/fr/`), so search engines index every language. On the development server, every language is available, including drafts.
+Each other language is a single file, `src/i18n/translations/<code>.json`, which starts with a `language` block (its name, `lang` and `published` flag, plus optional `contributors`, who are credited in the Acknowledgements). Each contributor needs a `name` or `github` username, and may add a `url`. Empty fields are ignored, so `{ "name": "", "github": "", "url": "" }` works as a template to fill in. The credit shows their name if given (otherwise their username), linked to their `url` if given (otherwise their GitHub profile). Languages are found by scanning that folder, so adding one changes no shared file, and the footer language links are generated from them. The build generates a separate page for each language (for example `/fr/`), so search engines index every language. The development server serves every language at the same addresses.
 
 - `npm run i18n -- add fr Français fr-CA fr` starts a new language as a draft.
 - `npm run i18n -- check` validates all translations. CI runs this.
 - `npm run i18n -- todo fr` prints the English that still needs translating, or that changed since it was translated, as JSON.
 - `npm run i18n -- import fr file.json` merges translations in that same shape into the language file.
+- `npm run i18n -- review-export fr` writes `translation-review-fr.csv`, a spreadsheet for reviewers who don't work with code: each string in page order, where it appears, the English, the translation, and columns for a suggested change and a comment. Links and bold text appear as markers like `[link]…[/link]` and `[b]…[/b]`.
+- `npm run i18n -- review-import fr translation-review-fr.csv` applies the suggested changes (or direct edits to the translation column), shows each change and any comments, and rejects anything invalid without changing the file.
 - `npm run i18n -- confirm all <key>` marks translations as still correct after an English edit that doesn't affect them, such as a typo fix.
 
-Translations may only use a few inline tags (`<a>`, `<strong>`, `<em>`, `<code>`, `<br>`), and links may only point to URLs the English already uses. A language is only built and linked once `published` is set to `true` in its file. To preview draft languages in a production build, run `I18N_DRAFTS=1 npm run build`.
+Translations may only use a few inline tags (`<a>`, `<strong>`, `<em>`, `<code>`, `<br>`), and links may only point to URLs the English already uses. While a language is a draft (`"published": false`), its page is built at `/draft/<code>/` with a banner saying it's under review. It's marked `noindex` and isn't linked from published pages or the sitemap, so the link can be shared with reviewers. Setting `published` to `true` moves it to `/<code>/` and adds it to the language links.
 
 ## Acknowledgements
 
