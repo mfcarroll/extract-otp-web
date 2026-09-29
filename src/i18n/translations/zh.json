@@ -1,0 +1,455 @@
+{
+  "language": {
+    "name": "中文",
+    "lang": "zh-Hans",
+    "hreflang": "zh-Hans",
+    "status": "draft",
+    "contributors": [
+      {
+        "name": "",
+        "github": "n66g4",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "一次性密码密钥提取器"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "扫描二维码"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "按 Enter 或空格键复制。"
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "复制密钥"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "复制链接"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "计数器："
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "签发方："
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "名称："
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "密钥："
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "查看放大二维码"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "点击放大"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "类型："
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "链接："
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "导出到 Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "导出到 LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "保存为 CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "保存为 JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "由 <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> 开发。他在把 OTP 从 Google Authenticator 迁移到 1Password 时感到流程太繁琐，于是做了这个工具。"
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "这个工具是谁做的？"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator 不容易查看原始密钥，而是提供一个打包多个账号的导出二维码。这对换机很方便，但对迁移到其他认证器并不友好。LastPass 会给每个账号单独二维码，这是进步，但文本密钥主要在 JSON 中提供。相比之下，像 1Password 这类应用更容易查看原始密钥，迁移更简单。"
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "为什么 Google Authenticator 不显示原始二维码？"
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "它是如何工作的？"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass 常把所有账号塞进一个二维码，账号多时二维码细节会过小，导致难以识别。Google Authenticator 会分成多个二维码来缓解。好消息是 LastPass 支持导出 JSON 文件，本工具也支持导入；如果扫码困难，建议改用 JSON 文件导入。"
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "LastPass 二维码扫不出来怎么办？"
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "为什么 1Password 不能直接导入 Google Authenticator？"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "请在 <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub Issues</a> 提交问题。"
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "怎么反馈问题？"
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "安全。隐私和安全是第一优先。<strong>你在这里的所有操作都不会离开你的设备。</strong> 所有处理都在浏览器本地离线完成，二维码和密钥不会发送到任何服务器。"
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "项目是开源的，你可以查看 <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">源码</a> 验证实现方式。部署在 GitHub Pages，也有可审计的 <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">公开发布流程</a>。"
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>（另一个 Python 方案）。"
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>（Roland Kurmann 的 Python 脚本，本项目的重要基础）。"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>"
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>"
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "界面与二维码处理也使用了优秀的开源库："
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>"
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "本工具基于多个开源项目，包括："
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>"
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>"
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>"
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "致谢"
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "如果拿不到这些密钥，迁移到新密码管理器就要逐个网站重新配置 2FA，非常麻烦。"
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "虽然已有一些解决方案，但通常需要脚本或安装软件。这个工具的目标是：简单、安全、人人可用。"
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "为什么需要这个工具？"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "源码"
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "取消"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "可粘贴 <code>otpauth://</code> 链接，或直接粘贴 Base32 密钥（例如 <code>JBSW Y3DP EHPK 3PXP</code>）。"
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "密钥或 URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "添加"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "输入 OTP 代码"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "全选"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "全不选"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "重置"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "常见问题"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "怎么使用？"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "这是什么？"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "切换为深色主题"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "切换为浅色主题"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "打开主题切换器"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "切换为系统主题"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "或将文件拖拽到这里<br>(图片、json 导出、csv 或 txt)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "手动输入"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "打开文件"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "扫描二维码"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "在手机上打开 Google Authenticator。"
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "勾选你要导出的账号。"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "LastPass 也支持“导出账号到文件”，本工具同样支持导入该格式。"
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "LastPass Authenticator"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "打开 LastPass Authenticator。"
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "点击设置图标，选择“转移账号” &gt; “导出账号到二维码”。"
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. 提取密钥"
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "这个工具会读取 Google Authenticator 或 LastPass Authenticator 导出的二维码，并还原每个账号的原始密钥。随后你可以将这些密钥导入其他认证器应用。"
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "工具会展示每个账号提取出的 OTP 密钥和对应二维码。"
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. 使用密钥"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "你可以将这些密钥导入你偏好的认证器或密码管理器。"
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>二维码和密钥的处理全部在你的浏览器本地离线完成。</strong>"
+    }
+  },
+  "messages": {
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "内容"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject}已复制到剪贴板。"
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "复制到剪贴板失败。"
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "处理摄像头二维码失败。"
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "导出时发生未知错误。"
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "JSON 格式无效：应为 OTP 数组或 LastPass 导出对象。"
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "无法解析 LastPass 二维码，数据格式无法识别或已损坏。"
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "LastPass 二维码无效：负载中缺少 'content' 字段。"
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "hotp 类型的 otpauth URL 缺少 'counter' 参数。"
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "OTP URL 无效：缺少 \"data\" 参数。"
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "otpauth URL 缺少 'secret' 参数。"
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "未检测到摄像头，请确认设备已连接摄像头。"
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "处理文件时发生意外错误。"
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "无法启动摄像头，请确认已连接摄像头并已授权访问。"
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "切换摄像头失败。"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "发生了意外错误，请重试或刷新页面。"
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "发生未知错误。"
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "不支持的文件类型。"
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "URL 中的 OTP 类型不受支持：{type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "二维码格式不受支持。"
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "未选择可导出的 TOTP 账号（LastPass 仅支持 TOTP）。"
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "未选择要导出的账号。"
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "请使用 Google Authenticator 扫描"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "请使用 LastPass Authenticator 扫描"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "该二维码已处理过。"
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "摄像头扫描"
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "手动输入"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "未识别到二维码。"
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "未找到 OTP 密钥。"
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "二维码中未找到 OTP 密钥。"
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "不可用"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "已选择 {count} / {total}"
+    }
+  }
+}
