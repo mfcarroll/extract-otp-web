@@ -1,0 +1,692 @@
+{
+  "language": {
+    "name": "Türkçe",
+    "lang": "tr",
+    "hreflang": "tr",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Tek Kullanımlık Şifre Gizli Anahtar Çıkarıcı"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Kamera seç"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Kamerayı değiştir"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "QR kodu tara"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "Kopyalandı!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Kopyalamak için Enter veya Boşluk tuşuna basın."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Gizli anahtarı kopyala"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Kopyala"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "URL'yi kopyala"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Sayaç:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Sağlayıcı:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Ad:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Gizli anahtar:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "QR kodunu büyüt"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Büyütmek için dokunun"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Tür:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Bu, hâlâ incelenmekte olan bir taslak çeviridir ve hatalar içerebilir."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Google'a aktar"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "LastPass'e aktar"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "CSV olarak kaydet"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "JSON olarak kaydet"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Bu araç, OTP kodlarını Google Authenticator'dan 1Password'e taşıma sürecinden bıkan bir geliştirici olan <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> tarafından oluşturuldu."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Bunu kim yaptı?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator, hesaplarınızı kurmak için kullanılan orijinal gizli anahtarları görmeyi zorlaştırır. Bunun yerine, tüm hesaplarınızı bir araya getiren bir dışa aktarma QR kodu sunar. Bu, yeni bir cihaza geçmeyi kolaylaştırır ancak başka bir kimlik doğrulama uygulamasına geçmeyi zorlaştırır. LastPass her hesap için ayrı bir QR kodu sunar; bu büyük bir iyileştirmedir, ancak gizli anahtarları metin olarak yalnızca JSON biçiminde sağlar. Buna karşılık 1Password gibi uygulamalar orijinal gizli anahtarlara kolayca erişilmesini sağlar ve diğer 2FA uygulamalarına geçişi kolaylaştırır."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Google Authenticator neden orijinal QR kodlarımı göstermiyor?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Google Authenticator veya LastPass Authenticator'ın dışa aktarma özelliğindeki QR kodlarını kameranızla tararsınız ya da bunların ekran görüntülerini (veya bir LastPass dışa aktarma dosyasını) sağlarsınız. Bu araç o QR kodlarını —burada, tarayıcınızda— okur ve her hesabın orijinal gizli anahtarını size geri verir. Ardından bu gizli anahtarlarla hesaplarınızı başka herhangi bir kimlik doğrulama uygulamasına aktarabilirsiniz."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Nasıl çalışır?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass tüm hesaplarınızı tek bir QR kodunda toplar ve çok sayıda hesabınız varsa QR kodunun ayrıntıları çok küçülüp okunması zorlaşabilir. Google Authenticator bu sorunu, her biri birkaç hesap içeren birden fazla kod sunarak aşar. Neyse ki LastPass bir JSON dosyası dışa aktarmanıza izin verir ve bu araç o dosyayı da okuyabilir. LastPass ile sorun yaşıyorsanız JSON dosyasını kaydedip onu içe aktarın."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "LastPass QR kodum taranmıyor!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "Harika bir soru; <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Google Authenticator'dan içe aktarma hakkında 1Password topluluk tartışması\">başkaları</a> da bunu <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Mevcut 2FA'ları 1Password'e eklemeyle ilgili Reddit tartışması\">sordu</a>. Öne sürülen nedenlerden biri, Google'ın dışa aktarma biçiminin değişebileceği endişesi. Ancak bu biçim yıllardır istikrarlı ve başka uygulamalar (örneğin <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) onu sorunsuzca destekliyor. Görünüşe göre 1Password gibi parola yöneticileri doğrudan içe aktarmayı <em>pekâlâ</em> kolayca destekleyebilir, ancak bunu yapmamayı seçmişler."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "1Password neden Google Authenticator'dan içe aktaramıyor?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Lütfen bu araçla ilgili sorunları <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a> üzerinden bildirin."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Bir sorunu nasıl bildiririm?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "En yüksek gizlilik için bu aracı bilgisayarınızda veya ikinci bir cihazda açın ve ekran görüntüsü almadan, telefonunuzdaki dışa aktarma QR kodlarını doğrudan taramak için “QR tara” düğmesine tıklayın."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Evet. Güvenlik ve gizlilik en önemli önceliklerdir. <strong>Burada yaptığınız hiçbir şey bilgisayarınızdan veya mobil cihazınızdan asla dışarı çıkmaz.</strong> Tüm işlemler yerel olarak, çevrimdışı, doğrudan tarayıcınızda gerçekleşir. QR kodu görüntüleriniz ve gizli anahtarlarınız hiçbir zaman hiçbir sunucuya gönderilmez."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Bu araç açık kaynaklıdır ve <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">kodu herkes inceleyebilir</a>; böylece güvenliği ve çalışma şekli doğrulanabilir. GitHub Pages üzerinde barındırılır ve <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">güvenli ve şeffaf bir yayınlama süreci</a> kullanır."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "QR kodlarımı “yüklemek” güvenli mi?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "Bu aracın geliştirilmesinde <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> ve <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> kullanıldı. Yapay zekâ tarafından üretilen tüm kodlar dikkatle elle incelendi."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "Aynı sorunu çözen bir başka Python betiği olan <a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "Bu aracın temel aldığı, <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a> tarafından yazılan Python betiği <a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Bu harika projelere katkıda bulunan herkese teşekkürler!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>: arayüzdeki simgeler için."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>: görüntülerdeki QR kodlarını okumak için."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "Arayüz ve QR kodu işleme şu açık kaynak kütüphanelerle çalışır:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>: görüntüleri yüksek kalitede yeniden boyutlandırmak için."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Bu araç, aşağıdakiler de dahil olmak üzere birçok açık kaynak projenin çalışmasına dayanır:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>: Google Authenticator verilerinin kodunu çözmek için."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>: her hesap için yeni QR kodları oluşturmak için."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>: kamerayla QR kodu taramak için."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "Dışa aktarma protobuf belirtimi için <a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> ve <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "Bu aracın geliştirilmesi kısmen <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a> desteğiyle mümkün oldu. Faydalı bulduysanız, Stand'in çalışmalarını desteklemek için <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">bağış yapmayı</a> düşünün."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "Sevdiğiniz insanlar ve yerler için"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>: OTP gizli anahtarlarını Base32 ile kodlamak için."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Teşekkürler"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "Çevirileri yazanlar ve inceleyenler:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator hesaplarınızı yeni bir telefona aktarmanıza izin verir, ancak bunları 1Password veya Bitwarden gibi başka uygulamalara aktarmanın kolay bir yolunu sunmaz. Bunun nedeni, her hesabın orijinal “gizli anahtarını” (ilk başta taradığınız QR kodunu) gizlemesidir."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Bu gizli anahtarlar olmadan yeni bir parola yöneticisine geçmek, her hesap için 2FA'yı elle yeniden kurmak demektir ve bu çok zahmetlidir."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "Bunu çözen başka araçlar da var, ancak çoğu zaman betik çalıştırmak veya yazılım yüklemek gibi teknik adımlar gerektirirler. Bu araç, herkesin kullanabileceği basit ve güvenli bir çözüm olarak tasarlandı."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "Buna neden ihtiyaç var?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Dil"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Kaynak kodu"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "İngilizce oku"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Bu çeviriyi iyileştirmeye yardım edin"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Bu sayfa otomatik olarak çevrildi."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "İptal"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Pencereyi kapat"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Bir <code>otpauth://</code> URL'si veya ham Base32 gizli anahtarı yapıştırın (ör. <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Gizli anahtar veya URL…"
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Kodu ekle"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "OTP kodu gir"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Google Authenticator veya LastPass 2FA dışa aktarma QR kodlarından TOTP/HOTP tek kullanımlık şifre gizli anahtarlarını çıkarın. Tamamen tarayıcınızda çalışır; hiçbir şey sunucuya yüklenmez."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Tek Kullanımlık Şifre Gizli Anahtar Çıkarıcı – Google Authenticator Dışa Aktarımı"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Kapat"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Not: Tüm ekran görüntüleri ve indirilen dosyalar, gizli anahtarlarınızı şifrelenmemiş olarak içerir.</strong> Bunları güvenli bir yerde saklayın veya işiniz bittiğinde silin. Buna “Çöp Kutusu”, “Geri Dönüşüm Kutusu”, “Son Silinenler” ve tüm bulut fotoğraf yedeklerinden silmek de dahildir."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Çıkarılan OTP hesapları"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Tümünü seç"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Seçimi kaldır"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 seçili"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Sıfırla"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "SSS"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "Bilgi sekmeleri"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Nasıl kullanılır?"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Bu nedir?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Koyu temayı kullan"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Açık temayı kullan"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Tema seçiciyi aç"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Sistem temasını kullan"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "veya dosyaları buraya sürükleyip bırakın<br>(görüntü, JSON dışa aktarımı, CSV veya TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Kod gir"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Dosya aç"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "QR tara"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Temizlik"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Google Authenticator'dan dışa aktarma"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Telefonunuzda Google Authenticator uygulamasını açın."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Dışa aktarmak istediğiniz hesapları seçin."
+    },
+    "use.export.google.transfer": {
+      "source": "a4fe6e7a56",
+      "text": "Menüyü açın ve “Hesapları aktar” &gt; “Hesapları dışa aktar” seçeneğini belirleyin."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Tek kullanımlık şifre uygulamanızdan dışa aktarın"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "LastPass'te “Export accounts to file” (Hesapları dosyaya aktar) seçeneğini belirleyip bunun yerine o dosyayı da içe aktarabilirsiniz. Bu araç her iki biçimi de destekler."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "LastPass'ten dışa aktarma"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Telefonunuzda LastPass Authenticator'ı açın."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Dişli simgesine dokunun ve “Transfer accounts” (Hesapları aktar) &gt; “Export accounts to QR code” (Hesapları QR koduna aktar) seçeneğini belirleyin."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Ayrıca “Kod gir” düğmesine tıklayarak bir gizli anahtarı veya kurulum URL'sini doğrudan metin olarak girebilirsiniz; bu araç orijinal kurulum QR kodunuzu gösterir."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Gizli anahtarları çıkarın"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Bu araç, herhangi bir uygulamanın tek tek kurulum QR kodlarını veya her satırda bir gizli anahtar ya da URL bulunan bir metin dosyasını da okuyabilir. Böylece her yerden gelen gizli anahtarları taranabilir QR kodlarına kolayca dönüştürebilirsiniz."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Bu aracı bilgisayarınızda veya ikinci bir cihazda açın ve telefonunuzdaki dışa aktarma QR kodlarını doğrudan taramak için “QR tara” düğmesine tıklayın. Bu en pratik yöntemdir ve gizli anahtarlarınızın ekran görüntülerini saklamanıza gerek kalmaz."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Ya da görüntülenen her QR kodunun ekran görüntüsünü alın, ardından “Dosya aç” düğmesine tıklayın veya ekran görüntülerini sayfaya sürükleyip bırakın."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Bu araç, Google Authenticator veya LastPass Authenticator'ın dışa aktarma özelliğindeki QR kodlarını okur ve her hesabın orijinal gizli anahtarını size geri verir. Ardından bu gizli anahtarlarla hesaplarınızı başka herhangi bir kimlik doğrulama uygulamasına aktarabilirsiniz."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "Araç, çıkarılan OTP gizli anahtarlarını, her birini kendi QR kodu ve gizli anahtarıyla birlikte gösterir."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Hesapları Google Authenticator'a veya LastPass Authenticator'a taşımak için hesapları seçin ve “Google'a aktar” veya “LastPass'e aktar” düğmesine tıklayın. Bu araç, o uygulamayla tarayabileceğiniz bir aktarım QR kodu gösterir."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Gizli anahtarlarınızı kullanın"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Artık bu gizli anahtarları tercih ettiğiniz kimlik doğrulama uygulamasına veya parola yöneticisine aktarabilirsiniz."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Gizli anahtarlarınızın bir kopyasını saklamak için “CSV olarak kaydet” veya “JSON olarak kaydet” düğmesine tıklayın. Bu dosyaları daha sonra burada yeniden açarak QR kodlarınızı tekrar görüntüleyebilirsiniz."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Bu araç, Google Authenticator veya LastPass Authenticator uygulamalarından tek kullanımlık şifre (OTP) gizli anahtarlarını, yani iki faktörlü kimlik doğrulama (2FA) için kullanılan kodları çıkarır. Yüklenecek bir yazılım yoktur ve hiçbir veri cihazınızdan asla dışarı çıkmaz."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>QR kodlarınız ve gizli anahtarlarınızla ilgili tüm işlemler tamamen çevrimdışı, yerel olarak, burada tarayıcınızda gerçekleşir.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Hata mesajını kapat"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Bilgi mesajını kapat"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Başarı mesajını kapat"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Uyarıyı kapat"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "İçerik"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject} panoya kopyalandı."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Panoya kopyalanamadı."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Kameradaki QR kodu işlenemedi."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "Dışa aktarma sırasında bilinmeyen bir hata oluştu."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "Dosya geçerli bir görüntü değil veya yüklenemedi."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Güvenlik kısıtlamaları nedeniyle görüntü işlenemedi (kirlenmiş tuval)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Geçersiz biçim"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "Giriş, geçerli bir OTP URL'si, LastPass JSON'u veya en az 16 karakterlik bir Base32 gizli anahtarı (A-Z harfleri, 2-7 rakamları) olmalıdır."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Geçersiz JSON biçimi: bir OTP hesapları listesi veya LastPass dışa aktarma nesnesi bekleniyordu."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Geçersiz LastPass QR JSON biçimi: 'a' (hesaplar) listesi bulunamadı."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "LastPass QR kodunun kodu çözülemedi. Veri biçimi tanınmıyor veya bozuk."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Geçersiz LastPass QR kodu: verilerde 'content' özelliği bulunamadı."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "hotp türü için otpauth URL'sinde 'counter' parametresi eksik."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "Geçersiz OTP URL'si: \"data\" parametresi eksik."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "otpauth URL'sinde 'secret' parametresi eksik."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Kamera bulunamadı. Lütfen bir kameranın bağlı olduğundan emin olun."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Son veriler ayrıştırılamadı. Bozuk olabilir veya beklenmeyen bir biçimde olabilir."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "Dosyalar işlenirken beklenmeyen bir hata oluştu."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "İşlem başarısız oldu."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Kamera başlatılamadı. Lütfen bir kameranın bağlı olduğundan ve izin verdiğinizden emin olun."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Kamera değiştirilemedi."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Satır {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Metinde geçerli bir OTP bulunamadı.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin veya sayfayı yenileyin."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "Bilinmeyen bir hata oluştu."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Desteklenmeyen dosya türü."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "URL'de desteklenmeyen OTP türü: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "Bu QR kodunun biçimi desteklenmiyor."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "LastPass yalnızca zamana dayalı (TOTP) hesapları destekler. Uyumsuz, sayaca dayalı bir hesap seçiminizden kaldırıldı. Devam etmek için “LastPass'e aktar” düğmesine yeniden tıklayın.",
+        "other": "LastPass yalnızca zamana dayalı (TOTP) hesapları destekler. Uyumsuz, sayaca dayalı {count} hesap seçiminizden kaldırıldı. Devam etmek için “LastPass'e aktar” düğmesine yeniden tıklayın."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "LastPass'e aktarmak için uyumlu (TOTP) hesap seçilmedi."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Dışa aktarılacak veri yok."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Dışa aktarmak için hesap seçilmedi."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Google Authenticator ile tarayın"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "LastPass Authenticator ile tarayın"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "Bu QR kodu zaten işlendi."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Kamera taraması"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "{count} yinelenen gizli anahtar atlandı.",
+        "other": "{count} yinelenen gizli anahtar atlandı."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "{count} gizli anahtar çıkarıldı.",
+        "other": "{count} gizli anahtar çıkarıldı."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Elle giriş"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "QR kodu bulunamadı."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "OTP gizli anahtarı bulunamadı."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "QR kodunda OTP gizli anahtarı bulunamadı."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Yok"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "{title} için QR kodunu büyüt"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{total} hesaptan {count} tanesi seçili"
+    }
+  }
+}
