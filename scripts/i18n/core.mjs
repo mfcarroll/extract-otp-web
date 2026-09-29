@@ -3,9 +3,11 @@
  *
  * English is written once: page text in index.html (elements marked with
  * data-i18n / data-i18n-attr) and runtime messages in src/i18n/en.json. Each
- * other language has one file, src/i18n/translations/<code>.json:
+ * other language is one file, src/i18n/translations/<code>.json, found by
+ * scanning that folder, so adding a language touches no shared file:
  *
  *   {
+ *     "language": { "name": "Français", "lang": "fr-CA", "hreflang": "fr", "published": false },
  *     "page":     { "<key>": { "source": "<hash>", "text": "..." } },
  *     "messages": { "<key>": { "source": "<hash>", "text": "..." | { "one": ..., "other": ... } } }
  *   }
@@ -18,7 +20,7 @@
  * already does.
  */
 import { createHash } from 'node:crypto';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
@@ -29,8 +31,55 @@ export const ROOT = path.resolve(
 );
 const I18N_DIR = path.join(ROOT, 'src/i18n');
 
+const TRANSLATIONS_DIR = path.join(I18N_DIR, 'translations');
+
+/**
+ * Site settings plus every language: English from src/i18n/config.json, then
+ * one per translation file, in order of language code. Each language's page
+ * is served at <base><code>/.
+ */
 export function loadConfig() {
-  return JSON.parse(readFileSync(path.join(I18N_DIR, 'locales.json'), 'utf8'));
+  const config = JSON.parse(
+    readFileSync(path.join(I18N_DIR, 'config.json'), 'utf8')
+  );
+  const english = {
+    ...config.english,
+    code: config.defaultLocale,
+    path: '',
+    published: true,
+  };
+  const codes = existsSync(TRANSLATIONS_DIR)
+    ? readdirSync(TRANSLATIONS_DIR)
+        .filter((file) => file.endsWith('.json'))
+        .map((file) => file.slice(0, -'.json'.length))
+        .sort()
+    : [];
+  const others = codes.map((code) => {
+    if (!/^[a-z]{2,3}(-[a-z0-9]+)*$/.test(code)) {
+      throw new Error(
+        `Translation file name "${code}.json" is not a language code`
+      );
+    }
+    const { language } = loadTranslations(code);
+    if (!language?.name || !language?.lang) {
+      throw new Error(
+        `${code}.json needs a "language" block with "name" and "lang"`
+      );
+    }
+    return {
+      code,
+      name: language.name,
+      lang: language.lang,
+      hreflang: language.hreflang ?? language.lang,
+      path: `${code}/`,
+      published: language.published === true,
+    };
+  });
+  return {
+    siteUrl: config.siteUrl,
+    defaultLocale: config.defaultLocale,
+    locales: [english, ...others],
+  };
 }
 
 export function loadEnglishMessages() {
@@ -38,14 +87,18 @@ export function loadEnglishMessages() {
 }
 
 export function translationPath(code) {
-  return path.join(I18N_DIR, 'translations', `${code}.json`);
+  return path.join(TRANSLATIONS_DIR, `${code}.json`);
 }
 
 export function loadTranslations(code) {
   const file = translationPath(code);
-  if (!existsSync(file)) return { page: {}, messages: {} };
+  if (!existsSync(file)) return { language: null, page: {}, messages: {} };
   const data = JSON.parse(readFileSync(file, 'utf8'));
-  return { page: data.page ?? {}, messages: data.messages ?? {} };
+  return {
+    language: data.language ?? null,
+    page: data.page ?? {},
+    messages: data.messages ?? {},
+  };
 }
 
 /** Collapses whitespace the way HTML rendering does, so formatting changes don't count as edits. */

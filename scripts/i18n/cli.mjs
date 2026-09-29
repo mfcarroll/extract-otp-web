@@ -2,6 +2,9 @@
 /**
  * Translation tooling.
  *
+ *   npm run i18n -- add <code> <name> <lang> [hreflang]
+ *                                    Start a new (draft) language, e.g.
+ *                                    add fr Français fr-CA fr
  *   npm run i18n -- check            Validate every language (used in CI).
  *   npm run i18n -- todo <code>      Print the English for missing and stale
  *                                    strings, as JSON ready to translate.
@@ -19,7 +22,7 @@
  * strings. Stale strings, where the English changed after translation, are
  * reported as warnings.
  */
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import {
   ROOT,
@@ -155,6 +158,7 @@ function save(code, translations) {
       Object.entries(entries).sort(([a], [b]) => a.localeCompare(b))
     );
   const output = {
+    language: translations.language,
     page: sorted(translations.page),
     messages: sorted(translations.messages),
   };
@@ -184,8 +188,24 @@ function confirm(code, keys) {
   process.exit(failed ? 1 : 0);
 }
 
+function addLanguage(code, name, lang, hreflang) {
+  if (existsSync(translationPath(code))) {
+    console.error(`${code}.json already exists.`);
+    process.exit(1);
+  }
+  save(code, {
+    language: { name, lang, hreflang: hreflang ?? lang, published: false },
+    page: {},
+    messages: {},
+  });
+  console.log(
+    `Created ${path.relative(ROOT, translationPath(code))}. Next: npm run i18n -- todo ${code}`
+  );
+}
+
 const [command, ...args] = process.argv.slice(2);
-if (command === 'check') check();
+if (command === 'add' && args.length >= 3) addLanguage(...args);
+else if (command === 'check') check();
 else if (command === 'todo' && args[0]) todo(args[0]);
 else if (command === 'import' && args[0] && args[1])
   importFile(args[0], args[1]);
@@ -193,7 +213,7 @@ else if (command === 'confirm' && args.length > 1)
   confirm(args[0], args.slice(1));
 else {
   console.error(
-    'Usage: npm run i18n -- check | todo <code> | import <code> <file.json> | confirm <code|all> <key>...'
+    'Usage: npm run i18n -- add <code> <name> <lang> [hreflang] | check | todo <code> | import <code> <file.json> | confirm <code|all> <key>...'
   );
   process.exit(1);
 }

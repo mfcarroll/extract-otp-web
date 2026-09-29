@@ -1,0 +1,9 @@
+{
+  "siteUrl": "https://mfcarroll.github.io/extract-otp-web/",
+  "defaultLocale": "en",
+  "english": {
+    "name": "English",
+    "lang": "en",
+    "hreflang": "en"
+  }
+}
