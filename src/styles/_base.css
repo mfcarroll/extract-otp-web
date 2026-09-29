@@ -117,3 +117,9 @@ a:hover {
     padding: 0;
   }
 }
+
+/* Japanese has no spaces between words; break lines at phrase boundaries
+   where the browser supports it, rather than in the middle of a word. */
+:lang(ja) {
+  word-break: auto-phrase;
+}
