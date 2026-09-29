@@ -1,0 +1,692 @@
+{
+  "language": {
+    "name": "Ελληνικά",
+    "lang": "el",
+    "hreflang": "el",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Εξαγωγή μυστικών κλειδιών κωδικών μίας χρήσης"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Επιλογή κάμερας"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Εναλλαγή κάμερας"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "Σάρωση κωδικού QR"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "Αντιγράφηκε!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Πατήστε Enter ή το πλήκτρο διαστήματος για αντιγραφή."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Αντιγραφή μυστικού κλειδιού"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Αντιγραφή"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "Αντιγραφή URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Μετρητής:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Εκδότης:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Όνομα:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Μυστικό κλειδί:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "Εμφάνιση μεγαλύτερου κωδικού QR"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Πατήστε για μεγέθυνση"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Τύπος:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Αυτή είναι μια πρόχειρη μετάφραση που βρίσκεται ακόμη υπό έλεγχο και ενδέχεται να περιέχει λάθη."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Εξαγωγή στο Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "Εξαγωγή στο LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "Αποθήκευση ως CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "Αποθήκευση ως JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Αυτό το εργαλείο δημιουργήθηκε από τον <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, έναν προγραμματιστή που είχε απογοητευτεί από τη διαδικασία μεταφοράς κωδικών OTP από το Google Authenticator στο 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Ποιος το δημιούργησε;"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Το Google Authenticator δυσκολεύει την προβολή των αρχικών μυστικών κλειδιών που χρησιμοποιήθηκαν για τη ρύθμιση των λογαριασμών σας. Αντ' αυτού, παρέχει έναν κωδικό QR εξαγωγής που ομαδοποιεί όλους τους λογαριασμούς σας μαζί. Αυτό διευκολύνει τη μεταφορά σε νέα συσκευή, αλλά δυσκολεύει τη μετάβαση σε άλλη εφαρμογή ελέγχου ταυτότητας. Το LastPass παρέχει ξεχωριστούς κωδικούς QR για κάθε λογαριασμό, κάτι που αποτελεί τεράστια βελτίωση, αλλά παρέχει τα μυστικά κλειδιά ως κείμενο μόνο σε μορφή κώδικα JSON. Αντιθέτως, εφαρμογές όπως το 1Password κάνουν τα αρχικά μυστικά κλειδιά εύκολα προσβάσιμα, επιτρέποντας απλές μεταφορές σε άλλες εφαρμογές 2FA."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Γιατί το Google Authenticator δεν εμφανίζει τους αρχικούς κωδικούς QR μου;"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Σαρώνετε με την κάμερά σας τους κωδικούς QR από τη λειτουργία εξαγωγής του Google Authenticator ή του LastPass Authenticator ή παρέχετε στιγμιότυπα οθόνης τους (ή ένα αρχείο εξαγωγής του LastPass). Αυτό το εργαλείο διαβάζει αυτούς τους κωδικούς QR —εδώ, στο πρόγραμμα περιήγησής σας— και σας επιστρέφει το αρχικό μυστικό κλειδί για κάθε λογαριασμό. Στη συνέχεια, μπορείτε να χρησιμοποιήσετε αυτά τα μυστικά κλειδιά για να εισαγάγετε τους λογαριασμούς σας σε οποιαδήποτε άλλη εφαρμογή ελέγχου ταυτότητας."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Πώς λειτουργεί;"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "Το LastPass συγκεντρώνει όλους τους λογαριασμούς σας σε έναν κωδικό QR και, αν έχετε πολλούς λογαριασμούς, οι λεπτομέρειες του κωδικού QR μπορεί να γίνουν πολύ μικρές και δυσανάγνωστες. Το Google Authenticator παρακάμπτει αυτό το πρόβλημα παρέχοντας περισσότερους από έναν κωδικούς, καθένας από τους οποίους περιέχει λίγους λογαριασμούς. Ευτυχώς, το LastPass σάς επιτρέπει να εξαγάγετε ένα αρχείο JSON, το οποίο μπορεί επίσης να διαβάσει αυτό το εργαλείο. Αν αντιμετωπίζετε προβλήματα με το LastPass, απλώς αποθηκεύστε το αρχείο JSON και εισαγάγετε αυτό."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "Ο κωδικός QR του LastPass δεν σαρώνεται!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "Πολύ καλή ερώτηση, την οποία έχουν <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Συζήτηση στην κοινότητα του 1Password σχετικά με την εισαγωγή από το Google Authenticator\">θέσει</a> και <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Συζήτηση στο Reddit σχετικά με την προσθήκη υπαρχόντων 2FA στο 1Password\">άλλοι</a>. Ένας λόγος που έχει αναφερθεί είναι η ανησυχία ότι η μορφή εξαγωγής της Google μπορεί να αλλάξει. Ωστόσο, αυτή η μορφή παραμένει σταθερή εδώ και χρόνια και άλλες εφαρμογές (όπως το <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) την υποστηρίζουν χωρίς πρόβλημα. Φαίνεται ότι προγράμματα διαχείρισης κωδικών πρόσβασης όπως το 1Password <em>θα μπορούσαν</em> εύκολα να υποστηρίξουν άμεση εισαγωγή, αλλά έχουν επιλέξει να μην το κάνουν."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "Γιατί το 1Password δεν μπορεί να κάνει εισαγωγή από το Google Authenticator;"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Αναφέρετε τυχόν προβλήματα με αυτό το εργαλείο στο <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Πώς αναφέρω ένα πρόβλημα;"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "Για μέγιστο απόρρητο, ανοίξτε αυτό το εργαλείο στον υπολογιστή σας ή σε μια δεύτερη συσκευή και κάντε κλικ στο «Σάρωση QR» για να σαρώσετε απευθείας τους κωδικούς QR εξαγωγής στο τηλέφωνό σας, χωρίς να τραβήξετε στιγμιότυπα οθόνης."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Ναι. Η ασφάλεια και το απόρρητο είναι οι κορυφαίες προτεραιότητες. <strong>Τίποτα από όσα κάνετε εδώ δεν φεύγει ποτέ από τον υπολογιστή ή την κινητή συσκευή σας.</strong> Όλη η επεξεργασία γίνεται τοπικά, εκτός σύνδεσης, απευθείας στο πρόγραμμα περιήγησής σας. Οι εικόνες των κωδικών QR και τα μυστικά κλειδιά σας δεν αποστέλλονται ποτέ σε κανέναν διακομιστή."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Αυτό το εργαλείο είναι ανοιχτού κώδικα και <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">ο κώδικας μπορεί να ελεγχθεί από οποιονδήποτε</a>, ώστε να επαληθευτεί η ασφάλεια και η μεθοδολογία του. Φιλοξενείται στο GitHub Pages, το οποίο παρέχει μια <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">ασφαλή και διαφανή διαδικασία ανάπτυξης</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "Είναι ασφαλές να «ανεβάσω» τους κωδικούς QR μου;"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "Κατά την ανάπτυξη αυτού του εργαλείου χρησιμοποιήθηκαν το <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> και το <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a>. Όλος ο κώδικας που δημιουργήθηκε από AI έχει ελεγχθεί προσεκτικά χειροκίνητα."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, μια άλλη λύση με σενάριο Python για το ίδιο πρόβλημα."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, το σενάριο Python του <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>, στο οποίο βασίζεται αυτό το εργαλείο."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Ευχαριστούμε όλους όσοι συνεισέφεραν σε αυτά τα εξαιρετικά έργα!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> για τα εικονίδια της διεπαφής χρήστη."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> για την αποκωδικοποίηση κωδικών QR από εικόνες."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "Η διεπαφή χρήστη και η επεξεργασία των κωδικών QR βασίζονται σε αυτές τις βιβλιοθήκες ανοιχτού κώδικα:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> για αλλαγή μεγέθους εικόνων σε υψηλή ποιότητα."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Αυτό το εργαλείο βασίζεται στη δουλειά αρκετών έργων ανοιχτού κώδικα, όπως:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> για την αποκωδικοποίηση των δεδομένων του Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> για τη δημιουργία νέων κωδικών QR για κάθε λογαριασμό."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> για τη σάρωση κωδικών QR με την κάμερα."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "Το <a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> και ο <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>, για την προδιαγραφή protobuf της εξαγωγής."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "Η ανάπτυξη αυτού του εργαλείου έγινε εν μέρει δυνατή χάρη στην υποστήριξη του <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. Αν σας φάνηκε χρήσιμο, σκεφτείτε να <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">κάνετε μια δωρεά</a> για να στηρίξετε το έργο του Stand."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "Για τους ανθρώπους και τους τόπους που αγαπάτε"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> για την κωδικοποίηση Base32 των μυστικών κλειδιών OTP."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Ευχαριστίες"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "Τις μεταφράσεις έγραψαν και έλεγξαν:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Το Google Authenticator σάς επιτρέπει να μεταφέρετε τους λογαριασμούς σας σε νέο τηλέφωνο, αλλά δεν παρέχει εύκολο τρόπο εξαγωγής τους σε άλλες εφαρμογές όπως το 1Password ή το Bitwarden. Αυτό συμβαίνει επειδή κρύβει το αρχικό «μυστικό κλειδί» (τον κωδικό QR που σαρώσατε αρχικά) για κάθε λογαριασμό."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Χωρίς αυτά τα μυστικά κλειδιά, η μετάβαση σε νέο πρόγραμμα διαχείρισης κωδικών πρόσβασης σημαίνει ότι πρέπει να ρυθμίσετε ξανά χειροκίνητα τον 2FA για κάθε λογαριασμό ξεχωριστά, κάτι που είναι πολύ κουραστικό."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "Παρόλο που υπάρχουν άλλα εργαλεία για αυτό, συχνά απαιτούν τεχνικά βήματα, όπως εκτέλεση σεναρίων ή εγκατάσταση λογισμικού. Αυτό το εργαλείο έχει σχεδιαστεί ως μια απλή, ασφαλής λύση που μπορεί να χρησιμοποιήσει ο καθένας."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "Γιατί χρειάζεται αυτό;"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Γλώσσα"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Πηγαίος κώδικας"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "Διαβάστε τη στα Αγγλικά"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Βοηθήστε να βελτιωθεί αυτή η μετάφραση"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Αυτή η σελίδα μεταφράστηκε αυτόματα."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "Ακύρωση"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Κλείσιμο παραθύρου"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Επικολλήστε ένα URL <code>otpauth://</code> ή ένα ακατέργαστο μυστικό κλειδί Base32 (π.χ. <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Μυστικό κλειδί ή URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Προσθήκη κωδικού"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "Εισαγωγή κωδικού OTP"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Εξαγάγετε τα μυστικά κλειδιά κωδικών πρόσβασης μίας χρήσης TOTP/HOTP από τους κωδικούς QR εξαγωγής 2FA του Google Authenticator ή του LastPass. Εκτελείται εξ ολοκλήρου στο πρόγραμμα περιήγησής σας· τίποτα δεν αποστέλλεται σε διακομιστή."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Εξαγωγή μυστικών κλειδιών κωδικών μίας χρήσης – από το Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Κλείσιμο"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Σημείωση: Όλα τα στιγμιότυπα οθόνης ή τα αρχεία που έχετε κατεβάσει περιέχουν τα μυστικά κλειδιά σας μη κρυπτογραφημένα.</strong> Φροντίστε να τα φυλάξετε με ασφάλεια ή να τα διαγράψετε όταν τελειώσετε. Αυτό περιλαμβάνει τη διαγραφή τους από τον «Κάδο», τον «Κάδο Ανακύκλωσης», τα «Διαγράφηκαν πρόσφατα» και οποιαδήποτε αντίγραφα ασφαλείας φωτογραφιών στο cloud."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Λογαριασμοί OTP που εξήχθησαν"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Επιλογή όλων"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Καμία επιλογή"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 επιλεγμένα"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Επαναφορά"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "Συχνές ερωτήσεις"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "Καρτέλες πληροφοριών"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Πώς το χρησιμοποιώ;"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Τι είναι αυτό;"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Εναλλαγή σε σκουρόχρωμο θέμα"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Εναλλαγή σε ανοιχτόχρωμο θέμα"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Άνοιγμα επιλογής θέματος"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Εναλλαγή στο θέμα συστήματος"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "ή σύρετε και αφήστε αρχεία εδώ<br>(εικόνα, εξαγωγή JSON, CSV ή TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Εισαγωγή κωδικού"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Άνοιγμα αρχείων"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "Σάρωση QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Καθαρισμός"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Εξαγωγή από το Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Ανοίξτε την εφαρμογή Google Authenticator στο τηλέφωνό σας."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Επιλέξτε τους λογαριασμούς που θέλετε να εξαγάγετε."
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "Μεταβείτε στο μενού και επιλέξτε «Μεταφορά λογαριασμών» &gt; «Εξαγωγή λογαριασμών» (σε Android: «Κωδικοί μεταφοράς» &gt; «Εξαγωγή κωδικών»)."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Εξαγωγή από την εφαρμογή κωδικών μίας χρήσης"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "Στο LastPass, μπορείτε επίσης να επιλέξετε «Export accounts to file» (Εξαγωγή λογαριασμών σε αρχείο) και να εισαγάγετε αυτό το αρχείο. Αυτό το εργαλείο υποστηρίζει και τις δύο μορφές."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "Εξαγωγή από το LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Ανοίξτε το LastPass Authenticator στο τηλέφωνό σας."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Πατήστε το γρανάζι και επιλέξτε «Transfer accounts» (Μεταφορά λογαριασμών) &gt; «Export accounts to QR code» (Εξαγωγή λογαριασμών σε κωδικό QR)."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Μπορείτε επίσης να κάνετε κλικ στο «Εισαγωγή κωδικού» για να καταχωρίσετε ένα μυστικό κλειδί ή ένα URL ρύθμισης απευθείας ως κείμενο, και αυτό το εργαλείο θα εμφανίσει τον αρχικό κωδικό QR ρύθμισης."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Εξαγωγή μυστικών κλειδιών"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Αυτό το εργαλείο μπορεί επίσης να διαβάσει μεμονωμένους κωδικούς QR ρύθμισης από οποιαδήποτε εφαρμογή ή ένα αρχείο κειμένου με ένα μυστικό κλειδί ή URL ανά γραμμή. Έτσι, μπορείτε εύκολα να μετατρέψετε μυστικά κλειδιά από οπουδήποτε σε κωδικούς QR που μπορούν να σαρωθούν."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Ανοίξτε αυτό το εργαλείο στον υπολογιστή σας ή σε μια δεύτερη συσκευή και κάντε κλικ στο «Σάρωση QR» για να σαρώσετε απευθείας τους κωδικούς QR εξαγωγής στο τηλέφωνό σας. Αυτή είναι η πιο βολική επιλογή και έτσι αποφεύγετε την αποθήκευση στιγμιότυπων οθόνης των μυστικών κλειδιών σας."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Εναλλακτικά, τραβήξτε ένα στιγμιότυπο οθόνης κάθε κωδικού QR που εμφανίζεται και, στη συνέχεια, κάντε κλικ στο «Άνοιγμα αρχείων» ή σύρετε και αφήστε τα στιγμιότυπα οθόνης σε αυτή τη σελίδα."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Αυτό το εργαλείο διαβάζει κωδικούς QR από τη λειτουργία εξαγωγής του Google Authenticator ή του LastPass Authenticator και σας επιστρέφει το αρχικό μυστικό κλειδί για κάθε λογαριασμό. Στη συνέχεια, μπορείτε να χρησιμοποιήσετε αυτά τα μυστικά κλειδιά για να εισαγάγετε τους λογαριασμούς σας σε οποιαδήποτε άλλη εφαρμογή ελέγχου ταυτότητας."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "Το εργαλείο θα εμφανίσει τα μυστικά κλειδιά OTP που εξήχθησαν, το καθένα με τον δικό του κωδικό QR και το μυστικό κλειδί σε μορφή κειμένου."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Για να μεταφέρετε λογαριασμούς στο Google Authenticator ή στο LastPass Authenticator, επιλέξτε τους και κάντε κλικ στο «Εξαγωγή στο Google» ή στο «Εξαγωγή στο LastPass». Αυτό το εργαλείο θα εμφανίσει έναν κωδικό QR μεταφοράς που μπορείτε να σαρώσετε με την αντίστοιχη εφαρμογή."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Χρήση των μυστικών κλειδιών σας"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Τώρα μπορείτε να εισαγάγετε αυτά τα μυστικά κλειδιά στην εφαρμογή ελέγχου ταυτότητας ή στο πρόγραμμα διαχείρισης κωδικών πρόσβασης της προτίμησής σας."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Κάντε κλικ στο «Αποθήκευση ως CSV» ή στο «Αποθήκευση ως JSON» για να κρατήσετε ένα αντίγραφο των μυστικών κλειδιών σας. Μπορείτε αργότερα να ανοίξετε ξανά αυτά τα αρχεία εδώ για να εμφανίσετε τους κωδικούς QR σας."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Αυτό το εργαλείο εξάγει τα μυστικά κλειδιά κωδικών πρόσβασης μίας χρήσης (OTP), δηλαδή τους κωδικούς που χρησιμοποιούνται για τον έλεγχο ταυτότητας δύο παραγόντων (2FA), από τις εφαρμογές Google Authenticator ή LastPass Authenticator. Δεν χρειάζεται να εγκαταστήσετε κανένα λογισμικό και κανένα δεδομένο δεν φεύγει ποτέ από τη συσκευή σας."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>Όλη η επεξεργασία των κωδικών QR και των μυστικών κλειδιών σας γίνεται εξ ολοκλήρου εκτός σύνδεσης, τοπικά, εδώ στο πρόγραμμα περιήγησής σας.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Κλείσιμο μηνύματος σφάλματος"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Κλείσιμο ενημερωτικού μηνύματος"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Κλείσιμο μηνύματος επιτυχίας"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Κλείσιμο μηνύματος προειδοποίησης"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "Περιεχόμενο"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "Αντιγράφηκε στο πρόχειρο: {subject}."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Αποτυχία αντιγραφής στο πρόχειρο."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Αποτυχία επεξεργασίας του κωδικού QR από την εικόνα της κάμερας."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "Παρουσιάστηκε άγνωστο σφάλμα κατά την εξαγωγή."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "Το αρχείο δεν είναι έγκυρη εικόνα ή δεν ήταν δυνατή η φόρτωσή του."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Δεν ήταν δυνατή η επεξεργασία της εικόνας λόγω περιορισμών ασφαλείας (tainted canvas)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Μη έγκυρη μορφή"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "Η καταχώριση πρέπει να είναι έγκυρο URL OTP, JSON του LastPass ή μυστικό κλειδί Base32 τουλάχιστον 16 χαρακτήρων (γράμματα A-Z, αριθμοί 2-7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Μη έγκυρη μορφή JSON: Αναμενόταν πίνακας λογαριασμών OTP ή αντικείμενο εξαγωγής του LastPass."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Μη έγκυρη μορφή JSON του QR του LastPass: ο πίνακας 'a' (λογαριασμοί) δεν βρέθηκε."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "Αποτυχία αποκωδικοποίησης του κωδικού QR του LastPass. Η μορφή των δεδομένων δεν αναγνωρίζεται ή είναι κατεστραμμένη."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Μη έγκυρος κωδικός QR του LastPass: η ιδιότητα 'content' δεν βρέθηκε στα δεδομένα."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "Λείπει η παράμετρος 'counter' για τον τύπο hotp στο URL otpauth."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "Μη έγκυρο URL OTP: Λείπει η παράμετρος «data»."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "Λείπει η παράμετρος 'secret' από το URL otpauth."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Δεν βρέθηκε κάμερα. Βεβαιωθείτε ότι έχετε συνδέσει κάμερα."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Αποτυχία ανάλυσης των τελικών δεδομένων. Ενδέχεται να είναι κατεστραμμένα ή σε μη αναμενόμενη μορφή."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "Παρουσιάστηκε μη αναμενόμενο σφάλμα κατά την επεξεργασία των αρχείων."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "Η επεξεργασία απέτυχε."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Αποτυχία εκκίνησης της κάμερας. Βεβαιωθείτε ότι έχετε συνδέσει κάμερα και ότι έχετε δώσει άδεια."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Αποτυχία εναλλαγής κάμερας."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Γραμμή {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Δεν ήταν δυνατή η ανάλυση έγκυρων OTP από το κείμενο.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "Παρουσιάστηκε μη αναμενόμενο σφάλμα. Δοκιμάστε ξανά ή ανανεώστε τη σελίδα."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "Παρουσιάστηκε άγνωστο σφάλμα."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Μη υποστηριζόμενος τύπος αρχείου."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "Μη υποστηριζόμενος τύπος OTP στο URL: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "Η μορφή του κωδικού QR δεν υποστηρίζεται."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "Το LastPass υποστηρίζει μόνο λογαριασμούς βάσει χρόνου (TOTP). Ένας μη συμβατός λογαριασμός βάσει μετρητή αφαιρέθηκε από την επιλογή σας. Κάντε ξανά κλικ στο «Εξαγωγή στο LastPass» για να συνεχίσετε.",
+        "other": "Το LastPass υποστηρίζει μόνο λογαριασμούς βάσει χρόνου (TOTP). {count} μη συμβατοί λογαριασμοί βάσει μετρητή αφαιρέθηκαν από την επιλογή σας. Κάντε ξανά κλικ στο «Εξαγωγή στο LastPass» για να συνεχίσετε."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "Δεν έχουν επιλεγεί συμβατοί λογαριασμοί (TOTP) για εξαγωγή στο LastPass."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Δεν υπάρχουν δεδομένα για εξαγωγή."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Δεν έχουν επιλεγεί λογαριασμοί για εξαγωγή."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Σάρωση με το Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "Σάρωση με το LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "Ο κωδικός QR έχει ήδη υποβληθεί σε επεξεργασία."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Σάρωση κάμερας"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "Παραλείφθηκε {count} διπλότυπο μυστικό κλειδί.",
+        "other": "Παραλείφθηκαν {count} διπλότυπα μυστικά κλειδιά."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "Εξήχθη {count} μυστικό κλειδί.",
+        "other": "Εξήχθησαν {count} μυστικά κλειδιά."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Χειροκίνητη καταχώριση"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "Δεν βρέθηκε κωδικός QR."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "Δεν βρέθηκαν μυστικά κλειδιά OTP."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "Δεν βρέθηκαν μυστικά κλειδιά OTP στον κωδικό QR."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Μη διαθέσιμο"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "Εμφάνιση μεγαλύτερου κωδικού QR για {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "Επιλέχθηκαν {count} από {total}"
+    }
+  }
+}
