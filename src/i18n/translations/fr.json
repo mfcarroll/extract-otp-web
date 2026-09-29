@@ -3,7 +3,7 @@
     "name": "Français",
     "lang": "fr-CA",
     "hreflang": "fr",
-    "published": false,
+    "status": "machine",
     "contributors": [
       {
         "name": "",
@@ -264,6 +264,18 @@
     "footer.source": {
       "source": "bc47da663d",
       "text": "Code source"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "Lire en anglais"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Aider à améliorer cette traduction"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Cette page a été traduite automatiquement."
     },
     "manual.cancel": {
       "source": "19766ed6cc",
