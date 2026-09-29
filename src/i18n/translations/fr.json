@@ -1,0 +1,680 @@
+{
+  "language": {
+    "name": "Français",
+    "lang": "fr-CA",
+    "hreflang": "fr",
+    "published": false,
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Extracteur de clés secrètes de mots de passe à usage unique"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Choisir une caméra"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Changer de caméra"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "Scanner un code QR"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "Copié!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Appuyez sur Entrée ou sur la barre d’espacement pour copier."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Copier la clé secrète"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Copier"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "Copier l’URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Compteur :"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Émetteur :"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Nom :"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR :"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Clé secrète :"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "Afficher le code QR en plus grand"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Touchez pour agrandir"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Type :"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL :"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Ceci est une traduction provisoire en cours de révision, qui peut contenir des erreurs."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Exporter vers Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "Exporter vers LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "Enregistrer en CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "Enregistrer en JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Cet outil a été créé par <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, un développeur qui trouvait frustrant de migrer ses codes OTP de Google Authenticator vers 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Qui a créé cet outil?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator rend difficile l’affichage des clés secrètes d’origine utilisées pour configurer vos comptes. Il fournit plutôt un code QR d’exportation qui regroupe tous vos comptes. Cela facilite le transfert vers un nouvel appareil, mais complique le passage à une autre application d’authentification. LastPass fournit bien un code QR distinct pour chaque compte, ce qui est une grande amélioration, mais il ne fournit les clés secrètes en texte qu’en format JSON. À l’inverse, des applications comme 1Password rendent les clés secrètes d’origine faciles d’accès, ce qui simplifie le transfert vers d’autres applications 2FA."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Pourquoi Google Authenticator n’affiche-t-il pas mes codes QR d’origine?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Vous lisez avec votre caméra les codes QR produits par la fonction d’exportation de Google Authenticator ou de LastPass Authenticator, ou vous fournissez des captures d’écran de ces codes (ou un fichier d’exportation LastPass). Cet outil lit ces codes QR — ici même, dans votre navigateur — et vous redonne la clé secrète d’origine de chaque compte. Vous pouvez ensuite utiliser ces clés pour importer vos comptes dans n’importe quelle autre application d’authentification."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Comment ça fonctionne?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass regroupe tous vos comptes dans un seul code QR. Si vous avez beaucoup de comptes, les détails du code QR peuvent devenir minuscules et difficiles à lire. Google Authenticator contourne ce problème en fournissant plusieurs codes, contenant chacun quelques comptes. Heureusement, LastPass vous permet d’exporter un fichier JSON, que cet outil peut aussi lire. Si vous avez des problèmes avec LastPass, enregistrez simplement le fichier JSON et importez-le à la place."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "Mon code QR LastPass ne se lit pas!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "Excellente question, que <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Discussion de la communauté 1Password sur l’importation depuis Google Authenticator\">d’autres</a> se sont aussi <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Discussion Reddit sur l’ajout de 2FA existantes à 1Password\">posée</a>. Une des raisons invoquées est la crainte que le format d’exportation de Google change. Pourtant, ce format est stable depuis des années, et d’autres applications (comme <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) le prennent en charge sans problème. Il semble que des gestionnaires de mots de passe comme 1Password <em>pourraient</em> facilement permettre l’importation directe, mais qu’ils ont choisi de ne pas le faire."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "Pourquoi 1Password ne peut-il pas importer depuis Google Authenticator?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Veuillez signaler tout problème avec cet outil sur <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Comment signaler un problème?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "Pour une confidentialité maximale, ouvrez cet outil sur votre ordinateur ou sur un deuxième appareil, puis cliquez sur « Scanner le code QR » pour lire directement les codes QR d’exportation affichés sur votre téléphone, sans faire de captures d’écran."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Oui. La sécurité et la confidentialité sont les grandes priorités. <strong>Rien de ce que vous faites ici ne quitte jamais votre ordinateur ou votre appareil mobile.</strong> Tout le traitement se fait localement, hors ligne, directement dans votre navigateur. Vos images de codes QR et vos clés secrètes ne sont jamais envoyées à un serveur."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Cet outil est à code source ouvert, et <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">tout le monde peut en examiner le code</a> pour en vérifier la sécurité et la méthode. Il est hébergé sur GitHub Pages, ce qui assure un <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">processus de déploiement sécuritaire et transparent</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "Est-ce sécuritaire de « téléverser » mes codes QR?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "<a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> et <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> ont été utilisés pendant le développement de cet outil. Tout le code généré par l’IA a été soigneusement révisé à la main."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, un autre script Python qui résout le même problème."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, le script Python de <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>, sur lequel cet outil est basé."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Merci à toutes les personnes qui contribuent à ces excellents projets!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>, pour les icônes de l’interface."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>, pour le décodage des codes QR dans les images."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "L’interface et le traitement des codes QR reposent sur ces bibliothèques à code source ouvert :"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>, pour le redimensionnement d’images de haute qualité."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Cet outil s’appuie sur le travail de plusieurs projets à code source ouvert, notamment :"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>, pour le décodage des données de Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>, pour la création de nouveaux codes QR pour chaque compte."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>, pour la lecture des codes QR avec la caméra."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> et <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>, pour la spécification protobuf de l’exportation."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "Le développement de cet outil a été rendu possible en partie grâce au soutien de <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. Si cet outil vous est utile, pensez à <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">faire un don</a> pour soutenir le travail de Stand."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "Pour les gens et les lieux que vous aimez"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>, pour l’encodage en Base32 des clés secrètes OTP."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Remerciements"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "Traductions rédigées et révisées par :"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator vous permet de transférer vos comptes vers un nouveau téléphone, mais n’offre pas de moyen simple de les exporter vers d’autres applications comme 1Password ou Bitwarden. C’est parce qu’il cache la « clé secrète » d’origine (le code QR que vous avez scanné au départ) de chaque compte."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Sans ces clés secrètes, passer à un nouveau gestionnaire de mots de passe oblige à reconfigurer manuellement la 2FA pour chaque compte, ce qui est très fastidieux."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "D’autres outils existent pour régler ce problème, mais ils exigent souvent des étapes techniques comme exécuter des scripts ou installer des logiciels. Cet outil se veut une solution simple et sécuritaire que tout le monde peut utiliser."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "Pourquoi est-ce nécessaire?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Langue"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Code source"
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "Annuler"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Fermer la fenêtre"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Collez une URL <code>otpauth://</code> ou une clé secrète Base32 brute (p. ex. <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Clé secrète ou URL…"
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Ajouter le code"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "Saisir un code OTP"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Extrayez les clés secrètes TOTP/HOTP de mots de passe à usage unique à partir des codes QR d’exportation 2FA de Google Authenticator ou de LastPass. Tout se fait dans votre navigateur ; rien n’est téléversé."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Extracteur de clés secrètes de mots de passe à usage unique – Exportation de Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Fermer"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Remarque : toute capture d’écran ou tout fichier téléchargé contient vos clés secrètes non chiffrées.</strong> Assurez-vous de les conserver en lieu sûr, ou de les supprimer une fois terminé. Il faut notamment les supprimer de votre « Corbeille », de l’album « Supprimés récemment » et de toute sauvegarde de photos infonuagique."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Comptes OTP extraits"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Tout sélectionner"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Tout désélectionner"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 sélectionné"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Réinitialiser"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "FAQ"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "Onglets d’information"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Comment l’utiliser?"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Qu’est-ce que c’est?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Utiliser le thème sombre"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Utiliser le thème clair"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Ouvrir le sélecteur de thème"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Utiliser le thème du système"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "ou glissez-déposez des fichiers ici<br>(image, exportation JSON, CSV ou TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Saisir un code"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Ouvrir des fichiers"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "Scanner le code QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Faites le ménage"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Exporter depuis Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Ouvrez l’application Google Authenticator sur votre téléphone."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Sélectionnez les comptes à exporter."
+    },
+    "use.export.google.transfer": {
+      "source": "a4fe6e7a56",
+      "text": "Ouvrez le menu et sélectionnez « Transférer des comptes » &gt; « Exporter des comptes »."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Exportez depuis votre application de mots de passe à usage unique"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "Dans LastPass, vous pouvez aussi choisir « Exporter les comptes vers un fichier » et importer ce fichier à la place. Cet outil prend en charge les deux formats."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "Exporter depuis LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Ouvrez LastPass Authenticator sur votre téléphone."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Touchez l’engrenage et sélectionnez « Transfert de comptes » &gt; « Exporter les comptes en code QR »."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Vous pouvez aussi cliquer sur « Saisir un code » pour entrer une clé secrète ou une URL de configuration directement sous forme de texte, et cet outil affichera votre code QR de configuration d’origine."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Extrayez les clés secrètes"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Cet outil peut aussi lire les codes QR de configuration individuels de n’importe quelle application, ou un fichier texte contenant une clé secrète ou une URL par ligne. Il est ainsi facile de transformer des clés secrètes de toute provenance en codes QR lisibles."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Ouvrez cet outil sur votre ordinateur ou sur un deuxième appareil, puis cliquez sur « Scanner le code QR » pour lire directement les codes QR d’exportation affichés sur votre téléphone. C’est l’option la plus pratique, et elle évite de conserver des captures d’écran de vos clés secrètes."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Sinon, faites une capture d’écran de chaque code QR affiché, puis cliquez sur « Ouvrir des fichiers » ou glissez-déposez vos captures d’écran sur la page."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Cet outil lit les codes QR produits par la fonction d’exportation de Google Authenticator ou de LastPass Authenticator, et vous redonne la clé secrète d’origine de chaque compte. Vous pouvez ensuite utiliser ces clés pour importer vos comptes dans n’importe quelle autre application d’authentification."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "L’outil affichera les clés secrètes OTP extraites, chacune avec son propre code QR et sa clé secrète."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Pour transférer des comptes dans Google Authenticator ou LastPass Authenticator, sélectionnez-les et cliquez sur « Exporter vers Google » ou « Exporter vers LastPass ». Cet outil affichera un code QR de transfert à lire avec cette application."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Utilisez vos clés secrètes"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Vous pouvez maintenant importer ces clés secrètes dans l’application d’authentification ou le gestionnaire de mots de passe de votre choix."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Cliquez sur « Enregistrer en CSV » ou « Enregistrer en JSON » pour conserver une copie de vos clés secrètes. Vous pourrez rouvrir ces fichiers ici plus tard pour afficher de nouveau vos codes QR."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Cet outil extrait les clés secrètes de mots de passe à usage unique (OTP), les codes utilisés pour l’authentification à deux facteurs (2FA), des applications Google Authenticator et LastPass Authenticator. Il n’y a aucun logiciel à installer, et aucune donnée ne quitte jamais votre appareil."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>Tout le traitement de vos codes QR et de vos clés secrètes se fait entièrement hors ligne, localement, ici même dans votre navigateur.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Fermer le message d’erreur"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Fermer le message d’information"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Fermer le message de confirmation"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Fermer l’avertissement"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "Contenu"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject} copié dans le presse-papiers."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Impossible de copier dans le presse-papiers."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Impossible de traiter le code QR provenant de la caméra."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "Une erreur inconnue s’est produite pendant l’exportation."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "Le fichier n’est pas une image valide ou n’a pas pu être chargé."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Impossible de traiter l’image en raison de restrictions de sécurité (canevas contaminé)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Format non valide"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "L’entrée doit être une URL OTP valide, un JSON LastPass ou une clé secrète Base32 d’au moins 16 caractères (lettres A à Z, chiffres 2 à 7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Format JSON non valide : un tableau de comptes OTP ou un objet d’exportation LastPass est attendu."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Format JSON du code QR LastPass non valide : tableau « a » (comptes) introuvable."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "Impossible de décoder le code QR LastPass. Le format des données n’est pas reconnu ou est corrompu."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Code QR LastPass non valide : propriété « content » introuvable dans les données."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "Paramètre « counter » manquant pour le type hotp dans l’URL otpauth."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "URL OTP non valide : paramètre « data » manquant."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "Paramètre « secret » manquant dans l’URL otpauth."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Aucune caméra trouvée. Assurez-vous qu’une caméra est branchée."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Impossible d’analyser les données finales. Elles sont peut-être corrompues ou dans un format inattendu."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "Une erreur inattendue s’est produite pendant le traitement des fichiers."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "Le traitement a échoué."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Impossible de démarrer la caméra. Assurez-vous qu’une caméra est branchée et que vous avez accordé l’autorisation."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Impossible de changer de caméra."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Ligne {line} : {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Impossible de trouver un OTP valide dans le texte.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "Une erreur inattendue s’est produite. Veuillez réessayer ou actualiser la page."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "Une erreur inconnue s’est produite."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Type de fichier non pris en charge."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "Type d’OTP non pris en charge dans l’URL : {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "Le format de ce code QR n’est pas pris en charge."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "LastPass ne prend en charge que les comptes basés sur le temps (TOTP). Un compte incompatible basé sur un compteur a été retiré de votre sélection. Cliquez de nouveau sur « Exporter vers LastPass » pour continuer.",
+        "other": "LastPass ne prend en charge que les comptes basés sur le temps (TOTP). {count} comptes incompatibles basés sur un compteur ont été retirés de votre sélection. Cliquez de nouveau sur « Exporter vers LastPass » pour continuer."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "Aucun compte compatible (TOTP) sélectionné pour l’exportation vers LastPass."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Aucune donnée à exporter."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Aucun compte sélectionné pour l’exportation."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Scannez avec Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "Scannez avec LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "Code QR déjà traité."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Lecture par caméra"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "{count} clé secrète en double ignorée.",
+        "other": "{count} clés secrètes en double ignorées."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "{count} clé secrète extraite.",
+        "other": "{count} clés secrètes extraites."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Saisie manuelle"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "Aucun code QR trouvé."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "Aucune clé secrète OTP trouvée."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "Aucune clé secrète OTP trouvée dans le code QR."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Non disponible"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "Afficher en plus grand le code QR de {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{count} sur {total} sélectionné(s)"
+    }
+  }
+}
