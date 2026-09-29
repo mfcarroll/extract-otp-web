@@ -539,7 +539,9 @@ export function renderPage(
         /[&<>"]/g,
         (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]
       );
-    const items = visible.map((l) => {
+    // Ordered by language code, English included, so every page lists them the same way.
+    const ordered = [...visible].sort((a, b) => a.code.localeCompare(b.code));
+    const items = ordered.map((l) => {
       const current = l.code === locale.code ? ' aria-current="page"' : '';
       return `<li><a class="navigable" href="${base}${l.path}" hreflang="${l.hreflang}" lang="${l.lang}"${current}>${escape(l.name)}</a></li>`;
     });
