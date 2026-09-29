@@ -1,0 +1,689 @@
+{
+  "language": {
+    "name": "Tiếng Việt",
+    "lang": "vi",
+    "hreflang": "vi",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Công cụ trích xuất khóa bí mật mật khẩu một lần"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Chọn camera"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Đổi camera"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "Quét mã QR"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "Đã sao chép!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Nhấn Enter hoặc Space để sao chép."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Sao chép khóa bí mật"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Sao chép"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "Sao chép URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Bộ đếm:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Nhà phát hành:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Tên:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Khóa bí mật:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "Hiển thị mã QR lớn hơn"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Nhấn để phóng to"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Loại:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Đây là bản dịch nháp vẫn đang được xem xét và có thể có sai sót."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Xuất sang Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "Xuất sang LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "Lưu dưới dạng CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "Lưu dưới dạng JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Công cụ này được tạo bởi <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, một nhà phát triển từng bực mình với quá trình chuyển mã OTP từ Google Authenticator sang 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Ai đã tạo ra công cụ này?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator khiến việc xem các khóa bí mật gốc dùng để thiết lập tài khoản trở nên khó khăn. Thay vào đó, ứng dụng cung cấp một mã QR xuất gộp tất cả tài khoản của bạn lại với nhau. Điều này giúp chuyển sang thiết bị mới dễ dàng, nhưng lại khó chuyển sang một ứng dụng xác thực khác. LastPass có cung cấp mã QR riêng cho từng tài khoản, một cải tiến rất lớn, nhưng chỉ cung cấp khóa bí mật dạng văn bản ở định dạng mã JSON. Ngược lại, các ứng dụng như 1Password cho phép truy cập dễ dàng các khóa bí mật gốc, giúp chuyển sang các ứng dụng 2FA khác một cách đơn giản."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Tại sao Google Authenticator không hiển thị mã QR gốc của tôi?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Bạn dùng camera quét các mã QR từ tính năng xuất của Google Authenticator hoặc LastPass Authenticator, hoặc cung cấp ảnh chụp màn hình của chúng (hoặc một tệp xuất từ LastPass). Công cụ này đọc các mã QR đó—ngay tại đây trong trình duyệt của bạn—và trả lại cho bạn khóa bí mật gốc của từng tài khoản. Sau đó, bạn có thể dùng các khóa bí mật này để nhập tài khoản vào bất kỳ ứng dụng xác thực nào khác."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Công cụ hoạt động như thế nào?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass gộp tất cả tài khoản của bạn vào một mã QR duy nhất, và nếu bạn có nhiều tài khoản, các chi tiết của mã QR có thể trở nên rất nhỏ và khó đọc. Google Authenticator khắc phục vấn đề này bằng cách cung cấp nhiều mã, mỗi mã chứa một vài tài khoản. May mắn là LastPass cho phép bạn xuất một tệp JSON, và công cụ này cũng đọc được tệp đó. Nếu bạn gặp sự cố với LastPass, chỉ cần lưu tệp JSON rồi nhập tệp đó vào đây."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "Mã QR LastPass của tôi không quét được!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "Câu hỏi rất hay, và <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Thảo luận trong cộng đồng 1Password về việc nhập từ Google Authenticator\">nhiều người khác</a> cũng đã <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Thảo luận trên Reddit về việc thêm 2FA hiện có vào 1Password\">hỏi</a>. Một lý do được đưa ra là lo ngại định dạng xuất của Google có thể thay đổi. Tuy nhiên, định dạng này đã ổn định trong nhiều năm, và các ứng dụng khác (như <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) hỗ trợ nó mà không gặp vấn đề gì. Có vẻ như các trình quản lý mật khẩu như 1Password <em>hoàn toàn có thể</em> dễ dàng hỗ trợ nhập trực tiếp, nhưng đã chọn không làm vậy."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "Tại sao 1Password không thể nhập từ Google Authenticator?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Vui lòng báo cáo mọi sự cố với công cụ này trên <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Làm thế nào để báo cáo sự cố?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "Để bảo vệ quyền riêng tư tốt nhất, hãy mở công cụ này trên máy tính hoặc một thiết bị thứ hai, rồi nhấp vào “Quét QR” để quét trực tiếp các mã QR xuất trên điện thoại của bạn, mà không chụp ảnh màn hình."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Có. Bảo mật và quyền riêng tư là ưu tiên hàng đầu. <strong>Mọi thứ bạn làm ở đây không bao giờ rời khỏi máy tính hoặc thiết bị di động của bạn.</strong> Mọi quá trình xử lý đều diễn ra cục bộ, ngoại tuyến, ngay trong trình duyệt của bạn. Hình ảnh mã QR và khóa bí mật của bạn không bao giờ được gửi đến bất kỳ máy chủ nào."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Công cụ này là mã nguồn mở và <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">ai cũng có thể kiểm tra mã nguồn</a> để xác minh tính an toàn và phương pháp của nó. Công cụ được lưu trữ trên GitHub Pages, với <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">quy trình triển khai an toàn và minh bạch</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "“Tải lên” mã QR của tôi có an toàn không?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "<a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> và <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> đã được sử dụng trong quá trình phát triển công cụ này. Toàn bộ mã do AI tạo ra đều đã được con người xem xét kỹ lưỡng."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, một giải pháp script Python khác cho cùng vấn đề."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, script Python của <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>, nền tảng của công cụ này."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Xin cảm ơn tất cả những người đóng góp cho các dự án tuyệt vời này!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> cho các biểu tượng dùng trong giao diện."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> để giải mã mã QR từ hình ảnh."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "Giao diện người dùng và việc xử lý mã QR được hỗ trợ bởi các thư viện mã nguồn mở sau:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> để thay đổi kích thước hình ảnh chất lượng cao."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Công cụ này được xây dựng dựa trên thành quả của một số dự án mã nguồn mở, bao gồm:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> để giải mã dữ liệu của Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> để tạo mã QR mới cho từng tài khoản."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> để quét mã QR bằng camera."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> và <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>, với đặc tả protobuf của định dạng xuất."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "Công cụ này được phát triển một phần nhờ sự hỗ trợ của <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. Nếu bạn thấy công cụ hữu ích, hãy cân nhắc <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">quyên góp</a> để ủng hộ công việc của Stand."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "Vì những con người và những nơi chốn bạn yêu thương"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> để mã hóa Base32 các khóa bí mật OTP."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Lời cảm ơn"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "Các bản dịch được viết và xem xét bởi:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator cho phép bạn chuyển tài khoản sang điện thoại mới, nhưng không có cách dễ dàng để xuất chúng sang các ứng dụng khác như 1Password hay Bitwarden. Lý do là ứng dụng này ẩn “khóa bí mật” gốc (mã QR bạn đã quét lúc đầu) của từng tài khoản."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Nếu không có các khóa bí mật này, việc chuyển sang một trình quản lý mật khẩu mới đồng nghĩa với việc phải thiết lập lại 2FA thủ công cho từng tài khoản một, vô cùng phiền phức."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "Dù đã có những công cụ khác giải quyết vấn đề này, chúng thường đòi hỏi các bước kỹ thuật như chạy script hoặc cài đặt phần mềm. Công cụ này được thiết kế để trở thành một giải pháp đơn giản, an toàn mà ai cũng có thể dùng."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "Tại sao cần công cụ này?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Ngôn ngữ"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Mã nguồn"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "Đọc bằng tiếng Anh"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Giúp cải thiện bản dịch này"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Trang này được dịch tự động."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "Hủy"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Đóng hộp thoại"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Dán URL <code>otpauth://</code> hoặc khóa bí mật Base32 dạng thô (ví dụ: <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Khóa bí mật hoặc URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Thêm mã"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "Nhập mã OTP"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Trích xuất khóa bí mật mật khẩu một lần TOTP/HOTP từ mã QR xuất 2FA của Google Authenticator hoặc LastPass. Chạy hoàn toàn trong trình duyệt của bạn; không có gì được gửi lên máy chủ."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Công cụ trích xuất khóa bí mật mật khẩu một lần – Xuất từ Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Đóng"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Lưu ý: Mọi ảnh chụp màn hình hoặc tệp đã tải xuống đều chứa khóa bí mật chưa được mã hóa của bạn.</strong> Hãy nhớ lưu trữ chúng an toàn, hoặc xóa chúng khi bạn đã xong. Việc này bao gồm cả xóa chúng khỏi “Thùng rác”, “Đã xóa gần đây” và mọi bản sao lưu ảnh trên đám mây."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Các tài khoản OTP đã trích xuất"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Chọn tất cả"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Bỏ chọn tất cả"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "Đã chọn 0"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Đặt lại"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "Câu hỏi thường gặp"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "Các thẻ thông tin"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Cách sử dụng"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Đây là gì?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Chuyển sang giao diện tối"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Chuyển sang giao diện sáng"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Mở trình chuyển giao diện"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Chuyển sang giao diện hệ thống"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "hoặc kéo và thả tệp vào đây<br>(hình ảnh, tệp xuất JSON, CSV hoặc TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Nhập mã"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Mở tệp"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "Quét QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Dọn dẹp"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Xuất từ Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Mở ứng dụng Google Authenticator trên điện thoại của bạn."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Chọn các tài khoản bạn muốn xuất."
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "Mở menu và chọn “Chuyển tài khoản” &gt; “Xuất tài khoản” (trên Android: “Chuyển mã” &gt; “Xuất mã”)."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Xuất từ ứng dụng mật khẩu một lần của bạn"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "Với LastPass, bạn cũng có thể chọn “Export accounts to file” (Xuất tài khoản ra tệp) rồi nhập tệp đó vào đây. Công cụ này hỗ trợ cả hai định dạng."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "Xuất từ LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Mở LastPass Authenticator trên điện thoại của bạn."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Nhấn vào biểu tượng bánh răng và chọn “Transfer accounts” (Chuyển tài khoản) &gt; “Export accounts to QR code” (Xuất tài khoản sang mã QR)."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Bạn cũng có thể nhấp vào “Nhập mã” để nhập trực tiếp khóa bí mật hoặc URL thiết lập dưới dạng văn bản, và công cụ này sẽ hiển thị mã QR thiết lập gốc của bạn."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Trích xuất khóa bí mật"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Công cụ này cũng có thể đọc từng mã QR thiết lập riêng lẻ từ bất kỳ ứng dụng nào, hoặc một tệp văn bản có một khóa bí mật hoặc URL trên mỗi dòng. Nhờ vậy, bạn dễ dàng biến khóa bí mật từ bất kỳ nguồn nào thành mã QR có thể quét được."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Mở công cụ này trên máy tính hoặc một thiết bị thứ hai, rồi nhấp vào “Quét QR” để quét trực tiếp các mã QR xuất trên điện thoại của bạn. Đây là cách tiện lợi nhất, và nó giúp tránh lưu ảnh chụp màn hình chứa khóa bí mật của bạn."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Hoặc, hãy chụp ảnh màn hình từng mã QR được hiển thị, rồi nhấp vào “Mở tệp” hoặc kéo và thả (các) ảnh chụp màn hình vào trang."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Công cụ này đọc các mã QR từ tính năng xuất của Google Authenticator hoặc LastPass Authenticator và trả lại cho bạn khóa bí mật gốc của từng tài khoản. Sau đó, bạn có thể dùng các khóa bí mật này để nhập tài khoản vào bất kỳ ứng dụng xác thực nào khác."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "Công cụ sẽ hiển thị các khóa bí mật OTP đã trích xuất, mỗi khóa kèm mã QR và khóa bí mật riêng."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Để chuyển tài khoản vào Google Authenticator hoặc LastPass Authenticator, hãy chọn chúng rồi nhấp vào “Xuất sang Google” hoặc “Xuất sang LastPass”. Công cụ này sẽ hiển thị một mã QR chuyển để bạn quét bằng ứng dụng đó."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Sử dụng khóa bí mật"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Giờ đây bạn có thể nhập các khóa bí mật này vào ứng dụng xác thực hoặc trình quản lý mật khẩu bạn ưa thích."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Nhấp vào “Lưu dưới dạng CSV” hoặc “Lưu dưới dạng JSON” để giữ một bản sao các khóa bí mật của bạn. Sau này bạn có thể mở lại các tệp này tại đây để hiển thị mã QR của mình."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Công cụ này trích xuất các khóa bí mật mật khẩu một lần (OTP), tức các mã dùng cho xác thực hai yếu tố (2FA), từ ứng dụng Google Authenticator hoặc LastPass Authenticator. Không cần cài đặt phần mềm nào, và dữ liệu không bao giờ rời khỏi thiết bị của bạn."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>Mọi quá trình xử lý mã QR và khóa bí mật của bạn đều diễn ra hoàn toàn ngoại tuyến, cục bộ, ngay tại đây trong trình duyệt của bạn.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Đóng thông báo lỗi"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Đóng thông báo thông tin"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Đóng thông báo thành công"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Đóng thông báo cảnh báo"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "Nội dung"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "Đã sao chép {subject} vào bộ nhớ tạm."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Không thể sao chép vào bộ nhớ tạm."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Không thể xử lý mã QR từ camera."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "Đã xảy ra lỗi không xác định khi xuất."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "Tệp không phải là hình ảnh hợp lệ hoặc không thể tải được."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Không thể xử lý hình ảnh do hạn chế bảo mật (tainted canvas)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Định dạng không hợp lệ"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "Dữ liệu nhập phải là URL OTP hợp lệ, JSON của LastPass, hoặc khóa bí mật Base32 có ít nhất 16 ký tự (chữ cái A-Z, chữ số 2-7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Định dạng JSON không hợp lệ: Cần một mảng tài khoản OTP hoặc một đối tượng xuất của LastPass."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Định dạng JSON của mã QR LastPass không hợp lệ: không tìm thấy mảng 'a' (tài khoản)."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "Không thể giải mã mã QR LastPass. Định dạng dữ liệu không được nhận dạng hoặc đã bị hỏng."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Mã QR LastPass không hợp lệ: không tìm thấy thuộc tính 'content' trong dữ liệu."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "Thiếu tham số 'counter' cho loại hotp trong URL otpauth."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "URL OTP không hợp lệ: Thiếu tham số “data”."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "Thiếu tham số 'secret' trong URL otpauth."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Không tìm thấy camera. Vui lòng đảm bảo bạn đã kết nối camera."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Không thể phân tích dữ liệu cuối cùng. Dữ liệu có thể đã bị hỏng hoặc ở định dạng không mong đợi."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "Đã xảy ra lỗi không mong muốn khi xử lý tệp."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "Xử lý không thành công."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Không thể khởi động camera. Vui lòng đảm bảo bạn đã kết nối camera và đã cấp quyền."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Không thể đổi camera."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Dòng {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Không thể phân tích được OTP hợp lệ nào từ văn bản.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại hoặc tải lại trang."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "Đã xảy ra lỗi không xác định."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Loại tệp không được hỗ trợ."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "Loại OTP không được hỗ trợ trong URL: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "Mã QR không ở định dạng được hỗ trợ."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "other": "LastPass chỉ hỗ trợ tài khoản dựa trên thời gian (TOTP). {count} tài khoản dựa trên bộ đếm không tương thích đã bị loại khỏi lựa chọn của bạn. Nhấp lại vào “Xuất sang LastPass” để tiếp tục."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "Chưa chọn tài khoản tương thích (TOTP) nào để xuất sang LastPass."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Không có dữ liệu để xuất."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Chưa chọn tài khoản nào để xuất."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Quét bằng Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "Quét bằng LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "Mã QR đã được xử lý."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Quét bằng camera"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "other": "Đã bỏ qua {count} khóa bí mật trùng lặp."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "other": "Đã trích xuất {count} khóa bí mật."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Nhập thủ công"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "Không tìm thấy mã QR."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "Không tìm thấy khóa bí mật OTP nào."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "Không tìm thấy khóa bí mật OTP nào trong mã QR."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Không có"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "Hiển thị mã QR lớn hơn cho {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "Đã chọn {count}/{total}"
+    }
+  }
+}
