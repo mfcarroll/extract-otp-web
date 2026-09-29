@@ -1,0 +1,695 @@
+{
+  "language": {
+    "name": "Hrvatski",
+    "lang": "hr",
+    "hreflang": "hr",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Izdvajanje tajnih ključeva jednokratnih lozinki"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Odaberite kameru"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Promijeni kameru"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "Skeniranje QR koda"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "Kopirano!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Pritisnite Enter ili razmaknicu za kopiranje."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Kopiraj tajni ključ"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Kopiraj"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "Kopiraj URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Brojač:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Izdavatelj:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Naziv:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Tajni ključ:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "Prikaži veći QR kôd"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Dodirnite za povećanje"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Vrsta:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Ovo je radna verzija prijevoda koja se još pregledava i može sadržavati pogreške."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Izvezi u Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "Izvezi u LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "Spremi kao CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "Spremi kao JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Ovaj je alat izradio <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, razvojni programer kojeg je frustrirao postupak prebacivanja OTP kodova iz Google Authenticatora u 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Tko je ovo izradio?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator otežava pregled izvornih tajnih ključeva koji su korišteni za postavljanje vaših računa. Umjesto toga nudi QR kôd za izvoz koji objedinjuje sve vaše račune. Time je lako prenijeti ih na novi uređaj, ali teško prijeći na drugu aplikaciju za autentifikaciju. LastPass doduše nudi pojedinačne QR kodove za svaki račun, što je golemo poboljšanje, ali tekstne tajne ključeve daje samo u formatu JSON. Nasuprot tome, aplikacije poput 1Passworda izvorne tajne ključeve čine lako dostupnima, što omogućuje jednostavan prijenos u druge aplikacije za 2FA."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Zašto mi Google Authenticator ne prikazuje izvorne QR kodove?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Kamerom skenirate QR kodove iz značajke izvoza aplikacije Google Authenticator ili LastPass Authenticator ili pružite njihove snimke zaslona (ili datoteku izvoza iz LastPassa). Ovaj alat čita te QR kodove – upravo ovdje u vašem pregledniku – i vraća vam izvorni tajni ključ za svaki račun. Te tajne ključeve zatim možete upotrijebiti za uvoz računa u bilo koju drugu aplikaciju za autentifikaciju."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Kako funkcionira?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass sve vaše račune stavlja u jedan QR kôd, pa ako imate mnogo računa, detalji QR koda mogu postati sitni i teško čitljivi. Google Authenticator taj problem zaobilazi tako što daje više kodova, od kojih svaki sadrži nekoliko računa. Srećom, LastPass omogućuje izvoz datoteke JSON, koju ovaj alat također može čitati. Ako imate problema s LastPassom, jednostavno spremite datoteku JSON i umjesto toga uvezite nju."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "Moj QR kôd iz LastPassa ne može se skenirati!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "Odlično pitanje, koje su <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Rasprava u zajednici 1Passworda o uvozu iz Google Authenticatora\">i drugi</a> već <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Rasprava na Redditu o dodavanju postojećih 2FA računa u 1Password\">postavili</a>. Jedan od navedenih razloga je zabrinutost da bi se Googleov format izvoza mogao promijeniti. Međutim, taj je format stabilan već godinama, a druge ga aplikacije (poput <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticatora</a>) podržavaju bez problema. Čini se da bi upravitelji lozinki poput 1Passworda <em>mogli</em> lako podržati izravan uvoz, ali su odlučili da to neće učiniti."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "Zašto 1Password ne može uvoziti iz Google Authenticatora?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Sve probleme s ovim alatom prijavite na <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHubu</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Kako mogu prijaviti problem?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "Za najveću privatnost otvorite ovaj alat na računalu ili drugom uređaju i kliknite „Skeniraj QR“ kako biste QR kodove za izvoz skenirali izravno s telefona, bez snimanja zaslona."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Da. Sigurnost i privatnost glavni su prioriteti. <strong>Ništa što ovdje radite nikada ne napušta vaše računalo ili mobilni uređaj.</strong> Sva se obrada odvija lokalno, izvanmrežno, izravno u vašem pregledniku. Slike vaših QR kodova i tajni ključevi nikada se ne šalju ni na kakav poslužitelj."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Ovaj alat ima otvoreni kôd i <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">svatko može pregledati kôd</a> kako bi provjerio njegovu sigurnost i metodologiju. Hostiran je na servisu GitHub Pages, koji pruža <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">siguran i transparentan postupak objavljivanja</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "Je li sigurno „prenijeti“ svoje QR kodove?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "Tijekom razvoja ovog alata korišteni su <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> i <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a>. Sav kôd koji je generirala umjetna inteligencija pažljivo je ručno pregledan."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, još jedno rješenje istog problema u obliku Python skripte."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, Python skriptu autora <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Rolanda Kurmanna</a>, na kojoj se ovaj alat temelji."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Hvala svim suradnicima na ovim izvrsnim projektima!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> za ikone korištene u sučelju."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> za dekodiranje QR kodova sa slika."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "Korisničko sučelje i obradu QR kodova pokreću ove biblioteke otvorenog koda:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> za visokokvalitetnu promjenu veličine slika."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Ovaj se alat temelji na radu nekoliko projekata otvorenog koda, uključujući:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> za dekodiranje podataka iz Google Authenticatora."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> za generiranje novih QR kodova za svaki račun."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> za skeniranje QR kodova kamerom."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator </a> i <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>, za specifikaciju protobuf formata izvoza."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "Razvoj ovog alata djelomično je omogućen uz podršku organizacije <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. Ako vam je ovo korisno, razmislite o tome da <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">date donaciju</a> kao podršku radu organizacije Stand."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "Za ljude i mjesta koje volite"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> za kodiranje tajnih ključeva OTP u Base32."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Zahvale"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "Prijevode su napisali i pregledali:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator omogućuje prijenos računa na novi telefon, ali ne nudi jednostavan način da ih izvezete u druge aplikacije poput 1Passworda ili Bitwardena. Razlog je to što skriva izvorni „tajni ključ“ (QR kôd koji ste prvotno skenirali) za svaki račun."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Bez tih tajnih ključeva prelazak na novi upravitelj lozinki znači ručno ponovno postavljanje 2FA za svaki pojedini račun, što je golema muka."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "Iako postoje drugi alati koji to rješavaju, oni često zahtijevaju tehničke korake poput pokretanja skripti ili instaliranja softvera. Ovaj je alat zamišljen kao jednostavno i sigurno rješenje koje svatko može koristiti."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "Zašto je ovo potrebno?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Jezik"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Izvorni kôd"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "Pročitajte je na engleskom"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Pomozite poboljšati ovaj prijevod"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Ova je stranica prevedena automatski."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "Odustani"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Zatvori prozor"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Zalijepite URL <code>otpauth://</code> ili izvorni tajni ključ u formatu Base32 (npr. <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Tajni ključ ili URL..."
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Dodaj kôd"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "Unos OTP koda"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Izdvojite tajne ključeve jednokratnih lozinki TOTP/HOTP iz QR kodova za izvoz 2FA iz Google Authenticatora ili LastPassa. Radi u potpunosti u vašem pregledniku; ništa se ne šalje na poslužitelj."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Izdvajanje tajnih ključeva jednokratnih lozinki – izvoz iz Google Authenticatora"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Zatvori"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Napomena: sve snimke zaslona ili preuzete datoteke sadrže vaše nešifrirane tajne ključeve.</strong> Obavezno ih pohranite na sigurno ili ih izbrišite kada završite. To uključuje i njihovo brisanje iz mapa „Smeće“, „Koš za smeće“, „Nedavno izbrisano“ i iz svih sigurnosnih kopija fotografija u oblaku."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Izdvojeni OTP računi"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Odaberi sve"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Poništi odabir"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "Odabrano: 0"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Vrati na početno"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "Česta pitanja"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "Kartice s informacijama"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Kako se koristi?"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Što je ovo?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Prijeđi na tamnu temu"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Prijeđi na svijetlu temu"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Otvori odabir teme"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Prijeđi na temu sustava"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "ili povucite i ispustite datoteke ovdje<br>(slika, izvoz u JSON-u, CSV ili TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Unesi kôd"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Otvori datoteke"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "Skeniraj QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Počistite za sobom"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Izvoz iz Google Authenticatora"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Otvorite aplikaciju Google Authenticator na telefonu."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Odaberite račune koje želite izvesti."
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "Otvorite izbornik i odaberite „Prenesi račune“ &gt; „Izvoz računa“ (na Androidu: „Prijenos kodova“ &gt; „Izvoz kodova“)."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Izvezite podatke iz aplikacije za jednokratne lozinke"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "Za LastPass možete odabrati i „Export accounts to file“ (Izvoz računa u datoteku) te umjesto toga uvesti tu datoteku. Ovaj alat podržava oba formata."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "Izvoz iz LastPassa"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Otvorite LastPass Authenticator na telefonu."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Dodirnite ikonu zupčanika i odaberite „Transfer accounts“ (Prijenos računa) &gt; „Export accounts to QR code“ (Izvoz računa u QR kôd)."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Možete kliknuti i „Unesi kôd“ kako biste tajni ključ ili URL za postavljanje unijeli izravno kao tekst, a ovaj će alat prikazati vaš izvorni QR kôd za postavljanje."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Izdvojite tajne ključeve"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Ovaj alat može čitati i pojedinačne QR kodove za postavljanje iz bilo koje aplikacije ili tekstnu datoteku s jednim tajnim ključem ili URL-om po retku. Tako tajne ključeve s bilo kojeg mjesta lako pretvarate u QR kodove koji se mogu skenirati."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Otvorite ovaj alat na računalu ili drugom uređaju i kliknite „Skeniraj QR“ kako biste QR kodove za izvoz skenirali izravno s telefona. To je najpraktičnija mogućnost i njome izbjegavate spremanje snimki zaslona svojih tajnih ključeva."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Druga je mogućnost da snimite zaslon svakog prikazanog QR koda, a zatim kliknete „Otvori datoteke“ ili povučete i ispustite snimke zaslona na stranicu."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Ovaj alat čita QR kodove iz značajke izvoza aplikacije Google Authenticator ili LastPass Authenticator i vraća vam izvorni tajni ključ za svaki račun. Te tajne ključeve zatim možete upotrijebiti za uvoz računa u bilo koju drugu aplikaciju za autentifikaciju."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "Alat će prikazati izdvojene tajne ključeve OTP, svaki s vlastitim QR kodom i tajnim ključem."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Da biste račune premjestili u Google Authenticator ili LastPass Authenticator, odaberite ih i kliknite „Izvezi u Google“ ili „Izvezi u LastPass“. Ovaj će alat prikazati QR kôd za prijenos koji možete skenirati tom aplikacijom."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Upotrijebite svoje tajne ključeve"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Sada te tajne ključeve možete uvesti u željenu aplikaciju za autentifikaciju ili upravitelj lozinki."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Kliknite „Spremi kao CSV“ ili „Spremi kao JSON“ kako biste zadržali kopiju svojih tajnih ključeva. Te datoteke kasnije možete ponovno otvoriti ovdje kako biste prikazali svoje QR kodove."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Ovaj alat izdvaja tajne ključeve jednokratnih lozinki (OTP), odnosno kodove koji se koriste za dvofaktorsku autentifikaciju (2FA), iz aplikacija Google Authenticator ili LastPass Authenticator. Ne morate instalirati nikakav softver, a nikakvi podaci nikada ne napuštaju vaš uređaj."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>Sva se obrada vaših QR kodova i tajnih ključeva odvija u potpunosti izvanmrežno, lokalno, upravo ovdje u vašem pregledniku.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Zatvori poruku o pogrešci"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Zatvori informativnu poruku"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Zatvori poruku o uspjehu"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Zatvori upozorenje"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "Sadržaj"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject}: kopirano u međuspremnik."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Kopiranje u međuspremnik nije uspjelo."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Obrada QR koda iz slike kamere nije uspjela."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "Došlo je do nepoznate pogreške tijekom izvoza."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "Datoteka nije valjana slika ili se nije mogla učitati."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Slika se ne može obraditi zbog sigurnosnih ograničenja (tainted canvas)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Nevaljan format"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "Unos mora biti valjani OTP URL, LastPass JSON ili tajni ključ u formatu Base32 od najmanje 16 znakova (slova A-Z, brojevi 2-7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Nevaljan JSON format: očekivan je niz OTP računa ili objekt izvoza iz LastPassa."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Nevaljan JSON format QR koda iz LastPassa: polje „a“ (računi) nije pronađeno."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "Dekodiranje QR koda iz LastPassa nije uspjelo. Format podataka nije prepoznat ili su podaci oštećeni."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Nevaljan QR kôd iz LastPassa: svojstvo „content“ nije pronađeno u podacima."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "U URL-u otpauth nedostaje parametar „counter“ za vrstu hotp."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "Nevaljan OTP URL: nedostaje parametar „data“."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "U URL-u otpauth nedostaje parametar „secret“."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Kamera nije pronađena. Provjerite je li kamera povezana."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Raščlanjivanje konačnih podataka nije uspjelo. Možda su oštećeni ili u neočekivanom formatu."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "Došlo je do neočekivane pogreške pri obradi datoteka."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "Obrada nije uspjela."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Pokretanje kamere nije uspjelo. Provjerite je li kamera povezana i jeste li dali dopuštenje."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Promjena kamere nije uspjela."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Redak {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Iz teksta nije bilo moguće raščlaniti nijedan valjani OTP.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "Došlo je do neočekivane pogreške. Pokušajte ponovno ili osvježite stranicu."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "Došlo je do nepoznate pogreške."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Vrsta datoteke nije podržana."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "Nepodržana vrsta OTP-a u URL-u: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "Format QR koda nije podržan."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "one": "LastPass podržava samo vremenski temeljene račune (TOTP). Iz vašeg je odabira uklonjen {count} nekompatibilni račun temeljen na brojaču. Ponovno kliknite „Izvezi u LastPass“ za nastavak.",
+        "few": "LastPass podržava samo vremenski temeljene račune (TOTP). Iz vašeg su odabira uklonjena {count} nekompatibilna računa temeljena na brojaču. Ponovno kliknite „Izvezi u LastPass“ za nastavak.",
+        "other": "LastPass podržava samo vremenski temeljene račune (TOTP). Iz vašeg je odabira uklonjeno {count} nekompatibilnih računa temeljenih na brojaču. Ponovno kliknite „Izvezi u LastPass“ za nastavak."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "Za izvoz u LastPass nije odabran nijedan kompatibilni račun (TOTP)."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Nema podataka za izvoz."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Nije odabran nijedan račun za izvoz."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Skenirajte Google Authenticatorom"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "Skenirajte LastPass Authenticatorom"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "QR kôd je već obrađen."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Skeniranje kamerom"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "one": "Preskočen je {count} duplicirani tajni ključ.",
+        "few": "Preskočena su {count} duplicirana tajna ključa.",
+        "other": "Preskočeno je {count} dupliciranih tajnih ključeva."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "one": "Izdvojen je {count} tajni ključ.",
+        "few": "Izdvojena su {count} tajna ključa.",
+        "other": "Izdvojeno je {count} tajnih ključeva."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Ručni unos"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "QR kôd nije pronađen."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "Nisu pronađeni tajni ključevi OTP."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "U QR kodu nisu pronađeni tajni ključevi OTP."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Nije dostupno"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "Prikaži veći QR kôd za {title}"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "Odabrano: {count} od {total}"
+    }
+  }
+}
