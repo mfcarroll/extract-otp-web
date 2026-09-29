@@ -99,7 +99,7 @@ This project is built with [Vite](https://vitejs.dev/).
 
 English is written once. Page text lives in `index.html`, where each translatable element has a `data-i18n="key"` attribute (or `data-i18n-attr="attribute:key"`). Messages the app shows while running live in `src/i18n/en.json` and are looked up in code with `t('key')`.
 
-Each other language is a single file, `src/i18n/translations/<code>.json`, which starts with a `language` block (its name, `lang` and `published` flag). Languages are found by scanning that folder, so adding one changes no shared file, and the footer language links are generated from them. The build generates a separate page for each language (for example `/fr/`), so search engines index every language. On the development server, every language is available, including drafts.
+Each other language is a single file, `src/i18n/translations/<code>.json`, which starts with a `language` block (its name, `lang` and `published` flag, plus optional `contributors`, who are credited in the Acknowledgements). Each contributor needs a `name` or `github` username, and may add a `url`. The credit shows their name if given (otherwise their username), linked to their `url` if given (otherwise their GitHub profile). Languages are found by scanning that folder, so adding one changes no shared file, and the footer language links are generated from them. The build generates a separate page for each language (for example `/fr/`), so search engines index every language. On the development server, every language is available, including drafts.
 
 - `npm run i18n -- add fr Français fr-CA fr` starts a new language as a draft.
 - `npm run i18n -- check` validates all translations. CI runs this.

@@ -5,6 +5,7 @@ import {
   fingerprint,
   renderPage,
   validateMessage,
+  validateContributors,
   validatePageText,
 } from '../scripts/i18n/core.mjs';
 
@@ -276,6 +277,111 @@ describe('renderPage', () => {
   it('keeps the switcher hidden when only one language is visible', () => {
     const out = render('en', [config.locales[0]]);
     expect(out).toContain('<nav id="language-switcher" hidden="">');
+  });
+});
+
+describe('translator credits', () => {
+  const creditsHtml = `<!doctype html><html><head></head><body>
+    <p id="translation-credits" hidden>
+      <span data-i18n="faq.thanks.translators">By:</span>
+    </p>
+    <nav id="language-switcher" hidden></nav></body></html>`;
+  const people = config.locales.map((l) => ({ ...l }));
+  people[1].contributors = validateContributors('fr', [
+    { name: 'Jean <b>Tremblay</b>', url: 'https://example.com/jean' },
+    { github: 'shared-person' },
+  ]);
+  people[2].contributors = validateContributors('zh', [
+    { github: 'shared-person' },
+  ]);
+  const render = (visible: typeof people) =>
+    renderPage(creditsHtml, {
+      config: { ...config, locales: people },
+      base: '/app/',
+      locale: people[0],
+      visible,
+      translations: null,
+      pageSource: new Map(),
+      englishMessages: {},
+    });
+
+  it('lists each person once with their languages, escaping names', () => {
+    const out = render(people);
+    expect(out).toContain('<p id="translation-credits">');
+    expect(out).toContain('>Jean &lt;b&gt;Tremblay&lt;/b&gt;</a> (Français)');
+    expect(out).toContain('href="https://github.com/shared-person"');
+    expect(out).toContain('>shared-person</a> (Français, 中文).');
+  });
+
+  it('only credits languages the page links to', () => {
+    const out = render([people[0], people[2]]);
+    expect(out).not.toContain('Jean');
+    expect(out).toContain('shared-person</a> (中文)');
+  });
+
+  it('uses Chinese punctuation on Chinese pages', () => {
+    const out = renderPage(creditsHtml, {
+      config: { ...config, locales: people },
+      base: '/app/',
+      locale: people[2],
+      visible: [people[0], people[2]],
+      translations: { page: {}, messages: {} },
+      pageSource: new Map(),
+      englishMessages: {},
+    });
+    expect(out).toContain('</span><a');
+    expect(out).toContain('>shared-person</a>（中文）。');
+  });
+
+  it('stays hidden when nobody is credited', () => {
+    expect(render([people[0]])).toContain(
+      '<p id="translation-credits" hidden="">'
+    );
+  });
+
+  it('prefers a name over a username, and a url over a GitHub profile', () => {
+    const [both, nameAndGithub, githubOnly, nameOnly] = validateContributors(
+      'fr',
+      [
+        { name: 'Jean', github: 'jean', url: 'https://jean.example/' },
+        { name: 'Marie', github: 'marie' },
+        { github: 'luc' },
+        { name: 'Anne' },
+      ]
+    );
+    expect(both).toEqual({ name: 'Jean', url: 'https://jean.example/' });
+    expect(nameAndGithub).toEqual({
+      name: 'Marie',
+      url: 'https://github.com/marie',
+    });
+    expect(githubOnly).toEqual({ name: 'luc', url: 'https://github.com/luc' });
+    expect(nameOnly).toEqual({ name: 'Anne', url: null });
+  });
+
+  it('shows a username linked to their url if they give no name', () => {
+    expect(
+      validateContributors('fr', [
+        { github: 'luc', url: 'https://luc.example/' },
+      ])
+    ).toEqual([{ name: 'luc', url: 'https://luc.example/' }]);
+  });
+
+  it('rejects a url with nothing to show', () => {
+    expect(() =>
+      validateContributors('fr', [{ url: 'https://x.example/' }])
+    ).toThrow(/to show/);
+  });
+
+  it('rejects unsafe or invalid contributor details', () => {
+    expect(() =>
+      validateContributors('fr', [{ url: 'javascript:alert(1)', name: 'x' }])
+    ).toThrow(/https/);
+    expect(() => validateContributors('fr', [{ github: 'bad/name' }])).toThrow(
+      /GitHub/
+    );
+    expect(() => validateContributors('fr', [{}])).toThrow(
+      /name or github to show/
+    );
   });
 });
 

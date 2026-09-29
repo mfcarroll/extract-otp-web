@@ -7,7 +7,10 @@
  * scanning that folder, so adding a language touches no shared file:
  *
  *   {
- *     "language": { "name": "Français", "lang": "fr-CA", "hreflang": "fr", "published": false },
+ *     "language": {
+ *       "name": "Français", "lang": "fr-CA", "hreflang": "fr", "published": false,
+ *       "contributors": [{ "name": "…", "github": "…", "url": "https://…" }]
+ *     },
  *     "page":     { "<key>": { "source": "<hash>", "text": "..." } },
  *     "messages": { "<key>": { "source": "<hash>", "text": "..." | { "one": ..., "other": ... } } }
  *   }
@@ -73,6 +76,7 @@ export function loadConfig() {
       hreflang: language.hreflang ?? language.lang,
       path: `${code}/`,
       published: language.published === true,
+      contributors: validateContributors(code, language.contributors ?? []),
     };
   });
   return {
@@ -84,6 +88,36 @@ export function loadConfig() {
 
 export function loadEnglishMessages() {
   return JSON.parse(readFileSync(path.join(I18N_DIR, 'en.json'), 'utf8'));
+}
+
+/**
+ * People credited for a translation, shown using the most personal details
+ * they give: their name if provided (otherwise their GitHub username),
+ * linked to their `url` if provided (otherwise their GitHub profile).
+ * A url needs a name or username to show, so a bare link is never shown.
+ */
+export function validateContributors(code, contributors) {
+  if (!Array.isArray(contributors)) {
+    throw new Error(`${code}.json: "contributors" must be a list`);
+  }
+  return contributors.map((c, i) => {
+    const where = `${code}.json contributor ${i + 1}`;
+    if (
+      c.github !== undefined &&
+      !/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$/.test(c.github)
+    ) {
+      throw new Error(`${where}: "${c.github}" is not a GitHub username`);
+    }
+    if (c.url !== undefined && !/^https:\/\/[^\s"<>]+$/.test(c.url)) {
+      throw new Error(`${where}: url must start with https://`);
+    }
+    const name = c.name?.trim() || c.github;
+    if (!name) {
+      throw new Error(`${where}: needs a name or github to show`);
+    }
+    const url = c.url ?? (c.github ? `https://github.com/${c.github}` : null);
+    return { name, url };
+  });
 }
 
 export function translationPath(code) {
@@ -405,6 +439,48 @@ export function renderPage(
     robots.name = 'robots';
     robots.content = 'noindex';
     head.appendChild(robots);
+  }
+
+  // Credit translators of the languages this page links to. Built with DOM
+  // methods, so names and URLs from translation files are never parsed as HTML.
+  const credits = document.getElementById('translation-credits');
+  if (credits) {
+    const people = new Map();
+    for (const l of visible) {
+      for (const person of l.contributors ?? []) {
+        const id = `${person.name}|${person.url}`;
+        if (!people.has(id)) people.set(id, { ...person, languages: [] });
+        people.get(id).languages.push(l.name);
+      }
+    }
+    if (people.size) {
+      // Chinese and Japanese use full-width punctuation and no spaces.
+      const cjk = /^(zh|ja)\b/.test(locale.lang);
+      const p = cjk
+        ? { lead: '', sep: '、', open: '（', close: '）', end: '。', and: '、' }
+        : { lead: ' ', sep: ', ', open: ' (', close: ')', end: '.', and: ', ' };
+      credits.removeAttribute('hidden');
+      // Drop formatting whitespace after the label so `lead` controls spacing.
+      while (
+        credits.lastChild?.nodeType === 3 &&
+        !credits.lastChild.textContent.trim()
+      ) {
+        credits.lastChild.remove();
+      }
+      [...people.values()].forEach((person, i) => {
+        credits.append(i === 0 ? p.lead : p.sep);
+        let name = document.createElement('span');
+        if (person.url) {
+          name = document.createElement('a');
+          name.href = person.url;
+          name.target = '_blank';
+          name.rel = 'noopener noreferrer';
+        }
+        name.textContent = person.name;
+        credits.append(name, p.open + person.languages.join(p.and) + p.close);
+      });
+      credits.append(p.end);
+    }
   }
 
   const switcher = document.getElementById('language-switcher');
