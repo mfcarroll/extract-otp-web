@@ -3,7 +3,7 @@
   width: 100%;
   margin-top: 1.5rem;
   font-size: 0.9em;
-  text-align: left;
+  text-align: start;
   display: none;
 }
 
@@ -29,12 +29,12 @@
 }
 
 .log-item i {
-  margin-right: 0.75em;
+  margin-inline-end: 0.75em;
   color: var(--subtle-text-color);
 }
 
 .log-message {
-  text-align: right;
+  text-align: end;
   flex-shrink: 0; /* Prevent the message from shrinking */
 }
 

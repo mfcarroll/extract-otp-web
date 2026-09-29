@@ -123,3 +123,15 @@ a:hover {
 :lang(ja) {
   word-break: auto-phrase;
 }
+
+/* In right-to-left languages, keep inline code (otpauth:// URLs, Base32
+   examples) left to right, so its punctuation doesn't move. */
+:dir(rtl) code {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Typed secrets and URLs read left to right; the placeholder follows the page. */
+#manual-otp-input:not(:placeholder-shown) {
+  direction: ltr;
+}

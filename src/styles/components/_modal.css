@@ -72,7 +72,7 @@ body.modal-open {
 .modal-close {
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  inset-inline-end: 1rem;
   border: none;
   border-radius: 50%;
   width: 2.5rem;

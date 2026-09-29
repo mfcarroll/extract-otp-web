@@ -18,7 +18,7 @@
 .otp-card-index {
   position: absolute;
   top: 0.5rem;
-  right: 0.75rem;
+  inset-inline-end: 0.75rem;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--subtle-text-color);
@@ -50,28 +50,36 @@
   margin-block: 0;
 }
 
-/* Hide the counter row by default */
-.otp-card .counter-row {
+/* The counter row only shows for counter-based (HOTP) accounts */
+.otp-card .counter-row:not(.visible) {
   display: none;
 }
 
-/* When made visible by JS, it should behave like any other detail row */
-.otp-card .counter-row.visible {
-  display: flex;
+.otp-card-main-content {
+  /* Rows share one label column, as wide as the longest label, so labels
+     don't wrap in any language and the values stay aligned. */
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  row-gap: 0.2rem; /* Uniform spacing for rows */
 }
 
-.otp-card-main-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem; /* Uniform spacing for rows */
+.otp-card-main-content .detail-row {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+/* Values have dir="auto" so names in another script read correctly. Sizing
+   them to their text keeps them at the page's start edge all the same. */
+.otp-card [data-value] {
+  justify-self: start;
 }
 
 .otp-card-main-content .label,
 .qr-code-row .label {
   font-weight: 700;
-  width: 75px; /* Adjust width as needed */
   flex-shrink: 0;
-  margin-right: 10px;
+  margin-inline-end: 10px;
   color: var(--subtle-text-color);
 }
 
@@ -198,6 +206,7 @@
 
 .qr-code-row .label {
   align-self: center;
+  width: 75px;
 }
 
 .qr-enlarge-hint {
@@ -264,27 +273,11 @@
   .otp-card-main-content {
     grid-column: 1; /* First column */
     grid-row: 2; /* Second row */
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    row-gap: 0.5rem;
   }
 
   .otp-card .detail-row {
     margin: 0; /* Reset mobile margin */
-  }
-
-  /* The counter row is hidden by default... */
-  .otp-card .counter-row {
-    display: none;
-  }
-
-  /* ...and becomes a flex container when visible. */
-  .otp-card .counter-row.visible {
-    display: flex;
-  }
-
-  .otp-card-main-content .label {
-    width: 60px; /* Slightly smaller label for desktop */
   }
 
   .otp-card .text-input {

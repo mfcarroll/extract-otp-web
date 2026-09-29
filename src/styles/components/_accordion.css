@@ -21,7 +21,7 @@
   padding: 1.25rem 0.5rem;
   background-color: transparent;
   border: none;
-  text-align: left;
+  text-align: start;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-color);
@@ -44,7 +44,7 @@
 
 .faq-title {
   flex-grow: 1;
-  padding-right: 1rem;
+  padding-inline-end: 1rem;
 }
 
 .faq-button::after {

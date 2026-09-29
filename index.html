@@ -829,15 +829,15 @@
               tabindex="-1"
             />
             <!-- The h3 will be programmatically linked to the row as its label -->
-            <h3 class="otp-title"></h3>
+            <h3 class="otp-title" dir="auto"></h3>
             <div class="otp-card-main-content">
               <p class="detail-row">
                 <span data-i18n="card.name" class="label">Name:</span>
-                <span data-value="name"></span>
+                <span data-value="name" dir="auto"></span>
               </p>
               <p class="detail-row">
                 <span data-i18n="card.issuer" class="label">Issuer:</span>
-                <span data-value="issuer"></span>
+                <span data-value="issuer" dir="auto"></span>
               </p>
               <p class="detail-row">
                 <span data-i18n="card.type" class="label">Type:</span>
@@ -849,7 +849,7 @@
               </p>
               <p class="detail-row secret-row">
                 <label data-i18n="card.secret" class="label">Secret:</label>
-                <span class="secret-container">
+                <span class="secret-container" dir="ltr">
                   <textarea
                     class="text-input secret-input navigable"
                     readonly
@@ -874,7 +874,7 @@
               </p>
               <p class="detail-row otp-url-row">
                 <label data-i18n="card.url" class="label">URL:</label>
-                <span class="otp-url-container">
+                <span class="otp-url-container" dir="ltr">
                   <textarea
                     class="text-input url-input navigable"
                     readonly

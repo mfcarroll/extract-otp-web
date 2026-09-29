@@ -12,6 +12,9 @@
 
 /* This is the element that expands and collapses. */
 .theme-switcher {
+  /* The icons keep this order in right-to-left languages too: theme.ts
+     positions them by index. */
+  direction: ltr;
   display: flex;
   align-items: center;
   border-radius: 2rem;

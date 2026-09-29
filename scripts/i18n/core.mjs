@@ -391,6 +391,14 @@ export function auditLocale(
 
 // --- Rendering ---
 
+/** 'rtl' for right-to-left languages such as Arabic and Hebrew, else 'ltr'. */
+export function textDirection(lang) {
+  const locale = new Intl.Locale(lang);
+  return (locale.getTextInfo?.() ?? locale.textInfo)?.direction === 'rtl'
+    ? 'rtl'
+    : 'ltr';
+}
+
 export function pageUrl(config, locale) {
   return new URL(locale.path, config.siteUrl).href;
 }
@@ -439,6 +447,7 @@ export function renderPage(
   }
 
   document.documentElement.lang = locale.lang;
+  document.documentElement.dir = textDirection(locale.lang);
 
   // Search engines: canonical URL, the other language versions, and no
   // indexing for languages that have not been published yet.
@@ -550,7 +559,7 @@ export function renderPage(
       `<button type="button" class="language-toggle navigable" aria-expanded="false" aria-controls="language-menu">` +
       `<i class="fa fa-globe" aria-hidden="true"></i>` +
       `<span class="visually-hidden">${escape(label)}: </span>` +
-      `<span lang="${locale.lang}">${escape(locale.name)}</span>` +
+      `<span lang="${locale.lang}" dir="${textDirection(locale.lang)}">${escape(locale.name)}</span>` +
       `</button>` +
       `<ul id="language-menu" class="language-menu" hidden>${items.join('')}</ul>`;
   }

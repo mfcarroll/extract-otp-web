@@ -5,6 +5,7 @@ import {
   extractPageSource,
   fingerprint,
   renderPage,
+  textDirection,
   validateMessage,
   validateContributors,
   validatePageText,
@@ -211,6 +212,15 @@ describe('auditLocale', () => {
   });
 });
 
+describe('textDirection', () => {
+  it('is rtl for right-to-left scripts and ltr otherwise', () => {
+    expect(textDirection('ar')).toBe('rtl');
+    expect(textDirection('he')).toBe('rtl');
+    expect(textDirection('en')).toBe('ltr');
+    expect(textDirection('zh-Hant')).toBe('ltr');
+  });
+});
+
 describe('renderPage', () => {
   const pageSource = extractPageSource(html);
   const translations = {
@@ -243,7 +253,7 @@ describe('renderPage', () => {
 
   it('translates text, attributes and templates, keeping English where a translation is invalid', () => {
     const out = render('fr');
-    expect(out).toContain('<html lang="fr-CA">');
+    expect(out).toContain('<html lang="fr-CA" dir="ltr">');
     expect(out).toContain('Bonjour <strong>monde</strong>');
     expect(out).toContain('placeholder="Tapez ici"');
     expect(out).toContain('Nom :');
