@@ -1,0 +1,689 @@
+{
+  "language": {
+    "name": "日本語",
+    "lang": "ja",
+    "hreflang": "ja",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "ワンタイムパスワードのシークレット抽出ツール"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "カメラを選択"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "カメラを切り替え"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "QR コードをスキャン"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "コピーしました！"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Enter キーまたはスペースキーでコピーします。"
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "シークレットをコピー"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "コピー"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "URL をコピー"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "カウンター："
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "発行元："
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "名前："
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR："
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "シークレット："
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "QR コードを拡大表示"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "タップで拡大"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "種類："
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL："
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "これはまだ確認中の翻訳の下書きで、誤りが含まれている可能性があります。"
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Google にエクスポート"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "LastPass にエクスポート"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "CSV で保存"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "JSON で保存"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "このツールは、Google Authenticator から 1Password への OTP コードの移行作業に不便を感じていた開発者、<a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> が作成しました。"
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "誰が作ったのですか？"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator では、アカウントの設定に使われた元のシークレットを確認するのが困難です。代わりに、すべてのアカウントをまとめたエクスポート用 QR コードが提供されます。これは新しいデバイスへの移行には便利ですが、別の認証アプリへの乗り換えは難しくなります。LastPass はアカウントごとに QR コードを提供しており、大きな改善ですが、テキストのシークレットは JSON 形式でしか提供されません。一方、1Password などのアプリでは元のシークレットに簡単にアクセスでき、ほかの 2FA アプリへの移行も簡単です。"
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "なぜ Google Authenticator は元の QR コードを表示しないのですか？"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Google Authenticator または LastPass Authenticator のエクスポート機能で表示される QR コードをカメラでスキャンするか、そのスクリーンショット（または LastPass のエクスポートファイル）を読み込みます。このツールは、その QR コードをこのブラウザ内で読み取り、各アカウントの元のシークレットを取り出します。取り出したシークレットを使って、ほかの認証アプリにアカウントをインポートできます。"
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "どのような仕組みですか？"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass はすべてのアカウントを 1 つの QR コードにまとめるため、アカウントが多いと QR コードが細かくなり、読み取りにくくなります。Google Authenticator は、数件ずつアカウントを含む複数の QR コードに分けることで、この問題を回避しています。幸い、LastPass では JSON ファイルをエクスポートでき、このツールはそれも読み取れます。LastPass でうまくいかない場合は、JSON ファイルを保存してそちらをインポートしてください。"
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "LastPass の QR コードが読み取れません！"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "良い質問で、<a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Google Authenticator からのインポートについての 1Password コミュニティでの議論\">ほかの人たち</a>も同じことを<a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"既存の 2FA を 1Password に追加することについての Reddit での議論\">尋ねています</a>。理由の一つとして、Google のエクスポート形式が変わるかもしれないという懸念が挙げられています。しかし、この形式は何年も安定しており、ほかのアプリ（<a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> など）は問題なく対応しています。1Password のようなパスワードマネージャーは直接のインポートに簡単に対応<em>できる</em>はずですが、あえて対応していないようです。"
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "なぜ 1Password は Google Authenticator からインポートできないのですか？"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "このツールの問題は <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a> でご報告ください。"
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "問題を報告するには？"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "プライバシーを最大限守るには、パソコンまたは別のデバイスでこのツールを開き、「QR をスキャン」をクリックして、スマートフォンのエクスポート用 QR コードをスクリーンショットを撮らずに直接スキャンしてください。"
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "はい。セキュリティとプライバシーを最優先にしています。<strong>ここで行う操作が、お使いのパソコンやモバイルデバイスの外に出ることは一切ありません。</strong>処理はすべてブラウザ内で、ローカルかつオフラインで行われます。QR コードの画像やシークレットがサーバーに送信されることは決してありません。"
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "このツールはオープンソースで、<a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">誰でもコードを確認</a>して、安全性と仕組みを検証できます。ホスティングには GitHub Pages を使っており、<a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">安全で透明性の高い公開プロセス</a>になっています。"
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "QR コードを「アップロード」しても安全ですか？"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "このツールの開発には <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> と <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> を使用しました。AI が生成したコードはすべて、人の手で慎重に確認しています。"
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "同じ問題を解決する別の Python スクリプト <a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>。"
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a> による Python スクリプト <a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>。このツールのもとになっています。"
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "これらの素晴らしいプロジェクトに貢献しているすべての方に感謝します！"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>：画面で使用しているアイコンです。"
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>：画像から QR コードを読み取ります。"
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "画面表示と QR コードの処理には、次のオープンソースライブラリを使用しています。"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>：画像を高品質にリサイズします。"
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "このツールは、次のようなオープンソースプロジェクトの成果をもとにしています。"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>：Google Authenticator のデータを解析します。"
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>：アカウントごとに新しい QR コードを生成します。"
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>：カメラで QR コードをスキャンします。"
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "エクスポート形式の protobuf 仕様について、<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> と <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>。"
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "このツールの開発は、<a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a> の支援によって一部実現しました。役に立ったと感じたら、Stand の活動を支えるために<a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">寄付</a>をご検討ください。"
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "大切な人と場所のために"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>：OTP シークレットを Base32 でエンコードします。"
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "謝辞"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "翻訳の作成と確認："
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator では新しいスマートフォンにアカウントを移行できますが、1Password や Bitwarden などほかのアプリにエクスポートする簡単な方法はありません。各アカウントの元の「シークレット」（最初にスキャンした QR コード）が隠されているためです。"
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "このシークレットがないと、新しいパスワードマネージャーに移行する際、すべてのアカウントで 2FA を手作業で設定し直す必要があり、とても手間がかかります。"
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "これを解決するツールはほかにもありますが、スクリプトの実行やソフトウェアのインストールなど、技術的な手順が必要なことがよくあります。このツールは、誰でも使えるシンプルで安全な方法を目指しています。"
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "なぜこれが必要なのですか？"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "言語"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "ソースコード"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "英語で読む"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "この翻訳の改善に協力する"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "このページは自動的に翻訳されました。"
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "キャンセル"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "ウィンドウを閉じる"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "<code>otpauth://</code> の URL、または Base32 のシークレットキー（例：<code>JBSW Y3DP EHPK 3PXP</code>）を貼り付けてください。"
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "シークレットキーまたは URL…"
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "コードを追加"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "OTP コードを入力"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Google Authenticator や LastPass の 2FA エクスポート QR コードから、TOTP/HOTP ワンタイムパスワードのシークレットを抽出します。すべてブラウザ内で動作し、何もアップロードされません。"
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "ワンタイムパスワードのシークレット抽出ツール – Google Authenticator のエクスポート"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "閉じる"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>注意：スクリーンショットやダウンロードしたファイルには、暗号化されていないシークレットが含まれています。</strong>安全に保管するか、作業が終わったら削除してください。「ゴミ箱」や「最近削除した項目」、クラウドの写真バックアップからも削除してください。"
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "抽出した OTP アカウント"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "すべて選択"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "選択を解除"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 件選択"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "リセット"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "よくある質問"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "情報タブ"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "使い方"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "これは何？"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "ダークテーマを使う"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "ライトテーマを使う"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "テーマの切り替えを開く"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "システムのテーマを使う"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "またはここにファイルをドラッグ＆ドロップ<br>（画像、JSON エクスポート、CSV、TXT）"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "コードを入力"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "ファイルを開く"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "QR をスキャン"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. 後片付け"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Google Authenticator からエクスポートする"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "スマートフォンで Google Authenticator アプリを開きます。"
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "エクスポートするアカウントを選択します。"
+    },
+    "use.export.google.transfer": {
+      "source": "a4fe6e7a56",
+      "text": "メニューを開き、「アカウントを移行」&gt;「アカウントのエクスポート」を選択します。"
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. ワンタイムパスワードアプリからエクスポートする"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "LastPass では「Export accounts to file」（ファイルにエクスポート）を選んで、そのファイルをインポートすることもできます。このツールはどちらの形式にも対応しています。"
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "LastPass からエクスポートする"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "スマートフォンで LastPass Authenticator を開きます。"
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "歯車アイコンをタップし、「Transfer accounts」（アカウントの移行）&gt;「Export accounts to QR code」（QR コードにエクスポート）を選択します。"
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "「コードを入力」をクリックして、シークレットキーや設定用 URL をテキストで直接入力することもできます。このツールが元の設定用 QR コードを表示します。"
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. シークレットを抽出する"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "このツールは、あらゆるアプリの個別の設定用 QR コードや、1 行に 1 つのシークレットキーまたは URL を書いたテキストファイルも読み取れます。どこから入手したシークレットでも、簡単にスキャンできる QR コードに変換できます。"
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "パソコンまたは別のデバイスでこのツールを開き、「QR をスキャン」をクリックして、スマートフォンに表示されたエクスポート用 QR コードを直接スキャンします。これが最も便利な方法で、シークレットが写ったスクリーンショットを保存せずに済みます。"
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "または、表示された QR コードをそれぞれスクリーンショットに撮り、「ファイルを開く」をクリックするか、スクリーンショットをページにドラッグ＆ドロップします。"
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "このツールは、Google Authenticator または LastPass Authenticator のエクスポート機能で表示される QR コードを読み取り、各アカウントの元のシークレットを取り出します。取り出したシークレットを使って、ほかの認証アプリにアカウントをインポートできます。"
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "抽出した OTP シークレットが、それぞれの QR コードとシークレットキーとともに表示されます。"
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Google Authenticator や LastPass Authenticator にアカウントを移すには、アカウントを選択して「Google にエクスポート」または「LastPass にエクスポート」をクリックします。そのアプリでスキャンできる移行用 QR コードが表示されます。"
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. シークレットを使う"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "これで、これらのシークレットをお好みの認証アプリやパスワードマネージャーにインポートできます。"
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "「CSV で保存」または「JSON で保存」をクリックすると、シークレットのコピーを保存できます。あとでこのファイルをここで開き直すと、QR コードを再び表示できます。"
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "このツールは、Google Authenticator または LastPass Authenticator アプリから、ワンタイムパスワード（OTP）のシークレット（2 段階認証（2FA）に使われるコード）を抽出します。ソフトウェアのインストールは不要で、データがお使いのデバイスの外に出ることは一切ありません。"
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>QR コードとシークレットの処理はすべて、完全にオフラインで、このブラウザ内でローカルに行われます。</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "エラーメッセージを閉じる"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "お知らせを閉じる"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "完了メッセージを閉じる"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "警告メッセージを閉じる"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "内容"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject}をクリップボードにコピーしました。"
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "クリップボードにコピーできませんでした。"
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "カメラの QR コードを処理できませんでした。"
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "エクスポート中に不明なエラーが発生しました。"
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "ファイルが有効な画像ではないか、読み込めませんでした。"
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "セキュリティ上の制限により画像を処理できませんでした（汚染されたキャンバス）。"
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "形式が無効です"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "有効な OTP の URL、LastPass の JSON、または 16 文字以上の Base32 シークレット（英字 A～Z、数字 2～7）を入力してください。"
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "JSON の形式が無効です：OTP アカウントの一覧、または LastPass のエクスポートデータが必要です。"
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "LastPass の QR コードの JSON 形式が無効です：'a'（アカウント）の一覧がありません。"
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "LastPass の QR コードを解析できませんでした。データの形式を認識できないか、データが破損しています。"
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "LastPass の QR コードが無効です：データに 'content' プロパティがありません。"
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "hotp タイプの otpauth の URL に 'counter' パラメータがありません。"
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "OTP の URL が無効です：\"data\" パラメータがありません。"
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "otpauth の URL に 'secret' パラメータがありません。"
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "カメラが見つかりません。カメラが接続されていることを確認してください。"
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "最終的なデータを解析できませんでした。破損しているか、想定外の形式の可能性があります。"
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "ファイルの処理中に予期しないエラーが発生しました。"
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "処理に失敗しました。"
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "カメラを起動できませんでした。カメラが接続されていて、使用を許可していることを確認してください。"
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "カメラを切り替えられませんでした。"
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "{line} 行目：{message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "テキストから有効な OTP を読み取れませんでした。\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "予期しないエラーが発生しました。もう一度試すか、ページを再読み込みしてください。"
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "不明なエラーが発生しました。"
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "対応していないファイル形式です。"
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "URL の OTP の種類に対応していません：{type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "この QR コードの形式には対応していません。"
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "other": "LastPass は時間ベース（TOTP）のアカウントにのみ対応しています。対応していないカウンターベースのアカウント {count} 件を選択から外しました。続けるには、もう一度「LastPass にエクスポート」をクリックしてください。"
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "LastPass にエクスポートできる（TOTP の）アカウントが選択されていません。"
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "エクスポートするデータがありません。"
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "エクスポートするアカウントが選択されていません。"
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Google Authenticator でスキャンしてください"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "LastPass Authenticator でスキャンしてください"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "この QR コードは処理済みです。"
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "カメラでスキャン"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "other": "重複する {count} 件のシークレットをスキップしました。"
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "other": "{count} 件のシークレットを抽出しました。"
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "手動入力"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "QR コードが見つかりません。"
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "OTP シークレットが見つかりません。"
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "QR コードに OTP シークレットが見つかりません。"
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "なし"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "{title} の QR コードを拡大表示"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{total} 件中 {count} 件を選択"
+    }
+  }
+}
