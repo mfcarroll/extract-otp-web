@@ -1,0 +1,689 @@
+{
+  "language": {
+    "name": "Bahasa Indonesia",
+    "lang": "id",
+    "hreflang": "id",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "Pengekstrak Kunci Rahasia Kata Sandi Sekali Pakai"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "Pilih kamera"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "Ganti Kamera"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "Pindai Kode QR"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "Disalin!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Tekan Enter atau Spasi untuk menyalin."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "Salin kunci rahasia"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "Salin"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "Salin URL"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "Penghitung:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "Penerbit:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "Nama:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "Kunci rahasia:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "Tampilkan kode QR lebih besar"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "Ketuk untuk memperbesar"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "Jenis:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "Ini adalah draf terjemahan yang masih ditinjau dan mungkin berisi kesalahan."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Ekspor ke Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "Ekspor ke LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "Simpan sebagai CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "Simpan sebagai JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "Alat ini dibuat oleh <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, seorang pengembang yang frustrasi dengan proses memindahkan kode OTP dari Google Authenticator ke 1Password."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "Siapa pembuatnya?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator menyulitkan Anda melihat kunci rahasia asli yang digunakan untuk menyiapkan akun. Sebagai gantinya, aplikasi ini menyediakan kode QR ekspor yang menggabungkan semua akun Anda. Cara ini memudahkan pemindahan ke perangkat baru, tetapi menyulitkan peralihan ke aplikasi autentikator lain. LastPass memang menyediakan kode QR untuk setiap akun, yang merupakan peningkatan besar, tetapi hanya menyediakan kunci rahasia dalam bentuk teks dengan format JSON. Sebaliknya, aplikasi seperti 1Password membuat kunci rahasia asli mudah diakses, sehingga pemindahan ke aplikasi 2FA lain menjadi mudah."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Mengapa Google Authenticator tidak menampilkan kode QR asli saya?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Anda memindai kode QR dari fitur ekspor Google Authenticator atau LastPass Authenticator dengan kamera, atau memberikan tangkapan layarnya (atau file ekspor LastPass). Alat ini membaca kode QR tersebut—langsung di browser Anda—dan mengembalikan kunci rahasia asli setiap akun. Setelah itu, Anda dapat menggunakan kunci rahasia tersebut untuk mengimpor akun ke aplikasi autentikator lain mana pun."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "Bagaimana cara kerjanya?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass menggabungkan semua akun Anda ke dalam satu kode QR, dan jika akun Anda banyak, detail kode QR bisa menjadi sangat kecil dan sulit dibaca. Google Authenticator mengatasi masalah ini dengan menyediakan beberapa kode, masing-masing berisi beberapa akun. Untungnya, LastPass memungkinkan Anda mengekspor file JSON, yang juga dapat dibaca oleh alat ini. Jika Anda mengalami masalah dengan LastPass, cukup simpan file JSON-nya lalu impor file tersebut."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "Kode QR LastPass saya tidak bisa dipindai!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "Itu pertanyaan bagus, dan <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Diskusi komunitas 1Password tentang mengimpor dari Google Authenticator\">orang lain</a> juga pernah <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Diskusi Reddit tentang menambahkan 2FA yang sudah ada ke 1Password\">menanyakannya</a>. Salah satu alasan yang disebutkan adalah kekhawatiran bahwa format ekspor Google bisa berubah. Namun, format ini sudah stabil selama bertahun-tahun, dan aplikasi lain (seperti <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>) mendukungnya tanpa masalah. Tampaknya pengelola kata sandi seperti 1Password <em>bisa</em> dengan mudah mendukung impor langsung, tetapi memilih untuk tidak melakukannya."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "Mengapa 1Password tidak dapat mengimpor dari Google Authenticator?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "Silakan laporkan masalah apa pun dengan alat ini di <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "Bagaimana cara melaporkan masalah?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "Untuk privasi maksimal, buka alat ini di komputer atau perangkat kedua, lalu klik \"Pindai QR\" untuk langsung memindai kode QR ekspor di ponsel Anda, tanpa mengambil tangkapan layar."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "Ya. Keamanan dan privasi adalah prioritas utama. <strong>Tidak ada yang Anda lakukan di sini yang pernah keluar dari komputer atau perangkat seluler Anda.</strong> Semua pemrosesan berlangsung secara lokal, offline, langsung di browser Anda. Gambar kode QR dan kunci rahasia Anda tidak pernah dikirim ke server mana pun."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "Alat ini bersifat sumber terbuka, dan <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">siapa pun dapat memeriksa kodenya</a> untuk memastikan keamanan dan cara kerjanya. Alat ini dihosting di GitHub Pages, dengan <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">proses penerbitan yang aman dan transparan</a>."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "Apakah aman \"mengunggah\" kode QR saya?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "<a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> dan <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a> digunakan selama pengembangan alat ini. Semua kode yang dihasilkan AI telah ditinjau secara manual dengan cermat."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>, skrip Python lain untuk masalah yang sama."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>, skrip Python karya <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>, yang menjadi dasar alat ini."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "Terima kasih kepada semua kontributor proyek-proyek hebat ini!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a> untuk ikon di antarmuka."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a> untuk membaca kode QR dari gambar."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "Antarmuka dan pemrosesan kode QR didukung oleh pustaka sumber terbuka berikut:"
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a> untuk mengubah ukuran gambar dengan kualitas tinggi."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "Alat ini dibangun di atas karya beberapa proyek sumber terbuka, termasuk:"
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a> untuk mendekode data Google Authenticator."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a> untuk membuat kode QR baru bagi setiap akun."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a> untuk memindai kode QR dengan kamera."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> dan <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>, untuk spesifikasi protobuf ekspor."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "Pengembangan alat ini dimungkinkan sebagian berkat dukungan <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>. Jika alat ini bermanfaat, mohon pertimbangkan untuk <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">berdonasi</a> guna mendukung kerja Stand."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "Untuk orang-orang dan tempat-tempat yang Anda cintai"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> untuk mengodekan kunci rahasia OTP dalam Base32."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "Ucapan terima kasih"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "Terjemahan ditulis dan ditinjau oleh:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator memungkinkan Anda memindahkan akun ke ponsel baru, tetapi tidak menyediakan cara mudah untuk mengekspornya ke aplikasi lain seperti 1Password atau Bitwarden. Ini karena aplikasi tersebut menyembunyikan \"kunci rahasia\" asli (kode QR yang pertama kali Anda pindai) untuk setiap akun."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "Tanpa kunci rahasia ini, pindah ke pengelola kata sandi baru berarti harus mengatur ulang 2FA secara manual untuk setiap akun, dan itu sangat merepotkan."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "Memang ada alat lain untuk mengatasi hal ini, tetapi sering kali memerlukan langkah teknis seperti menjalankan skrip atau memasang perangkat lunak. Alat ini dirancang sebagai solusi sederhana dan aman yang dapat digunakan siapa saja."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "Mengapa ini diperlukan?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "Bahasa"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "Kode Sumber"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "Baca dalam bahasa Inggris"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "Bantu perbaiki terjemahan ini"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "Halaman ini diterjemahkan secara otomatis."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "Batal"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "Tutup jendela"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "Tempel URL <code>otpauth://</code> atau kunci rahasia Base32 mentah (misalnya, <code>JBSW Y3DP EHPK 3PXP</code>)."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "Kunci rahasia atau URL…"
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "Tambahkan Kode"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "Masukkan Kode OTP"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Ekstrak kunci rahasia kata sandi sekali pakai TOTP/HOTP dari kode QR ekspor 2FA Google Authenticator atau LastPass. Berjalan sepenuhnya di browser Anda; tidak ada yang diunggah."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "Pengekstrak Kunci Rahasia Kata Sandi Sekali Pakai – Ekspor Google Authenticator"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "Tutup"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>Catatan: setiap tangkapan layar atau file yang diunduh berisi kunci rahasia Anda tanpa enkripsi.</strong> Simpan dengan aman, atau hapus setelah selesai. Ini termasuk menghapusnya dari \"Tempat Sampah\", \"Baru Dihapus\", dan semua cadangan foto di cloud."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "Akun OTP yang diekstrak"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "Pilih Semua"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "Batalkan Pilihan"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0 dipilih"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "Atur Ulang"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "Tanya jawab"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "Tab informasi"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "Bagaimana cara menggunakannya?"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "Apa ini?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "Gunakan tema gelap"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "Gunakan tema terang"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "Buka pemilih tema"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "Gunakan tema sistem"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "atau seret dan lepas file di sini<br>(gambar, ekspor JSON, CSV, atau TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "Masukkan Kode"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "Buka File"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "Pindai QR"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. Bersihkan"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Ekspor dari Google Authenticator"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "Buka aplikasi Google Authenticator di ponsel Anda."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "Pilih akun yang ingin Anda ekspor."
+    },
+    "use.export.google.transfer": {
+      "source": "a4fe6e7a56",
+      "text": "Buka menu, lalu pilih \"Transfer akun\" &gt; \"Ekspor akun\"."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. Ekspor dari aplikasi kata sandi sekali pakai Anda"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "Di LastPass, Anda juga dapat memilih \"Export accounts to file\" (Ekspor akun ke file) lalu mengimpor file tersebut. Alat ini mendukung kedua format."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "Ekspor dari LastPass"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "Buka LastPass Authenticator di ponsel Anda."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "Ketuk ikon roda gigi, lalu pilih \"Transfer accounts\" (Transfer akun) &gt; \"Export accounts to QR code\" (Ekspor akun ke kode QR)."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "Anda juga dapat mengklik \"Masukkan Kode\" untuk memasukkan kunci rahasia atau URL penyiapan langsung sebagai teks, dan alat ini akan menampilkan kode QR penyiapan asli Anda."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. Ekstrak kunci rahasia"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "Alat ini juga dapat membaca kode QR penyiapan satu per satu dari aplikasi apa pun, atau file teks yang berisi satu kunci rahasia atau URL per baris. Dengan begitu, kunci rahasia dari mana saja mudah diubah menjadi kode QR yang dapat dipindai."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "Buka alat ini di komputer atau perangkat kedua, lalu klik \"Pindai QR\" untuk langsung memindai kode QR ekspor di ponsel Anda. Ini adalah cara paling praktis, dan Anda tidak perlu menyimpan tangkapan layar berisi kunci rahasia."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "Atau, ambil tangkapan layar setiap kode QR yang ditampilkan, lalu klik \"Buka File\" atau seret dan lepas tangkapan layar ke halaman ini."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "Alat ini membaca kode QR dari fitur ekspor Google Authenticator atau LastPass Authenticator dan mengembalikan kunci rahasia asli setiap akun. Setelah itu, Anda dapat menggunakan kunci rahasia tersebut untuk mengimpor akun ke aplikasi autentikator lain mana pun."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "Alat ini akan menampilkan kunci rahasia OTP yang diekstrak, masing-masing dengan kode QR dan kunci rahasianya sendiri."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "Untuk memindahkan akun ke Google Authenticator atau LastPass Authenticator, pilih akunnya lalu klik \"Ekspor ke Google\" atau \"Ekspor ke LastPass\". Alat ini akan menampilkan kode QR transfer yang dapat Anda pindai dengan aplikasi tersebut."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. Gunakan kunci rahasia Anda"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "Sekarang Anda dapat mengimpor kunci rahasia ini ke aplikasi autentikator atau pengelola kata sandi pilihan Anda."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "Klik \"Simpan sebagai CSV\" atau \"Simpan sebagai JSON\" untuk menyimpan salinan kunci rahasia Anda. Nanti Anda dapat membuka file ini lagi di sini untuk menampilkan kode QR Anda."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "Alat ini mengekstrak kunci rahasia kata sandi sekali pakai (OTP), yaitu kode yang digunakan untuk autentikasi dua faktor (2FA), dari aplikasi Google Authenticator atau LastPass Authenticator. Tidak ada perangkat lunak yang perlu dipasang, dan tidak ada data yang pernah keluar dari perangkat Anda."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>Semua pemrosesan kode QR dan kunci rahasia Anda berlangsung sepenuhnya secara offline, secara lokal, di browser Anda ini.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "Tutup pesan kesalahan"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "Tutup pesan informasi"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "Tutup pesan berhasil"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "Tutup peringatan"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "Konten"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject} disalin ke papan klip."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "Gagal menyalin ke papan klip."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "Gagal memproses kode QR dari kamera."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "Terjadi kesalahan yang tidak diketahui saat mengekspor."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "File bukan gambar yang valid atau tidak dapat dimuat."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "Gambar tidak dapat diproses karena pembatasan keamanan (kanvas tercemar)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "Format tidak valid"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "Masukan harus berupa URL OTP yang valid, JSON LastPass, atau kunci rahasia Base32 minimal 16 karakter (huruf A-Z, angka 2-7)."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "Format JSON tidak valid: seharusnya berupa daftar akun OTP atau objek ekspor LastPass."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "Format JSON kode QR LastPass tidak valid: daftar 'a' (akun) tidak ditemukan."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "Gagal mendekode kode QR LastPass. Format datanya tidak dikenali atau rusak."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "Kode QR LastPass tidak valid: properti 'content' tidak ditemukan dalam data."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "Parameter 'counter' untuk jenis hotp tidak ada di URL otpauth."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "URL OTP tidak valid: parameter \"data\" tidak ada."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "Parameter 'secret' tidak ada di URL otpauth."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "Kamera tidak ditemukan. Pastikan kamera sudah terhubung."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "Gagal mengurai data akhir. Data mungkin rusak atau formatnya tidak terduga."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "Terjadi kesalahan tak terduga saat memproses file."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "Pemrosesan gagal."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "Gagal memulai kamera. Pastikan kamera sudah terhubung dan izin sudah diberikan."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "Gagal mengganti kamera."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "Baris {line}: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "Tidak ada OTP yang valid di dalam teks.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "Terjadi kesalahan yang tidak terduga. Silakan coba lagi atau muat ulang halaman."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "Terjadi kesalahan yang tidak diketahui."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "Jenis file tidak didukung."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "Jenis OTP di URL tidak didukung: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "Format kode QR ini tidak didukung."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "other": "LastPass hanya mendukung akun berbasis waktu (TOTP). {count} akun berbasis penghitung yang tidak kompatibel telah dihapus dari pilihan Anda. Klik \"Ekspor ke LastPass\" lagi untuk melanjutkan."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "Tidak ada akun yang kompatibel (TOTP) yang dipilih untuk diekspor ke LastPass."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "Tidak ada data untuk diekspor."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "Tidak ada akun yang dipilih untuk diekspor."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Pindai dengan Google Authenticator"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "Pindai dengan LastPass Authenticator"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "Kode QR ini sudah diproses."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "Pindaian Kamera"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "other": "{count} kunci rahasia duplikat dilewati."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "other": "{count} kunci rahasia diekstrak."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "Input Manual"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "Kode QR tidak ditemukan."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "Kunci rahasia OTP tidak ditemukan."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "Tidak ada kunci rahasia OTP di kode QR."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "Tidak tersedia"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "Tampilkan kode QR {title} lebih besar"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{count} dari {total} dipilih"
+    }
+  }
+}
