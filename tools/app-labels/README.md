@@ -10,9 +10,9 @@ a reader can find them on their phone. The two platforms differ:
 the apps themselves in 49 languages. `null` means the app shows English in
 that language. [`lastpass-authenticator.json`](lastpass-authenticator.json)
 has LastPass Authenticator's labels (Settings > "Transfer accounts" > "Export
-accounts to QR code" / "Export accounts to file"). LastPass is only translated
-into a few languages; in the others, quote its English labels with a
-translation in brackets. Use these when adding or checking a translation.
+accounts to QR code" / "Export accounts to file"), which are the same on iOS
+and Android. LastPass is only translated into a few languages; in the others,
+quote its English labels with a translation in brackets. Use these when adding or checking a translation.
 
 An app's supported languages are listed on the App Store (though LastPass also
 has Japanese, which its listing omits; iOS Settings > the app > Language shows
@@ -25,14 +25,17 @@ the full list):
 ### Android (emulator or device, via adb)
 
 ```bash
-tools/app-labels/android/extract.sh android-labels.json
+tools/app-labels/android/extract.sh google android-labels.json
+tools/app-labels/android/extract.sh lastpass lastpass-android-labels.json
 ```
 
-This needs Google Authenticator installed from Play, Android 13 or later, and
-`aapt2` from the Android SDK build tools. The app's translations are
-per-language packs that Play installs only for languages in use, so the script
-sets the app's own language list (which makes Play download them), reads the
-two strings from each pack, and resets the list afterwards.
+This needs the app installed from Play and `aapt2` from the Android SDK build
+tools. It reads the label strings straight from the app's resources, without
+opening the app. Google Authenticator's translations are per-language packs
+that Play installs only for languages in use, so for it the script sets the
+app's own language list (Android 13 or later; this makes Play download them)
+and resets the list afterwards. LastPass Authenticator includes every language
+in the app itself.
 
 ### iOS (a real iPhone; the app isn't available in the Simulator)
 
