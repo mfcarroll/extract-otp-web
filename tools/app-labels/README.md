@@ -1,0 +1,50 @@
+# App labels
+
+The translated instructions quote Google Authenticator's own menu labels, so
+a reader can find them on their phone. The two platforms differ:
+
+- **iOS:** "Transfer accounts" > "Export accounts"
+- **Android:** "Transfer codes" > "Export codes"
+
+[`google-authenticator.json`](google-authenticator.json) has both, read from
+the apps themselves in 49 languages. `null` means the app shows English in
+that language. Use it when adding or checking a translation.
+
+## Refreshing the labels
+
+### Android (emulator or device, via adb)
+
+```bash
+tools/app-labels/android/extract.sh android-labels.json
+```
+
+This needs Google Authenticator installed from Play, Android 13 or later, and
+`aapt2` from the Android SDK build tools. The app's translations are
+per-language packs that Play installs only for languages in use, so the script
+sets the app's own language list (which makes Play download them), reads the
+two strings from each pack, and resets the list afterwards.
+
+### iOS (a real iPhone; the app isn't available in the Simulator)
+
+The Xcode project in [`ios/`](ios) is a UI test that launches Google
+Authenticator once per language (with a per-launch language setting, so the
+phone's own language never changes), opens the menu, and reads the two labels.
+It never taps Export, never reads account rows, and filters out anything that
+looks like an email address or a code.
+
+With the iPhone connected, unlocked and in Developer Mode:
+
+```bash
+cd tools/app-labels/ios
+xcodebuild test -project LabelReader.xcodeproj -scheme LabelReader \
+  -destination 'id=<device UDID>' -allowProvisioningUpdates \
+  DEVELOPMENT_TEAM=<your team ID> \
+  -only-testing:LabelReaderUITests/LabelReaderUITests/testReadLabels \
+  | grep RESULT
+```
+
+Approve the UI automation prompt on the phone (and Face ID, if the app asks).
+Each `RESULT|language|transfer|export` line is one language; "same as English"
+means the app isn't translated into it. To retry some languages, prefix the
+command with `TEST_RUNNER_LABEL_LANGS=he,lv`. `xcrun devicectl list devices`
+shows the UDID.

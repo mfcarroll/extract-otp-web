@@ -108,6 +108,10 @@ Every translation records a fingerprint (`source`) of the English it was made fr
 | `npm run i18n -- review-import es translation-review-es.csv` | Apply a returned spreadsheet: shows each change and any comments, and rejects anything invalid without changing the file. |
 | `npm run i18n -- confirm all <key>`                          | Mark translations as still correct after an English edit that doesn't affect them, such as a typo fix.                    |
 
+### App labels
+
+The instructions quote Google Authenticator's menu labels, which differ between iOS ("Transfer accounts" > "Export accounts") and Android ("Transfer codes" > "Export codes"). [`tools/app-labels/google-authenticator.json`](tools/app-labels/google-authenticator.json) has both, read from the apps in 49 languages, with tools to refresh them. LastPass Authenticator isn't translated into every language, so where it isn't, quote its English labels with a translation in brackets.
+
 ### Machine translations
 
 Before a machine translation is published (`"status": "machine"`), check the safety-critical strings (`npm run i18n -- critical <code>`) by translating each one back into English independently and comparing the meaning with the original. Watch for things like "delete" turning into "hide", or a lost negation. Record the result in the commit message.

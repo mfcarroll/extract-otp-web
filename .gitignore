@@ -13,3 +13,7 @@ dist/
 
 # Translation review spreadsheets
 translation-review-*.csv
+
+# Xcode
+xcuserdata/
+tools/app-labels/ios/build/

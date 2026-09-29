@@ -1,0 +1,456 @@
+{
+  "description": "Google Authenticator menu labels, read from the apps on 2026-09-29: iOS \"Transfer accounts\" > \"Export accounts\" (Google Authenticator 5.0.3), Android \"Transfer codes\" > \"Export codes\". null means the app shows English in that language. See README.md to refresh.",
+  "labels": {
+    "en": {
+      "ios": {
+        "transfer": "Transfer accounts",
+        "export": "Export accounts"
+      },
+      "android": {
+        "transfer": "Transfer codes",
+        "export": "Export codes"
+      }
+    },
+    "fr": {
+      "ios": {
+        "transfer": "Transférer des comptes",
+        "export": "Exporter des comptes"
+      },
+      "android": {
+        "transfer": "Transférer des codes",
+        "export": "Exporter les codes"
+      }
+    },
+    "fr-CA": {
+      "ios": {
+        "transfer": "Transférer des comptes",
+        "export": "Exporter des comptes"
+      },
+      "android": {
+        "transfer": "Codes de transfert",
+        "export": "Exporter les codes"
+      }
+    },
+    "es": {
+      "ios": {
+        "transfer": "Transferir cuentas",
+        "export": "Exportar cuentas"
+      },
+      "android": {
+        "transfer": "Transferir códigos",
+        "export": "Exportar códigos"
+      }
+    },
+    "es-419": {
+      "ios": {
+        "transfer": "Transferir cuentas",
+        "export": "Exportar cuentas"
+      },
+      "android": {
+        "transfer": "Transferir códigos",
+        "export": "Exportar códigos"
+      }
+    },
+    "pt-BR": {
+      "ios": {
+        "transfer": "Transferir contas",
+        "export": "Exportar contas"
+      },
+      "android": {
+        "transfer": "Transferir códigos",
+        "export": "Exportar códigos"
+      }
+    },
+    "pt-PT": {
+      "ios": {
+        "transfer": "Transferir contas",
+        "export": "Exporte contas"
+      },
+      "android": {
+        "transfer": "Transferir códigos",
+        "export": "Exporte códigos"
+      }
+    },
+    "de": {
+      "ios": {
+        "transfer": "Konten übertragen",
+        "export": "Konten exportieren"
+      },
+      "android": {
+        "transfer": "Codes übertragen",
+        "export": "Codes exportieren"
+      }
+    },
+    "it": {
+      "ios": {
+        "transfer": "Trasferisci account",
+        "export": "Esporta account"
+      },
+      "android": {
+        "transfer": "Trasferisci i codici",
+        "export": "Esporta i codici"
+      }
+    },
+    "nl": {
+      "ios": {
+        "transfer": "Accounts overzetten",
+        "export": "Accounts exporteren"
+      },
+      "android": {
+        "transfer": "Codes overzetten",
+        "export": "Codes exporteren"
+      }
+    },
+    "ja": {
+      "ios": {
+        "transfer": "アカウントを移行",
+        "export": "アカウントのエクスポート"
+      },
+      "android": {
+        "transfer": "コードを移行",
+        "export": "コードをエクスポート"
+      }
+    },
+    "ko": {
+      "ios": {
+        "transfer": "계정 전송",
+        "export": "계정 내보내기"
+      },
+      "android": {
+        "transfer": "코드 전송",
+        "export": "코드 내보내기"
+      }
+    },
+    "zh-Hans": {
+      "ios": {
+        "transfer": "转移账号",
+        "export": "导出账号"
+      },
+      "android": {
+        "transfer": "转移动态密码",
+        "export": "导出验证码"
+      }
+    },
+    "zh-Hant": {
+      "ios": {
+        "transfer": "轉移帳戶",
+        "export": "匯出帳戶"
+      },
+      "android": {
+        "transfer": "轉移動態密碼",
+        "export": "匯出驗證碼"
+      }
+    },
+    "zh-HK": {
+      "ios": {
+        "transfer": "轉移帳戶",
+        "export": "匯出帳戶"
+      },
+      "android": {
+        "transfer": "轉移動態密碼",
+        "export": "匯出驗證碼"
+      }
+    },
+    "ru": {
+      "ios": {
+        "transfer": "Перенос аккаунтов",
+        "export": "Экспорт аккаунтов"
+      },
+      "android": {
+        "transfer": "Перенос кодов",
+        "export": "Экспорт кодов"
+      }
+    },
+    "uk": {
+      "ios": {
+        "transfer": "Перенести облікові записи",
+        "export": "Експортуйте облікові записи"
+      },
+      "android": {
+        "transfer": "Перенести коди",
+        "export": "Експортувати коди"
+      }
+    },
+    "pl": {
+      "ios": {
+        "transfer": "Przenieś konta",
+        "export": "Eksportuj konta"
+      },
+      "android": {
+        "transfer": "Przenieś kody",
+        "export": "Eksportuj kody"
+      }
+    },
+    "tr": {
+      "ios": {
+        "transfer": "Hesapları aktar",
+        "export": "Hesapları dışa aktarma"
+      },
+      "android": {
+        "transfer": "Kodları aktar",
+        "export": "Kodları dışa aktar"
+      }
+    },
+    "id": {
+      "ios": {
+        "transfer": "Transfer akun",
+        "export": "Ekspor akun"
+      },
+      "android": {
+        "transfer": "Transfer kode",
+        "export": "Ekspor kode"
+      }
+    },
+    "ms": {
+      "ios": {
+        "transfer": "Pindahkan akaun",
+        "export": "Eksport akaun"
+      },
+      "android": {
+        "transfer": "Pindahkan kod",
+        "export": "Eksport kod"
+      }
+    },
+    "vi": {
+      "ios": {
+        "transfer": "Chuyển tài khoản",
+        "export": "Xuất tài khoản"
+      },
+      "android": {
+        "transfer": "Chuyển mã",
+        "export": "Xuất mã"
+      }
+    },
+    "th": {
+      "ios": {
+        "transfer": "โอนบัญชี",
+        "export": "ส่งออกบัญชี"
+      },
+      "android": {
+        "transfer": "โอนรหัส",
+        "export": "ส่งออกรหัส"
+      }
+    },
+    "hi": {
+      "ios": null,
+      "android": {
+        "transfer": "कोड ट्रांसफ़र करें",
+        "export": "कोड एक्सपोर्ट करें"
+      }
+    },
+    "bn": {
+      "ios": null,
+      "android": {
+        "transfer": "কোড ট্রান্সফার করুন",
+        "export": "কোড এক্সপোর্ট করুন"
+      }
+    },
+    "ar": {
+      "ios": {
+        "transfer": "نقل الحسابات",
+        "export": "تصدير الحسابات"
+      },
+      "android": {
+        "transfer": "نقل الرموز",
+        "export": "تصدير الرموز"
+      }
+    },
+    "fa": {
+      "ios": null,
+      "android": {
+        "transfer": "انتقال کدها",
+        "export": "صادر کردن کدها"
+      }
+    },
+    "ro": {
+      "ios": {
+        "transfer": "Transferă conturile",
+        "export": "Exportă conturile"
+      },
+      "android": {
+        "transfer": "Transferă codurile",
+        "export": "Exportă codurile"
+      }
+    },
+    "cs": {
+      "ios": {
+        "transfer": "Přenést účty",
+        "export": "Export účtů"
+      },
+      "android": {
+        "transfer": "Přenést kódy",
+        "export": "Export kódů"
+      }
+    },
+    "sk": {
+      "ios": {
+        "transfer": "Preniesť účty",
+        "export": "Exportovať účty"
+      },
+      "android": {
+        "transfer": "Preniesť kódy",
+        "export": "Exportovať kódy"
+      }
+    },
+    "hu": {
+      "ios": {
+        "transfer": "Fiókok átvitele",
+        "export": "Fiókok exportálása"
+      },
+      "android": {
+        "transfer": "Kódok átvitele",
+        "export": "Kódok exportálása"
+      }
+    },
+    "el": {
+      "ios": {
+        "transfer": "Μεταφορά λογαριασμών",
+        "export": "Εξαγωγή λογαριασμών"
+      },
+      "android": {
+        "transfer": "Κωδικοί μεταφοράς",
+        "export": "Εξαγωγή κωδικών"
+      }
+    },
+    "sv": {
+      "ios": {
+        "transfer": "Överför konton",
+        "export": "Exportera konton"
+      },
+      "android": {
+        "transfer": "Överför koder",
+        "export": "Exportera koder"
+      }
+    },
+    "da": {
+      "ios": {
+        "transfer": "Overfør konti",
+        "export": "Eksportér konti"
+      },
+      "android": {
+        "transfer": "Overfør koder",
+        "export": "Eksportér koder"
+      }
+    },
+    "nb": {
+      "ios": {
+        "transfer": "Overfør kontoene",
+        "export": "Eksporter kontoer"
+      },
+      "android": {
+        "transfer": "Overfør koder",
+        "export": "Eksporter koder"
+      }
+    },
+    "fi": {
+      "ios": {
+        "transfer": "Siirrä tilit",
+        "export": "Siirrä tilejä"
+      },
+      "android": {
+        "transfer": "Siirrä koodit",
+        "export": "Vie koodit"
+      }
+    },
+    "ca": {
+      "ios": {
+        "transfer": "Transfereix els comptes",
+        "export": "Exporta els comptes"
+      },
+      "android": {
+        "transfer": "Transfereix els codis",
+        "export": "Exporta els codis"
+      }
+    },
+    "hr": {
+      "ios": {
+        "transfer": "Prenesi račune",
+        "export": "Izvoz računa"
+      },
+      "android": {
+        "transfer": "Prijenos kodova",
+        "export": "Izvoz kodova"
+      }
+    },
+    "bg": {
+      "ios": null,
+      "android": {
+        "transfer": "Прехвърляне на кодове",
+        "export": "Експортиране на кодове"
+      }
+    },
+    "sr": {
+      "ios": null,
+      "android": {
+        "transfer": "Пренеси кодове",
+        "export": "Извези кодове"
+      }
+    },
+    "sl": {
+      "ios": null,
+      "android": {
+        "transfer": "Prenos kod",
+        "export": "Izvoz kod"
+      }
+    },
+    "lt": {
+      "ios": null,
+      "android": {
+        "transfer": "Perkelti kodus",
+        "export": "Eksportuoti kodus"
+      }
+    },
+    "et": {
+      "ios": null,
+      "android": {
+        "transfer": "Koodide teisaldamine",
+        "export": "Koodide eksportimine"
+      }
+    },
+    "fil": {
+      "ios": null,
+      "android": {
+        "transfer": "Maglipat ng mga code",
+        "export": "Mag-export ng mga code"
+      }
+    },
+    "ur": {
+      "ios": null,
+      "android": {
+        "transfer": "کوڈز منتقل کریں",
+        "export": "کوڈز برآمد کریں"
+      }
+    },
+    "ta": {
+      "ios": null,
+      "android": {
+        "transfer": "குறியீடுகளைப் பரிமாற்று",
+        "export": "குறியீடுகளை ஏற்று"
+      }
+    },
+    "sw": {
+      "ios": null,
+      "android": {
+        "transfer": "Hamisha namba za kuthibitisha",
+        "export": "Hamisha namba za kuthibitisha"
+      }
+    },
+    "he": {
+      "ios": {
+        "transfer": "העברת חשבונות",
+        "export": "ייצוא חשבונות"
+      },
+      "android": {
+        "transfer": "העברת קודים",
+        "export": "ייצוא קודים"
+      }
+    },
+    "lv": {
+      "ios": null,
+      "android": {
+        "transfer": "Pārsūtīt kodus",
+        "export": "Kodu eksportēšana"
+      }
+    }
+  }
+}
