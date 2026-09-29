@@ -1,0 +1,689 @@
+{
+  "language": {
+    "name": "한국어",
+    "lang": "ko",
+    "hreflang": "ko",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "일회용 비밀번호 비밀 키 추출기"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "카메라 선택"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "카메라 전환"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "QR 코드 스캔"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "복사됨!"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "Enter 키나 스페이스바를 누르면 복사됩니다."
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "비밀 키 복사"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "복사"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "URL 복사"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "카운터:"
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "발급자:"
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "이름:"
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR:"
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "비밀 키:"
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "QR 코드 크게 보기"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "탭하여 확대"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "유형:"
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "URL:"
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "아직 검토 중인 번역 초안이며, 오류가 있을 수 있습니다."
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "Google로 내보내기"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "LastPass로 내보내기"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "CSV로 저장"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "JSON으로 저장"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "이 도구는 Google Authenticator에서 1Password로 OTP 코드를 옮기는 과정에 답답함을 느낀 개발자 <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>이 만들었습니다."
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "누가 만들었나요?"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator에서는 계정을 설정할 때 쓴 원래 비밀 키를 확인하기가 어렵습니다. 대신 모든 계정을 하나로 묶은 내보내기 QR 코드를 제공합니다. 새 기기로 옮기기에는 편리하지만, 다른 인증 앱으로 바꾸기는 어렵습니다. LastPass는 계정마다 QR 코드를 제공하므로 크게 개선되었지만, 텍스트 형태의 비밀 키는 JSON 형식으로만 제공합니다. 반면 1Password 같은 앱은 원래 비밀 키에 쉽게 접근할 수 있어 다른 2FA 앱으로 옮기기가 간단합니다."
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "Google Authenticator는 왜 원래 QR 코드를 보여 주지 않나요?"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "Google Authenticator 또는 LastPass Authenticator의 내보내기 기능에서 나오는 QR 코드를 카메라로 스캔하거나, 그 스크린샷(또는 LastPass 내보내기 파일)을 제공합니다. 이 도구는 바로 이 브라우저 안에서 그 QR 코드를 읽어 각 계정의 원래 비밀 키를 돌려줍니다. 그런 다음 이 비밀 키로 다른 인증 앱에 계정을 가져올 수 있습니다."
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "어떻게 작동하나요?"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass는 모든 계정을 QR 코드 하나에 담기 때문에, 계정이 많으면 QR 코드의 세부가 아주 작아져 읽기 어려워집니다. Google Authenticator는 계정을 몇 개씩 나눈 여러 개의 코드를 제공해 이 문제를 피합니다. 다행히 LastPass에서는 JSON 파일로 내보낼 수 있고, 이 도구는 그 파일도 읽을 수 있습니다. LastPass에서 문제가 있다면 JSON 파일을 저장해 대신 가져오세요."
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "LastPass QR 코드가 스캔되지 않아요!"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "좋은 질문이며, <a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Google Authenticator에서 가져오기에 관한 1Password 커뮤니티 토론\">다른 사람들</a>도 같은 질문을 <a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"기존 2FA를 1Password에 추가하는 것에 관한 Reddit 토론\">했습니다</a>. 한 가지 이유로 Google의 내보내기 형식이 바뀔 수 있다는 우려가 거론됩니다. 하지만 이 형식은 수년간 안정적이었고, 다른 앱(<a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> 등)은 문제없이 지원하고 있습니다. 1Password 같은 비밀번호 관리자도 직접 가져오기를 쉽게 지원<em>할 수 있을</em> 것 같지만, 지원하지 않기로 한 듯합니다."
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "1Password는 왜 Google Authenticator에서 가져오지 못하나요?"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "이 도구의 문제는 <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a>에서 신고해 주세요."
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "문제는 어떻게 신고하나요?"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "개인정보를 최대한 보호하려면 컴퓨터나 다른 기기에서 이 도구를 열고 ‘QR 스캔’을 클릭해, 스크린샷을 찍지 말고 휴대전화의 내보내기 QR 코드를 바로 스캔하세요."
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "네. 보안과 개인정보 보호를 최우선으로 합니다. <strong>여기서 하는 어떤 작업도 사용자의 컴퓨터나 모바일 기기 밖으로 나가지 않습니다.</strong> 모든 처리는 브라우저 안에서 로컬로, 오프라인으로 이루어집니다. QR 코드 이미지와 비밀 키는 어떤 서버로도 전송되지 않습니다."
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "이 도구는 오픈 소스이며, <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">누구나 코드를 살펴보고</a> 안전성과 작동 방식을 확인할 수 있습니다. GitHub Pages에서 호스팅되어 <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">안전하고 투명한 배포 과정</a>을 거칩니다."
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "QR 코드를 ‘업로드’해도 안전한가요?"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "이 도구를 개발할 때 <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a>와 <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a>를 사용했습니다. AI가 생성한 모든 코드는 사람이 직접 꼼꼼히 검토했습니다."
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "같은 문제를 해결하는 또 다른 Python 스크립트 <a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>."
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a>의 Python 스크립트 <a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>. 이 도구의 바탕이 되었습니다."
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "이 훌륭한 프로젝트에 기여한 모든 분께 감사드립니다!"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>: 화면에 쓰인 아이콘입니다."
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>: 이미지에서 QR 코드를 읽습니다."
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "화면과 QR 코드 처리는 다음 오픈 소스 라이브러리로 만들어졌습니다."
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>: 이미지 크기를 고품질로 조정합니다."
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "이 도구는 다음과 같은 여러 오픈 소스 프로젝트의 성과를 바탕으로 합니다."
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>: Google Authenticator 데이터를 해독합니다."
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>: 계정마다 새 QR 코드를 만듭니다."
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>: 카메라로 QR 코드를 스캔합니다."
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "내보내기 protobuf 사양을 제공한 <a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>와 <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>."
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "이 도구는 <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a>의 지원으로 일부 개발될 수 있었습니다. 도움이 되었다면 Stand의 활동을 위해 <a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">후원</a>을 고려해 주세요."
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "당신이 사랑하는 사람과 장소를 위해"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>: OTP 비밀 키를 Base32로 인코딩합니다."
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "감사의 말"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "번역 작성 및 검토:"
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator에서는 계정을 새 휴대전화로 옮길 수 있지만, 1Password나 Bitwarden 같은 다른 앱으로 쉽게 내보내는 방법은 없습니다. 각 계정의 원래 ‘비밀 키’(처음 스캔한 QR 코드)를 숨기기 때문입니다."
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "이 비밀 키가 없으면 새 비밀번호 관리자로 옮길 때 모든 계정의 2FA를 하나하나 다시 설정해야 해서 매우 번거롭습니다."
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "이 문제를 해결하는 다른 도구도 있지만, 스크립트를 실행하거나 소프트웨어를 설치하는 등 기술적인 단계가 필요한 경우가 많습니다. 이 도구는 누구나 쓸 수 있는 간단하고 안전한 방법을 목표로 합니다."
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "왜 필요한가요?"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "언어"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "소스 코드"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "영어로 읽기"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "번역 개선에 참여하기"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "이 페이지는 자동으로 번역되었습니다."
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "취소"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "창 닫기"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "<code>otpauth://</code> URL이나 Base32 비밀 키(예: <code>JBSW Y3DP EHPK 3PXP</code>)를 붙여 넣으세요."
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "비밀 키 또는 URL…"
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "코드 추가"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "OTP 코드 입력"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "Google Authenticator 또는 LastPass의 2FA 내보내기 QR 코드에서 TOTP/HOTP 일회용 비밀번호 비밀 키를 추출합니다. 모든 작업이 브라우저 안에서 이루어지며, 아무것도 업로드되지 않습니다."
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "일회용 비밀번호 비밀 키 추출기 – Google Authenticator 내보내기"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "닫기"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>참고: 모든 스크린샷과 다운로드한 파일에는 암호화되지 않은 비밀 키가 들어 있습니다.</strong> 안전하게 보관하거나, 작업이 끝나면 삭제하세요. ‘휴지통’, ‘최근 삭제된 항목’, 모든 클라우드 사진 백업에서도 삭제해야 합니다."
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "추출한 OTP 계정"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "모두 선택"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "선택 해제"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "0개 선택됨"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "초기화"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "자주 묻는 질문"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "안내 탭"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "사용 방법"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "이게 뭔가요?"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "어두운 테마 사용"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "밝은 테마 사용"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "테마 선택 열기"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "시스템 테마 사용"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "또는 파일을 여기에 끌어다 놓기<br>(이미지, JSON 내보내기, CSV, TXT)"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "코드 입력"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "파일 열기"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "QR 스캔"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. 정리하기"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "Google Authenticator에서 내보내기"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "휴대전화에서 Google Authenticator 앱을 엽니다."
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "내보낼 계정을 선택합니다."
+    },
+    "use.export.google.transfer": {
+      "source": "a4fe6e7a56",
+      "text": "메뉴를 열고 ‘계정 이전’ &gt; ‘계정 내보내기’를 선택합니다."
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. 일회용 비밀번호 앱에서 내보내기"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "LastPass에서는 ‘Export accounts to file’(파일로 계정 내보내기)을 선택해 그 파일을 가져올 수도 있습니다. 이 도구는 두 형식을 모두 지원합니다."
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "LastPass에서 내보내기"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "휴대전화에서 LastPass Authenticator를 엽니다."
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "톱니바퀴를 누르고 ‘Transfer accounts’(계정 이전) &gt; ‘Export accounts to QR code’(QR 코드로 계정 내보내기)를 선택합니다."
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "‘코드 입력’을 클릭해 비밀 키나 설정 URL을 텍스트로 직접 입력할 수도 있으며, 그러면 이 도구가 원래의 설정 QR 코드를 보여 줍니다."
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. 비밀 키 추출하기"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "이 도구는 어떤 앱의 개별 설정 QR 코드나, 한 줄에 비밀 키 또는 URL이 하나씩 적힌 텍스트 파일도 읽을 수 있습니다. 어디서 얻은 비밀 키든 스캔할 수 있는 QR 코드로 쉽게 바꿀 수 있습니다."
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "컴퓨터나 다른 기기에서 이 도구를 열고 ‘QR 스캔’을 클릭해 휴대전화에 표시된 내보내기 QR 코드를 바로 스캔하세요. 가장 편리한 방법이며, 비밀 키가 담긴 스크린샷을 저장하지 않아도 됩니다."
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "또는 표시된 QR 코드를 하나씩 스크린샷으로 찍은 다음, ‘파일 열기’를 클릭하거나 스크린샷을 페이지로 끌어다 놓으세요."
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "이 도구는 Google Authenticator 또는 LastPass Authenticator의 내보내기 기능에서 나오는 QR 코드를 읽어, 각 계정의 원래 비밀 키를 돌려줍니다. 그런 다음 이 비밀 키로 다른 인증 앱에 계정을 가져올 수 있습니다."
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "추출한 OTP 비밀 키가 각각의 QR 코드 및 비밀 키와 함께 표시됩니다."
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "계정을 Google Authenticator나 LastPass Authenticator로 옮기려면 계정을 선택하고 ‘Google로 내보내기’ 또는 ‘LastPass로 내보내기’를 클릭하세요. 해당 앱으로 스캔할 이전용 QR 코드가 표시됩니다."
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. 비밀 키 사용하기"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "이제 이 비밀 키를 원하는 인증 앱이나 비밀번호 관리자에 가져올 수 있습니다."
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "‘CSV로 저장’ 또는 ‘JSON으로 저장’을 클릭하면 비밀 키 사본을 보관할 수 있습니다. 나중에 이 파일을 여기서 다시 열면 QR 코드를 다시 볼 수 있습니다."
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "이 도구는 Google Authenticator 또는 LastPass Authenticator 앱에서 일회용 비밀번호(OTP)의 비밀 키, 즉 2단계 인증(2FA)에 쓰이는 코드를 추출합니다. 설치할 소프트웨어가 없으며, 어떤 데이터도 사용자의 기기 밖으로 나가지 않습니다."
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>QR 코드와 비밀 키의 모든 처리는 완전히 오프라인으로, 바로 이 브라우저 안에서 로컬로 이루어집니다.</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "오류 메시지 닫기"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "안내 메시지 닫기"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "완료 메시지 닫기"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "경고 메시지 닫기"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "내용"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject}을(를) 클립보드에 복사했습니다."
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "클립보드에 복사하지 못했습니다."
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "카메라의 QR 코드를 처리하지 못했습니다."
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "내보내는 중 알 수 없는 오류가 발생했습니다."
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "올바른 이미지 파일이 아니거나 불러올 수 없습니다."
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "보안 제한으로 이미지를 처리할 수 없습니다(오염된 캔버스)."
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "형식이 올바르지 않습니다"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "올바른 OTP URL, LastPass JSON 또는 16자 이상의 Base32 비밀 키(영문자 A~Z, 숫자 2~7)를 입력해야 합니다."
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "JSON 형식이 올바르지 않습니다: OTP 계정 목록 또는 LastPass 내보내기 데이터가 필요합니다."
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "LastPass QR 코드의 JSON 형식이 올바르지 않습니다: 'a'(계정) 목록을 찾을 수 없습니다."
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "LastPass QR 코드를 해독하지 못했습니다. 데이터 형식을 인식할 수 없거나 손상되었습니다."
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "LastPass QR 코드가 올바르지 않습니다: 데이터에서 'content' 속성을 찾을 수 없습니다."
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "hotp 유형의 otpauth URL에 'counter' 매개변수가 없습니다."
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "OTP URL이 올바르지 않습니다: \"data\" 매개변수가 없습니다."
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "otpauth URL에 'secret' 매개변수가 없습니다."
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "카메라를 찾을 수 없습니다. 카메라가 연결되어 있는지 확인하세요."
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "최종 데이터를 분석하지 못했습니다. 손상되었거나 예상치 못한 형식일 수 있습니다."
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "파일을 처리하는 중 예기치 않은 오류가 발생했습니다."
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "처리에 실패했습니다."
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "카메라를 시작하지 못했습니다. 카메라가 연결되어 있고 권한을 허용했는지 확인하세요."
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "카메라를 전환하지 못했습니다."
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "{line}번째 줄: {message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "텍스트에서 올바른 OTP를 찾지 못했습니다.\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "예기치 않은 오류가 발생했습니다. 다시 시도하거나 페이지를 새로 고치세요."
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "알 수 없는 오류가 발생했습니다."
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "지원하지 않는 파일 형식입니다."
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "URL에 지원하지 않는 OTP 유형이 있습니다: {type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "지원하지 않는 형식의 QR 코드입니다."
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "other": "LastPass는 시간 기반(TOTP) 계정만 지원합니다. 호환되지 않는 카운터 기반 계정 {count}개를 선택에서 제외했습니다. 계속하려면 ‘LastPass로 내보내기’를 다시 클릭하세요."
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "LastPass로 내보낼 수 있는 계정(TOTP)을 선택하지 않았습니다."
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "내보낼 데이터가 없습니다."
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "내보낼 계정을 선택하지 않았습니다."
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "Google Authenticator로 스캔하세요"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "LastPass Authenticator로 스캔하세요"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "이미 처리한 QR 코드입니다."
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "카메라 스캔"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "other": "중복된 비밀 키 {count}개를 건너뛰었습니다."
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "other": "비밀 키 {count}개를 추출했습니다."
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "직접 입력"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "QR 코드를 찾지 못했습니다."
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "OTP 비밀 키를 찾지 못했습니다."
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "QR 코드에서 OTP 비밀 키를 찾지 못했습니다."
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "없음"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "{title}의 QR 코드 크게 보기"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "{total}개 중 {count}개 선택됨"
+    }
+  }
+}
