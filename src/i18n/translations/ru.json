@@ -495,6 +495,14 @@
       "source": "9c4fd921c4",
       "text": "Закрыть предупреждение"
     },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "На основе счётчика (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "На основе времени (TOTP)"
+    },
     "copy.content": {
       "source": "47bd29075f",
       "text": "Содержимое"

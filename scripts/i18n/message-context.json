@@ -44,6 +44,8 @@
   "export.scanGoogle": "Title above the transfer QR code for Google Authenticator",
   "export.hotpRemoved": "Warning banner, when counter-based accounts are removed from a LastPass export; {count} is how many; \"Export to LastPass\" is the button name",
   "selection.count": "Above the list of accounts; {count} selected out of {total}",
+  "card.type.totp": "Account card, the Type value for a time-based code; keep TOTP as is",
+  "card.type.hotp": "Account card, the Type value for a counter-based code; keep HOTP as is",
   "results.notAvailable": "Account card, shown in place of a missing name or issuer",
   "results.showLargerQr": "Read by screen readers: the button on each account's QR code; {title} is the account name",
   "copy.content": "Part of the next message: the thing that was copied",

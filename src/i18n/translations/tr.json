@@ -495,6 +495,14 @@
       "source": "9c4fd921c4",
       "text": "Uyarıyı kapat"
     },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "Sayaca dayalı (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "Zamana dayalı (TOTP)"
+    },
     "copy.content": {
       "source": "47bd29075f",
       "text": "İçerik"

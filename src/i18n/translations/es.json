@@ -495,6 +495,14 @@
       "source": "9c4fd921c4",
       "text": "Cerrar la advertencia"
     },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "Basado en un contador (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "Basado en el tiempo (TOTP)"
+    },
     "copy.content": {
       "source": "47bd29075f",
       "text": "Contenido"

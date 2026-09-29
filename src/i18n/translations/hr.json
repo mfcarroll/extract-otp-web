@@ -495,6 +495,14 @@
       "source": "9c4fd921c4",
       "text": "Zatvori upozorenje"
     },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "Temeljen na brojaču (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "Temeljen na vremenu (TOTP)"
+    },
     "copy.content": {
       "source": "47bd29075f",
       "text": "Sadržaj"

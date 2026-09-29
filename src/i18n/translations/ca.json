@@ -495,6 +495,14 @@
       "source": "9c4fd921c4",
       "text": "Tanca el missatge d'advertiment"
     },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "Basat en un comptador (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "Basat en el temps (TOTP)"
+    },
     "copy.content": {
       "source": "47bd29075f",
       "text": "Contingut"

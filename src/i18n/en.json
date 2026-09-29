@@ -53,6 +53,8 @@
     "other": "LastPass only supports time-based (TOTP) accounts. {count} incompatible counter-based accounts were removed from your selection. Click \"Export to LastPass\" again to continue."
   },
   "selection.count": "{count} of {total} selected",
+  "card.type.totp": "Time-based (TOTP)",
+  "card.type.hotp": "Counter-based (HOTP)",
   "results.notAvailable": "Not available",
   "results.showLargerQr": "Show larger QR code for {title}",
   "copy.content": "Content",

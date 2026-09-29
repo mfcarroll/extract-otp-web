@@ -80,7 +80,11 @@ function populateCardDetails(
 
   populateDetail(cardElement, 'name', otp.name);
   populateDetail(cardElement, 'issuer', otp.issuer);
-  populateDetail(cardElement, 'type', otp.typeDescription);
+  populateDetail(
+    cardElement,
+    'type',
+    t(otp.type === 'totp' ? 'card.type.totp' : 'card.type.hotp')
+  );
 
   // Show and populate the counter field only for HOTP accounts.
   const counterRow =

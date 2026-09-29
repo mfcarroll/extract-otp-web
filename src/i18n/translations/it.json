@@ -495,6 +495,14 @@
       "source": "9c4fd921c4",
       "text": "Chiudi il messaggio di avviso"
     },
+    "card.type.hotp": {
+      "source": "a0d05e9dd2",
+      "text": "Basato su contatore (HOTP)"
+    },
+    "card.type.totp": {
+      "source": "0c0501df49",
+      "text": "Basato sul tempo (TOTP)"
+    },
     "copy.content": {
       "source": "47bd29075f",
       "text": "Contenuto"
