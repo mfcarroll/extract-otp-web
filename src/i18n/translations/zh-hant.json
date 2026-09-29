@@ -1,0 +1,689 @@
+{
+  "language": {
+    "name": "繁體中文",
+    "lang": "zh-Hant",
+    "hreflang": "zh-Hant",
+    "status": "machine",
+    "contributors": [
+      {
+        "name": "",
+        "github": "",
+        "url": ""
+      }
+    ]
+  },
+  "page": {
+    "app.title": {
+      "source": "ea4efa6e3c",
+      "text": "一次性密碼金鑰擷取工具"
+    },
+    "camera.select": {
+      "source": "57986dabb7",
+      "text": "選取相機"
+    },
+    "camera.switch": {
+      "source": "c5d17a9885",
+      "text": "切換相機"
+    },
+    "camera.title": {
+      "source": "0aa0128597",
+      "text": "掃描 QR 碼"
+    },
+    "card.copiedTooltip": {
+      "source": "ea61bc1568",
+      "text": "已複製！"
+    },
+    "card.copyHelp": {
+      "source": "b185b35d76",
+      "text": "按 Enter 鍵或空白鍵即可複製。"
+    },
+    "card.copySecret": {
+      "source": "9b80d4b38e",
+      "text": "複製金鑰"
+    },
+    "card.copyTooltip": {
+      "source": "e21f935f11",
+      "text": "複製"
+    },
+    "card.copyUrl": {
+      "source": "b26d1037f1",
+      "text": "複製網址"
+    },
+    "card.counter": {
+      "source": "ff79b88807",
+      "text": "計數器："
+    },
+    "card.issuer": {
+      "source": "7930901f3c",
+      "text": "發行者："
+    },
+    "card.name": {
+      "source": "2683cad48a",
+      "text": "名稱："
+    },
+    "card.qr": {
+      "source": "437c24bc3c",
+      "text": "QR 碼："
+    },
+    "card.secret": {
+      "source": "e400973b43",
+      "text": "金鑰："
+    },
+    "card.showLargerQr": {
+      "source": "f4d0496aec",
+      "text": "顯示較大的 QR 碼"
+    },
+    "card.tapToEnlarge": {
+      "source": "d7c60917de",
+      "text": "點一下即可放大"
+    },
+    "card.type": {
+      "source": "6cc5ad2e47",
+      "text": "類型："
+    },
+    "card.url": {
+      "source": "734fd77b36",
+      "text": "網址："
+    },
+    "draft.banner": {
+      "source": "1cd9c62863",
+      "text": "這是仍在審閱中的翻譯草稿，可能含有錯誤。"
+    },
+    "export.google": {
+      "source": "9f1da76593",
+      "text": "匯出至 Google"
+    },
+    "export.lastPass": {
+      "source": "f9cf663fdd",
+      "text": "匯出至 LastPass"
+    },
+    "export.saveCsv": {
+      "source": "e50761ebed",
+      "text": "儲存為 CSV"
+    },
+    "export.saveJson": {
+      "source": "910ed5e0c4",
+      "text": "儲存為 JSON"
+    },
+    "faq.author.answer": {
+      "source": "90d734c019",
+      "text": "本工具由 <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> 製作。他是一名開發人員，曾因將 OTP 代碼從 Google Authenticator 遷移到 1Password 的過程而倍感困擾。"
+    },
+    "faq.author.title": {
+      "source": "9b9c31ad30",
+      "text": "這是誰做的？"
+    },
+    "faq.hidden.answer": {
+      "source": "e21633766c",
+      "text": "Google Authenticator 讓你很難查看當初用來設定帳戶的原始金鑰。它提供的是將所有帳戶打包在一起的匯出 QR 碼。這樣雖然方便轉移到新裝置，卻很難改用其他驗證器應用程式。LastPass 確實會為每個帳戶提供個別的 QR 碼，這是一大改進，但它只以 JSON 程式碼格式提供文字金鑰。相較之下，1Password 等應用程式讓原始金鑰容易取得，可以輕鬆轉移到其他 2FA 應用程式。"
+    },
+    "faq.hidden.title": {
+      "source": "0633d9d802",
+      "text": "為什麼 Google Authenticator 不顯示我的原始 QR 碼？"
+    },
+    "faq.how.answer": {
+      "source": "4635886314",
+      "text": "你可以用相機掃描 Google Authenticator 或 LastPass Authenticator 匯出功能產生的 QR 碼，或提供這些 QR 碼的螢幕截圖（或 LastPass 匯出檔案）。本工具會讀取這些 QR 碼（就在你的瀏覽器中進行），並還原每個帳戶的原始金鑰。接著，你就可以用這些金鑰將帳戶匯入任何其他驗證器應用程式。"
+    },
+    "faq.how.title": {
+      "source": "c3f15799af",
+      "text": "它如何運作？"
+    },
+    "faq.lastPassScan.answer": {
+      "source": "5087b30030",
+      "text": "LastPass 會把你所有的帳戶放進同一個 QR 碼，如果帳戶很多，QR 碼的細節就會變得很小、難以辨識。Google Authenticator 解決這個問題的方式是提供多個 QR 碼，每個只包含幾個帳戶。幸好 LastPass 可以匯出 JSON 檔案，本工具也能讀取。如果你在使用 LastPass 時遇到問題，只要儲存 JSON 檔案，然後改為匯入該檔案即可。"
+    },
+    "faq.lastPassScan.title": {
+      "source": "a4e6640de3",
+      "text": "我的 LastPass QR 碼無法掃描！"
+    },
+    "faq.onePassword.answer": {
+      "source": "9144c14ba1",
+      "text": "問得好，<a href=\"https://www.1password.community/discussions/1password/import-all-google-authenticator-2fas-to-1password/38418\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"1Password 社群中關於從 Google Authenticator 匯入的討論\">其他人</a>也<a href=\"https://www.reddit.com/r/1Password/comments/qm8v2i/add_existing_2fa_to_1password/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Reddit 上關於將現有 2FA 加入 1Password 的討論\">問過</a>這個問題。其中一個理由是擔心 Google 的匯出格式可能會改變。然而，這個格式已經穩定多年，其他應用程式（例如 <a href=\"https://getaegis.app/\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a>）也都能順利支援。看來 1Password 等密碼管理工具其實<em>可以</em>輕鬆支援直接匯入，只是選擇不這麼做。"
+    },
+    "faq.onePassword.title": {
+      "source": "dfba1631e4",
+      "text": "為什麼 1Password 無法從 Google Authenticator 匯入？"
+    },
+    "faq.report.answer": {
+      "source": "591b9cc596",
+      "text": "如果這個工具有任何問題，請在 <a href=\"https://github.com/mfcarroll/extract-otp-web/issues\" rel=\"noopener noreferrer\" target=\"_blank\">GitHub</a> 上回報。"
+    },
+    "faq.report.title": {
+      "source": "98563ef9cb",
+      "text": "如何回報問題？"
+    },
+    "faq.safe.camera": {
+      "source": "66b24c2067",
+      "text": "為了獲得最高的隱私保護，請在電腦或另一部裝置上開啟這個工具，然後點一下「掃描 QR 碼」，直接掃描手機上的匯出 QR 碼，不必拍攝任何螢幕截圖。"
+    },
+    "faq.safe.local": {
+      "source": "749aeb3a58",
+      "text": "是的。安全性與隱私是首要考量。<strong>你在這裡進行的任何操作都絕不會離開你的電腦或行動裝置。</strong>所有處理都在本機、離線進行，就在你的瀏覽器中。你的 QR 碼圖片和金鑰絕不會傳送到任何伺服器。"
+    },
+    "faq.safe.openSource": {
+      "source": "13c584ca7f",
+      "text": "本工具為開放原始碼，<a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">任何人都可以檢視程式碼</a>，以驗證其安全性和運作方式。本工具託管於 GitHub Pages，提供<a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">安全且透明的部署流程</a>。"
+    },
+    "faq.safe.title": {
+      "source": "defb67228d",
+      "text": "「上傳」我的 QR 碼安全嗎？"
+    },
+    "faq.thanks.ai": {
+      "source": "c9bfa20705",
+      "text": "本工具在開發過程中使用了 <a href=\"https://codeassist.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gemini Code Assist</a> 和 <a href=\"https://claude.com/claude-code\" target=\"_blank\" rel=\"noopener noreferrer\">Claude Code</a>。所有 AI 產生的程式碼皆經過仔細的人工審查。"
+    },
+    "faq.thanks.alternative": {
+      "source": "0e33fdeb4f",
+      "text": "<a href=\"https://github.com/krissrex/google-authenticator-exporter/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Google Authenticator Exporter</a>：另一個解決相同問題的 Python 指令碼。"
+    },
+    "faq.thanks.basis": {
+      "source": "1c70c60440",
+      "text": "<a href=\"https://github.com/scito/extract_otp_secrets/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Extract OTP Secrets</a>：由 <a href=\"https://scito.ch/\" target=\"_blank\" rel=\"noopener noreferrer\">Roland Kurmann</a> 撰寫的 Python 指令碼，本工具即以此為基礎。"
+    },
+    "faq.thanks.contributors": {
+      "source": "35f03757ec",
+      "text": "感謝這些優秀專案的所有貢獻者！"
+    },
+    "faq.thanks.fontAwesome": {
+      "source": "5553acd064",
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>：提供介面中使用的圖示。"
+    },
+    "faq.thanks.jsqr": {
+      "source": "89903270e2",
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>：從圖片中解碼 QR 碼。"
+    },
+    "faq.thanks.libraries": {
+      "source": "c79fc35212",
+      "text": "使用者介面和 QR 碼處理由以下開放原始碼程式庫提供支援："
+    },
+    "faq.thanks.pica": {
+      "source": "7882429389",
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>：高品質的圖片縮放。"
+    },
+    "faq.thanks.projects": {
+      "source": "d5ded0c368",
+      "text": "本工具建立在多個開放原始碼專案的成果之上，包括："
+    },
+    "faq.thanks.protobuf": {
+      "source": "11e6470753",
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>：解碼 Google Authenticator 的資料酬載。"
+    },
+    "faq.thanks.qrcode": {
+      "source": "95671a3157",
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>：為每個帳戶產生新的 QR 碼。"
+    },
+    "faq.thanks.qrScanner": {
+      "source": "c378347750",
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>：使用相機掃描 QR 碼。"
+    },
+    "faq.thanks.spec": {
+      "source": "706d380ab3",
+      "text": "<a href=\"https://github.com/beemdevelopment/Aegis/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Aegis Authenticator</a> 和 <a href=\"https://github.com/qistoph/otp_export/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Chris van Marle</a>：提供匯出的 protobuf 規格。"
+    },
+    "faq.thanks.support": {
+      "source": "cede81b020",
+      "text": "本工具的開發部分得力於 <a href=\"https://stand.earth/\" target=\"_blank\" rel=\"noopener noreferrer\">Stand.earth</a> 的支持。如果你覺得這個工具有用，請考慮<a href=\"https://stand.earth/donate/\" target=\"_blank\" rel=\"noopener noreferrer\">捐款</a>支持 Stand 的工作。"
+    },
+    "faq.thanks.tagline": {
+      "source": "866418f7de",
+      "text": "為了你所愛的人與地方"
+    },
+    "faq.thanks.thirtyTwo": {
+      "source": "2f24eeff08",
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>：將 OTP 金鑰編碼為 Base32。"
+    },
+    "faq.thanks.title": {
+      "source": "c9015d53b9",
+      "text": "致謝"
+    },
+    "faq.thanks.translators": {
+      "source": "b0a6979896",
+      "text": "翻譯的撰寫與審閱者："
+    },
+    "faq.why.p1": {
+      "source": "a933e5977c",
+      "text": "Google Authenticator 可以讓你將帳戶轉移到新手機，但沒有提供簡單的方法將帳戶匯出到 1Password 或 Bitwarden 等其他應用程式。這是因為它隱藏了每個帳戶的原始「金鑰」（也就是你當初掃描的 QR 碼）。"
+    },
+    "faq.why.p2": {
+      "source": "695625efa9",
+      "text": "少了這些金鑰，換用新的密碼管理工具就代表必須為每一個帳戶手動重新設定 2FA，非常麻煩。"
+    },
+    "faq.why.p3": {
+      "source": "10de47e4c1",
+      "text": "雖然已有其他工具可以解決這個問題，但它們通常需要執行指令碼或安裝軟體等技術性步驟。本工具的設計目標，是成為任何人都能使用的簡單、安全的解決方案。"
+    },
+    "faq.why.title": {
+      "source": "f11adbc931",
+      "text": "為什麼需要這個工具？"
+    },
+    "footer.languages": {
+      "source": "a4fe65264e",
+      "text": "語言"
+    },
+    "footer.source": {
+      "source": "bc47da663d",
+      "text": "原始碼"
+    },
+    "machine.english": {
+      "source": "a9d0b8e36c",
+      "text": "閱讀英文版"
+    },
+    "machine.help": {
+      "source": "a9a967b626",
+      "text": "協助改善此翻譯"
+    },
+    "machine.notice": {
+      "source": "5bb04781b0",
+      "text": "本頁面為自動翻譯。"
+    },
+    "manual.cancel": {
+      "source": "19766ed6cc",
+      "text": "取消"
+    },
+    "manual.close": {
+      "source": "207bd886ad",
+      "text": "關閉對話框"
+    },
+    "manual.help": {
+      "source": "bf57adfb72",
+      "text": "貼上 <code>otpauth://</code> 網址或原始 Base32 金鑰（例如 <code>JBSW Y3DP EHPK 3PXP</code>）。"
+    },
+    "manual.placeholder": {
+      "source": "9dad4cc66d",
+      "text": "金鑰或網址…"
+    },
+    "manual.submit": {
+      "source": "7d8ab38b09",
+      "text": "新增代碼"
+    },
+    "manual.title": {
+      "source": "5f6da93c06",
+      "text": "輸入 OTP 代碼"
+    },
+    "meta.description": {
+      "source": "f5f76b3a19",
+      "text": "從 Google Authenticator 或 LastPass 2FA 匯出的 QR 碼中擷取 TOTP/HOTP 一次性密碼金鑰。完全在你的瀏覽器中執行，不會將任何資料傳送到伺服器。"
+    },
+    "meta.title": {
+      "source": "76d556c0b4",
+      "text": "一次性密碼金鑰擷取工具 – Google Authenticator 匯出"
+    },
+    "modal.close": {
+      "source": "7d9eb7acb1",
+      "text": "關閉"
+    },
+    "note.storage": {
+      "source": "c0baa8e857",
+      "text": "<strong>注意：所有螢幕截圖或下載的檔案都含有你未加密的金鑰。</strong>請務必安全地保存，或在用完後將其刪除。這包括從「垃圾桶」、「資源回收筒」、「最近刪除」以及任何雲端相片備份中刪除。"
+    },
+    "results.label": {
+      "source": "413a20ec19",
+      "text": "已擷取的 OTP 帳戶"
+    },
+    "selection.all": {
+      "source": "d1ec69e64b",
+      "text": "全選"
+    },
+    "selection.clear": {
+      "source": "d62a588152",
+      "text": "取消全選"
+    },
+    "selection.initial": {
+      "source": "08ff49a1bd",
+      "text": "已選取 0 個"
+    },
+    "selection.reset": {
+      "source": "daee7606b3",
+      "text": "重設"
+    },
+    "tabs.faq": {
+      "source": "dbc468a14b",
+      "text": "常見問題"
+    },
+    "tabs.label": {
+      "source": "200053cc07",
+      "text": "資訊分頁"
+    },
+    "tabs.use": {
+      "source": "7753134ade",
+      "text": "如何使用？"
+    },
+    "tabs.what": {
+      "source": "0b12ba39ab",
+      "text": "這是什麼？"
+    },
+    "theme.dark": {
+      "source": "8abe9e0ba6",
+      "text": "切換為深色主題"
+    },
+    "theme.light": {
+      "source": "2f740f4cf6",
+      "text": "切換為淺色主題"
+    },
+    "theme.open": {
+      "source": "7e4576a08c",
+      "text": "開啟主題切換器"
+    },
+    "theme.system": {
+      "source": "b26e038f61",
+      "text": "切換為系統主題"
+    },
+    "upload.dropHint": {
+      "source": "e5c472163b",
+      "text": "或將檔案拖放到這裡<br>（圖片、JSON 匯出檔、CSV 或 TXT）"
+    },
+    "upload.enterCode": {
+      "source": "a2c02b164e",
+      "text": "輸入代碼"
+    },
+    "upload.openFiles": {
+      "source": "508aa0b23d",
+      "text": "開啟檔案"
+    },
+    "upload.scanQr": {
+      "source": "5a99f6fa7e",
+      "text": "掃描 QR 碼"
+    },
+    "use.cleanup.heading": {
+      "source": "a5dcfbfc9c",
+      "text": "4. 清理"
+    },
+    "use.export.google.heading": {
+      "source": "87365494e7",
+      "text": "從 Google Authenticator 匯出"
+    },
+    "use.export.google.open": {
+      "source": "eb93212f34",
+      "text": "在手機上開啟 Google Authenticator 應用程式。"
+    },
+    "use.export.google.select": {
+      "source": "5987c54e84",
+      "text": "選取要匯出的帳戶。"
+    },
+    "use.export.google.transfer": {
+      "source": "2766f2b5c2",
+      "text": "前往選單，然後選取「轉移帳戶」&gt;「匯出帳戶」（Android 上為「轉移動態密碼」&gt;「匯出驗證碼」）。"
+    },
+    "use.export.heading": {
+      "source": "23bb9f85b6",
+      "text": "1. 從你的一次性密碼應用程式匯出"
+    },
+    "use.export.lastPass.file": {
+      "source": "a92e9ec171",
+      "text": "若使用 LastPass，你也可以選擇「Export accounts to file」（將帳戶匯出為檔案），然後改為匯入該檔案。本工具兩種格式都支援。"
+    },
+    "use.export.lastPass.heading": {
+      "source": "e8cea4166a",
+      "text": "從 LastPass 匯出"
+    },
+    "use.export.lastPass.open": {
+      "source": "0b275558f5",
+      "text": "在手機上開啟 LastPass Authenticator。"
+    },
+    "use.export.lastPass.transfer": {
+      "source": "97245dc288",
+      "text": "點一下齒輪圖示，然後選取「Transfer accounts」（轉移帳戶）&gt;「Export accounts to QR code」（將帳戶匯出為 QR 碼）。"
+    },
+    "use.extract.enter": {
+      "source": "06ed7e2b85",
+      "text": "你也可以點一下「輸入代碼」，直接以文字輸入金鑰或設定網址，本工具會顯示你原本的設定 QR 碼。"
+    },
+    "use.extract.heading": {
+      "source": "b56f7130b7",
+      "text": "2. 擷取金鑰"
+    },
+    "use.extract.other": {
+      "source": "7de221f712",
+      "text": "本工具也能讀取任何應用程式的個別設定 QR 碼，或每行一個金鑰或網址的文字檔。如此一來，就能輕鬆將來自任何地方的金鑰轉成可掃描的 QR 碼。"
+    },
+    "use.extract.scan": {
+      "source": "765e3dec88",
+      "text": "在電腦或另一部裝置上開啟這個工具，然後點一下「掃描 QR 碼」，直接掃描手機上的匯出 QR 碼。這是最方便的方式，而且可以避免儲存金鑰的螢幕截圖。"
+    },
+    "use.extract.screenshot": {
+      "source": "1348600397",
+      "text": "或者，將顯示的每個 QR 碼都截圖，然後點一下「開啟檔案」，或將截圖拖放到本頁面上。"
+    },
+    "use.intro": {
+      "source": "0adea13e9c",
+      "text": "這個工具會讀取 Google Authenticator 或 LastPass Authenticator 匯出功能產生的 QR 碼，並還原每個帳戶的原始金鑰。接著，你就可以用這些金鑰將帳戶匯入任何其他驗證器應用程式。"
+    },
+    "use.use.display": {
+      "source": "df8c46112d",
+      "text": "本工具會顯示擷取出的 OTP 金鑰，每一筆都附有各自的 QR 碼和金鑰。"
+    },
+    "use.use.export": {
+      "source": "baf666d432",
+      "text": "如要將帳戶移入 Google Authenticator 或 LastPass Authenticator，請選取帳戶，然後點一下「匯出至 Google」或「匯出至 LastPass」。本工具會顯示轉移用 QR 碼，供你用該應用程式掃描。"
+    },
+    "use.use.heading": {
+      "source": "4b38257f86",
+      "text": "3. 使用你的金鑰"
+    },
+    "use.use.import": {
+      "source": "69579ceb54",
+      "text": "現在你可以將這些金鑰匯入你偏好的驗證器應用程式或密碼管理工具。"
+    },
+    "use.use.save": {
+      "source": "d87ca25a5c",
+      "text": "點一下「儲存為 CSV」或「儲存為 JSON」即可保存金鑰副本。之後你可以再在這裡開啟這些檔案，顯示你的 QR 碼。"
+    },
+    "what.intro": {
+      "source": "5c6dd873ff",
+      "text": "這個工具可以從 Google Authenticator 或 LastPass Authenticator 應用程式中擷取一次性密碼（OTP）金鑰，也就是雙重驗證（2FA）所使用的代碼。不需要安裝任何軟體，而且任何資料都絕不會離開你的裝置。"
+    },
+    "what.offline": {
+      "source": "1dd726e3e6",
+      "text": "<strong>你的 QR 碼和金鑰的所有處理，都完全離線、在本機進行，就在你的瀏覽器中。</strong>"
+    }
+  },
+  "messages": {
+    "alert.close.error": {
+      "source": "9cf408495b",
+      "text": "關閉錯誤訊息"
+    },
+    "alert.close.info": {
+      "source": "a949c7d8fb",
+      "text": "關閉資訊訊息"
+    },
+    "alert.close.success": {
+      "source": "995f7b664c",
+      "text": "關閉成功訊息"
+    },
+    "alert.close.warning": {
+      "source": "9c4fd921c4",
+      "text": "關閉警告訊息"
+    },
+    "copy.content": {
+      "source": "47bd29075f",
+      "text": "內容"
+    },
+    "copy.copied": {
+      "source": "db975a5296",
+      "text": "{subject}已複製到剪貼簿。"
+    },
+    "copy.failed": {
+      "source": "79c1562b9a",
+      "text": "無法複製到剪貼簿。"
+    },
+    "error.cameraProcess": {
+      "source": "0b16906da6",
+      "text": "無法處理相機畫面中的 QR 碼。"
+    },
+    "error.export": {
+      "source": "5ffdb95e13",
+      "text": "匯出時發生不明錯誤。"
+    },
+    "error.imageLoad": {
+      "source": "059a797d21",
+      "text": "檔案不是有效的圖片，或無法載入。"
+    },
+    "error.imageSecurity": {
+      "source": "fbdd194120",
+      "text": "由於安全性限制（tainted canvas），無法處理圖片。"
+    },
+    "error.invalidFormat": {
+      "source": "b14c1c9817",
+      "text": "格式無效"
+    },
+    "error.invalidInput": {
+      "source": "a5d06f9f0e",
+      "text": "輸入內容必須是有效的 OTP 網址、LastPass JSON，或至少 16 個字元的 Base32 金鑰（字母 A-Z、數字 2-7）。"
+    },
+    "error.invalidJson": {
+      "source": "2976af2962",
+      "text": "無效的 JSON 格式：應為 OTP 帳戶陣列或 LastPass 匯出物件。"
+    },
+    "error.lastPassAccounts": {
+      "source": "36c111fc7c",
+      "text": "無效的 LastPass QR JSON 格式：找不到 'a'（帳戶）陣列。"
+    },
+    "error.lastPassDecode": {
+      "source": "357cc40de7",
+      "text": "無法解碼 LastPass QR 碼。資料格式無法辨識或已損毀。"
+    },
+    "error.lastPassMissingContent": {
+      "source": "fa3c2fbbe3",
+      "text": "無效的 LastPass QR 碼：酬載中找不到 'content' 屬性。"
+    },
+    "error.missingCounter": {
+      "source": "a682bb3f00",
+      "text": "otpauth 網址中缺少 hotp 類型所需的 'counter' 參數。"
+    },
+    "error.missingData": {
+      "source": "f960859bf7",
+      "text": "無效的 OTP 網址：缺少 \"data\" 參數。"
+    },
+    "error.missingSecret": {
+      "source": "9cd5839183",
+      "text": "otpauth 網址中缺少 'secret' 參數。"
+    },
+    "error.noCamera": {
+      "source": "72350403b3",
+      "text": "找不到相機。請確認已連接相機。"
+    },
+    "error.payloadParse": {
+      "source": "0fa83b416e",
+      "text": "無法剖析最終的資料酬載。資料可能已損毀或格式不符預期。"
+    },
+    "error.processFiles": {
+      "source": "156b8fecdd",
+      "text": "處理檔案時發生未預期的錯誤。"
+    },
+    "error.processingFailed": {
+      "source": "2fed867b47",
+      "text": "處理失敗。"
+    },
+    "error.startCamera": {
+      "source": "fca6aeea62",
+      "text": "無法啟動相機。請確認已連接相機，並已授予權限。"
+    },
+    "error.switchCamera": {
+      "source": "5ff0a537e4",
+      "text": "無法切換相機。"
+    },
+    "error.textLine": {
+      "source": "75fa6cc3ff",
+      "text": "第 {line} 行：{message}"
+    },
+    "error.textParse": {
+      "source": "012e215f62",
+      "text": "無法從文字中剖析出任何有效的 OTP。\n{detail}"
+    },
+    "error.unexpected": {
+      "source": "844b94f2c8",
+      "text": "發生未預期的錯誤。請再試一次或重新整理頁面。"
+    },
+    "error.unknown": {
+      "source": "30aa69b29d",
+      "text": "發生不明錯誤。"
+    },
+    "error.unsupportedFileType": {
+      "source": "9b71892c00",
+      "text": "不支援的檔案類型。"
+    },
+    "error.unsupportedOtpType": {
+      "source": "72da5d813b",
+      "text": "網址中的 OTP 類型不受支援：{type}"
+    },
+    "error.unsupportedQr": {
+      "source": "aeda3cb2ab",
+      "text": "QR 碼的格式不受支援。"
+    },
+    "export.hotpRemoved": {
+      "source": "331851b63e",
+      "text": {
+        "other": "LastPass 僅支援時間型（TOTP）帳戶。已從你的選取項目中移除 {count} 個不相容的計數器型帳戶。請再點一下「匯出至 LastPass」以繼續。"
+      }
+    },
+    "export.noCompatibleLastPass": {
+      "source": "969cace0ac",
+      "text": "未選取任何可匯出至 LastPass 的相容（TOTP）帳戶。"
+    },
+    "export.noData": {
+      "source": "0a1d634038",
+      "text": "沒有可匯出的資料。"
+    },
+    "export.noSelection": {
+      "source": "3693328f59",
+      "text": "未選取任何要匯出的帳戶。"
+    },
+    "export.scanGoogle": {
+      "source": "39a66b1ef2",
+      "text": "使用 Google Authenticator 掃描"
+    },
+    "export.scanLastPass": {
+      "source": "fedec1807d",
+      "text": "使用 LastPass Authenticator 掃描"
+    },
+    "log.alreadyProcessed": {
+      "source": "bbc43c6803",
+      "text": "此 QR 碼已處理過。"
+    },
+    "log.cameraScan": {
+      "source": "9a5d024684",
+      "text": "相機掃描"
+    },
+    "log.duplicatesSkipped": {
+      "source": "e68600c000",
+      "text": {
+        "other": "已略過 {count} 個重複的金鑰。"
+      }
+    },
+    "log.extracted": {
+      "source": "b818f7ef07",
+      "text": {
+        "other": "已擷取 {count} 個金鑰。"
+      }
+    },
+    "log.manualInput": {
+      "source": "a3c3192d2d",
+      "text": "手動輸入"
+    },
+    "log.noQrFound": {
+      "source": "1883c40b5f",
+      "text": "找不到 QR 碼。"
+    },
+    "log.noSecrets": {
+      "source": "53865292bf",
+      "text": "找不到 OTP 金鑰。"
+    },
+    "log.noSecretsInQr": {
+      "source": "c69f2b562d",
+      "text": "QR 碼中找不到 OTP 金鑰。"
+    },
+    "results.notAvailable": {
+      "source": "67a926f700",
+      "text": "無法取得"
+    },
+    "results.showLargerQr": {
+      "source": "796f73a09e",
+      "text": "顯示「{title}」的較大 QR 碼"
+    },
+    "selection.count": {
+      "source": "30ae395b1b",
+      "text": "已選取 {count} 個，共 {total} 個"
+    }
+  }
+}
