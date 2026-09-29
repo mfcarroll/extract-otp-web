@@ -119,6 +119,7 @@ const html = `<!doctype html><html lang="en"><head><title data-i18n="meta.title"
   <input data-i18n-attr="placeholder:input.placeholder" placeholder="Type here">
   <template><span data-i18n="card.name">Name:</span></template>
   <nav id="language-switcher" hidden></nav>
+  <p id="draft-banner" hidden>Draft</p>
 </body></html>`;
 
 describe('extractPageSource', () => {
@@ -265,11 +266,13 @@ describe('renderPage', () => {
       /<a class="navigable" href="\/app\/fr\/"[^>]*aria-current="page"/
     );
     expect(out).not.toContain('noindex');
+    expect(out).toContain('<p id="draft-banner" hidden="">');
   });
 
   it('marks draft languages noindex and leaves them out of hreflang', () => {
     const out = render('zh', config.locales);
     expect(out).toContain('<meta name="robots" content="noindex">');
+    expect(out).toContain('<p id="draft-banner">Draft</p>');
     expect(out).not.toContain('rel="alternate"');
     expect(out).toContain('href="/app/zh/"');
   });

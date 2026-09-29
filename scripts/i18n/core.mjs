@@ -38,8 +38,9 @@ const TRANSLATIONS_DIR = path.join(I18N_DIR, 'translations');
 
 /**
  * Site settings plus every language: English from src/i18n/config.json, then
- * one per translation file, in order of language code. Each language's page
- * is served at <base><code>/.
+ * one per translation file, in order of language code. A published
+ * language's page is at <base><code>/; a draft's is at <base>draft/<code>/,
+ * built but not linked from published pages.
  */
 export function loadConfig() {
   const config = JSON.parse(
@@ -74,7 +75,7 @@ export function loadConfig() {
       name: language.name,
       lang: language.lang,
       hreflang: language.hreflang ?? language.lang,
-      path: `${code}/`,
+      path: language.published === true ? `${code}/` : `draft/${code}/`,
       published: language.published === true,
       contributors: validateContributors(code, language.contributors ?? []),
     };
@@ -450,6 +451,7 @@ export function renderPage(
     });
   }
   if (!locale.published) {
+    document.getElementById('draft-banner')?.removeAttribute('hidden');
     const robots = document.createElement('meta');
     robots.name = 'robots';
     robots.content = 'noindex';
