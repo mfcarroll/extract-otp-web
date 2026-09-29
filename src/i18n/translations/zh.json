@@ -91,7 +91,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator 不容易查看原始密钥，而是提供一个打包多个账号的导出二维码。这对换机很方便，但对迁移到其他认证器并不友好。LastPass 会给每个账号单独二维码，这是进步，但文本密钥主要在 JSON 中提供。相比之下，像 1Password 这类应用更容易查看原始密钥，迁移更简单。"
+      "text": "Google Authenticator 不容易查看原始密钥，而是提供一个打包多个账号的导出二维码。这对换机很方便，但对迁移到其他认证器并不友好。LastPass 会给每个账号单独二维码，这是进步，但文本形式的密钥只以 JSON 格式提供。相比之下，像 1Password 这类应用更容易查看原始密钥，迁移更简单。"
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,11 +123,11 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "安全。隐私和安全是第一优先。<strong>你在这里的所有操作都不会离开你的设备。</strong> 所有处理都在浏览器本地离线完成，二维码和密钥不会发送到任何服务器。"
+      "text": "安全。隐私和安全是第一优先。<strong>你在这里的所有操作都不会离开你的设备。</strong>所有处理都在浏览器本地离线完成，二维码和密钥不会发送到任何服务器。"
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
-      "text": "项目是开源的，你可以查看 <a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">源码</a> 验证实现方式。部署在 GitHub Pages，也有可审计的 <a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">公开发布流程</a>。"
+      "text": "项目是开源的，任何人都可以查看<a href=\"https://github.com/mfcarroll/extract-otp-web\" target=\"_blank\" rel=\"noopener noreferrer\">源码</a>，以验证它的安全性和实现方式。本工具托管在 GitHub Pages，提供<a href=\"https://github.com/mfcarroll/extract-otp-web/deployments/github-pages\" target=\"_blank\" rel=\"noopener noreferrer\">安全、透明的发布流程</a>。"
     },
     "faq.thanks.alternative": {
       "source": "0e33fdeb4f",
@@ -139,11 +139,11 @@
     },
     "faq.thanks.fontAwesome": {
       "source": "5553acd064",
-      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>"
+      "text": "<a href=\"https://github.com/FortAwesome/Font-Awesome#readme\" target=\"_blank\" rel=\"noopener noreferrer\">Font Awesome</a>：提供界面中使用的图标。"
     },
     "faq.thanks.jsqr": {
       "source": "89903270e2",
-      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>"
+      "text": "<a href=\"https://github.com/cozmo/jsQR#readme\" target=\"_blank\" rel=\"noopener noreferrer\">jsQR</a>：从图片中识别二维码。"
     },
     "faq.thanks.libraries": {
       "source": "c79fc35212",
@@ -151,7 +151,7 @@
     },
     "faq.thanks.pica": {
       "source": "7882429389",
-      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>"
+      "text": "<a href=\"https://github.com/nodeca/pica#readme\" target=\"_blank\" rel=\"noopener noreferrer\">pica</a>：高质量地缩放图片。"
     },
     "faq.thanks.projects": {
       "source": "d5ded0c368",
@@ -159,19 +159,19 @@
     },
     "faq.thanks.protobuf": {
       "source": "11e6470753",
-      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>"
+      "text": "<a href=\"https://github.com/protobufjs/protobuf.js#readme\" target=\"_blank\" rel=\"noopener noreferrer\">protobuf.js</a>：解码 Google Authenticator 的数据。"
     },
     "faq.thanks.qrcode": {
       "source": "95671a3157",
-      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>"
+      "text": "<a href=\"https://github.com/soldair/node-qrcode#readme\" target=\"_blank\" rel=\"noopener noreferrer\">node-qrcode</a>：为每个账号生成新的二维码。"
     },
     "faq.thanks.qrScanner": {
       "source": "c378347750",
-      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>"
+      "text": "<a href=\"https://github.com/nimiq/qr-scanner/#readme\" target=\"_blank\" rel=\"noopener noreferrer\">QR Scanner</a>：通过摄像头扫描二维码。"
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>"
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>：对 OTP 密钥进行 Base32 编码。"
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -255,7 +255,7 @@
     },
     "upload.dropHint": {
       "source": "e5c472163b",
-      "text": "或将文件拖拽到这里<br>(图片、json 导出、csv 或 txt)"
+      "text": "或将文件拖拽到这里<br>（图片、json 导出、csv 或 txt）"
     },
     "upload.enterCode": {
       "source": "a2c02b164e",
@@ -271,7 +271,7 @@
     },
     "use.export.google.heading": {
       "source": "87365494e7",
-      "text": "Google Authenticator"
+      "text": "从 Google Authenticator 导出"
     },
     "use.export.google.open": {
       "source": "eb93212f34",
@@ -283,11 +283,11 @@
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
-      "text": "LastPass 也支持“导出账号到文件”，本工具同样支持导入该格式。"
+      "text": "LastPass 也支持 “Export accounts to file”（导出账号到文件），本工具同样支持导入该格式。"
     },
     "use.export.lastPass.heading": {
       "source": "e8cea4166a",
-      "text": "LastPass Authenticator"
+      "text": "从 LastPass 导出"
     },
     "use.export.lastPass.open": {
       "source": "0b275558f5",
@@ -295,7 +295,7 @@
     },
     "use.export.lastPass.transfer": {
       "source": "97245dc288",
-      "text": "点击设置图标，选择“转移账号” &gt; “导出账号到二维码”。"
+      "text": "点击设置图标，选择 “Transfer accounts”（转移账号）&gt; “Export accounts to QR code”（导出账号到二维码）。"
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
@@ -445,7 +445,7 @@
     },
     "results.notAvailable": {
       "source": "67a926f700",
-      "text": "不可用"
+      "text": "未提供"
     },
     "selection.count": {
       "source": "30ae395b1b",
