@@ -1,4 +1,6 @@
 import { Navigation } from './navigation';
+import { isMobile } from './viewport';
+import { announceOpen, onOtherOpen } from './footerPopups';
 
 /**
  * The footer language switcher: a disclosure button that shows a list of
@@ -20,6 +22,7 @@ export function initLanguageSwitcher(): void {
   const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
 
   const open = () => {
+    if (!isOpen()) announceOpen('language');
     menu.hidden = false;
     toggle.setAttribute('aria-expanded', 'true');
   };
@@ -39,8 +42,32 @@ export function initLanguageSwitcher(): void {
     return toggle;
   };
 
+  onOtherOpen('language', () => {
+    if (isOpen()) close();
+  });
+
+  // On pointer devices, open on hover and close when the pointer leaves, as
+  // the theme switcher does. A short delay forgives brief exits, and the menu
+  // has a hover bridge over the gap to the button (see _footer.css).
+  let closeTimer: number | undefined;
+  nav.addEventListener('mouseenter', () => {
+    if (isMobile()) return;
+    window.clearTimeout(closeTimer);
+    open();
+  });
+  nav.addEventListener('mouseleave', () => {
+    if (isMobile()) return;
+    closeTimer = window.setTimeout(() => {
+      // Keep it open if keyboard focus is inside it.
+      if (!nav.contains(document.activeElement)) close();
+    }, 150);
+  });
+
   toggle.addEventListener('click', (event: MouseEvent) => {
     if (isOpen()) {
+      // On pointer devices the menu is already open from hovering, so a
+      // mouse click keeps it open; keyboard activation still toggles.
+      if (event.detail !== 0 && !isMobile()) return;
       close();
     } else {
       open();

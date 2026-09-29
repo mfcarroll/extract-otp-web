@@ -50,6 +50,21 @@
   cursor: pointer;
 }
 
+/* Invisible bridge over the gap between the button and the open menu, so
+   moving the pointer up to the menu doesn't leave the switcher and close it. */
+.language-toggle {
+  position: relative;
+}
+
+.language-toggle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 0.6rem;
+}
+
 .language-toggle:hover,
 .language-toggle[aria-expanded='true'] {
   background-color: var(--active-background-color);

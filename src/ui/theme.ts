@@ -2,6 +2,7 @@ import { setState } from '../state/store';
 import { $ } from './dom';
 import { Navigation } from './navigation';
 import { isMobile } from './viewport';
+import { announceOpen, onOtherOpen } from './footerPopups';
 
 /**
  * Manages the theme switcher UI and applies the selected theme.
@@ -88,6 +89,7 @@ export function initThemeSwitcher(): void {
     themeSwitcherWrapper.style.width = `${rect.width}px`;
     themeSwitcherWrapper.style.height = `${rect.height}px`;
 
+    announceOpen('theme');
     positionSwitcher();
     themeSwitcherWrapper.classList.add('open');
     themeSwitcherWrapper.setAttribute('aria-expanded', 'true');
@@ -102,6 +104,10 @@ export function initThemeSwitcher(): void {
     themeSwitcherWrapper.setAttribute('aria-expanded', 'false');
     buttons.forEach((button) => (button.tabIndex = -1));
   };
+
+  onOtherOpen('theme', () => {
+    if (themeSwitcherWrapper.classList.contains('open')) closeSwitcher();
+  });
 
   themeSwitcherWrapper.addEventListener('mouseenter', () => {
     if (isMobile()) return;
