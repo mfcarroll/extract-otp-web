@@ -9,7 +9,7 @@
   "error.startCamera": "Failed to start camera. Please ensure you have a camera connected and have granted permission.",
   "error.switchCamera": "Failed to switch camera.",
   "error.unsupportedFileType": "Unsupported file type.",
-  "error.invalidInput": "Input must be a valid OTP URL, LastPass JSON, or a Base32 secret (letters A-Z, numbers 2-7).",
+  "error.invalidInput": "Input must be a valid OTP URL, LastPass JSON, or a Base32 secret of at least 16 characters (letters A-Z, numbers 2-7).",
   "error.unsupportedOtpType": "Unsupported OTP type in URL: {type}",
   "error.missingSecret": "Missing 'secret' parameter in otpauth URL.",
   "error.missingCounter": "Missing 'counter' parameter for hotp type in otpauth URL.",

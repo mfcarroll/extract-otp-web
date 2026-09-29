@@ -7,6 +7,33 @@ import base32 from 'thirty-two';
 import { logger } from './logger';
 import { t } from '../i18n';
 
+// OTP secrets are at least 80 bits, which is 16 Base32 characters.
+const MIN_SECRET_LENGTH = 16;
+
+/**
+ * Decodes a raw Base32 secret, which may be written in groups separated by
+ * spaces or dashes (e.g. "JBSW Y3DP EHPK 3PXP"). Returns null for anything
+ * that doesn't look like a secret: too short, other characters, or split
+ * into uneven groups the way ordinary words are.
+ */
+function parseRawSecret(input: string): Uint8Array | null {
+  const groups = input.toUpperCase().split(/[\s-]+/);
+  const size = groups[0].length;
+  const evenGroups =
+    groups.slice(0, -1).every((group) => group.length === size) &&
+    groups[groups.length - 1].length <= size;
+  const secret = groups.join('');
+
+  if (
+    !evenGroups ||
+    !/^[A-Z2-7]+=*$/.test(secret) ||
+    secret.replace(/=+$/, '').length < MIN_SECRET_LENGTH
+  ) {
+    return null;
+  }
+  return new Uint8Array(base32.decode(secret));
+}
+
 /**
  * Parses either an otpauth URL, a Google Migration URL, a LastPass JSON string,
  * or a raw Base32 secret string.
@@ -30,16 +57,8 @@ export async function parseFlexibleInput(
   }
 
   // 2. Try raw Base32 secret
-  // Remove spaces, dashes, and ensure uppercase for validation
-  const cleanedSecret = trimmed.replace(/[\s-]/g, '').toUpperCase();
-
-  // Base32 Regex: letters A-Z, numbers 2-7, optional padding =
-  const base32Regex = /^[A-Z2-7]{10,}=*$/;
-
-  if (base32Regex.test(cleanedSecret)) {
-    // Decode the base32 string into a Uint8Array to satisfy MigrationOtpParameter
-    const decodedSecret = new Uint8Array(base32.decode(cleanedSecret));
-
+  const decodedSecret = parseRawSecret(trimmed);
+  if (decodedSecret) {
     return [
       {
         secret: decodedSecret,
