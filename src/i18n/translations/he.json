@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "חילוץ סודות של סיסמאות חד-פעמיות"
+      "text": "חילוץ סודות של קודי אימות חד-פעמיים"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "חילוץ סודות של סיסמאות חד-פעמיות מסוג TOTP/HOTP מקודי QR לייצוא 2FA של Google Authenticator או LastPass. הכלי פועל כולו בדפדפן שלך; שום דבר לא מועלה לשרת."
+      "text": "חילוץ סודות של קודי אימות חד-פעמיים מסוג TOTP/HOTP מקודי QR לייצוא 2FA של Google Authenticator או LastPass. הכלי פועל כולו בדפדפן שלך; שום דבר לא מועלה לשרת."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "חילוץ סודות של סיסמאות חד-פעמיות – ייצוא מ-Google Authenticator"
+      "text": "חילוץ סודות של קודי אימות חד-פעמיים – ייצוא מ-Google Authenticator"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. ייצוא מאפליקציית הסיסמאות החד-פעמיות שלך"
+      "text": "1. ייצוא מאפליקציית קודי האימות החד-פעמיים שלך"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -471,7 +471,7 @@
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "הכלי הזה מחלץ סודות של סיסמאות חד-פעמיות (OTP), הקודים המשמשים לאימות דו-שלבי (2FA), מהאפליקציות Google Authenticator או LastPass Authenticator. אין צורך להתקין שום תוכנה, ושום מידע לעולם לא יוצא מהמכשיר שלך."
+      "text": "הכלי הזה מחלץ סודות של קודי אימות חד-פעמיים (OTP), המשמשים לאימות דו-שלבי (2FA), מהאפליקציות Google Authenticator או LastPass Authenticator. אין צורך להתקין שום תוכנה, ושום מידע לעולם לא יוצא מהמכשיר שלך."
     },
     "what.offline": {
       "source": "1dd726e3e6",
