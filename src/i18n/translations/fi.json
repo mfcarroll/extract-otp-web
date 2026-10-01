@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Kertasalasanojen salaisten avainten poimija"
+      "text": "Käyttöönottoavainten poimija"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Kopioi salainen avain"
+      "text": "Kopioi avain"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Salainen avain:"
+      "text": "Avain:"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Tämän työkalun loi <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, kehittäjä, joka turhautui OTP-koodien siirtämiseen Google Authenticatorista 1Passwordiin."
+      "text": "Tämän työkalun loi <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, kehittäjä, joka turhautui vahvistuskoodien siirtämiseen Google Authenticatorista 1Passwordiin."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator tekee tiliesi määrittämiseen käytettyjen alkuperäisten salaisten avainten tarkastelusta vaikeaa. Sen sijaan se tarjoaa vienti-QR-koodin, joka niputtaa kaikki tilisi yhteen. Tämä helpottaa siirtoa uuteen laitteeseen mutta vaikeuttaa vaihtamista toiseen todennussovellukseen. LastPass tarjoaa erilliset QR-koodit jokaiselle tilille, mikä on valtava parannus, mutta se antaa salaiset avaimet tekstinä vain JSON-koodimuodossa. Sitä vastoin esimerkiksi 1Password tuo alkuperäiset salaiset avaimet helposti saataville, mikä tekee siirtämisestä muihin 2FA-sovelluksiin yksinkertaista."
+      "text": "Google Authenticator tekee tiliesi määrittämiseen käytettyjen alkuperäisten avainten tarkastelusta vaikeaa. Sen sijaan se tarjoaa vienti-QR-koodin, joka niputtaa kaikki tilisi yhteen. Tämä helpottaa siirtoa uuteen laitteeseen mutta vaikeuttaa vaihtamista toiseen todennussovellukseen. LastPass tarjoaa erilliset QR-koodit jokaiselle tilille, mikä on valtava parannus, mutta se antaa avaimet tekstinä vain JSON-koodimuodossa. Sitä vastoin esimerkiksi 1Password tuo alkuperäiset avaimet helposti saataville, mikä tekee siirtämisestä muihin 2FA-sovelluksiin yksinkertaista."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Skannaat Google Authenticatorin tai LastPass Authenticatorin vientitoiminnon QR-koodit kamerallasi tai annat niistä kuvakaappaukset (tai LastPassin vientitiedoston). Tämä työkalu lukee nuo QR-koodit – täällä selaimessasi – ja palauttaa sinulle kunkin tilin alkuperäisen salaisen avaimen. Voit sitten tuoda tilisi näiden avainten avulla mihin tahansa muuhun todennussovellukseen."
+      "text": "Skannaat Google Authenticatorin tai LastPass Authenticatorin vientitoiminnon QR-koodit kamerallasi tai annat niistä kuvakaappaukset (tai LastPassin vientitiedoston). Tämä työkalu lukee nuo QR-koodit – täällä selaimessasi – ja palauttaa sinulle kunkin tilin alkuperäisen avaimen. Voit sitten tuoda tilisi näiden avainten avulla mihin tahansa muuhun todennussovellukseen."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Kyllä. Tietoturva ja yksityisyys ovat tärkeimmät prioriteetit. <strong>Mikään, mitä teet täällä, ei koskaan poistu tietokoneeltasi tai mobiililaitteeltasi.</strong> Kaikki käsittely tapahtuu paikallisesti, offline-tilassa, suoraan selaimessasi. QR-koodikuviasi ja salaisia avaimiasi ei koskaan lähetetä millekään palvelimelle."
+      "text": "Kyllä. Tietoturva ja yksityisyys ovat tärkeimmät prioriteetit. <strong>Mikään, mitä teet täällä, ei koskaan poistu tietokoneeltasi tai mobiililaitteeltasi.</strong> Kaikki käsittely tapahtuu paikallisesti, offline-tilassa, suoraan selaimessasi. QR-koodikuviasi ja avaimiasi ei koskaan lähetetä millekään palvelimelle."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> salaisten OTP-avainten Base32-koodaukseen."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> avainten Base32-koodaukseen."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Google Authenticatorin avulla voit siirtää tilisi uuteen puhelimeen, mutta se ei tarjoa helppoa tapaa viedä niitä muihin sovelluksiin, kuten 1Passwordiin tai Bitwardeniin. Tämä johtuu siitä, että se piilottaa kunkin tilin alkuperäisen ”salaisen avaimen” (QR-koodin, jonka alun perin skannasit)."
+      "text": "Google Authenticatorin avulla voit siirtää tilisi uuteen puhelimeen, mutta se ei tarjoa helppoa tapaa viedä niitä muihin sovelluksiin, kuten 1Passwordiin tai Bitwardeniin. Tämä johtuu siitä, että se piilottaa kunkin tilin alkuperäisen ”käyttöönottoavaimen” (QR-koodin, jonka alun perin skannasit)."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Ilman näitä salaisia avaimia siirtyminen uuteen salasanojen hallintaohjelmaan tarkoittaa, että 2FA on määritettävä käsin uudelleen jokaiselle tilille erikseen, mikä on todella työlästä."
+      "text": "Ilman näitä avaimia siirtyminen uuteen salasanojen hallintaohjelmaan tarkoittaa, että 2FA on määritettävä käsin uudelleen jokaiselle tilille erikseen, mikä on todella työlästä."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Liitä <code>otpauth://</code>-URL tai raaka Base32-muotoinen salainen avain (esim. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Liitä <code>otpauth://</code>-URL tai raaka Base32-muotoinen avain (esim. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Salainen avain tai URL..."
+      "text": "Avain tai URL..."
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Poimi TOTP/HOTP-kertasalasanojen salaiset avaimet Google Authenticatorin tai LastPassin 2FA-vientien QR-koodeista. Toimii kokonaan selaimessasi; mitään ei lähetetä palvelimelle."
+      "text": "Poimi TOTP/HOTP-käyttöönottoavaimet Google Authenticatorin tai LastPassin 2FA-vientien QR-koodeista. Toimii kokonaan selaimessasi; mitään ei lähetetä palvelimelle."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Kertasalasanojen salaisten avainten poimija – Google Authenticator -vienti"
+      "text": "Käyttöönottoavainten poimija – Google Authenticator -vienti"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Huomio: Kuvakaappaukset ja tallennetut tiedostot sisältävät salaiset avaimesi salaamattomina.</strong> Säilytä ne turvallisesti tai poista ne, kun olet valmis. Tämä tarkoittaa myös niiden poistamista ”Roskakorista” (macOS ja Windows), ”Viimeksi poistetut” -kansiosta ja kaikista pilvessä olevista kuvavarmuuskopioista."
+      "text": "<strong>Huomio: Kuvakaappaukset ja tallennetut tiedostot sisältävät avaimesi salaamattomina.</strong> Säilytä ne turvallisesti tai poista ne, kun olet valmis. Tämä tarkoittaa myös niiden poistamista ”Roskakorista” (macOS ja Windows), ”Viimeksi poistetut” -kansiosta ja kaikista pilvessä olevista kuvavarmuuskopioista."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Vie tilit kertasalasanasovelluksestasi"
+      "text": "1. Vie tilit vahvistuskoodisovelluksestasi"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "Voit myös napsauttaa ”Syötä koodi” ja syöttää salaisen avaimen tai määritys-URL-osoitteen suoraan tekstinä, jolloin tämä työkalu näyttää alkuperäisen määritys-QR-koodisi."
+      "text": "Voit myös napsauttaa ”Syötä koodi” ja syöttää avaimen tai määritys-URL-osoitteen suoraan tekstinä, jolloin tämä työkalu näyttää alkuperäisen määritys-QR-koodisi."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Poimi salaiset avaimet"
+      "text": "2. Poimi avaimet"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Tämä työkalu voi lukea myös minkä tahansa sovelluksen yksittäisiä määritys-QR-koodeja tai tekstitiedoston, jossa on yksi salainen avain tai URL-osoite riviä kohden. Näin mistä tahansa peräisin olevat salaiset avaimet on helppo muuttaa skannattaviksi QR-koodeiksi."
+      "text": "Tämä työkalu voi lukea myös minkä tahansa sovelluksen yksittäisiä määritys-QR-koodeja tai tekstitiedoston, jossa on yksi avain tai URL-osoite riviä kohden. Näin mistä tahansa peräisin olevat avaimet on helppo muuttaa skannattaviksi QR-koodeiksi."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Avaa tämä työkalu tietokoneellasi tai toisella laitteella ja napsauta ”Skannaa QR” skannataksesi puhelimesi vienti-QR-koodit suoraan. Tämä on kätevin vaihtoehto, ja sillä vältät salaisten avaintesi kuvakaappausten tallentamisen."
+      "text": "Avaa tämä työkalu tietokoneellasi tai toisella laitteella ja napsauta ”Skannaa QR” skannataksesi puhelimesi vienti-QR-koodit suoraan. Tämä on kätevin vaihtoehto, ja sillä vältät avaintesi kuvakaappausten tallentamisen."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Tämä työkalu lukee Google Authenticatorin tai LastPass Authenticatorin vientitoiminnon QR-koodit ja palauttaa sinulle kunkin tilin alkuperäisen salaisen avaimen. Voit sitten tuoda tilisi näiden avainten avulla mihin tahansa muuhun todennussovellukseen."
+      "text": "Tämä työkalu lukee Google Authenticatorin tai LastPass Authenticatorin vientitoiminnon QR-koodit ja palauttaa sinulle kunkin tilin alkuperäisen avaimen. Voit sitten tuoda tilisi näiden avainten avulla mihin tahansa muuhun todennussovellukseen."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "Työkalu näyttää poimitut salaiset OTP-avaimet, kunkin omana QR-koodinaan ja tekstimuotoisena salaisena avaimena."
+      "text": "Työkalu näyttää poimitut käyttöönottoavaimet, kunkin omana QR-koodinaan ja tekstimuotoisena avaimena."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Käytä salaisia avaimiasi"
+      "text": "3. Käytä avaimiasi"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Voit nyt tuoda nämä salaiset avaimet haluamaasi todennussovellukseen tai salasanojen hallintaohjelmaan."
+      "text": "Voit nyt tuoda nämä avaimet haluamaasi todennussovellukseen tai salasanojen hallintaohjelmaan."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Napsauta ”Tallenna CSV-muodossa” tai ”Tallenna JSON-muodossa” tallentaaksesi kopion salaisista avaimistasi. Voit myöhemmin avata nämä tiedostot täällä uudelleen näyttääksesi QR-koodisi."
+      "text": "Napsauta ”Tallenna CSV-muodossa” tai ”Tallenna JSON-muodossa” tallentaaksesi kopion avaimistasi. Voit myöhemmin avata nämä tiedostot täällä uudelleen näyttääksesi QR-koodisi."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Tämä työkalu poimii kertasalasanojen (OTP) salaiset avaimet eli kaksivaiheisessa tunnistautumisessa (2FA) käytettävät koodit Google Authenticator- tai LastPass Authenticator -sovelluksista. Mitään ohjelmistoa ei tarvitse asentaa, eivätkä mitkään tiedot koskaan poistu laitteeltasi."
+      "text": "Tämä työkalu poimii kaksivaiheisessa vahvistuksessa (2FA) käytettävien vahvistuskoodien (OTP) käyttöönottoavaimet Google Authenticator- tai LastPass Authenticator -sovelluksista. Mitään ohjelmistoa ei tarvitse asentaa, eivätkä mitkään tiedot koskaan poistu laitteeltasi."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>Kaikki QR-koodiesi ja salaisten avaintesi käsittely tapahtuu kokonaan offline-tilassa, paikallisesti, täällä selaimessasi.</strong>"
+      "text": "<strong>Kaikki QR-koodiesi ja avaintesi käsittely tapahtuu kokonaan offline-tilassa, paikallisesti, täällä selaimessasi.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "Syötteen on oltava kelvollinen OTP-URL, LastPass-JSON tai vähintään 16 merkin pituinen Base32-muotoinen salainen avain (kirjaimet A–Z, numerot 2–7)."
+      "text": "Syötteen on oltava kelvollinen OTP-URL, LastPass-JSON tai vähintään 16 merkin pituinen Base32-muotoinen avain (kirjaimet A–Z, numerot 2–7)."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -657,15 +657,15 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "one": "{count} päällekkäinen salainen avain ohitettu.",
-        "other": "{count} päällekkäistä salaista avainta ohitettu."
+        "one": "{count} päällekkäinen avain ohitettu.",
+        "other": "{count} päällekkäistä avainta ohitettu."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "{count} salainen avain poimittu.",
-        "other": "{count} salaista avainta poimittu."
+        "one": "{count} avain poimittu.",
+        "other": "{count} avainta poimittu."
       }
     },
     "log.manualInput": {
@@ -678,11 +678,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "Salaisia OTP-avaimia ei löytynyt."
+      "text": "Avaimia ei löytynyt."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "QR-koodista ei löytynyt salaisia OTP-avaimia."
+      "text": "QR-koodista ei löytynyt avaimia."
     },
     "results.notAvailable": {
       "source": "67a926f700",
