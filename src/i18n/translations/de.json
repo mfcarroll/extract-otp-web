@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Extraktor für Einmalpasswort-Schlüssel"
+      "text": "Extraktor für Einrichtungsschlüssel"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Dieses Tool wurde von <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> entwickelt, einem Entwickler, den der Umzug seiner OTP-Codes von Google Authenticator zu 1Password frustriert hat."
+      "text": "Dieses Tool wurde von <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> entwickelt, einem Entwickler, den der Umzug seiner Bestätigungscodes von Google Authenticator zu 1Password frustriert hat."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator macht es schwer, die ursprünglichen geheimen Schlüssel zu sehen, mit denen Ihre Konten eingerichtet wurden. Stattdessen gibt es einen Export-QR-Code, der alle Ihre Konten bündelt. Das erleichtert die Übertragung auf ein neues Gerät, erschwert aber den Wechsel zu einer anderen Authenticator-App. LastPass bietet zwar für jedes Konto einen eigenen QR-Code, was eine große Verbesserung ist, stellt die geheimen Schlüssel als Text aber nur im JSON-Format bereit. Apps wie 1Password machen die ursprünglichen geheimen Schlüssel dagegen leicht zugänglich, sodass der Wechsel zu anderen 2FA-Apps einfach ist."
+      "text": "Google Authenticator macht es schwer, die ursprünglichen Schlüssel zu sehen, mit denen Ihre Konten eingerichtet wurden. Stattdessen gibt es einen Export-QR-Code, der alle Ihre Konten bündelt. Das erleichtert die Übertragung auf ein neues Gerät, erschwert aber den Wechsel zu einer anderen Authenticator-App. LastPass bietet zwar für jedes Konto einen eigenen QR-Code, was eine große Verbesserung ist, stellt die Schlüssel als Text aber nur im JSON-Format bereit. Apps wie 1Password machen die ursprünglichen Schlüssel dagegen leicht zugänglich, sodass der Wechsel zu anderen 2FA-Apps einfach ist."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Sie scannen die QR-Codes aus der Exportfunktion von Google Authenticator oder LastPass Authenticator mit Ihrer Kamera, oder Sie stellen Screenshots davon bereit (oder eine LastPass-Exportdatei). Dieses Tool liest diese QR-Codes – direkt hier in Ihrem Browser – und gibt Ihnen den ursprünglichen geheimen Schlüssel jedes Kontos zurück. Mit diesen Schlüsseln können Sie Ihre Konten dann in jede andere Authenticator-App importieren."
+      "text": "Sie scannen die QR-Codes aus der Exportfunktion von Google Authenticator oder LastPass Authenticator mit Ihrer Kamera, oder Sie stellen Screenshots davon bereit (oder eine LastPass-Exportdatei). Dieses Tool liest diese QR-Codes – direkt hier in Ihrem Browser – und gibt Ihnen den ursprünglichen Schlüssel jedes Kontos zurück. Mit diesen Schlüsseln können Sie Ihre Konten dann in jede andere Authenticator-App importieren."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Ja. Sicherheit und Datenschutz haben höchste Priorität. <strong>Nichts, was Sie hier tun, verlässt jemals Ihren Computer oder Ihr Mobilgerät.</strong> Die gesamte Verarbeitung erfolgt lokal, offline, direkt in Ihrem Browser. Ihre QR-Code-Bilder und geheimen Schlüssel werden niemals an einen Server gesendet."
+      "text": "Ja. Sicherheit und Datenschutz haben höchste Priorität. <strong>Nichts, was Sie hier tun, verlässt jemals Ihren Computer oder Ihr Mobilgerät.</strong> Die gesamte Verarbeitung erfolgt lokal, offline, direkt in Ihrem Browser. Ihre QR-Code-Bilder und Schlüssel werden niemals an einen Server gesendet."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> zur Base32-Kodierung der OTP-Schlüssel."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> zur Base32-Kodierung der Schlüssel."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Mit Google Authenticator können Sie Ihre Konten auf ein neues Smartphone übertragen, aber es gibt keine einfache Möglichkeit, sie in andere Apps wie 1Password oder Bitwarden zu exportieren. Denn die App verbirgt den ursprünglichen „geheimen Schlüssel“ (den QR-Code, den Sie anfangs gescannt haben) jedes Kontos."
+      "text": "Mit Google Authenticator können Sie Ihre Konten auf ein neues Smartphone übertragen, aber es gibt keine einfache Möglichkeit, sie in andere Apps wie 1Password oder Bitwarden zu exportieren. Denn die App verbirgt den ursprünglichen „Einrichtungsschlüssel“ (den QR-Code, den Sie anfangs gescannt haben) jedes Kontos."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Ohne diese geheimen Schlüssel müssen Sie beim Wechsel zu einem neuen Passwort-Manager die 2FA für jedes einzelne Konto von Hand neu einrichten, was sehr mühsam ist."
+      "text": "Ohne diese Schlüssel müssen Sie beim Wechsel zu einem neuen Passwort-Manager die 2FA für jedes einzelne Konto von Hand neu einrichten, was sehr mühsam ist."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -291,7 +291,7 @@
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Geheimer Schlüssel oder URL …"
+      "text": "Schlüssel oder URL …"
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Extrahieren Sie TOTP/HOTP-Schlüssel für Einmalpasswörter aus den 2FA-Export-QR-Codes von Google Authenticator oder LastPass. Läuft vollständig in Ihrem Browser; nichts wird hochgeladen."
+      "text": "Extrahieren Sie TOTP/HOTP-Einrichtungsschlüssel für Bestätigungscodes aus den 2FA-Export-QR-Codes von Google Authenticator oder LastPass. Läuft vollständig in Ihrem Browser; nichts wird hochgeladen."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Extraktor für Einmalpasswort-Schlüssel – Google Authenticator-Export"
+      "text": "Extraktor für Einrichtungsschlüssel – Google Authenticator-Export"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Hinweis: Alle Screenshots und heruntergeladenen Dateien enthalten Ihre geheimen Schlüssel unverschlüsselt.</strong> Bewahren Sie sie sicher auf oder löschen Sie sie, wenn Sie fertig sind. Dazu gehört auch das Löschen aus dem „Papierkorb“, aus „Zuletzt gelöscht“ und aus allen Foto-Backups in der Cloud."
+      "text": "<strong>Hinweis: Alle Screenshots und heruntergeladenen Dateien enthalten Ihre Schlüssel unverschlüsselt.</strong> Bewahren Sie sie sicher auf oder löschen Sie sie, wenn Sie fertig sind. Dazu gehört auch das Löschen aus dem „Papierkorb“, aus „Zuletzt gelöscht“ und aus allen Foto-Backups in der Cloud."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Aus Ihrer Einmalpasswort-App exportieren"
+      "text": "1. Aus Ihrer Authenticator-App exportieren"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "Sie können auch auf „Code eingeben“ klicken, um einen geheimen Schlüssel oder eine Einrichtungs-URL direkt als Text einzugeben. Dieses Tool zeigt dann Ihren ursprünglichen Einrichtungs-QR-Code an."
+      "text": "Sie können auch auf „Code eingeben“ klicken, um einen Schlüssel oder eine Einrichtungs-URL direkt als Text einzugeben. Dieses Tool zeigt dann Ihren ursprünglichen Einrichtungs-QR-Code an."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Geheime Schlüssel extrahieren"
+      "text": "2. Schlüssel extrahieren"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Dieses Tool kann auch einzelne Einrichtungs-QR-Codes aus jeder App lesen, oder eine Textdatei mit einem geheimen Schlüssel oder einer URL pro Zeile. So lassen sich geheime Schlüssel aus beliebigen Quellen leicht in scanbare QR-Codes umwandeln."
+      "text": "Dieses Tool kann auch einzelne Einrichtungs-QR-Codes aus jeder App lesen, oder eine Textdatei mit einem Schlüssel oder einer URL pro Zeile. So lassen sich Schlüssel aus beliebigen Quellen leicht in scanbare QR-Codes umwandeln."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Öffnen Sie dieses Tool auf Ihrem Computer oder einem zweiten Gerät und klicken Sie auf „QR scannen“, um die Export-QR-Codes auf Ihrem Smartphone direkt zu scannen. Das ist am bequemsten und vermeidet, dass Screenshots Ihrer geheimen Schlüssel gespeichert werden."
+      "text": "Öffnen Sie dieses Tool auf Ihrem Computer oder einem zweiten Gerät und klicken Sie auf „QR scannen“, um die Export-QR-Codes auf Ihrem Smartphone direkt zu scannen. Das ist am bequemsten und vermeidet, dass Screenshots Ihrer Schlüssel gespeichert werden."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Dieses Tool liest die QR-Codes aus der Exportfunktion von Google Authenticator oder LastPass Authenticator und gibt Ihnen den ursprünglichen geheimen Schlüssel jedes Kontos zurück. Mit diesen Schlüsseln können Sie Ihre Konten dann in jede andere Authenticator-App importieren."
+      "text": "Dieses Tool liest die QR-Codes aus der Exportfunktion von Google Authenticator oder LastPass Authenticator und gibt Ihnen den ursprünglichen Schlüssel jedes Kontos zurück. Mit diesen Schlüsseln können Sie Ihre Konten dann in jede andere Authenticator-App importieren."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "Das Tool zeigt die extrahierten OTP-Schlüssel an, jeweils mit eigenem QR-Code und geheimem Schlüssel."
+      "text": "Das Tool zeigt die extrahierten Einrichtungsschlüssel an, jeweils mit eigenem QR-Code und dem Schlüssel als Text."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Geheime Schlüssel verwenden"
+      "text": "3. Schlüssel verwenden"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Sie können diese geheimen Schlüssel jetzt in Ihre bevorzugte Authenticator-App oder Ihren Passwort-Manager importieren."
+      "text": "Sie können diese Schlüssel jetzt in Ihre bevorzugte Authenticator-App oder Ihren Passwort-Manager importieren."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Klicken Sie auf „Als CSV speichern“ oder „Als JSON speichern“, um eine Kopie Ihrer geheimen Schlüssel aufzubewahren. Sie können diese Dateien später hier wieder öffnen, um Ihre QR-Codes anzuzeigen."
+      "text": "Klicken Sie auf „Als CSV speichern“ oder „Als JSON speichern“, um eine Kopie Ihrer Schlüssel aufzubewahren. Sie können diese Dateien später hier wieder öffnen, um Ihre QR-Codes anzuzeigen."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Dieses Tool extrahiert die geheimen Schlüssel für Einmalpasswörter (OTP), also die Codes für die Zwei-Faktor-Authentifizierung (2FA), aus den Apps Google Authenticator oder LastPass Authenticator. Sie müssen keine Software installieren, und keine Daten verlassen jemals Ihr Gerät."
+      "text": "Dieses Tool extrahiert die Einrichtungsschlüssel für Bestätigungscodes (OTP), also die Codes für die 2-Faktor-Authentifizierung (2FA), aus den Apps Google Authenticator oder LastPass Authenticator. Sie müssen keine Software installieren, und keine Daten verlassen jemals Ihr Gerät."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>Die gesamte Verarbeitung Ihrer QR-Codes und geheimen Schlüssel erfolgt vollständig offline, lokal, direkt hier in Ihrem Browser.</strong>"
+      "text": "<strong>Die gesamte Verarbeitung Ihrer QR-Codes und Schlüssel erfolgt vollständig offline, lokal, direkt hier in Ihrem Browser.</strong>"
     }
   },
   "messages": {
@@ -664,8 +664,8 @@
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "{count} geheimer Schlüssel extrahiert.",
-        "other": "{count} geheime Schlüssel extrahiert."
+        "one": "{count} Schlüssel extrahiert.",
+        "other": "{count} Schlüssel extrahiert."
       }
     },
     "log.manualInput": {
@@ -678,11 +678,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "Keine OTP-Schlüssel gefunden."
+      "text": "Keine Schlüssel gefunden."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "Keine OTP-Schlüssel im QR-Code gefunden."
+      "text": "Keine Schlüssel im QR-Code gefunden."
     },
     "results.notAvailable": {
       "source": "67a926f700",
