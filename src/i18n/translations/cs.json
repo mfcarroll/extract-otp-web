@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Extraktor tajných klíčů jednorázových hesel"
+      "text": "Extraktor klíčů pro nastavení ověřovacích kódů"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Kopírovat tajný klíč"
+      "text": "Kopírovat klíč"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Tajný klíč:"
+      "text": "Klíč:"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Tento nástroj vytvořil <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, vývojář, kterého frustroval proces přenášení kódů OTP z Google Authenticator do 1Password."
+      "text": "Tento nástroj vytvořil <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, vývojář, kterého frustroval proces přenášení ověřovacích kódů z Google Authenticator do 1Password."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator ztěžuje zobrazení původních tajných klíčů použitých k nastavení vašich účtů. Místo toho nabízí exportní QR kód, který sdružuje všechny vaše účty dohromady. To usnadňuje přenos do nového zařízení, ale ztěžuje přechod na jinou ověřovací aplikaci. LastPass sice poskytuje samostatné QR kódy pro každý účet, což je obrovské zlepšení, ale textové tajné klíče poskytuje pouze ve formátu JSON. Naproti tomu aplikace jako 1Password zpřístupňují původní tajné klíče snadno, což umožňuje jednoduchý přenos do jiných aplikací 2FA."
+      "text": "Google Authenticator ztěžuje zobrazení původních klíčů použitých k nastavení vašich účtů. Místo toho nabízí exportní QR kód, který sdružuje všechny vaše účty dohromady. To usnadňuje přenos do nového zařízení, ale ztěžuje přechod na jinou ověřovací aplikaci. LastPass sice poskytuje samostatné QR kódy pro každý účet, což je obrovské zlepšení, ale textové klíče poskytuje pouze ve formátu JSON. Naproti tomu aplikace jako 1Password zpřístupňují původní klíče snadno, což umožňuje jednoduchý přenos do jiných aplikací 2FA."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Naskenujete fotoaparátem QR kódy z funkce exportu v aplikaci Google Authenticator nebo LastPass Authenticator, nebo použijete jejich snímky obrazovky (případně exportní soubor z LastPass). Tento nástroj tyto QR kódy načte – přímo zde ve vašem prohlížeči – a vrátí vám původní tajný klíč každého účtu. Tyto tajné klíče pak můžete použít k importu účtů do jakékoli jiné ověřovací aplikace."
+      "text": "Naskenujete fotoaparátem QR kódy z funkce exportu v aplikaci Google Authenticator nebo LastPass Authenticator, nebo použijete jejich snímky obrazovky (případně exportní soubor z LastPass). Tento nástroj tyto QR kódy načte – přímo zde ve vašem prohlížeči – a vrátí vám původní klíč každého účtu. Tyto klíče pak můžete použít k importu účtů do jakékoli jiné ověřovací aplikace."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Ano. Zabezpečení a soukromí mají nejvyšší prioritu. <strong>Nic z toho, co zde děláte, nikdy neopustí váš počítač ani mobilní zařízení.</strong> Veškeré zpracování probíhá lokálně, offline, přímo ve vašem prohlížeči. Obrázky vašich QR kódů a tajné klíče se nikdy neodesílají na žádný server."
+      "text": "Ano. Zabezpečení a soukromí mají nejvyšší prioritu. <strong>Nic z toho, co zde děláte, nikdy neopustí váš počítač ani mobilní zařízení.</strong> Veškeré zpracování probíhá lokálně, offline, přímo ve vašem prohlížeči. Obrázky vašich QR kódů a klíče se nikdy neodesílají na žádný server."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> pro kódování tajných klíčů OTP do Base32."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> pro kódování klíčů OTP do Base32."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Google Authenticator umožňuje přenést účty do nového telefonu, ale nenabízí snadný způsob, jak je exportovat do jiných aplikací, jako je 1Password nebo Bitwarden. Je to proto, že u každého účtu skrývá původní „tajný klíč“ (QR kód, který jste na začátku naskenovali)."
+      "text": "Google Authenticator umožňuje přenést účty do nového telefonu, ale nenabízí snadný způsob, jak je exportovat do jiných aplikací, jako je 1Password nebo Bitwarden. Je to proto, že u každého účtu skrývá původní „klíč“ (QR kód, který jste na začátku naskenovali)."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Bez těchto tajných klíčů znamená přechod na nového správce hesel ruční opětovné nastavení 2FA u každého jednotlivého účtu, což je obrovská otrava."
+      "text": "Bez těchto klíčů znamená přechod na nového správce hesel ruční opětovné nastavení 2FA u každého jednotlivého účtu, což je obrovská otrava."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Vložte adresu URL <code>otpauth://</code> nebo nezpracovaný tajný klíč Base32 (např. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Vložte adresu URL <code>otpauth://</code> nebo nezpracovaný klíč Base32 (např. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Tajný klíč nebo URL..."
+      "text": "Klíč nebo URL..."
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Extrahujte tajné klíče jednorázových hesel TOTP/HOTP z exportních QR kódů 2FA z Google Authenticator nebo LastPass. Běží zcela ve vašem prohlížeči; nic se neodesílá na server."
+      "text": "Extrahujte klíče pro nastavení ověřovacích kódů TOTP/HOTP z exportních QR kódů 2FA z Google Authenticator nebo LastPass. Běží zcela ve vašem prohlížeči; nic se neodesílá na server."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Extraktor tajných klíčů jednorázových hesel – export z Google Authenticator"
+      "text": "Extraktor klíčů pro nastavení ověřovacích kódů – export z Google Authenticator"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Poznámka: Všechny snímky obrazovky a stažené soubory obsahují vaše nešifrované tajné klíče.</strong> Nezapomeňte je bezpečně uložit, nebo je po dokončení smažte. To zahrnuje i jejich smazání ze složky „Koš“ (v macOS i Windows), z alba „Nedávno smazané“ a ze všech cloudových záloh fotografií."
+      "text": "<strong>Poznámka: Všechny snímky obrazovky a stažené soubory obsahují vaše nešifrované klíče.</strong> Nezapomeňte je bezpečně uložit, nebo je po dokončení smažte. To zahrnuje i jejich smazání ze složky „Koš“ (v macOS i Windows), z alba „Nedávno smazané“ a ze všech cloudových záloh fotografií."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Exportujte účty z aplikace pro jednorázová hesla"
+      "text": "1. Exportujte účty z aplikace pro ověřovací kódy"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "Můžete také kliknout na „Zadat kód“ a zadat tajný klíč nebo adresu URL pro nastavení přímo jako text; tento nástroj pak zobrazí váš původní QR kód pro nastavení."
+      "text": "Můžete také kliknout na „Zadat kód“ a zadat klíč nebo adresu URL pro nastavení přímo jako text; tento nástroj pak zobrazí váš původní QR kód pro nastavení."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Extrahujte tajné klíče"
+      "text": "2. Extrahujte klíče"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Tento nástroj umí také načíst jednotlivé QR kódy pro nastavení z libovolné aplikace nebo textový soubor s jedním tajným klíčem či adresou URL na každém řádku. Díky tomu snadno převedete tajné klíče odkudkoli na QR kódy, které lze naskenovat."
+      "text": "Tento nástroj umí také načíst jednotlivé QR kódy pro nastavení z libovolné aplikace nebo textový soubor s jedním klíčem či adresou URL na každém řádku. Díky tomu snadno převedete klíče odkudkoli na QR kódy, které lze naskenovat."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Otevřete tento nástroj v počítači nebo na druhém zařízení a klikněte na „Skenovat QR“, abyste přímo naskenovali exportní QR kódy zobrazené v telefonu. Je to nejpohodlnější možnost a vyhnete se tak ukládání snímků obrazovky s vašimi tajnými klíči."
+      "text": "Otevřete tento nástroj v počítači nebo na druhém zařízení a klikněte na „Skenovat QR“, abyste přímo naskenovali exportní QR kódy zobrazené v telefonu. Je to nejpohodlnější možnost a vyhnete se tak ukládání snímků obrazovky s vašimi klíči."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Tento nástroj načte QR kódy z funkce exportu v aplikaci Google Authenticator nebo LastPass Authenticator a vrátí vám původní tajný klíč každého účtu. Tyto tajné klíče pak můžete použít k importu účtů do jakékoli jiné ověřovací aplikace."
+      "text": "Tento nástroj načte QR kódy z funkce exportu v aplikaci Google Authenticator nebo LastPass Authenticator a vrátí vám původní klíč každého účtu. Tyto klíče pak můžete použít k importu účtů do jakékoli jiné ověřovací aplikace."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "Nástroj zobrazí extrahované tajné klíče OTP, každý s vlastním QR kódem a tajným klíčem."
+      "text": "Nástroj zobrazí extrahované klíče pro nastavení, každý s vlastním QR kódem a textem klíče."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Použijte tajné klíče"
+      "text": "3. Použijte klíče"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Nyní můžete tyto tajné klíče importovat do své oblíbené ověřovací aplikace nebo správce hesel."
+      "text": "Nyní můžete tyto klíče importovat do své oblíbené ověřovací aplikace nebo správce hesel."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Kliknutím na „Uložit jako CSV“ nebo „Uložit jako JSON“ si uložíte kopii tajných klíčů. Tyto soubory můžete později znovu otevřít zde a zobrazit své QR kódy."
+      "text": "Kliknutím na „Uložit jako CSV“ nebo „Uložit jako JSON“ si uložíte kopii klíčů. Tyto soubory můžete později znovu otevřít zde a zobrazit své QR kódy."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Tento nástroj extrahuje tajné klíče jednorázových hesel (OTP), tedy kódů používaných pro dvoufázové ověření (2FA), z aplikací Google Authenticator nebo LastPass Authenticator. Není třeba instalovat žádný software a žádná data nikdy neopustí vaše zařízení."
+      "text": "Tento nástroj extrahuje klíče pro nastavení ověřovacích kódů (OTP), tedy kódů používaných pro dvoufázové ověření (2FA), z aplikací Google Authenticator nebo LastPass Authenticator. Není třeba instalovat žádný software a žádná data nikdy neopustí vaše zařízení."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>Veškeré zpracování vašich QR kódů a tajných klíčů probíhá zcela offline, lokálně, přímo zde ve vašem prohlížeči.</strong>"
+      "text": "<strong>Veškeré zpracování vašich QR kódů a klíčů probíhá zcela offline, lokálně, přímo zde ve vašem prohlížeči.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "Vstup musí být platná adresa URL OTP, JSON z LastPass nebo tajný klíč Base32 o délce alespoň 16 znaků (písmena A–Z, číslice 2–7)."
+      "text": "Vstup musí být platná adresa URL OTP, JSON z LastPass nebo klíč Base32 o délce alespoň 16 znaků (písmena A–Z, číslice 2–7)."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -659,19 +659,19 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "one": "Přeskočen {count} duplicitní tajný klíč.",
-        "few": "Přeskočeny {count} duplicitní tajné klíče.",
-        "many": "Přeskočeno {count} duplicitního tajného klíče.",
-        "other": "Přeskočeno {count} duplicitních tajných klíčů."
+        "one": "Přeskočen {count} duplicitní klíč.",
+        "few": "Přeskočeny {count} duplicitní klíče.",
+        "many": "Přeskočeno {count} duplicitního klíče.",
+        "other": "Přeskočeno {count} duplicitních klíčů."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "Extrahován {count} tajný klíč.",
-        "few": "Extrahovány {count} tajné klíče.",
-        "many": "Extrahováno {count} tajného klíče.",
-        "other": "Extrahováno {count} tajných klíčů."
+        "one": "Extrahován {count} klíč.",
+        "few": "Extrahovány {count} klíče.",
+        "many": "Extrahováno {count} klíče.",
+        "other": "Extrahováno {count} klíčů."
       }
     },
     "log.manualInput": {
@@ -684,11 +684,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "Nebyly nalezeny žádné tajné klíče OTP."
+      "text": "Nebyly nalezeny žádné klíče OTP."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "V QR kódu nebyly nalezeny žádné tajné klíče OTP."
+      "text": "V QR kódu nebyly nalezeny žádné klíče OTP."
     },
     "results.notAvailable": {
       "source": "67a926f700",
