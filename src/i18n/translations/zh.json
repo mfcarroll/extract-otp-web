@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "一次性密码密钥提取器"
+      "text": "验证码设置密钥提取器"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "由 <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> 开发。他在把 OTP 从 Google Authenticator 迁移到 1Password 时感到流程太繁琐，于是做了这个工具。"
+      "text": "由 <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> 开发。他在把 OTP 验证码从 Google Authenticator 迁移到 1Password 时感到流程太繁琐，于是做了这个工具。"
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "从 Google Authenticator 或 LastPass 的 2FA 导出二维码中提取 TOTP/HOTP 一次性密码密钥。全部在浏览器中运行，不会上传任何内容。"
+      "text": "从 Google Authenticator 或 LastPass 的 2FA 导出二维码中提取 TOTP/HOTP 验证码的设置密钥。全部在浏览器中运行，不会上传任何内容。"
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "一次性密码密钥提取器 – Google Authenticator 导出"
+      "text": "验证码设置密钥提取器 – Google Authenticator 导出"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. 从你的一次性密码应用导出"
+      "text": "1. 从你的验证码应用导出"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -471,7 +471,7 @@
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "本工具可以从 Google Authenticator 或 LastPass Authenticator 应用中提取一次性密码（OTP）密钥，也就是用于双重身份验证（2FA）的代码。无需安装任何软件，任何数据都不会离开你的设备。"
+      "text": "本工具可以从 Google Authenticator 或 LastPass Authenticator 应用中提取验证码（OTP）的设置密钥，也就是用于两步验证（2FA）的验证码。无需安装任何软件，任何数据都不会离开你的设备。"
     },
     "what.offline": {
       "source": "1dd726e3e6",
