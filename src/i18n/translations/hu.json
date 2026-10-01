@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Egyszer használatos jelszavak titkos kulcsainak kinyerése"
+      "text": "Beállítási kulcsok kinyerése"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Titkos kulcs másolása"
+      "text": "Kulcs másolása"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Titkos kulcs:"
+      "text": "Kulcs:"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Ezt az eszközt <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> készítette, egy fejlesztő, akit bosszantott, milyen nehézkes az OTP-kódok áttelepítése a Google Authenticatorból a 1Passwordbe."
+      "text": "Ezt az eszközt <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> készítette, egy fejlesztő, akit bosszantott, milyen nehézkes az ellenőrző kódok áttelepítése a Google Authenticatorból a 1Passwordbe."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "A Google Authenticator megnehezíti a fiókjai beállításához használt eredeti titkos kulcsok megtekintését. Ehelyett egy exportálási QR-kódot biztosít, amely az összes fiókját egybecsomagolja. Így könnyű átvinni őket egy új eszközre, de nehéz másik hitelesítő alkalmazásra váltani. A LastPass minden fiókhoz külön QR-kódot biztosít, ami óriási előrelépés, de a titkos kulcsokat szövegként csak JSON-formátumban adja meg. Ezzel szemben az olyan alkalmazások, mint a 1Password, könnyen hozzáférhetővé teszik az eredeti titkos kulcsokat, így egyszerűen átvihetők más 2FA-alkalmazásokba."
+      "text": "A Google Authenticator megnehezíti a fiókjai beállításához használt eredeti kulcsok megtekintését. Ehelyett egy exportálási QR-kódot biztosít, amely az összes fiókját egybecsomagolja. Így könnyű átvinni őket egy új eszközre, de nehéz másik hitelesítő alkalmazásra váltani. A LastPass minden fiókhoz külön QR-kódot biztosít, ami óriási előrelépés, de a kulcsokat szövegként csak JSON-formátumban adja meg. Ezzel szemben az olyan alkalmazások, mint a 1Password, könnyen hozzáférhetővé teszik az eredeti kulcsokat, így egyszerűen átvihetők más 2FA-alkalmazásokba."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "A Google Authenticator vagy a LastPass Authenticator exportálási funkciójával létrehozott QR-kódokat beolvassa a kamerájával, vagy képernyőképeket ad meg róluk (vagy egy LastPass-exportfájlt). Ez az eszköz beolvassa ezeket a QR-kódokat – itt, az Ön böngészőjében –, és visszaadja az egyes fiókok eredeti titkos kulcsát. Ezekkel a titkos kulcsokkal aztán bármely más hitelesítő alkalmazásba importálhatja a fiókjait."
+      "text": "A Google Authenticator vagy a LastPass Authenticator exportálási funkciójával létrehozott QR-kódokat beolvassa a kamerájával, vagy képernyőképeket ad meg róluk (vagy egy LastPass-exportfájlt). Ez az eszköz beolvassa ezeket a QR-kódokat – itt, az Ön böngészőjében –, és visszaadja az egyes fiókok eredeti kulcsát. Ezekkel a kulcsokkal aztán bármely más hitelesítő alkalmazásba importálhatja a fiókjait."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Igen. A biztonság és az adatvédelem a legfontosabb szempont. <strong>Semmi, amit itt tesz, soha nem hagyja el a számítógépét vagy mobileszközét.</strong> A teljes feldolgozás helyben, offline, közvetlenül a böngészőjében történik. A QR-kódjairól készült képek és a titkos kulcsai soha nem jutnak el semmilyen szerverre."
+      "text": "Igen. A biztonság és az adatvédelem a legfontosabb szempont. <strong>Semmi, amit itt tesz, soha nem hagyja el a számítógépét vagy mobileszközét.</strong> A teljes feldolgozás helyben, offline, közvetlenül a böngészőjében történik. A QR-kódjairól készült képek és a kulcsai soha nem jutnak el semmilyen szerverre."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> az OTP titkos kulcsok Base32-kódolásához."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> a kulcsok Base32-kódolásához."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "A Google Authenticator lehetővé teszi, hogy a fiókjait új telefonra vigye át, de nem kínál egyszerű módot arra, hogy más alkalmazásokba, például a 1Passwordbe vagy a Bitwardenbe exportálja őket. Ennek oka, hogy minden fióknál elrejti az eredeti „titkos kulcsot” (azt a QR-kódot, amelyet eredetileg beolvasott)."
+      "text": "A Google Authenticator lehetővé teszi, hogy a fiókjait új telefonra vigye át, de nem kínál egyszerű módot arra, hogy más alkalmazásokba, például a 1Passwordbe vagy a Bitwardenbe exportálja őket. Ennek oka, hogy minden fióknál elrejti az eredeti „beállítási kulcsot” (azt a QR-kódot, amelyet eredetileg beolvasott)."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "E titkos kulcsok nélkül az új jelszókezelőre való áttérés azt jelenti, hogy minden egyes fióknál kézzel kell újra beállítania a 2FA-t, ami rengeteg bosszúsággal jár."
+      "text": "E kulcsok nélkül az új jelszókezelőre való áttérés azt jelenti, hogy minden egyes fióknál kézzel kell újra beállítania a 2FA-t, ami rengeteg bosszúsággal jár."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Illesszen be egy <code>otpauth://</code> URL-t vagy egy nyers Base32 titkos kulcsot (pl. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Illesszen be egy <code>otpauth://</code> URL-t vagy egy nyers Base32 kulcsot (pl. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Titkos kulcs vagy URL..."
+      "text": "Kulcs vagy URL..."
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Kinyerheti a TOTP/HOTP egyszer használatos jelszavak titkos kulcsait a Google Authenticator vagy a LastPass 2FA-exportálási QR-kódjaiból. Teljes egészében a böngészőjében fut; semmit sem küld el szerverre."
+      "text": "Kinyerheti a TOTP/HOTP beállítási kulcsokat a Google Authenticator vagy a LastPass 2FA-exportálási QR-kódjaiból. Teljes egészében a böngészőjében fut; semmit sem küld el szerverre."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Egyszer használatos jelszavak titkos kulcsainak kinyerése – Google Authenticator-exportálás"
+      "text": "Beállítási kulcsok kinyerése – Google Authenticator-exportálás"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Megjegyzés: a képernyőképek és a letöltött fájlok titkosítatlanul tartalmazzák a titkos kulcsait.</strong> Feltétlenül tárolja őket biztonságosan, vagy törölje őket, ha végzett. Ez magában foglalja a törlésüket a „Kuka”, a „Lomtár”, a „Nemrég törölt” mappából és minden felhőalapú fotó-biztonsági mentésből is."
+      "text": "<strong>Megjegyzés: a képernyőképek és a letöltött fájlok titkosítatlanul tartalmazzák a kulcsait.</strong> Feltétlenül tárolja őket biztonságosan, vagy törölje őket, ha végzett. Ez magában foglalja a törlésüket a „Kuka”, a „Lomtár”, a „Nemrég törölt” mappából és minden felhőalapú fotó-biztonsági mentésből is."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Exportálás az egyszer használatos jelszavakat kezelő alkalmazásból"
+      "text": "1. Exportálás az ellenőrző kódokat kezelő alkalmazásból"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "A „Kód megadása” gombra kattintva egy titkos kulcsot vagy beállítási URL-t közvetlenül szövegként is megadhat, és ez az eszköz megjeleníti az eredeti beállítási QR-kódját."
+      "text": "A „Kód megadása” gombra kattintva egy kulcsot vagy beállítási URL-t közvetlenül szövegként is megadhat, és ez az eszköz megjeleníti az eredeti beállítási QR-kódját."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. A titkos kulcsok kinyerése"
+      "text": "2. A kulcsok kinyerése"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Ez az eszköz bármely alkalmazás egyedi beállítási QR-kódjait is be tudja olvasni, illetve olyan szövegfájlt is, amely soronként egy titkos kulcsot vagy URL-t tartalmaz. Így bárhonnan származó titkos kulcsokat könnyen beolvasható QR-kódokká alakíthat."
+      "text": "Ez az eszköz bármely alkalmazás egyedi beállítási QR-kódjait is be tudja olvasni, illetve olyan szövegfájlt is, amely soronként egy kulcsot vagy URL-t tartalmaz. Így bárhonnan származó kulcsokat könnyen beolvasható QR-kódokká alakíthat."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Nyissa meg ezt az eszközt a számítógépén vagy egy másik eszközön, és kattintson a „QR beolvasása” gombra, hogy közvetlenül a telefonjáról olvassa be az exportálási QR-kódokat. Ez a legkényelmesebb megoldás, és így elkerülheti, hogy képernyőképeket tároljon a titkos kulcsairól."
+      "text": "Nyissa meg ezt az eszközt a számítógépén vagy egy másik eszközön, és kattintson a „QR beolvasása” gombra, hogy közvetlenül a telefonjáról olvassa be az exportálási QR-kódokat. Ez a legkényelmesebb megoldás, és így elkerülheti, hogy képernyőképeket tároljon a kulcsairól."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Ez az eszköz beolvassa a Google Authenticator vagy a LastPass Authenticator exportálási funkciójával létrehozott QR-kódokat, és visszaadja az egyes fiókok eredeti titkos kulcsát. Ezekkel a titkos kulcsokkal aztán bármely más hitelesítő alkalmazásba importálhatja a fiókjait."
+      "text": "Ez az eszköz beolvassa a Google Authenticator vagy a LastPass Authenticator exportálási funkciójával létrehozott QR-kódokat, és visszaadja az egyes fiókok eredeti kulcsát. Ezekkel a kulcsokkal aztán bármely más hitelesítő alkalmazásba importálhatja a fiókjait."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "Az eszköz megjeleníti a kinyert OTP titkos kulcsokat, mindegyiket saját QR-kóddal és titkos kulccsal."
+      "text": "Az eszköz megjeleníti a kinyert beállítási kulcsokat, mindegyiket saját QR-kóddal és a kulcs szövegével."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. A titkos kulcsok használata"
+      "text": "3. A kulcsok használata"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Most már importálhatja ezeket a titkos kulcsokat a kívánt hitelesítő alkalmazásba vagy jelszókezelőbe."
+      "text": "Most már importálhatja ezeket a kulcsokat a kívánt hitelesítő alkalmazásba vagy jelszókezelőbe."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Kattintson a „Mentés CSV-ként” vagy a „Mentés JSON-ként” gombra, hogy másolatot őrizzen meg a titkos kulcsairól. Ezeket a fájlokat később itt újra megnyithatja a QR-kódjai megjelenítéséhez."
+      "text": "Kattintson a „Mentés CSV-ként” vagy a „Mentés JSON-ként” gombra, hogy másolatot őrizzen meg a kulcsairól. Ezeket a fájlokat később itt újra megnyithatja a QR-kódjai megjelenítéséhez."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Ez az eszköz kinyeri az egyszer használatos jelszavak (OTP) titkos kulcsait – a kétfaktoros hitelesítéshez (2FA) használt kódokat – a Google Authenticator vagy a LastPass Authenticator alkalmazásból. Nem kell semmilyen szoftvert telepítenie, és semmilyen adat soha nem hagyja el az eszközét."
+      "text": "Ez az eszköz kinyeri a kétlépcsős azonosításhoz (2FA) használt ellenőrző kódok (OTP) beállítási kulcsait a Google Authenticator vagy a LastPass Authenticator alkalmazásból. Nem kell semmilyen szoftvert telepítenie, és semmilyen adat soha nem hagyja el az eszközét."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>A QR-kódjai és titkos kulcsai feldolgozásának minden lépése teljes egészében offline, helyben, itt, az Ön böngészőjében történik.</strong>"
+      "text": "<strong>A QR-kódjai és kulcsai feldolgozásának minden lépése teljes egészében offline, helyben, itt, az Ön böngészőjében történik.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "A bevitt adatnak érvényes OTP URL-nek, LastPass JSON-nak vagy legalább 16 karakteres Base32 titkos kulcsnak kell lennie (A–Z betűk, 2–7 számjegyek)."
+      "text": "A bevitt adatnak érvényes OTP URL-nek, LastPass JSON-nak vagy legalább 16 karakteres Base32 kulcsnak kell lennie (A–Z betűk, 2–7 számjegyek)."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -657,15 +657,15 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "one": "{count} ismétlődő titkos kulcs kihagyva.",
-        "other": "{count} ismétlődő titkos kulcs kihagyva."
+        "one": "{count} ismétlődő kulcs kihagyva.",
+        "other": "{count} ismétlődő kulcs kihagyva."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "{count} titkos kulcs kinyerve.",
-        "other": "{count} titkos kulcs kinyerve."
+        "one": "{count} kulcs kinyerve.",
+        "other": "{count} kulcs kinyerve."
       }
     },
     "log.manualInput": {
@@ -678,11 +678,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "Nem található OTP titkos kulcs."
+      "text": "Nem található kulcs."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "Nem található OTP titkos kulcs a QR-kódban."
+      "text": "Nem található kulcs a QR-kódban."
     },
     "results.notAvailable": {
       "source": "67a926f700",
