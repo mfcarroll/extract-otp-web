@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Tek Kullanımlık Şifre Gizli Anahtar Çıkarıcı"
+      "text": "Doğrulama Kodu Kurulum Anahtarı Çıkarıcı"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Gizli anahtarı kopyala"
+      "text": "Anahtarı kopyala"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Gizli anahtar:"
+      "text": "Anahtar:"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Bu araç, OTP kodlarını Google Authenticator'dan 1Password'e taşıma sürecinden bıkan bir geliştirici olan <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> tarafından oluşturuldu."
+      "text": "Bu araç, doğrulama kodlarını Google Authenticator'dan 1Password'e taşıma sürecinden bıkan bir geliştirici olan <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a> tarafından oluşturuldu."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator, hesaplarınızı kurmak için kullanılan orijinal gizli anahtarları görmeyi zorlaştırır. Bunun yerine, tüm hesaplarınızı bir araya getiren bir dışa aktarma QR kodu sunar. Bu, yeni bir cihaza geçmeyi kolaylaştırır ancak başka bir kimlik doğrulama uygulamasına geçmeyi zorlaştırır. LastPass her hesap için ayrı bir QR kodu sunar; bu büyük bir iyileştirmedir, ancak gizli anahtarları metin olarak yalnızca JSON biçiminde sağlar. Buna karşılık 1Password gibi uygulamalar orijinal gizli anahtarlara kolayca erişilmesini sağlar ve diğer 2FA uygulamalarına geçişi kolaylaştırır."
+      "text": "Google Authenticator, hesaplarınızı kurmak için kullanılan orijinal anahtarları görmeyi zorlaştırır. Bunun yerine, tüm hesaplarınızı bir araya getiren bir dışa aktarma QR kodu sunar. Bu, yeni bir cihaza geçmeyi kolaylaştırır ancak başka bir kimlik doğrulama uygulamasına geçmeyi zorlaştırır. LastPass her hesap için ayrı bir QR kodu sunar; bu büyük bir iyileştirmedir, ancak anahtarları metin olarak yalnızca JSON biçiminde sağlar. Buna karşılık 1Password gibi uygulamalar orijinal anahtarlara kolayca erişilmesini sağlar ve diğer 2FA uygulamalarına geçişi kolaylaştırır."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Google Authenticator veya LastPass Authenticator'ın dışa aktarma özelliğindeki QR kodlarını kameranızla tararsınız ya da bunların ekran görüntülerini (veya bir LastPass dışa aktarma dosyasını) sağlarsınız. Bu araç o QR kodlarını —burada, tarayıcınızda— okur ve her hesabın orijinal gizli anahtarını size geri verir. Ardından bu gizli anahtarlarla hesaplarınızı başka herhangi bir kimlik doğrulama uygulamasına aktarabilirsiniz."
+      "text": "Google Authenticator veya LastPass Authenticator'ın dışa aktarma özelliğindeki QR kodlarını kameranızla tararsınız ya da bunların ekran görüntülerini (veya bir LastPass dışa aktarma dosyasını) sağlarsınız. Bu araç o QR kodlarını —burada, tarayıcınızda— okur ve her hesabın orijinal kurulum anahtarını size geri verir. Ardından bu anahtarlarla hesaplarınızı başka herhangi bir kimlik doğrulama uygulamasına aktarabilirsiniz."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Evet. Güvenlik ve gizlilik en önemli önceliklerdir. <strong>Burada yaptığınız hiçbir şey bilgisayarınızdan veya mobil cihazınızdan asla dışarı çıkmaz.</strong> Tüm işlemler yerel olarak, çevrimdışı, doğrudan tarayıcınızda gerçekleşir. QR kodu görüntüleriniz ve gizli anahtarlarınız hiçbir zaman hiçbir sunucuya gönderilmez."
+      "text": "Evet. Güvenlik ve gizlilik en önemli önceliklerdir. <strong>Burada yaptığınız hiçbir şey bilgisayarınızdan veya mobil cihazınızdan asla dışarı çıkmaz.</strong> Tüm işlemler yerel olarak, çevrimdışı, doğrudan tarayıcınızda gerçekleşir. QR kodu görüntüleriniz ve anahtarlarınız hiçbir zaman hiçbir sunucuya gönderilmez."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>: OTP gizli anahtarlarını Base32 ile kodlamak için."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>: OTP anahtarlarını Base32 ile kodlamak için."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Google Authenticator hesaplarınızı yeni bir telefona aktarmanıza izin verir, ancak bunları 1Password veya Bitwarden gibi başka uygulamalara aktarmanın kolay bir yolunu sunmaz. Bunun nedeni, her hesabın orijinal “gizli anahtarını” (ilk başta taradığınız QR kodunu) gizlemesidir."
+      "text": "Google Authenticator hesaplarınızı yeni bir telefona aktarmanıza izin verir, ancak bunları 1Password veya Bitwarden gibi başka uygulamalara aktarmanın kolay bir yolunu sunmaz. Bunun nedeni, her hesabın orijinal “kurulum anahtarını” (ilk başta taradığınız QR kodunu) gizlemesidir."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Bu gizli anahtarlar olmadan yeni bir parola yöneticisine geçmek, her hesap için 2FA'yı elle yeniden kurmak demektir ve bu çok zahmetlidir."
+      "text": "Bu anahtarlar olmadan yeni bir parola yöneticisine geçmek, her hesap için 2FA'yı elle yeniden kurmak demektir ve bu çok zahmetlidir."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Bir <code>otpauth://</code> URL'si veya ham Base32 gizli anahtarı yapıştırın (ör. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Bir <code>otpauth://</code> URL'si veya ham Base32 anahtarı yapıştırın (ör. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Gizli anahtar veya URL…"
+      "text": "Anahtar veya URL…"
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Google Authenticator veya LastPass 2FA dışa aktarma QR kodlarından TOTP/HOTP tek kullanımlık şifre gizli anahtarlarını çıkarın. Tamamen tarayıcınızda çalışır; hiçbir şey sunucuya yüklenmez."
+      "text": "Google Authenticator veya LastPass 2FA dışa aktarma QR kodlarından TOTP/HOTP doğrulama kodu kurulum anahtarlarını çıkarın. Tamamen tarayıcınızda çalışır; hiçbir şey sunucuya yüklenmez."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Tek Kullanımlık Şifre Gizli Anahtar Çıkarıcı – Google Authenticator Dışa Aktarımı"
+      "text": "Doğrulama Kodu Kurulum Anahtarı Çıkarıcı – Google Authenticator Dışa Aktarımı"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Not: Tüm ekran görüntüleri ve indirilen dosyalar, gizli anahtarlarınızı şifrelenmemiş olarak içerir.</strong> Bunları güvenli bir yerde saklayın veya işiniz bittiğinde silin. Buna “Çöp Kutusu”, “Geri Dönüşüm Kutusu”, “Son Silinenler” ve tüm bulut fotoğraf yedeklerinden silmek de dahildir."
+      "text": "<strong>Not: Tüm ekran görüntüleri ve indirilen dosyalar, anahtarlarınızı şifrelenmemiş olarak içerir.</strong> Bunları güvenli bir yerde saklayın veya işiniz bittiğinde silin. Buna “Çöp Kutusu”, “Geri Dönüşüm Kutusu”, “Son Silinenler” ve tüm bulut fotoğraf yedeklerinden silmek de dahildir."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Tek kullanımlık şifre uygulamanızdan dışa aktarın"
+      "text": "1. Doğrulama kodu uygulamanızdan dışa aktarın"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "Ayrıca “Kod gir” düğmesine tıklayarak bir gizli anahtarı veya kurulum URL'sini doğrudan metin olarak girebilirsiniz; bu araç orijinal kurulum QR kodunuzu gösterir."
+      "text": "Ayrıca “Kod gir” düğmesine tıklayarak bir kurulum anahtarını veya kurulum URL'sini doğrudan metin olarak girebilirsiniz; bu araç orijinal kurulum QR kodunuzu gösterir."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Gizli anahtarları çıkarın"
+      "text": "2. Kurulum anahtarlarını çıkarın"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Bu araç, herhangi bir uygulamanın tek tek kurulum QR kodlarını veya her satırda bir gizli anahtar ya da URL bulunan bir metin dosyasını da okuyabilir. Böylece her yerden gelen gizli anahtarları taranabilir QR kodlarına kolayca dönüştürebilirsiniz."
+      "text": "Bu araç, herhangi bir uygulamanın tek tek kurulum QR kodlarını veya her satırda bir anahtar ya da URL bulunan bir metin dosyasını da okuyabilir. Böylece her yerden gelen anahtarları taranabilir QR kodlarına kolayca dönüştürebilirsiniz."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Bu aracı bilgisayarınızda veya ikinci bir cihazda açın ve telefonunuzdaki dışa aktarma QR kodlarını doğrudan taramak için “QR tara” düğmesine tıklayın. Bu en pratik yöntemdir ve gizli anahtarlarınızın ekran görüntülerini saklamanıza gerek kalmaz."
+      "text": "Bu aracı bilgisayarınızda veya ikinci bir cihazda açın ve telefonunuzdaki dışa aktarma QR kodlarını doğrudan taramak için “QR tara” düğmesine tıklayın. Bu en pratik yöntemdir ve anahtarlarınızın ekran görüntülerini saklamanıza gerek kalmaz."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Bu araç, Google Authenticator veya LastPass Authenticator'ın dışa aktarma özelliğindeki QR kodlarını okur ve her hesabın orijinal gizli anahtarını size geri verir. Ardından bu gizli anahtarlarla hesaplarınızı başka herhangi bir kimlik doğrulama uygulamasına aktarabilirsiniz."
+      "text": "Bu araç, Google Authenticator veya LastPass Authenticator'ın dışa aktarma özelliğindeki QR kodlarını okur ve her hesabın orijinal kurulum anahtarını size geri verir. Ardından bu anahtarlarla hesaplarınızı başka herhangi bir kimlik doğrulama uygulamasına aktarabilirsiniz."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "Araç, çıkarılan OTP gizli anahtarlarını, her birini kendi QR kodu ve gizli anahtarıyla birlikte gösterir."
+      "text": "Araç, çıkarılan kurulum anahtarlarını, her birini kendi QR kodu ve anahtar metniyle birlikte gösterir."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Gizli anahtarlarınızı kullanın"
+      "text": "3. Kurulum anahtarlarınızı kullanın"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Artık bu gizli anahtarları tercih ettiğiniz kimlik doğrulama uygulamasına veya parola yöneticisine aktarabilirsiniz."
+      "text": "Artık bu anahtarları tercih ettiğiniz kimlik doğrulama uygulamasına veya parola yöneticisine aktarabilirsiniz."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Gizli anahtarlarınızın bir kopyasını saklamak için “CSV olarak kaydet” veya “JSON olarak kaydet” düğmesine tıklayın. Bu dosyaları daha sonra burada yeniden açarak QR kodlarınızı tekrar görüntüleyebilirsiniz."
+      "text": "Anahtarlarınızın bir kopyasını saklamak için “CSV olarak kaydet” veya “JSON olarak kaydet” düğmesine tıklayın. Bu dosyaları daha sonra burada yeniden açarak QR kodlarınızı tekrar görüntüleyebilirsiniz."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Bu araç, Google Authenticator veya LastPass Authenticator uygulamalarından tek kullanımlık şifre (OTP) gizli anahtarlarını, yani iki faktörlü kimlik doğrulama (2FA) için kullanılan kodları çıkarır. Yüklenecek bir yazılım yoktur ve hiçbir veri cihazınızdan asla dışarı çıkmaz."
+      "text": "Bu araç, Google Authenticator veya LastPass Authenticator uygulamalarından, 2 Adımlı Doğrulama (2FA) için kullanılan doğrulama kodlarını (OTP) üreten kurulum anahtarlarını çıkarır. Yüklenecek bir yazılım yoktur ve hiçbir veri cihazınızdan asla dışarı çıkmaz."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>QR kodlarınız ve gizli anahtarlarınızla ilgili tüm işlemler tamamen çevrimdışı, yerel olarak, burada tarayıcınızda gerçekleşir.</strong>"
+      "text": "<strong>QR kodlarınız ve anahtarlarınızla ilgili tüm işlemler tamamen çevrimdışı, yerel olarak, burada tarayıcınızda gerçekleşir.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "Giriş, geçerli bir OTP URL'si, LastPass JSON'u veya en az 16 karakterlik bir Base32 gizli anahtarı (A-Z harfleri, 2-7 rakamları) olmalıdır."
+      "text": "Giriş, geçerli bir OTP URL'si, LastPass JSON'u veya en az 16 karakterlik bir Base32 anahtarı (A-Z harfleri, 2-7 rakamları) olmalıdır."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -657,15 +657,15 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "one": "{count} yinelenen gizli anahtar atlandı.",
-        "other": "{count} yinelenen gizli anahtar atlandı."
+        "one": "{count} yinelenen anahtar atlandı.",
+        "other": "{count} yinelenen anahtar atlandı."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "{count} gizli anahtar çıkarıldı.",
-        "other": "{count} gizli anahtar çıkarıldı."
+        "one": "{count} anahtar çıkarıldı.",
+        "other": "{count} anahtar çıkarıldı."
       }
     },
     "log.manualInput": {
@@ -678,11 +678,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "OTP gizli anahtarı bulunamadı."
+      "text": "OTP anahtarı bulunamadı."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "QR kodunda OTP gizli anahtarı bulunamadı."
+      "text": "QR kodunda OTP anahtarı bulunamadı."
     },
     "results.notAvailable": {
       "source": "67a926f700",
