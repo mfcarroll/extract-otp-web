@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Extractor de secrets de contrasenyes d'un sol ús"
+      "text": "Extractor de claus de configuració de codis de verificació"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Copia el secret"
+      "text": "Copia la clau"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Secret:"
+      "text": "Clau:"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Aquesta eina l'ha creada <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, un desenvolupador que estava frustrat amb el procés de migrar codis OTP de Google Authenticator a 1Password."
+      "text": "Aquesta eina l'ha creada <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, un desenvolupador que estava frustrat amb el procés de migrar codis de verificació de Google Authenticator a 1Password."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator fa difícil veure els secrets originals que es van utilitzar per configurar els teus comptes. En canvi, ofereix un codi QR d'exportació que agrupa tots els teus comptes. Això facilita la transferència a un dispositiu nou, però dificulta canviar a una altra aplicació d'autenticació. LastPass sí que ofereix codis QR individuals per a cada compte, cosa que és una gran millora, però només proporciona els secrets de text en format de codi JSON. En canvi, aplicacions com 1Password fan que els secrets originals siguin fàcilment accessibles, cosa que permet transferir-los fàcilment a altres aplicacions de 2FA."
+      "text": "Google Authenticator fa difícil veure les claus originals que es van utilitzar per configurar els teus comptes. En canvi, ofereix un codi QR d'exportació que agrupa tots els teus comptes. Això facilita la transferència a un dispositiu nou, però dificulta canviar a una altra aplicació d'autenticació. LastPass sí que ofereix codis QR individuals per a cada compte, cosa que és una gran millora, però només proporciona les claus de text en format de codi JSON. En canvi, aplicacions com 1Password fan que les claus originals siguin fàcilment accessibles, cosa que permet transferir-les fàcilment a altres aplicacions de 2FA."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Escanejes amb la càmera els codis QR de la funció d'exportació de Google Authenticator o LastPass Authenticator, o en proporciones captures de pantalla (o un fitxer d'exportació de LastPass). Aquesta eina llegeix aquests codis QR —aquí mateix al teu navegador— i et retorna el secret original de cada compte. Després pots utilitzar aquests secrets per importar els teus comptes a qualsevol altra aplicació d'autenticació."
+      "text": "Escanejes amb la càmera els codis QR de la funció d'exportació de Google Authenticator o LastPass Authenticator, o en proporciones captures de pantalla (o un fitxer d'exportació de LastPass). Aquesta eina llegeix aquests codis QR —aquí mateix al teu navegador— i et retorna la clau original de cada compte. Després pots utilitzar aquestes claus per importar els teus comptes a qualsevol altra aplicació d'autenticació."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Sí. La seguretat i la privadesa són les màximes prioritats. <strong>Res del que fas aquí no surt mai del teu ordinador ni del teu dispositiu mòbil.</strong> Tot el processament es fa en local, fora de línia, directament al teu navegador. Les imatges dels teus codis QR i els teus secrets no s'envien mai a cap servidor."
+      "text": "Sí. La seguretat i la privadesa són les màximes prioritats. <strong>Res del que fas aquí no surt mai del teu ordinador ni del teu dispositiu mòbil.</strong> Tot el processament es fa en local, fora de línia, directament al teu navegador. Les imatges dels teus codis QR i les teves claus no s'envien mai a cap servidor."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> per codificar en Base32 els secrets OTP."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> per codificar en Base32 les claus OTP."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Google Authenticator et permet transferir els comptes a un telèfon nou, però no ofereix una manera fàcil d'exportar-los a altres aplicacions com 1Password o Bitwarden. Això és perquè amaga el «secret» original (el codi QR que vas escanejar al principi) de cada compte."
+      "text": "Google Authenticator et permet transferir els comptes a un telèfon nou, però no ofereix una manera fàcil d'exportar-los a altres aplicacions com 1Password o Bitwarden. Això és perquè amaga la «clau de configuració» original (el codi QR que vas escanejar al principi) de cada compte."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Sense aquests secrets, passar a un gestor de contrasenyes nou implica tornar a configurar manualment la 2FA de tots i cadascun dels comptes, cosa que és molt pesada."
+      "text": "Sense aquestes claus, passar a un gestor de contrasenyes nou implica tornar a configurar manualment la 2FA de tots i cadascun dels comptes, cosa que és molt pesada."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Enganxa un URL <code>otpauth://</code> o una clau secreta Base32 sense format (p. ex., <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Enganxa un URL <code>otpauth://</code> o una clau Base32 sense format (p. ex., <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Clau secreta o URL..."
+      "text": "Clau o URL..."
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Extreu els secrets de les contrasenyes d'un sol ús TOTP/HOTP dels codis QR d'exportació de 2FA de Google Authenticator o LastPass. Funciona completament al teu navegador; no s'envia res a cap servidor."
+      "text": "Extreu les claus de configuració dels codis de verificació TOTP/HOTP dels codis QR d'exportació de 2FA de Google Authenticator o LastPass. Funciona completament al teu navegador; no s'envia res a cap servidor."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Extractor de secrets de contrasenyes d'un sol ús – Exportació de Google Authenticator"
+      "text": "Extractor de claus de configuració de codis de verificació – Exportació de Google Authenticator"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Nota: les captures de pantalla i els fitxers baixats contenen els teus secrets sense xifrar.</strong> Assegura't de desar-los de manera segura, o elimina'ls quan hagis acabat. Això inclou eliminar-los de la «Paperera», la «Paperera de reciclatge», «Eliminat recentment» i qualsevol còpia de seguretat de fotos al núvol."
+      "text": "<strong>Nota: les captures de pantalla i els fitxers baixats contenen les teves claus sense xifrar.</strong> Assegura't de desar-los de manera segura, o elimina'ls quan hagis acabat. Això inclou eliminar-los de la «Paperera», la «Paperera de reciclatge», «Eliminat recentment» i qualsevol còpia de seguretat de fotos al núvol."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Exporta des de la teva aplicació de contrasenyes d'un sol ús"
+      "text": "1. Exporta des de la teva aplicació de codis de verificació"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "També pots fer clic a «Introdueix un codi» per introduir directament com a text una clau secreta o un URL de configuració, i aquesta eina mostrarà el teu codi QR de configuració original."
+      "text": "També pots fer clic a «Introdueix un codi» per introduir directament com a text una clau o un URL de configuració, i aquesta eina mostrarà el teu codi QR de configuració original."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Extreu els secrets"
+      "text": "2. Extreu les claus"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Aquesta eina també pot llegir codis QR de configuració individuals de qualsevol aplicació, o un fitxer de text amb una clau secreta o un URL per línia. Així és fàcil convertir secrets de qualsevol origen en codis QR que es poden escanejar."
+      "text": "Aquesta eina també pot llegir codis QR de configuració individuals de qualsevol aplicació, o un fitxer de text amb una clau o un URL per línia. Així és fàcil convertir claus de qualsevol origen en codis QR que es poden escanejar."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Obre aquesta eina a l'ordinador o en un segon dispositiu i fes clic a «Escaneja QR» per escanejar directament els codis QR d'exportació del telèfon. Aquesta és l'opció més pràctica i evita desar captures de pantalla dels teus secrets."
+      "text": "Obre aquesta eina a l'ordinador o en un segon dispositiu i fes clic a «Escaneja QR» per escanejar directament els codis QR d'exportació del telèfon. Aquesta és l'opció més pràctica i evita desar captures de pantalla de les teves claus."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Aquesta eina llegeix els codis QR de la funció d'exportació de Google Authenticator o LastPass Authenticator i et retorna el secret original de cada compte. Després pots utilitzar aquests secrets per importar els teus comptes a qualsevol altra aplicació d'autenticació."
+      "text": "Aquesta eina llegeix els codis QR de la funció d'exportació de Google Authenticator o LastPass Authenticator i et retorna la clau original de cada compte. Després pots utilitzar aquestes claus per importar els teus comptes a qualsevol altra aplicació d'autenticació."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "L'eina mostrarà els secrets OTP extrets, cadascun amb el seu codi QR i la seva clau secreta."
+      "text": "L'eina mostrarà les claus de configuració extretes, cadascuna amb el seu codi QR i la seva clau en text."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Utilitza els teus secrets"
+      "text": "3. Utilitza les teves claus"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Ara pots importar aquests secrets a l'aplicació d'autenticació o al gestor de contrasenyes que prefereixis."
+      "text": "Ara pots importar aquestes claus a l'aplicació d'autenticació o al gestor de contrasenyes que prefereixis."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Fes clic a «Desa com a CSV» o «Desa com a JSON» per conservar una còpia dels teus secrets. Més endavant pots tornar a obrir aquests fitxers aquí per mostrar els teus codis QR."
+      "text": "Fes clic a «Desa com a CSV» o «Desa com a JSON» per conservar una còpia de les teves claus. Més endavant pots tornar a obrir aquests fitxers aquí per mostrar els teus codis QR."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Aquesta eina extreu els secrets de les contrasenyes d'un sol ús (OTP), els codis que s'utilitzen per a l'autenticació de dos factors (2FA), de les aplicacions Google Authenticator o LastPass Authenticator. No cal instal·lar cap programari i cap dada no surt mai del teu dispositiu."
+      "text": "Aquesta eina extreu les claus de configuració dels codis de verificació (OTP), els codis que s'utilitzen per a la verificació en dos passos (2FA), de les aplicacions Google Authenticator o LastPass Authenticator. No cal instal·lar cap programari i cap dada no surt mai del teu dispositiu."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>Tot el processament dels teus codis QR i secrets es fa completament fora de línia, en local, aquí mateix al teu navegador.</strong>"
+      "text": "<strong>Tot el processament dels teus codis QR i claus es fa completament fora de línia, en local, aquí mateix al teu navegador.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "L'entrada ha de ser un URL OTP vàlid, un JSON de LastPass o un secret Base32 d'almenys 16 caràcters (lletres A-Z, números 2-7)."
+      "text": "L'entrada ha de ser un URL OTP vàlid, un JSON de LastPass o una clau Base32 d'almenys 16 caràcters (lletres A-Z, números 2-7)."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -657,15 +657,15 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "one": "S'ha omès {count} secret duplicat.",
-        "other": "S'han omès {count} secrets duplicats."
+        "one": "S'ha omès {count} clau duplicada.",
+        "other": "S'han omès {count} claus duplicades."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "S'ha extret {count} secret.",
-        "other": "S'han extret {count} secrets."
+        "one": "S'ha extret {count} clau.",
+        "other": "S'han extret {count} claus."
       }
     },
     "log.manualInput": {
@@ -678,11 +678,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "No s'ha trobat cap secret OTP."
+      "text": "No s'ha trobat cap clau OTP."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "No s'ha trobat cap secret OTP al codi QR."
+      "text": "No s'ha trobat cap clau OTP al codi QR."
     },
     "results.notAvailable": {
       "source": "67a926f700",
