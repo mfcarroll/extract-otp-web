@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "ワンタイムパスワードのシークレット抽出ツール"
+      "text": "確認コードのセットアップ キー抽出ツール"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "シークレットをコピー"
+      "text": "キーをコピー"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "シークレット："
+      "text": "キー："
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator では、アカウントの設定に使われた元のシークレットを確認するのが困難です。代わりに、すべてのアカウントをまとめたエクスポート用 QR コードが提供されます。これは新しいデバイスへの移行には便利ですが、別の認証アプリへの乗り換えは難しくなります。LastPass はアカウントごとに QR コードを提供しており、大きな改善ですが、テキストのシークレットは JSON 形式でしか提供されません。一方、1Password などのアプリでは元のシークレットに簡単にアクセスでき、ほかの 2FA アプリへの移行も簡単です。"
+      "text": "Google Authenticator では、アカウントの設定に使われた元のキーを確認するのが困難です。代わりに、すべてのアカウントをまとめたエクスポート用 QR コードが提供されます。これは新しいデバイスへの移行には便利ですが、別の認証アプリへの乗り換えは難しくなります。LastPass はアカウントごとに QR コードを提供しており、大きな改善ですが、テキストのキーは JSON 形式でしか提供されません。一方、1Password などのアプリでは元のキーに簡単にアクセスでき、ほかの 2FA アプリへの移行も簡単です。"
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Google Authenticator または LastPass Authenticator のエクスポート機能で表示される QR コードをカメラでスキャンするか、そのスクリーンショット（または LastPass のエクスポートファイル）を読み込みます。このツールは、その QR コードをこのブラウザ内で読み取り、各アカウントの元のシークレットを取り出します。取り出したシークレットを使って、ほかの認証アプリにアカウントをインポートできます。"
+      "text": "Google Authenticator または LastPass Authenticator のエクスポート機能で表示される QR コードをカメラでスキャンするか、そのスクリーンショット（または LastPass のエクスポートファイル）を読み込みます。このツールは、その QR コードをこのブラウザ内で読み取り、各アカウントの元のキーを取り出します。取り出したキーを使って、ほかの認証アプリにアカウントをインポートできます。"
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "はい。セキュリティとプライバシーを最優先にしています。<strong>ここで行う操作が、お使いのパソコンやモバイルデバイスの外に出ることは一切ありません。</strong>処理はすべてブラウザ内で、ローカルかつオフラインで行われます。QR コードの画像やシークレットがサーバーに送信されることは決してありません。"
+      "text": "はい。セキュリティとプライバシーを最優先にしています。<strong>ここで行う操作が、お使いのパソコンやモバイルデバイスの外に出ることは一切ありません。</strong>処理はすべてブラウザ内で、ローカルかつオフラインで行われます。QR コードの画像やキーがサーバーに送信されることは決してありません。"
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>：OTP シークレットを Base32 でエンコードします。"
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>：OTP キーを Base32 でエンコードします。"
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Google Authenticator では新しいスマートフォンにアカウントを移行できますが、1Password や Bitwarden などほかのアプリにエクスポートする簡単な方法はありません。各アカウントの元の「シークレット」（最初にスキャンした QR コード）が隠されているためです。"
+      "text": "Google Authenticator では新しいスマートフォンにアカウントを移行できますが、1Password や Bitwarden などほかのアプリにエクスポートする簡単な方法はありません。各アカウントの元の「キー」（最初にスキャンした QR コード）が隠されているためです。"
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "このシークレットがないと、新しいパスワードマネージャーに移行する際、すべてのアカウントで 2FA を手作業で設定し直す必要があり、とても手間がかかります。"
+      "text": "このキーがないと、新しいパスワードマネージャーに移行する際、すべてのアカウントで 2FA を手作業で設定し直す必要があり、とても手間がかかります。"
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "<code>otpauth://</code> の URL、または Base32 のシークレットキー（例：<code>JBSW Y3DP EHPK 3PXP</code>）を貼り付けてください。"
+      "text": "<code>otpauth://</code> の URL、または Base32 のキー（例：<code>JBSW Y3DP EHPK 3PXP</code>）を貼り付けてください。"
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "シークレットキーまたは URL…"
+      "text": "キーまたは URL…"
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Google Authenticator や LastPass の 2FA エクスポート QR コードから、TOTP/HOTP ワンタイムパスワードのシークレットを抽出します。すべてブラウザ内で動作し、何もアップロードされません。"
+      "text": "Google Authenticator や LastPass の 2FA エクスポート QR コードから、TOTP/HOTP 確認コードのセットアップ キーを抽出します。すべてブラウザ内で動作し、何もアップロードされません。"
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "ワンタイムパスワードのシークレット抽出ツール – Google Authenticator のエクスポート"
+      "text": "確認コードのセットアップ キー抽出ツール – Google Authenticator のエクスポート"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>注意：スクリーンショットやダウンロードしたファイルには、暗号化されていないシークレットが含まれています。</strong>安全に保管するか、作業が終わったら削除してください。「ゴミ箱」や「最近削除した項目」、クラウドの写真バックアップからも削除してください。"
+      "text": "<strong>注意：スクリーンショットやダウンロードしたファイルには、暗号化されていないキーが含まれています。</strong>安全に保管するか、作業が終わったら削除してください。「ゴミ箱」や「最近削除した項目」、クラウドの写真バックアップからも削除してください。"
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. ワンタイムパスワードアプリからエクスポートする"
+      "text": "1. 確認コードのアプリからエクスポートする"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "「コードを入力」をクリックして、シークレットキーや設定用 URL をテキストで直接入力することもできます。このツールが元の設定用 QR コードを表示します。"
+      "text": "「コードを入力」をクリックして、キーや設定用 URL をテキストで直接入力することもできます。このツールが元の設定用 QR コードを表示します。"
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. シークレットを抽出する"
+      "text": "2. キーを抽出する"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "このツールは、あらゆるアプリの個別の設定用 QR コードや、1 行に 1 つのシークレットキーまたは URL を書いたテキストファイルも読み取れます。どこから入手したシークレットでも、簡単にスキャンできる QR コードに変換できます。"
+      "text": "このツールは、あらゆるアプリの個別の設定用 QR コードや、1 行に 1 つのキーまたは URL を書いたテキストファイルも読み取れます。どこから入手したキーでも、簡単にスキャンできる QR コードに変換できます。"
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "パソコンまたは別のデバイスでこのツールを開き、「QR をスキャン」をクリックして、スマートフォンに表示されたエクスポート用 QR コードを直接スキャンします。これが最も便利な方法で、シークレットが写ったスクリーンショットを保存せずに済みます。"
+      "text": "パソコンまたは別のデバイスでこのツールを開き、「QR をスキャン」をクリックして、スマートフォンに表示されたエクスポート用 QR コードを直接スキャンします。これが最も便利な方法で、キーが写ったスクリーンショットを保存せずに済みます。"
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "このツールは、Google Authenticator または LastPass Authenticator のエクスポート機能で表示される QR コードを読み取り、各アカウントの元のシークレットを取り出します。取り出したシークレットを使って、ほかの認証アプリにアカウントをインポートできます。"
+      "text": "このツールは、Google Authenticator または LastPass Authenticator のエクスポート機能で表示される QR コードを読み取り、各アカウントの元のキーを取り出します。取り出したキーを使って、ほかの認証アプリにアカウントをインポートできます。"
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "抽出した OTP シークレットが、それぞれの QR コードとシークレットキーとともに表示されます。"
+      "text": "抽出したセットアップ キーが、それぞれの QR コードとキーのテキストとともに表示されます。"
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. シークレットを使う"
+      "text": "3. キーを使う"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "これで、これらのシークレットをお好みの認証アプリやパスワードマネージャーにインポートできます。"
+      "text": "これで、これらのキーをお好みの認証アプリやパスワードマネージャーにインポートできます。"
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "「CSV で保存」または「JSON で保存」をクリックすると、シークレットのコピーを保存できます。あとでこのファイルをここで開き直すと、QR コードを再び表示できます。"
+      "text": "「CSV で保存」または「JSON で保存」をクリックすると、キーのコピーを保存できます。あとでこのファイルをここで開き直すと、QR コードを再び表示できます。"
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "このツールは、Google Authenticator または LastPass Authenticator アプリから、ワンタイムパスワード（OTP）のシークレット（2 段階認証（2FA）に使われるコード）を抽出します。ソフトウェアのインストールは不要で、データがお使いのデバイスの外に出ることは一切ありません。"
+      "text": "このツールは、Google Authenticator または LastPass Authenticator アプリから、確認コード（OTP）のセットアップ キー（2 段階認証プロセス（2FA）に使われるコード）を抽出します。ソフトウェアのインストールは不要で、データがお使いのデバイスの外に出ることは一切ありません。"
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>QR コードとシークレットの処理はすべて、完全にオフラインで、このブラウザ内でローカルに行われます。</strong>"
+      "text": "<strong>QR コードとキーの処理はすべて、完全にオフラインで、このブラウザ内でローカルに行われます。</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "有効な OTP の URL、LastPass の JSON、または 16 文字以上の Base32 シークレット（英字 A～Z、数字 2～7）を入力してください。"
+      "text": "有効な OTP の URL、LastPass の JSON、または 16 文字以上の Base32 キー（英字 A～Z、数字 2～7）を入力してください。"
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -656,13 +656,13 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "other": "重複する {count} 件のシークレットをスキップしました。"
+        "other": "重複する {count} 件のキーをスキップしました。"
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "other": "{count} 件のシークレットを抽出しました。"
+        "other": "{count} 件のキーを抽出しました。"
       }
     },
     "log.manualInput": {
@@ -675,11 +675,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "OTP シークレットが見つかりません。"
+      "text": "OTP キーが見つかりません。"
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "QR コードに OTP シークレットが見つかりません。"
+      "text": "QR コードに OTP キーが見つかりません。"
     },
     "results.notAvailable": {
       "source": "67a926f700",
