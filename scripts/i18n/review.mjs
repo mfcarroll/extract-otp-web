@@ -121,8 +121,12 @@ export function describePage(html) {
 
 const TAG_MARKERS = { STRONG: 'b', EM: 'i', CODE: 'code' };
 
+// One shared document: a new JSDOM per string runs out of memory across many languages.
+let scratch;
+
 function fragment(html) {
-  const { document } = new JSDOM('').window;
+  scratch ??= new JSDOM('').window.document;
+  const document = scratch;
   const template = document.createElement('template');
   template.innerHTML = html;
   return { document, content: template.content };
