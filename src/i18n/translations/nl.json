@@ -286,20 +286,20 @@
       "text": "Venster sluiten"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Plak een <code>otpauth://</code>-URL of een onbewerkte Base32-sleutel (bijv. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Plak een <code>otpauth://</code>-URL of een onbewerkte Base32-instelsleutel (bijv. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Sleutel of URL..."
+      "source": "1b597bca09",
+      "text": "Instelsleutel of URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Code toevoegen"
+      "source": "9fd728c66c",
+      "text": "Toevoegen"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "OTP-code invoeren"
+      "source": "984be3840e",
+      "text": "Instelsleutel invoeren"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "of sleep bestanden hierheen<br>(afbeelding, JSON-export, CSV of TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Code invoeren"
+      "source": "cda79732da",
+      "text": "Instelsleutel invoeren"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Tik op het tandwiel en kies ‘Accounts overdragen’ &gt; ‘Accounts exporteren naar QR-code’."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Je kunt ook op ‘Code invoeren’ klikken om een sleutel of configuratie-URL direct als tekst in te voeren. Deze tool toont dan je oorspronkelijke configuratie-QR-code."
+      "source": "bcf1880e8e",
+      "text": "Je kunt ook op ‘Instelsleutel invoeren’ klikken om een instelsleutel of configuratie-URL direct als tekst in te voeren. Deze tool toont dan je oorspronkelijke configuratie-QR-code."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

@@ -286,20 +286,20 @@
       "text": "Tutup tetingkap"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Tampal URL <code>otpauth://</code> atau kunci Base32 mentah (cth., <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Tampal URL <code>otpauth://</code> atau kunci persediaan Base32 mentah (cth., <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Kunci atau URL..."
+      "source": "1b597bca09",
+      "text": "Kunci persediaan atau URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Tambah Kod"
+      "source": "9fd728c66c",
+      "text": "Tambah"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Masukkan Kod OTP"
+      "source": "984be3840e",
+      "text": "Masukkan kunci persediaan"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "atau seret dan lepaskan fail di sini<br>(imej, eksport JSON, CSV atau TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Masukkan Kod"
+      "source": "cda79732da",
+      "text": "Masukkan kunci persediaan"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Ketik ikon gear dan pilih “Transfer accounts” (Pindahkan akaun) &gt; “Export accounts to QR code” (Eksport akaun ke kod QR)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Anda juga boleh mengklik “Masukkan Kod” untuk memasukkan kunci atau URL persediaan secara terus sebagai teks, dan alat ini akan memaparkan kod QR persediaan asal anda."
+      "source": "bcf1880e8e",
+      "text": "Anda juga boleh mengklik “Masukkan kunci persediaan” untuk memasukkan kunci atau URL persediaan secara terus sebagai teks, dan alat ini akan memaparkan kod QR persediaan asal anda."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

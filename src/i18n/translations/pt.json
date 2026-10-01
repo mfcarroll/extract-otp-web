@@ -286,20 +286,20 @@
       "text": "Fechar a janela"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Cole uma URL <code>otpauth://</code> ou uma chave Base32 sem formatação (por exemplo, <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Cole uma URL <code>otpauth://</code> ou uma chave de configuração Base32 sem formatação (por exemplo, <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Chave ou URL…"
+      "source": "1b597bca09",
+      "text": "Chave de configuração ou URL…"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Adicionar código"
+      "source": "9fd728c66c",
+      "text": "Adicionar"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Inserir código OTP"
+      "source": "984be3840e",
+      "text": "Inserir chave de configuração"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "ou arraste e solte arquivos aqui<br>(imagem, exportação JSON, CSV ou TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Inserir código"
+      "source": "cda79732da",
+      "text": "Inserir chave de configuração"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Toque na engrenagem e selecione \"Transferir contas\" &gt; \"Exportar contas para QR code\"."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Você também pode clicar em \"Inserir código\" para digitar diretamente uma chave ou uma URL de configuração, e esta ferramenta mostrará o seu QR code de configuração original."
+      "source": "bcf1880e8e",
+      "text": "Você também pode clicar em \"Inserir chave de configuração\" para digitar diretamente uma chave ou uma URL de configuração, e esta ferramenta mostrará o seu QR code de configuração original."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

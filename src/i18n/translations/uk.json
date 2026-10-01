@@ -286,20 +286,20 @@
       "text": "Закрити вікно"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Вставте URL-адресу <code>otpauth://</code> або ключ Base32 (наприклад, <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Вставте URL-адресу <code>otpauth://</code> або ключ налаштування у форматі Base32 (наприклад, <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Ключ або URL..."
+      "source": "1b597bca09",
+      "text": "Ключ налаштування або URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Додати код"
+      "source": "9fd728c66c",
+      "text": "Додати"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Введення коду OTP"
+      "source": "984be3840e",
+      "text": "Ввести ключ налаштування"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "або перетягніть файли сюди<br>(зображення, експорт JSON, CSV або TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Ввести код"
+      "source": "cda79732da",
+      "text": "Ввести ключ налаштування"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Натисніть значок шестерні й виберіть «Transfer accounts» (Перенести облікові записи) &gt; «Export accounts to QR code» (Експортувати облікові записи в QR-код)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Також можна натиснути «Ввести код», щоб ввести ключ або URL-адресу налаштування безпосередньо як текст, і цей інструмент покаже ваш оригінальний QR-код налаштування."
+      "source": "bcf1880e8e",
+      "text": "Також можна натиснути «Ввести ключ налаштування», щоб ввести ключ або URL-адресу налаштування безпосередньо як текст, і цей інструмент покаже ваш оригінальний QR-код налаштування."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

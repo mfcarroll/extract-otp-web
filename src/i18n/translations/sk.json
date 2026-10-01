@@ -286,20 +286,20 @@
       "text": "Zavrieť okno"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Vložte URL adresu <code>otpauth://</code> alebo nespracovaný kľúč Base32 (napr. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Vložte URL adresu <code>otpauth://</code> alebo nespracovaný kľúč nastavenia Base32 (napr. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Kľúč alebo URL..."
+      "source": "1b597bca09",
+      "text": "Kľúč nastavenia alebo URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Pridať kód"
+      "source": "9fd728c66c",
+      "text": "Pridať"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Zadať kód OTP"
+      "source": "984be3840e",
+      "text": "Zadať kľúč nastavenia"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "alebo sem presuňte súbory<br>(obrázok, export JSON, CSV alebo TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Zadať kód"
+      "source": "cda79732da",
+      "text": "Zadať kľúč nastavenia"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Kliknite na ozubené koliesko a vyberte „Transfer accounts“ (Preniesť účty) &gt; „Export accounts to QR code“ (Exportovať účty do QR kódu)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Môžete tiež kliknúť na „Zadať kód“ a zadať kľúč alebo URL adresu nastavenia priamo ako text; tento nástroj potom zobrazí váš pôvodný QR kód nastavenia."
+      "source": "bcf1880e8e",
+      "text": "Môžete tiež kliknúť na „Zadať kľúč nastavenia“ a zadať kľúč alebo URL adresu nastavenia priamo ako text; tento nástroj potom zobrazí váš pôvodný QR kód nastavenia."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

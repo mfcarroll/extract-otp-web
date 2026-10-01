@@ -286,20 +286,20 @@
       "text": "סגירת החלון"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "יש להדביק כתובת <code>otpauth://</code> או מפתח גולמי בפורמט Base32 (לדוגמה, <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "יש להדביק כתובת <code>otpauth://</code> או מפתח הגדרה גולמי בפורמט Base32 (לדוגמה, <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "מפתח או כתובת URL..."
+      "source": "1b597bca09",
+      "text": "מפתח הגדרה או כתובת URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "הוספת קוד"
+      "source": "9fd728c66c",
+      "text": "הוספה"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "הזנת קוד OTP"
+      "source": "984be3840e",
+      "text": "הזנת מפתח להגדרה"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "או לגרור ולשחרר קבצים לכאן<br>(תמונה, קובץ ייצוא json, קובץ csv או txt)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "הזנת קוד"
+      "source": "cda79732da",
+      "text": "הזנת מפתח להגדרה"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "יש ללחוץ על סמל גלגל השיניים ולבחור \"Transfer accounts\" (העברת חשבונות) &gt; \"Export accounts to QR code\" (ייצוא חשבונות לקוד QR)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "אפשר גם ללחוץ על \"הזנת קוד\" כדי להזין מפתח או כתובת URL להגדרה ישירות כטקסט, והכלי יציג את קוד ה-QR המקורי להגדרה."
+      "source": "bcf1880e8e",
+      "text": "אפשר גם ללחוץ על \"הזנת מפתח להגדרה\" כדי להזין מפתח או כתובת URL להגדרה ישירות כטקסט, והכלי יציג את קוד ה-QR המקורי להגדרה."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

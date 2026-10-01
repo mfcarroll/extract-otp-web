@@ -286,20 +286,20 @@
       "text": "Închide fereastra"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Lipește un URL <code>otpauth://</code> sau o cheie Base32 brută (de ex., <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Lipește un URL <code>otpauth://</code> sau o cheie de configurare Base32 brută (de ex., <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Cheie sau URL…"
+      "source": "1b597bca09",
+      "text": "Cheie de configurare sau URL…"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Adaugă codul"
+      "source": "9fd728c66c",
+      "text": "Adaugă"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Introdu codul OTP"
+      "source": "984be3840e",
+      "text": "Introdu cheia de configurare"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "sau trage și plasează fișierele aici<br>(imagine, export JSON, CSV sau TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Introdu codul"
+      "source": "cda79732da",
+      "text": "Introdu cheia de configurare"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Atinge rotița și selectează „Transfer accounts” (Transferă conturile) &gt; „Export accounts to QR code” (Exportă conturile într-un cod QR)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Poți da clic și pe „Introdu codul” ca să scrii direct o cheie sau un URL de configurare, iar acest instrument îți va afișa codul QR de configurare original."
+      "source": "bcf1880e8e",
+      "text": "Poți da clic și pe „Introdu cheia de configurare” ca să scrii direct o cheie sau un URL de configurare, iar acest instrument îți va afișa codul QR de configurare original."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

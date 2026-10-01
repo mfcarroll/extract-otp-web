@@ -286,20 +286,20 @@
       "text": "Đóng hộp thoại"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Dán URL <code>otpauth://</code> hoặc khóa Base32 dạng thô (ví dụ: <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Dán URL <code>otpauth://</code> hoặc khóa thiết lập Base32 dạng thô (ví dụ: <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Khóa hoặc URL..."
+      "source": "1b597bca09",
+      "text": "Khóa thiết lập hoặc URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Thêm mã"
+      "source": "9fd728c66c",
+      "text": "Thêm"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Nhập mã OTP"
+      "source": "984be3840e",
+      "text": "Nhập khoá thiết lập"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "hoặc kéo và thả tệp vào đây<br>(hình ảnh, tệp xuất JSON, CSV hoặc TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Nhập mã"
+      "source": "cda79732da",
+      "text": "Nhập khoá thiết lập"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Nhấn vào biểu tượng bánh răng và chọn “Transfer accounts” (Chuyển tài khoản) &gt; “Export accounts to QR code” (Xuất tài khoản sang mã QR)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Bạn cũng có thể nhấp vào “Nhập mã” để nhập trực tiếp khóa hoặc URL thiết lập dưới dạng văn bản, và công cụ này sẽ hiển thị mã QR thiết lập gốc của bạn."
+      "source": "bcf1880e8e",
+      "text": "Bạn cũng có thể nhấp vào “Nhập khoá thiết lập” để nhập trực tiếp khóa hoặc URL thiết lập dưới dạng văn bản, và công cụ này sẽ hiển thị mã QR thiết lập gốc của bạn."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

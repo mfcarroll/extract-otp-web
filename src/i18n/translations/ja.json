@@ -286,20 +286,20 @@
       "text": "ウィンドウを閉じる"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "<code>otpauth://</code> の URL、または Base32 のキー（例：<code>JBSW Y3DP EHPK 3PXP</code>）を貼り付けてください。"
+      "source": "951e8cee7e",
+      "text": "<code>otpauth://</code> の URL、または Base32 のセットアップ キー（例：<code>JBSW Y3DP EHPK 3PXP</code>）を貼り付けてください。"
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "キーまたは URL…"
+      "source": "1b597bca09",
+      "text": "セットアップ キーまたは URL…"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "コードを追加"
+      "source": "9fd728c66c",
+      "text": "追加"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "OTP コードを入力"
+      "source": "984be3840e",
+      "text": "セットアップ キーを入力"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "またはここにファイルをドラッグ＆ドロップ<br>（画像、JSON エクスポート、CSV、TXT）"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "コードを入力"
+      "source": "cda79732da",
+      "text": "セットアップ キーを入力"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "歯車アイコンをタップし、「Transfer accounts」（アカウントの移行）&gt;「Export accounts to QR code」（QR コードにエクスポート）を選択します。"
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "「コードを入力」をクリックして、キーや設定用 URL をテキストで直接入力することもできます。このツールが元の設定用 QR コードを表示します。"
+      "source": "bcf1880e8e",
+      "text": "「セットアップ キーを入力」をクリックして、セットアップ キーや設定用 URL をテキストで直接入力することもできます。このツールが元の設定用 QR コードを表示します。"
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

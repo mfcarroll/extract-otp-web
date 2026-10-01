@@ -189,9 +189,9 @@
                   screenshot(s) onto the page.
                 </li>
                 <li data-i18n="use.extract.enter">
-                  You can also click "Enter Code" to enter a secret key or setup
-                  URL directly as text, and this tool will display your original
-                  setup QR code.
+                  You can also click "Enter Setup Key" to enter a setup key or
+                  setup URL directly as text, and this tool will display your
+                  original setup QR code.
                 </li>
                 <li data-i18n="use.extract.other">
                   This tool can also read individual setup QR codes from any
@@ -793,7 +793,7 @@
 
             <button id="btn-manual-entry" class="btn btn-secondary navigable">
               <i class="fa fa-pen-to-square"></i>
-              <span data-i18n="upload.enterCode">Enter Code</span>
+              <span data-i18n="upload.enterCode">Enter Setup Key</span>
             </button>
           </div>
 
@@ -1141,7 +1141,7 @@
       >
         <div class="modal-header">
           <h2 data-i18n="manual.title" id="manual-modal-title">
-            Enter OTP Code
+            Enter a setup key
           </h2>
           <button
             class="modal-close navigable"
@@ -1159,7 +1159,7 @@
             data-i18n="manual.help"
             style="font-size: 0.9rem; color: var(--text-secondary)"
           >
-            Paste an <code>otpauth://</code> URL or a raw Base32 secret key
+            Paste an <code>otpauth://</code> URL or a raw Base32 setup key
             (e.g., <code>JBSW Y3DP EHPK 3PXP</code>).
           </p>
           <input
@@ -1167,7 +1167,7 @@
             id="manual-otp-input"
             data-i18n-attr="placeholder:manual.placeholder"
             class="navigable"
-            placeholder="Secret key or URL..."
+            placeholder="Setup key or URL..."
             style="
               padding: 0.75rem;
               border-radius: 4px;
@@ -1201,7 +1201,7 @@
             id="manual-otp-submit"
             class="btn btn-primary navigable"
           >
-            Add Code
+            Add
           </button>
         </div>
       </div>

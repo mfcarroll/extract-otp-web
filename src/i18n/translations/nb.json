@@ -286,20 +286,20 @@
       "text": "Lukk dialogboksen"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Lim inn en <code>otpauth://</code>-URL eller en nøkkel i Base32-format (f.eks. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Lim inn en <code>otpauth://</code>-URL eller en konfigureringsnøkkel i Base32-format (f.eks. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Nøkkel eller URL …"
+      "source": "1b597bca09",
+      "text": "Konfigureringsnøkkel eller URL …"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Legg til kode"
+      "source": "9fd728c66c",
+      "text": "Legg til"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Skriv inn OTP-kode"
+      "source": "984be3840e",
+      "text": "Oppgi en konfigureringsnøkkel"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "eller dra og slipp filer her<br>(bilde, JSON-eksport, CSV eller TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Skriv inn kode"
+      "source": "cda79732da",
+      "text": "Oppgi en konfigureringsnøkkel"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Trykk på tannhjulet og velg «Transfer accounts» (Overfør kontoer) &gt; «Export accounts to QR code» (Eksporter kontoer til QR-kode)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Du kan også klikke på «Skriv inn kode» for å skrive inn en nøkkel eller en oppsetts-URL direkte som tekst, så viser verktøyet den opprinnelige QR-koden for oppsettet."
+      "source": "bcf1880e8e",
+      "text": "Du kan også klikke på «Oppgi en konfigureringsnøkkel» for å skrive inn en konfigureringsnøkkel eller en oppsetts-URL direkte som tekst, så viser verktøyet den opprinnelige QR-koden for oppsettet."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

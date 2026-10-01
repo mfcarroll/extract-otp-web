@@ -286,20 +286,20 @@
       "text": "Chiudi finestra"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Incolla un URL <code>otpauth://</code> o una chiave Base32 grezza (ad es. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Incolla un URL <code>otpauth://</code> o una chiave di configurazione Base32 grezza (ad es. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Chiave o URL..."
+      "source": "1b597bca09",
+      "text": "Chiave di configurazione o URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Aggiungi codice"
+      "source": "9fd728c66c",
+      "text": "Aggiungi"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Inserisci codice OTP"
+      "source": "984be3840e",
+      "text": "Inserisci una chiave di configurazione"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "oppure trascina qui i file<br>(immagine, esportazione JSON, CSV o TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Inserisci codice"
+      "source": "cda79732da",
+      "text": "Inserisci una chiave di configurazione"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Tocca l'icona dell'ingranaggio e seleziona «Trasferisci account» &gt; «Esporta account in codice QR»."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Puoi anche fare clic su «Inserisci codice» per inserire direttamente come testo una chiave o un URL di configurazione: questo strumento mostrerà il tuo codice QR di configurazione originale."
+      "source": "bcf1880e8e",
+      "text": "Puoi anche fare clic su «Inserisci una chiave di configurazione» per inserire direttamente come testo una chiave o un URL di configurazione: questo strumento mostrerà il tuo codice QR di configurazione originale."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

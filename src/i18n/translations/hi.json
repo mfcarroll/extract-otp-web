@@ -286,20 +286,20 @@
       "text": "विंडो बंद करें"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "कोई <code>otpauth://</code> URL या रॉ Base32 कुंजी चिपकाएँ (जैसे, <code>JBSW Y3DP EHPK 3PXP</code>)।"
+      "source": "951e8cee7e",
+      "text": "कोई <code>otpauth://</code> URL या रॉ Base32 सेटअप कुंजी चिपकाएँ (जैसे, <code>JBSW Y3DP EHPK 3PXP</code>)।"
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "कुंजी या URL..."
+      "source": "1b597bca09",
+      "text": "सेटअप कुंजी या URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "कोड जोड़ें"
+      "source": "9fd728c66c",
+      "text": "जोड़ें"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "OTP कोड डालें"
+      "source": "984be3840e",
+      "text": "सेटअप कुंजी डालें"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "या फ़ाइलों को खींचकर यहाँ छोड़ें<br>(इमेज, JSON एक्सपोर्ट, CSV या TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "कोड डालें"
+      "source": "cda79732da",
+      "text": "सेटअप कुंजी डालें"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "कॉग (गियर) आइकॉन पर टैप करें और “Transfer accounts” (खाते ट्रांसफ़र करें) &gt; “Export accounts to QR code” (खातों को क्यूआर कोड में एक्सपोर्ट करें) चुनें।"
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "आप “कोड डालें” पर क्लिक करके कोई कुंजी या सेटअप URL सीधे टेक्स्ट के रूप में भी डाल सकते हैं, और यह टूल आपका मूल सेटअप क्यूआर कोड दिखाएगा।"
+      "source": "bcf1880e8e",
+      "text": "आप “सेटअप कुंजी डालें” पर क्लिक करके कोई सेटअप कुंजी या सेटअप URL सीधे टेक्स्ट के रूप में भी डाल सकते हैं, और यह टूल आपका मूल सेटअप क्यूआर कोड दिखाएगा।"
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

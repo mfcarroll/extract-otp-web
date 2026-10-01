@@ -286,20 +286,20 @@
       "text": "Pencereyi kapat"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Bir <code>otpauth://</code> URL'si veya ham Base32 anahtarı yapıştırın (ör. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Bir <code>otpauth://</code> URL'si veya ham Base32 kurulum anahtarı yapıştırın (ör. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Anahtar veya URL…"
+      "source": "1b597bca09",
+      "text": "Kurulum anahtarı veya URL…"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Kodu ekle"
+      "source": "9fd728c66c",
+      "text": "Ekle"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "OTP kodu gir"
+      "source": "984be3840e",
+      "text": "Kurulum anahtarı gir"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "veya dosyaları buraya sürükleyip bırakın<br>(görüntü, JSON dışa aktarımı, CSV veya TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Kod gir"
+      "source": "cda79732da",
+      "text": "Kurulum anahtarı gir"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Dişli simgesine dokunun ve “Transfer accounts” (Hesapları aktar) &gt; “Export accounts to QR code” (Hesapları QR koduna aktar) seçeneğini belirleyin."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Ayrıca “Kod gir” düğmesine tıklayarak bir kurulum anahtarını veya kurulum URL'sini doğrudan metin olarak girebilirsiniz; bu araç orijinal kurulum QR kodunuzu gösterir."
+      "source": "bcf1880e8e",
+      "text": "Ayrıca “Kurulum anahtarı gir” düğmesine tıklayarak bir kurulum anahtarını veya kurulum URL'sini doğrudan metin olarak girebilirsiniz; bu araç orijinal kurulum QR kodunuzu gösterir."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

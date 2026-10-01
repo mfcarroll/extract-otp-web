@@ -286,20 +286,20 @@
       "text": "Fenster schließen"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Fügen Sie eine <code>otpauth://</code>-URL oder einen reinen Base32-Schlüssel ein (z. B. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Fügen Sie eine <code>otpauth://</code>-URL oder einen reinen Base32-Einrichtungsschlüssel ein (z. B. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Schlüssel oder URL …"
+      "source": "1b597bca09",
+      "text": "Einrichtungsschlüssel oder URL …"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Code hinzufügen"
+      "source": "9fd728c66c",
+      "text": "Hinzufügen"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "OTP-Code eingeben"
+      "source": "984be3840e",
+      "text": "Einrichtungsschlüssel eingeben"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "oder Dateien hierher ziehen<br>(Bild, JSON-Export, CSV oder TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Code eingeben"
+      "source": "cda79732da",
+      "text": "Einrichtungsschlüssel eingeben"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Tippen Sie auf das Zahnrad und wählen Sie „Konten übertragen“ &gt; „Konten als QR exportieren“."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Sie können auch auf „Code eingeben“ klicken, um einen Schlüssel oder eine Einrichtungs-URL direkt als Text einzugeben. Dieses Tool zeigt dann Ihren ursprünglichen Einrichtungs-QR-Code an."
+      "source": "bcf1880e8e",
+      "text": "Sie können auch auf „Einrichtungsschlüssel eingeben“ klicken, um einen Einrichtungsschlüssel oder eine Einrichtungs-URL direkt als Text einzugeben. Dieses Tool zeigt dann Ihren ursprünglichen Einrichtungs-QR-Code an."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

@@ -286,20 +286,20 @@
       "text": "關閉對話框"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "貼上 <code>otpauth://</code> 網址或原始 Base32 金鑰（例如 <code>JBSW Y3DP EHPK 3PXP</code>）。"
+      "source": "951e8cee7e",
+      "text": "貼上 <code>otpauth://</code> 網址或原始 Base32 設定金鑰（例如 <code>JBSW Y3DP EHPK 3PXP</code>）。"
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "金鑰或網址…"
+      "source": "1b597bca09",
+      "text": "設定金鑰或網址…"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "新增代碼"
+      "source": "9fd728c66c",
+      "text": "新增"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "輸入 OTP 代碼"
+      "source": "984be3840e",
+      "text": "輸入設定金鑰"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "或將檔案拖放到這裡<br>（圖片、JSON 匯出檔、CSV 或 TXT）"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "輸入代碼"
+      "source": "cda79732da",
+      "text": "輸入設定金鑰"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "點一下齒輪圖示，然後選取「Transfer accounts」（轉移帳戶）&gt;「Export accounts to QR code」（將帳戶匯出為 QR code）。"
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "你也可以點一下「輸入代碼」，直接以文字輸入金鑰或設定網址，本工具會顯示你原本的設定 QR code。"
+      "source": "bcf1880e8e",
+      "text": "你也可以點一下「輸入設定金鑰」，直接以文字輸入設定金鑰或設定網址，本工具會顯示你原本的設定 QR code。"
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

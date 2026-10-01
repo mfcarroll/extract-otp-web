@@ -286,20 +286,20 @@
       "text": "Κλείσιμο παραθύρου"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Επικολλήστε ένα URL <code>otpauth://</code> ή ένα ακατέργαστο κλειδί Base32 (π.χ. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Επικολλήστε ένα URL <code>otpauth://</code> ή ένα ακατέργαστο κλειδί ρύθμισης Base32 (π.χ. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Κλειδί ή URL..."
+      "source": "1b597bca09",
+      "text": "Κλειδί ρύθμισης ή URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Προσθήκη κωδικού"
+      "source": "9fd728c66c",
+      "text": "Προσθήκη"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Εισαγωγή κωδικού OTP"
+      "source": "984be3840e",
+      "text": "Εισαγάγετε ένα κλειδί ρύθμισης"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "ή σύρετε και αφήστε αρχεία εδώ<br>(εικόνα, εξαγωγή JSON, CSV ή TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Εισαγωγή κωδικού"
+      "source": "cda79732da",
+      "text": "Εισαγάγετε ένα κλειδί ρύθμισης"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Πατήστε το γρανάζι και επιλέξτε «Transfer accounts» (Μεταφορά λογαριασμών) &gt; «Export accounts to QR code» (Εξαγωγή λογαριασμών σε κωδικό QR)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Μπορείτε επίσης να κάνετε κλικ στο «Εισαγωγή κωδικού» για να καταχωρίσετε ένα κλειδί ή ένα URL ρύθμισης απευθείας ως κείμενο, και αυτό το εργαλείο θα εμφανίσει τον αρχικό κωδικό QR ρύθμισης."
+      "source": "bcf1880e8e",
+      "text": "Μπορείτε επίσης να κάνετε κλικ στο «Εισαγάγετε ένα κλειδί ρύθμισης» για να καταχωρίσετε ένα κλειδί ή ένα URL ρύθμισης απευθείας ως κείμενο, και αυτό το εργαλείο θα εμφανίσει τον αρχικό κωδικό QR ρύθμισης."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

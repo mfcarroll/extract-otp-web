@@ -286,20 +286,20 @@
       "text": "Luk dialogboksen"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Indsæt en <code>otpauth://</code>-URL eller en nøgle i Base32-format (f.eks. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Indsæt en <code>otpauth://</code>-URL eller en konfigurationsnøgle i Base32-format (f.eks. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Nøgle eller URL …"
+      "source": "1b597bca09",
+      "text": "Konfigurationsnøgle eller URL …"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Tilføj kode"
+      "source": "9fd728c66c",
+      "text": "Tilføj"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Indtast OTP-kode"
+      "source": "984be3840e",
+      "text": "Angiv en konfigurationsnøgle"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "eller træk og slip filer her<br>(billede, JSON-eksport, CSV eller TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Indtast kode"
+      "source": "cda79732da",
+      "text": "Angiv en konfigurationsnøgle"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Tryk på tandhjulet, og vælg »Transfer accounts« (Overfør konti) &gt; »Export accounts to QR code« (Eksportér konti til QR-kode)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Du kan også klikke på »Indtast kode« for at indtaste en nøgle eller en opsætnings-URL direkte som tekst, hvorefter værktøjet viser din oprindelige QR-kode til opsætning."
+      "source": "bcf1880e8e",
+      "text": "Du kan også klikke på »Angiv en konfigurationsnøgle« for at indtaste en konfigurationsnøgle eller en opsætnings-URL direkte som tekst, hvorefter værktøjet viser din oprindelige QR-kode til opsætning."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

@@ -286,20 +286,20 @@
       "text": "Cerrar la ventana"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Pega una URL <code>otpauth://</code> o una clave Base32 sin procesar (p. ej., <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Pega una URL <code>otpauth://</code> o una clave de configuración Base32 sin procesar (p. ej., <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Clave o URL…"
+      "source": "1b597bca09",
+      "text": "Clave de configuración o URL…"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Añadir código"
+      "source": "9fd728c66c",
+      "text": "Añadir"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Introducir código OTP"
+      "source": "984be3840e",
+      "text": "Introduce una clave de configuración"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "o arrastra y suelta archivos aquí<br>(imagen, exportación JSON, CSV o TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Introducir código"
+      "source": "cda79732da",
+      "text": "Introduce una clave de configuración"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Toca el engranaje y selecciona «Transferir cuentas» &gt; «Exportar cuentas a código QR»."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "También puedes hacer clic en «Introducir código» para escribir directamente una clave o una URL de configuración, y esta herramienta mostrará tu código QR de configuración original."
+      "source": "bcf1880e8e",
+      "text": "También puedes hacer clic en «Introduce una clave de configuración» para escribir directamente una clave o una URL de configuración, y esta herramienta mostrará tu código QR de configuración original."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

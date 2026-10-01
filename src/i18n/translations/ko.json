@@ -286,20 +286,20 @@
       "text": "창 닫기"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "<code>otpauth://</code> URL이나 Base32 키(예: <code>JBSW Y3DP EHPK 3PXP</code>)를 붙여 넣으세요."
+      "source": "951e8cee7e",
+      "text": "<code>otpauth://</code> URL이나 Base32 설정 키(예: <code>JBSW Y3DP EHPK 3PXP</code>)를 붙여 넣으세요."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "키 또는 URL…"
+      "source": "1b597bca09",
+      "text": "설정 키 또는 URL…"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "코드 추가"
+      "source": "9fd728c66c",
+      "text": "추가"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "OTP 코드 입력"
+      "source": "984be3840e",
+      "text": "설정 키 입력"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "또는 파일을 여기에 끌어다 놓기<br>(이미지, JSON 내보내기, CSV, TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "코드 입력"
+      "source": "cda79732da",
+      "text": "설정 키 입력"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "톱니바퀴를 누르고 ‘Transfer accounts’(계정 이전) &gt; ‘Export accounts to QR code’(QR 코드로 계정 내보내기)를 선택합니다."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "‘코드 입력’을 클릭해 키나 설정 URL을 텍스트로 직접 입력할 수도 있으며, 그러면 이 도구가 원래의 설정 QR 코드를 보여 줍니다."
+      "source": "bcf1880e8e",
+      "text": "‘설정 키 입력’을 클릭해 설정 키나 설정 URL을 텍스트로 직접 입력할 수도 있으며, 그러면 이 도구가 원래의 설정 QR 코드를 보여 줍니다."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

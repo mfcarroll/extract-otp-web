@@ -286,20 +286,20 @@
       "text": "ปิดหน้าต่าง"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "วาง URL <code>otpauth://</code> หรือคีย์ Base32 แบบดิบ (เช่น <code>JBSW Y3DP EHPK 3PXP</code>)"
+      "source": "951e8cee7e",
+      "text": "วาง URL <code>otpauth://</code> หรือคีย์การตั้งค่า Base32 แบบดิบ (เช่น <code>JBSW Y3DP EHPK 3PXP</code>)"
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "คีย์หรือ URL..."
+      "source": "1b597bca09",
+      "text": "คีย์การตั้งค่าหรือ URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "เพิ่มรหัส"
+      "source": "9fd728c66c",
+      "text": "เพิ่ม"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "ป้อนรหัส OTP"
+      "source": "984be3840e",
+      "text": "ป้อนคีย์การตั้งค่า"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "หรือลากไฟล์มาวางที่นี่<br>(รูปภาพ, ไฟล์ส่งออก JSON, CSV หรือ TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "ป้อนรหัส"
+      "source": "cda79732da",
+      "text": "ป้อนคีย์การตั้งค่า"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "แตะไอคอนรูปเฟืองแล้วเลือก “Transfer accounts” (โอนบัญชี) &gt; “Export accounts to QR code” (ส่งออกบัญชีเป็นคิวอาร์โค้ด)"
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "คุณยังสามารถคลิก “ป้อนรหัส” เพื่อป้อนคีย์หรือ URL สำหรับตั้งค่าเป็นข้อความโดยตรง แล้วเครื่องมือนี้จะแสดงคิวอาร์โค้ดสำหรับตั้งค่าดั้งเดิมของคุณ"
+      "source": "bcf1880e8e",
+      "text": "คุณยังสามารถคลิก “ป้อนคีย์การตั้งค่า” เพื่อป้อนคีย์หรือ URL สำหรับตั้งค่าเป็นข้อความโดยตรง แล้วเครื่องมือนี้จะแสดงคิวอาร์โค้ดสำหรับตั้งค่าดั้งเดิมของคุณ"
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

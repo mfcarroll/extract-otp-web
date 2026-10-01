@@ -286,20 +286,20 @@
       "text": "Fermer la fenêtre"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "Collez une URL <code>otpauth://</code> ou une clé Base32 brute (p. ex. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "Collez une URL <code>otpauth://</code> ou une clé de configuration Base32 brute (p. ex. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "Clé ou URL…"
+      "source": "1b597bca09",
+      "text": "Clé de configuration ou URL…"
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "Ajouter le code"
+      "source": "9fd728c66c",
+      "text": "Ajouter"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "Saisir un code OTP"
+      "source": "984be3840e",
+      "text": "Entrer une clé de configuration"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "ou glissez-déposez des fichiers ici<br>(image, exportation JSON, CSV ou TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "Saisir un code"
+      "source": "cda79732da",
+      "text": "Entrer une clé de configuration"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "Touchez l’engrenage et sélectionnez « Transfert de comptes » &gt; « Exporter les comptes en code QR »."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "Vous pouvez aussi cliquer sur « Saisir un code » pour entrer une clé ou une URL de configuration directement sous forme de texte, et cet outil affichera votre code QR de configuration d’origine."
+      "source": "bcf1880e8e",
+      "text": "Vous pouvez aussi cliquer sur « Entrer une clé de configuration » pour entrer une clé ou une URL de configuration directement sous forme de texte, et cet outil affichera votre code QR de configuration d’origine."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

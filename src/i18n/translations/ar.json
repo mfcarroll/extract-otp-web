@@ -286,20 +286,20 @@
       "text": "إغلاق النافذة"
     },
     "manual.help": {
-      "source": "bf57adfb72",
-      "text": "الصق عنوان URL من نوع <code>otpauth://</code> أو مفتاحًا خامًا بتنسيق Base32 (مثل <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "source": "951e8cee7e",
+      "text": "الصق عنوان URL من نوع <code>otpauth://</code> أو مفتاح إعداد خامًا بتنسيق Base32 (مثل <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
-      "source": "9dad4cc66d",
-      "text": "المفتاح أو عنوان URL..."
+      "source": "1b597bca09",
+      "text": "مفتاح الإعداد أو عنوان URL..."
     },
     "manual.submit": {
-      "source": "7d8ab38b09",
-      "text": "إضافة الرمز"
+      "source": "9fd728c66c",
+      "text": "إضافة"
     },
     "manual.title": {
-      "source": "5f6da93c06",
-      "text": "إدخال رمز OTP"
+      "source": "984be3840e",
+      "text": "إدخال مفتاح الإعداد"
     },
     "meta.description": {
       "source": "f5f76b3a19",
@@ -374,8 +374,8 @@
       "text": "أو اسحب الملفات وأفلتها هنا<br>(صورة، أو ملف تصدير JSON، أو CSV، أو TXT)"
     },
     "upload.enterCode": {
-      "source": "a2c02b164e",
-      "text": "إدخال رمز"
+      "source": "cda79732da",
+      "text": "إدخال مفتاح الإعداد"
     },
     "upload.openFiles": {
       "source": "508aa0b23d",
@@ -426,8 +426,8 @@
       "text": "انقر على رمز الترس واختر «Transfer accounts» (نقل الحسابات) &gt; «Export accounts to QR code» (تصدير الحسابات إلى رمز استجابة سريعة)."
     },
     "use.extract.enter": {
-      "source": "06ed7e2b85",
-      "text": "يمكنك أيضًا النقر على «إدخال رمز» لإدخال مفتاح أو عنوان URL للإعداد مباشرةً كنص، وستعرض هذه الأداة رمز الاستجابة السريعة الأصلي للإعداد."
+      "source": "bcf1880e8e",
+      "text": "يمكنك أيضًا النقر على «إدخال مفتاح الإعداد» لإدخال مفتاح إعداد أو عنوان URL للإعداد مباشرةً كنص، وستعرض هذه الأداة رمز الاستجابة السريعة الأصلي للإعداد."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",

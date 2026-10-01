@@ -97,9 +97,14 @@
 
   .file-input-buttons {
     flex-direction: row;
+    flex-wrap: wrap; /* Long labels in some languages move a button to a new line */
     align-items: center;
     width: auto;
     padding: 0;
+  }
+
+  .file-input-buttons .btn {
+    white-space: nowrap; /* ...rather than squeezing every label onto two lines */
   }
 }
 
