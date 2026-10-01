@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Geheimen van eenmalige wachtwoorden extraheren"
+      "text": "Instelsleutels extraheren"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Geheim kopiëren"
+      "text": "Sleutel kopiëren"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Geheim:"
+      "text": "Sleutel:"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Deze tool is gemaakt door <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, een ontwikkelaar die zich ergerde aan het overzetten van OTP-codes van Google Authenticator naar 1Password."
+      "text": "Deze tool is gemaakt door <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, een ontwikkelaar die zich ergerde aan het overzetten van verificatiecodes van Google Authenticator naar 1Password."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator maakt het lastig om de oorspronkelijke geheimen te bekijken waarmee je accounts zijn ingesteld. In plaats daarvan biedt de app een export-QR-code die al je accounts bundelt. Dat maakt overzetten naar een nieuw apparaat makkelijk, maar overstappen naar een andere authenticator-app lastig. LastPass biedt wel afzonderlijke QR-codes voor elk account, wat een enorme verbetering is, maar geeft de geheimen als tekst alleen in een JSON-code. Apps zoals 1Password maken de oorspronkelijke geheimen daarentegen makkelijk toegankelijk, zodat je eenvoudig kunt overstappen naar andere 2FA-apps."
+      "text": "Google Authenticator maakt het lastig om de oorspronkelijke sleutels te bekijken waarmee je accounts zijn ingesteld. In plaats daarvan biedt de app een export-QR-code die al je accounts bundelt. Dat maakt overzetten naar een nieuw apparaat makkelijk, maar overstappen naar een andere authenticator-app lastig. LastPass biedt wel afzonderlijke QR-codes voor elk account, wat een enorme verbetering is, maar geeft de sleutels als tekst alleen in een JSON-code. Apps zoals 1Password maken de oorspronkelijke sleutels daarentegen makkelijk toegankelijk, zodat je eenvoudig kunt overstappen naar andere 2FA-apps."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Je scant de QR-codes uit de exportfunctie van Google Authenticator of LastPass Authenticator met je camera, of je levert er screenshots van aan (of een LastPass-exportbestand). Deze tool leest die QR-codes, hier in je browser, en geeft je voor elk account het oorspronkelijke geheim terug. Daarna kun je met deze geheimen je accounts importeren in elke andere authenticator-app."
+      "text": "Je scant de QR-codes uit de exportfunctie van Google Authenticator of LastPass Authenticator met je camera, of je levert er screenshots van aan (of een LastPass-exportbestand). Deze tool leest die QR-codes, hier in je browser, en geeft je voor elk account de oorspronkelijke sleutel terug. Daarna kun je met deze sleutels je accounts importeren in elke andere authenticator-app."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Ja. Beveiliging en privacy hebben de hoogste prioriteit. <strong>Niets wat je hier doet, verlaat ooit je computer of mobiele apparaat.</strong> Alle verwerking gebeurt lokaal, offline, direct in je browser. Je QR-code-afbeeldingen en geheimen worden nooit naar een server gestuurd."
+      "text": "Ja. Beveiliging en privacy hebben de hoogste prioriteit. <strong>Niets wat je hier doet, verlaat ooit je computer of mobiele apparaat.</strong> Alle verwerking gebeurt lokaal, offline, direct in je browser. Je QR-code-afbeeldingen en sleutels worden nooit naar een server gestuurd."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> voor het coderen van de OTP-geheimen in Base32."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> voor het coderen van de sleutels in Base32."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Met Google Authenticator kun je je accounts overzetten naar een nieuwe telefoon, maar er is geen eenvoudige manier om ze te exporteren naar andere apps zoals 1Password of Bitwarden. Dat komt doordat het voor elk account het oorspronkelijke ‘geheim’ (de QR-code die je de eerste keer hebt gescand) verbergt."
+      "text": "Met Google Authenticator kun je je accounts overzetten naar een nieuwe telefoon, maar er is geen eenvoudige manier om ze te exporteren naar andere apps zoals 1Password of Bitwarden. Dat komt doordat het voor elk account de oorspronkelijke ‘instelsleutel’ (de QR-code die je de eerste keer hebt gescand) verbergt."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Zonder deze geheimen betekent overstappen naar een nieuwe wachtwoordmanager dat je 2FA voor elk afzonderlijk account handmatig opnieuw moet instellen, en dat is enorm vervelend."
+      "text": "Zonder deze sleutels betekent overstappen naar een nieuwe wachtwoordmanager dat je 2FA voor elk afzonderlijk account handmatig opnieuw moet instellen, en dat is enorm vervelend."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Plak een <code>otpauth://</code>-URL of een onbewerkte Base32-geheime sleutel (bijv. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Plak een <code>otpauth://</code>-URL of een onbewerkte Base32-sleutel (bijv. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Geheime sleutel of URL..."
+      "text": "Sleutel of URL..."
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Extraheer de geheimen van eenmalige TOTP/HOTP-wachtwoorden uit 2FA-export-QR-codes van Google Authenticator of LastPass. Werkt volledig in je browser; er wordt niets naar een server gestuurd."
+      "text": "Extraheer de TOTP/HOTP-instelsleutels voor verificatiecodes uit 2FA-export-QR-codes van Google Authenticator of LastPass. Werkt volledig in je browser; er wordt niets naar een server gestuurd."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Geheimen van eenmalige wachtwoorden extraheren – Google Authenticator-export"
+      "text": "Instelsleutels extraheren – Google Authenticator-export"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Let op: screenshots en gedownloade bestanden bevatten je onversleutelde geheimen.</strong> Bewaar ze veilig, of verwijder ze als je klaar bent. Verwijder ze dan ook uit de ‘Prullenmand’, de ‘Prullenbak’, ‘Recent verwijderd’ en eventuele fotoback-ups in de cloud."
+      "text": "<strong>Let op: screenshots en gedownloade bestanden bevatten je onversleutelde sleutels.</strong> Bewaar ze veilig, of verwijder ze als je klaar bent. Verwijder ze dan ook uit de ‘Prullenmand’, de ‘Prullenbak’, ‘Recent verwijderd’ en eventuele fotoback-ups in de cloud."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Exporteer uit je app voor eenmalige wachtwoorden"
+      "text": "1. Exporteer uit je app voor verificatiecodes"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "Je kunt ook op ‘Code invoeren’ klikken om een geheime sleutel of configuratie-URL direct als tekst in te voeren. Deze tool toont dan je oorspronkelijke configuratie-QR-code."
+      "text": "Je kunt ook op ‘Code invoeren’ klikken om een sleutel of configuratie-URL direct als tekst in te voeren. Deze tool toont dan je oorspronkelijke configuratie-QR-code."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Geheimen extraheren"
+      "text": "2. Sleutels extraheren"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Deze tool kan ook afzonderlijke configuratie-QR-codes van elke app lezen, of een tekstbestand met één geheime sleutel of URL per regel. Zo kun je geheimen van waar dan ook eenvoudig omzetten in scanbare QR-codes."
+      "text": "Deze tool kan ook afzonderlijke configuratie-QR-codes van elke app lezen, of een tekstbestand met één sleutel of URL per regel. Zo kun je sleutels van waar dan ook eenvoudig omzetten in scanbare QR-codes."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Open deze tool op je computer of op een tweede apparaat en klik op ‘QR scannen’ om de export-QR-codes op je telefoon direct te scannen. Dit is de handigste optie en zo voorkom je dat er screenshots van je geheimen worden opgeslagen."
+      "text": "Open deze tool op je computer of op een tweede apparaat en klik op ‘QR scannen’ om de export-QR-codes op je telefoon direct te scannen. Dit is de handigste optie en zo voorkom je dat er screenshots van je sleutels worden opgeslagen."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Deze tool leest QR-codes uit de exportfunctie van Google Authenticator of LastPass Authenticator en geeft je voor elk account het oorspronkelijke geheim terug. Daarna kun je met deze geheimen je accounts importeren in elke andere authenticator-app."
+      "text": "Deze tool leest QR-codes uit de exportfunctie van Google Authenticator of LastPass Authenticator en geeft je voor elk account de oorspronkelijke sleutel terug. Daarna kun je met deze sleutels je accounts importeren in elke andere authenticator-app."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "De tool toont de geëxtraheerde OTP-geheimen, elk met een eigen QR-code en geheime sleutel."
+      "text": "De tool toont de geëxtraheerde instelsleutels, elk met een eigen QR-code en de sleutel als tekst."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Je geheimen gebruiken"
+      "text": "3. Je sleutels gebruiken"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Je kunt deze geheimen nu importeren in de authenticator-app of wachtwoordmanager van je voorkeur."
+      "text": "Je kunt deze sleutels nu importeren in de authenticator-app of wachtwoordmanager van je voorkeur."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Klik op ‘Opslaan als CSV’ of ‘Opslaan als JSON’ om een kopie van je geheimen te bewaren. Je kunt deze bestanden later hier weer openen om je QR-codes weer te geven."
+      "text": "Klik op ‘Opslaan als CSV’ of ‘Opslaan als JSON’ om een kopie van je sleutels te bewaren. Je kunt deze bestanden later hier weer openen om je QR-codes weer te geven."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Deze tool extraheert de geheimen van eenmalige wachtwoorden (OTP), de codes die worden gebruikt voor tweestapsverificatie (2FA), uit de apps Google Authenticator of LastPass Authenticator. Je hoeft geen software te installeren en er verlaten nooit gegevens je apparaat."
+      "text": "Deze tool extraheert de instelsleutels voor verificatiecodes (OTP), de codes die worden gebruikt voor tweestapsverificatie (2FA), uit de apps Google Authenticator of LastPass Authenticator. Je hoeft geen software te installeren en er verlaten nooit gegevens je apparaat."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>Alle verwerking van je QR-codes en geheimen gebeurt volledig offline, lokaal, hier in je browser.</strong>"
+      "text": "<strong>Alle verwerking van je QR-codes en sleutels gebeurt volledig offline, lokaal, hier in je browser.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "De invoer moet een geldige OTP-URL, LastPass-JSON of een Base32-geheim van minstens 16 tekens zijn (letters A-Z, cijfers 2-7)."
+      "text": "De invoer moet een geldige OTP-URL, LastPass-JSON of een Base32-sleutel van minstens 16 tekens zijn (letters A-Z, cijfers 2-7)."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -657,15 +657,15 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "one": "{count} dubbel geheim overgeslagen.",
-        "other": "{count} dubbele geheimen overgeslagen."
+        "one": "{count} dubbele sleutel overgeslagen.",
+        "other": "{count} dubbele sleutels overgeslagen."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "{count} geheim geëxtraheerd.",
-        "other": "{count} geheimen geëxtraheerd."
+        "one": "{count} sleutel geëxtraheerd.",
+        "other": "{count} sleutels geëxtraheerd."
       }
     },
     "log.manualInput": {
@@ -678,11 +678,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "Geen OTP-geheimen gevonden."
+      "text": "Geen sleutels gevonden."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "Geen OTP-geheimen gevonden in QR-code."
+      "text": "Geen sleutels gevonden in QR-code."
     },
     "results.notAvailable": {
       "source": "67a926f700",
