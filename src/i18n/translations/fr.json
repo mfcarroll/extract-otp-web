@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Extracteur de clés secrètes de mots de passe à usage unique"
+      "text": "Extracteur de clés de configuration de codes de vérification"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Copier la clé secrète"
+      "text": "Copier la clé"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Clé secrète :"
+      "text": "Clé :"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Cet outil a été créé par <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, un développeur qui trouvait frustrant de migrer ses codes OTP de Google Authenticator vers 1Password."
+      "text": "Cet outil a été créé par <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, un développeur qui trouvait frustrant de migrer ses codes de vérification de Google Authenticator vers 1Password."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator rend difficile l’affichage des clés secrètes d’origine utilisées pour configurer vos comptes. Il fournit plutôt un code QR d’exportation qui regroupe tous vos comptes. Cela facilite le transfert vers un nouvel appareil, mais complique le passage à une autre application d’authentification. LastPass fournit bien un code QR distinct pour chaque compte, ce qui est une grande amélioration, mais il ne fournit les clés secrètes en texte qu’en format JSON. À l’inverse, des applications comme 1Password rendent les clés secrètes d’origine faciles d’accès, ce qui simplifie le transfert vers d’autres applications 2FA."
+      "text": "Google Authenticator rend difficile l’affichage des clés d’origine utilisées pour configurer vos comptes. Il fournit plutôt un code QR d’exportation qui regroupe tous vos comptes. Cela facilite le transfert vers un nouvel appareil, mais complique le passage à une autre application d’authentification. LastPass fournit bien un code QR distinct pour chaque compte, ce qui est une grande amélioration, mais il ne fournit les clés en texte qu’en format JSON. À l’inverse, des applications comme 1Password rendent les clés d’origine faciles d’accès, ce qui simplifie le transfert vers d’autres applications 2FA."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Vous lisez avec votre caméra les codes QR produits par la fonction d’exportation de Google Authenticator ou de LastPass Authenticator, ou vous fournissez des captures d’écran de ces codes (ou un fichier d’exportation LastPass). Cet outil lit ces codes QR — ici même, dans votre navigateur — et vous redonne la clé secrète d’origine de chaque compte. Vous pouvez ensuite utiliser ces clés pour importer vos comptes dans n’importe quelle autre application d’authentification."
+      "text": "Vous lisez avec votre caméra les codes QR produits par la fonction d’exportation de Google Authenticator ou de LastPass Authenticator, ou vous fournissez des captures d’écran de ces codes (ou un fichier d’exportation LastPass). Cet outil lit ces codes QR — ici même, dans votre navigateur — et vous redonne la clé d’origine de chaque compte. Vous pouvez ensuite utiliser ces clés pour importer vos comptes dans n’importe quelle autre application d’authentification."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Oui. La sécurité et la confidentialité sont les grandes priorités. <strong>Rien de ce que vous faites ici ne quitte jamais votre ordinateur ou votre appareil mobile.</strong> Tout le traitement se fait localement, hors ligne, directement dans votre navigateur. Vos images de codes QR et vos clés secrètes ne sont jamais envoyées à un serveur."
+      "text": "Oui. La sécurité et la confidentialité sont les grandes priorités. <strong>Rien de ce que vous faites ici ne quitte jamais votre ordinateur ou votre appareil mobile.</strong> Tout le traitement se fait localement, hors ligne, directement dans votre navigateur. Vos images de codes QR et vos clés ne sont jamais envoyées à un serveur."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>, pour l’encodage en Base32 des clés secrètes OTP."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>, pour l’encodage en Base32 des clés OTP."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Google Authenticator vous permet de transférer vos comptes vers un nouveau téléphone, mais n’offre pas de moyen simple de les exporter vers d’autres applications comme 1Password ou Bitwarden. C’est parce qu’il cache la « clé secrète » d’origine (le code QR que vous avez scanné au départ) de chaque compte."
+      "text": "Google Authenticator vous permet de transférer vos comptes vers un nouveau téléphone, mais n’offre pas de moyen simple de les exporter vers d’autres applications comme 1Password ou Bitwarden. C’est parce qu’il cache la « clé de configuration » d’origine (le code QR que vous avez scanné au départ) de chaque compte."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Sans ces clés secrètes, passer à un nouveau gestionnaire de mots de passe oblige à reconfigurer manuellement la 2FA pour chaque compte, ce qui est très fastidieux."
+      "text": "Sans ces clés, passer à un nouveau gestionnaire de mots de passe oblige à reconfigurer manuellement la 2FA pour chaque compte, ce qui est très fastidieux."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Collez une URL <code>otpauth://</code> ou une clé secrète Base32 brute (p. ex. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Collez une URL <code>otpauth://</code> ou une clé Base32 brute (p. ex. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Clé secrète ou URL…"
+      "text": "Clé ou URL…"
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Extrayez les clés secrètes TOTP/HOTP de mots de passe à usage unique à partir des codes QR d’exportation 2FA de Google Authenticator ou de LastPass. Tout se fait dans votre navigateur ; rien n’est téléversé."
+      "text": "Extrayez les clés de configuration des codes de vérification TOTP/HOTP à partir des codes QR d’exportation 2FA de Google Authenticator ou de LastPass. Tout se fait dans votre navigateur ; rien n’est téléversé."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Extracteur de clés secrètes de mots de passe à usage unique – Exportation de Google Authenticator"
+      "text": "Extracteur de clés de configuration de codes de vérification – Exportation de Google Authenticator"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Remarque : toute capture d’écran ou tout fichier téléchargé contient vos clés secrètes non chiffrées.</strong> Assurez-vous de les conserver en lieu sûr, ou de les supprimer une fois terminé. Il faut notamment les supprimer de votre « Corbeille », de l’album « Supprimés récemment » et de toute sauvegarde de photos infonuagique."
+      "text": "<strong>Remarque : toute capture d’écran ou tout fichier téléchargé contient vos clés non chiffrées.</strong> Assurez-vous de les conserver en lieu sûr, ou de les supprimer une fois terminé. Cela comprend leur suppression de votre « Corbeille », de l’album « Supprimés récemment » et de toute sauvegarde de photos infonuagique."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Exportez depuis votre application de mots de passe à usage unique"
+      "text": "1. Exportez depuis votre application de codes de vérification"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "Vous pouvez aussi cliquer sur « Saisir un code » pour entrer une clé secrète ou une URL de configuration directement sous forme de texte, et cet outil affichera votre code QR de configuration d’origine."
+      "text": "Vous pouvez aussi cliquer sur « Saisir un code » pour entrer une clé ou une URL de configuration directement sous forme de texte, et cet outil affichera votre code QR de configuration d’origine."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Extrayez les clés secrètes"
+      "text": "2. Extrayez les clés"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Cet outil peut aussi lire les codes QR de configuration individuels de n’importe quelle application, ou un fichier texte contenant une clé secrète ou une URL par ligne. Il est ainsi facile de transformer des clés secrètes de toute provenance en codes QR lisibles."
+      "text": "Cet outil peut aussi lire les codes QR de configuration individuels de n’importe quelle application, ou un fichier texte contenant une clé ou une URL par ligne. Il est ainsi facile de transformer des clés de toute provenance en codes QR lisibles."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Ouvrez cet outil sur votre ordinateur ou sur un deuxième appareil, puis cliquez sur « Scanner le code QR » pour lire directement les codes QR d’exportation affichés sur votre téléphone. C’est l’option la plus pratique, et elle évite de conserver des captures d’écran de vos clés secrètes."
+      "text": "Ouvrez cet outil sur votre ordinateur ou sur un deuxième appareil, puis cliquez sur « Scanner le code QR » pour lire directement les codes QR d’exportation affichés sur votre téléphone. C’est l’option la plus pratique, et elle évite de conserver des captures d’écran de vos clés."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Cet outil lit les codes QR produits par la fonction d’exportation de Google Authenticator ou de LastPass Authenticator, et vous redonne la clé secrète d’origine de chaque compte. Vous pouvez ensuite utiliser ces clés pour importer vos comptes dans n’importe quelle autre application d’authentification."
+      "text": "Cet outil lit les codes QR produits par la fonction d’exportation de Google Authenticator ou de LastPass Authenticator, et vous redonne la clé d’origine de chaque compte. Vous pouvez ensuite utiliser ces clés pour importer vos comptes dans n’importe quelle autre application d’authentification."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "L’outil affichera les clés secrètes OTP extraites, chacune avec son propre code QR et sa clé secrète."
+      "text": "L’outil affichera les clés de configuration extraites, chacune avec son propre code QR et sa clé en texte."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Utilisez vos clés secrètes"
+      "text": "3. Utilisez vos clés"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Vous pouvez maintenant importer ces clés secrètes dans l’application d’authentification ou le gestionnaire de mots de passe de votre choix."
+      "text": "Vous pouvez maintenant importer ces clés dans l’application d’authentification ou le gestionnaire de mots de passe de votre choix."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Cliquez sur « Enregistrer en CSV » ou « Enregistrer en JSON » pour conserver une copie de vos clés secrètes. Vous pourrez rouvrir ces fichiers ici plus tard pour afficher de nouveau vos codes QR."
+      "text": "Cliquez sur « Enregistrer en CSV » ou « Enregistrer en JSON » pour conserver une copie de vos clés. Vous pourrez rouvrir ces fichiers ici plus tard pour afficher de nouveau vos codes QR."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Cet outil extrait les clés secrètes de mots de passe à usage unique (OTP), les codes utilisés pour l’authentification à deux facteurs (2FA), des applications Google Authenticator et LastPass Authenticator. Il n’y a aucun logiciel à installer, et aucune donnée ne quitte jamais votre appareil."
+      "text": "Cet outil extrait les clés de configuration des codes de vérification (OTP), les codes utilisés pour la Validation en deux étapes (2FA), des applications Google Authenticator et LastPass Authenticator. Il n’y a aucun logiciel à installer, et aucune donnée ne quitte jamais votre appareil."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>Tout le traitement de vos codes QR et de vos clés secrètes se fait entièrement hors ligne, localement, ici même dans votre navigateur.</strong>"
+      "text": "<strong>Tout le traitement de vos codes QR et de vos clés se fait entièrement hors ligne, localement, ici même dans votre navigateur.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "L’entrée doit être une URL OTP valide, un JSON LastPass ou une clé secrète Base32 d’au moins 16 caractères (lettres A à Z, chiffres 2 à 7)."
+      "text": "L’entrée doit être une URL OTP valide, un JSON LastPass ou une clé Base32 d’au moins 16 caractères (lettres A à Z, chiffres 2 à 7)."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -657,15 +657,15 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "one": "{count} clé secrète en double ignorée.",
-        "other": "{count} clés secrètes en double ignorées."
+        "one": "{count} clé en double ignorée.",
+        "other": "{count} clés en double ignorées."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "{count} clé secrète extraite.",
-        "other": "{count} clés secrètes extraites."
+        "one": "{count} clé extraite.",
+        "other": "{count} clés extraites."
       }
     },
     "log.manualInput": {
@@ -678,11 +678,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "Aucune clé secrète OTP trouvée."
+      "text": "Aucune clé OTP trouvée."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "Aucune clé secrète OTP trouvée dans le code QR."
+      "text": "Aucune clé OTP trouvée dans le code QR."
     },
     "results.notAvailable": {
       "source": "67a926f700",
