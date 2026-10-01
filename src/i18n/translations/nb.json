@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Hent ut hemmelige nøkler for engangspassord"
+      "text": "Hent ut konfigureringsnøkler"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Kopier hemmelig nøkkel"
+      "text": "Kopier nøkkel"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Hemmelig nøkkel:"
+      "text": "Nøkkel:"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Dette verktøyet er laget av <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, en utvikler som var frustrert over prosessen med å flytte OTP-koder fra Google Authenticator til 1Password."
+      "text": "Dette verktøyet er laget av <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, en utvikler som var frustrert over prosessen med å flytte bekreftelseskoder fra Google Authenticator til 1Password."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator gjør det vanskelig å se de opprinnelige hemmelige nøklene som ble brukt til å sette opp kontoene dine. I stedet får du en eksport-QR-kode som samler alle kontoene dine. Det gjør det enkelt å overføre til en ny enhet, men vanskelig å bytte til en annen autentiseringsapp. LastPass gir riktignok individuelle QR-koder for hver konto, noe som er en stor forbedring, men gir bare de hemmelige nøklene som tekst i JSON-format. Apper som 1Password gjør derimot de opprinnelige hemmelige nøklene lett tilgjengelige, slik at det er enkelt å flytte til andre 2FA-apper."
+      "text": "Google Authenticator gjør det vanskelig å se de opprinnelige nøklene som ble brukt til å sette opp kontoene dine. I stedet får du en eksport-QR-kode som samler alle kontoene dine. Det gjør det enkelt å overføre til en ny enhet, men vanskelig å bytte til en annen autentiseringsapp. LastPass gir riktignok individuelle QR-koder for hver konto, noe som er en stor forbedring, men gir bare nøklene som tekst i JSON-format. Apper som 1Password gjør derimot de opprinnelige nøklene lett tilgjengelige, slik at det er enkelt å flytte til andre 2FA-apper."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Du skanner QR-kodene fra eksportfunksjonen i Google Authenticator eller LastPass Authenticator med kameraet, eller legger inn skjermbilder av dem (eller en eksportfil fra LastPass). Verktøyet leser disse QR-kodene – her i nettleseren din – og gir deg tilbake den opprinnelige hemmelige nøkkelen for hver konto. Deretter kan du bruke disse hemmelige nøklene til å importere kontoene dine i en hvilken som helst annen autentiseringsapp."
+      "text": "Du skanner QR-kodene fra eksportfunksjonen i Google Authenticator eller LastPass Authenticator med kameraet, eller legger inn skjermbilder av dem (eller en eksportfil fra LastPass). Verktøyet leser disse QR-kodene – her i nettleseren din – og gir deg tilbake den opprinnelige nøkkelen for hver konto. Deretter kan du bruke disse nøklene til å importere kontoene dine i en hvilken som helst annen autentiseringsapp."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Ja. Sikkerhet og personvern har høyeste prioritet. <strong>Ingenting du gjør her, forlater noen gang datamaskinen eller mobilenheten din.</strong> All behandling skjer lokalt, offline, direkte i nettleseren din. QR-kodebildene og de hemmelige nøklene dine sendes aldri til noen server."
+      "text": "Ja. Sikkerhet og personvern har høyeste prioritet. <strong>Ingenting du gjør her, forlater noen gang datamaskinen eller mobilenheten din.</strong> All behandling skjer lokalt, offline, direkte i nettleseren din. QR-kodebildene og nøklene dine sendes aldri til noen server."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> for Base32-koding av de hemmelige OTP-nøklene."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> for Base32-koding av nøklene."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Med Google Authenticator kan du overføre kontoene dine til en ny telefon, men appen gir ingen enkel måte å eksportere dem til andre apper som 1Password eller Bitwarden på. Det er fordi den skjuler den opprinnelige «hemmelige nøkkelen» (QR-koden du skannet første gang) for hver konto."
+      "text": "Med Google Authenticator kan du overføre kontoene dine til en ny telefon, men appen gir ingen enkel måte å eksportere dem til andre apper som 1Password eller Bitwarden på. Det er fordi den skjuler den opprinnelige «konfigureringsnøkkelen» (QR-koden du skannet første gang) for hver konto."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Uten disse hemmelige nøklene betyr et bytte til en ny passordbehandler at du må sette opp 2FA manuelt på nytt for hver eneste konto, noe som er svært tungvint."
+      "text": "Uten disse nøklene betyr et bytte til en ny passordbehandler at du må sette opp 2FA manuelt på nytt for hver eneste konto, noe som er svært tungvint."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Lim inn en <code>otpauth://</code>-URL eller en hemmelig nøkkel i Base32-format (f.eks. <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Lim inn en <code>otpauth://</code>-URL eller en nøkkel i Base32-format (f.eks. <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Hemmelig nøkkel eller URL …"
+      "text": "Nøkkel eller URL …"
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Hent ut hemmelige nøkler for TOTP/HOTP-engangspassord fra 2FA-eksport-QR-koder fra Google Authenticator eller LastPass. Kjører helt og holdent i nettleseren din; ingenting lastes opp."
+      "text": "Hent ut konfigureringsnøkler for TOTP/HOTP-bekreftelseskoder fra 2FA-eksport-QR-koder fra Google Authenticator eller LastPass. Kjører helt og holdent i nettleseren din; ingenting lastes opp."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Hent ut hemmelige nøkler for engangspassord – eksport fra Google Authenticator"
+      "text": "Hent ut konfigureringsnøkler – eksport fra Google Authenticator"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Merk: Alle skjermbilder og nedlastede filer inneholder de ukrypterte hemmelige nøklene dine.</strong> Sørg for å oppbevare dem trygt, eller slett dem når du er ferdig. Dette omfatter også å slette dem fra «Papirkurv» (på Mac og i Windows), «Nylig slettet» og eventuelle sikkerhetskopier av bilder i skyen."
+      "text": "<strong>Merk: Alle skjermbilder og nedlastede filer inneholder de ukrypterte nøklene dine.</strong> Sørg for å oppbevare dem trygt, eller slett dem når du er ferdig. Dette omfatter også å slette dem fra «Papirkurv» (på Mac og i Windows), «Nylig slettet» og eventuelle sikkerhetskopier av bilder i skyen."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Eksporter fra appen for engangspassord"
+      "text": "1. Eksporter fra appen for bekreftelseskoder"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "Du kan også klikke på «Skriv inn kode» for å skrive inn en hemmelig nøkkel eller en oppsetts-URL direkte som tekst, så viser verktøyet den opprinnelige QR-koden for oppsettet."
+      "text": "Du kan også klikke på «Skriv inn kode» for å skrive inn en nøkkel eller en oppsetts-URL direkte som tekst, så viser verktøyet den opprinnelige QR-koden for oppsettet."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Hent ut hemmelige nøkler"
+      "text": "2. Hent ut nøkler"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Verktøyet kan også lese enkeltstående QR-koder for oppsett fra hvilken som helst app, eller en tekstfil med én hemmelig nøkkel eller URL per linje. Dermed er det enkelt å gjøre hemmelige nøkler fra hvor som helst om til QR-koder som kan skannes."
+      "text": "Verktøyet kan også lese enkeltstående QR-koder for oppsett fra hvilken som helst app, eller en tekstfil med én nøkkel eller URL per linje. Dermed er det enkelt å gjøre nøkler fra hvor som helst om til QR-koder som kan skannes."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Åpne dette verktøyet på datamaskinen din eller en annen enhet, og klikk på «Skann QR» for å skanne eksport-QR-kodene direkte fra telefonen din. Dette er det enkleste alternativet, og du slipper å lagre skjermbilder av de hemmelige nøklene dine."
+      "text": "Åpne dette verktøyet på datamaskinen din eller en annen enhet, og klikk på «Skann QR» for å skanne eksport-QR-kodene direkte fra telefonen din. Dette er det enkleste alternativet, og du slipper å lagre skjermbilder av nøklene dine."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Dette verktøyet leser QR-koder fra eksportfunksjonen i Google Authenticator eller LastPass Authenticator og gir deg tilbake den opprinnelige hemmelige nøkkelen for hver konto. Deretter kan du bruke disse hemmelige nøklene til å importere kontoene dine i en hvilken som helst annen autentiseringsapp."
+      "text": "Dette verktøyet leser QR-koder fra eksportfunksjonen i Google Authenticator eller LastPass Authenticator og gir deg tilbake den opprinnelige nøkkelen for hver konto. Deretter kan du bruke disse nøklene til å importere kontoene dine i en hvilken som helst annen autentiseringsapp."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "Verktøyet viser de uthentede hemmelige OTP-nøklene, hver med sin egen QR-kode og hemmelige nøkkel."
+      "text": "Verktøyet viser de uthentede konfigureringsnøklene, hver med sin QR-kode og nøkkelen som tekst."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Bruk de hemmelige nøklene"
+      "text": "3. Bruk nøklene"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Nå kan du importere disse hemmelige nøklene i autentiseringsappen eller passordbehandleren du foretrekker."
+      "text": "Nå kan du importere disse nøklene i autentiseringsappen eller passordbehandleren du foretrekker."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Klikk på «Lagre som CSV» eller «Lagre som JSON» for å beholde en kopi av de hemmelige nøklene dine. Du kan åpne disse filene her igjen senere for å vise QR-kodene dine."
+      "text": "Klikk på «Lagre som CSV» eller «Lagre som JSON» for å beholde en kopi av nøklene dine. Du kan åpne disse filene her igjen senere for å vise QR-kodene dine."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Dette verktøyet henter ut hemmelige nøkler for engangspassord (OTP), altså kodene som brukes til tofaktorautentisering (2FA), fra appene Google Authenticator eller LastPass Authenticator. Du trenger ikke å installere noen programvare, og ingen data forlater noen gang enheten din."
+      "text": "Dette verktøyet henter ut konfigureringsnøkler for bekreftelseskoder (OTP), altså kodene som brukes til totrinnsbekreftelse (2FA), fra appene Google Authenticator eller LastPass Authenticator. Du trenger ikke å installere noen programvare, og ingen data forlater noen gang enheten din."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>All behandling av QR-kodene og de hemmelige nøklene dine skjer helt og holdent offline, lokalt, her i nettleseren din.</strong>"
+      "text": "<strong>All behandling av QR-kodene og nøklene dine skjer helt og holdent offline, lokalt, her i nettleseren din.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "Inndata må være en gyldig OTP-URL, LastPass-JSON eller en hemmelig Base32-nøkkel på minst 16 tegn (bokstavene A–Z, tallene 2–7)."
+      "text": "Inndata må være en gyldig OTP-URL, LastPass-JSON eller en Base32-nøkkel på minst 16 tegn (bokstavene A–Z, tallene 2–7)."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -657,15 +657,15 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "one": "{count} duplikat av en hemmelig nøkkel hoppet over.",
-        "other": "{count} duplikater av hemmelige nøkler hoppet over."
+        "one": "{count} duplikat av en nøkkel hoppet over.",
+        "other": "{count} duplikater av nøkler hoppet over."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "{count} hemmelig nøkkel hentet ut.",
-        "other": "{count} hemmelige nøkler hentet ut."
+        "one": "{count} nøkkel hentet ut.",
+        "other": "{count} nøkler hentet ut."
       }
     },
     "log.manualInput": {
@@ -678,11 +678,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "Fant ingen hemmelige OTP-nøkler."
+      "text": "Fant ingen nøkler."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "Fant ingen hemmelige OTP-nøkler i QR-koden."
+      "text": "Fant ingen nøkler i QR-koden."
     },
     "results.notAvailable": {
       "source": "67a926f700",
