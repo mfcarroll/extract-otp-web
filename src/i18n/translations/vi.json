@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Công cụ trích xuất khóa bí mật mật khẩu một lần"
+      "text": "Công cụ trích xuất khóa thiết lập mã xác minh"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Sao chép khóa bí mật"
+      "text": "Sao chép khóa"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Khóa bí mật:"
+      "text": "Khóa:"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator khiến việc xem các khóa bí mật gốc dùng để thiết lập tài khoản trở nên khó khăn. Thay vào đó, ứng dụng cung cấp một mã QR xuất gộp tất cả tài khoản của bạn lại với nhau. Điều này giúp chuyển sang thiết bị mới dễ dàng, nhưng lại khó chuyển sang một ứng dụng xác thực khác. LastPass có cung cấp mã QR riêng cho từng tài khoản, một cải tiến rất lớn, nhưng chỉ cung cấp khóa bí mật dạng văn bản ở định dạng mã JSON. Ngược lại, các ứng dụng như 1Password cho phép truy cập dễ dàng các khóa bí mật gốc, giúp chuyển sang các ứng dụng 2FA khác một cách đơn giản."
+      "text": "Google Authenticator khiến việc xem các khóa gốc dùng để thiết lập tài khoản trở nên khó khăn. Thay vào đó, ứng dụng cung cấp một mã QR xuất gộp tất cả tài khoản của bạn lại với nhau. Điều này giúp chuyển sang thiết bị mới dễ dàng, nhưng lại khó chuyển sang một ứng dụng xác thực khác. LastPass có cung cấp mã QR riêng cho từng tài khoản, một cải tiến rất lớn, nhưng chỉ cung cấp khóa dạng văn bản ở định dạng mã JSON. Ngược lại, các ứng dụng như 1Password cho phép truy cập dễ dàng các khóa gốc, giúp chuyển sang các ứng dụng 2FA khác một cách đơn giản."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Bạn dùng camera quét các mã QR từ tính năng xuất của Google Authenticator hoặc LastPass Authenticator, hoặc cung cấp ảnh chụp màn hình của chúng (hoặc một tệp xuất từ LastPass). Công cụ này đọc các mã QR đó—ngay tại đây trong trình duyệt của bạn—và trả lại cho bạn khóa bí mật gốc của từng tài khoản. Sau đó, bạn có thể dùng các khóa bí mật này để nhập tài khoản vào bất kỳ ứng dụng xác thực nào khác."
+      "text": "Bạn dùng camera quét các mã QR từ tính năng xuất của Google Authenticator hoặc LastPass Authenticator, hoặc cung cấp ảnh chụp màn hình của chúng (hoặc một tệp xuất từ LastPass). Công cụ này đọc các mã QR đó—ngay tại đây trong trình duyệt của bạn—và trả lại cho bạn khóa gốc của từng tài khoản. Sau đó, bạn có thể dùng các khóa này để nhập tài khoản vào bất kỳ ứng dụng xác thực nào khác."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Có. Bảo mật và quyền riêng tư là ưu tiên hàng đầu. <strong>Mọi thứ bạn làm ở đây không bao giờ rời khỏi máy tính hoặc thiết bị di động của bạn.</strong> Mọi quá trình xử lý đều diễn ra cục bộ, ngoại tuyến, ngay trong trình duyệt của bạn. Hình ảnh mã QR và khóa bí mật của bạn không bao giờ được gửi đến bất kỳ máy chủ nào."
+      "text": "Có. Bảo mật và quyền riêng tư là ưu tiên hàng đầu. <strong>Mọi thứ bạn làm ở đây không bao giờ rời khỏi máy tính hoặc thiết bị di động của bạn.</strong> Mọi quá trình xử lý đều diễn ra cục bộ, ngoại tuyến, ngay trong trình duyệt của bạn. Hình ảnh mã QR và khóa của bạn không bao giờ được gửi đến bất kỳ máy chủ nào."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> để mã hóa Base32 các khóa bí mật OTP."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a> để mã hóa Base32 các khóa OTP."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Google Authenticator cho phép bạn chuyển tài khoản sang điện thoại mới, nhưng không có cách dễ dàng để xuất chúng sang các ứng dụng khác như 1Password hay Bitwarden. Lý do là ứng dụng này ẩn “khóa bí mật” gốc (mã QR bạn đã quét lúc đầu) của từng tài khoản."
+      "text": "Google Authenticator cho phép bạn chuyển tài khoản sang điện thoại mới, nhưng không có cách dễ dàng để xuất chúng sang các ứng dụng khác như 1Password hay Bitwarden. Lý do là ứng dụng này ẩn “khóa” gốc (mã QR bạn đã quét lúc đầu) của từng tài khoản."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Nếu không có các khóa bí mật này, việc chuyển sang một trình quản lý mật khẩu mới đồng nghĩa với việc phải thiết lập lại 2FA thủ công cho từng tài khoản một, vô cùng phiền phức."
+      "text": "Nếu không có các khóa này, việc chuyển sang một trình quản lý mật khẩu mới đồng nghĩa với việc phải thiết lập lại 2FA thủ công cho từng tài khoản một, vô cùng phiền phức."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Dán URL <code>otpauth://</code> hoặc khóa bí mật Base32 dạng thô (ví dụ: <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Dán URL <code>otpauth://</code> hoặc khóa Base32 dạng thô (ví dụ: <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Khóa bí mật hoặc URL..."
+      "text": "Khóa hoặc URL..."
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Trích xuất khóa bí mật mật khẩu một lần TOTP/HOTP từ mã QR xuất 2FA của Google Authenticator hoặc LastPass. Chạy hoàn toàn trong trình duyệt của bạn; không có gì được gửi lên máy chủ."
+      "text": "Trích xuất khóa thiết lập mã xác minh TOTP/HOTP từ mã QR xuất 2FA của Google Authenticator hoặc LastPass. Chạy hoàn toàn trong trình duyệt của bạn; không có gì được gửi lên máy chủ."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Công cụ trích xuất khóa bí mật mật khẩu một lần – Xuất từ Google Authenticator"
+      "text": "Công cụ trích xuất khóa thiết lập mã xác minh – Xuất từ Google Authenticator"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Lưu ý: Mọi ảnh chụp màn hình hoặc tệp đã tải xuống đều chứa khóa bí mật chưa được mã hóa của bạn.</strong> Hãy nhớ lưu trữ chúng an toàn, hoặc xóa chúng khi bạn đã xong. Việc này bao gồm cả xóa chúng khỏi “Thùng rác”, “Đã xóa gần đây” và mọi bản sao lưu ảnh trên đám mây."
+      "text": "<strong>Lưu ý: Mọi ảnh chụp màn hình hoặc tệp đã tải xuống đều chứa khóa chưa được mã hóa của bạn.</strong> Hãy nhớ lưu trữ chúng an toàn, hoặc xóa chúng khi bạn đã xong. Việc này bao gồm cả xóa chúng khỏi “Thùng rác”, “Đã xóa gần đây” và mọi bản sao lưu ảnh trên đám mây."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Xuất từ ứng dụng mật khẩu một lần của bạn"
+      "text": "1. Xuất từ ứng dụng mã xác minh của bạn"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "Bạn cũng có thể nhấp vào “Nhập mã” để nhập trực tiếp khóa bí mật hoặc URL thiết lập dưới dạng văn bản, và công cụ này sẽ hiển thị mã QR thiết lập gốc của bạn."
+      "text": "Bạn cũng có thể nhấp vào “Nhập mã” để nhập trực tiếp khóa hoặc URL thiết lập dưới dạng văn bản, và công cụ này sẽ hiển thị mã QR thiết lập gốc của bạn."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Trích xuất khóa bí mật"
+      "text": "2. Trích xuất khóa"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Công cụ này cũng có thể đọc từng mã QR thiết lập riêng lẻ từ bất kỳ ứng dụng nào, hoặc một tệp văn bản có một khóa bí mật hoặc URL trên mỗi dòng. Nhờ vậy, bạn dễ dàng biến khóa bí mật từ bất kỳ nguồn nào thành mã QR có thể quét được."
+      "text": "Công cụ này cũng có thể đọc từng mã QR thiết lập riêng lẻ từ bất kỳ ứng dụng nào, hoặc một tệp văn bản có một khóa hoặc URL trên mỗi dòng. Nhờ vậy, bạn dễ dàng biến khóa từ bất kỳ nguồn nào thành mã QR có thể quét được."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Mở công cụ này trên máy tính hoặc một thiết bị thứ hai, rồi nhấp vào “Quét QR” để quét trực tiếp các mã QR xuất trên điện thoại của bạn. Đây là cách tiện lợi nhất, và nó giúp tránh lưu ảnh chụp màn hình chứa khóa bí mật của bạn."
+      "text": "Mở công cụ này trên máy tính hoặc một thiết bị thứ hai, rồi nhấp vào “Quét QR” để quét trực tiếp các mã QR xuất trên điện thoại của bạn. Đây là cách tiện lợi nhất, và nó giúp tránh lưu ảnh chụp màn hình chứa khóa của bạn."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Công cụ này đọc các mã QR từ tính năng xuất của Google Authenticator hoặc LastPass Authenticator và trả lại cho bạn khóa bí mật gốc của từng tài khoản. Sau đó, bạn có thể dùng các khóa bí mật này để nhập tài khoản vào bất kỳ ứng dụng xác thực nào khác."
+      "text": "Công cụ này đọc các mã QR từ tính năng xuất của Google Authenticator hoặc LastPass Authenticator và trả lại cho bạn khóa gốc của từng tài khoản. Sau đó, bạn có thể dùng các khóa này để nhập tài khoản vào bất kỳ ứng dụng xác thực nào khác."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "Công cụ sẽ hiển thị các khóa bí mật OTP đã trích xuất, mỗi khóa kèm mã QR và khóa bí mật riêng."
+      "text": "Công cụ sẽ hiển thị các khóa thiết lập đã trích xuất, mỗi khóa kèm mã QR và văn bản khóa riêng."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Sử dụng khóa bí mật"
+      "text": "3. Sử dụng khóa"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Giờ đây bạn có thể nhập các khóa bí mật này vào ứng dụng xác thực hoặc trình quản lý mật khẩu bạn ưa thích."
+      "text": "Giờ đây bạn có thể nhập các khóa này vào ứng dụng xác thực hoặc trình quản lý mật khẩu bạn ưa thích."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Nhấp vào “Lưu dưới dạng CSV” hoặc “Lưu dưới dạng JSON” để giữ một bản sao các khóa bí mật của bạn. Sau này bạn có thể mở lại các tệp này tại đây để hiển thị mã QR của mình."
+      "text": "Nhấp vào “Lưu dưới dạng CSV” hoặc “Lưu dưới dạng JSON” để giữ một bản sao các khóa của bạn. Sau này bạn có thể mở lại các tệp này tại đây để hiển thị mã QR của mình."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Công cụ này trích xuất các khóa bí mật mật khẩu một lần (OTP), tức các mã dùng cho xác thực hai yếu tố (2FA), từ ứng dụng Google Authenticator hoặc LastPass Authenticator. Không cần cài đặt phần mềm nào, và dữ liệu không bao giờ rời khỏi thiết bị của bạn."
+      "text": "Công cụ này trích xuất các khóa thiết lập mã xác minh (OTP), tức các mã dùng cho Xác minh 2 bước (2FA), từ ứng dụng Google Authenticator hoặc LastPass Authenticator. Không cần cài đặt phần mềm nào, và dữ liệu không bao giờ rời khỏi thiết bị của bạn."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>Mọi quá trình xử lý mã QR và khóa bí mật của bạn đều diễn ra hoàn toàn ngoại tuyến, cục bộ, ngay tại đây trong trình duyệt của bạn.</strong>"
+      "text": "<strong>Mọi quá trình xử lý mã QR và khóa của bạn đều diễn ra hoàn toàn ngoại tuyến, cục bộ, ngay tại đây trong trình duyệt của bạn.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "Dữ liệu nhập phải là URL OTP hợp lệ, JSON của LastPass, hoặc khóa bí mật Base32 có ít nhất 16 ký tự (chữ cái A-Z, chữ số 2-7)."
+      "text": "Dữ liệu nhập phải là URL OTP hợp lệ, JSON của LastPass, hoặc khóa Base32 có ít nhất 16 ký tự (chữ cái A-Z, chữ số 2-7)."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -656,13 +656,13 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "other": "Đã bỏ qua {count} khóa bí mật trùng lặp."
+        "other": "Đã bỏ qua {count} khóa trùng lặp."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "other": "Đã trích xuất {count} khóa bí mật."
+        "other": "Đã trích xuất {count} khóa."
       }
     },
     "log.manualInput": {
@@ -675,11 +675,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "Không tìm thấy khóa bí mật OTP nào."
+      "text": "Không tìm thấy khóa OTP nào."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "Không tìm thấy khóa bí mật OTP nào trong mã QR."
+      "text": "Không tìm thấy khóa OTP nào trong mã QR."
     },
     "results.notAvailable": {
       "source": "67a926f700",
