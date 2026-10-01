@@ -15,7 +15,7 @@
   "page": {
     "app.title": {
       "source": "ea4efa6e3c",
-      "text": "Extractor de chei secrete pentru parole unice"
+      "text": "Extractor de chei de configurare"
     },
     "camera.select": {
       "source": "57986dabb7",
@@ -39,7 +39,7 @@
     },
     "card.copySecret": {
       "source": "9b80d4b38e",
-      "text": "Copiază cheia secretă"
+      "text": "Copiază cheia"
     },
     "card.copyTooltip": {
       "source": "e21f935f11",
@@ -67,7 +67,7 @@
     },
     "card.secret": {
       "source": "e400973b43",
-      "text": "Cheie secretă:"
+      "text": "Cheie:"
     },
     "card.showLargerQr": {
       "source": "f4d0496aec",
@@ -107,7 +107,7 @@
     },
     "faq.author.answer": {
       "source": "90d734c019",
-      "text": "Acest instrument a fost creat de <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, un dezvoltator frustrat de procesul de mutare a codurilor OTP din Google Authenticator în 1Password."
+      "text": "Acest instrument a fost creat de <a href=\"https://www.linkedin.com/in/matthewfcarroll/\" rel=\"noopener noreferrer\" target=\"_blank\">Matthew Carroll</a>, un dezvoltator frustrat de procesul de mutare a codurilor de verificare din Google Authenticator în 1Password."
     },
     "faq.author.title": {
       "source": "9b9c31ad30",
@@ -115,7 +115,7 @@
     },
     "faq.hidden.answer": {
       "source": "e21633766c",
-      "text": "Google Authenticator face dificilă vizualizarea cheilor secrete originale folosite la configurarea conturilor. În schimb, oferă un cod QR de export care reunește toate conturile tale. Asta ușurează mutarea pe un dispozitiv nou, dar îngreunează trecerea la altă aplicație de autentificare. LastPass oferă câte un cod QR pentru fiecare cont, ceea ce e o îmbunătățire mare, dar oferă cheile secrete sub formă de text doar în format JSON. În schimb, aplicații precum 1Password fac cheile secrete originale ușor accesibile, așa că trecerea la alte aplicații 2FA e simplă."
+      "text": "Google Authenticator face dificilă vizualizarea cheilor originale folosite la configurarea conturilor. În schimb, oferă un cod QR de export care reunește toate conturile tale. Asta ușurează mutarea pe un dispozitiv nou, dar îngreunează trecerea la altă aplicație de autentificare. LastPass oferă câte un cod QR pentru fiecare cont, ceea ce e o îmbunătățire mare, dar oferă cheile sub formă de text doar în format JSON. În schimb, aplicații precum 1Password fac cheile originale ușor accesibile, așa că trecerea la alte aplicații 2FA e simplă."
     },
     "faq.hidden.title": {
       "source": "0633d9d802",
@@ -123,7 +123,7 @@
     },
     "faq.how.answer": {
       "source": "4635886314",
-      "text": "Scanezi cu camera codurile QR din funcția de export a Google Authenticator sau LastPass Authenticator ori furnizezi capturi de ecran ale lor (sau un fișier de export LastPass). Acest instrument citește acele coduri QR — chiar aici, în browserul tău — și îți oferă înapoi cheia secretă originală a fiecărui cont. Apoi poți folosi aceste chei ca să imporți conturile în orice altă aplicație de autentificare."
+      "text": "Scanezi cu camera codurile QR din funcția de export a Google Authenticator sau LastPass Authenticator ori furnizezi capturi de ecran ale lor (sau un fișier de export LastPass). Acest instrument citește acele coduri QR — chiar aici, în browserul tău — și îți oferă înapoi cheia originală a fiecărui cont. Apoi poți folosi aceste chei ca să imporți conturile în orice altă aplicație de autentificare."
     },
     "faq.how.title": {
       "source": "c3f15799af",
@@ -159,7 +159,7 @@
     },
     "faq.safe.local": {
       "source": "749aeb3a58",
-      "text": "Da. Securitatea și confidențialitatea sunt prioritățile principale. <strong>Nimic din ce faci aici nu părăsește vreodată computerul sau dispozitivul tău mobil.</strong> Toată procesarea are loc local, offline, direct în browserul tău. Imaginile codurilor QR și cheile tale secrete nu sunt trimise niciodată către niciun server."
+      "text": "Da. Securitatea și confidențialitatea sunt prioritățile principale. <strong>Nimic din ce faci aici nu părăsește vreodată computerul sau dispozitivul tău mobil.</strong> Toată procesarea are loc local, offline, direct în browserul tău. Imaginile codurilor QR și cheile tale nu sunt trimise niciodată către niciun server."
     },
     "faq.safe.openSource": {
       "source": "13c584ca7f",
@@ -231,7 +231,7 @@
     },
     "faq.thanks.thirtyTwo": {
       "source": "2f24eeff08",
-      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>, pentru codificarea în Base32 a cheilor secrete OTP."
+      "text": "<a href=\"https://github.com/wzrdtales/thirty-two\" target=\"_blank\" rel=\"noopener noreferrer\">thirty-two</a>, pentru codificarea în Base32 a cheilor."
     },
     "faq.thanks.title": {
       "source": "c9015d53b9",
@@ -243,11 +243,11 @@
     },
     "faq.why.p1": {
       "source": "a933e5977c",
-      "text": "Google Authenticator îți permite să transferi conturile pe un telefon nou, dar nu oferă o modalitate simplă de a le exporta în alte aplicații, cum ar fi 1Password sau Bitwarden. Asta pentru că ascunde „cheia secretă” originală (codul QR pe care l-ai scanat la început) a fiecărui cont."
+      "text": "Google Authenticator îți permite să transferi conturile pe un telefon nou, dar nu oferă o modalitate simplă de a le exporta în alte aplicații, cum ar fi 1Password sau Bitwarden. Asta pentru că ascunde „cheia de configurare” originală (codul QR pe care l-ai scanat la început) a fiecărui cont."
     },
     "faq.why.p2": {
       "source": "695625efa9",
-      "text": "Fără aceste chei secrete, trecerea la un nou manager de parole înseamnă să reconfigurezi manual 2FA pentru fiecare cont în parte, ceea ce e foarte obositor."
+      "text": "Fără aceste chei, trecerea la un nou manager de parole înseamnă să reconfigurezi manual 2FA pentru fiecare cont în parte, ceea ce e foarte obositor."
     },
     "faq.why.p3": {
       "source": "10de47e4c1",
@@ -287,11 +287,11 @@
     },
     "manual.help": {
       "source": "bf57adfb72",
-      "text": "Lipește un URL <code>otpauth://</code> sau o cheie secretă Base32 brută (de ex., <code>JBSW Y3DP EHPK 3PXP</code>)."
+      "text": "Lipește un URL <code>otpauth://</code> sau o cheie Base32 brută (de ex., <code>JBSW Y3DP EHPK 3PXP</code>)."
     },
     "manual.placeholder": {
       "source": "9dad4cc66d",
-      "text": "Cheie secretă sau URL…"
+      "text": "Cheie sau URL…"
     },
     "manual.submit": {
       "source": "7d8ab38b09",
@@ -303,11 +303,11 @@
     },
     "meta.description": {
       "source": "f5f76b3a19",
-      "text": "Extrage cheile secrete TOTP/HOTP ale parolelor unice din codurile QR de export 2FA din Google Authenticator sau LastPass. Rulează complet în browserul tău; nimic nu este trimis către un server."
+      "text": "Extrage cheile de configurare TOTP/HOTP din codurile QR de export 2FA din Google Authenticator sau LastPass. Rulează complet în browserul tău; nimic nu este trimis către un server."
     },
     "meta.title": {
       "source": "76d556c0b4",
-      "text": "Extractor de chei secrete pentru parole unice – Export din Google Authenticator"
+      "text": "Extractor de chei de configurare – Export din Google Authenticator"
     },
     "modal.close": {
       "source": "7d9eb7acb1",
@@ -315,7 +315,7 @@
     },
     "note.storage": {
       "source": "c0baa8e857",
-      "text": "<strong>Notă: orice captură de ecran sau fișier descărcat conține cheile tale secrete necriptate.</strong> Păstrează-le în siguranță sau șterge-le după ce ai terminat. Asta include ștergerea lor din „Coșul de gunoi”, „Coșul de reciclare”, „Șterse recent” și din orice copie de rezervă a fotografiilor în cloud."
+      "text": "<strong>Notă: orice captură de ecran sau fișier descărcat conține cheile tale necriptate.</strong> Păstrează-le în siguranță sau șterge-le după ce ai terminat. Asta include ștergerea lor din „Coșul de gunoi”, „Coșul de reciclare”, „Șterse recent” și din orice copie de rezervă a fotografiilor în cloud."
     },
     "results.label": {
       "source": "413a20ec19",
@@ -407,7 +407,7 @@
     },
     "use.export.heading": {
       "source": "23bb9f85b6",
-      "text": "1. Exportă din aplicația de parole unice"
+      "text": "1. Exportă din aplicația de coduri de verificare"
     },
     "use.export.lastPass.file": {
       "source": "a92e9ec171",
@@ -427,19 +427,19 @@
     },
     "use.extract.enter": {
       "source": "06ed7e2b85",
-      "text": "Poți da clic și pe „Introdu codul” ca să scrii direct o cheie secretă sau un URL de configurare, iar acest instrument îți va afișa codul QR de configurare original."
+      "text": "Poți da clic și pe „Introdu codul” ca să scrii direct o cheie sau un URL de configurare, iar acest instrument îți va afișa codul QR de configurare original."
     },
     "use.extract.heading": {
       "source": "b56f7130b7",
-      "text": "2. Extrage cheile secrete"
+      "text": "2. Extrage cheile"
     },
     "use.extract.other": {
       "source": "7de221f712",
-      "text": "Acest instrument poate citi și coduri QR de configurare individuale din orice aplicație, sau un fișier text cu câte o cheie secretă ori un URL pe fiecare rând. Astfel poți transforma ușor chei secrete de oriunde în coduri QR ce pot fi scanate."
+      "text": "Acest instrument poate citi și coduri QR de configurare individuale din orice aplicație, sau un fișier text cu câte o cheie ori un URL pe fiecare rând. Astfel poți transforma ușor chei de oriunde în coduri QR ce pot fi scanate."
     },
     "use.extract.scan": {
       "source": "765e3dec88",
-      "text": "Deschide acest instrument pe computer sau pe un al doilea dispozitiv și dă clic pe „Scanează QR” ca să scanezi direct codurile QR de export afișate pe telefon. Este varianta cea mai comodă și eviți să păstrezi capturi de ecran cu cheile tale secrete."
+      "text": "Deschide acest instrument pe computer sau pe un al doilea dispozitiv și dă clic pe „Scanează QR” ca să scanezi direct codurile QR de export afișate pe telefon. Este varianta cea mai comodă și eviți să păstrezi capturi de ecran cu cheile tale."
     },
     "use.extract.screenshot": {
       "source": "1348600397",
@@ -447,11 +447,11 @@
     },
     "use.intro": {
       "source": "0adea13e9c",
-      "text": "Acest instrument citește codurile QR din funcția de export a Google Authenticator sau LastPass Authenticator și îți oferă înapoi cheia secretă originală a fiecărui cont. Apoi poți folosi aceste chei ca să imporți conturile în orice altă aplicație de autentificare."
+      "text": "Acest instrument citește codurile QR din funcția de export a Google Authenticator sau LastPass Authenticator și îți oferă înapoi cheia originală a fiecărui cont. Apoi poți folosi aceste chei ca să imporți conturile în orice altă aplicație de autentificare."
     },
     "use.use.display": {
       "source": "df8c46112d",
-      "text": "Instrumentul va afișa cheile secrete OTP extrase, fiecare cu propriul cod QR și propria cheie secretă."
+      "text": "Instrumentul va afișa cheile de configurare extrase, fiecare cu propriul cod QR și textul cheii."
     },
     "use.use.export": {
       "source": "baf666d432",
@@ -459,23 +459,23 @@
     },
     "use.use.heading": {
       "source": "4b38257f86",
-      "text": "3. Folosește cheile secrete"
+      "text": "3. Folosește cheile"
     },
     "use.use.import": {
       "source": "69579ceb54",
-      "text": "Acum poți importa aceste chei secrete în aplicația de autentificare sau managerul de parole preferat."
+      "text": "Acum poți importa aceste chei în aplicația de autentificare sau managerul de parole preferat."
     },
     "use.use.save": {
       "source": "d87ca25a5c",
-      "text": "Dă clic pe „Salvează ca CSV” sau „Salvează ca JSON” ca să păstrezi o copie a cheilor secrete. Mai târziu poți redeschide aici aceste fișiere ca să-ți afișezi din nou codurile QR."
+      "text": "Dă clic pe „Salvează ca CSV” sau „Salvează ca JSON” ca să păstrezi o copie a cheilor. Mai târziu poți redeschide aici aceste fișiere ca să-ți afișezi din nou codurile QR."
     },
     "what.intro": {
       "source": "5c6dd873ff",
-      "text": "Acest instrument extrage cheile secrete ale parolelor unice (OTP), adică ale codurilor folosite pentru autentificarea în doi pași (2FA), din aplicațiile Google Authenticator sau LastPass Authenticator. Nu trebuie să instalezi niciun program și nicio dată nu părăsește vreodată dispozitivul tău."
+      "text": "Acest instrument extrage cheile de configurare ale codurilor de verificare (OTP) folosite pentru Verificarea în doi pași (2FA), din aplicațiile Google Authenticator sau LastPass Authenticator. Nu trebuie să instalezi niciun program și nicio informație nu părăsește vreodată dispozitivul tău."
     },
     "what.offline": {
       "source": "1dd726e3e6",
-      "text": "<strong>Toată procesarea codurilor QR și a cheilor tale secrete are loc complet offline, local, chiar aici, în browserul tău.</strong>"
+      "text": "<strong>Toată procesarea codurilor QR și a cheilor tale are loc complet offline, local, chiar aici, în browserul tău.</strong>"
     }
   },
   "messages": {
@@ -537,7 +537,7 @@
     },
     "error.invalidInput": {
       "source": "a5d06f9f0e",
-      "text": "Datele introduse trebuie să fie un URL OTP valid, un JSON LastPass sau o cheie secretă Base32 de cel puțin 16 caractere (literele A-Z, cifrele 2-7)."
+      "text": "Datele introduse trebuie să fie un URL OTP valid, un JSON LastPass sau o cheie Base32 de cel puțin 16 caractere (literele A-Z, cifrele 2-7)."
     },
     "error.invalidJson": {
       "source": "2976af2962",
@@ -658,17 +658,17 @@
     "log.duplicatesSkipped": {
       "source": "e68600c000",
       "text": {
-        "one": "{count} cheie secretă duplicată omisă.",
-        "few": "{count} chei secrete duplicate omise.",
-        "other": "{count} de chei secrete duplicate omise."
+        "one": "{count} cheie duplicată omisă.",
+        "few": "{count} chei duplicate omise.",
+        "other": "{count} de chei duplicate omise."
       }
     },
     "log.extracted": {
       "source": "b818f7ef07",
       "text": {
-        "one": "{count} cheie secretă extrasă.",
-        "few": "{count} chei secrete extrase.",
-        "other": "{count} de chei secrete extrase."
+        "one": "{count} cheie extrasă.",
+        "few": "{count} chei extrase.",
+        "other": "{count} de chei extrase."
       }
     },
     "log.manualInput": {
@@ -681,11 +681,11 @@
     },
     "log.noSecrets": {
       "source": "53865292bf",
-      "text": "Nu s-au găsit chei secrete OTP."
+      "text": "Nu s-au găsit chei."
     },
     "log.noSecretsInQr": {
       "source": "c69f2b562d",
-      "text": "Nu s-au găsit chei secrete OTP în codul QR."
+      "text": "Nu s-au găsit chei în codul QR."
     },
     "results.notAvailable": {
       "source": "67a926f700",
