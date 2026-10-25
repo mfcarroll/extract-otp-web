@@ -21,7 +21,7 @@
     "prettier": "^3.9.7",
     "typescript": "^7.0.2",
     "vite": "^8.3.0",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.5"
   },
   "dependencies": {
     "buffer": "^6.0.3",
